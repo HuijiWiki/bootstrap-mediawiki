@@ -187,8 +187,8 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 		?>
 
 		<div id="wiki-outer-body">
-			<div id="content">
-				<div id="wiki-body" class="container">
+			<div id="wiki-body" class="container">
+				<div id="content">
 					<?php
 						if ( 'sidebar' == $wgTOCLocation ) {
 							?>
@@ -210,8 +210,8 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 					<!-- /newtalk -->
 					<?php endif; ?>
 
-					<div class="pagetitle page-header">
-						<h1><div id="firstHeading"><?php $this->html( 'title' ) ?> </div><div id="contentSub"><small><?php $this->html('subtitle') ?></small></div></h1>
+					<div id="firstHeading" class="pagetitle page-header">
+						<h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?></small></div></h1>
 					</div>	
 
 					<div id="bodyContent" class="body">
@@ -239,8 +239,8 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 							<?php
 						}//end if
 					?>
-				</div><!-- container -->
-			</div>
+				</div>
+			</div><!-- container -->
 		</div>
 		<div class="bottom">
 			<div class="container">
