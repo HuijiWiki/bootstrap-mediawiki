@@ -185,59 +185,62 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 			<?php
 		}//end if
 		?>
+
 		<div id="wiki-outer-body">
-			<div id="wiki-body" class="container">
-				<?php
-					if ( 'sidebar' == $wgTOCLocation ) {
-						?>
-						<div class="row">
-							<section class="col-md-3 toc-sidebar"></section>
-							<section class="col-md-9 wiki-body-section">
-						<?php
-					}//end if
-				?>
-				<?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
-				<?php if ( $this->data['undelete'] ): ?>
-				<!-- undelete -->
-				<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
-				<!-- /undelete -->
-				<?php endif; ?>
-				<?php if($this->data['newtalk'] ): ?>
-				<!-- newtalk -->
-				<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
-				<!-- /newtalk -->
-				<?php endif; ?>
+			<div id="content">
+				<div id="wiki-body" class="container">
+					<?php
+						if ( 'sidebar' == $wgTOCLocation ) {
+							?>
+							<div class="row">
+								<section class="col-md-3 toc-sidebar"></section>
+								<section class="col-md-9 wiki-body-section">
+							<?php
+						}//end if
+					?>
+					<?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
+					<?php if ( $this->data['undelete'] ): ?>
+					<!-- undelete -->
+					<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
+					<!-- /undelete -->
+					<?php endif; ?>
+					<?php if($this->data['newtalk'] ): ?>
+					<!-- newtalk -->
+					<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
+					<!-- /newtalk -->
+					<?php endif; ?>
 
-				<div class="pagetitle page-header">
-					<h1><?php $this->html( 'title' ) ?> <small><?php $this->html('subtitle') ?></small></h1>
-				</div>	
+					<div class="pagetitle page-header">
+						<h1><div id="firstHeading"><?php $this->html( 'title' ) ?> </div><div id="contentSub"><small><?php $this->html('subtitle') ?></small></div></h1>
+					</div>	
 
-				<div class="body">
-				<?php $this->html( 'bodytext' ) ?>
-				</div>
+					<div id="bodyContent" class="body">
+					<?php $this->html( 'bodytext' ) ?>
+					</div>
 
-				<?php if ( $this->data['catlinks'] ): ?>
-				<div class="category-links">
-				<!-- catlinks -->
-				<?php $this->html( 'catlinks' ); ?>
-				<!-- /catlinks -->
-				</div>
-				<?php endif; ?>
-				<?php if ( $this->data['dataAfterContent'] ): ?>
-				<div class="data-after-content">
-				<!-- dataAfterContent -->
-				<?php $this->html( 'dataAfterContent' ); ?>
-				<!-- /dataAfterContent -->
-				</div>
-				<?php endif; ?>
-				<?php
-					if ( 'sidebar' == $wgTOCLocation ) {
-						?>
-						</section></section>
-						<?php
-					}//end if
-				?>
-			</div><!-- container -->
+					<?php if ( $this->data['catlinks'] ): ?>
+					<div class="category-links">
+					<!-- catlinks -->
+					<?php $this->html( 'catlinks' ); ?>
+					<!-- /catlinks -->
+					</div>
+					<?php endif; ?>
+					<?php if ( $this->data['dataAfterContent'] ): ?>
+					<div class="data-after-content">
+					<!-- dataAfterContent -->
+					<?php $this->html( 'dataAfterContent' ); ?>
+					<!-- /dataAfterContent -->
+					</div>
+					<?php endif; ?>
+					<?php
+						if ( 'sidebar' == $wgTOCLocation ) {
+							?>
+							</section></section>
+							<?php
+						}//end if
+					?>
+				</div><!-- container -->
+			</div>
 		</div>
 		<div class="bottom">
 			<div class="container">
