@@ -109,22 +109,15 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 							<li>
 							<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>">Home</a>
 							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> Recent Changes</a></li>
-									<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> Special Pages</a></li>
-									<?php if ( $wgEnableUploads ) { ?>
-									<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> Upload a File</a></li>
-									<?php } ?>
-								</ul>
-							</li>
+
 							<?php echo $this->nav( $this->get_page_links( 'Bootstrap:TitleBar' ) ); ?>
 						</ul>
 					<?php
 					if ( $wgUser->isLoggedIn() ) {
 						if ( count( $this->data['personal_urls'] ) > 0 ) {
-							$user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
+							$avatar = new wAvatar( $wgUser->getID(), 'l' );
+							// $user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
+							$user_icon = '<span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span>';
 							$name = strtolower( $wgUser->getName() );
 							$user_nav = $this->get_array_links( $this->data['personal_urls'], $user_icon . $name, 'user' );
 							?>
@@ -178,6 +171,16 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 					}//end if
 					?>
 					<ul class="nav nav-pills">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> Recent Changes</a></li>
+								<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> Special Pages</a></li>
+								<?php if ( $wgEnableUploads ) { ?>
+								<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> Upload a File</a></li>
+								<?php } ?>
+							</ul>
+						</li>
 					<?php echo $this->nav( $subnav_links ); ?>
 					</ul>
 				</div>
