@@ -133,12 +133,14 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 							<ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
 							<?php
 						}//end if
-					} else {  // else if is logged in
+					} else {  // else if is logged in 
+								//old login 
 						?>
+
 						<ul class="nav navbar-nav navbar-right">
-							<li>
-							<?php echo Linker::linkKnown( SpecialPage::getTitleFor( 'Userlogin' ), wfMsg( 'login' ) ); ?>
-							</li>
+							<li id= "pt-login">
+								<?php echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), wfMsg( 'login' ), array('id' => 'pt-anonlogin' ) ); ?>
+							</li>	
 						</ul>
 						<?php
 					}

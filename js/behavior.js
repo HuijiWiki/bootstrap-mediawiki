@@ -36,21 +36,25 @@ $(function() {
 	$('input[type=submit],input[type=button],input[type=reset]').addClass('btn');
 	$('input[type=submit]').addClass('btn-primary');
 
-	$('input[type=checkbox],input[type=radio]').each(function() {
-		var $el = $(this);
+	// $('input[type=checkbox],input[type=radio]').each(function() {
+	// 	var $el = $(this);
 
-		var id = $el.attr('id');
-		$( 'label[for=' + id + ']' ).each(function() {
-			var $label = $(this);
-			if( $.trim( $label.text() ) != '' ) {
-				$el.prependTo( $label );
-			}//end if
+	// 	var id = $el.attr('id');
+	// 	$( 'label[for=' + id + ']' ).each(function() {
+	// 		var $label = $(this);
+	// 		if( $.trim( $label.text() ) != '' ) {
+	// 			$el.prependTo( $label );
+	// 		}//end if
 
-			$label.wrap( '<div class="checkbox"/>' );
-		});
+	// 		$label.wrap( '<div class="checkbox"/>' );
+	// 	});
 
-		$el.closest('label').addClass($el.attr('type'));
-	});
+	// 	$el.closest('label').addClass($el.attr('type'));
+	// });
+
+	//Temperory fix
+	$('div').removeClass('mw-ui-checkbox');
+	$('#wpRemember').css('margin-right','5px');
 
 	$('.tip').tooltip();
 	$('[data-toggle="popover"]').popover();
@@ -60,7 +64,7 @@ $(function() {
 			$('.toc-sidebar').remove();
 			$('.wiki-body-section').removeClass('col-md-9').addClass('col-md-12');
 		} else {
-			$('.toc-sidebar').append('<h3>Contents</h3>');
+			$('.toc-sidebar').append('<h3>摘要</h3>');
 			$('#toc').each(function() {
 				$(this).find('ul:first').appendTo( '.toc-sidebar' );
 				$(this).remove();
