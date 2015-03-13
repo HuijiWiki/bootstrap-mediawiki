@@ -62,15 +62,17 @@ $(function() {
 	if ( $('.toc-sidebar').length > 0 ) {
 		if ( 0 === $('#toc').length ) {
 			$('.toc-sidebar').remove();
-			$('.wiki-body-section').removeClass('col-md-9').addClass('col-md-12');
+			$('.wiki-body-section').removeClass('col-md-10').addClass('col-md-12');
 		} else {
-			$('.toc-sidebar').append('<h3>摘要</h3>');
+			// $('.toc-sidebar').append('<h3>摘要</h3>');
 			$('#toc').each(function() {
 				$(this).find('ul:first').appendTo( '.toc-sidebar' );
 				$(this).remove();
 			});
-
+			$('nav.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix').attr('data-offset-top','0').attr('data-offset-bottom','250');
+			$('nav.toc-sidebar ul').addClass('nav nav-list');
 			$('.toc-sidebar').attr('id', 'toc');
+			$('body').scrollspy({target: '#toc', offset:30}); 
 		}//end else
 	} else {
 		$('#toc').each(function() {

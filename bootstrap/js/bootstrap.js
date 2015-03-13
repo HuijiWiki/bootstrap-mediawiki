@@ -1731,7 +1731,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
       .find(this.selector)
       .map(function () {
         var $el   = $(this)
-        var href  = $el.data('target') || $el.attr('href')
+        var href  = （$el.data('target') || $el.attr('href')).replace('.', '//.')
         var $href = /^#./.test(href) && $(href)
 
         return ($href

@@ -61,6 +61,104 @@ p {
 	padding: 15px;
 }
 
+/* begin toc style */
+
+.toc-sidebar.affix{
+	position:static
+}
+
+@media (min-width:768px){
+	.toc-sidebar{
+		padding-left:20px
+	}
+
+}
+
+.nav-list{
+	margin-top:20px;
+	margin-bottom:20px
+}
+
+.toc-sidebar .nav>li>a{
+	display:block;
+	padding:4px 20px;
+	font-size:13px;
+	font-weight:500;
+	color:#767676
+}
+
+.toc-sidebar .nav>li>a:focus,.toc-sidebar .nav>li>a:hover{
+	padding-left:19px;
+	color:#0E6EB8;
+	text-decoration:none;
+	background-color:transparent;
+	border-left:1px solid #0E6EB8
+}
+
+.toc-sidebar .nav>.active:focus>a,.toc-sidebar .nav>.active:hover>a,.toc-sidebar .nav>.active>a{
+	padding-left:18px;
+	font-weight:700;
+	color:#0E6EB8;
+	background-color:transparent;
+	border-left:2px solid #0E6EB8
+}
+
+.toc-sidebar .nav .nav{
+	display:none;
+	padding-bottom:10px
+}
+
+.toc-sidebar .nav .nav>li>a{
+	padding-top:1px;
+	padding-bottom:1px;
+	padding-left:30px;
+	font-size:12px;
+	font-weight:400
+}
+
+.toc-sidebar .nav .nav>li>a:focus,.toc-sidebar .nav .nav>li>a:hover{
+	padding-left:29px
+}
+
+.toc-sidebar .nav .nav>.active:focus>a,.toc-sidebar .nav .nav>.active:hover>a,.toc-sidebar .nav .nav>.active>a{
+	padding-left:28px;
+	font-weight:500
+}
+
+
+@media (min-width:992px){
+	.toc-sidebar .nav>.active>ul{
+		display:block
+	}
+
+	.toc-sidebar.affix,.toc-sidebar.affix-bottom{
+		width:213px
+	}
+
+	.toc-sidebar.affix{
+		position:fixed;
+		top:20px
+	}
+
+	.toc-sidebar.affix-bottom{
+		position:absolute
+	}
+
+	.toc-sidebar.affix .nav-list,.toc-sidebar.affix-bottom .nav-list{
+		margin-top:0;
+		margin-bottom:0
+	}
+
+}
+
+@media (min-width:1200px){
+	.toc-sidebar.affix,.toc-sidebar.affix-bottom{
+		width:263px
+	}
+
+} 
+/* end of toc styling */
+
 .editsection {
 	float: right;
 	font-size: 0.8rem;
@@ -198,6 +296,7 @@ option.unclickable {
 	box-shadow: none;
 	display: table-cell;
 	padding: 0;
+	width: 160px;
 }
 
 #toc.toc-sidebar li {
@@ -221,6 +320,21 @@ option.unclickable {
 	font-size: 16px;
 }
 
+#toc ul {
+	padding-left: 2px;
+
+}
+.toc-sidebar > ul {
+	width: 160px;
+}
+
+ul.affix {
+	width: 160px;
+}
+
+ul.affix-bottom{
+	position:static;
+}
 a.new {
 	color: #86100f;
 }

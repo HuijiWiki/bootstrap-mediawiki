@@ -198,8 +198,8 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						if ( 'sidebar' == $wgTOCLocation ) {
 							?>
 							<div class="row">
-								<section class="col-md-3 toc-sidebar"></section>
-								<section class="col-md-9 wiki-body-section">
+								<nav class="col-md-2 hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
+								<section class="col-md-10 col-sm-12 col-xs-12 wiki-body-section" role="main">
 							<?php
 						}//end if
 					?>
