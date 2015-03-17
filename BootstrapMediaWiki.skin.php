@@ -81,6 +81,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 		global $wgTOCLocation;
 		global $wgNavBarClasses;
 		global $wgSubnavBarClasses;
+		global $wgParser, $wgTitle;
 
 		$this->skin = $this->data['skin'];
 		$action = $wgRequest->getText( 'action' );
@@ -91,173 +92,236 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 
 		$this->html('headelement');
 		?>
-		<div class="navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
-				<div class="container">
-					<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-					<div class="navbar-header">
-						<button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
-					</div>
+		<div id="wrapper">
+			<!-- Sidebar -->
+	        <div id="sidebar-wrapper">
+	          	
+	            <ul class="sidebar-nav">
+	            	<li><button id="follow" class="mw-ui-button mw-ui-progressive">关注</button>	</li>			
+	                <li class="sidebar-brand ">
+	                    <a href="#">
+	                        导航
+	                    </a>
+	                </li>
+	                <?php echo $this->nav( $this->get_page_links( 'Bootstrap:TitleBar' ) ); ?>
+	                <li class="sidebar-brand ">
+	                    <a href="#">
+	                        工具
+	                    </a>
+	                </li>
+    				<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
+					<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
+					<?php if ( $wgEnableUploads ) { ?>
+					<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
+					<?php }
+					$NS = $wgTitle->getNamespace();
+                	if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
+					<li class="sidebar-brand ">
+	                    <a href="#">
+	                        主要编辑者
+	                    </a>
+	                </li>
+	                <?php
 
-					<div class="collapse navbar-collapse">
-						<ul class="nav navbar-nav">
-							<li>
-							<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>">Home</a>
-							</li>
-
-							<?php echo $this->nav( $this->get_page_links( 'Bootstrap:TitleBar' ) ); ?>
-						</ul>
-					<?php
-					if ( $wgUser->isLoggedIn() ) {
-						if ( count( $this->data['personal_urls'] ) > 0 ) {
-							$avatar = new wAvatar( $wgUser->getID(), 'l' );
-							// $user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
-							$user_icon = '<span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span>';
-							$name = strtolower( $wgUser->getName() );
-							$user_nav = $this->get_array_links( $this->data['personal_urls'], $user_icon . $name, 'user' );
-							?>
-							<ul<?php $this->html('userlangattributes') ?> class="nav navbar-nav navbar-right">
-								<?php echo $user_nav; ?>
-							</ul>
-							<?php
-						}//end if
-
-						if ( count( $this->data['content_actions']) > 0 ) {
-							$content_nav = $this->get_array_links( $this->data['content_actions'], 'Page', 'page' );
-							?>
-							<ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
-							<?php
-						}//end if
-					} else {  // else if is logged in 
-								//old login 
-						?>
-
-						<ul class="nav navbar-nav navbar-right">
-							<li id= "pt-login">
-								<?php echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), wfMsg( 'login' ), array('id' => 'pt-anonlogin' ) ); ?>
-							</li>	
-						</ul>
-						<?php
-					}
+	                	$contrib = '{{Special:Contributors/{{FULLPAGENAME}}}}'; 
+						$wgParserOptions = new ParserOptions($wgUser);
+						$parserOutput = $wgParser->parse($contrib, $this->getSkin()->getTitle(), $wgParserOptions);
+						echo $parserOutput->getText(); 
+					}	
 					?>
-					<form class="navbar-search navbar-form navbar-right" action="<?php $this->text( 'wgScript' ) ?>" id="searchform" role="search">
-						<div>
-							<input class="form-control" type="search" name="search" placeholder="Search" title="Search <?php echo $wgSitename; ?> [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
-							<input type="hidden" name="title" value="Special:Search">
+
+	                <?php if($this->data['language_urls']){ ?>
+	                <li class="sidebar-brand ">
+	                    <a href="#">
+	                        语言
+	                    </a>	                	
+	                </li>
+	                <?php
+	                	$langlinks = $this->data['language_urls'];
+	                	echo $this->nav($this->listAdapter($langlinks));
+	                } ?>
+	            </ul>
+	        </div>
+	        <!-- /#sidebar-wrapper -->
+			<div class="navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
+					<div class="navbar-container">
+						<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+						<div class="navbar-header">
+							<button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
+							<a class="navbar-brand" href="#menu-toggle" id="menu-toggle">→</a>	
 						</div>
-					</form>
-					</div>
-				</div>
-		</div><!-- topbar -->
-		<?php
-		if( $subnav_links = $this->get_page_links('Bootstrap:Subnav') ) {
-			?>
-			<div class="subnav subnav-fixed">
-				<div class="container">
-					<?php
 
-					$subnav_select = $this->nav_select( $subnav_links );
-
-					if ( trim( $subnav_select ) ) {
-
-						?>
-						<select id="subnav-select">
-						<?php echo $subnav_select; ?>
-						</select>
-						<?php
-					}//end if
-					?>
-					<ul class="nav nav-pills">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> Recent Changes</a></li>
-								<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> Special Pages</a></li>
-								<?php if ( $wgEnableUploads ) { ?>
-								<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> Upload a File</a></li>
-								<?php } ?>
+						<div class="collapse navbar-collapse">
+							<ul id="icon-section" class="nav navbar-nav">
+									<li>
+										<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>">主页</a>
+									</li>
 							</ul>
-						</li>
-					<?php echo $this->nav( $subnav_links ); ?>
-					</ul>
-				</div>
-			</div>
+							<ul class="nav navbar-nav">
+								<?php echo $this->nav( $this->get_page_links( 'Bootstrap:TitleBar' ) ); ?>
+							</ul>
+						<?php
+						if ( $wgUser->isLoggedIn() ) {
+							if ( count( $this->data['personal_urls'] ) > 0 ) {
+								$avatar = new wAvatar( $wgUser->getID(), 'l' );
+								// $user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
+								$user_icon = '<span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span>';
+								$name =  $wgUser->getName() ;
+								$personal_urls = $this->data['personal_urls'];
+								unset($personal_urls['notifications']);
+								$user_nav = $this->dropdownAdapter( $personal_urls, $user_icon . $name, 'user' );
+								$user_notify = $this->nav($this->notificationAdapter($this->data['personal_urls']));
+								?>
+								<ul<?php $this->html('userlangattributes') ?> class="nav navbar-nav navbar-right">
+									<?php echo $user_notify; ?><?php echo $user_nav; ?>
+								</ul>
+								<?php
+							}//end if
+
+						/*	if ( count( $this->data['content_actions']) > 0 ) {
+								$content_nav = $this->get_array_links( $this->data['content_actions'], 'Page', 'page' );
+								?>
+								<ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
+								<?php
+							}//end if */
+						} else {  // else if is logged in 
+									//old login 
+							?>
+
+							<ul class="nav navbar-nav navbar-right">
+								<li id= "pt-login">
+									<?php echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), wfMsg( 'login' ), array('id' => 'pt-anonlogin' ) ); ?>
+								</li>	
+							</ul>
+							<?php
+						}
+						?>
+						<form class="navbar-search navbar-form navbar-right" action="<?php $this->text( 'wgScript' ) ?>" id="searchform" role="search">
+							<div>
+								<input class="form-control" type="search" name="search" placeholder="Search" title="Search <?php echo $wgSitename; ?> [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
+								<input type="hidden" name="title" value="Special:Search">
+							</div>
+						</form>
+						</div>
+					</div>
+			</div><!-- topbar -->
 			<?php
-		}//end if
-		?>
+			if( $subnav_links = $this->listAdapter( $this->data['content_actions'] ) ) {
+				?>
+				<div id="content-actions" class="subnav subnav-fixed">
+					<div class="container">
+	 					<?php
 
-		<div id="wiki-outer-body">
-			<div id="wiki-body" class="container">
-				<div id="content">
-					<?php
-						if ( 'sidebar' == $wgTOCLocation ) {
+						$subnav_select = $this->nav_select( $subnav_links );
+
+						if ( trim( $subnav_select ) ) {
+
 							?>
-							<div class="row">
-								<nav class="col-md-2 hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
-								<section class="col-md-10 col-sm-12 col-xs-12 wiki-body-section" role="main">
+							<select id="subnav-select">
+							<?php echo $subnav_select; ?>
+							</select>
 							<?php
 						}//end if
-					?>
-					<?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
-					<?php if ( $this->data['undelete'] ): ?>
-					<!-- undelete -->
-					<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
-					<!-- /undelete -->
-					<?php endif; ?>
-					<?php if($this->data['newtalk'] ): ?>
-					<!-- newtalk -->
-					<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
-					<!-- /newtalk -->
-					<?php endif; ?>
+						?>
+						<ul class="nav nav-pills">
 
-					<div id="firstHeading" class="pagetitle page-header">
-						<h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?></small></div></h1>
-					</div>	
-
-					<div id="bodyContent" class="body">
-					<?php $this->html( 'bodytext' ) ?>
+							<?php echo $this->nav( $subnav_links ); ?> 
+<!-- 							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>工具 <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
+									<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
+									<?php if ( $wgEnableUploads ) { ?>
+									<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
+									<?php } ?>
+								</ul>
+							</li> 	 -->	
+						</ul>
+						
+		
+						
 					</div>
-
-					<?php if ( $this->data['catlinks'] ): ?>
-					<div class="category-links">
-					<!-- catlinks -->
-					<?php $this->html( 'catlinks' ); ?>
-					<!-- /catlinks -->
-					</div>
-					<?php endif; ?>
-					<?php if ( $this->data['dataAfterContent'] ): ?>
-					<div class="data-after-content">
-					<!-- dataAfterContent -->
-					<?php $this->html( 'dataAfterContent' ); ?>
-					<!-- /dataAfterContent -->
-					</div>
-					<?php endif; ?>
-					<?php
-						if ( 'sidebar' == $wgTOCLocation ) {
-							?>
-							</section></section>
-							<?php
-						}//end if
-					?>
 				</div>
-			</div><!-- container -->
-		</div>
-		<div class="bottom">
-			<div class="container">
-				<?php $this->includePage('Bootstrap:Footer'); ?>
-				<footer>
-					<p>&copy; <?php echo date('Y'); ?> by <a href="<?php echo (isset($wgCopyrightLink) ? $wgCopyrightLink : 'http://borkweb.com'); ?>"><?php echo (isset($wgCopyright) ? $wgCopyright : 'BorkWeb'); ?></a> 
-						&bull; Powered by <a href="http://mediawiki.org">MediaWiki</a> 
-					</p>
-				</footer>
-			</div><!-- container -->
-		</div><!-- bottom -->
+				<?php
+			}//end if
+			?>
 
+			<div id="wiki-outer-body">
+				<div id="wiki-body" class="container">
+					<div id="content">
+						<?php
+							if ( 'sidebar' == $wgTOCLocation ) {
+								?>
+								<div class="row">
+									<nav class="col-md-2 hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
+									<section class="col-md-10 col-sm-12 col-xs-12 wiki-body-section" role="main">
+									
+									
+								<?php
+							}//end if
+						?>
+						<?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
+						<?php if ( $this->data['undelete'] ): ?>
+						<!-- undelete -->
+						<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
+						<!-- /undelete -->
+						<?php endif; ?>
+						<?php if($this->data['newtalk'] ): ?>
+						<!-- newtalk -->
+						<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
+						<!-- /newtalk -->
+						<?php endif; ?>
+
+						<div id="firstHeading" class="pagetitle page-header">
+							<h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?></small></div></h1>
+						</div>	
+
+						<div id="bodyContent" class="body">
+						<?php $this->html( 'bodytext' ) ?>
+						</div>
+
+						<?php if ( $this->data['catlinks'] ): ?>
+						<div class="category-links">
+						<!-- catlinks -->
+						<?php $this->html( 'catlinks' ); ?>
+						<!-- /catlinks -->
+						</div>
+						<?php endif; ?>
+						<?php if ( $this->data['dataAfterContent'] ): ?>
+						<div class="data-after-content">
+						<!-- dataAfterContent -->
+						<?php $this->html( 'dataAfterContent' ); ?>
+						<!-- /dataAfterContent -->
+						</div>
+						<?php endif; ?>
+						<?php
+							if ( 'sidebar' == $wgTOCLocation ) {
+								?>
+								</section></section>
+								<?php
+							}//end if
+						?>
+					</div>
+				</div><!-- container -->
+			</div>
+			<div class="bottom">
+				<div class="container">
+					<?php $this->includePage('Bootstrap:Footer'); ?>
+					<footer>
+						<p>&copy; <?php echo date('Y'); ?> by <a href="<?php echo (isset($wgCopyrightLink) ? $wgCopyrightLink : 'http://borkweb.com'); ?>"><?php echo (isset($wgCopyright) ? $wgCopyright : 'BorkWeb'); ?></a> 
+							&bull; Powered by <a href="http://mediawiki.org">MediaWiki</a> 
+						</p>
+					</footer>
+				</div><!-- container -->
+			</div><!-- bottom -->
+	    </div>
+	    <!-- /#wrapper -->
 		<?php
 		$this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
 		$this->html('reporttime');
@@ -307,16 +371,22 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 				$output .= '</ul>';
 				$output .= '</li>';
 			} else {
-				if( $pageTitle ) {
-					$output .= '<li' . ($this->data['title'] == $topItem['title'] ? ' class="active"' : '') . '><a href="' . ( $topItem['external'] ? $topItem['link'] : $pageTitle->getLocalURL() ) . '">' . $topItem['title'] . '</a></li>';
-				}//end if
+				$requestUrl = $this->getSkin()->getRequest()->getRequestURL();
+				$myLink = $topItem['link'];
+				$query = explode('&', $requestUrl);
+				if (count($query) > 1 && strpos( $requestUrl ,'action' )!== false){
+					$match = ($query[1] === explode('&amp;', $myLink)[1]) &&  ($query[0] === explode('&amp;', $myLink)[0]);
+				}else{
+					$match = (strpos($requestUrl , $myLink) !==false);
+				}
+				$output .= '<li' . ( $match ? ' class="active"' : '') . '><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
 			}//end else
 		}//end foreach
 		return $output;
 	}//end nav
 
 	/**
-	 * Render one or more navigations elements by name, automatically reveresed
+	 * Render one or more navigations elements by name in a dropdown select style, automatically reveresed
 	 * when UI is in RTL mode
 	 */
 	private function nav_select( $nav ) {
@@ -340,8 +410,8 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						$output .= "<option value='{$href}'>{$subLink['title']}</option>";
 					}//end else
 				}//end foreach
-			} elseif ( $pageTitle ) {
-				$output .= '<option value="' . $pageTitle->getLocalURL() . '">' . $topItem['title'] . '</option>';
+			} else {
+				$output .= '<option value="' . $topItem['link'] . '">' . $topItem['title'] . '</option>';
 			}//end else
 			$output .= '</optgroup>';
 		}//end foreach
@@ -349,6 +419,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 		return $output;
 	}//end nav_select
 
+	/* generate links from a source page */
 	private function get_page_links( $source ) {
 		$titleBar = $this->getPageRawText( $source );
 		$nav = array();
@@ -418,7 +489,26 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 		return $nav;	
 	}//end get_page_links
 
-	private function get_array_links( $array, $title, $which ) {
+	/* notification adapter */
+	private function notificationAdapter($array){
+		$nav = array();
+		$item = next($array);
+		$key = key($array);
+		$link = array(
+			'id' => Sanitizer::escapeId( $key ),
+			'attributes' => $item['attributes'],
+			'link' => htmlspecialchars( $item['href'] ),
+			'key' => $item['key'],
+			'class' => htmlspecialchars( $item['class'] ),
+			'title' => htmlspecialchars( $item['text'] ),
+		);
+		$link['title'] = '<i class="fa fa-bell"></i> ' . $link['title'];
+		$nav[] = $link;
+		return $nav;		
+	}
+
+	/* dropdown button adapter */
+	private function dropdownAdapter( $array, $title, $which ) {
 		$nav = array();
 		$nav[] = array('title' => $title );
 		foreach( $array as $key => $item ) {
@@ -447,11 +537,11 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 				$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
 			} elseif( 'user' == $which ) {
 				switch( $link['title'] ) {
-				case 'My talk': $icon = 'comment'; break;
-				case 'My preferences': $icon = 'cog'; break;
-				case 'My watchlist': $icon = 'eye-close'; break;
-				case 'My contributions': $icon = 'list-alt'; break;
-				case 'Log out': $icon = 'off'; break;
+				case '讨论': $icon = 'comment'; break;
+				case '设置': $icon = 'cog'; break;
+				case '监视列表': $icon = 'eye'; break;
+				case '贡献': $icon = 'list-alt'; break;
+				case '退出': $icon = 'power-off'; break;
 				default: $icon = 'user'; break;
 				}//end switch
 
@@ -464,6 +554,41 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 		return $this->nav( $nav );
 	}//end get_array_links
 
+	/* general a list of links adater */
+	private function listAdapter( $array ) {
+		$nav = array();
+		foreach( $array as $key => $item ) {
+
+			$link = array(
+				'id' => Sanitizer::escapeId( $key ),
+				'attributes' => $item['attributes'],
+				'link' => htmlspecialchars( $item['href'] ),
+				'key' => $item['key'],
+				'class' => htmlspecialchars( $item['class'] ),
+				'title' => htmlspecialchars( $item['text'] ),
+			);
+
+
+			switch( $link['title'] ) {
+				case '页面': $icon = 'file'; break;
+				case '讨论': $icon = 'comment'; break;
+				case '编辑': case '编辑源代码': $icon = 'pencil'; break;
+				case '历史': $icon = 'clock-o'; break;
+				case '删除': $icon = 'remove'; break;
+				case '移动': $icon = 'arrows'; break;
+				case '保护': $icon = 'lock'; break;
+				case '监视': $icon = 'eye'; break;
+				case '取消监视': $icon = 'eye-slash'; break;
+				case '创建': $icon = 'plus'; break;
+				case '创建源代码': $icon = 'plus'; break;
+				default: $icon = 'user'; break;
+			}
+			$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
+			$nav[] = $link;
+		}//end foreach
+
+		return $nav ;
+	}//end get_edit_links	
 	function getPageRawText($title) {
 		global $wgParser, $wgUser;
 		$pageTitle = Title::newFromText($title);

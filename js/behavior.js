@@ -1,10 +1,28 @@
 $(function() {
 	$('html').removeClass('client-nojs');
-
-	$('#page-contents a').click(function(e){
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+	$('a[href^=#]').click(function(e){
 		e.preventDefault();
-		var $target = $(this).attr('href');
-		$(document).scrollTop( $($target).offset().top-100 );                                                                                                                                                                                                     
+		var target = $(this).attr('href').replace(/\./g, '\\.');
+		$('html, body').animate({
+			scrollTop: $( target ).offset().top - 200   
+		}, 250);                                                                                                                                                                                                  
+	});
+	$('#follow').on('click', function(){
+		$.ajax({
+		    url: '/follow.php',
+		    dataType: 'json',
+		    data: {
+		    	site : wgServer,
+		    	user : wgUserId
+		    }
+		    success: function(data){
+		        $('#follow').removeClass('mw-ui-progressive').value('已关注');
+		    }
+		});
 	});
 
 	$( document ).on('change', '#subnav-select', function() {
@@ -72,7 +90,7 @@ $(function() {
 			$('nav.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix').attr('data-offset-top','0').attr('data-offset-bottom','250');
 			$('nav.toc-sidebar ul').addClass('nav nav-list');
 			$('.toc-sidebar').attr('id', 'toc');
-			$('body').scrollspy({target: '#toc', offset:30}); 
+			$('body').scrollspy({target: '#toc', offset:230}); 
 		}//end else
 	} else {
 		$('#toc').each(function() {
@@ -109,4 +127,46 @@ $(function() {
 
 	$('#wiki-body .body a[title="Special:UserLogin"]').click();
 	$('.dropdown-toggle').dropdown();
+	// Hide Header on on scroll down
+	var didScroll;
+	var lastScrollTop = 0;
+	var delta = 5;
+	var navbarHeight = $('header').outerHeight();
+
+	$(window).scroll(function(event){
+	    didScroll = true;
+	});
+
+	setInterval(function() {
+	    if (didScroll) {
+	        hasScrolled();
+	        didScroll = false;
+	    }
+	}, 250);
+
+	function hasScrolled() {
+	    var st = $(this).scrollTop();
+	    
+	    // Make sure they scroll more than delta
+	    if(Math.abs(lastScrollTop - st) <= delta)
+	        return;
+	    
+	    // If they scrolled down and are past the navbar, add class .nav-up.
+	    // This is necessary so you never see what is "behind" the navbar.
+	    if (st > lastScrollTop && st > navbarHeight){
+	        // Scroll Down
+	        $('.subnav').removeClass('subnav-down').addClass('subnav-up');
+	        // $('.navbar').removeClass('nav-down').addClass('nav-up');
+	        $('#sidebar-wraper').removeClass('sidebar-wraper-down').addClass('sidebar-wraper-up');
+	    } else {
+	        // Scroll Up
+	        if(st + $(window).height() < $(document).height()) {
+	            $('.subnav').removeClass('subnav-up').addClass('subnav-down');
+	            // $('.navbar').removeClass('nav-up').addClass('nav-down');
+	            $('#sidebar-wraper').removeClass('sidebar-wraper-up').addClass('sidebar-wraper-down');
+	        }
+	    }
+	    
+	    lastScrollTop = st;
+	}
 });
