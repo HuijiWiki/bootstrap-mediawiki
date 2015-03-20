@@ -86,7 +86,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 		$this->skin = $this->data['skin'];
 		$action = $wgRequest->getText( 'action' );
 		$url_prefix = str_replace( '$1', '', $wgArticlePath );
-
+		$NS = $wgTitle->getNamespace();
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
 
@@ -97,13 +97,13 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	        <div id="sidebar-wrapper">
 	          	
 	            <ul class="sidebar-nav">
-	            	<li><button id="follow" class="mw-ui-button mw-ui-progressive">关注</button>	</li>			
+	            	<li><button id="follow" class="mw-ui-button mw-ui-progressive">关注<?php echo $wgSitename ?></button>	</li>			
 	                <li class="sidebar-brand ">
 	                    <a href="#">
 	                        导航
 	                    </a>
 	                </li>
-	                <?php echo $this->nav( $this->get_page_links( 'Bootstrap:TitleBar' ) ); ?>
+	                <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
 	                <li class="sidebar-brand ">
 	                    <a href="#">
 	                        工具
@@ -114,7 +114,6 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 					<?php if ( $wgEnableUploads ) { ?>
 					<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
 					<?php }
-					$NS = $wgTitle->getNamespace();
                 	if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
 					<li class="sidebar-brand ">
 	                    <a href="#">
@@ -212,7 +211,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 					</div>
 			</div><!-- topbar -->
 			<?php
-			if( $subnav_links = $this->listAdapter( $this->data['content_actions'] ) ) {
+			if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {
 				?>
 				<div id="content-actions" class="subnav subnav-fixed">
 					<div class="container">
@@ -259,8 +258,8 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 							if ( 'sidebar' == $wgTOCLocation ) {
 								?>
 								<div class="row">
-									<nav class="col-md-2 hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
-									<section class="col-md-10 col-sm-12 col-xs-12 wiki-body-section" role="main">
+									<nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
+									<section class="col-md-12 col-sm-12 col-xs-12 wiki-body-section" role="main">
 									
 									
 								<?php
@@ -269,7 +268,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						<?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
 						<?php if ( $this->data['undelete'] ): ?>
 						<!-- undelete -->
-						<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
+						<div class="alert alert-warning alert-dismissible"><?php $this->html( 'undelete' ) ?></div>
 						<!-- /undelete -->
 						<?php endif; ?>
 						<?php if($this->data['newtalk'] ): ?>
@@ -567,8 +566,6 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 				'class' => htmlspecialchars( $item['class'] ),
 				'title' => htmlspecialchars( $item['text'] ),
 			);
-
-
 			switch( $link['title'] ) {
 				case '页面': $icon = 'file'; break;
 				case '讨论': $icon = 'comment'; break;
@@ -586,7 +583,6 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 			$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
 			$nav[] = $link;
 		}//end foreach
-
 		return $nav ;
 	}//end get_edit_links	
 	function getPageRawText($title) {

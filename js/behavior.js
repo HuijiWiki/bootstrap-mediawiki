@@ -1,10 +1,11 @@
 $(function() {
 	$('html').removeClass('client-nojs');
-    $("#menu-toggle").click(function(e) {
+    $('#menu-toggle').click(function(e) {
         e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+        $('#wrapper').toggleClass("toggled");
     });
-	$('a[href^=#]').click(function(e){
+    $('#preftoc').addClass('nav nav-tabs');
+	$('a[href^=#][role!=tab]').click(function(e){
 		e.preventDefault();
 		var target = $(this).attr('href').replace(/\./g, '\\.');
 		$('html, body').animate({
@@ -18,9 +19,9 @@ $(function() {
 		    data: {
 		    	site : wgServer,
 		    	user : wgUserId
-		    }
+		    },
 		    success: function(data){
-		        $('#follow').removeClass('mw-ui-progressive').value('已关注');
+		        $('#follow').removeClass('mw-ui-progressive').addClass('mw-ui-icon mw-ui-icon-before mw-ui-icon-ok').value('已关注');
 		    }
 		});
 	});
@@ -71,7 +72,7 @@ $(function() {
 	// });
 
 	//Temperory fix
-	$('div').removeClass('mw-ui-checkbox');
+	$('.mw-ui-vform-field div').removeClass('mw-ui-checkbox');
 	$('#wpRemember').css('margin-right','5px');
 
 	$('.tip').tooltip();
@@ -80,13 +81,16 @@ $(function() {
 	if ( $('.toc-sidebar').length > 0 ) {
 		if ( 0 === $('#toc').length ) {
 			$('.toc-sidebar').remove();
-			$('.wiki-body-section').removeClass('col-md-10').addClass('col-md-12');
+			
 		} else {
+			$('.wiki-body-section').removeClass('col-md-12').addClass('col-md-10');
+			$('.toc-sidebar').removeClass('hidden-md').addClass('col-md-2');
 			// $('.toc-sidebar').append('<h3>摘要</h3>');
 			$('#toc').each(function() {
 				$(this).find('ul:first').appendTo( '.toc-sidebar' );
 				$(this).remove();
 			});
+			$('nav.toc-sidebar > ul').append('<li><a href="#top">回到顶部</a></li>');
 			$('nav.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix').attr('data-offset-top','0').attr('data-offset-bottom','250');
 			$('nav.toc-sidebar ul').addClass('nav nav-list');
 			$('.toc-sidebar').attr('id', 'toc');

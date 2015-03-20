@@ -1025,7 +1025,8 @@ table.list th {
 	top:-103px;
 }
 #follow {
-	margin: 0 50px;
+	margin: 0 auto;
+	display: block
 }
 
 @media(min-width:1280px) {
@@ -1055,4 +1056,38 @@ table.list th {
         position: relative;
         margin-right: 0;
     }
+}
+.selected, #wiki-body .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	background-color:#EEE;
+
+}
+#wiki-body .nav-tabs > li{
+	margin-bottom: -1px;
+}
+.mainLegend {
+	margin-top: 30px;
+}
+#firstHeading #mw-echo-moreinfo-link {
+	display: inline !important;
+	width:100%;
+	background: transparent !important;
+}
+#firstHeading #mw-echo-pref-link{
+	display:inline !important;
+	float: none !important; 
+	background: transparent !important;
+}
+.oo-ui-window-isolated {
+    font-family: inherit !important;
+    font-size: 1.2em !important;
+}
+.oo-ui-processDialog-title {
+    font-weight: bold;
+    line-height: 1.3em !important;
+}
+.wikiEditor-ui-controls, .wikiEditor-ui-tabs, .wikiEditor-ui-buttons {
+	background: transparent!important;
+}
+html {
+	background:none repeat scroll 0% 0% #F5F5F5; /*the footer color*/
 }
