@@ -141,6 +141,10 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	                } ?>
 	            </ul>
 	        </div>
+            <script>
+                var menutoggle=localStorage.getItem('menu-toggle');
+                $('#wrapper').attr('class',menutoggle);
+            </script>
 	        <!-- /#sidebar-wrapper -->
 			<div class="navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
 					<div class="navbar-container">

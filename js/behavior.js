@@ -3,6 +3,11 @@ $(function() {
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
         $('#wrapper').toggleClass("toggled");
+        if($('#wrapper').hasClass('toggled')){
+            localStorage.setItem('menu-toggle','toggled')
+        }else{
+            localStorage.setItem('menu-toggle','')
+        }
     });
     $('#preftoc').addClass('nav nav-tabs');
 	$('a[href^=#][role!=tab]').click(function(e){
