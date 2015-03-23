@@ -227,7 +227,6 @@ option.unclickable {
 	border: 1px solid rgba( 55, 55, 55, 0.1 );
 	display: inline-block;
 	margin-right: 0.5em;
-	vertical-align: middle;
 	width: 20px;
 	height: 20px;
 }
@@ -1090,4 +1089,7 @@ table.list th {
 }
 html {
 	background:none repeat scroll 0% 0% #F5F5F5; /*the footer color*/
+}
+.nav.navbar-nav.navbar-right{
+	margin-left:30px;
 }

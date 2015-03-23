@@ -265,10 +265,12 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 								<?php
 							}//end if
 						?>
+						<?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
+
 						<?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
 						<?php if ( $this->data['undelete'] ): ?>
 						<!-- undelete -->
-						<div class="alert alert-warning alert-dismissible"><?php $this->html( 'undelete' ) ?></div>
+						<div id="contentSub2" class="alert alert-warning alert-dismissible"><?php $this->html( 'undelete' ) ?></div>
 						<!-- /undelete -->
 						<?php endif; ?>
 						<?php if($this->data['newtalk'] ): ?>
