@@ -179,7 +179,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 								$personal_urls = $this->data['personal_urls'];
 								unset($personal_urls['notifications']);
 								$user_nav = $this->dropdownAdapter( $personal_urls, $user_icon . $name, 'user' );
-								$user_notify = $this->nav($this->notificationAdapter($this->data['personal_urls']));
+								$user_notify = $this->nav_notification($this->notificationAdapter($this->data['personal_urls']));
 								?>
 								<ul<?php $this->html('userlangattributes') ?> class="nav navbar-nav navbar-right">
 									<?php echo $user_notify; ?><?php echo $user_nav; ?>
@@ -389,7 +389,20 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 		}//end foreach
 		return $output;
 	}//end nav
+	/**
+	 * Render one or more navigations elements by name as notifications, automatically reveresed
+	 * when UI is in RTL mode
+	 */
+	private function nav_notification( $nav ) {
+		$output = '';
+		foreach ( $nav as $topItem ) {
+			$pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
 
+			$output .= '<li id="pt-notifications" ><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
+			
+		}//end foreach
+		return $output;
+	}//end nav
 	/**
 	 * Render one or more navigations elements by name in a dropdown select style, automatically reveresed
 	 * when UI is in RTL mode
@@ -507,7 +520,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 			'class' => htmlspecialchars( $item['class'] ),
 			'title' => htmlspecialchars( $item['text'] ),
 		);
-		$link['title'] = '<i class="fa fa-bell"></i> ' . $link['title'];
+		$link['title'] = '<i class="fa fa-bell"></i> <span class="badge">' . $link['title'] .'</span>';
 		$nav[] = $link;
 		return $nav;		
 	}

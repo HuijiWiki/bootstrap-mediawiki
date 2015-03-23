@@ -1093,3 +1093,10 @@ html {
 .nav.navbar-nav.navbar-right{
 	margin-left:30px;
 }
+body .mw-echo-overlay {
+	z-index: 1300;
+	width: 300px;
+}
+body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
+    left: 223px !important;
+}
