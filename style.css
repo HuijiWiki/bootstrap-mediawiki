@@ -489,10 +489,9 @@ img.thumbborder {
 		padding-top: 59px;
 	}
 
-	.bottom,
-	#wiki-outer-body {
-		padding-left: 20px;
-		padding-right: 20px;
+	#wiki-body {
+		padding-left: 35px;
+		padding-right: 35px;
 	}
 
 	.navbar {
@@ -506,9 +505,7 @@ img.thumbborder {
 		padding-top: 59px;
 	}
 
-	#wiki-outer-body {
-		margin-top: 10px;
-	}
+
 }
 
 .subnav .container .nav{
@@ -925,18 +922,18 @@ table.list th {
 }
 
 #wrapper.toggled {
-    padding-left: 250px;
+    padding-left: 220px;
 }
 
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    left: 250px;
+    left: 220px;
     width: 0;
     top: 0;
 
     height: 100%;
-    margin-left: -250px;
+    margin-left: -220px;
     overflow-y: auto;
     background-color: #F8F8F8;
 	border-color: ##E7E7E7;
@@ -1028,34 +1025,6 @@ table.list th {
 	display: block
 }
 
-@media(min-width:1280px) {
-    #wrapper {
-        padding-left: 220px;
-    }
-
-    #wrapper.toggled {
-        padding-left: 0;
-    }
-
-    #sidebar-wrapper {
-    	margin-top:0px;
-        width: 220px;
-    }
-
-    #wrapper.toggled #sidebar-wrapper {
-        width: 0;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
-}
 .selected, #wiki-body .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 	background-color:#EEE;
 
@@ -1096,7 +1065,48 @@ html {
 body .mw-echo-overlay {
 	z-index: 1300;
 	width: 300px;
+    position: fixed;
 }
 body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     left: 223px !important;
+}
+@media (max-width:480px) {
+    #wrapper.toggled #sidebar-wrapper{
+        position: absolute;
+    }
+    #wiki-outer-body{
+        width: 100%;
+        position: absolute;
+        left: 0;
+    }
+    #wiki-body{
+        background-color: #fff;
+        background-image: url(images/wiki-bg.jpg);
+    }
+    #wrapper {
+        padding-left: 220px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        margin-top:0px;
+        width: 220px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
 }
