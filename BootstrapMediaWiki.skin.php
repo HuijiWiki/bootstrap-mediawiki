@@ -97,24 +97,36 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	        <div id="sidebar-wrapper">
 	          	
 	            <ul class="sidebar-nav">
-	            	<li><button id="follow" class="mw-ui-button mw-ui-progressive">关注<?php echo $wgSitename ?></button>	</li>			
-	                <li class="sidebar-brand ">
-	                    <a href="#">
-	                        导航
-	                    </a>
-	                </li>
-	                <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
-	                <li class="sidebar-brand ">
-	                    <a href="#">
-	                        工具
-	                    </a>
-	                </li>
-    				<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
-					<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
-					<?php if ( $wgEnableUploads ) { ?>
-					<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
-					<?php }
-                	if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
+                    <li>
+                        <ul>
+                            <li>
+                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
+                                <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">→</a>
+                            </li>
+                            <li><button id="follow" class="mw-ui-button mw-ui-progressive">关注<?php echo $wgSitename ?></button>	</li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-brand left-nav">
+                        <a href="#">
+                            站点导航
+                        </a>
+                        <ul>
+                            <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
+                        </ul>
+                    </li>
+                    <li class="sidebar-brand left-tool">
+                        <a href="#">
+                            工具
+                        </a>
+                        <ul>
+                            <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
+                            <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
+                            <?php if ( $wgEnableUploads ) { ?>
+                                <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
+                            <?php } ?>
+                        </ul>
+                    </li>
+                	<?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
 					<li class="sidebar-brand ">
 	                    <a href="#">
 	                        主要编辑者
@@ -156,8 +168,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
-							<a class="navbar-brand" href="#menu-toggle" id="menu-toggle">→</a>	
+							<a class="navbar-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; ?></a>
 						</div>
 
 						<div class="collapse navbar-collapse">
@@ -214,28 +225,31 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						</div>
 					</div>
 			</div><!-- topbar -->
-			<?php
-			if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {
-				?>
-				<div id="content-actions" class="subnav subnav-fixed">
-					<div class="container">
-	 					<?php
 
-						$subnav_select = $this->nav_select( $subnav_links );
 
-						if ( trim( $subnav_select ) ) {
+			<div id="wiki-outer-body">
+                <?php
+                if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {
+                    ?>
+                    <div id="content-actions" class="subnav subnav-fixed">
+                        <div class="container">
+                            <?php
 
-							?>
-							<select id="subnav-select">
-							<?php echo $subnav_select; ?>
-							</select>
-							<?php
-						}//end if
-						?>
-						<ul class="nav nav-pills">
+                            $subnav_select = $this->nav_select( $subnav_links );
 
-							<?php echo $this->nav( $subnav_links ); ?> 
-<!-- 							<li class="dropdown">
+                            if ( trim( $subnav_select ) ) {
+
+                                ?>
+                                <select id="subnav-select">
+                                    <?php echo $subnav_select; ?>
+                                </select>
+                            <?php
+                            }//end if
+                            ?>
+                            <ul class="nav nav-pills">
+
+                                <?php echo $this->nav( $subnav_links ); ?>
+                                <!-- 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>工具 <span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
@@ -244,18 +258,16 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 									<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
 									<?php } ?>
 								</ul>
-							</li> 	 -->	
-						</ul>
-						
-		
-						
-					</div>
-				</div>
-				<?php
-			}//end if
-			?>
+							</li> 	 -->
+                            </ul>
 
-			<div id="wiki-outer-body">
+
+
+                        </div>
+                    </div>
+                <?php
+                }//end if
+                ?>
 				<div id="wiki-body" class="container">
 					<div id="content">
 						<?php
