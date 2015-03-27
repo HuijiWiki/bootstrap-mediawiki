@@ -101,9 +101,8 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                         <ul>
                             <li>
                                 <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
-                                <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">→</a>
                             </li>
-                            <li><button id="follow" class="mw-ui-button mw-ui-progressive">关注<?php echo $wgSitename ?></button>	</li>
+                            <li><button id="user-site-follow" class="mw-ui-button mw-ui-progressive">关注<?php echo $wgSitename ?></button>	</li>
                         </ul>
                     </li>
                     <li class="sidebar-brand left-nav">
@@ -127,19 +126,19 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                         </ul>
                     </li>
                 	<?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
-					<li class="sidebar-brand ">
+					<li class="sidebar-brand left-author">
 	                    <a href="#">
 	                        主要编辑者
 	                    </a>
-	                </li>
-	                <?php
+                        <?php
 
-	                	$contrib = '{{Special:Contributors/{{FULLPAGENAME}}}}'; 
-						$wgParserOptions = new ParserOptions($wgUser);
-						$parserOutput = $wgParser->parse($contrib, $this->getSkin()->getTitle(), $wgParserOptions);
-						echo $parserOutput->getText(); 
-					}	
-					?>
+                        $contrib = '{{#contributors:{{FULLPAGENAME}}}}';
+                        $wgParserOptions = new ParserOptions($wgUser);
+                        $parserOutput = $wgParser->parse($contrib, $this->getSkin()->getTitle(), $wgParserOptions);
+                        echo $parserOutput->getText();
+                        }
+                        ?>
+	                </li>
 
 	                <?php if($this->data['language_urls']){ ?>
 	                <li class="sidebar-brand ">
@@ -160,6 +159,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	        <!-- /#sidebar-wrapper -->
 			<div class="navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
 					<div class="navbar-container">
+                        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">→</a>
 						<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
 						<div class="navbar-header">
 							<button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
