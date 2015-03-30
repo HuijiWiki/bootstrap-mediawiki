@@ -94,7 +94,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 		$this->html('headelement');
 		if ($wgUser->isLoggedIn()){
 			$usf = new UserSiteFollow();
-			$followed = $usf->checkUserSiteFollow($wgUser->getName(), $wgHuijiPrefix);			
+			$followed = ($usf->checkUserSiteFollow($wgUser, $wgHuijiPrefix) !== false);			
 		}else{
 			$followed = false;
 		}
@@ -111,6 +111,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                                 <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
                             </li>
                             <li><button id="user-site-follow" class="mw-ui-button mw-ui-progressive <?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'已关注':'关注'.$wgSitename ?></button>	</li>
+                        	<li><p>已有<span id="site-follower-count"><?php echo UserSiteFollow::getSiteCount($wgHuijiPrefix) ?></span>人关注;
                         </ul>
                     </li>
                     <li class="sidebar-brand left-nav">
