@@ -38,6 +38,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		global $wgSiteJS;
 		parent::initPage( $out );
 		$out->addModuleScripts( 'skins.bootstrapmediawiki' );
+		$out->addModuleScripts( 'ext.socialprofile.usersitefollows.js' );
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
 	}//end initPage
 
@@ -77,7 +78,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	public function execute() {
 		global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS;
 		global $wgEnableUploads;
-		global $wgLogo;
+		global $wgLogo, $wgHuijiPrefix;
 		global $wgTOCLocation;
 		global $wgNavBarClasses;
 		global $wgSubnavBarClasses;
@@ -91,6 +92,13 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 		wfSuppressWarnings();
 
 		$this->html('headelement');
+		if ($wgUser->isLoggedIn()){
+			$usf = new UserSiteFollow();
+			$followed = $usf->checkUserSiteFollow($wgUser->getName(), $wgHuijiPrefix);			
+		}else{
+			$followed = false;
+		}
+
 		?>
 		<div id="wrapper">
 			<!-- Sidebar -->
@@ -102,7 +110,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                             <li>
                                 <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
                             </li>
-                            <li><button id="user-site-follow" class="mw-ui-button mw-ui-progressive">关注<?php echo $wgSitename ?></button>	</li>
+                            <li><button id="user-site-follow" class="mw-ui-button mw-ui-progressive <?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'已关注':'关注'.$wgSitename ?></button>	</li>
                         </ul>
                     </li>
                     <li class="sidebar-brand left-nav">
