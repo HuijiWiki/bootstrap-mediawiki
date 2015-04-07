@@ -231,4 +231,51 @@ $(function() {
                 }
         });
     })
+    //alert-return
+    var alreturn = $('.alert-return');
+    var alertp = $('.alert-return p');
+    var login =$('.loginText').val();
+    var pass = '';
+        //login
+    function wiki_auth(login, pass, ref){
+        $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',function(data){
+            if(data.login.result == 'NeedToken'){
+                $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass +'&lgtoken=' + data.login.token + '&format=json',function(data){
+                   if(!data.error){
+                        if(data.login.result == "Success"){
+                            alertime();
+                            alertp.text('登陆成功');
+                            //document.location.reload();
+                            history.go(0);
+                        }else{
+                            alertime();
+                            alertp.text('Result:'+ data.login.result);
+                        }
+                   }else{
+                       alertime();
+                       alertp.text('Error:' + data.error);
+                   }
+                });
+            }else{
+                alertime();
+                alertp.text('Result:' + data.login.result);
+            }
+            if(data.error){
+                alertime();
+                alertp.text('Error:' + data.error);
+            }
+        });
+    }
+    $('#wpLoginAttempt').click(function(){
+        $("input[type=password]").each(function(){
+           pass = $(this).val();
+        });
+        wiki_auth(login,pass,'/');
+    })
+    function alertime(){
+        alreturn.show();
+        setTimeout(function(){
+            alreturn.hide()
+        },1000);
+    }
 });

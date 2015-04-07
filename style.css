@@ -1257,3 +1257,68 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     line-height: 1.8;
     letter-spacing: 0.5px;
 }
+.alert-wrap{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.alert-wrap>.alert{
+    color: #fff;
+    background-color: #000;
+    opacity: 0.9;
+    /* border-color: #ebccd1; */
+    min-width: 70px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+@media (min-width: 768px){
+    .alert-return .modal-dialog {
+        width: 300px;
+    }
+}
+.alert-return .modal-dialog{
+    margin-top: 200px;
+    opacity: 0.9;
+}
+.alert-return .modal-content{
+    padding: 20px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+.alert-return .modal-content p{
+    margin: 0;
+}
+.alert-return{
+    z-index: 1200;
+}
+.login-in{
+    cursor: pointer;
+}
+.user-login{
+    margin-top: 200px;
+}
+.login-wrap{
+    width: 180px;
+    margin: 10px auto;
+}
+.mw-ui-button.mw-ui-block{
+    width: auto;
+}
+#mw-createaccount-cta{
+    margin-left: -200px;
+}
+#wpLoginAttempt{
+    position: absolute;
+    right:50px;
+}
+.user-name{
+    margin-bottom: 10px;
+}
+@media screen and (max-width: 767px){
+    #mw-createaccount-cta{
+        margin-left: auto;
+    }
+}
