@@ -234,7 +234,7 @@ $(function() {
     //alert-return
     var alreturn = $('.alert-return');
     var alertp = $('.alert-return p');
-    var login =$('.loginText').val();
+    var login ='';
     var pass = '';
         //login
     function wiki_auth(login, pass, ref){
@@ -271,6 +271,9 @@ $(function() {
         });
     }
     $('#wpLoginAttempt').click(function(){
+        $("input[type=text]").each(function(){
+            login = $(this).val();
+        });
         $("input[type=password]").each(function(){
            pass = $(this).val();
         });
