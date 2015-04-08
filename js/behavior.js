@@ -244,9 +244,13 @@ $(function() {
                    if(!data.error){
                         if(data.login.result == "Success"){
                             alertime();
-                            alertp.text('登陆成功');
+                            alertp.text('登录成功');
                             //document.location.reload();
-                            history.go(0);
+                            if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
+                                history.go(-1);
+                            }else {
+                                history.go(0);
+                            }
                         }else{
                             alertime();
                             alertp.text('Result:'+ data.login.result);

@@ -294,6 +294,9 @@ option.unclickable {
 }
 
 #page-contents ul li { list-style: none; }
+.navbar-container .dropdown-menu>li {
+    padding-top: 20px;
+}
 #page-contents .dropdown-menu {
 	left: 50px;
 	max-height: 400px;
@@ -1307,10 +1310,10 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 .mw-ui-button.mw-ui-block{
     width: auto;
 }
-#mw-createaccount-cta{
+.user-login #mw-createaccount-cta{
     margin-left: -200px;
 }
-#wpLoginAttempt{
+.user-login #wpLoginAttempt{
     position: absolute;
     right:50px;
 }
