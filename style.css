@@ -46,7 +46,7 @@ p {
 .navbar-brand img {
 	margin-right: 0.5em;
 	max-height: 30px;
-    margin-left: 30px;
+    margin-left: 35px;
 }
 
 .navbar input {
@@ -294,9 +294,6 @@ option.unclickable {
 }
 
 #page-contents ul li { list-style: none; }
-.navbar-container .dropdown-menu>li {
-    padding-top: 20px;
-}
 #page-contents .dropdown-menu {
 	left: 50px;
 	max-height: 400px;
@@ -1138,12 +1135,13 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 }
 #menu-toggle{
     height: 34px;
-    line-height: 34px;
-    padding: 0;
+    padding: 5px 10px;
     position: absolute;
-    margin-top: 5px;
+    margin-top: 10px;
     left: 5px;
     outline: none;
+    border:1px solid #666;
+    border-radius: 5px;
 }
 #user-site-follow{
     margin: 20px auto;
@@ -1320,8 +1318,30 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 .user-name{
     margin-bottom: 10px;
 }
+.navbar-container .dropdown-menu>li>a{
+    line-height: 50px;
+}
+.navbar-container .new{
+    border-bottom: none;
+}
+.navbar-container .new:hover{
+    border-bottom: none;
+}
 @media screen and (max-width: 767px){
     #mw-createaccount-cta{
         margin-left: auto;
+    }
+}
+@media screen and (max-width: 1200px){
+    #icon-section {
+        margin-left: 5px;
+    }
+}
+@media screen and (min-width:768px ) and (max-width:991px){
+    .navbar-form {
+        width:15%;
+    }
+    .navbar-brand img {
+        display: none;
     }
 }

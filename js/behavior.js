@@ -215,15 +215,14 @@ $(function() {
 	    lastScrollTop = st;
 	}
     $(window).scroll(function(){
-        $('body').bind('mouseover',function(e){
+        $('body').on('mousemove',function(e){
             var clientY= e.clientY;
-                if($(window).scrollTop>0) {
+                if($("body").scrollTop()>0) {
                     if (clientY >= 60 && clientY <= 110) {
                         if ($('#content-actions').hasClass('subnav-up')) {
                             $('#content-actions').removeClass('subnav-up').addClass('subnav-down');
                         }
-                    }
-                    else if ((clientY > 110 && clientY < 130) || (clientY > 40 && clientY < 60)) {
+                    } else if ((clientY>110&&clientY<120) || (clientY>50&&clientY<60)) {
                         if ($('#content-actions').hasClass('subnav-down')) {
                             $('#content-actions').addClass('subnav-up').removeClass('subnav-down');
                         }
