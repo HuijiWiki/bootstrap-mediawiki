@@ -242,7 +242,9 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	        <!-- /#sidebar-wrapper -->
 			<div class="navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
 					<div class="navbar-container">
-                        <a class="navbar-brand glyphicon glyphicon-align-justify" href="#menu-toggle" id="menu-toggle"></a>
+                        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
+                            <img src="/resources/assets/huiji_logo_white.png">
+                        </a>
 						<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
 						<div class="navbar-header">
 							<button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">

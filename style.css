@@ -308,7 +308,9 @@ option.unclickable {
 .page-header .nav i {
 	opacity: 0.3;
 }
-
+.page-header{
+    margin-top: 60px;
+}
 .nav-collapse.in {
 	height: auto !important;
 }
@@ -1081,6 +1083,10 @@ html {
 .nav.navbar-nav.navbar-right{
 	margin-left:30px;
 }
+#sidebar-wrapper{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 body .mw-echo-overlay {
 	z-index: 1300;
 	width: 300px;
@@ -1091,7 +1097,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 }
 @media (max-width:1365px) {
     #wrapper.toggled #sidebar-wrapper{
-        position: absolute;
+        position: fixed;
     }
     #wiki-outer-body{
         width: 100%;
@@ -1298,8 +1304,10 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 .login-in{
     cursor: pointer;
 }
-.user-login{
-    margin-top: 200px;
+@media screen and (min-width: 768px){
+    .user-login{
+        margin-top: 200px;
+    }
 }
 .login-wrap{
     width: 180px;
@@ -1327,6 +1335,10 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 .navbar-container .new:hover{
     border-bottom: none;
 }
+.navbar-fixed-top{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 @media screen and (max-width: 767px){
     #mw-createaccount-cta{
         margin-left: auto;
@@ -1336,6 +1348,27 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     #icon-section {
         margin-left: 5px;
     }
+    .subnav-fixed{
+        position: absolute;
+        top: -42px;
+    }
+    .subnav-up{
+        top: -42px;
+    }
+    .nav-up{
+        top: 0;
+    }
+}
+@media screen and (max-width: 979px){
+    .subnav-fixed {
+        top: 3px;
+    }
+    .subnav-up{
+        top:3px;
+    }
+    .nav-up{
+        top: 0;
+    }
 }
 @media screen and (min-width:768px ) and (max-width:991px){
     .navbar-form {
@@ -1344,4 +1377,13 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     .navbar-brand img {
         display: none;
     }
+}
+#menu-toggle.navbar-brand img {
+    margin-right: 0;
+    margin-left: 0;
+    width: 20px;
+    height: 20px;
+}
+#menu-toggle.navbar-brand:hover{
+    background: #e0e0e0;
 }
