@@ -2024,8 +2024,7 @@ $(function() {
 	$('pre').addClass('prettyprint linenums');
 
 	$('.editButtons').addClass('well');
-	$('input[type=submit],input[type=button],input[type=reset]').addClass('btn');
-	$('input[type=submit]').addClass('btn-primary');
+
 
 	$('input[type=checkbox],input[type=radio]').each(function() {
 		var $el = $(this);
