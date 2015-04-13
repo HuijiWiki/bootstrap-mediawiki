@@ -297,6 +297,9 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 								<li id= "pt-login" data-toggle="modal" data-target=".user-login">
                                     <a class="login-in">登录</a>
 <!--									--><?php //echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), wfMsg( 'login' ), array('id' => 'pt-anonlogin' ) ); ?>
+								</li>
+								<li>
+									<?php echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') ); ?>
 								</li>	
 							</ul>
 							<?php
