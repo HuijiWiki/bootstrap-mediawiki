@@ -85,17 +85,9 @@ $(function() {
 	$('.jumbotron pre').removeClass('prettyprint linenums');
 
 	$('.editButtons').addClass('well');
-	$('input[type=submit],input[type=button],input[type=reset]').addClass('btn');
-	$('input[type=submit]').addClass('btn-primary');
+	$('input[type=submit],input[type=button],input[type=reset]').addClass('mw-ui-button');
+	$('input[type=submit]').addClass(' mw-ui-progressive');
 
-    $('.navbar-toggle').click(function(){
-       if($(this).hasClass('collapsed')){
-           console.log("1");
-           $('.navbar-fixed-top').addClass('h100');
-       }else{
-           $('.navbar-fixed-top').removeClass('h100');
-       }
-    });
     $('#menu-toggle.navbar-brand').mouseover(function(){
         $(this).children('img').attr('src','/resources/assets/huiji_logo_blue.png');
     });
@@ -305,4 +297,14 @@ $(function() {
             alreturn.hide()
         },1000);
     }
+
+    //follow btn
+    $('#user-site-follow').click(function(){
+        $( '#user-site-follow').html('<i class="fa fa-spinner fa-pulse"></i>');
+        if($(this).hasClass('mw-ui-progressive')){
+            $(this).removeClass('mw-ui-progressive');
+        }else{
+            $(this).addClass('mw-ui-progressive');
+        }
+    });
 });
