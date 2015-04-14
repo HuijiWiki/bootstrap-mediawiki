@@ -114,7 +114,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="exampleModalLabel">Login in</h4>
+                        <h4 class="modal-title" id="ModalLabel">登录</h4>
                     </div>
                     <div class="modal-body">
                         <div class="mw-ui-container login-wrap">
@@ -148,15 +148,15 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                                     </div>
 
                                     <div class="mw-ui-vform-field">
-                                        <input id="wpLoginAttempt" tabindex="6" class="mw-ui-button  mw-ui-block mw-ui-constructive btn btn-primary" type="button" value="登录" name="wpLoginAttempt">
+                                        <input id="wpLoginAttempt" tabindex="6" class="mw-ui-button  mw-ui-block mw-ui-constructive" type="button" value="登录" name="wpLoginAttempt">
                                     </div>
 
-                                    <div class="mw-ui-vform-field" id="mw-userlogin-help">
+<!--                                     <div class="mw-ui-vform-field" id="mw-userlogin-help">
                                         <a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Logging_in">登录帮助</a>
-                                    </div>
+                                    </div> -->
 
                                     <div id="mw-createaccount-cta">
-                                        没有账户？<a href="/index.php?title=%E7%89%B9%E6%AE%8A:%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95&amp;type=signup" id="mw-createaccount-join" tabindex="7">加入zs</a>
+                                        没有账户？<?php echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') ); ?>
                                     </div>
                                     <input type="hidden" name="wpLoginToken" value="5b59d95be44d1173971ec0b44d9fffa4">
                                 </form>
@@ -420,8 +420,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 				<div class="container">
 					<?php $this->includePage('Bootstrap:Footer'); ?>
 					<footer>
-						<p>&copy; <?php echo date('Y'); ?> by <a href="<?php echo (isset($wgCopyrightLink) ? $wgCopyrightLink : 'http://borkweb.com'); ?>"><?php echo (isset($wgCopyright) ? $wgCopyright : 'BorkWeb'); ?></a> 
-							&bull; Powered by <a href="http://mediawiki.org">MediaWiki</a> <a href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a>
+						<p>Powered by <a href="http://mediawiki.org">MediaWiki</a> <a href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a>
 						</p>
 						
 					</footer>
