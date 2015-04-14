@@ -51,11 +51,11 @@ $(function() {
         }
     },500);
     $('#preftoc').addClass('nav nav-tabs');
-	$('a[href^=#][role!=tab]').click(function(e){
+	$('#toc a[href^=#][role!=tab]').click(function(e){
 		e.preventDefault();
 		var target = $(this).attr('href').replace(/\./g, '\\.');
 		$('html, body').animate({
-			scrollTop: $( target ).offset().top - 200   
+			scrollTop: $( target ).offset().top - 200
 		}, 250);                                                                                                                                                                                                  
 	});
 
