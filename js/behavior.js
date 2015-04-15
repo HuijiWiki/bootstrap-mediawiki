@@ -317,4 +317,19 @@ $(function() {
             $(this).addClass('mw-ui-progressive');
         }
     });
+
+    // config for popup.
+    mw.loader.using( [ 'ext.popups' ], function() { //wait for popups to be loaded
+ 
+        // Time to wait in ms before showing a popup on hover. Default is 500.
+        mw.popups.render.POPUP_DELAY = 500;
+         
+        // Time to wait in ms before closing a popup on de-hover. Default is 300.
+        mw.popups.render.POPUP_CLOSE_DELAY = 300;
+         
+        // Time to wait in ms before starting the API queries on hover, must be <= POPUP_DELAY. Default is 50.
+        // Don't change this unless you know what you're doing.
+        mw.popups.render.API_DELAY = 50;
+ 
+    });
 });
