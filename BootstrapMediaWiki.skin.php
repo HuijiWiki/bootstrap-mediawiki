@@ -104,7 +104,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
             <div class="modal alert-return">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <p>good</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -118,8 +118,8 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                     </div>
                     <div class="modal-body">
                         <div class="mw-ui-container login-wrap">
-                            <div id="userloginprompt"></div>
-                            <div id="userloginForm">
+                            <div class="userloginprompt"></div>
+                            <div class="userloginForm">
                                 <form name="userlogin" class="mw-ui-vform" method="post">
                                     <section class="mw-form-header">
                                     </section>
@@ -128,14 +128,14 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                                         <label for="wpName1">
                                             用户名
                                         </label>
-                                        <input class="loginText mw-ui-input form-control" type="text"  tabindex="1" size="20" placeholder="请输入你的用户名" name="wpName">
+                                        <input id="login-user-name" class="loginText mw-ui-input form-control" type="text"  tabindex="1" size="20" placeholder="请输入你的用户名" name="wpName">
                                     </div>
 
                                     <div class="mw-ui-vform-field">
                                         <label for="wpPassword1">
                                             密码 <a href="/wiki/%E7%89%B9%E6%AE%8A:%E9%87%8D%E8%AE%BE%E5%AF%86%E7%A0%81" title="特殊:重设密码" class="mw-ui-flush-right">忘记密码？</a>
                                         </label>
-                                        <input class="loginPassword mw-ui-input form-control"  tabindex="2" size="20" autofocus="" placeholder="请输入你的密码" type="password" name="wpPassword">
+                                        <input id="login-user-password" class="loginPassword mw-ui-input form-control"  tabindex="2" size="20" autofocus="" placeholder="请输入你的密码" type="password" name="wpPassword">
                                     </div>
 
 

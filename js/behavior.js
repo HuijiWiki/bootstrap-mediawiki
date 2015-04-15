@@ -265,7 +265,17 @@ $(function() {
                             }
                         }else{
                             alertime();
-                            alertp.text('Result:'+ data.login.result);
+                            if(data.login.result=='NotExists'){
+                                alertp.text('用户名不存在');
+                            }else if(data.login.result=='EmptyPass'){
+                                alertp.text('请输入密码');
+                            }else if(data.login.result=='WrongPass') {
+                                alertp.text('密码错误');
+                            }else if(data.login.result=='Throttled') {
+                                alertp.text('由于您多次输入密码错误，暂时封禁');
+                            }else{
+                                alertp.text('Result:' + data.login.result);
+                            }
                         }
                    }else{
                        alertime();
@@ -274,7 +284,7 @@ $(function() {
                 });
             }else{
                 alertime();
-                alertp.text('Result:' + data.login.result);
+                alertp.text('请输入用户名');
             }
             if(data.error){
                 alertime();
@@ -283,10 +293,10 @@ $(function() {
         });
     }
     $('#wpLoginAttempt').click(function(){
-        $("input[type=text]").each(function(){
+        $("#login-user-name").each(function(){
             login = $(this).val();
         });
-        $("input[type=password]").each(function(){
+        $("#login-user-password").each(function(){
            pass = $(this).val();
         });
         wiki_auth(login,pass,'/');
