@@ -186,6 +186,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                             </li>
                             <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button>	</li>
                         	<li><p>已有<span id="site-follower-count"><?php echo UserSiteFollow::getSiteCount($wgHuijiPrefix) ?></span>人关注;
+                        	<li><div class="mw-inputbox-centered" style=""><form name="createbox" class="createbox" action="/index.php" method="get"><input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden"><input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden"><input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden"><input name="minor" value="" type="hidden"><input name="title" class="createboxInput" value="" placeholder="" size="50" dir="ltr" type="text"> <input name="create" class="mw-ui-button mw-ui-progressive" value="创建页面" type="submit"></form></div></li>
                         </ul>
                     </li>
                     <li class="sidebar-brand left-nav">
@@ -207,6 +208,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                                 <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
                             <?php } ?>
                             <li><a href="<?php echo $url_prefix; ?>Bootstrap:Subnav" class="bootstrap-subnav"><i class="fa fa-bars"></i> 修改站点导航</a></li>
+                            <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.css" class="bootstrap-subnav"><i class="fa fa-css3"></i> 修改站点CSS</a></li>
                         </ul>
                     </li>
                 	<?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
