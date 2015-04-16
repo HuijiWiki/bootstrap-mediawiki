@@ -521,7 +521,6 @@ img.thumbborder {
 		padding-right: 0;
 		padding-top: 59px;
 	}
-
 	#wiki-body {
 		padding-left: 35px;
 		padding-right: 35px;
@@ -1349,19 +1348,17 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     #icon-section {
         margin-left: 5px;
     }
-    .subnav-fixed{
-        position: absolute;
-        top: -42px;
-    }
     .subnav-up{
         top: -42px;
     }
     .nav-up{
         top: 0;
     }
-
 }
-@media screen and (max-width: 979px){
+@media screen and (max-width: 767px){
+    .subnav.subnav-fixed{
+        position: absolute;
+    }
     .subnav-fixed {
         top: 3px;
     }
@@ -1395,7 +1392,6 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
         max-height: 200px;
     }
 }
-@media screen and
 
 .page-首页 #firstHeading{
     border-bottom: none;
