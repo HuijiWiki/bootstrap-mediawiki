@@ -1031,7 +1031,8 @@ table.list th {
     padding-left: 20px;
     padding-right: 10px;
     line-height: 20px;
-    margin-left: 110px;
+    margin-left: 60px;
+    font-size: 12px;
 }
 
 .nav-up {
@@ -1044,7 +1045,7 @@ table.list th {
 	top:-103px;
 }
 #user-site-follow {
-	margin: 0 auto;
+	margin: 0 auto 10px auto;
 	display: block
 }
 
@@ -1152,7 +1153,6 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     border-radius: 5px;
 }
 #user-site-follow{
-    margin: 20px auto;
     padding: 0px;
 }
 .sidebar-nav > .sidebar-brand{
@@ -1359,6 +1359,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     .nav-up{
         top: 0;
     }
+
 }
 @media screen and (max-width: 979px){
     .subnav-fixed {
@@ -1384,6 +1385,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     margin-left: 0;
     width: 20px;
     height: 20px;
+    display: block;
 }
 #menu-toggle.navbar-brand:hover{
     background: #e0e0e0;
@@ -1392,4 +1394,26 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
         max-height: 200px;
     }
+}
+@media screen and
+
+.page-首页 #firstHeading{
+    border-bottom: none;
+}
+.page-首页 #firstHeading h1{
+    display: none;
+}
+.sidebar-create{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-indent: 15px!important;
+    border-bottom: 1px solid #D5D5D5;
+
+}
+.sidebar-create .createboxInput{
+    width: 55%;
+    display: inline-block;
+}
+.sidebar-create .mw-ui-button{
+    padding:0;
 }

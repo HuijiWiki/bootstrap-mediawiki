@@ -100,6 +100,16 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 		}
 
 		?>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-10190882-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
 		<div id="wrapper">
             <div class="modal alert-return">
                 <div class="modal-dialog">
@@ -185,8 +195,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                                 <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
                             </li>
                             <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button>	</li>
-                        	<li><p>已有<span id="site-follower-count"><?php echo UserSiteFollow::getSiteCount($wgHuijiPrefix) ?></span>人关注;
-                        	<li><div class="mw-inputbox-centered" style=""><form name="createbox" class="createbox" action="/index.php" method="get"><input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden"><input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden"><input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden"><input name="minor" value="" type="hidden"><input name="title" class="createboxInput" value="" placeholder="" size="50" dir="ltr" type="text"> <input name="create" class="mw-ui-button mw-ui-progressive" value="创建页面" type="submit"></form></div></li>
+                        	<li><p>已有<span id="site-follower-count"><?php echo UserSiteFollow::getSiteCount($wgHuijiPrefix) ?></span>人关注
                         </ul>
                     </li>
                     <li class="sidebar-brand left-nav">
@@ -236,6 +245,17 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	                	$langlinks = $this->data['language_urls'];
 	                	echo $this->nav($this->listAdapter($langlinks));
 	                } ?>
+                    <li class="sidebar-create">
+                        <div class="mw-inputbox-centered" style="">
+                            <form name="createbox" class="createbox" action="/index.php" method="get">
+                                <input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden">
+                                <input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden">
+                                <input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden">
+                                <input name="minor" value="" type="hidden"><input name="title" class="createboxInput form-control" value="" placeholder="" dir="ltr" type="text">
+                                <input name="create" class="mw-ui-button mw-ui-progressive" value="创建页面" type="submit">
+                            </form>
+                        </div>
+                    </li>
 	            </ul>
 	        </div>
             <script>
