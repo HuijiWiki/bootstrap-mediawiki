@@ -110,7 +110,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
             ga('send', 'pageview');
 
         </script>
-		<div id="wrapper">
+		<div id="wrapper" class="toggled">
             <div class="modal alert-return">
                 <div class="modal-dialog">
                     <div class="modal-content">
