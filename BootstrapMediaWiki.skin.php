@@ -206,6 +206,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                             <?php if ( $wgEnableUploads ) { ?>
                                 <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
                             <?php } ?>
+                            <li><a href="<?php echo $url_prefix; ?>Bootstrap:Subnav" class="bootstrap-subnav"><i class="fa fa-bars"></i> 修改站点导航</a></li>
                         </ul>
                     </li>
                 	<?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
@@ -260,6 +261,12 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 							<ul id="icon-section" class="nav navbar-nav">
 									<li>
 										<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>">主页</a>
+									</li>
+									<li>
+										<a href="http://lotr.huiji.wiki/">魔戒中文维基</a>
+									</li>
+									<li>
+										<a href="http://home.huiji.wiki/wiki/首页">创建新wiki</a>
 									</li>
 							</ul>
 							<ul class="nav navbar-nav">
