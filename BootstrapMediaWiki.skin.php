@@ -195,7 +195,11 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                                 <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
                             </li>
                             <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button>	</li>
-                        	<li><p>已有<span id="site-follower-count"><?php echo UserSiteFollow::getSiteCount($wgHuijiPrefix) ?></span>人关注
+                        	<li><p><?php
+                        $articles = '{{NUMBEROFARTICLES}}篇条目，<span id="site-follower-count">'.UserSiteFollow::getSiteCount($wgHuijiPrefix).'</span>人关注。';
+                        $wgParserOptions = new ParserOptions($wgUser);
+                        $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
+                        echo $parserOutput->getText()?></p></li>
                         </ul>
                     </li>
                     <li class="sidebar-brand left-nav">
