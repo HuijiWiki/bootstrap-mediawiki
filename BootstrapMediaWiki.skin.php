@@ -280,7 +280,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; ?></a>
+							<a class="navbar-brand" href="http://huiji.wiki" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; ?></a>
 						</div>
 
 						<div class="collapse navbar-collapse">
