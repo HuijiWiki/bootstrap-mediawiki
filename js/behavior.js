@@ -137,8 +137,16 @@ $(function() {
 				$(this).remove();
 			});
 			$('nav.toc-sidebar > ul').append('<li><a href="#top">回到顶部</a></li>');
-			$('nav.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix').attr('data-offset-top','0').attr('data-offset-bottom','250');
-			$('nav.toc-sidebar ul').addClass('nav nav-list');
+			$('nav.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix');
+            $('nav.toc-sidebar > ul').affix({
+              offset: {
+                top: 100,
+                bottom: function () {
+                  return (this.bottom = $('.bottom').outerHeight(true))
+                }
+              }
+            })
+            $('nav.toc-sidebar ul').addClass('nav nav-list');
 			$('.toc-sidebar').attr('id', 'toc');
 			$('body').scrollspy({target: '#toc', offset:230}); 
 		}//end else
@@ -272,7 +280,13 @@ $(function() {
                             }else if(data.login.result=='WrongPass') {
                                 alertp.text('密码错误');
                             }else if(data.login.result=='Throttled') {
-                                alertp.text('由于您多次输入密码错误，请先休息一会儿。');
+                                alertp.text('由于您多次输入密码错误，请先休息一会儿。');                            
+                            }else if(data.login.result=='NoName') {
+                                alertp.text('您必须键入用户名。');
+                            }else if(data.login.result=='Illegal') {
+                                alertp.text('您的用户名中含有非法字符');
+                            }else if(data.login.result=='Blocked') {
+                                alertp.text('您暂时被封禁了');
                             }else{
                                 alertp.text('Result:' + data.login.result);
                             }

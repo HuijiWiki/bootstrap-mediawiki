@@ -375,6 +375,7 @@ option.unclickable {
 
 ul.affix {
 	width: 160px;
+	position: fixed !important;
 }
 
 ul.affix-bottom{
