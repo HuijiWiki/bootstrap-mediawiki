@@ -652,7 +652,7 @@ pre.linenums ol {
 	}
 
 	.subnav #subnav-select {
-		margin-left: 20px;
+		float: right;
 		display: inline-block;
 	}
 
