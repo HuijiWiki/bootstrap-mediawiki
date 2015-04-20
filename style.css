@@ -1416,3 +1416,12 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 .sidebar-create .mw-ui-button{
     padding:0;
 }
+.skin-bootstrap-mediawiki .ve-ui-toolbar-floating > .oo-ui-toolbar-bar {
+    position: fixed;
+    top: 60px;
+    z-index: 100;
+    border-top: medium none;
+}
+.ve-activated #content-actions{
+	display:none;
+}

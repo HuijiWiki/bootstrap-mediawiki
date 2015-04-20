@@ -272,7 +272,7 @@ $(function() {
                             }else if(data.login.result=='WrongPass') {
                                 alertp.text('密码错误');
                             }else if(data.login.result=='Throttled') {
-                                alertp.text('由于您多次输入密码错误，暂时封禁');
+                                alertp.text('由于您多次输入密码错误，请先休息一会儿。');
                             }else{
                                 alertp.text('Result:' + data.login.result);
                             }
