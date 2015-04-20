@@ -9,7 +9,9 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 }
-
+*{
+    outline: none;
+}
 body.page-Main_Page .page-header,
 body.page-Category_Oracle .page-header,
 body.page-Category_JavaScript .page-header,
@@ -47,7 +49,6 @@ p {
 .navbar-brand img {
 	margin-right: 0.5em;
 	max-height: 30px;
-    margin-left: 35px;
 }
 
 .navbar input {
@@ -1144,12 +1145,14 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 #menu-toggle{
     height: 34px;
     padding: 5px 10px;
-    position: absolute;
-    margin-top: 10px;
+    position:fixed;
     left: 5px;
     outline: none;
-    border:1px solid #666;
-    border-radius: 5px;
+    border:1px solid #999;
+    border-radius: 4px;
+    top: 65px;
+    z-index: 1200;
+    background: #e0e0e0;
 }
 #user-site-follow{
     padding: 0px;
@@ -1385,7 +1388,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     display: block;
 }
 #menu-toggle.navbar-brand:hover{
-    background: #e0e0e0;
+    background: #f8f8f8;
 }
 @media (max-device-width: 480px) and (orientation: landscape) {
     .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
