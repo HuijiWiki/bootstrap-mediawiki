@@ -283,7 +283,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						<div class="collapse navbar-collapse">
 							<ul id="icon-section" class="nav navbar-nav">
 									<li>
-										<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>">当前wiki</a>
+										<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php echo $wgSitename ?></a>
 									</li>
 									<li>
 										<a href="http://lotr.huiji.wiki/">魔戒中文维基</a>

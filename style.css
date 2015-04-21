@@ -1086,7 +1086,7 @@ table.list th {
 	background: transparent!important;
 }
 html {
-	background:none repeat scroll 0% 0% #F5F5F5; /*the footer color*/
+	background:transparent; repeat scroll 0% 0% #F5F5F5; /*the footer color*/
 }
 .nav.navbar-nav.navbar-right{
 	margin-left:30px;
@@ -1433,4 +1433,20 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 
 .ve-activated #content-actions{
 	display:none;
+}
+.parallax-bg {
+  background: url('http://fc07.deviantart.net/fs70/f/2013/174/3/e/recycled_texture_background_by_sandeep_m-d6aeau9.jpg') no-repeat center center;
+  position: fixed;
+  width: 100%;
+  height: 350px; /*same height as jumbotron */
+  top:0;
+  left:0;
+  z-index: -1;
+}
+
+.parallax-jumbotron {
+  height: 350px;
+  color: white;
+  text-shadow: #444 0 1px 1px;
+  background:transparent;
 }

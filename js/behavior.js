@@ -251,6 +251,15 @@ $(function() {
                 }
         });
     })
+    //parallax Jumbotron
+    var jumboHeight = $('.parallax-jumbotron').outerHeight();
+    function parallax(){
+        var scrolled = $(window).scrollTop();
+        $('.parallax-bg').css('height', (jumboHeight-scrolled) + 'px');
+    }
+    $(window).scroll(function(e){
+        parallax();
+    });
     //alert-return
     var alreturn = $('.alert-return');
     var alertp = $('.alert-return p');
