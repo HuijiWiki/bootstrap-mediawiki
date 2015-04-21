@@ -140,7 +140,7 @@ $(function() {
 			$('nav.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix');
             $('nav.toc-sidebar > ul').affix({
               offset: {
-                top: 100,
+                top: 0,
                 bottom: function () {
                   return (this.bottom = $('.bottom').outerHeight(true))
                 }

@@ -378,6 +378,10 @@ ul.affix {
 	position: fixed !important;
 }
 
+.ve-activated .wiki-body-section{
+	width: 100%;
+}
+
 ul.affix-bottom{
 	position:static;
 }
@@ -1423,6 +1427,10 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     z-index: 100;
     border-top: medium none;
 }
+.skin-bootstrap-mediawiki .ve-init-mw-viewPageTarget-toolbar > .oo-ui-toolbar-bar {
+    top: 60px;
+}
+
 .ve-activated #content-actions{
 	display:none;
 }

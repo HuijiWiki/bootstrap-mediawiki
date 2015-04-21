@@ -283,7 +283,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						<div class="collapse navbar-collapse">
 							<ul id="icon-section" class="nav navbar-nav">
 									<li>
-										<a href="http://huiji.wiki">主页</a>
+										<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>">当前wiki</a>
 									</li>
 									<li>
 										<a href="http://lotr.huiji.wiki/">魔戒中文维基</a>
@@ -516,6 +516,9 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 				if (count($query) > 1 && strpos( $requestUrl ,'action' )!== false){
 					$match = ($query[1] === explode('&amp;', $myLink)[1]) &&  ($query[0] === explode('&amp;', $myLink)[0]);
 				}else{
+					if (strpos($requestUrl, 'index.php?title=') != false ){
+						$requestUrl = str_replace("index.php?title=", "wiki/", $requestUrl);
+					}
 					$match = (strpos($requestUrl , $myLink) !==false);
 				}
 				$output .= '<li' . ( $match ? ' class="active"' : '') . '><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
