@@ -1435,7 +1435,6 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 	display:none;
 }
 .parallax-bg {
-  background: url('http://fc07.deviantart.net/fs70/f/2013/174/3/e/recycled_texture_background_by_sandeep_m-d6aeau9.jpg') no-repeat center center;
   position: fixed;
   width: 100%;
   height: 350px; /*same height as jumbotron */
