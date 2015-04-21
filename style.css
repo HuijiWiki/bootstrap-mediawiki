@@ -1085,9 +1085,6 @@ table.list th {
 .wikiEditor-ui-controls, .wikiEditor-ui-tabs, .wikiEditor-ui-buttons {
 	background: transparent!important;
 }
-html {
-	background:transparent; repeat scroll 0% 0% #F5F5F5; /*the footer color*/
-}
 .nav.navbar-nav.navbar-right{
 	margin-left:30px;
 }
@@ -1111,10 +1108,11 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
         width: 100%;
         position: absolute;
         left: 0;
-        background-color: #fff;
+      /*  background-color: #fff;
         background-image: url(images/wiki-bg.jpg);
         background-repeat: repeat-x;
-        background-position: center 0px;
+        background-position: center 0px;*/
+        background: transparent;
     }
 }
 .sidebar-nav{
@@ -1448,4 +1446,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
   color: white;
   text-shadow: #444 0 1px 1px;
   background:transparent;
+}
+.heading-hero-image {
+	display:none;
 }

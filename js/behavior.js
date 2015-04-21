@@ -253,6 +253,13 @@ $(function() {
     })
     //parallax Jumbotron
     var jumboHeight = $('.parallax-jumbotron').outerHeight();
+    if (jumboHeight > 0){
+        $('#firstHeading > h1:nth-child(1)').hide();
+        $('#firstHeading').css('border-bottom', 'none');
+        var bg_image = $('.heading-hero-image a').attr('href');
+        console.log(bg_image);
+        $('.parallax-bg').css('background', 'url(\"'+bg_image+'\") no-repeat center center');
+    }
     function parallax(){
         var scrolled = $(window).scrollTop();
         $('.parallax-bg').css('height', (jumboHeight-scrolled) + 'px');
@@ -260,6 +267,7 @@ $(function() {
     $(window).scroll(function(e){
         parallax();
     });
+    
     //alert-return
     var alreturn = $('.alert-return');
     var alertp = $('.alert-return p');
