@@ -285,8 +285,11 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 									<li>
 										<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php echo $wgSitename ?></a>
 									</li>
-									<li>
-										<a href="http://lotr.huiji.wiki/">魔戒中文维基</a>
+									<li class="dropdown">
+									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
+							          <ul class="dropdown-menu" role="menu">
+							            <li><a href="http://lotr.huiji.wiki">魔戒中文维基</a></li>
+							          </ul>
 									</li>
 									<li>
 										<a href="http://home.huiji.wiki/wiki/首页">创建新wiki</a>
