@@ -259,14 +259,30 @@ $(function() {
         var bg_image = $('.heading-hero-image a').attr('href');
         console.log(bg_image);
         $('.parallax-bg').css('background', 'url(\"'+bg_image+'\") no-repeat center center');
+        // $('#toc ul').css('top','450px');
+        // $('nav.toc-sidebar > ul').affix({
+        //   offset: {
+        //     top: 450,
+        //     bottom: function () {
+        //       return (this.bottom = $('.bottom').outerHeight(true))
+        //     }
+        //   }
+        // })
     }
     function parallax(){
         var scrolled = $(window).scrollTop();
         $('.parallax-bg').css('height', (jumboHeight-scrolled) + 'px');
     }
-    $(window).scroll(function(e){
-        parallax();
-    });
+    function is_touch_device() {
+        return (('ontouchstart' in window)
+            || (navigator.MaxTouchPoints > 0)
+            || (navigator.msMaxTouchPoints > 0));
+    }
+    if (!is_touch_device()){
+        $(window).scroll(function(e){
+            parallax();
+        });
+    }
     
     //alert-return
     var alreturn = $('.alert-return');
@@ -363,4 +379,5 @@ $(function() {
         mw.popups.render.API_DELAY = 50;
  
     });
+
 });
