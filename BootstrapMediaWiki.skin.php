@@ -244,11 +244,13 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	                    <a href="#">
 	                        语言
 	                    </a>	                	
+	                	<ul>
+		                <?php
+		                	$langlinks = $this->data['language_urls'];
+		                	echo $this->nav($this->listAdapter($langlinks));
+		                } ?>
+		                </ul>
 	                </li>
-	                <?php
-	                	$langlinks = $this->data['language_urls'];
-	                	echo $this->nav($this->listAdapter($langlinks));
-	                } ?>
                     <li class="sidebar-create">
                         <div class="mw-inputbox-centered" style="">
                             <form name="createbox" class="createbox" action="/index.php" method="get">
