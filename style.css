@@ -1169,10 +1169,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 .left-tool li a, .left-lang li a{
     margin-left: 55px;
 }
-.left-nav li:hover, .left-lang li a:hover {
-    background:#cacaca;
-}
-.left-tool li:hover, .left-lang li a:hover {
+.left-nav li:hover, .left-tool li:hover, .left-lang li:hover {
     background:#cacaca;
 }
 .navbar-default .navbar-nav > li > a:focus {
