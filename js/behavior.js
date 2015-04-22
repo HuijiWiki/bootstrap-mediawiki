@@ -273,6 +273,10 @@ $(function() {
         $(window).scroll(function(e){
             parallax();
         });
+    } else {
+        $('.parallax-bg').css('position', 'absolute');
+        $('.parallax-bg').css('height', '200px');
+        $('.parallax-jumbotron').css('height', '200px');
     }
     
     //alert-return
