@@ -240,7 +240,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	                </li>
 
 	                <?php if($this->data['language_urls']){ ?>
-	                <li class="sidebar-brand ">
+	                <li class="sidebar-brand left-lang">
 	                    <a href="#">
 	                        语言
 	                    </a>	                	
@@ -734,7 +734,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 				case '取消监视': $icon = 'eye-slash'; break;
 				case '创建': $icon = 'plus'; break;
 				case '创建源代码': $icon = 'plus'; break;
-				default: $icon = 'user'; break;
+				default: $icon = 'bookmark'; break;
 			}
 			$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
 			$nav[] = $link;

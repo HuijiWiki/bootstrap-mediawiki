@@ -1166,13 +1166,13 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 .left-nav>ul>li>a{
     margin-left: 60px;
 }
-.left-tool li a{
+.left-tool li a, .left-lang li a{
     margin-left: 55px;
 }
-.left-nav li:hover {
+.left-nav li:hover, .left-lang li a:hover {
     background:#cacaca;
 }
-.left-tool li:hover {
+.left-tool li:hover, .left-lang li a:hover {
     background:#cacaca;
 }
 .navbar-default .navbar-nav > li > a:focus {
@@ -1442,7 +1442,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 }
 
 .parallax-jumbotron {
-  height: 350px;
+  height: 250px;
   color: white;
   text-shadow: #444 0 1px 1px;
   background:transparent;
