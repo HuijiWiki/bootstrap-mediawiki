@@ -735,7 +735,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 				case '历史': $icon = 'clock-o'; break;
 				case '删除': $icon = 'remove'; break;
 				case '移动': $icon = 'arrows'; break;
-				case '保护': $icon = 'lock'; break;
+				case '保护': case '更改保护': $icon = 'lock'; break;
 				case '监视': $icon = 'eye'; break;
 				case '取消监视': $icon = 'eye-slash'; break;
 				case '创建': $icon = 'plus'; break;

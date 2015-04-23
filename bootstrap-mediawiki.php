@@ -29,7 +29,9 @@ $wgResourceModules['skins.bootstrapmediawiki'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
 		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
-		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
+		// $skinDir . '/style.css'                                  => array( 'media' => 'all' ),
+		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
+		$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.min.js',
