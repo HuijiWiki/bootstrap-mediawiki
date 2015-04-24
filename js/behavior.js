@@ -88,17 +88,12 @@ $(function() {
 	$('input[type=submit],input[type=button],input[type=reset]').addClass('mw-ui-button');
 	$('input[type=submit]').addClass(' mw-ui-progressive');
 
-    $('#menu-toggle.navbar-brand').mouseover(function(){
-        $(this).children('img').attr('src','/resources/assets/huiji_logo_blue.png');
-    });
-    $('#menu-toggle.navbar-brand').mouseout(function(){
-        $(this).children('img').attr('src','/resources/assets/huiji_logo_white.png');
-    });
+
     $('#menu-toggle.navbar-brand').click(function(){
-        if($(this).children('img').attr('src')=='/resources/assets/huiji_logo_blue.png'){
-            $(this).children('img').attr('src','/resources/assets/huiji_logo_white.png')
+        if($(this).hasClass("menu-active")){
+            $(this).removeClass("menu-active");
         }else{
-            $(this).children('img').attr('src','/resources/assets/huiji_logo_blue.png')
+            $(this).addClass("menu-active");
         }
     });
 	// $('input[type=checkbox],input[type=radio]').each(function() {
