@@ -270,7 +270,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                 $('#wrapper').attr('class',menutoggle);
             </script>
 	        <!-- /#sidebar-wrapper -->
-			<div class="navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
+			<header class="header navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
 					<div class="navbar-container">
 						<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
 						<div class="navbar-header">
@@ -349,12 +349,12 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						</form>
 						</div>
 					</div>
-			</div><!-- topbar -->
+			</header><!-- topbar -->
 
 
 			<div id="wiki-outer-body">
                 <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
-                    <img src="/resources/assets/huiji_logo_white.png">
+                    <span class="icon-huiji"></span>
                 </a>
                 <?php
                 if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {

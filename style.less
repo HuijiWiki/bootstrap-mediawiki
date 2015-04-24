@@ -1,0 +1,164 @@
+/*.mixin(){
+	color:#fff;
+	height:50px;
+	width:100%
+}
+@color-blue:#09c;
+@color-black:#000;
+.header,.footer{
+	.mixin;
+	background:@color-blue;
+}
+body{
+	background:@color-blue;
+}
+*/
+//@background-color:#333,#fff,#333,#d5d5d5,#f5f5f5;
+@import "default_theme";
+@header-color:#333,#fff,#e7e7e7;
+.header{
+  background-color:extract(@header-color,1);
+  border-color:extract(@header-color,3);
+  .navbar-nav>li>a{
+    color: extract(@header-color, 2);
+    &:hover{
+      color:extract(@header-color,2);
+    }
+    &:focus{
+      color: extract(@header-color,2);
+    }
+  }
+  margin-bottom: 0;
+  transition: top 0.2s ease-in-out;
+  min-height: 60px;
+  .navbar-brand img {
+    margin-right: 0.5em;
+    max-height: 30px;
+  }
+
+  .navbar .navbar-inner .btn {
+    margin-top: 0;
+  }
+  .navbar-container,.navbar-header,.navbar-collapse,.navbar-collapse ul,.navbar-collapse ul li{
+    min-height: 60px;
+  }
+  .nav > li > a {
+    padding: 20px;
+  }
+  .user-icon {
+    border: 1px solid rgba( 55, 55, 55, 0.1 );
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    img {
+      border: 1px solid rgba( 0, 0, 0, 0.5 );
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+body{
+  background-color: extract(@background-color,1);
+  color: extract(@font-color,1);
+  font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#sidebar-wrapper{
+  background-color: extract(@background-color,2);
+  .sidebar-nav {
+    ul{
+      border-bottom: 1px solid;
+      border-color:@sidebar-border-color;
+      padding-left: 0;
+    }
+    p{
+      color: extract(@font-color, 2);
+    }
+    .dropdown-menu a{
+      color:#333;
+    }
+  }
+  a{
+    color: extract(@a-color,1);
+  }
+  .left-nav li:hover,.left-tool li:hover{
+    @leftbar-hover;
+    .dropdown-menu a{
+      color:#333;
+    }
+  }
+}
+
+#wiki-outer-body {
+  margin-top:111px;
+  font-size: 17px;
+  .wiki-body-section {
+    a {
+      color: extract(@content-acolor, 1);
+      border-bottom: 1px solid extract(@content-acolor, 3);
+      &:hover {
+        border-bottom-color: extract(@content-acolor, 1);
+        text-decoration: none;
+      }
+      &.new {
+        color: extract(@content-acolor, 2);
+        &:hover {
+          border-bottom-color: extract(@content-acolor, 2);
+        }
+      }
+    }
+    .infobox{
+      font-size:14px;
+    }
+  }
+  .subnav{
+  @hover{
+    background-color: extract(@sub-hover-color,1);
+    color:extract(@sub-hover-color,2);
+  }
+    background-color: extract(@background-color,3);
+    border-bottom: 1px solid;
+    border-color: @sub-border-color;
+    font-size: 14px;
+    li{
+      &:hover a{
+      @hover;
+      }
+      a{
+        color:extract(@a-color,2);
+      }
+      &.active a{
+      @hover;
+      }
+    }
+  }
+  .toc-sidebar li{
+    a{
+      color:extract(@toc-sidebar-color,1);
+      border-color: extract(@toc-sidebar-color,1);
+      &:hover{
+        color:extract(@toc-sidebar-color,2);
+        border-left: 1px solid;
+        border-color: extract(@toc-sidebar-color,2);
+      }
+    }
+    &.active a{
+      color: extract(@toc-sidebar-color,2);
+      border-color: extract(@toc-sidebar-color,2);
+      &:hover{
+        border-left-width:2px;
+      }
+    }
+  }
+}
+.bottom{
+  background-color: extract(@background-color,4);
+  a{
+    color:extract(@a-color,3);
+  }
+  footer{
+    color: @footer-color;
+  }
+}
