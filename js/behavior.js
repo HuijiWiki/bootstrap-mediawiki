@@ -257,7 +257,6 @@ $(function() {
         $('#firstHeading > h1:nth-child(1)').hide();
         $('#firstHeading').css('border-bottom', 'none');
         var bg_image = $('.heading-hero-image a').attr('href');
-        console.log(bg_image);
         $('.parallax-bg').css('background', 'url(\"'+bg_image+'\") no-repeat center center');
     }
     function parallax(){
@@ -297,7 +296,7 @@ $(function() {
                             if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
                                 history.go(-1);
                             }else {
-                                history.go(0);
+                                window.location.reload();
                             }
                         }else{
                             alertime();

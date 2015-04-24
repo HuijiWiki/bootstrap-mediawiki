@@ -527,7 +527,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 					}
 					$match = (strpos($requestUrl , $myLink) !==false);
 				}
-				$output .= '<li' . ( $match ? ' class="active"' : '') . '><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
+				$output .= '<li' . ( $match ? ' class="active" id="ca-'.$topItem['id'] : ' id="ca-'.$topItem['id']) . '"><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
 			}//end else
 		}//end foreach
 		return $output;
@@ -731,7 +731,12 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 			switch( $link['title'] ) {
 				case '页面': $icon = 'file'; break;
 				case '讨论': $icon = 'comment'; break;
-				case '编辑': case '编辑源代码': $icon = 'pencil'; break;
+				case '编辑': 
+					$icon = 'pencil'; 
+					break;
+				case '编辑源代码': 
+					$icon = 'pencil';
+					break;
 				case '历史': $icon = 'clock-o'; break;
 				case '删除': $icon = 'remove'; break;
 				case '移动': $icon = 'arrows'; break;
