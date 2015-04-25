@@ -66,11 +66,12 @@ $(function() {
 	$('table')
 		.not('#toc')
 		.not('.mw-specialpages-table')
+        .not('.familytree')
 		.each(function() {
 			var $el = $(this);
 
 			if( $el.closest('form').length == 0 ) {
-				if ( $el.hasClass('info-box') ) {
+				if ( $el.hasClass('infobox') ) {
 					$el.addClass('table')
 						 .addClass('table-bordered');
 				} else {
