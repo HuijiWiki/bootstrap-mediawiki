@@ -189,7 +189,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	        <div id="sidebar-wrapper">
 	          	
 	            <ul class="sidebar-nav">
-                    <li>
+                    <li class="left-follow">
                         <ul>
                             <li>
                                 <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
@@ -265,9 +265,15 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                     </li>
 	            </ul>
 	        </div>
+	        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
+	            <span class="icon-huiji"></span>
+            </a>
             <script>
                 var menutoggle=localStorage.getItem('menu-toggle');
                 $('#wrapper').attr('class',menutoggle);
+                if($('#wrapper').hasClass('toggled')){
+                    $('#menu-toggle').addClass('menu-active');
+                }
             </script>
 	        <!-- /#sidebar-wrapper -->
 			<header class="header navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
@@ -353,9 +359,6 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 
 
 			<div id="wiki-outer-body">
-                <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
-                    <span class="icon-huiji"></span>
-                </a>
                 <?php
                 if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {
                     ?>

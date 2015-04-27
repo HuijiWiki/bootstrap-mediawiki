@@ -36,8 +36,10 @@ $(function() {
         //}
 
         $('#wrapper').toggleClass("toggled").toggleClass('smtoggled');
+        $('#menu-toggle').toggleClass('menu-active').toggleClass('smenu-active');
         if(window.innerWidth>=1366){
             $('#wrapper').removeClass('smtoggled');
+            $('#menu-toggle').removeClass('smenu-active');
         }
         if($('#wrapper').hasClass('toggled')){
             localStorage.setItem('menu-toggle','toggled')
@@ -90,13 +92,6 @@ $(function() {
 	$('input[type=submit]').addClass(' mw-ui-progressive');
 
 
-    $('#menu-toggle.navbar-brand').click(function(){
-        if($(this).hasClass("menu-active")){
-            $(this).removeClass("menu-active");
-        }else{
-            $(this).addClass("menu-active");
-        }
-    });
 	// $('input[type=checkbox],input[type=radio]').each(function() {
 	// 	var $el = $(this);
 
@@ -369,5 +364,9 @@ $(function() {
         mw.popups.render.API_DELAY = 50;
  
     });
+
+    // bell animation
+    if($('#pt-notifications span').text()!=0){
+    }
 
 });

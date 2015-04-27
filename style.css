@@ -290,9 +290,6 @@ option.unclickable {
 	overflow-y: scroll;
 	right: 0;
 }
-.left-nav .dropdown-menu{
-    left: 50px;
-}
 
 .page-header .nav i {
 	opacity: 0.3;
@@ -919,89 +916,7 @@ table.list th {
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
-
-/* Toggle Styles */
-
-#wrapper {
-    padding-left:0px;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-
-#sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    /*left: 265px;*/
-    width: 0px;
-    top: 0;
-    height: 100%;
-    margin-left: -265px;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.2s ease;
-    -o-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-}
-
-
-
 /* Sidebar Styles */
-
-.sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 265px;
-    margin: 0;
-    padding-top: 103px;
-    padding-left: 0px;
-    list-style: none;
-}
-
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 34px;
-}
-
-.sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-}
-
-.sidebar-nav li a:hover {
-    text-decoration: none;
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 34px;
-    font-size: 12px;
-    line-height: 34px;
-}
-
-.sidebar-nav > .sidebar-brand a {
-    color: #666676;
-}
-
-.sidebar-nav > .sidebar-brand a:hover {
-    color: #000;
-    background: none;
-}
-.sidebar-nav p{
-	display: block;
-    text-decoration: none;
-    color: #999999;
-    padding-left: 0px;
-    padding-right: 10px;
-    line-height: 20px;
-    margin-left: 60px;
-    font-size: 12px;
-}
 
 .nav-up {
     top: -53px;
@@ -1011,10 +926,6 @@ table.list th {
 }
 .sidebar-wrapper-up {
 	top:-103px;
-}
-#user-site-follow {
-	margin: 0 auto 10px auto;
-	display: block
 }
 
 .selected, #wiki-body .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -1078,75 +989,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
         background: transparent;
     }
 }
-.sidebar-nav{
-    padding-top: 60px;
-}
-.sidebar-nav ul{
-    border-bottom: 1px solid #D5D5D5;
-    padding-left: 0;
-}
-.sidebar-nav li{
-    text-decoration: none;
-    list-style-type: none;
-}
-.sidebar-nav>li{
-    height: auto;
-    display: block;
-    float: none;
-    text-indent: 40px;
-}
 
-.sidebar-nav ul>li>a:hover{
-    background: none;
-}
-.logo-wiki-user{
-    float: none;
-    margin-top: 5px;
-    cursor: pointer;
-    padding-left:0;
-    text-align: center;
-    text-indent: 0;
-    font-weight: bold;
-}
-#menu-toggle{
-    height: 34px;
-    padding: 5px 10px;
-    position:fixed;
-    left: 5px;
-    top: 65px;
-    z-index: 1200;
-    color: #09c;
-    font-size: 24px;
-}
-#menu-toggle{
-    -webkit-transition:all 0.9s;
-    -moz-transition:all 0.9s;
-    -ms-transition:all 0.9s;
-    -o-transition:all 0.9s;
-    transition:all 0.9s;
-}
-#menu-toggle:hover span{
-    opacity: 0.8;
-}
-.menu-active{
-    color: #fff!important;
-    transform:rotateY(180deg);
-}
-#user-site-follow{
-    padding: 0px;
-}
-.sidebar-nav > .sidebar-brand{
-    height: auto;
-}
-.left-nav>ul>li>a{
-    margin-left: 60px;
-}
-.left-tool li a, .left-lang li a{
-    margin-left: 55px;
-}
-.left-nav li:hover, .left-tool li:hover, .left-lang li:hover {
-    background:#cacaca;
-}
 .navbar-form{
     width: 20%;
 }
@@ -1159,14 +1002,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 .navbar-collapse ul, .navbar-collapse ul li{
     height: auto;
 }
-.left-author>ul>li>a{
-    display: inline;
-    margin-left: 50px;
-}
-.left-author>ul>li>span{
-    float: right;
-    margin-right: 50px;
-}
+
 .infobox{
     float: right;
     margin-left: 40px;
@@ -1179,26 +1015,25 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     }
 }
 #wrapper.toggled{
-    padding-left: 265px;
+    padding-left: 240px;
 }
 .toggled #sidebar-wrapper{
-    width: 265px;
+    left:0;
+
 }
 @media (max-width: 1365px) {
     #wrapper.toggled{
         padding-left: 0;
     }
     .toggled #sidebar-wrapper{
-        width: 0;
+        left:-240px;
     }
-    #sidebar-wrapper{
-        width: 0;
-    }
+
     #wrapper.smtoggled{
-        padding-left: 265px;
+        padding-left: 240px;
     }
     .smtoggled #sidebar-wrapper{
-        width: 265px;
+        left: 0;
     }
 
     /*#page-content-wrapper {*/
@@ -1227,8 +1062,8 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     font-weight: bolder;
 }
 #content p{
-    line-height: 1.8;
-    letter-spacing: 0.5px;
+    line-height: 1.6;
+    /*letter-spacing: 0.5px;*/
 }
 .alert-wrap{
     position: fixed;
@@ -1353,20 +1188,6 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 }
 .page-首页 #firstHeading h1{
     display: none;
-}
-.sidebar-create{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-indent: 15px!important;
-    border-bottom: 1px solid #D5D5D5;
-
-}
-.sidebar-create .createboxInput{
-    width: 55%;
-    display: inline-block;
-}
-.sidebar-create .mw-ui-button{
-    padding:0;
 }
 .skin-bootstrap-mediawiki .ve-ui-toolbar-floating > .oo-ui-toolbar-bar {
     position: fixed;
