@@ -368,6 +368,7 @@ $(function() {
     });
     // bell animation
     if($('#pt-notifications span').text()!=0){
+        
     }
-    $('#ca-edit > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');>>>>>>> 56321ed4c8036dd382a8341f80680247c2a21eed
+    $('#ca-edit > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i>');
 });
