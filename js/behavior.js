@@ -51,7 +51,8 @@ $(function() {
         }
     },500);
     $('#preftoc').addClass('nav nav-tabs');
-	$('#toc a[href^=#][role!=tab]').click(function(e){
+    //不要限制TOC 因为正文或其他部分也有可能存在#链接。
+	$('a[href^=#][role!=tab]:not(#menu-toggle)').click(function(e){
 		e.preventDefault();
 		var target = $(this).attr('href').replace(/\./g, '\\.');
 		$('html, body').animate({
@@ -67,18 +68,14 @@ $(function() {
 		.not('#toc')
 		.not('.mw-specialpages-table')
         .not('.familytree')
+        .not('.infobox')
 		.each(function() {
 			var $el = $(this);
 
 			if( $el.closest('form').length == 0 ) {
-				if ( $el.hasClass('infobox') ) {
-					$el.addClass('table')
-						 .addClass('table-bordered');
-				} else {
-					$el.addClass('table')
-						 .addClass('table-striped')
-						 .addClass('table-bordered');
-				}//end else
+				$el.addClass('table')
+					 .addClass('table-striped')
+					 .addClass('table-bordered');
 			}//end if
 		});
 
@@ -184,7 +181,7 @@ $(function() {
 	// Hide Header on on scroll down
 	var didScroll;
 	var lastScrollTop = 0;
-	var delta = 5;
+	var delta = 100;
 	var navbarHeight = $('header').outerHeight();
 	var ww = $(window).width();
 	if (ww < 768){
@@ -213,13 +210,18 @@ $(function() {
 	    // This is necessary so you never see what is "behind" the navbar.
 	    if (st > lastScrollTop && st > navbarHeight){
 	        // Scroll Down
-	        $('.subnav').removeClass('subnav-down').addClass('subnav-up');
+            if(!$('.subnav').hasClass('alwaysDown')){
+                $('.subnav').removeClass('subnav-down').addClass('subnav-up');             
+            }
 	        if (ww < 768){
 	        	$('.navbar').removeClass('nav-down').addClass('nav-up');
 	        }
 	        $('#sidebar-wraper').removeClass('sidebar-wraper-down').addClass('sidebar-wraper-up');
 	    } else {
 	        // Scroll Up
+            if(!$('.subnav').hasClass('alwaysDown')){
+                $('.subnav').removeClass('subnav-down').addClass('subnav-up');             
+            }            
 	        if(st + $(window).height() < $(document).height()) {
 	            $('.subnav').removeClass('subnav-up').addClass('subnav-down');
 	            if (ww < 768){
