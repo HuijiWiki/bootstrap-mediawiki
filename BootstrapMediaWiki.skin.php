@@ -734,20 +734,19 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 			switch( $link['title'] ) {
 				case '页面': $icon = 'file'; break;
 				case '讨论': $icon = 'comment'; break;
-				case '编辑': 
-					$icon = 'pencil'; 
-					break;
-				case '编辑源代码': 
-					$icon = 'pencil';
-					break;
+				case '编辑': $icon = 'pencil'; break;
+				case '编辑源代码': $icon = 'edit'; break;
 				case '历史': $icon = 'clock-o'; break;
 				case '删除': $icon = 'remove'; break;
 				case '移动': $icon = 'arrows'; break;
-				case '保护': case '更改保护': $icon = 'lock'; break;
+				case '保护': $icon = 'lock'; break;
+				case '更改保护': $icon = 'unlock'; break;
 				case '监视': $icon = 'eye'; break;
 				case '取消监视': $icon = 'eye-slash'; break;
 				case '创建': $icon = 'plus'; break;
 				case '创建源代码': $icon = 'plus'; break;
+				case '查看源代码': $icon = 'file-code-o'; break;
+				case '特殊页面': $icon = 'flask'; break;
 				default: $icon = 'bookmark'; break;
 			}
 			$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];

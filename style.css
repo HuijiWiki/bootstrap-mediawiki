@@ -1114,7 +1114,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     width: 180px;
     margin: 10px auto;
 }
-.mw-ui-button.mw-ui-block{
+.userloginForm .mw-ui-button.mw-ui-block{
     width: auto;
 }
 .user-login #mw-createaccount-cta{
