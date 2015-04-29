@@ -293,7 +293,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 							          <ul class="dropdown-menu" role="menu">
 							            <li><a href="http://lotr.huiji.wiki">魔戒中文维基</a></li>
 							            <li><a href="http://wheeloftime.huiji.wiki">时光之轮中文维基</a></li>
-								    <li><a href="htpp://wire.huiji.wiki">火线中文维基</a></li>
+								    <li><a href="http://wire.huiji.wiki">火线中文维基</a></li>
 								</ul>
 									</li>
 									<li>
