@@ -36,8 +36,10 @@ $(function() {
         //}
 
         $('#wrapper').toggleClass("toggled").toggleClass('smtoggled');
+        $('#menu-toggle').toggleClass('menu-active').toggleClass('smenu-active');
         if(window.innerWidth>=1366){
             $('#wrapper').removeClass('smtoggled');
+            $('#menu-toggle').removeClass('smenu-active');
         }
         if($('#wrapper').hasClass('toggled')){
             localStorage.setItem('menu-toggle','toggled')
@@ -51,7 +53,8 @@ $(function() {
         }
     },500);
     $('#preftoc').addClass('nav nav-tabs');
-	$('#toc a[href^=#][role!=tab]').click(function(e){
+    //不要限制TOC 因为正文或其他部分也有可能存在#链接。
+	$('a[href^=#][role!=tab]:not(#menu-toggle)').click(function(e){
 		e.preventDefault();
 		var target = $(this).attr('href').replace(/\./g, '\\.');
 		$('html, body').animate({
@@ -66,18 +69,15 @@ $(function() {
 	$('table')
 		.not('#toc')
 		.not('.mw-specialpages-table')
+        .not('.familytree')
+        .not('.infobox')
 		.each(function() {
 			var $el = $(this);
 
 			if( $el.closest('form').length == 0 ) {
-				if ( $el.hasClass('info-box') ) {
-					$el.addClass('table')
-						 .addClass('table-bordered');
-				} else {
-					$el.addClass('table')
-						 .addClass('table-striped')
-						 .addClass('table-bordered');
-				}//end else
+				$el.addClass('table')
+					 .addClass('table-striped')
+					 .addClass('table-bordered');
 			}//end if
 		});
 
@@ -88,19 +88,7 @@ $(function() {
 	$('input[type=submit],input[type=button],input[type=reset]').addClass('mw-ui-button');
 	$('input[type=submit]').addClass(' mw-ui-progressive');
 
-    $('#menu-toggle.navbar-brand').mouseover(function(){
-        $(this).children('img').attr('src','/resources/assets/huiji_logo_blue.png');
-    });
-    $('#menu-toggle.navbar-brand').mouseout(function(){
-        $(this).children('img').attr('src','/resources/assets/huiji_logo_white.png');
-    });
-    $('#menu-toggle.navbar-brand').click(function(){
-        if($(this).children('img').attr('src')=='/resources/assets/huiji_logo_blue.png'){
-            $(this).children('img').attr('src','/resources/assets/huiji_logo_white.png')
-        }else{
-            $(this).children('img').attr('src','/resources/assets/huiji_logo_blue.png')
-        }
-    });
+
 	// $('input[type=checkbox],input[type=radio]').each(function() {
 	// 	var $el = $(this);
 
@@ -188,7 +176,7 @@ $(function() {
 	// Hide Header on on scroll down
 	var didScroll;
 	var lastScrollTop = 0;
-	var delta = 5;
+	var delta = 100;
 	var navbarHeight = $('header').outerHeight();
 	var ww = $(window).width();
 	if (ww < 768){
@@ -217,13 +205,18 @@ $(function() {
 	    // This is necessary so you never see what is "behind" the navbar.
 	    if (st > lastScrollTop && st > navbarHeight){
 	        // Scroll Down
-	        $('.subnav').removeClass('subnav-down').addClass('subnav-up');
+            if(!$('.subnav').hasClass('alwaysDown')){
+                $('.subnav').removeClass('subnav-down').addClass('subnav-up');             
+            }
 	        if (ww < 768){
 	        	$('.navbar').removeClass('nav-down').addClass('nav-up');
 	        }
 	        $('#sidebar-wraper').removeClass('sidebar-wraper-down').addClass('sidebar-wraper-up');
 	    } else {
 	        // Scroll Up
+            if(!$('.subnav').hasClass('alwaysDown')){
+                $('.subnav').removeClass('subnav-down').addClass('subnav-up');             
+            }            
 	        if(st + $(window).height() < $(document).height()) {
 	            $('.subnav').removeClass('subnav-up').addClass('subnav-down');
 	            if (ww < 768){
@@ -257,7 +250,6 @@ $(function() {
         $('#firstHeading > h1:nth-child(1)').hide();
         $('#firstHeading').css('border-bottom', 'none');
         var bg_image = $('.heading-hero-image a').attr('href');
-        console.log(bg_image);
         $('.parallax-bg').css('background', 'url(\"'+bg_image+'\") no-repeat center center');
     }
     function parallax(){
@@ -297,7 +289,7 @@ $(function() {
                             if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
                                 history.go(-1);
                             }else {
-                                history.go(0);
+                                window.location.reload();
                             }
                         }else{
                             alertime();
@@ -374,5 +366,13 @@ $(function() {
         mw.popups.render.API_DELAY = 50;
  
     });
-
+    // bell animation
+    if($('#pt-notifications span').text()!=0){
+        $('#pt-notifications i').addClass('bell-animation');
+        $('.mw-ui-quiet').click(function(){
+            $('.badge').text('0');
+            $('#pt-notifications i').removeClass('bell-animation');
+        });
+    }
+    $('#ca-edit > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
 });

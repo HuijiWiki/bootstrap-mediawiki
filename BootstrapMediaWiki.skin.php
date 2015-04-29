@@ -189,7 +189,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	        <div id="sidebar-wrapper">
 	          	
 	            <ul class="sidebar-nav">
-                    <li>
+                    <li class="left-follow">
                         <ul>
                             <li>
                                 <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
@@ -265,12 +265,18 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                     </li>
 	            </ul>
 	        </div>
+	        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
+	            <span class="icon-huiji"></span>
+            </a>
             <script>
                 var menutoggle=localStorage.getItem('menu-toggle');
                 $('#wrapper').attr('class',menutoggle);
+                if($('#wrapper').hasClass('toggled')){
+                    $('#menu-toggle').addClass('menu-active');
+                }
             </script>
 	        <!-- /#sidebar-wrapper -->
-			<div class="navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
+			<header class="header navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
 					<div class="navbar-container">
 						<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
 						<div class="navbar-header">
@@ -351,13 +357,10 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						</form>
 						</div>
 					</div>
-			</div><!-- topbar -->
+			</header><!-- topbar -->
 
 
 			<div id="wiki-outer-body">
-                <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
-                    <img src="/resources/assets/huiji_logo_white.png">
-                </a>
                 <?php
                 if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {
                     ?>
@@ -529,7 +532,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 					}
 					$match = (strpos($requestUrl , $myLink) !==false);
 				}
-				$output .= '<li' . ( $match ? ' class="active"' : '') . '><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
+				$output .= '<li' . ( $match ? ' class="active" id="ca-'.$topItem['id'] : ' id="ca-'.$topItem['id']) . '"><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
 			}//end else
 		}//end foreach
 		return $output;
@@ -733,15 +736,19 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 			switch( $link['title'] ) {
 				case '页面': $icon = 'file'; break;
 				case '讨论': $icon = 'comment'; break;
-				case '编辑': case '编辑源代码': $icon = 'pencil'; break;
+				case '编辑': $icon = 'pencil'; break;
+				case '编辑源代码': $icon = 'edit'; break;
 				case '历史': $icon = 'clock-o'; break;
 				case '删除': $icon = 'remove'; break;
 				case '移动': $icon = 'arrows'; break;
 				case '保护': $icon = 'lock'; break;
+				case '更改保护': $icon = 'unlock-alt'; break;
 				case '监视': $icon = 'eye'; break;
 				case '取消监视': $icon = 'eye-slash'; break;
 				case '创建': $icon = 'plus'; break;
 				case '创建源代码': $icon = 'plus'; break;
+				case '查看源代码': $icon = 'file-code-o'; break;
+				case '特殊页面': $icon = 'flask'; break;
 				default: $icon = 'bookmark'; break;
 			}
 			$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
