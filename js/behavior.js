@@ -374,5 +374,5 @@ $(function() {
             $('#pt-notifications i').removeClass('bell-animation');
         });
     }
-    $('#ca-edit > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i>');
+    $('#ca-edit > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
 });
