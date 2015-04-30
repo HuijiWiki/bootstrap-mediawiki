@@ -71,6 +71,8 @@ $(function() {
 		.not('.mw-specialpages-table')
         .not('.familytree')
         .not('.infobox')
+        .not('.familyTree')
+        .not('.quote')
 		.each(function() {
 			var $el = $(this);
 
