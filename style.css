@@ -50,11 +50,11 @@ textarea {
 	text-shadow: 1px 1px 0 rgb(255,255,255);
 }
 
-h2 .mw-headline { font-size: 18px; }
-h3 .mw-headline { font-size: 16px; }
-h4 .mw-headline { font-size: 14px; }
-h5 .mw-headline { font-size: 12px; }
-h6 .mw-headline { font-size: 12px; }
+h2 .mw-headline { font-size: 32px; }
+h3 .mw-headline { font-size: 22px; }
+h4 .mw-headline { font-size: 20px; }
+h5 .mw-headline { font-size: 18px; }
+h6 .mw-headline { font-size: 17px; }
 
 p {
 	margin-bottom: 15px;
@@ -247,12 +247,12 @@ option.unclickable {
 
 
 #wiki-body h2 {
-	border-bottom: 1px solid #ddd;
+	border-bottom: none;
 	margin-bottom: 0.5em;
 }
 
 #wiki-body h3 {
-	border-bottom: 1px dotted #eee;
+	border-bottom: none;
 	color: #555;
 	margin-bottom: 0.5em;
 }
@@ -747,7 +747,7 @@ table.list th {
 }
 
 .info-box .info-value {
-	background: #fff;
+	background: transparent;
 	padding-left: 6px;
 	padding-right: 6px;
 	border-top: 1px solid #999;
@@ -1048,10 +1048,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 #content h1{
     font-size:42px;
 }
-#content h2 .mw-headline{
-    font-size: 24px;
-}
-#content h3{
+#content h3, #content h4{
     font-weight: bolder;
 }
 #content p{
