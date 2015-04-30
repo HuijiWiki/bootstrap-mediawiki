@@ -249,12 +249,14 @@ option.unclickable {
 #wiki-body h2 {
 	border-bottom: none;
 	margin-bottom: 0.5em;
+	margin-top: 50px;
 }
 
 #wiki-body h3 {
 	border-bottom: none;
 	color: #555;
 	margin-bottom: 0.5em;
+	margin-top: 25px;
 }
 
 #wiki-body li {
@@ -1046,7 +1048,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     margin-top: 20px;
 }
 #content h1{
-    font-size:42px;
+    font-size:3.8em;
 }
 #content h3, #content h4{
     font-weight: bolder;
