@@ -282,33 +282,31 @@ body{
 }
 .ns-0 #wiki-outer-body:not(.wikiEditor-ui-text){
   font-size: 16px;
+  .wiki-body-section  {
+    a:not(.image) {
+      color: extract(@content-acolor, 1);
+      border-bottom: 1px solid extract(@content-acolor, 3);
+      &:hover {
+        border-bottom-color: extract(@content-acolor, 1);
+        text-decoration: none;
+      }
+      &.new {
+        color: extract(@content-acolor, 2);
+        &:hover {
+          border-bottom-color: extract(@content-acolor, 2);
+        }
+      }
+    }
+  }
 }
 .ns-0 #wiki-outer-body .familyTree, .ns-0 #wiki-outer-body .reflist, .ns-0 #wiki-outer-body .infobox{
   font-size: 14px;
 }
+
 #wiki-outer-body {
   margin-top:111px;
-  .ns-0 {
-    .wiki-body-section  {
-      a:not(.image) {
-        color: extract(@content-acolor, 1);
-         border-bottom: 1px solid extract(@content-acolor, 3);
-        &:hover {
-          border-bottom-color: extract(@content-acolor, 1);
-          text-decoration: none;
-        }
-        &.new {
-          color: extract(@content-acolor, 2);
-          &:hover {
-            border-bottom-color: extract(@content-acolor, 2);
-          }
-        }
-      }
-      .infobox{
-        font-size:14px;
-      }
-    }
-  }
+
+  
   .subnav{
   @hover{
     background-color: extract(@sub-hover-color,1);
