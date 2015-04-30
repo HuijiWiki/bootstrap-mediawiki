@@ -800,7 +800,7 @@ table.list th {
 }
 
 .list .list {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .list {
@@ -897,7 +897,7 @@ table.list th {
 }
 
 .list tbody > tr:nth-child(even) > td {
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .list tbody > tr:nth-child(odd) > td {
