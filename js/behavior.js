@@ -377,4 +377,8 @@ $(function() {
         });
     }
     $('#ca-edit > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
+
+    //fix thumbinner
+    var ow = $('.thumbinner').width();
+    $('.thumbinner').width(ow+6);
 });
