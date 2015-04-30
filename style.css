@@ -251,7 +251,6 @@ option.unclickable {
 
 #wiki-body h3 {
 	border-bottom: none;
-	color: #555;
 	margin-bottom: 0.5em;
 	margin-top: 25px;
 }
@@ -326,7 +325,7 @@ option.unclickable {
 }
 
 #toc.toc-sidebar li li {
-	margin-left: 20px;
+	margin-left: 0px;
 }
 
 #toc.toc-sidebar h3 {
@@ -1046,9 +1045,6 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 }
 #content h1{
     font-size:3.8em;
-}
-#content h3, #content h4{
-    font-weight: bolder;
 }
 #content p{
     line-height: 1.6;
