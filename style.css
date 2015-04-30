@@ -46,9 +46,6 @@ textarea {
 	clear: both;
 }
 
-.mw-headline {
-	text-shadow: 1px 1px 0 rgb(255,255,255);
-}
 
 h2 .mw-headline { font-size: 32px; }
 h3 .mw-headline { font-size: 22px; }
