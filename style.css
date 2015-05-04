@@ -1167,6 +1167,14 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
         max-height: 200px;
     }
 }
+@media screen and (max-width:320px ){
+    .infobox{
+        float: none;
+        margin-left: auto;
+        width: auto!important;
+        display: inline-block;
+    }
+}
 
 .page-首页 #firstHeading{
     border-bottom: none;
@@ -1204,4 +1212,9 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 }
 .heading-hero-image {
 	display:none;
+}
+
+
+.ns-0 form#edit-form,.ns-0 .wikiEditor-ui,.ns-0 .editOptions{
+    font-size: 14px;
 }
