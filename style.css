@@ -1218,3 +1218,6 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 .ns-0 form#edit-form,.ns-0 .wikiEditor-ui,.ns-0 .editOptions{
     font-size: 14px;
 }
+#contentSub{
+    font-size: 24px;
+}

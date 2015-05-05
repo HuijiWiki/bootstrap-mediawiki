@@ -287,15 +287,18 @@ body{
   .wiki-body-section  {
     a:not(.image) {
       color: extract(@content-acolor, 1);
-      border-bottom: 1px solid extract(@content-acolor, 3);
+//      border-bottom: 1px solid extract(@content-acolor, 3);
       &:hover {
-        border-bottom-color: extract(@content-acolor, 1);
+//        border-bottom-color: extract(@content-acolor, 1);
+        color: extract(@a-hover-color, 1);
         text-decoration: none;
       }
       &.new {
         color: extract(@content-acolor, 2);
         &:hover {
-          border-bottom-color: extract(@content-acolor, 2);
+          color: extract(@a-hover-color, 2);
+
+//          border-bottom-color: extract(@content-acolor, 2);
         }
       }
     }
