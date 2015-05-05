@@ -346,12 +346,7 @@ $(function() {
 
     //follow btn
     $('#user-site-follow').click(function(){
-        $( '#user-site-follow').html('<i class="fa fa-spinner fa-pulse"></i>');
-        if($(this).hasClass('mw-ui-progressive')){
-            $(this).removeClass('mw-ui-progressive');
-        }else{
-            $(this).addClass('mw-ui-progressive');
-        }
+
     });
 
     // config for popup.
