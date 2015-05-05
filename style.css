@@ -1047,7 +1047,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     font-size:3.8em;
 }
 #content p{
-    line-height: 1.6;
+    line-height: 1.8;
     /*letter-spacing: 0.5px;*/
 }
 .alert-wrap{
