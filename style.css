@@ -1173,6 +1173,13 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     .infobox{
         width:100%!important;
     }
+    .thumbinner,
+    div.tright{
+        margin: auto;
+    }
+    .thumbinner,.ns-0 #content img{
+        max-width: 100%!important;
+    }
 }
 
 .page-首页 #firstHeading{
