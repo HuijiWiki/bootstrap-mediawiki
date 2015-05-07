@@ -38,6 +38,7 @@ $wgResourceModules['skins.bootstrapmediawiki'] = array(
 		$skinDir . '/google-code-prettify/prettify.js',
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',
 		$skinDir . '/js/behavior.js',
+		$skinDir . '/js/reference-popup.js',
 	),
 	'dependencies' => array(
 		'jquery',
