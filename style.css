@@ -256,7 +256,9 @@ option.unclickable {
 }
 
 #wiki-body li {
-	margin-bottom: 5px;
+    margin-bottom: 10px;
+    line-height: 1.8;
+
 }
 
 #mw-content-text .center {
@@ -1167,19 +1169,15 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
         max-height: 200px;
     }
 }
-@media screen and (max-width:320px ){
-    .ns-0 #wiki-outer-body img{
-        max-width: 250px;
-    }
+@media screen and (min-width:320px ) and (max-width:414px ){
     .infobox{
-        float: none;
-        margin-left: auto;
-        margin-right: auto;
-        max-width:250px!important;
-        display:block;
+        width:100%!important;
     }
-    .ns-0 #wiki-outer-body .infobox img{
-        max-width: 240px;
+    div.tright{
+        margin: auto;
+    }
+    div.tright,.thumbinner,.ns-0 #content img{
+        max-width: 100%!important;
     }
 }
 
