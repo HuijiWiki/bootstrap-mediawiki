@@ -411,7 +411,6 @@ div.thumbinner {
 	font-size: 94%;
 	text-align: center;
 	overflow: hidden;
-	width: auto !important;
 }
 html .thumbimage {
 	border: 1px solid #ccc;
