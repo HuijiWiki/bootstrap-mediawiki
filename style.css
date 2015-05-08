@@ -1230,3 +1230,6 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     overflow-x: auto;
     overflow-y: hidden;
 }
+sup.reference {
+	line-height: 1;
+}
