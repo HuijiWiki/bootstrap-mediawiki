@@ -1233,3 +1233,6 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 sup.reference {
 	line-height: 1;
 }
+.popover {
+	width:276px;
+}

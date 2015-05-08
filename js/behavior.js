@@ -62,6 +62,7 @@ $(function() {
         options.content = innerHtml;
         options.placement = 'auto';
         options.html = true;
+        options.trigger = 'focus';
         self.popover(options);
     });
     //不要限制TOC 因为正文或其他部分也有可能存在#链接。
