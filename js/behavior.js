@@ -390,7 +390,6 @@ $(function() {
     }
     $('#ca-edit > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
 
-    //fix thumbinner
-    var ow = $('.thumbimage').width();
-    $('.thumbinner').width(ow+8);
+    // //fix thumbinner
+    // $('.thumbinner').each($(this).width($(this).find('.thumbimage').width()+8));
 });
