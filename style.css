@@ -1218,9 +1218,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
 .heading-hero-image {
 	display:none;
 }
-
-
-.ns-0 form#edit-form,.ns-0 .wikiEditor-ui,.ns-0 .editOptions{
+.skin-bootstrap-mediawiki form#edit-form,.skin-bootstrap-mediawiki .wikiEditor-ui,.skin-bootstrap-mediawiki .editOptions{
     font-size: 14px;
 }
 #contentSub{
