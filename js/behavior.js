@@ -74,9 +74,13 @@ $(function() {
             return;
         }
 		var target = self.attr('href').replace(/\./g, '\\.');
-		$('html, body').animate({
-			scrollTop: $( target ).offset().top - 200
-		}, 250);                                                                                                                                                                                                  
+        try{
+    		$('html, body').animate({
+    			scrollTop: $( target ).offset().top - 200
+    		}, 250);    
+        }catch(error){
+            //catch some undefined errors.
+        }                                                                                                                                                                                              
 	});
 
 	$( document ).on('change', '#subnav-select', function() {
