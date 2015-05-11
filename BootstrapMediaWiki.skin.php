@@ -216,7 +216,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                         </a>
                         <ul>
                             <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
-                            <li><a href="<?php echo $url_prefix; ?>Special:Randompages" class="random-pages"><i class="fa fa-star-o"></i> 随机页面</a></li>
+                            <li><a href="<?php echo $url_prefix; ?>Special:Randompages" class="random-pages"><i class="fa fa-random "></i> 随机页面</a></li>
                             <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
                             <?php if ( $wgEnableUploads ) { ?>
                                 <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
