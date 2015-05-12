@@ -118,6 +118,21 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                     </div>
                 </div>
             </div>
+        <!-- followed list -->
+        <div class="modal fade follow-msg" tabindex="-1" role="dialog" aria-labelledby="mySmModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="gridSystemModalLabel">关注Ta的All</h4>
+                    </div>
+                    <div class="modal-body">
+                       <ul class="follow-modal">
+                       </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="modal fade user-login" tabindex="-1" role="dialog" aria-labelledby="userLoginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -196,7 +211,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                             </li>
                             <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button>	</li>
                         	<li><p><?php
-                        $articles = '{{NUMBEROFARTICLES}}篇条目，<span id="site-follower-count">'.UserSiteFollow::getSiteCount($wgHuijiPrefix).'</span>人关注。';
+                            $articles = '{{NUMBEROFARTICLES}}篇条目，<span id="site-follower-count" data-toggle="modal" data-target=".follow-msg">'.UserSiteFollow::getSiteCount($wgHuijiPrefix).'</span>人关注。';
                         $wgParserOptions = new ParserOptions($wgUser);
                         $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
                         echo $parserOutput->getText()?></p></li>
@@ -216,7 +231,6 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                         </a>
                         <ul>
                             <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
-                            <li><a href="<?php echo $url_prefix; ?>Special:Randompage" class="random-page"><i class="fa fa-random "></i> 随机页面</a></li>
                             <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
                             <?php if ( $wgEnableUploads ) { ?>
                                 <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
@@ -300,10 +314,8 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 							          <ul class="dropdown-menu" role="menu">
 							            <li><a href="http://lotr.huiji.wiki">魔戒中文维基</a></li>
 							            <li><a href="http://wheeloftime.huiji.wiki">时光之轮中文维基</a></li>
-								    	<li><a href="http://wire.huiji.wiki">火线中文维基</a></li>
-								    	<li><a href="http://spn.huiji.wiki">邪恶力量中文wiki</a></li>
-								    	<li><a href="http://asoiaf.huiji.wiki">冰与火之歌中文维基</a></li>
-									  </ul>
+								    <li><a href="http://wire.huiji.wiki">火线中文维基</a></li>
+								</ul>
 									</li>
 									<li>
 										<a href="http://home.huiji.wiki/wiki/首页">创建新wiki</a>
