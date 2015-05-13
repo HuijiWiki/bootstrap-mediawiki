@@ -118,6 +118,21 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                     </div>
                 </div>
             </div>
+        <!-- followed list -->
+        <div class="modal fade follow-msg" tabindex="-1" role="dialog" aria-labelledby="mySmModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="gridSystemModalLabel">关注Ta的All</h4>
+                    </div>
+                    <div class="modal-body">
+                       <ul class="follow-modal">
+                       </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="modal fade user-login" tabindex="-1" role="dialog" aria-labelledby="userLoginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -196,7 +211,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                             </li>
                             <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button>	</li>
                         	<li><p><?php
-                        $articles = '{{NUMBEROFARTICLES}}篇条目，<span id="site-follower-count">'.UserSiteFollow::getSiteCount($wgHuijiPrefix).'</span>人关注。';
+                            $articles = '{{NUMBEROFARTICLES}}篇条目，<span id="site-follower-count" data-toggle="modal" data-target=".follow-msg">'.UserSiteFollow::getSiteCount($wgHuijiPrefix).'</span>人关注。';
                         $wgParserOptions = new ParserOptions($wgUser);
                         $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
                         echo $parserOutput->getText()?></p></li>

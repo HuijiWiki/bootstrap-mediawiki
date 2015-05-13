@@ -1235,3 +1235,6 @@ sup.reference {
 .popover {
 	width:276px;
 }
+.wikiEditor-ui-toolbar .page-characters div span{
+    height: auto!important;
+}
