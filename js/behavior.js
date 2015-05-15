@@ -398,13 +398,17 @@ $(function() {
     });
 
     //show the total number of active 
-    var pagename = mw.config.get('wgPageName');
-    $.get( "api.php", {
+    var pagename = mw.config.get('wgTitle').replace(' ', '_');
+    $.get( "/api.php", {
         action:"flow",
         submodule:"view-topiclist",
         page:"Talk:"+pagename,
-        vtlrender: ""})
+        vtlrender: "",
+        format:"json"})
         .done(function(data){
-            console.log(data);
+            var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
+            if (talkCount > 0){
+                $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
+            }
         });
 });
