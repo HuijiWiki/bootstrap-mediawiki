@@ -396,4 +396,15 @@ $(function() {
     $('.thumbinner').each(function(){
         $(this).width($(this).width()+6);
     });
+
+    //show the total number of active 
+    var pagename = mw.config.get('wgPageName');
+    $.get( "api.php", {
+        action:"flow",
+        submodule:"view-topiclist",
+        page:"Talk:"+pagename,
+        vtlrender: ""})
+        .done(function(data){
+            console.log(data);
+        });
 });
