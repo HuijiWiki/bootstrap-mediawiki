@@ -399,10 +399,16 @@ $(function() {
 
     //show the total number of active 
     var pagename = mw.config.get('wgTitle').replace(' ', '_');
+    var namepspace = mw.config.get('wgCanonicalNamespace').replace(' ', '_');
+    if (namespace != ''){
+    	var talkpage = namespace+'_talk:'+pagename;
+    } else {
+    	var talkpage = 'Talk:'+pagename;
+    }
     $.get( "/api.php", {
         action:"flow",
         submodule:"view-topiclist",
-        page:"Talk:"+pagename,
+        page:talkpage,
         vtlrender: "",
         format:"json"})
         .done(function(data){
