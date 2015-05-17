@@ -318,10 +318,23 @@ body{
 .ns-0 #wiki-outer-body .familyTree, .ns-0 #wiki-outer-body .reflist, .ns-0 #wiki-outer-body .infobox{
   font-size: 14px;
 }
+#wiki-body{
+  @media (min-width: 767px){
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+  @media (max-width: 766px){
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
 #wiki-outer-body {
-  margin-top:111px;
-
-  
+  @media (min-width: 767px){
+    margin-top: 111px;
+  }
+  @media (max-width: 766px){
+    margin-top: 30px;
+  }
   .subnav{
   @hover{
     background-color: extract(@sub-hover-color,1);

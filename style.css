@@ -497,13 +497,7 @@ img.thumbborder {
 	body {
 		padding-left: 0;
 		padding-right: 0;
-		padding-top: 59px;
 	}
-	#wiki-body {
-		padding-left: 35px;
-		padding-right: 35px;
-	}
-
 	.navbar {
 		margin-left: 0;
 		margin-right: 0;
@@ -517,11 +511,6 @@ img.thumbborder {
 }
 
 @media (max-width: 979px) {
-	body {
-		padding-top: 59px;
-	}
-
-
 }
 
 .subnav .container .nav{
@@ -608,8 +597,6 @@ pre.linenums ol {
 
 
 @media (max-width: 979px) {
-	body {padding-top: 59px; }
-
 	.mw-headline {
 		margin-top: -103px;
 		padding-top: 103px;

@@ -85,22 +85,22 @@ $(function() {
 		window.location = $(this).val();
 	});
 
-	$('table')
-		.not('#toc')
-		.not('.mw-specialpages-table')
-        .not('.familytree')
-        .not('.infobox')
-        .not('.familyTree')
-        .not('.quote')
-		.each(function() {
-			var $el = $(this);
+	// $('table')
+	// 	.not('#toc')
+	// 	.not('.mw-specialpages-table')
+ //        .not('.familytree')
+ //        .not('.infobox')
+ //        .not('.familyTree')
+ //        .not('.quote')
+	// 	.each(function() {
+	// 		var $el = $(this);
 
-			if( $el.closest('form').length == 0 ) {
-				$el.addClass('table')
-					 .addClass('table-striped')
-					 .addClass('table-bordered');
-			}//end if
-		});
+	// 		if( $el.closest('form').length == 0 ) {
+	// 			$el.addClass('table')
+	// 				 .addClass('table-striped')
+	// 				 .addClass('table-bordered');
+	// 		}//end if
+	// 	});
 
 	$('pre:not([data-raw="true"])').addClass('prettyprint linenums');
 	$('.jumbotron pre').removeClass('prettyprint linenums');
