@@ -640,7 +640,7 @@ pre.linenums ol {
 	}
 
 	.jumbotron {
-		padding: 2em;
+		padding: 2em 1em;
 	}
 
 	.jumbotron p {
@@ -1224,4 +1224,11 @@ sup.reference {
 }
 .wikiEditor-ui-toolbar .page-characters div span{
     height: auto!important;
+}
+/* fix msupload */
+#upload-list .file {
+    min-height: 40px;
+}
+#upload-bottom {
+	height:inherit;
 }

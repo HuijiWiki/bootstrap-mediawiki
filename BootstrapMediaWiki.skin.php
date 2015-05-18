@@ -426,7 +426,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 								?>
 								<div class="row">
 									<nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
-									<section class="col-md-12 col-sm-12 col-xs-12 wiki-body-section" role="main">
+									<section class=" wiki-body-section" role="main">
 									
 									
 								<?php

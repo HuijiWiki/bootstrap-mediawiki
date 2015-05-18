@@ -134,7 +134,9 @@ body{
       background: none;
     }
     .dropdown-menu a{
+      padding: 8px 0;
       color:#333;
+      font-size: 12px;
     }
     .left-follow{
       padding-top:15px;
@@ -155,9 +157,15 @@ body{
       }
     }
     .left-nav {
+      a{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 190px;
+        white-space: nowrap;
+      }
       .dropdown-menu {
-        left: 50px;
         padding:0;
+        width: 200px;
         li{
           &:hover{
             background: #ddd;
@@ -167,21 +175,29 @@ body{
     }
 
     .left-author>ul {
+      li{
+        max-height: 30px;
+      }
       img{
         margin-right: 5px;
         border: 1px solid rgba(0,0,0,0.5);
+        position: relative;
+        bottom: 6px;
+        vertical-align: inherit;
       }
       a {
         display: inline-block;
-        max-width: 80px;
+        max-height: 30px;
         overflow: hidden;
-        max-height: 20px;
-        word-break: break-all;
+        text-overflow: ellipsis;
+        max-width: 100px;
+        white-space: nowrap;
       }
       span {
         float: right;
         margin-right: 20px;
         color:extract(@a-color,1);
+        text-indent: 0;
       }
     }
     .sidebar-create {
@@ -322,10 +338,6 @@ body{
   @media (min-width: 767px){
     padding-left: 35px;
     padding-right: 35px;
-  }
-  @media (max-width: 766px){
-    padding-left: 10px;
-    padding-right: 10px;
   }
 }
 #wiki-outer-body {
