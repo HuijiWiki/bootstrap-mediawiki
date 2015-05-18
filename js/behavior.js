@@ -356,6 +356,13 @@ $(function() {
             alreturn.hide()
         },1000);
     }
+    $('.login-in').click(function(){
+       $(document).keyup(function(event){
+           if(event.keyCode == 13){
+               $('#wpLoginAttempt').trigger('click');
+           }
+       })
+    });
 
     //follow btn
     $('#user-site-follow').click(function(){
