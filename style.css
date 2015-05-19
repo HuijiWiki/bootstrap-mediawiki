@@ -508,6 +508,9 @@ img.thumbborder {
     .navbar-form{
         width:auto!important;
     }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a{
+        color: #fff;
+    }
 }
 
 @media (max-width: 979px) {
@@ -1239,18 +1242,37 @@ sup.reference {
 }
 .follow-modal li{
     padding: 5px;
-    position: relative;
+    line-height: 40px;
+}
+.follow-modal span{
+    text-align: center;
+}
+.follow-modal .modal-user-info{
+    text-align: left;
+    padding-left: 60px;
+}
+.modal-user-info{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 .follow-modal-headimg img{
     border-radius: 50%;
     margin-right: 10px;
 }
-.follow-modal-editnum{
-    position: absolute;
-    left: 165px;
-    top: 10px;
+.follow-modal-more{
+    padding: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+.follow-modal-more a{
+    float: right;
+    margin-right: 10px;
 }
 @media screen and (max-width: 566px) {
+    .follow-modal .modal-user-info{
+        padding-left:15px;
+    }
     .form-horizontal .form-group {
         margin-right:auto;
         margin-left: auto;
