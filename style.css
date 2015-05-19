@@ -1135,10 +1135,10 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
         position: absolute;
     }
     .subnav-fixed {
-        top: -109px;
+        top: 60px;
     }
     .subnav-up{
-        top:-109px;
+        top:60px;
     }
     .nav-up{
         top: 0;
@@ -1231,4 +1231,28 @@ sup.reference {
 }
 #upload-bottom {
 	height:inherit;
+}
+
+.follow-modal{
+    padding:0;
+    list-style-type: none;
+}
+.follow-modal li{
+    padding: 5px;
+    position: relative;
+}
+.follow-modal-headimg img{
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.follow-modal-editnum{
+    position: absolute;
+    left: 165px;
+    top: 10px;
+}
+@media screen and (max-width: 566px) {
+    .form-horizontal .form-group {
+        margin-right:auto;
+        margin-left: auto;
+    }
 }
