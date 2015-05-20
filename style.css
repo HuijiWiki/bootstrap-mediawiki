@@ -1255,7 +1255,6 @@ sup.reference {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
 }
 .follow-modal-headimg img{
     border-radius: 50%;
@@ -1269,6 +1268,12 @@ sup.reference {
     float: right;
     margin-right: 10px;
 }
+.fa-spinner{
+    margin: 20px auto;
+    width: 60px;
+    height: 60px;
+    display: block!important;
+}
 @media screen and (max-width: 566px) {
     .follow-modal .modal-user-info{
         padding-left:15px;
@@ -1277,4 +1282,21 @@ sup.reference {
         margin-right:auto;
         margin-left: auto;
     }
+    .mw-mmv-image-metadata-links-column{
+        width: 100%;
+    }
 }
+.headimg{
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+.top-fan-row{
+    padding: 5px;
+}
+.top-fan i{
+    float: right;
+    margin-top: 5px;
+    margin-right: 60px;
+    font-weight: 100;
+}
+
