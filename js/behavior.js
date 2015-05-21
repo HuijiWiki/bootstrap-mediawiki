@@ -77,8 +77,8 @@ $(function() {
         if (target != '#' && $( target ) != undefined){
     		$('html, body').animate({
     			scrollTop: $( target ).offset().top - 200
-    		}, 250);    
-        }                                                                                                                                                                                             
+    		}, 250);
+        }
 	});
 
 	$( document ).on('change', '#subnav-select', function() {
@@ -130,7 +130,7 @@ $(function() {
 	if ( $('.toc-sidebar').length > 0 ) {
 		if ( 0 === $('#toc').length ) {
 			$('.toc-sidebar').remove();
-			
+
 		} else {
 			$('.wiki-body-section').removeClass('col-md-12').addClass('col-md-10');
 			$('.toc-sidebar').removeClass('hidden-md').addClass('col-md-2');
@@ -151,7 +151,7 @@ $(function() {
             })
             $('nav.toc-sidebar ul').addClass('nav nav-list');
 			$('.toc-sidebar').attr('id', 'toc');
-			$('body').scrollspy({target: '#toc', offset:230}); 
+			$('body').scrollspy({target: '#toc', offset:230});
 		}//end else
 	} else {
 		$('#toc').each(function() {
@@ -211,17 +211,17 @@ $(function() {
 
 	function hasScrolled() {
 	    var st = $(this).scrollTop();
-	    
+
 	    // Make sure they scroll more than delta
 	    if(Math.abs(lastScrollTop - st) <= delta)
 	        return;
-	    
+
 	    // If they scrolled down and are past the navbar, add class .nav-up.
 	    // This is necessary so you never see what is "behind" the navbar.
 	    if (st > lastScrollTop && st > navbarHeight){
 	        // Scroll Down
             if(!$('.subnav').hasClass('alwaysDown')){
-                $('.subnav').removeClass('subnav-down').addClass('subnav-up');             
+                $('.subnav').removeClass('subnav-down').addClass('subnav-up');
             }
 	        if (ww < 768){
 	        	$('.navbar').removeClass('nav-down').addClass('nav-up');
@@ -230,8 +230,8 @@ $(function() {
 	    } else {
 	        // Scroll Up
             if(!$('.subnav').hasClass('alwaysDown')){
-                $('.subnav').removeClass('subnav-down').addClass('subnav-up');             
-            }            
+                $('.subnav').removeClass('subnav-down').addClass('subnav-up');
+            }
 	        if(st + $(window).height() < $(document).height()) {
 	            $('.subnav').removeClass('subnav-up').addClass('subnav-down');
 	            if (ww < 768){
@@ -240,7 +240,7 @@ $(function() {
 	            $('#sidebar-wraper').removeClass('sidebar-wraper-up').addClass('sidebar-wraper-down');
 	        }
 	    }
-	    
+
 	    lastScrollTop = st;
 	}
     $(window).scroll(function(){
@@ -285,7 +285,7 @@ $(function() {
         $('.parallax-bg').css('height', '200px');
         $('.parallax-jumbotron').css('height', '200px');
     }
-    
+
     //alert-return
     var alreturn = $('.alert-return');
     var alertp = $('.alert-return p');
@@ -315,7 +315,7 @@ $(function() {
                             }else if(data.login.result=='WrongPass') {
                                 alertp.text('密码错误');
                             }else if(data.login.result=='Throttled') {
-                                alertp.text('由于您多次输入密码错误，请先休息一会儿。');                            
+                                alertp.text('由于您多次输入密码错误，请先休息一会儿。');
                             }else if(data.login.result=='NoName') {
                                 alertp.text('您必须键入用户名。');
                             }else if(data.login.result=='Illegal') {
@@ -371,17 +371,17 @@ $(function() {
 
     // config for popup.
     mw.loader.using( [ 'ext.popups' ], function() { //wait for popups to be loaded
- 
+
         // Time to wait in ms before showing a popup on hover. Default is 500.
         mw.popups.render.POPUP_DELAY = 500;
-         
+
         // Time to wait in ms before closing a popup on de-hover. Default is 300.
         mw.popups.render.POPUP_CLOSE_DELAY = 300;
-         
+
         // Time to wait in ms before starting the API queries on hover, must be <= POPUP_DELAY. Default is 50.
         // Don't change this unless you know what you're doing.
         mw.popups.render.API_DELAY = 50;
- 
+
     });
     // bell animation
     if($('#pt-notifications span').text()!=0){
@@ -418,4 +418,92 @@ $(function() {
                 $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
             }
         });
+
+    //user card
+    function userCard(username,carduser){
+        $.post(
+            mw.util.wikiScript(),{
+                action:'ajax',
+                rs:'wfUserFollowsInfoResponse',
+                rsargs:[carduser]
+            },
+            function(data){
+                var res = jQuery.parseJSON(data);
+                if(res.result.gender == "female"){
+                    res.result.gender = "♀";
+                }else{
+                    res.result.gender = "♂";
+                }
+                console.log(res);
+                if(res.success){
+                    var ps = '';
+                    var com = '';
+                    if(res.result.minefollowerhim.length == 0){
+                        ps = "暂无";
+                    }else{
+                        $.each(res.result.minefollowerhim,function(i,item){
+                            ps += "<a href='/wiki/User:"+item+"'>"+item+"</a><i>、</i>";
+                        })
+                    }
+                    if(res.result.commonfollow.length == 0){
+                        com = "暂无";
+                    }else{
+                        $.each(res.result.commonfollow,function(i,item){
+                            com += "<a href='/wiki/User:"+item+"'>"+item+"</a><i>、</i>";
+                        })
+                    }
+                    var msg = "<div class='user-card-top'>"+res.result.url+"<div class='user-card-info'><span><a href='/wiki/User:"+res.result.username+"'>"+res.result.username+"</a></span><span>"+res.result.gender+"</span>" +
+                        "<span>"+res.result.level+"</span><p>"+res.result.status+"</p></div></div><div class='user-card-mid'><div class='user-card-msg'><ul><li>关注：<span>"+res.result.usercounts+"</span></li>" +
+                        "<li class='cut'>被关注：<span>"+res.result.usercounted+"</span></li><li>编辑：<span>"+res.result.editcount+"</span></li></ul><button class='user-card-follow'>关注</button><button class='user-card-gift'>礼物</button></div></div>" +
+                        "<div class='user-card-bottom'><p class='follow-him'>谁关注了Ta("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
+                    $(".user-card").append(msg);
+                    $('.follow-him i:last,.common-follow i:last').remove();
+                }
+            }
+        )
+    }
+//    $('.relationship-item img').click(function(e){
+//        var card = "<div class='user-card'></div>";
+//        var x=200,y=50;
+//        var carduser = $(this).parent().attr('data-name');
+//        $(".user-card").empty();
+//        $("body").append(card);
+//        $('.user-card').css({
+//            "top":+(e.pageY+20)+"px",
+//            "left":+(e.pageX-x)+"px",
+//            "opacity":"0"
+//        });
+//        setTimeout(function(){
+//            $('.user-card').css({
+//                "top":+(e.pageY+y)+"px",
+//                "left":+(e.pageX-x)+"px",
+//                "opacity":"1"
+//            });
+//        },100);
+//        userCard(mw.config.get('wgUserName'),carduser);
+//    });
+    $('.relationship-item img').hover(function(e){
+        var card = "<div class='user-card'></div>";
+        var x=200,y=50;
+        var carduser = $(this).parent().attr('data-name');
+        $(".user-card").empty();
+        $("body").append(card);
+        $('.user-card').css({
+            "top":+(e.pageY+20)+"px",
+            "left":+(e.pageX-x)+"px",
+            "opacity":"0"
+        });
+        setTimeout(function(){
+            $('.user-card').css({
+                "top":+(e.pageY+y)+"px",
+                "left":+(e.pageX-x)+"px",
+                "opacity":"1"
+            });
+        },100);
+        userCard(mw.config.get('wgUserName'),carduser);
+    }, function() {
+        $(".user-card").remove();
+});
+//    var card = "<div class='user-card'></div>";
+//    $("body").append(card);
 });
