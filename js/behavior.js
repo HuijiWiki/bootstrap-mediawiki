@@ -506,4 +506,4 @@ $(function() {
 });
 //    var card = "<div class='user-card'></div>";
 //    $("body").append(card);
-
+});
