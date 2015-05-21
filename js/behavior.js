@@ -406,20 +406,20 @@ $(function() {
     } else {
     	var talkpage = 'Talk:'+pagename;
     }
-    $.get( "/api.php", {
-        action:"flow",
-        submodule:"view-topiclist",
-        page:talkpage,
-        vtlrender: "",
-        format:"json"})
-        .done(function(data){
-            var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
-            if (talkCount > 0){
-                $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
-                flowAdapter.init(data);
-                var items = flowAdapter.convert(data);
-                var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
-                $('#mw-content-text').append(html);
-            }
-        });
+    // $.get( "/api.php", {
+    //     action:"flow",
+    //     submodule:"view-topiclist",
+    //     page:talkpage,
+    //     vtlrender: "",
+    //     format:"json"})
+    //     .done(function(data){
+    //         var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
+    //         if (talkCount > 0){
+    //             $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
+    //             flowAdapter.init(data);
+    //             var items = flowAdapter.convert(data);
+    //             var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
+    //             $('#mw-content-text').append(html);
+    //         }
+    //     });
 });

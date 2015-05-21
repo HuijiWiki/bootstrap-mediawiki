@@ -52,7 +52,7 @@ var flowAdapter = {
 		if (topicLimit == 0){
 			return '';
 		}
-		var html = '<section id="DiscussionSnapshot" class="DiscussionSnapshot"><h2><span class="mw-headline" id="h2-discuss">讨论'+pagename+'</span><a class="button talk-new-post " href="'+items['newPostLink']+'" title="发表一个新话题">发表新话题</a></h2><div class="talk-content"><ul class="talk-discussions">';
+		var html = '<section id="DiscussionSnapshot" class="DiscussionSnapshot"><h2><span class="mw-headline" id="h2-discuss">讨论'+pagename+'</span><a class="mw-ui-button mw-ui-constructive talk-new-post " href="'+items['newPostLink']+'" title="发表一个新话题">发表新话题</a></h2><div class="talk-content"><ul class="talk-discussions">';
 		for (var j = 0; j < items.topics.length; j++){
 			html += self.adaptTopic(items.topics[j], options);
 			topicLimit --;
