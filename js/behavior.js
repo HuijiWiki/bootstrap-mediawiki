@@ -282,8 +282,8 @@ $(function() {
         });
     } else {
         $('.parallax-bg').css('position', 'absolute');
-        $('.parallax-bg').css('height', '200px');
-        $('.parallax-jumbotron').css('height', '200px');
+        $('.parallax-bg').css('height', '300px');
+        $('.parallax-jumbotron').css('height', '300px');
     }
 
     //alert-return
@@ -506,4 +506,4 @@ $(function() {
 });
 //    var card = "<div class='user-card'></div>";
 //    $("body").append(card);
-});
+
