@@ -276,7 +276,7 @@ $(function() {
             || (navigator.MaxTouchPoints > 0)
             || (navigator.msMaxTouchPoints > 0));
     }
-    if (!is_touch_device() && $(window).width() > 946){
+    if (!is_touch_device() || $(window).width() > 768){
         $(window).scroll(function(e){
             parallax();
         });
