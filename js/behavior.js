@@ -434,7 +434,7 @@ $(function() {
                 }else{
                     res.result.gender = "♂";
                 }
-                console.log(res);
+//                console.log(res);
                 if(res.success){
                     var ps = '';
                     var com = '';
@@ -458,6 +458,10 @@ $(function() {
                         "<div class='user-card-bottom'><p class='follow-him'>谁关注了Ta("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
                     $(".user-card").append(msg);
                     $('.follow-him i:last,.common-follow i:last').remove();
+//                    console.log(username);
+                    if(username==null){
+                        $('.user-card-bottom').remove();
+                    }
                 }
             }
         )
@@ -482,28 +486,43 @@ $(function() {
 //        },100);
 //        userCard(mw.config.get('wgUserName'),carduser);
 //    });
+    var hover = true;
     $('.relationship-item img').hover(function(e){
         var card = "<div class='user-card'></div>";
-        var x=200,y=50;
+        var x=200,y=30;
         var carduser = $(this).parent().attr('data-name');
+        var that = $(this);
         $(".user-card").empty();
         $("body").append(card);
-        $('.user-card').css({
-            "top":+(e.pageY+20)+"px",
-            "left":+(e.pageX-x)+"px",
-            "opacity":"0"
-        });
+        setTimeout(function(){
+            $('.user-card').css({
+                "top":+(e.pageY+10)+"px",
+                "left":+(e.pageX-x)+"px"
+            });
+        },500);
+
         setTimeout(function(){
             $('.user-card').css({
                 "top":+(e.pageY+y)+"px",
                 "left":+(e.pageX-x)+"px",
                 "opacity":"1"
             });
-        },100);
+        },600);
         userCard(mw.config.get('wgUserName'),carduser);
+        $(".user-card").hover(function(){
+            hover = false;
+        },function(){
+            hover = true;
+            $(".user-card").remove();
+        });
     }, function() {
-        $(".user-card").remove();
-});
+            setTimeout(function(){
+                if(hover == true) {
+                    $(".user-card").remove();
+                }
+                hover == true;
+            },500)
+    });
 //    var card = "<div class='user-card'></div>";
 //    $("body").append(card);
 });
