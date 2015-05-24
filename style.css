@@ -1428,11 +1428,3 @@ sup.reference {
 .user-card-bottom p{
     margin-bottom: 10px;
 }
-#site-article-count, #site-follower-count{
-	text-decoration:underline;
-	display: inline;
-	color: #999;
-}
-#site-article-count a {
-
-}
