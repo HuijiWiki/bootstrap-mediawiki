@@ -1310,6 +1310,7 @@ sup.reference {
     transition:all 0.5s;
     max-height: 300px;
     overflow: hidden;
+    opacity: 0;
 }
 .relationship-wrapper{
     margin: 20px auto;
