@@ -107,7 +107,7 @@ body{
         text-indent: 15px;
         line-height: 30px;
         .transition;
-        a:not(#site-article-count) {
+        a {
           display: block;
           text-decoration: none;
           &:hover,&:focus,&:active{
@@ -115,9 +115,10 @@ body{
           }
         }
         a#site-article-count{
-          color: #999
+          display: inline;
+          color: #999;
         }
-        .left-author a{
+        a.left-author {
           display:inline;
         }
       }
