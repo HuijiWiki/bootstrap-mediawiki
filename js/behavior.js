@@ -276,7 +276,7 @@ $(function() {
             || (navigator.MaxTouchPoints > 0)
             || (navigator.msMaxTouchPoints > 0));
     }
-    if (!is_touch_device() || $(window).width() > 768){
+    if (!is_touch_device()){
         $(window).scroll(function(e){
             parallax();
         });
@@ -398,26 +398,26 @@ $(function() {
         $(this).width($(this).width()+6);
     });
 
-    //show the total number of active 
-    // var pagename = mw.config.get('wgTitle').replace(' ', '_');
-    // var namespace = mw.config.get('wgCanonicalNamespace').replace(' ', '_');
-    // if (namespace != ''){
-    // 	var talkpage = namespace+'_talk:'+pagename;
-    // } else {
-    // 	var talkpage = 'Talk:'+pagename;
-    // }
-    // $.get( "/api.php", {
-    //     action:"flow",
-    //     submodule:"view-topiclist",
-    //     page:talkpage,
-    //     vtlrender: "",
-    //     format:"json"})
-    //     .done(function(data){
-    //         var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
-    //         if (talkCount > 0){
-    //             $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
-    //         }
-    //     });
+    // show the total number of active talks
+    var pagename = mw.config.get('wgTitle').replace(' ', '_');
+    var namespace = mw.config.get('wgCanonicalNamespace').replace(' ', '_');
+    if (namespace != ''){
+    	var talkpage = namespace+'_talk:'+pagename;
+    } else {
+    	var talkpage = 'Talk:'+pagename;
+    }
+    $.get( "/api.php", {
+        action:"flow",
+        submodule:"view-topiclist",
+        page:talkpage,
+        vtlrender: "",
+        format:"json"})
+        .done(function(data){
+            var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
+            if (talkCount > 0){
+                $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
+            }
+        });
 
     //user card
     function userCard(username,carduser){
