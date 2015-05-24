@@ -364,11 +364,6 @@ $(function() {
        })
     });
 
-    //follow btn
-    $('#user-site-follow').click(function(){
-
-    });
-
     // config for popup.
     mw.loader.using( [ 'ext.popups' ], function() { //wait for popups to be loaded
 
