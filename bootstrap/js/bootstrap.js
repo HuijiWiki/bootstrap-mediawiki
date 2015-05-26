@@ -1147,7 +1147,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   	console.log(element.tostring());
     this.enabled   = true
     this.type      = type
-    this.$element  = $(element)
+    this.$element  = $(element.replace(/([\.\:])/g,'\\$1'))
     this.options   = this.getOptions(options)
     this.$viewport = this.options.viewport && $(this.options.viewport.selector || this.options.viewport)
 
