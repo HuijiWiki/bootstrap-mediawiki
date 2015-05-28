@@ -13,33 +13,33 @@ var flowAdapter = {
 			return '';
 		}
 
-		var html = '<li class="talk-thread">'+
-						'<img class="sprite talk-two" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D">'+
-						'<h4>'+
+		var html = '<li class="media talk-thread">'+
+						'<div class="pull-left"><a href="#"><i class="media-object fa fa-comments fa-2x"></i></a></div>'+
+						'<div class="media-body"><h4 class="media-heading">'+
 							'<a href="'+items['titleLink']+'" class="talk-thread-title">'+
 								items['title']+
 							'</a>'+
 						'</h4>'+
 						'<div class="talk-total-replies">'+items['postNum']+'条信息</div>'+
-						'<ul class="talk-replies">';
+						'<ul class="media-list talk-replies">';
 		for (var l = 0; l < items.posts.length; l++){
 			if ( l < items.posts.length - postLimit){
 				continue;
 			}
 			html += 
-							'<li class="talk-reply">'+
-								'<img class="talk-user-avatar" src="http://vignette4.wikia.nocookie.net/common/avatars/a/a7/25462110.png/revision/latest/scale-to-width/50?cb=1412307978&amp;format=jpg">'+
-								'<div class="talk-user-name">'+
-									'<a href="'+items.posts[l]['userLink']+'">'+items.posts[l]['userName']+'</a>'+
+							'<li class="media talk-reply">'+
+								'<div class="pull-left"><a href="#"><i class="media-object fa fa-comment fa-2x"></i></a></div>'+
+								'<div class="media-body"><div class="media-heading talk-user-name">'+
+									'<a href="'+items.posts[l]['userLink']+'">'+items.posts[l]['userName']+'</a>'+' ('+items.posts[l]['date']+')'+
 								'</div>'+
 								'<div class="talk-message-body">'+
-									items.posts[l]['content']+		'<time title="'+items.posts[l]['date']+'" class="talk-timestamp timeago" datetime="'+items.posts[l]['date']+'">'+items.posts[l]['date']+'</time>'+
-								'</div>'+
+									items.posts[l]['content']+
+								'</div></div>'+
 
 							'</li>';
 		}
 		html += '		</ul>'+
-					'</li>';
+					'</div></li>';
 		return html;
 	},
 	adapt: function(items, options){
@@ -52,7 +52,7 @@ var flowAdapter = {
 		if (topicLimit == 0){
 			return '';
 		}
-		var html = '<section id="DiscussionSnapshot" class="DiscussionSnapshot"><h2><span class="mw-headline" id="h2-discuss">讨论'+pagename+'</span><a class="mw-ui-button mw-ui-constructive talk-new-post " href="'+items['newPostLink']+'" title="发表一个新话题">发表新话题</a></h2><div class="talk-content"><ul class="talk-discussions">';
+		var html = '<section id="DiscussionSnapshot" class="DiscussionSnapshot "><div class="panel panel-info"><div class="panel-heading">讨论'+pagename+'</div><div class="talk-content panel-body"><a class="pull-right mw-ui-button talk-new-post " href="'+items['newPostLink']+'" title="发表一个新话题"><i class="fa fa-comment-o"></i> 发表新话题</a><ul class="media-list talk-discussions">';
 		for (var j = 0; j < items.topics.length; j++){
 			html += self.adaptTopic(items.topics[j], options);
 			topicLimit --;
@@ -62,7 +62,7 @@ var flowAdapter = {
 		}
 		html += '</ul><div class="talk-see-more">'+
 			'<a href="'+items['seeMoreLink']+'">查看更多讨论 &gt;</a>'+
-		'</div></div></section>';
+		'</div></div></div></section>';
 		return html;
 	},
 	convert: function(){

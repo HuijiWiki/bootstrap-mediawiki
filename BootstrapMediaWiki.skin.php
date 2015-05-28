@@ -439,6 +439,11 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                 }//end if
                 ?>
 				<div id="wiki-body" class="container">
+                    <div id="indicator" class="pull-right">
+                        <?php 
+                            // echo $this->getIndicators(); # 1.25 only
+                        ?>
+                    </div>
 					<div id="content">
 						<?php
 							if ( 'sidebar' == $wgTOCLocation ) {
@@ -471,6 +476,15 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 
 						<div id="bodyContent" class="body">
 						<?php $this->html( 'bodytext' ) ?>
+                        <?php 
+                        if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage())){
+                            // $articles = '==吐槽==
+                            // __NOEDITSECTION__
+                            // <Comments />';
+                            // $wgParserOptions = new ParserOptions($wgUser);
+                            // $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
+                            // echo $parserOutput->getText();
+                        }?>
 						</div>
 
 						<?php if ( $this->data['catlinks'] ): ?>
@@ -483,7 +497,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						<?php if ( $this->data['dataAfterContent'] ): ?>
 						<div class="data-after-content">
 						<!-- dataAfterContent -->
-						<?php $this->html( 'dataAfterContent' ); ?>
+						<?php $this->html( 'dataAfterContent' ); ?>                    
 						<!-- /dataAfterContent -->
 						</div>
 						<?php endif; ?>
