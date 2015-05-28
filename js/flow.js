@@ -98,6 +98,9 @@ var flowAdapter = {
 		for (var k = 0; k < self.data.flow["view-topiclist"].result.topiclist.revisions[rev].replies.length; k++){
 			var reply = self.data.flow["view-topiclist"].result.topiclist.revisions[rev].replies[k];
 			var mReply = self.data.flow["view-topiclist"].result.topiclist.revisions[reply];
+			if (!mReply){
+				continue;
+			} 
 			var post = {
 				userLink: mReply.author.links.userpage.url,
 				userName: mReply.author.name,
