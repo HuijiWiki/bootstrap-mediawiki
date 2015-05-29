@@ -346,7 +346,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 										<a href="http://home.huiji.wiki/wiki/首页">创建新wiki</a>
 									</li>
                                     <li>
-                                        <a href="http://home.huiji.wiki/wiki/编辑手册">编辑手册</a>
+                                        <a href="http://home.huiji.wiki/wiki/Help:编辑手册">编辑手册</a>
                                     </li>
 							</ul>
 							<ul class="nav navbar-nav">
