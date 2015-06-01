@@ -341,7 +341,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 							          <ul class="dropdown-menu" role="menu">
 							            <li><a href="http://lotr.huiji.wiki">魔戒中文维基</a></li>
                                         <li><a href="http://asoiaf.huiji.wiki">冰与火之歌中文维基</a></li>
-							            <li><a href="http://gundam.huiji.wiki">高达</a></li>
+							            <li><a href="http://kaiji.huiji.wiki">逆境无赖维基</a></li>
 								    	<li><a href="http://wire.huiji.wiki">火线中文维基</a></li>
 								    	<li><a href="http://spn.huiji.wiki">邪恶力量中文wiki</a></li>
                                         <li><a href="/wiki/Special:Randomwiki">随机一下试试</a></li>
