@@ -490,41 +490,42 @@ $(function() {
 //        },100);
 //        userCard(mw.config.get('wgUserName'),carduser);
 //    });
-    var hover = true;
+
     $('.relationship-item img').hover(function(e){
         var card = "<div class='user-card'></div>";
-        var x=200,y=30;
+        var x= 200-(e.currentTarget.offsetWidth/2),y=e.currentTarget.offsetHeight;
         var carduser = $(this).parent().attr('data-name');
         var that = $(this);
         $(".user-card").empty();
         $("body").append(card);
-        setTimeout(function(){
             $('.user-card').css({
-                "top":+(e.pageY+10)+"px",
-                "left":+(e.pageX-x)+"px"
+                "top":+(e.currentTarget.y+10)+"px",
+                "left":+(e.currentTarget.x-x)+"px"
             });
-        },500);
-
         setTimeout(function(){
             $('.user-card').css({
-                "top":+(e.pageY+y)+"px",
-                "left":+(e.pageX-x)+"px",
+                "top":+(e.currentTarget.y+y)+"px",
                 "opacity":"1"
             });
         },600);
         userCard(mw.config.get('wgUserName'),carduser);
-        $(".user-card").hover(function(){
-            hover = false;
-        },function(){
-            hover = true;
-            $(".user-card").remove();
-        });
     }, function() {
+            $('.user-card').hover(function(){
+               $(this).addClass('onhover');
+                console.log($('.user-card').attr('class'));
+            },function(){
+                $(this).removeClass('onhover');
+            });
             setTimeout(function(){
-                if(hover == true) {
-                    $(".user-card").remove();
+                if($('.user-card').hasClass('onhover')){
+                    $('.user-card').hover(function(){
+
+                    },function(){
+
+                    });
+                }else{
+                    $('.user-card').remove();
                 }
-                hover == true;
             },500)
     });
 //    var card = "<div class='user-card'></div>";
