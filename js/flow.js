@@ -52,7 +52,7 @@ var flowAdapter = {
 		if (topicLimit == 0){
 			return '';
 		}
-		var html = '<section id="DiscussionSnapshot" class="DiscussionSnapshot "><div class="panel panel-info"><div class="panel-heading">讨论'+pagename+'</div><div class="talk-content panel-body"><a class="pull-right mw-ui-button talk-new-post " href="'+items['newPostLink']+'" title="发表一个新话题"><i class="fa fa-comment-o"></i> 发表新话题</a><ul class="media-list talk-discussions">';
+		var html = '<section id="DiscussionSnapshot" class="DiscussionSnapshot "><div class="panel panel-info"><div class="panel-heading">讨论'+pagename+'</div><div class="talk-content panel-body"><a class="pull-right mw-ui-button talk-new-post hidden-xs" href="'+items['newPostLink']+'" title="发表一个新话题"><i class="fa fa-comment-o"></i> 发表新话题</a><ul class="media-list talk-discussions">';
 		for (var j = 0; j < items.topics.length; j++){
 			html += self.adaptTopic(items.topics[j], options);
 			topicLimit --;
@@ -61,7 +61,7 @@ var flowAdapter = {
 			}
 		}
 		html += '</ul><div class="talk-see-more">'+
-			'<a href="'+items['seeMoreLink']+'">查看更多讨论 &gt;</a>'+
+			'<a class="mw-ui-button talk-new-post visible-xs-*" href="'+items['newPostLink']+'" title="发表一个新话题"><i class="fa fa-comment-o"></i> 发表新话题</a><a href="'+items['seeMoreLink']+'">查看更多讨论 &gt;</a>'+
 		'</div></div></div></section>';
 		return html;
 	},

@@ -306,7 +306,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 	            <span class="icon-huiji"></span>
             </a>
             <script>
-                var menutoggle=localStorage.getItem('menu-toggle');
+                var menutoggle = localStorage.getItem('menu-toggle');
                 $('#wrapper').attr('class',menutoggle);
                 if($('#wrapper').hasClass('toggled')){
                     $('#menu-toggle').addClass('menu-active');
@@ -329,7 +329,12 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						<div class="collapse navbar-collapse">
 							<ul id="icon-section" class="nav navbar-nav">
 									<li>
-										<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php echo $wgSitename ?></a>
+										<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php 
+										if( $wgSitename < 8) {
+											echo $wgSitename; 
+										}else{
+											echo 'wiki首页';
+										}?></a>
 									</li>
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
