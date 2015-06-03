@@ -458,7 +458,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 								?>
 								<div class="row">
 									<nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
-									<section class=" wiki-body-section" role="main">
+									<section class="col-md-12 wiki-body-section" role="main">
 								<?php
 							}//end if
 						?>
