@@ -20,7 +20,7 @@ $wgExtensionCredits['skin'][] = array(
 
 $wgValidSkinNames['bootstrapmediawiki'] = 'BootstrapMediaWiki';
 $wgAutoloadClasses['SkinBootstrapMediaWiki'] = __DIR__ . '/BootstrapMediaWiki.skin.php';
-
+$wgMessagesDirs['bootstrapmediawiki'] = __DIR__ . '/i18n';
 
 $skinDirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );
 $skinDir = array_pop( $skinDirParts );
@@ -49,6 +49,8 @@ $wgResourceModules['skins.bootstrapmediawiki'] = array(
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 );
+
+
 
 if ( isset( $wgSiteJS ) ) {
 	$wgResourceModules['skins.bootstrapmediawiki']['scripts'][] = $skinDir . '/' . $wgSiteJS;
