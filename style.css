@@ -1435,4 +1435,9 @@ sup.reference {
     white-space:nowrap;
 }
 
-
+.oo-ui-popupToolGroup-handle {
+    min-height: 3.1em;
+}
+.oo-ui-barToolGroup > .oo-ui-toolGroup-tools > .oo-ui-tool > .oo-ui-tool-link{
+    padding:  0 0.625em!important;
+}
