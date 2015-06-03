@@ -39,6 +39,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		parent::initPage( $out );
 		$out->addModuleScripts( 'skins.bootstrapmediawiki' );
 		$out->addModuleScripts( 'ext.socialprofile.usersitefollows.js' );
+		$out->addModuleScripts( 'ext.comments.js');
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
 	}//end initPage
 
@@ -51,6 +52,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		parent::setupSkinUserCss( $out );
 
 		$out->addModuleStyles( 'skins.bootstrapmediawiki' );
+		$out->addModuleStyles( 'ext.comments.css' );
 
 		// we need to include this here so the file pathing is right
 		$out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
@@ -486,16 +488,17 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						</div>	
 
 						<div id="bodyContent" class="body">
-						<?php $this->html( 'bodytext' ) ?>
+						
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage())){
-                            // $articles = '==吐槽==
-                            // __NOEDITSECTION__
-                            // <Comments />';
-                            // $wgParserOptions = new ParserOptions($wgUser);
-                            // $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
-                            // echo $parserOutput->getText();
+                            $articles = '==吐槽==
+                            __NOEDITSECTION__
+<comments />';
+                            $wgParserOptions = new ParserOptions($wgUser);
+                            $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
+                            echo $parserOutput->getText();
                         }?>
+                        <?php $this->html( 'bodytext' ) ?>
 						</div>
 
 						<?php if ( $this->data['catlinks'] ): ?>

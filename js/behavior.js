@@ -276,7 +276,7 @@ $(function() {
             || (navigator.MaxTouchPoints > 0)
             || (navigator.msMaxTouchPoints > 0));
     }
-    if (!is_touch_device()){
+    if (!is_touch_device() || $(window).width() > 768){
         $(window).scroll(function(e){
             parallax();
         });
@@ -364,6 +364,11 @@ $(function() {
        })
     });
 
+    //follow btn
+    $('#user-site-follow').click(function(){
+
+    });
+
     // config for popup.
     mw.loader.using( [ 'ext.popups' ], function() { //wait for popups to be loaded
 
@@ -393,35 +398,26 @@ $(function() {
         $(this).width($(this).width()+6);
     });
 
-    // show the total number of active talks
-    var pagename = mw.config.get('wgTitle').replace(' ', '_');
-    var namespace = mw.config.get('wgCanonicalNamespace').replace(' ', '_');
-    if (namespace != ''){
-    	var talkpage = namespace+'_talk:'+pagename;
-    } else {
-    	var talkpage = 'Talk:'+pagename;
-    }
-    $.get( "/api.php", {
-        action:"flow",
-        submodule:"view-topiclist",
-        page:talkpage,
-        vtlrender: "",
-        format:"json"})
-        .done(function(data){
-            if (data.flow){
-                var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
-                if (talkCount > 0){
-                    $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
-                    if (!mw.config.get('wgIsMainPage')){
-                        flowAdapter.init(data);
-                        var items = flowAdapter.convert(data);
-                        var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
-                        $('#mw-content-text').append(html);
-                    }
-                }               
-            }
-
-        });
+    //show the total number of active 
+    // var pagename = mw.config.get('wgTitle').replace(' ', '_');
+    // var namespace = mw.config.get('wgCanonicalNamespace').replace(' ', '_');
+    // if (namespace != ''){
+    // 	var talkpage = namespace+'_talk:'+pagename;
+    // } else {
+    // 	var talkpage = 'Talk:'+pagename;
+    // }
+    // $.get( "/api.php", {
+    //     action:"flow",
+    //     submodule:"view-topiclist",
+    //     page:talkpage,
+    //     vtlrender: "",
+    //     format:"json"})
+    //     .done(function(data){
+    //         var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
+    //         if (talkCount > 0){
+    //             $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
+    //         }
+    //     });
 
     //user card
     function userCard(username,carduser){
@@ -438,7 +434,7 @@ $(function() {
                 }else{
                     res.result.gender = "♂";
                 }
-//                console.log(res);
+                console.log(res);
                 if(res.success){
                     var ps = '';
                     var com = '';
@@ -462,10 +458,6 @@ $(function() {
                         "<div class='user-card-bottom'><p class='follow-him'>谁关注了Ta("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
                     $(".user-card").append(msg);
                     $('.follow-him i:last,.common-follow i:last').remove();
-//                    console.log(username);
-                    if(username==null){
-                        $('.user-card-bottom').remove();
-                    }
                 }
             }
         )
@@ -490,44 +482,28 @@ $(function() {
 //        },100);
 //        userCard(mw.config.get('wgUserName'),carduser);
 //    });
-
     $('.relationship-item img').hover(function(e){
         var card = "<div class='user-card'></div>";
-        var x= 200-(e.currentTarget.offsetWidth/2),y=e.currentTarget.offsetHeight;
+        var x=200,y=50;
         var carduser = $(this).parent().attr('data-name');
-        var that = $(this);
         $(".user-card").empty();
         $("body").append(card);
-            $('.user-card').css({
-                "top":+(e.currentTarget.y+10)+"px",
-                "left":+(e.currentTarget.x-x)+"px"
-            });
+        $('.user-card').css({
+            "top":+(e.pageY+20)+"px",
+            "left":+(e.pageX-x)+"px",
+            "opacity":"0"
+        });
         setTimeout(function(){
             $('.user-card').css({
-                "top":+(e.currentTarget.y+y)+"px",
+                "top":+(e.pageY+y)+"px",
+                "left":+(e.pageX-x)+"px",
                 "opacity":"1"
             });
-        },600);
+        },100);
         userCard(mw.config.get('wgUserName'),carduser);
     }, function() {
-            $('.user-card').hover(function(){
-               $(this).addClass('onhover');
-                console.log($('.user-card').attr('class'));
-            },function(){
-                $(this).removeClass('onhover');
-            });
-            setTimeout(function(){
-                if($('.user-card').hasClass('onhover')){
-                    $('.user-card').hover(function(){
-
-                    },function(){
-
-                    });
-                }else{
-                    $('.user-card').remove();
-                }
-            },500)
-    });
+        $(".user-card").remove();
+});
 //    var card = "<div class='user-card'></div>";
 //    $("body").append(card);
 });

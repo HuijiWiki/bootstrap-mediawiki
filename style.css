@@ -244,7 +244,7 @@ option.unclickable {
 }
 
 
-#wiki-body h2, #DiscussionSnapshot {
+#wiki-body h2 {
 	border-bottom: none;
 	margin-bottom: 0.5em;
 	margin-top: 50px;
@@ -1310,7 +1310,6 @@ sup.reference {
     transition:all 0.5s;
     max-height: 300px;
     overflow: hidden;
-    opacity: 0;
 }
 .relationship-wrapper{
     margin: 20px auto;
