@@ -60,7 +60,9 @@ p {
 .mw-content-ltr ul, .mw-content-ltr ol {
 	margin-bottom: 9px;;
 }
-
+.mw-ui-button{
+    min-width:80px;
+}
 
 
 /*.navbar input {*/
@@ -1427,4 +1429,8 @@ sup.reference {
 }
 .user-card-bottom p{
     margin-bottom: 10px;
+    max-height: 20px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }

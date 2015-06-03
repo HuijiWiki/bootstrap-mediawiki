@@ -433,15 +433,17 @@ $(function() {
             },
             function(data){
                 var res = jQuery.parseJSON(data);
+                console.log(res.result.is_follow);
                 if(res.result.gender == "female"){
                     res.result.gender = "♀";
                 }else{
                     res.result.gender = "♂";
                 }
-//                console.log(res);
                 if(res.success){
                     var ps = '';
                     var com = '';
+                    var follow = '';
+                    var isfollow = '';
                     if(res.result.minefollowerhim.length == 0){
                         ps = "暂无";
                     }else{
@@ -454,15 +456,20 @@ $(function() {
                     }else{
                         $.each(res.result.commonfollow,function(i,item){
                             com += "<a href='/wiki/User:"+item+"'>"+item+"</a><i>、</i>";
-                        })
+                        });
+                    }
+                    if(res.result.is_follow=='Y'){
+                        follow = '取关';
+                        isfollow = 'unfollow';
+                    }else{
+                        follow = '关注';
                     }
                     var msg = "<div class='user-card-top'>"+res.result.url+"<div class='user-card-info'><span><a href='/wiki/User:"+res.result.username+"'>"+res.result.username+"</a></span><span>"+res.result.gender+"</span>" +
                         "<span>"+res.result.level+"</span><p>"+res.result.status+"</p></div></div><div class='user-card-mid'><div class='user-card-msg'><ul><li>关注：<span>"+res.result.usercounts+"</span></li>" +
-                        "<li class='cut'>被关注：<span>"+res.result.usercounted+"</span></li><li>编辑：<span>"+res.result.editcount+"</span></li></ul><button class='user-card-follow'>关注</button><button class='user-card-gift'>礼物</button></div></div>" +
-                        "<div class='user-card-bottom'><p class='follow-him'>谁关注了Ta("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
-                    $(".user-card").append(msg);
+                        "<li class='cut'>被关注：<span>"+res.result.usercounted+"</span></li><li>编辑：<span>"+res.result.editcount+"</span></li></ul><button class='user-card-follow "+isfollow+" user-user-follow' data-username = '"+res.result.username+"'>"+follow+"</button><button class='user-card-gift'>礼物</button></div></div>" +
+                        "<div class='user-card-bottom'><p class='follow-him'>共同关注了Ta("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>与Ta共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
+                    $(".user-card").empty().append(msg);
                     $('.follow-him i:last,.common-follow i:last').remove();
-//                    console.log(username);
                     if(username==null){
                         $('.user-card-bottom').remove();
                     }
@@ -470,64 +477,52 @@ $(function() {
             }
         )
     }
-//    $('.relationship-item img').click(function(e){
-//        var card = "<div class='user-card'></div>";
-//        var x=200,y=50;
-//        var carduser = $(this).parent().attr('data-name');
-//        $(".user-card").empty();
-//        $("body").append(card);
-//        $('.user-card').css({
-//            "top":+(e.pageY+20)+"px",
-//            "left":+(e.pageX-x)+"px",
-//            "opacity":"0"
-//        });
-//        setTimeout(function(){
-//            $('.user-card').css({
-//                "top":+(e.pageY+y)+"px",
-//                "left":+(e.pageX-x)+"px",
-//                "opacity":"1"
-//            });
-//        },100);
-//        userCard(mw.config.get('wgUserName'),carduser);
-//    });
 
+    var enter = false;
+    var exist = false;
     $('.relationship-item img').hover(function(e){
-        var card = "<div class='user-card'></div>";
+        var card = "<div class='user-card'><i class='fa fa-spinner fa-spin'></i></div>";
         var x= 200-(e.currentTarget.offsetWidth/2),y=e.currentTarget.offsetHeight;
         var carduser = $(this).parent().attr('data-name');
         var that = $(this);
-        $(".user-card").empty();
-        $("body").append(card);
+        enter = true;
+        appendCard(x,y,card,e);
+        userCard(mw.config.get('wgUserName'),carduser);
+    }, function() {
+        enter = false;
+        removeCard();
+    });
+    function appendCard(x,y,card,e){
+        if(enter&&!exist){
+            $("body").append(card);
             $('.user-card').css({
                 "top":+(e.currentTarget.y+10)+"px",
                 "left":+(e.currentTarget.x-x)+"px"
             });
-        setTimeout(function(){
-            $('.user-card').css({
-                "top":+(e.currentTarget.y+y)+"px",
-                "opacity":"1"
-            });
-        },600);
-        userCard(mw.config.get('wgUserName'),carduser);
-    }, function() {
-            $('.user-card').hover(function(){
-               $(this).addClass('onhover');
-                console.log($('.user-card').attr('class'));
-            },function(){
-                $(this).removeClass('onhover');
-            });
             setTimeout(function(){
-                if($('.user-card').hasClass('onhover')){
-                    $('.user-card').hover(function(){
-
-                    },function(){
-
-                    });
-                }else{
-                    $('.user-card').remove();
-                }
-            },500)
-    });
-//    var card = "<div class='user-card'></div>";
-//    $("body").append(card);
+                $('.user-card').css({
+                    "top":+(e.currentTarget.y+y)+"px",
+                    "opacity":"1"
+                });
+            },600);
+            exist = true;
+            hoverCard();
+        }
+    }
+    function hoverCard(){
+        $('.user-card').hover(function(){
+            enter = true;
+        },function(){
+            enter = false;
+            removeCard();
+        });
+    }
+    function removeCard(){
+        setTimeout(function(){
+            if(!enter&&exist){
+                $('.user-card').remove();
+                exist=false;
+            }
+        },500)
+    }
 });
