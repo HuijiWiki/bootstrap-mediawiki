@@ -39,7 +39,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		parent::initPage( $out );
 		$out->addModuleScripts( 'skins.bootstrapmediawiki' );
 		$out->addModuleScripts( 'ext.socialprofile.usersitefollows.js' );
-		$out->addModuleScripts( 'ext.comments.js');
+		$out->addModules( 'ext.comments.js'); # add js and messages
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
 	}//end initPage
 
@@ -452,11 +452,14 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                 }//end if
                 ?>
 				<div id="wiki-body" class="container">
+					<?php if ( $this->data['isarticle'] ) { ?>
                     <div id="indicator" class="pull-right">
                         <?php 
-                            // echo $this->getIndicators(); # 1.25 only
+                            //echo $this->getIndicators();
                         ?>
                     </div>
+                    <?php } ?>
+
 					<div id="content">
 						<?php
 							if ( 'sidebar' == $wgTOCLocation ) {
@@ -491,9 +494,7 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage())){
-                            $articles = '==吐槽==
-                            __NOEDITSECTION__
-<comments />';
+                            $articles = $this->msgWiki('tucao-wikitext');
                             $wgParserOptions = new ParserOptions($wgUser);
                             $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
                             echo $parserOutput->getText();
