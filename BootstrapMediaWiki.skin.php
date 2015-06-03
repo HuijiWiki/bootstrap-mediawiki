@@ -63,7 +63,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
  * @package MediaWiki
  * @subpackage Skins
  */
-class BootstrapMediaWikiTemplate extends QuickTemplate {
+class BootstrapMediaWikiTemplate extends BaseTemplate {
 	/**
 	 * @var Cached skin object
 	 */
@@ -452,14 +452,6 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                 }//end if
                 ?>
 				<div id="wiki-body" class="container">
-					<?php if ( $this->data['isarticle'] ) { ?>
-                    <div id="indicator" class="pull-right">
-                        <?php 
-                            //echo $this->getIndicators();
-                        ?>
-                    </div>
-                    <?php } ?>
-
 					<div id="content">
 						<?php
 							if ( 'sidebar' == $wgTOCLocation ) {
@@ -467,8 +459,6 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 								<div class="row">
 									<nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
 									<section class=" wiki-body-section" role="main">
-									
-									
 								<?php
 							}//end if
 						?>
@@ -487,11 +477,12 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
 						<?php endif; ?>
 
 						<div id="firstHeading" class="pagetitle page-header">
-							<h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?></small></div></h1>
+							<div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
+                 			<h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?></small></div></h1>
 						</div>	
 
-						<div id="bodyContent" class="body">
-						
+						<div id="bodyContent" class="body">						
+                        <?php $this->html( 'bodytext' ) ?>
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage())){
                             $articles = $this->msgWiki('tucao-wikitext');
@@ -499,7 +490,6 @@ class BootstrapMediaWikiTemplate extends QuickTemplate {
                             $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
                             echo $parserOutput->getText();
                         }?>
-                        <?php $this->html( 'bodytext' ) ?>
 						</div>
 
 						<?php if ( $this->data['catlinks'] ): ?>
