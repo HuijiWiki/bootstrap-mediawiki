@@ -1441,3 +1441,6 @@ sup.reference {
 .oo-ui-barToolGroup > .oo-ui-toolGroup-tools > .oo-ui-tool > .oo-ui-tool-link{
     padding:  0 0.625em!important;
 }
+.wikiEditor-preview-contents,#wpTextbox1{
+    font-size: 16px;
+}
