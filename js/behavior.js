@@ -248,22 +248,37 @@ $(function() {
         }
         lastScrollTop = st;
     }
-    $(window).scroll(function(){
-        $('body').on('mousemove',function(e){
-            var clientY= e.clientY;
-                if($("body").scrollTop()>0) {
-                    if (clientY >= 60 && clientY <= 110) {
-                        if ($('#content-actions').hasClass('subnav-up')) {
-                            $('#content-actions').removeClass('subnav-up').addClass('subnav-down');
-                        }
-                    } else if ((clientY>110&&clientY<120) || (clientY>50&&clientY<60)) {
-                        if ($('#content-actions').hasClass('subnav-down')) {
-                            $('#content-actions').addClass('subnav-up').removeClass('subnav-down');
-                        }
+
+    var hover = false;      //是否在a标签上
+    var enter = false;        //是否进入应该出现nav的这个区域并且不包括a标签
+    var clientY;
+    $('body').on("mouseover mouseout","a",function(event){
+        if(event.type == "mouseover"){
+            hover = true;
+        }else if(event.type == "mouseout"){
+            hover = false;
+        }
+        enter = false;
+    });
+    $('body').on('mousemove',function(e){
+        clientY= e.clientY;
+        if($('body').scrollTop()>0) {
+            if (clientY >= 60 && clientY <= 110) {
+                if(!hover) enter = true;
+                setTimeout(function () {
+                    if (hover||!enter) return;
+                    if ($('#content-actions').hasClass('subnav-up')) {
+                        $('#content-actions').removeClass('subnav-up').addClass('subnav-down');
                     }
+                }, 300)
+            } else if ((clientY > 110 && clientY < 120) || (clientY > 50 && clientY < 60)) {
+                enter = false;
+                if ($('#content-actions').hasClass('subnav-down')) {
+                    $('#content-actions').addClass('subnav-up').removeClass('subnav-down');
                 }
-        });
-    })
+            }
+        }
+    });
     //parallax Jumbotron
     var jumboHeight = $('.parallax-jumbotron').outerHeight();
     if (jumboHeight > 0){
