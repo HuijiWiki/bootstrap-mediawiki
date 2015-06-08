@@ -297,7 +297,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                 <input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden">
                                 <input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden">
                                 <input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden">
-                                <input name="minor" value="" type="hidden"><input name="title" class="createboxInput form-control" value="" placeholder="" dir="ltr" type="text">
+                                <input name="minor" value="" type="hidden"><input name="title" class="createboxInput form-control" value="" placeholder="输入页面名称" dir="ltr" type="text">
                                 <input name="create" class="mw-ui-button mw-ui-progressive" value="创建页面" type="submit">
                             </form>
                         </div>

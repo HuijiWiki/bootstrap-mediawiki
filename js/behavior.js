@@ -215,7 +215,6 @@ $(function() {
         // Make sure they scroll more than delta
         if(Math.abs(lastScrollTop - st) <= delta)
             return;
-
         // If they scrolled down and are past the navbar, add class .nav-up.
         // This is necessary so you never see what is "behind" the navbar.
         if (st > lastScrollTop && st > navbarHeight){
@@ -226,7 +225,7 @@ $(function() {
             if (ww < 768){
                 $('.navbar').removeClass('nav-down').addClass('nav-up');
             }
-            $('#sidebar-wraper').removeClass('sidebar-wraper-down').addClass('sidebar-wraper-up');
+            $('#sidebar-wrapper').removeClass('sidebar-wrapper-down').addClass('sidebar-wrapper-up');
         } else {
             // Scroll Up
             if(!$('.subnav').hasClass('alwaysDown')){
@@ -237,10 +236,16 @@ $(function() {
                 if (ww < 768){
                     $('.navbar').removeClass('nav-up').addClass('nav-down');
                 }
-                $('#sidebar-wraper').removeClass('sidebar-wraper-up').addClass('sidebar-wraper-down');
+                $('#sidebar-wrapper').removeClass('sidebar-wrapper-up').addClass('sidebar-wrapper-down');
             }
         }
-
+        if(st==0) {
+            $('.subnav').removeClass('subnav-down subnav-up');
+            if(ww<768) {
+                $('.navbar').removeClass('nav-up nav-down');
+            }
+            $('#sidebar-wrapper').removeClass('sidebar-wrapper-down sidebar-wrapper-up');
+        }
         lastScrollTop = st;
     }
     $(window).scroll(function(){
