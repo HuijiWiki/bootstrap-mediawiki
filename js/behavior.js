@@ -249,30 +249,30 @@ $(function() {
         lastScrollTop = st;
     }
 
-    var hover = false;      //是否在a标签上
-    var enter = false;        //是否进入应该出现nav的这个区域并且不包括a标签
+    var ahover = false;      //是否在a标签上
+    var areaon = false;        //是否进入应该出现nav的这个区域并且不包括a标签
     var clientY;
     $('body').on("mouseover mouseout","a",function(event){
         if(event.type == "mouseover"){
-            hover = true;
+            ahover = true;
         }else if(event.type == "mouseout"){
-            hover = false;
+            ahover = false;
         }
-        enter = false;
+        areaon = false;
     });
     $('body').on('mousemove',function(e){
         clientY= e.clientY;
         if($('body').scrollTop()>0) {
             if (clientY >= 60 && clientY <= 110) {
-                if(!hover) enter = true;
+                if(!ahover) areaon = true;
                 setTimeout(function () {
-                    if (hover||!enter) return;
+                    if (ahover||!areaon) return;
                     if ($('#content-actions').hasClass('subnav-up')) {
                         $('#content-actions').removeClass('subnav-up').addClass('subnav-down');
                     }
                 }, 300)
             } else if ((clientY > 110 && clientY < 120) || (clientY > 50 && clientY < 60)) {
-                enter = false;
+                areaon = false;
                 if ($('#content-actions').hasClass('subnav-down')) {
                     $('#content-actions').addClass('subnav-up').removeClass('subnav-down');
                 }
@@ -453,11 +453,12 @@ $(function() {
             },
             function(data){
                 var res = jQuery.parseJSON(data);
-                console.log(res.result.is_follow);
                 if(res.result.gender == "female"){
                     res.result.gender = "♀";
-                }else{
+                }else if(res.result.gender == "male"){
                     res.result.gender = "♂";
+                }else{
+                    res.result.gender ='♂/♀';
                 }
                 if(res.success){
                     var ps = '';
@@ -498,35 +499,67 @@ $(function() {
         )
     }
 
+//获取元素相对于屏幕的位置
+    function getPos(ele){
+        var position={x:null,y:null}
+        var offsetParent=ele.offsetParent;
+        while(offsetParent){
+            position.x+=ele.offsetLeft;
+            position.y+=ele.offsetTop;
+            ele=ele.offsetParent;
+            offsetParent=ele.offsetParent;
+            //if(offsetParent==document.body)
+            //return pos;
+            //只有body没有offsetParent，body已经是顶级元素了
+        }
+        return position;
+    }
     var enter = false;
     var exist = false;
-    $('.relationship-item img').hover(function(e){
+    var thisposX,thisposY;
+    var own = false;
+    $('#wiki-body a[href*="huiji.wiki/wiki/%E7%94%A8%E6%88%B7:"] .headimg,#wiki-body a[href*="huiji.wiki/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)")').hover(function(e){
         var card = "<div class='user-card'><i class='fa fa-spinner fa-spin'></i></div>";
         var x= 200-(e.currentTarget.offsetWidth/2),y=e.currentTarget.offsetHeight;
-        var carduser = $(this).parent().attr('data-name');
-        var that = $(this);
+        var posX = getPos(e.currentTarget).x, posY = getPos(e.currentTarget).y;
+        var carduser;
+//        $(this).tagName;
+        if($(this).hasClass('headimg')){
+            carduser = $(this).attr('data-name');
+        }else{
+            carduser = $(this).text();
+        }
+//        tag = $(this).get(0).tagName;
         enter = true;
-        appendCard(x,y,card,e);
+        if(thisposX==posX&&thisposY==posY){
+            own = true;
+        }else{
+            own = false;
+        }
+        appendCard(x,y,card,posX,posY);
         userCard(mw.config.get('wgUserName'),carduser);
     }, function() {
         enter = false;
         removeCard();
     });
-    function appendCard(x,y,card,e){
-        if(enter&&!exist){
+    function appendCard(x,y,card,posX,posY){
+        if((enter&&!exist)||(enter&&!own)){
+            $('.user-card').remove();
             $("body").append(card);
             $('.user-card').css({
-                "top":+(e.currentTarget.y+10)+"px",
-                "left":+(e.currentTarget.x-x)+"px"
+                "top":+(posY+10)+"px",
+                "left":+(posX-x)+"px"
             });
             setTimeout(function(){
                 $('.user-card').css({
-                    "top":+(e.currentTarget.y+y)+"px",
+                    "top":+(posY+y)+"px",
                     "opacity":"1"
                 });
             },600);
             exist = true;
             hoverCard();
+            thisposX = posX;
+            thisposY = posY;
         }
     }
     function hoverCard(){
