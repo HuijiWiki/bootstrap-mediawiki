@@ -1449,3 +1449,7 @@ sup.reference {
     margin: 0 auto;
     display: block;
 }
+.familyTree{
+    border-collapse: separate;
+    font: 80% sans-serif
+}
