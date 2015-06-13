@@ -1344,7 +1344,7 @@ sup.reference {
     margin-bottom: 10px;
 }
 .relationship-name a{
-    display: block;
+    display: inline-block;
     margin-bottom: 10px;
     margin-top: 5px;
 }
@@ -1443,4 +1443,13 @@ sup.reference {
 }
 .wikiEditor-preview-contents,#wpTextbox1{
     font-size: 16px;
+}
+.user-card>.fa-spinner{
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+.familyTree{
+    border-collapse: separate;
+    font: 80% sans-serif
 }
