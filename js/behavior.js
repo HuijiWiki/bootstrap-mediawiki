@@ -65,11 +65,11 @@ $(function() {
         options.trigger = 'focus';
         self.popover(options);
     });
-    //不要限制TOC 因为正文或其他部分也有可能存在#链接。
-    $('a[href^=#][role!=tab]:not(#menu-toggle)').click(function(e){
+//    不要限制TOC 因为正文或其他部分也有可能存在#链接。
+    $('body').on('click','a[href^=#][role!=tab]:not(#menu-toggle)',function(e){
         e.preventDefault();
         var self = $(this);
-        // Let popover.js handle cite note
+//         Let popover.js handle cite note
         if (self.attr('href').match(/^\#cite_note/g)){
             return;
         }
@@ -267,7 +267,7 @@ $(function() {
     //parallax Jumbotron
     var jumboHeight = $('.parallax-jumbotron').outerHeight();
     if (jumboHeight > 0){
-        $('#firstHeading > h1:nth-child(1)').hide();
+        $('#firstHeading > h1').hide();
         $('#firstHeading').css('border-bottom', 'none');
         var bg_image = $('.heading-hero-image a').attr('href');
         $('.parallax-bg').css('background', 'url(\"'+bg_image+'\") no-repeat center center');
@@ -438,7 +438,7 @@ $(function() {
             },
             function(data){
                 var res = jQuery.parseJSON(data);
-                console.log(res.result.is_follow);
+                console.log(res);
                 if(res.result.gender == "female"){
                     res.result.gender = "♀";
                 }else{
