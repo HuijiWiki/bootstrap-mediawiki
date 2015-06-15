@@ -238,6 +238,9 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             <?php if ( $wgEnableUploads ) { ?>
                                 <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
                             <?php } ?>
+                            <li>
+                                <a href="http://home.huiji.wiki/wiki/Help:编辑手册">编辑手册</a>
+                            </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-bar-chart"></i> 数据统计 <b class="caret"></b>
@@ -352,9 +355,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 									<li>
 										<a href="http://home.huiji.wiki/wiki/首页">创建新wiki</a>
 									</li>
-                                    <li>
-                                        <a href="http://home.huiji.wiki/wiki/Help:编辑手册">编辑手册</a>
-                                    </li>
 							</ul>
 							<ul class="nav navbar-nav">
 								<?php echo $this->nav( $this->get_page_links( 'Bootstrap:TitleBar' ) ); ?>
