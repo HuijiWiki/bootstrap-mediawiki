@@ -65,7 +65,7 @@ $(function() {
         options.trigger = 'focus';
         self.popover(options);
     });
-    //不要限制TOC 因为正文或其他部分也有可能存在#链接。
+//不要限制TOC 因为正文或其他部分也有可能存在#链接。
 //    $('a[href^=#][role!=tab]:not(#menu-toggle)').click(function(e){
 //        e.preventDefault();
 //        var self = $(this);
@@ -80,7 +80,6 @@ $(function() {
 //            }, 250);
 //        }
 //    });
-
     $( document ).on('change', '#subnav-select', function() {
         window.location = $(this).val();
     });
@@ -282,10 +281,11 @@ $(function() {
     //parallax Jumbotron
     var jumboHeight = $('.parallax-jumbotron').outerHeight();
     if (jumboHeight > 0){
-        $('#firstHeading > h1:nth-child(1)').hide();
+        $('#firstHeading > h1').hide();
         $('#firstHeading').css('border-bottom', 'none');
         var bg_image = $('.heading-hero-image a').attr('href');
         $('.parallax-bg').css('background', 'url(\"'+bg_image+'\") no-repeat center center');
+        parallax();
     }
     function parallax(){
         var scrolled = $(window).scrollTop();
