@@ -518,7 +518,7 @@ $(function() {
     var exist = false;
     var thisposX,thisposY;
     var own = false;
-    $('#wiki-body a[href*="huiji.wiki/wiki/%E7%94%A8%E6%88%B7:"] .headimg,#wiki-body a[href*="huiji.wiki/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)")').hover(function(e){
+    $('#wiki-body a[href*="huiji.wiki/wiki/%E7%94%A8%E6%88%B7:"] .headimg, #wiki-body a[href*="huiji.wiki/wiki/User:"] .headimg, #wiki-body a[href*="huiji.wiki/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"), #wiki-body a[href*="huiji.wiki/wiki/User:"]:not(":has(img)")').hover(function(e){
         var card = "<div class='user-card'><i class='fa fa-spinner fa-spin'></i></div>";
         var x= 200-(e.currentTarget.offsetWidth/2),y=e.currentTarget.offsetHeight;
         var posX = getPos(e.currentTarget).x, posY = getPos(e.currentTarget).y;
