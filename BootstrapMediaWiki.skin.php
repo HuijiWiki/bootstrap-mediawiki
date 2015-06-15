@@ -39,6 +39,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		parent::initPage( $out );
 		$out->addModuleScripts( 'skins.bootstrapmediawiki' );
 		$out->addModuleScripts( 'ext.socialprofile.usersitefollows.js' );
+        $out->addModuleScripts( 'ext.socialprofile.useruserfollows.js' );
 		$out->addModules( 'ext.comments.js'); # add js and messages
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
 	}//end initPage
@@ -52,6 +53,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		parent::setupSkinUserCss( $out );
 
 		$out->addModuleStyles( 'skins.bootstrapmediawiki' );
+        $out->addModuleScripts( 'ext.socialprofile.useruserfollows.css' );
 		$out->addModuleStyles( 'ext.comments.css' );
 
 		// we need to include this here so the file pathing is right
