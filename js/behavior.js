@@ -493,6 +493,8 @@ $(function() {
                     $('.follow-him i:last,.common-follow i:last').remove();
                     if(username==null){
                         $('.user-card-bottom').remove();
+                    }else if(username == res.result.username){
+                        $('.user-card-follow,.user-card-gift').hide();
                     }
                 }
             }
