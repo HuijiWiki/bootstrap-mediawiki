@@ -63,7 +63,9 @@ p {
 .mw-ui-button{
     min-width:80px;
 }
-
+ol.references {
+    margin-top: 0;
+}
 
 /*.navbar input {*/
 	/*background-color: #555;*/

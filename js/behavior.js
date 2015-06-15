@@ -301,8 +301,7 @@ $(function() {
             parallax();
         });
     } else {
-        $('.parallax-bg').css('position', 'absolute');
-        $('.parallax-bg').css('height', '300px');
+        $('.parallax-bg').css({'position': 'absolute','height':'300px','top':'-10px'});
         $('.parallax-jumbotron').css('height', '300px');
     }
 
