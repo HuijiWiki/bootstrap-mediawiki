@@ -286,6 +286,7 @@ $(function() {
         $('#firstHeading').css('border-bottom', 'none');
         var bg_image = $('.heading-hero-image a').attr('href');
         $('.parallax-bg').css('background', 'url(\"'+bg_image+'\") no-repeat center center');
+        parallax();
     }
     function parallax(){
         var scrolled = $(window).scrollTop();
