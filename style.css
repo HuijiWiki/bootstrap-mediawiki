@@ -510,7 +510,10 @@ img.thumbborder {
         margin-left: 0;
     }
     .navbar-form{
-        width:auto!important;
+        width:100%!important;
+        position: fixed;
+        bottom: -60px;
+        background: #333;
     }
     .navbar-default .navbar-nav .open .dropdown-menu>li>a{
         color: #fff;
