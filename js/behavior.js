@@ -66,20 +66,20 @@ $(function() {
         self.popover(options);
     });
 //不要限制TOC 因为正文或其他部分也有可能存在#链接。
-//    $('a[href^=#][role!=tab]:not(#menu-toggle)').click(function(e){
-//        e.preventDefault();
-//        var self = $(this);
-//        // Let popover.js handle cite note
-//        if (self.attr('href').match(/^\#cite_note/g)){
-//            return;
-//        }
-//        var target = self.attr('href').replace(/\./g, '\\.');
-//        if (target != '#' && $( target ) != undefined){
-//            $('html, body').animate({
-//                scrollTop: $( target ).offset().top - 200
-//            }, 250);
-//        }
-//    });
+    $('#wiki-outer-body').on('click','a[href^=#][role!=tab]',function(e){
+        e.preventDefault();
+        var self = $(this);
+        // Let popover.js handle cite note
+        if (self.attr('href').match(/^\#cite_note/g)){
+            return;
+        }
+        var target = self.attr('href').replace(/\./g, '\\.');
+        if (target != '#' && $( target ) != undefined){
+            $('html, body').animate({
+                scrollTop: $( target ).offset().top - 200
+            }, 250);
+        }
+    });
     $( document ).on('change', '#subnav-select', function() {
         window.location = $(this).val();
     });
