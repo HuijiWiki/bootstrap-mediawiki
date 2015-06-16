@@ -65,6 +65,7 @@ $(function() {
         options.trigger = 'focus';
         self.popover(options);
     });
+
     $('#wiki-outer-body').on('click','a[href^=#][role!=tab]',function(e){
         e.preventDefault();
         var self = $(this);
