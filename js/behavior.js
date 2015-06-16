@@ -137,7 +137,7 @@ $(function() {
                 $(this).find('ul:first').appendTo( '.toc-sidebar' );
                 $(this).remove();
             });
-            $('nav.toc-sidebar > ul').append('<li><a href="#top">回到顶部</a></li>');
+            $('nav.toc-sidebar > ul').append('<li><a href="#firstHeading">回到顶部</a></li>');
             $('nav.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix');
             $('nav.toc-sidebar > ul').affix({
               offset: {
