@@ -65,7 +65,7 @@ $(function() {
         options.trigger = 'focus';
         self.popover(options);
     });
-//不要限制TOC 因为正文或其他部分也有可能存在#链接。
+
     $('#wiki-outer-body').on('click','a[href^=#][role!=tab]',function(e){
         e.preventDefault();
         var self = $(this);
@@ -301,8 +301,7 @@ $(function() {
             parallax();
         });
     } else {
-        $('.parallax-bg').css('position', 'absolute');
-        $('.parallax-bg').css('height', '300px');
+        $('.parallax-bg').css({'position': 'absolute','height':'300px','top':'-10px'});
         $('.parallax-jumbotron').css('height', '300px');
     }
 
@@ -487,12 +486,15 @@ $(function() {
                     }
                     var msg = "<div class='user-card-top'>"+res.result.url+"<div class='user-card-info'><span><a href='/wiki/User:"+res.result.username+"'>"+res.result.username+"</a></span><span>"+res.result.gender+"</span>" +
                         "<span>"+res.result.level+"</span><p>"+res.result.status+"</p></div></div><div class='user-card-mid'><div class='user-card-msg'><ul><li>关注：<span>"+res.result.usercounts+"</span></li>" +
-                        "<li class='cut'>被关注：<span>"+res.result.usercounted+"</span></li><li>编辑：<span>"+res.result.editcount+"</span></li></ul><button class='user-card-follow "+isfollow+" user-user-follow' data-username = '"+res.result.username+"'>"+follow+"</button><button class='user-card-gift'>礼物</button></div></div>" +
+                        "<li class='cut'>被关注：<span>"+res.result.usercounted+"</span></li><li>编辑：<span>"+res.result.editcount+"</span></li></ul><button class='user-card-follow "+isfollow+" user-user-follow' data-username = '"+res.result.username+"'>"+follow+"</button>" +
+                        "<a href='/index.php?title=%E7%89%B9%E6%AE%8A:GiveGift&amp;user="+res.result.username+"'  class='user-card-gift' title='特殊:GiveGift'><i class='fa fa-gift'></i>礼物</a></div></div>" +
                         "<div class='user-card-bottom'><p class='follow-him'>共同关注了Ta("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>与Ta共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
                     $(".user-card").empty().append(msg);
                     $('.follow-him i:last,.common-follow i:last').remove();
                     if(username==null){
                         $('.user-card-bottom').remove();
+                    }else if(username == res.result.username){
+                        $('.user-card-follow,.user-card-gift').hide();
                     }
                 }
             }

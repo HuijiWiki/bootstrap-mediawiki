@@ -63,7 +63,9 @@ p {
 .mw-ui-button{
     min-width:80px;
 }
-
+ol.references {
+    margin-top: 0;
+}
 
 /*.navbar input {*/
 	/*background-color: #555;*/
@@ -508,7 +510,10 @@ img.thumbborder {
         margin-left: 0;
     }
     .navbar-form{
-        width:auto!important;
+        width:100%!important;
+        position: fixed;
+        bottom: -60px;
+        background: #333;
     }
     .navbar-default .navbar-nav .open .dropdown-menu>li>a{
         color: #fff;
@@ -1417,12 +1422,14 @@ sup.reference {
     border-left:1px solid #e0e0e0;
     border-right:1px solid #e0e0e0;
 }
-.user-card-msg button{
+.user-card-msg .user-card-follow,.user-card-msg .user-card-gift{
     background:#fff;
     padding: 5px 20px;
     border: none;
     box-shadow: 0 0 2px rgba(0,0,0,.1);
     margin: 10px;
+    text-decoration: none;
+    color: #333;
 }
 .user-card-bottom{
     padding: 10px 20px 0 20px;

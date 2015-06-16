@@ -359,9 +359,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 										<a href="http://home.huiji.wiki/wiki/首页">创建新wiki</a>
 									</li>
 							</ul>
-							<ul class="nav navbar-nav">
-								<?php echo $this->nav( $this->get_page_links( 'Bootstrap:TitleBar' ) ); ?>
-							</ul>
 						<?php
 						if ( $wgUser->isLoggedIn() ) {
 							if ( count( $this->data['personal_urls'] ) > 0 ) {
