@@ -57,7 +57,7 @@ $(function() {
     $('a[href^=#cite_note]').each(function(){
         var self = $(this);
         var options = {};
-        var ref = self.attr('href');
+        var ref = self.attr('href').replace('.', '\\.');
         var innerHtml = $(ref+' .reference-text').html();
         options.content = innerHtml;
         options.placement = 'auto';
