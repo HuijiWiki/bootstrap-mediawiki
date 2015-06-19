@@ -1732,7 +1732,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
       .find(this.selector)
       .map(function () {
         var $el   = $(this)
-        var href  = （$el.data('target') || $el.attr('href')).replace(/\./g, '//.')
+        var href  = $.escape($el.data('target') || $el.attr('href'))
         var $href = /^#./.test(href) && $(href)
 
         return ($href
@@ -2108,4 +2108,16 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
       if (data.offsetBottom) data.offset.bottom = data.offsetBottom
       if (data.offsetTop)    data.offset.top    = data.offsetTop
 
-      Plugin.call($spy, da
+      Plugin.call($spy, data)
+    })		
+  })		
+		
+}(jQuery);
+
+/* add escape function to handle attr('href') issue */
+jQuery.extend({
+  escape: function(href) {
+    var r = /([!"\$%&'()\*\+,\.\/:;<=>\?@\[\\\]\^`\{\|\}~])/g; // except '#'
+    return href.replace(r, '\\$1');
+  }
+});
