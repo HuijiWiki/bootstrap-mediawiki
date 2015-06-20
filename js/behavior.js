@@ -1,3 +1,11 @@
+/* add escape function to handle attr('href') issue */
+jQuery.extend({
+  escape: function(href) {
+    var r = /([!"\$%&'()\*\+,\.\/:;<=>\?@\[\\\]\^`\{\|\}~])/g; // except '#'
+    return href.replace(r, '\\$1');
+  }
+});
+
 $(function() {
     $('html').removeClass('client-nojs');
     //function menuToggle(){
@@ -581,4 +589,3 @@ $(function() {
         },500)
     }
 });
-
