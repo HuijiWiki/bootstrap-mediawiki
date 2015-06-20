@@ -682,7 +682,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 				$item = explode( '|', $match[2] );
 				$item = array(
 					'title' => $match[1].$item[1],
-					'link' => $dir.$item[0],
+					'link' => $sub?$item[0]:$dir.$item[0],
 					'local' => true,
 				);
 			} else {
