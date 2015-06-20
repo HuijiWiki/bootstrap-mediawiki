@@ -35,7 +35,7 @@ $wgResourceModules['skins.bootstrapmediawiki'] = array(
 		$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
-		$skinDir . '/bootstrap/js/bootstrap.min.js',
+		$skinDir . '/bootstrap/js/bootstrap.js',
 		$skinDir . '/google-code-prettify/prettify.js',
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',
 		$skinDir . '/js/flow.js',

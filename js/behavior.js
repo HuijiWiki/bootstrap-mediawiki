@@ -1,11 +1,3 @@
-/* add escape function to handle attr('href') issue */
-jQuery.extend({
-  escape: function(href) {
-    var r = /([!"\$%&'()\*\+,\.\/:;<=>\?@\[\\\]\^`\{\|\}~])/g; // except '#'
-    return href.replace(r, '\\$1');
-  }
-});
-
 $(function() {
     $('html').removeClass('client-nojs');
     //function menuToggle(){
@@ -65,7 +57,7 @@ $(function() {
     $('a[href^=#cite_note]').each(function(){
         var self = $(this);
         var options = {};
-        var ref = $.escape(self.attr('href'));
+        var ref = self.attr('href').replace('.', '\\.');
         var innerHtml = $(ref+' .reference-text').html();
         options.content = innerHtml;
         options.placement = 'auto';
