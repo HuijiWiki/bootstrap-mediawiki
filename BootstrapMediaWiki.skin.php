@@ -694,8 +694,9 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 					$title = $item;
 				}//end else
 
+                $dir = '/wiki/';
 				if( $link ) {
-					$item = array('title'=> $title, 'link' => $item, 'local' => ! $external , 'external' => $external );
+					$item = array('title'=> $title, 'link' => $dir.$item, 'local' => ! $external , 'external' => $external );
 				} else {
 					$item = array('title'=> $title, 'link' => $item, 'textonly' => true, 'external' => $external );
 				}//end else
