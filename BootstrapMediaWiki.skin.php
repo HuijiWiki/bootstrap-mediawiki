@@ -677,12 +677,12 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 				$sub = false;
 				$link = false;
 			}
-
+            $dir = '/wiki/';
 			if( strpos( $match[2], '|' ) !== false ) {
 				$item = explode( '|', $match[2] );
 				$item = array(
-					'title' => $match[1] . $item[1],
-					'link' => $item[0],
+					'title' => $match[1].$item[1],
+					'link' => $dir.$item[0],
 					'local' => true,
 				);
 			} else {
@@ -694,9 +694,8 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 					$title = $item;
 				}//end else
 
-                $dir = '/wiki/';
 				if( $link ) {
-					$item = array('title'=> $title, 'link' => $dir.$item, 'local' => ! $external , 'external' => $external );
+					$item = array('title'=> $title, 'link' => $item, 'local' => ! $external , 'external' => $external );
 				} else {
 					$item = array('title'=> $title, 'link' => $item, 'textonly' => true, 'external' => $external );
 				}//end else
