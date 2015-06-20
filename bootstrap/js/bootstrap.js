@@ -1144,7 +1144,6 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   }
 
   Tooltip.prototype.init = function (type, element, options) {
-  	console.log(element.tostring());
     this.enabled   = true
     this.type      = type
     this.$element  = $(element.replace(/([\.\:])/g,'\\$1'))
