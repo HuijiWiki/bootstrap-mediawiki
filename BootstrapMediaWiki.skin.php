@@ -692,6 +692,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 				} else {
 					$item = $match[1] . $match[2];
 					$title = $item;
+                    $item = $dir.$item;
 				}//end else
 
 				if( $link ) {
