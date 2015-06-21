@@ -201,9 +201,13 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                 </div>
             </div>
         </div>
+
 <!--            <div class="alert-wrap">-->
 <!--                <div class="alert" role="alert">good</div>-->
 <!--            </div>-->
+        <?php if ($wgHuijiPrefix === 'home' && ($this->getSkin()->getTitle()->isMainPage()) && false){ 
+            // include ('/var/www/huiji/views/index.html');
+        } else {?>
                 <!-- Sidebar -->
 	        <div id="sidebar-wrapper">
 	          	
@@ -356,7 +360,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 									  </ul>
 									</li>
 									<li>
-										<a href="http://home.huiji.wiki/wiki/首页">创建新wiki</a>
+										<a href="http://home.huiji.wiki/wiki/创建新wiki">创建新wiki</a>
 									</li>
 							</ul>
 						<?php
@@ -526,8 +530,8 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 					</footer>
 				</div><!-- container -->
 			</div><!-- bottom -->
-	    </div>
-	    <!-- /#wrapper -->
+	    </div><!-- /#wrapper -->
+        <?php }?> <!-- mainpage if -->
 		<?php
 		$this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
 		$this->html('reporttime');

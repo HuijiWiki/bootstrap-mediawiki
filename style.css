@@ -511,8 +511,6 @@ img.thumbborder {
     }
     .navbar-form{
         width:100%!important;
-        position: fixed;
-        bottom: -60px;
         background: #333;
     }
     .navbar-default .navbar-nav .open .dropdown-menu>li>a{
