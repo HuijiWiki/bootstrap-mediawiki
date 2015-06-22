@@ -44,7 +44,7 @@ $(document).ready(function(){
     });
     var loginerror = $('.login-error');
     function wiki_signup(login,email,pass){
-        $.post('http://test.huiji.wiki/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+ '&format=json',function(data){
+        $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+ '&format=json',function(data){
             if(login==''){
                 loginerror.show().empty().text('您的用户名不能为空');
             }
