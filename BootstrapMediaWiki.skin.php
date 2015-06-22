@@ -35,12 +35,15 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 	 * initialize the page
 	 */
 	public function initPage( OutputPage $out ) {
-		global $wgSiteJS;
+		global $wgSiteJS, $wgHuijiPrefix;
 		parent::initPage( $out );
-		$out->addModuleScripts( 'skins.bootstrapmediawiki' );
-		$out->addModuleScripts( 'ext.socialprofile.usersitefollows.js' );
+        if ($wgHuijiPrefix === 'test' && ($this->getSkin()->getTitle()->isMainPage()) ){
+            $out->addModuleScripts( 'skins.frontpage');
+        } 
+        $out->addModuleScripts( 'skins.bootstrapmediawiki' );     
+        $out->addModules( 'ext.comments.js'); # add js and messages       
+        $out->addModuleScripts( 'ext.socialprofile.usersitefollows.js' );
         $out->addModuleScripts( 'ext.socialprofile.useruserfollows.js' );
-		$out->addModules( 'ext.comments.js'); # add js and messages
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
 	}//end initPage
 
@@ -48,13 +51,15 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 	 * prepares the skin's CSS
 	 */
 	public function setupSkinUserCss( OutputPage $out ) {
-		global $wgSiteCSS;
+		global $wgSiteCSS, $wgHuijiPrefix;
 
 		parent::setupSkinUserCss( $out );
-
-		$out->addModuleStyles( 'skins.bootstrapmediawiki' );
-        $out->addModuleScripts( 'ext.socialprofile.useruserfollows.css' );
-		$out->addModuleStyles( 'ext.comments.css' );
+        if ($wgHuijiPrefix === 'test' && ($this->getSkin()->getTitle()->isMainPage()) ){
+            $out->addModuleStyles( 'skins.frontpage');
+        } 
+        $out->addModuleStyles( 'skins.bootstrapmediawiki' ); 
+        $out->addModuleStyles( 'ext.socialprofile.useruserfollows.css' );
+        $out->addModuleStyles( 'ext.comments.css' );
 
 		// we need to include this here so the file pathing is right
 		$out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
@@ -205,8 +210,8 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 <!--            <div class="alert-wrap">-->
 <!--                <div class="alert" role="alert">good</div>-->
 <!--            </div>-->
-        <?php if ($wgHuijiPrefix === 'home' && ($this->getSkin()->getTitle()->isMainPage()) && false){ 
-            // include ('/var/www/huiji/views/index.html');
+        <?php if ($wgHuijiPrefix === 'test' && ($this->getSkin()->getTitle()->isMainPage()) ){ 
+            include ('frontpage.php');
         } else {?>
                 <!-- Sidebar -->
 	        <div id="sidebar-wrapper">
