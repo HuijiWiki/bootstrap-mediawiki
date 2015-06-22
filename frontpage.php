@@ -578,5 +578,15 @@
                 </ul>
             </div>
         </div>
+        <div class="bottom">
+            <div class="container">
+                <?php $this->includePage('Bootstrap:Footer'); ?>
+                <footer>
+                    <p>Powered by <a href="http://mediawiki.org">MediaWiki</a> <a href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a>
+                    </p>
+                    
+                </footer>
+            </div><!-- container -->
+        </div><!-- bottom -->
     </div>
 </div>

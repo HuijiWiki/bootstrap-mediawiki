@@ -37,7 +37,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 	public function initPage( OutputPage $out ) {
 		global $wgSiteJS, $wgHuijiPrefix;
 		parent::initPage( $out );
-        if ($wgHuijiPrefix === 'test' && ($this->getSkin()->getTitle()->isMainPage()) ){
+        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home') && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleScripts( 'skins.frontpage');
         } 
         $out->addModuleScripts( 'skins.bootstrapmediawiki' );     
@@ -54,7 +54,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		global $wgSiteCSS, $wgHuijiPrefix;
 
 		parent::setupSkinUserCss( $out );
-        if ($wgHuijiPrefix === 'test' && ($this->getSkin()->getTitle()->isMainPage()) ){
+        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home') && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleStyles( 'skins.frontpage');
         } 
         $out->addModuleStyles( 'skins.bootstrapmediawiki' ); 
