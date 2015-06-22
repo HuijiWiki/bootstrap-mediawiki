@@ -210,7 +210,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 <!--            <div class="alert-wrap">-->
 <!--                <div class="alert" role="alert">good</div>-->
 <!--            </div>-->
-        <?php if ($wgHuijiPrefix === 'test' && ($this->getSkin()->getTitle()->isMainPage()) ){ 
+        <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home') && ($this->getSkin()->getTitle()->isMainPage()) ){ 
             include ('frontpage.php');
         } else {?>
                 <!-- Sidebar -->
