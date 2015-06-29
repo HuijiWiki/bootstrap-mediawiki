@@ -45,18 +45,18 @@ $(document).ready(function(){
     var loginerror = $('.login-error');
     function wiki_signup(login,email,pass){
         $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+ '&format=json',function(data){
-            if(login==''){
+	    if(login==''){
                 loginerror.show().empty().text('您的用户名不能为空');
             }
             else if(email==''){
                 loginerror.show().empty().text('您的邮箱必须填写');
             }
             else if(data.createaccount.result=='NeedToken'){
-                $.post('http://test.huiji.wiki/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+'&token='+data.createaccount.token+ '&format=json',function(data){
+                $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+'&token='+data.createaccount.token+ '&format=json',function(data){
                     if(!data.error){
                         if(data.createaccount.result=="Success"){
                             loginerror.show().empty().text('注册成功');
-//                            window.location.reload();
+                            window.location.reload();
                         }
                         else{
                             loginerror.show().empty().text(data.createaccount.result);
