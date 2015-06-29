@@ -287,22 +287,154 @@
                 </ul>
             </div>
             <aside class="wiki-sidebar">
-                <div class="chart">
-                    <p>灰机用户榜</p>
-                </div>
-                <div class="top-users">
+                <div class="user-rank">
+                    <div class="chart">
+                        <p>灰机里程榜</p>
+                    </div>
+                    <!-- weekly -->
+                    <div class="tab-content">
+                    <div class="top-users weekly-rank">
+                        <?php
+                            $count = 10;
+                            $params['ORDER BY'] = 'up_points DESC';
+                            $params['LIMIT'] = $count;
+
+                            $dbr = wfGetDB( DB_SLAVE );
+                            $res = $dbr->select(
+                                "user_points_weekly",
+                                array( 'up_user_id', 'up_user_name', 'up_points' ),
+                                array( 'up_user_id <> 0' ),
+                                __METHOD__,
+                                $params
+                            );
+
+                            foreach ( $res as $row ) {
+                                $user_list[] = array(
+                                    'user_id' => $row->up_user_id,
+                                    'user_name' => $row->up_user_name,
+                                    'points' => $row->up_points
+                                );
+                            }
+                            $x = 0;
+                            foreach ( $user_list as $user ) {
+                                $user_title = Title::makeTitle( NS_USER, $user['user_name'] );
+                                $avatar = new wAvatar( $user['user_id'], 'ml' );
+                                $avatarImage = $avatar->getAvatarURL();
+                                $x++;
+                        ?>
+                        <div class="top-fan-row">
+                            <span class="top-fan-num"><?php echo $x; ?></span>
+                            <span class="top-fan">
+                                <?php echo $avatarImage; ?> <a href="<?php echo htmlspecialchars( $user_title->getFullURL() ); ?>"><?php echo $user['user_name']; ?></a>
+                            </span>
+                            <span class="top-fan-points">
+                                <b><?php echo number_format($user['points']) ;?></b> 公里
+                            </span>
+                            <div class="cleared">
+
+                            </div>
+                        </div>
+                        <?php
+                            }
+                        ?>
+
+                    </div>
+                    <!-- monthly -->
+                    <div class="top-users monthly-rank hide">
+                        <?php
+                            $count = 10;
+                            $params['ORDER BY'] = 'up_points DESC';
+                            $params['LIMIT'] = $count;
+
+                            $dbr = wfGetDB( DB_SLAVE );
+                            $res = $dbr->select(
+                                "user_points_monthly",
+                                array( 'up_user_id', 'up_user_name', 'up_points' ),
+                                array( 'up_user_id <> 0' ),
+                                __METHOD__,
+                                $params
+                            );
+
+                            foreach ( $res as $row ) {
+                                $user_list_month[] = array(
+                                    'user_id' => $row->up_user_id,
+                                    'user_name' => $row->up_user_name,
+                                    'points' => $row->up_points
+                                );
+                            }
+                            $y = 0;
+                            foreach ( $user_list_month as $user ) {
+                                $user_title = Title::makeTitle( NS_USER, $user['user_name'] );
+                                $avatar = new wAvatar( $user['user_id'], 'ml' );
+                                $avatarImage = $avatar->getAvatarURL();
+                                $y++;
+                        ?>
+                        <div class="top-fan-row">
+                            <span class="top-fan-num"><?php echo $y; ?></span>
+                            <span class="top-fan">
+                                <?php echo $avatarImage; ?> <a href="<?php echo htmlspecialchars( $user_title->getFullURL() ); ?>"><?php echo $user['user_name']; ?></a>
+                            </span>
+                            <span class="top-fan-points">
+                                <b><?php echo number_format($user['points']) ;?></b> 公里
+                            </span>
+                            <div class="cleared">
+
+                            </div>
+                        </div>
+                        <?php
+                            }
+                        ?>
+
+                    </div>
+                    <!-- total -->
+                    <div class="top-users total-rank hide">
+                    <?php
+                        $count = 10;
+                        $params['ORDER BY'] = 'stats_total_points DESC';
+                        $params['LIMIT'] = $count;
+                        $dbr = wfGetDB( DB_SLAVE );
+                        $res = $dbr->select(
+                            'user_stats',
+                            array( 'stats_user_id', 'stats_user_name', 'stats_total_points' ),
+                            array( 'stats_user_id <> 0' ),
+                            __METHOD__,
+                            $params
+                        );
+                        foreach ( $res as $row ) {
+                            $user_list_total[] = array(
+                                'user_id' => $row->stats_user_id,
+                                'user_name' => $row->stats_user_name,
+                                'points' => $row->stats_total_points
+                            );
+                        }
+                        $z = 0;
+                        foreach ( $user_list_total as $user ) {
+                                $user_title = Title::makeTitle( NS_USER, $user['user_name'] );
+                                $avatar = new wAvatar( $user['user_id'], 'ml' );
+                                $avatarImage = $avatar->getAvatarURL();
+                                $z++;
+                    ?>
                     <div class="top-fan-row">
-                        <span class="top-fan-num">1</span>
+                        <span class="top-fan-num"><?php echo $z; ?></span>
                         <span class="top-fan">
-					        <img src="/resources/frontpage/ai.jpg" alt="avatar" border="0"> <a href="http://asoiaf.huiji.wiki/wiki/User:Reasno">Reasno</a>
-				        </span>
+                            <?php echo $avatarImage; ?> <a href="<?php echo htmlspecialchars( $user_title->getFullURL() ); ?>"><?php echo $user['user_name']; ?></a>
+                        </span>
                         <span class="top-fan-points">
-                            <b>153,423</b> points
+                            <b><?php echo number_format($user['points']) ;?></b> 公里
                         </span>
                         <div class="cleared">
-
                         </div>
                     </div>
+                    <?php
+                        }
+                    ?>
+                    </div>
+                    </div>
+                    <ul class="nav-tab">
+                        <li class="active">周里程<span>/</span></li>
+                        <li>月里程<span>/</span></li>
+                        <li>总里程</li>
+                    </ul>
                 </div>
             </aside>
             <div class="wikis-wrap ">

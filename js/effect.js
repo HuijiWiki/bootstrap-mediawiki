@@ -149,4 +149,9 @@ $(document).ready(function(){
     },function(){
         $('.wiki-content-header li').css('width','20%');
     });
+    $('.nav-tab li').click(function(){
+       $(this).addClass('active').siblings().removeClass('active');
+        var index = $(this).index();
+        $('.tab-content>div').eq(index).removeClass('hide').siblings().addClass('hide');
+    });
 });
