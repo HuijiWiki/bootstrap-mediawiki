@@ -303,49 +303,7 @@
 
                         </div>
                     </div>
-
-                    <div class="top-fan-row">
-                <span class="top-fan-num">2</span>
-				<span class="top-fan">
-					<img src="/resources/frontpage/my-user.png" alt="avatar" border="0"> <a href="http://asoiaf.huiji.wiki/wiki/User:AemonTargaryen">AemonTargaryen</a>
-				</span><span class="top-fan-points"><b>80,513</b> points</span><div class="cleared"></div></div>
-
-                    <div class="top-fan-row">
-                <span class="top-fan-num">3</span>
-				<span class="top-fan">
-					<img src="/resources/frontpage/tysha.jpg" alt="avatar" border="0"> <a href="http://asoiaf.huiji.wiki/wiki/User:SerGawen">SerGawen</a>
-				</span><span class="top-fan-points"><b>59,848</b> points</span><div class="cleared"></div></div>
-
-                    <div class="top-fan-row">
-                <span class="top-fan-num">4</span>
-				<span class="top-fan">
-					<img src="/resources/frontpage/jalon.jpg" alt="avatar" border="0"> <a href="http://asoiaf.huiji.wiki/wiki/User:%E5%8D%A2%E6%96%AF_%E6%B3%A2%E9%A1%BF">卢斯 波顿</a>
-				</span><span class="top-fan-points"><b>26,132</b> points</span><div class="cleared"></div></div>
-                    <div class="top-fan-row">
-                <span class="top-fan-num">5</span>
-				<span class="top-fan">
-					<img src="/resources/frontpage/ahri.gif" alt="avatar" border="0"> <a href="http://asoiaf.huiji.wiki/wiki/User:Arya%C2%B7Stark">Arya·Stark</a>
-				</span><span class="top-fan-points"><b>25,481</b> points</span><div class="cleared"></div></div><div class="top-fan-row">
-                <span class="top-fan-num">6</span>
-				<span class="top-fan">
-					<img src="/resources/frontpage/jw.jpg" alt="avatar" border="0"> <a href="http://asoiaf.huiji.wiki/wiki/User:Rubilacxe">Rubilacxe</a>
-				</span><span class="top-fan-points"><b>20,671</b> points</span><div class="cleared"></div></div><div class="top-fan-row">
-                <span class="top-fan-num">7</span>
-				<span class="top-fan">
-					<img src="/resources/frontpage/zfd.jpg" alt="avatar" border="0"> <a href="http://asoiaf.huiji.wiki/wiki/User:KING_TOMMEN">KING TOMMEN</a>
-				</span><span class="top-fan-points"><b>16,671</b> points</span><div class="cleared"></div></div><div class="top-fan-row">
-                <span class="top-fan-num">8</span>
-				<span class="top-fan">
-					<img src="/resources/frontpage/zfd2.jpg" alt="avatar" border="0"> <a href="http://asoiaf.huiji.wiki/wiki/User:%E6%B3%B0%E6%B8%A9%E5%85%AC%E7%88%B5">泰温公爵</a>
-				</span><span class="top-fan-points"><b>12,200</b> points</span><div class="cleared"></div></div><div class="top-fan-row">
-                <span class="top-fan-num">9</span>
-				<span class="top-fan">
-					<img src="/resources/frontpage/kt.jpg" alt="avatar" border="0"> <a href="http://asoiaf.huiji.wiki/wiki/User:Fedteny">Fedteny</a>
-				</span><span class="top-fan-points"><b>11,542</b> points</span><div class="cleared"></div></div><div class="top-fan-row">
-                <span class="top-fan-num">10</span>
-				<span class="top-fan">
-					<img src="/resources/frontpage/kt2.jpg" alt="avatar" border="0"> <a href="http://asoiaf.huiji.wiki/wiki/User:Longqiaojushi">Longqiaojushi</a>
-				</span><span class="top-fan-points"><b>10,784</b> points</span><div class="cleared"></div></div></div>
+                </div>
             </aside>
             <div class="wikis-wrap ">
                 <ul class="wikis">
