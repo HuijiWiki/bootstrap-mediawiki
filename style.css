@@ -1174,6 +1174,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     }
     div.tright,.thumbinner,.ns-0 #content img{
         max-width: 100%!important;
+        height: auto;
     }
 }
 
