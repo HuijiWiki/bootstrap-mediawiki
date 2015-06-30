@@ -68,7 +68,13 @@ $(document).ready(function(){
                             alertime();
                             alertp.text('注册成功');
                             localStorage.setItem('static','back');
-                            window.location.reload();
+                            $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',function(data) {
+                                if (data.login.result == 'NeedToken') {
+                                    $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&lgtoken=' + data.login.token + '&format=json',function(){
+                                        window.location.reload();
+                                    });
+                                }
+                            });
                         }
                         else{
                             loginerror.show().empty().text(data.createaccount.result);

@@ -660,6 +660,34 @@
                             </div>
                         </a>
                     </li>
+                    <li>
+                        <a class="wiki-entry" href="http://downtonabbey.huiji.wiki/wiki/%E6%9D%B0%E5%85%8B%C2%B7%E7%BD%97%E6%96%AF">
+                            <img src="http://downtonabbey.huiji.wiki/uploads/8/87/JackRoss.png">
+                            <div class="wiki-info">
+                                <div class="entry-header">
+                                    <p>杰克·罗斯</p>
+                                    <p>唐顿庄园中文维基</p>
+                                </div>
+                                <div class="entry-content">
+                                    <p>杰克·罗斯（Jack Ross） ，生于1892年到1897间[1]，是一位美国黑人爵士音乐家与歌手。他曾经在芝加哥工作过，后来来到伦敦，在莲花爵士俱乐部演出。</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="wiki-entry" href="http://downtonabbey.huiji.wiki/wiki/%E7%90%86%E6%9F%A5%E5%BE%B7%C2%B7%E5%85%8B%E6%8B%89%E5%85%8B%E6%A3%AE">
+                            <img src="http://downtonabbey.huiji.wiki/uploads/d/da/Dr._Clarkson.jpg">
+                            <div class="wiki-info">
+                                <div class="entry-header">
+                                    <p>理查德·克拉克森</p>
+                                    <p>唐顿庄园中文维基</p>
+                                </div>
+                                <div class="entry-content">
+                                    <p>理查德·克拉克森（Richard Clarkson）医生是为克劳利家族服务的本地医生，他是看着玛丽，伊迪丝和西比尔三位小姐长大的。克拉克森医生在1899年到1902年期间的布尔战争中服役。他被授予女王南非服役勋章以及国王南非服役勋章。 </p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
 
                     <li class="cleared"></li>
                 </ul>
