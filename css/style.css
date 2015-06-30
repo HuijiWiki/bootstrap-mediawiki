@@ -986,6 +986,20 @@ body{
     padding-left:10px;
     padding-top:10px;
 }
+.nav-tab{
+    float: right;
+    color: #09c;
+}
+.nav-tab li.active{
+    color: #999;
+}
+.nav-tab li{
+    display: inline-block;
+    cursor: pointer;
+}
+.nav-tab li span{
+    color: #999;
+}
 .chart{
     width: 100%;
     height: 30px;
