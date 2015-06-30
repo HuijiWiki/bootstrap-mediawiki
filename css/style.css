@@ -297,7 +297,7 @@ a:hover,a:focus,a:active{
     right: 150px;
     top: 20px;
 }
-.login button{
+.login>div{
     display: inline-block;
     border: 1px solid #fff;
     background: none;
@@ -313,7 +313,7 @@ a:hover,a:focus,a:active{
     -ms-transition: all .2s;
     -o-transition: all .2s;
 }
-.login button a{
+.login>div a{
     color: #fff;
     transition:all 0.2s;
     -webkit-transition: all .2s;
@@ -321,11 +321,11 @@ a:hover,a:focus,a:active{
     -ms-transition: all .2s;
     -o-transition: all .2s;
 }
-.login button:hover{
+.login>div:hover{
     background: #fff;
     color: #333;
 }
-.login button:hover a{
+.login>div:hover a{
     color: #333;
 }
 .intro-container{
@@ -630,6 +630,13 @@ body{
     -ms-backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
     -moz-backface-visibility:hidden;
+}
+.wrapper .back{
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
 }
 .wiki-wrapper{
     transform:rotateY(180deg);
@@ -1132,24 +1139,19 @@ body{
     .content-wrapper{
         display: none;
     }
-    .home{
-        -webkit-transform: none;
-        -moz-transform: none;
-        -ms-transform: none;
-        -o-transform: none;
-        transform: none;
-        -webkit-transition: all 0s;
-        -moz-transition: all 0s;
-        -ms-transition: all 0s;
-        -o-transition: all 0s;
-        transition: all 0s;
-    }
-    .wiki-wrapper{
-        transform:rotateY(0deg);
+    .wrapper .back{
         -webkit-transform: rotateY(0deg);
         -moz-transform: rotateY(0deg);
         -ms-transform: rotateY(0deg);
         -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    .wiki-wrapper{
+        transform:none;
+        -webkit-transform:none;
+        -moz-transform:none;
+        -ms-transform:none;
+        -o-transform:none;
         position: static;
     }
     .wrapper{

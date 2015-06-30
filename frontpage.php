@@ -1,17 +1,15 @@
 <div class="wrapper">
     <div class="content-wrapper">
         <script>
-        var pagestatic = localStorage.getItem('static');
-        if(pagestatic == 'back'){
+        if(localStorage.getItem('static') == 'back'){
             $('.content-wrapper').addClass('hide').remove();
-            $('.wrapper').addClass('home');
         }
         </script>
         <header>
             <img src="/resources/frontpage/huiji_white.png" class="logo">
             <div class="login">
-                <button><a href="#home-content-signup">注册用户</a></button>
-                <button><a href="http://home.huiji.wiki/wiki/%E5%88%9B%E5%BB%BA%E6%96%B0wiki">创建站点</a></button>
+                <div><a href="#home-content-signup">注册用户</a></div>
+                <div><a href="http://home.huiji.wiki/wiki/%E5%88%9B%E5%BB%BA%E6%96%B0wiki">创建站点</a></div>
             </div>
         </header>
         <div class="head">
@@ -71,7 +69,7 @@
                         <input type="text" placeholder="邮箱" class="sign-email">
                         <input type="password" placeholder="密码" class="sign-pass">
                         <!--<input type="password" placeholder="再次输入密码" class="sign-pass-agin">-->
-                        <div class="login-error"></div>
+                        <!--<div class="login-error"></div>-->
                         <div class="signup-submit">注册灰机</div>
                     </form>
                 </div>
@@ -80,12 +78,11 @@
         </div>
     </div>
     <div class="wiki-wrapper">
-<!--         <div class="wiki-header">
-            <div class="wiki-header-wrapper">
-
-            </div>
-
-        </div> -->
+    <script>
+        if(localStorage.getItem('static') == 'back'){
+            $('.wiki-wrapper').addClass('back');
+        }
+    </script>
         <header class="header navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
                     <div class="navbar-container">
                         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->

@@ -13,6 +13,14 @@ $(document).ready(function(){
 //       console.log($(this).scrollTop());
 //   });
 //    alert($('.content-wrapper').height());
+    var alreturn = $('.alert-return');
+    var alertp = $('.alert-return p');
+    function alertime(){
+        alreturn.show();
+        setTimeout(function(){
+            alreturn.hide()
+        },1000);
+    }
     function getTopHeight(){
         var pagetop = ($('body').height()-150);
         if(pagetop<550){
@@ -46,16 +54,20 @@ $(document).ready(function(){
     function wiki_signup(login,email,pass){
         $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+ '&format=json',function(data){
 	    if(login==''){
-                loginerror.show().empty().text('您的用户名不能为空');
+            alertime();
+            alertp.text('您的用户名不能为空');
             }
             else if(email==''){
-                loginerror.show().empty().text('您的邮箱必须填写');
+            alertime();
+            alertp.text('您的邮箱必须填写');
             }
             else if(data.createaccount.result=='NeedToken'){
                 $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+'&token='+data.createaccount.token+ '&format=json',function(data){
                     if(!data.error){
                         if(data.createaccount.result=="Success"){
-                            loginerror.show().empty().text('注册成功');
+                            alertime();
+                            alertp.text('注册成功');
+                            localStorage.setItem('static','back');
                             window.location.reload();
                         }
                         else{
@@ -63,32 +75,32 @@ $(document).ready(function(){
                         }
                     }
                     else{
+                        alertime();
                         if(data.error.code=='userexists'){
-                            loginerror.show().empty().text('用户名已存在');
+                            alertp.text('用户名已存在');
                         }else if(data.error.code=='passwordtooshort'){
-                            loginerror.show().empty().text('密码太短');
+                            alertp.text('密码太短');
                         }else if(data.error.code=='password-name-match'){
-                            loginerror.show().empty().text('您的密码不能与用户名相同');
+                            alertp.text('您的密码不能与用户名相同');
                         }else if(data.error.code=='invalidemailaddress'){
-                            loginerror.show().empty().text('请您输入正确的邮箱');
+                            alertp.text('请您输入正确的邮箱');
                         }else if(data.error.code=='createaccount-hook-aborted'){
-                            loginerror.show().empty().text('您的用户名不合法');
+                            alertp.text('您的用户名不合法');
                         }else if(data.error.code=='wrongpassword'){
-                            loginerror.show().empty().text('错误的密码进入，请重试');
+                            alertp.text('错误的密码进入，请重试');
                         }else if(data.error.code=='mustbeposted'){
-                            loginerror.show().empty().text('需要一个post请求');
+                            alertp.text('需要一个post请求');
                         }else if(data.error.code=='externaldberror'){
-                            loginerror.show().empty().text('有一个身份验证数据库错误或您不允许更新您的外部帐户');
+                            alertp.text('有一个身份验证数据库错误或您不允许更新您的外部帐户');
                         }else if(data.error.code=='password-login-forbidden'){
-                            loginerror.show().empty().text('使用这个用户名或密码被禁止');
+                            alertp.text('使用这个用户名或密码被禁止');
                         }else if(data.error.code=='sorbs_create_account_reason'){
-                            loginerror.show().empty().text('你的IP地址被列为DNSBL代理');
+                            alertp.text('你的IP地址被列为DNSBL代理');
                         }else if(data.error.code=='nocookiesfornew'){
-                            loginerror.show().empty().text('没有创建用户账户，请确保启用cookie刷新重试');
+                            alertp.text('没有创建用户账户，请确保启用cookie刷新重试');
                         }
                         else {
-                            loginerror.show().empty().text('error' + data.error.code);
-                            console.log(data.error.code);
+                            alertp.text('error' + data.error.code);
                         }
                     }
                 });
