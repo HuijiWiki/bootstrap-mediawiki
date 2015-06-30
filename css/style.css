@@ -233,6 +233,9 @@ a:hover,a:focus,a:active{
     border: 0!important;
     box-shadow: none!important;
 }
+.relative{
+    position: relative;
+}
 .content-wrapper a:active,.content-wrapper a:focus,.content-wrapper a:visited{
     color:#fff;
 }
@@ -960,7 +963,6 @@ body{
     text-overflow:ellipsis;
 }
 .wikis .wiki-entry{
-    position: relative;
     display:block;
 }
 .wikis li:hover .wiki-info{
