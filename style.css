@@ -1305,19 +1305,6 @@ sup.reference {
     margin-right: 60px;
     font-weight: 100;
 }
-
-.user-card{
-    background: #fff;
-    width: 400px;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    box-shadow:0 0 48px 1px rgba(0,0,0,0.1);
-    position: absolute;
-    transition:all 0.5s;
-    max-height: 300px;
-    overflow: hidden;
-    opacity: 0;
-}
 .relationship-wrapper{
     margin: 20px auto;
     width: 600px;
@@ -1377,16 +1364,33 @@ sup.reference {
 .relationship-list-btn li a{
     color: #333;
 }
-
+.user-card{
+    background: #fff;
+    width: 400px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow:0 0 48px 1px rgba(0,0,0,0.1);
+    position: absolute;
+    transition:all 0.5s;
+    max-height: 300px;
+    overflow: hidden;
+    opacity: 0;
+}
 .user-card-top{
     height: 130px;
     background: #0099cc;
     text-align: center;
+    padding: 0 20px;
 }
 .user-card-top img{
     margin-top: 15px;
     margin-bottom: 10px;
     border: 2px solid #fff;
+}
+.user-card-top p{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
 .user-card-info span{
     display: inline-block;
