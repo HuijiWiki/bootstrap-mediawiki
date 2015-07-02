@@ -525,13 +525,14 @@ $(function() {
         var x= 200-(e.currentTarget.offsetWidth/2),y=e.currentTarget.offsetHeight;
         var posX = getPos(e.currentTarget).x, posY = getPos(e.currentTarget).y;
         var carduser;
-//        $(this).tagName;
+        if($(this).parents().hasClass('back-links')){
+            return;
+        }
         if($(this).hasClass('headimg')){
             carduser = $(this).attr('data-name');
         }else{
             carduser = $(this).text();
         }
-//        tag = $(this).get(0).tagName;
         enter = true;
         if(thisposX==posX&&thisposY==posY){
             own = true;
