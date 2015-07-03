@@ -600,7 +600,6 @@ $(function() {
                     "top": +(posY - height) + "px",
                     "opacity": "1"
                 });
-
             }, 600);
         }
     }

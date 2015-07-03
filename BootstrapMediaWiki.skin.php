@@ -410,7 +410,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 						?>
 						<form class="navbar-search navbar-form navbar-right" action="<?php $this->text( 'wgScript' ) ?>" id="searchform" role="search">
 							<div>
-								<input class="form-control" type="search" name="search" placeholder="Search" title="Search <?php echo $wgSitename; ?> [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
+								<input class="form-control" type="search" name="search" placeholder="在<?php echo $wgSitename; ?>内搜索" title="Search <?php echo $wgSitename; ?> [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
 								<input type="hidden" name="title" value="Special:Search">
 							</div>
 						</form>
