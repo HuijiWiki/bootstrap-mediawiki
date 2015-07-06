@@ -340,7 +340,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="http://huiji.wiki" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; ?></a>
+							<a class="navbar-brand" href="http://huiji.wiki" title="灰机wiki"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; ?></a>
 						</div>
 
 						<div class="collapse navbar-collapse">
