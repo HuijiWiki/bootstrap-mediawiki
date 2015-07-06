@@ -1191,7 +1191,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     border-top: medium none;
 }
 .skin-bootstrap-mediawiki .ve-init-mw-viewPageTarget-toolbar > .oo-ui-toolbar-bar {
-    top: 60px;
+    top: 0;
 }
 
 .ve-activated #content-actions{
