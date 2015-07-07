@@ -167,6 +167,11 @@ $(document).ready(function(){
     },function(){
         $('.wiki-content-header li').css('width','20%');
     });
+    $('.wiki-content-header li:last').hover(function(){
+        $('.all-wiki').addClass('act');
+    },function(){
+        $('.all-wiki').removeClass('act');
+    });
     $('.nav-tab li').click(function(){
        $(this).addClass('active').siblings().removeClass('active');
         var index = $(this).index();

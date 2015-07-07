@@ -229,6 +229,7 @@
             </div>
         </div>
         <div class="wiki-content">
+            <a href='http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA' class='all-wiki'>查看推荐维基</a>
             <div class="wiki-content-header">
                 <ul>
                     <li>
@@ -282,8 +283,10 @@
                         </a>
                     </li>
                 </ul>
+                <a href='http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA' class='all-wiki'>更多推荐维基</a>
             </div>
             <aside class="wiki-sidebar">
+
                 <div class="user-rank">
                     <div class="chart">
                         <p>灰机里程榜</p>

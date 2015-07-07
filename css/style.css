@@ -844,6 +844,7 @@ body{
     height: 280px;
     width: 100%;
     margin-bottom: 20px;
+    position: relative;
 }
 .wiki-content-header li{
     box-sizing: border-box;
@@ -1055,6 +1056,21 @@ body{
 }
 .navbar {
     position: relative;
+}
+.all-wiki{
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    display: inline-block;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 24px;
+}
+.all-wiki:hover{
+    color:#09c;
+}
+.all-wiki.act{
+    color: #09c;
 }
 @media screen and (min-width: 1000px) and (max-width: 1400px) {
     .wiki-top {

@@ -441,6 +441,7 @@ $(function() {
             }
 
         });
+
     //user card
     function userCard(username,carduser){
         $.post(
@@ -495,8 +496,8 @@ $(function() {
                     }else if(username == res.result.username){
                         $('.user-card-follow,.user-card-gift').hide();
                     }
+                    console.log(res.result);
                 }
-                getDirection();
             }
         )
     }
@@ -518,42 +519,46 @@ $(function() {
     }
     var enter = false;
     var exist = false;
+    var thisposX,thisposY;
     var own = false;
-    var x, y,posX,posY,thisposX,thisposY;
-    var card;
     $('#wiki-body a[href*="huiji.wiki/wiki/%E7%94%A8%E6%88%B7:"] .headimg, #wiki-body a[href*="huiji.wiki/wiki/User:"] .headimg, #wiki-body a[href*="huiji.wiki/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"), #wiki-body a[href*="huiji.wiki/wiki/User:"]:not(":has(img)")').hover(function(e){
-        card = "<div class='user-card'><i class='fa fa-spinner fa-spin'></i></div>";
-        x= 200-(e.currentTarget.offsetWidth/2);
-        y=e.currentTarget.offsetHeight;
-        posX = getPos(e.currentTarget).x;
-        posY = getPos(e.currentTarget).y;
+        var card = "<div class='user-card'><i class='fa fa-spinner fa-spin'></i></div>";
+        var x= 200-(e.currentTarget.offsetWidth/2),y=e.currentTarget.offsetHeight;
+        var posX = getPos(e.currentTarget).x, posY = getPos(e.currentTarget).y;
         var carduser;
-        if($(this).parents().hasClass('back-links')){
-            return;
-        }
+//        $(this).tagName;
         if($(this).hasClass('headimg')){
             carduser = $(this).attr('data-name');
         }else{
             carduser = $(this).text();
         }
+//        tag = $(this).get(0).tagName;
         enter = true;
         if(thisposX==posX&&thisposY==posY){
             own = true;
         }else{
             own = false;
         }
-        appendCard(carduser);
-//        userCard(mw.config.get('wgUserName'),carduser);
-
+        appendCard(x,y,card,posX,posY);
+        userCard(mw.config.get('wgUserName'),carduser);
     }, function() {
         enter = false;
         removeCard();
     });
-    function appendCard(carduser){
+    function appendCard(x,y,card,posX,posY){
         if((enter&&!exist)||(enter&&!own)){
             $('.user-card').remove();
-            userCard(mw.config.get('wgUserName'),carduser);
             $("body").append(card);
+            $('.user-card').css({
+                "top":+(posY+10)+"px",
+                "left":+(posX-x)+"px"
+            });
+            setTimeout(function(){
+                $('.user-card').css({
+                    "top":+(posY+y)+"px",
+                    "opacity":"1"
+                });
+            },600);
             exist = true;
             hoverCard();
             thisposX = posX;
@@ -575,32 +580,5 @@ $(function() {
                 exist=false;
             }
         },500)
-    }
-    function getDirection(){
-        var height = $('.user-card').height();
-        var scroll = $(document).scrollTop();
-        if(posY-scroll<=420) {
-            $('.user-card').css({
-                "top": +(posY + 10) + "px",
-                "left": +(posX - x) + "px"
-            });
-            setTimeout(function () {
-                $('.user-card').css({
-                    "top": +(posY + y) + "px",
-                    "opacity": "1"
-                });
-            }, 600);
-        }else{
-            $('.user-card').css({
-                "top": +(posY + y -height -10) + "px",
-                "left": +(posX - x) + "px"
-            });
-            setTimeout(function () {
-                $('.user-card').css({
-                    "top": +(posY - height) + "px",
-                    "opacity": "1"
-                });
-            }, 600);
-        }
     }
 });
