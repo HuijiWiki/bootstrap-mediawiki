@@ -1194,6 +1194,11 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     z-index: 100;
 }
 
+.oo-ui-windowManager-modal  .oo-ui-dialog  .oo-ui-window-frame {
+    top: 170px!important;
+    bottom: auto!important;
+}
+
 .ve-activated #content-actions{
 	display:none;
 }
