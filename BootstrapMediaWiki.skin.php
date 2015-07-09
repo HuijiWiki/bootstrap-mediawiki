@@ -37,7 +37,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 	public function initPage( OutputPage $out ) {
 		global $wgSiteJS, $wgHuijiPrefix;
 		parent::initPage( $out );
-        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home') && ($this->getSkin()->getTitle()->isMainPage()) ){
+        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleScripts( 'skins.frontpage');
         } 
         $out->addModuleScripts( 'skins.bootstrapmediawiki' );     
@@ -54,7 +54,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		global $wgSiteCSS, $wgHuijiPrefix;
 
 		parent::setupSkinUserCss( $out );
-        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home') && ($this->getSkin()->getTitle()->isMainPage()) ){
+        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home'  || $wgHuijiPrefix === 'slx.test') && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleStyles( 'skins.frontpage');
         } 
         $out->addModuleStyles( 'skins.bootstrapmediawiki' ); 
@@ -210,7 +210,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 <!--            <div class="alert-wrap">-->
 <!--                <div class="alert" role="alert">good</div>-->
 <!--            </div>-->
-        <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home') && ($this->getSkin()->getTitle()->isMainPage()) ){ 
+        <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home'  || $wgHuijiPrefix === 'slx.test') && ($this->getSkin()->getTitle()->isMainPage()) ){ 
             include ('frontpage.php');
         } else {?>
                 <!-- Sidebar -->
@@ -340,7 +340,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="http://huiji.wiki" title="灰机wiki"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; ?></a>
+							<a class="navbar-brand" href="http://huiji.wiki" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; ?></a>
 						</div>
 
 						<div class="collapse navbar-collapse">
@@ -359,8 +359,8 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 							            <li><a href="http://lotr.huiji.wiki">魔戒中文维基</a></li>
                                         <li><a href="http://asoiaf.huiji.wiki">冰与火之歌中文维基</a></li>
 							            <li><a href="http://allglory.huiji.wiki">荣耀百科全书</a></li>
-								    	<li><a href="http://downtonabbey.huiji.wiki/">唐顿庄园中文维基</a></li>
-								    	<li><a href="http://jiuzhou.huiji.wiki">九州奇幻世界百科</a></li>
+								    	<li><a href="http://wire.huiji.wiki">火线中文维基</a></li>
+								    	<li><a href="http://spn.huiji.wiki">邪恶力量中文wiki</a></li>
                                         <li><a href="/wiki/Special:Randomwiki">随机一下试试</a></li>
 									  </ul>
 									</li>
@@ -410,7 +410,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 						?>
 						<form class="navbar-search navbar-form navbar-right" action="<?php $this->text( 'wgScript' ) ?>" id="searchform" role="search">
 							<div>
-								<input class="form-control" type="search" name="search" placeholder="在<?php echo $wgSitename; ?>内搜索" title="Search <?php echo $wgSitename; ?> [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
+								<input class="form-control" type="search" name="search" placeholder="Search" title="Search <?php echo $wgSitename; ?> [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
 								<input type="hidden" name="title" value="Special:Search">
 							</div>
 						</form>
@@ -529,7 +529,9 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 				<div class="container">
 					<?php $this->includePage('Bootstrap:Footer'); ?>
 					<footer>
-                        <p><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p>                        
+						<p>Powered by <a href="http://mediawiki.org">MediaWiki</a> <a href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a>
+						</p>
+						
 					</footer>
 				</div><!-- container -->
 			</div><!-- bottom -->
@@ -849,7 +851,12 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 			echo $parserOutput->getText();
 		}
 	}
-
-	public static function link() { }
+    //index content block
+    // $socurce  json data
+	function getIndexBlock( $source ) {
+        $content = $this->getPageRawText( $source );
+        $result = json_decode( $content );
+        return $result;
+    }
 }
 
