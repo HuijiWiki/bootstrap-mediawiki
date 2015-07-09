@@ -438,22 +438,22 @@
                 <ul class="wikis">
                 <?php
                     $res = new BootstrapMediaWikiTemplate();
-                    $getBlock = $res->getIndexBlock( 'Admin' );
-                    $n = count($getBlock);
-                    if( $getBlock ){
+                    $block = $res->getIndexBlock( '首页/Admin' );
+                    $n = count($block);
+                    if( $block ){
                         for ($i=0; $i < $n; $i++) { 
                 ?>
                     <li>
-                        <a href="<?php echo $getBlock[$i]->wikiurl; ?>" class="wiki-entry" >
+                        <a href="<?php echo $block[$i]->wikiurl; ?>" class="wiki-entry" >
                             <div class="relative">
-                                <img src="<?php echo $getBlock[$i]->backgroungimg; ?>">
+                                <img src="<?php echo $block[$i]->backgroungimg; ?>">
                                 <div class="wiki-info">
                                     <div class="entry-header">
-                                        <p><?php echo $getBlock[$i]->title; ?></p>
-                                        <p><?php echo $getBlock[$i]->wikiname; ?></p>
+                                        <p><?php echo $block[$i]->title; ?></p>
+                                        <p><?php echo $block[$i]->wikiname; ?></p>
                                     </div>
                                     <div class="entry-content">
-                                        <p><?php echo $getBlock[$i]->wikidiscribe; ?></p>
+                                        <p><?php echo $block[$i]->desc; ?></p>
                                     </div>
                                 </div>
                             </div>
