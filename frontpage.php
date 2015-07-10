@@ -440,13 +440,14 @@
                     $res = new BootstrapMediaWikiTemplate();
                     $block = $res->getIndexBlock( '首页/Admin' );
                     $n = count($block);
-                    if( $block ){
+                    // if( $block ){
                         for ($i=0; $i < $n; $i++) { 
                 ?>
                     <li>
                         <a href="<?php echo $block[$i]->wikiurl; ?>" class="wiki-entry" >
+                            <img src="<?php echo $block[$i]->backgroungimg; ?>">
                             <div class="relative">
-                                <img src="<?php echo $block[$i]->backgroungimg; ?>">
+
                                 <div class="wiki-info">
                                     <div class="entry-header">
                                         <p><?php echo $block[$i]->title; ?></p>
@@ -461,7 +462,7 @@
                     </li>
                 <?php
                         }
-                    }
+                    // }
                 ?>
                     <li class="cleared"></li>
                 </ul>
