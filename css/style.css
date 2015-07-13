@@ -946,10 +946,20 @@ body{
     page-break-inside: avoid;
     break-inside: avoid;
 }
+@media screen and (max-width: 1023px) {
+    .wikis>li{
+        margin-bottom: 0;
+    }
+}
 .wikis>li:before{
+     content: '';
+     display: block;
+     padding-top: 3px;
+ }
+.wikis>li:after{
     content: '';
     display: block;
-    padding-top: 3px;
+    padding-bottom: 10px;
 }
 .wikis .wiki-info{
     position: absolute;
