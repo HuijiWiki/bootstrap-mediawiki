@@ -325,7 +325,7 @@
                                 <?php echo $avatarImage; ?> <a href="<?php echo htmlspecialchars( $user_title->getFullURL() ); ?>"><?php echo $user['user_name']; ?></a>
                             </span>
                             <span class="top-fan-points">
-                                <b><?php echo number_format($user['points']) ;?></b> 公里
+                                <b><?php echo number_format($user['points']>=0?$user['points']:0) ;?></b> 公里
                             </span>
                             <div class="cleared">
 
@@ -372,7 +372,7 @@
                                 <?php echo $avatarImage; ?> <a href="<?php echo htmlspecialchars( $user_title->getFullURL() ); ?>"><?php echo $user['user_name']; ?></a>
                             </span>
                             <span class="top-fan-points">
-                                <b><?php echo number_format($user['points']) ;?></b> 公里
+                                <b><?php echo number_format($user['points']>=0?$user['points']:0) ;?></b> 公里
                             </span>
                             <div class="cleared">
 
@@ -417,7 +417,7 @@
                             <?php echo $avatarImage; ?> <a href="<?php echo htmlspecialchars( $user_title->getFullURL() ); ?>"><?php echo $user['user_name']; ?></a>
                         </span>
                         <span class="top-fan-points">
-                            <b><?php echo number_format($user['points']) ;?></b> 公里
+                            <b><?php echo number_format($user['points']>=0?$user['points']:0) ;?></b> 公里
                         </span>
                         <div class="cleared">
                         </div>
