@@ -17,6 +17,14 @@ $(function() {
     //        $('#menu-toggle').fadeOut(0).css('right', '-60px').fadeIn(1000);
     //    }
     //},300);
+    if($.cookie('animate') == 'no') {
+        $('#menu-toggle').css({
+            'animation':'none',
+            '-webkit-animation':'none',
+            '-moz-animation':'none',
+            '-o-animation':'none'
+        });
+    }
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
         //var menuToggle = $('#menu-toggle');
@@ -34,13 +42,14 @@ $(function() {
         //    $('#wrapper').css('padding-left','0px');
         //    $('#sidebar-wrapper').css('width','0');
         //}
-        if(localStorage.getItem('animation') != 'no') {
-            localStorage.setItem('animation', 'no');
+        if($.cookie('animate')==undefined|| $.cookie('animate')==null) {
+            $.cookie('animate', 'no', {expires: 7, path: '/',domain: '.huiji.wiki',secure: false});
+        }else {
             $('#menu-toggle').css({
-                'animation':'none',
-                '-webkit-animation':'none',
-                '-moz-animation':'none',
-                '-o-animation':'none'
+                'animation': 'none',
+                '-webkit-animation': 'none',
+                '-moz-animation': 'none',
+                '-o-animation': 'none'
             });
         }
         $('#wrapper').toggleClass("toggled").toggleClass('smtoggled');
@@ -414,7 +423,6 @@ $(function() {
         });
     }
     $('#ca-edit > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
-
     //fix thumbinner
     $('.thumbinner').each(function(){
         $(this).width($(this).width()+6);
@@ -460,12 +468,16 @@ $(function() {
             },
             function(data){
                 var res = jQuery.parseJSON(data);
+                var sex;
                 if(res.result.gender == "female"){
                     res.result.gender = "♀";
+                    sex = "他";
                 }else if(res.result.gender == "male"){
                     res.result.gender = "♂";
+                    sex = "她";
                 }else{
                     res.result.gender ='♂/♀';
+                    sex = "Ta";
                 }
                 if(res.success){
                     var ps = '';
@@ -496,7 +508,7 @@ $(function() {
                         "<span>"+res.result.level+"</span><p>"+res.result.status+"</p></div></div><div class='user-card-mid'><div class='user-card-msg'><ul><li>关注：<span>"+res.result.usercounts+"</span></li>" +
                         "<li class='cut'>被关注：<span>"+res.result.usercounted+"</span></li><li>编辑：<span>"+res.result.editcount+"</span></li></ul><button class='user-card-follow "+isfollow+" user-user-follow' data-username = '"+res.result.username+"'>"+follow+"</button>" +
                         "<a href='/index.php?title=%E7%89%B9%E6%AE%8A:GiveGift&amp;user="+res.result.username+"'  class='user-card-gift' title='特殊:GiveGift'><i class='fa fa-gift'></i>礼物</a></div></div>" +
-                        "<div class='user-card-bottom'><p class='follow-him'>共同关注了Ta("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>与Ta共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
+                        "<div class='user-card-bottom'><p class='follow-him'>我关注的人也关注了"+sex+"("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
                     $(".user-card").empty().append(msg);
                     $('.follow-him i:last,.common-follow i:last').remove();
                     if(username==null){

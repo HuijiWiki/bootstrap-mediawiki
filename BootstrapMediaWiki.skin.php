@@ -328,14 +328,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                 if($('#wrapper').hasClass('toggled')){
                     $('#menu-toggle').addClass('menu-active');
                 }
-                if(localStorage.getItem('animation') == 'no') {
-                        $('#menu-toggle').css({
-                            'animation':'none',
-                            '-webkit-animation':'none',
-                            '-moz-animation':'none',
-                            '-o-animation':'none'
-                        });
-                    }
             </script>
 	        <!-- /#sidebar-wrapper -->
 			<header class="header navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
