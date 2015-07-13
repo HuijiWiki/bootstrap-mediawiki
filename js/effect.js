@@ -177,11 +177,12 @@ $(document).ready(function(){
         var index = $(this).index();
         $('.tab-content>div').eq(index).removeClass('hide').siblings().addClass('hide');
     });
-    $('.wikis li').hover(function(){
-        var height = $(this).height()-13;
-        console.log(height);
-        $(this).find('.wiki-info').css('height',height);
-    },function(){
-        $(this).find('.wiki-info').css('height','110px');
-    });
+    if(document.body.clientWidth>1024) {
+        $('.wikis li').hover(function () {
+            var height = $(this).height() - 13;
+            $(this).find('.wiki-info').css('height', height);
+        }, function () {
+            $(this).find('.wiki-info').css('height', '110px');
+        });
+    }
 });

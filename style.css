@@ -1381,6 +1381,7 @@ sup.reference {
     max-height: 300px;
     overflow: hidden;
     opacity: 0;
+    z-index: 10000;
 }
 .user-card-top{
     height: 130px;

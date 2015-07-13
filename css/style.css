@@ -974,9 +974,11 @@ body{
     overflow: hidden;
     border: 1px solid #d0d0d0;
 }
-.wikis li:hover .wiki-info{
-    bottom: 0;
-    height: 100%;
+@media screen and (min-width: 1025px) {
+    .wikis li:hover .wiki-info {
+        bottom: 0;
+        height: 100%;
+    }
 }
 .wiki-info p{
     margin: 0;
