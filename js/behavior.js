@@ -34,7 +34,15 @@ $(function() {
         //    $('#wrapper').css('padding-left','0px');
         //    $('#sidebar-wrapper').css('width','0');
         //}
-
+        if(localStorage.getItem('animation') != 'no') {
+            localStorage.setItem('animation', 'no');
+            $('#menu-toggle').css({
+                'animation':'none',
+                '-webkit-animation':'none',
+                '-moz-animation':'none',
+                '-o-animation':'none'
+            });
+        }
         $('#wrapper').toggleClass("toggled").toggleClass('smtoggled');
         $('#menu-toggle').toggleClass('menu-active').toggleClass('smenu-active');
         if(window.innerWidth>=1366){
