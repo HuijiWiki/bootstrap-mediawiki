@@ -1169,12 +1169,13 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     .infobox{
         width:100%!important;
     }
-    div.tright{
-        margin: auto;
-    }
-    div.tright,.thumbinner,.ns-0 #content img{
+    div.thumb,.thumbinner,.ns-0 #content img{
         max-width: 100%!important;
         height: auto;
+    }
+    div.thumb,.thumbinner{
+        margin: 0 auto;
+        float: none;
     }
 }
 
