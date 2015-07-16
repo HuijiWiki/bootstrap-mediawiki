@@ -111,7 +111,7 @@
                                       <ul class="dropdown-menu" role="menu">
                                         <?php
                                             $res = new BootstrapMediaWikiTemplate();
-                                            $round = $res->getIndexBlock( '首页/RankPages' );
+                                            $round = $res->getIndexBlock( 'h:首页/RankPages' );
                                             $n = count($round);
                                             // if( $block ){
                                             for ($i=0; $i < $n; $i++) { 
