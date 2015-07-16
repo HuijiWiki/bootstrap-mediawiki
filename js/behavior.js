@@ -44,7 +44,6 @@ $(function() {
         //}
         if($.cookie('animate')==undefined|| $.cookie('animate')==null) {
             $.cookie('animate', 'no', {expires: 7, path: '/',domain: '.huiji.wiki',secure: false});
-        }else {
             $('#menu-toggle').css({
                 'animation': 'none',
                 '-webkit-animation': 'none',

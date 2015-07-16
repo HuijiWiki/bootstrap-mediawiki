@@ -963,21 +963,7 @@ body .mw-echo-overlay {
 body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     left: 223px !important;
 }
-@media (max-width:1365px) {
-    #wrapper.toggled #sidebar-wrapper{
-        position: fixed;
-    }
-    #wiki-outer-body{
-        width: 100%;
-        position: absolute;
-        left: 0;
-      /*  background-color: #fff;
-        background-image: url(images/wiki-bg.jpg);
-        background-repeat: repeat-x;
-        background-position: center 0px;*/
-        background: transparent;
-    }
-}
+
 
 .navbar-form{
     width: 20%;
@@ -1016,10 +1002,6 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     }
     .toggled #sidebar-wrapper{
         left:-240px;
-    }
-
-    #wrapper.smtoggled{
-        padding-left: 240px;
     }
     .smtoggled #sidebar-wrapper{
         left: 0;

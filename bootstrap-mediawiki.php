@@ -46,7 +46,7 @@ $wgResourceModules['skins.bootstrapmediawiki'] = array(
 		'jquery',
 		'jquery.mwExtension',
 		'jquery.client',
-		'jquery.cookie',
+//		'jquery.cookie',
 	),
 	'messages' => array(
 		'comments-voted-label', 'comments-loading',
