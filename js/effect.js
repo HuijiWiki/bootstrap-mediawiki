@@ -179,7 +179,7 @@ $(document).ready(function(){
     });
     if(document.body.clientWidth>1024) {
         $('.wikis li').hover(function () {
-            var height = $(this).height() - 13;
+            var height = $(this).height() - 25;
             $(this).find('.wiki-info').css('height', height);
         }, function () {
             $(this).find('.wiki-info').css('height', '110px');

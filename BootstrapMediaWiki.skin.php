@@ -355,11 +355,17 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
 							          <ul class="dropdown-menu" role="menu">
-							            <li><a href="http://lotr.huiji.wiki">魔戒中文维基</a></li>
-                                        <li><a href="http://asoiaf.huiji.wiki">冰与火之歌中文维基</a></li>
-							            <li><a href="http://allglory.huiji.wiki">荣耀百科全书</a></li>
-                                        <li><a href="http://downtonabbey.huiji.wiki/">唐顿庄园中文维基</a></li>
-                                        <li><a href="http://jiuzhou.huiji.wiki">九州奇幻世界百科</a></li>
+							            <?php
+                                            $res = new BootstrapMediaWikiTemplate();
+                                            $round = $res->getIndexBlock( '首页/RankPages' );
+                                            $n = count($round);
+                                            // if( $block ){
+                                            for ($i=0; $i < $n; $i++) { 
+                                        ?>
+                                        <li><a href="<?php echo $round[$i]->page_url;?>"><?php echo $round[$i]->page_name;?></a></li>
+                                        <?php
+                                            }
+                                        ?>
                                         <li><a href="/wiki/Special:Randomwiki">随机一下试试</a></li>
 									  </ul>
 									</li>
