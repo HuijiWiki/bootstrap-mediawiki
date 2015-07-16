@@ -83,99 +83,10 @@
             $('.wiki-wrapper').addClass('back');
         }
     </script>
-        <header class="header navbar navbar-default navbar-fixed-top <?php echo $wgNavBarClasses; ?>" role="navigation">
-                    <div class="navbar-container">
-                        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                        <div class="navbar-header">
-                            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="http://huiji.wiki" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='Logo'/> " : ''; ?></a>
-                        </div>
-
-                        <div class="collapse navbar-collapse">
-                            <ul id="icon-section" class="nav navbar-nav">
-                                    <li>
-                                        <a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php 
-                                        if( $wgSitename < 8) {
-                                            echo $wgSitename; 
-                                        }else{
-                                            echo 'wiki首页';
-                                        }?></a>
-                                    </li>
-                                    <li class="dropdown">
-                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
-                                      <ul class="dropdown-menu" role="menu">
-                                        <?php
-                                            $res = new BootstrapMediaWikiTemplate();
-                                            $round = $res->getIndexBlock( 'h:首页/RankPages' );
-                                            $n = count($round);
-                                            // if( $block ){
-                                            for ($i=0; $i < $n; $i++) { 
-                                        ?>
-                                        <li><a href="<?php echo $round[$i]->page_url;?>"><?php echo $round[$i]->page_name;?></a></li>
-                                        <?php
-                                            }
-                                        ?>
-                                        <li><a href="/wiki/Special:Randomwiki">随机一下试试</a></li>
-                                      </ul>
-                                    </li>
-                                    <li>
-                                        <a href="http://home.huiji.wiki/wiki/创建新wiki">创建新wiki</a>
-                                    </li>
-                            </ul>
-                        <?php
-                        if ( $wgUser->isLoggedIn() ) {
-                            if ( count( $this->data['personal_urls'] ) > 0 ) {
-                                $avatar = new wAvatar( $wgUser->getID(), 'l' );
-                                // $user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
-                                $user_icon = '<span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span>';
-                                $name =  $wgUser->getName() ;
-                                $personal_urls = $this->data['personal_urls'];
-                                unset($personal_urls['notifications']);
-                                $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon . $name, 'user' );
-                                $user_notify = $this->nav_notification($this->notificationAdapter($this->data['personal_urls']));
-                                ?>
-                                <ul<?php $this->html('userlangattributes') ?> class="nav navbar-nav navbar-right">
-                                    <?php echo $user_notify; ?><?php echo $user_nav; ?>
-                                </ul>
-                                <?php
-                            }//end if
-
-                        /*  if ( count( $this->data['content_actions']) > 0 ) {
-                                $content_nav = $this->get_array_links( $this->data['content_actions'], 'Page', 'page' );
-                                ?>
-                                <ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
-                                <?php
-                            }//end if */
-                        } else {  // else if is logged in 
-                                    //old login 
-                            ?>
-
-                            <ul class="nav navbar-nav navbar-right">
-                                <li id= "pt-login" data-toggle="modal" data-target=".user-login">
-                                    <a class="login-in">登录</a>
-<!--                                    --><?php //echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), wfMsg( 'login' ), array('id' => 'pt-anonlogin' ) ); ?>
-                                </li>
-                                <li>
-                                    <?php echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') ); ?>
-                                </li>   
-                            </ul>
-                            <?php
-                        }
-                        ?>
-                        <form class="navbar-search navbar-form navbar-right" action="<?php $this->text( 'wgScript' ) ?>" id="searchform" role="search">
-                            <div>
-                                <input class="form-control" type="search" name="search" placeholder="Search" title="Search <?php echo $wgSitename; ?> [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
-                                <input type="hidden" name="title" value="Special:Search">
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-            </header><!-- topbar -->
+    <?php 
+        $res = new BootstrapMediaWikiTemplate();
+        echo $res->showHeader();
+    ?>
         <div class="wiki-top">
             <div class="wiki-flog-left">
                 <img src="/resources/frontpage/asoiafbannerleft.jpg">
