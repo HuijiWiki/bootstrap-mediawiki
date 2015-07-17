@@ -528,6 +528,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 		}//end foreach
 		return $output;
 	}//end nav
+
 	/**
 	 * Render one or more navigations elements by name in a dropdown select style, automatically reveresed
 	 * when UI is in RTL mode
@@ -772,15 +773,11 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
     }
     //show header
     function showHeader(){
-        global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS;
-        global $wgEnableUploads;
-        global $wgLogo, $wgHuijiPrefix;
-        global $wgTOCLocation;
+        global $wgUser, $wgSitename;
         global $wgNavBarClasses;
-        global $wgSubnavBarClasses;
-        global $wgParser, $wgTitle;
-        $output = '';
-        $output .='
+        
+        // $output = '';
+        $output ='
             <header class="header navbar navbar-default navbar-fixed-top'.$wgNavBarClasses.'" role="navigation">
                     <div class="navbar-container">
                         <div class="navbar-header">
@@ -818,6 +815,8 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                         <a href="http://home.huiji.wiki/wiki/创建新wiki">创建新wiki</a>
                                     </li>
                             </ul>';
+                            $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right">'.$user_notify.$user_nav.'</ul>';
+
                         if ( $wgUser->isLoggedIn() ) {
                             if ( count( $this->data['personal_urls'] ) > 0 ) {
                                 $avatar = new wAvatar( $wgUser->getID(), 'l' );
@@ -826,7 +825,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                 $name =  $wgUser->getName() ;
                                 $personal_urls = $this->data['personal_urls'];
                                 unset($personal_urls['notifications']);
-                                $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon . $name, 'user' );
+                                $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon.$name, 'user' );
                                 $user_notify = $this->nav_notification($this->notificationAdapter($this->data['personal_urls']));
                             }
                             $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right">'.$user_notify.$user_nav.'</ul>';
@@ -842,7 +841,8 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             </ul>';
                         }
                         
-                        $output .= '<form class="navbar-search navbar-form navbar-right" action="'.$this->text( 'wgScript' ).'" id="searchform" role="search">
+                        
+                        $output .= '<form class="navbar-search navbar-form navbar-right" action="/index.php" id="searchform" role="search">
                             <div>
                                 <input class="form-control" type="search" name="search" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
                                 <input type="hidden" name="title" value="Special:Search">
@@ -851,7 +851,9 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                         </div>
                     </div>
             </header>';
+            
             return $output;
+
     }
 }
 

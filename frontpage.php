@@ -84,8 +84,7 @@
         }
     </script>
     <?php 
-        $res = new BootstrapMediaWikiTemplate();
-        echo $res->showHeader();
+        echo $this->showHeader();
     ?>
         <div class="wiki-top">
             <div class="wiki-flog-left">
