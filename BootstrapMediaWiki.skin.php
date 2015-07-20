@@ -815,7 +815,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                         <a href="http://home.huiji.wiki/wiki/创建新wiki">创建新wiki</a>
                                     </li>
                             </ul>';
-                            $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right">'.$user_notify.$user_nav.'</ul>';
 
                         if ( $wgUser->isLoggedIn() ) {
                             if ( count( $this->data['personal_urls'] ) > 0 ) {
