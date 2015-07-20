@@ -339,7 +339,7 @@ $(function() {
                             if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
                                 history.go(-1);
                             }else {
-                                window.location.reload();
+                                window.location.reload(true);
                             }
                         }else{
                             alertime();
