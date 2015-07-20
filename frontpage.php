@@ -22,8 +22,6 @@
         </div>
         <div class="page-front-content">
         <div class="head-content">
-            <!--<p>We are <span>wiki</span>,an interest family</p>-->
-            <!--<h2>Bla bla bla</h2>-->
         </div>
         <div class="firstbg perspectivebg lazy" data-original="/resources/frontpage/lotr.jpg">
             <div class="firstbg-intro"></div>
@@ -83,7 +81,7 @@
             $('.wiki-wrapper').addClass('back');
         }
     </script>
-    <?php 
+    <?php
         echo $this->showHeader();
     ?>
         <div class="wiki-top">
@@ -357,11 +355,11 @@
                     $block = $res->getIndexBlock( '首页/Admin' );
                     $n = count($block);
                     // if( $block ){
-                        for ($i=0; $i < $n; $i++) { 
+                        for ($i=0; $i < $n; $i++) {
                 ?>
                     <li>
                         <a href="<?php echo $block[$i]->wikiurl; ?>" class="wiki-entry" >
-                            <img src="<?php echo $block[$i]->backgroungimg; ?>">
+                            <img src="/resources/frontpage/grey.gif" class="lazy" data-original="<?php echo $block[$i]->backgroungimg; ?>">
                             <div class="relative">
 
                                 <div class="wiki-info">
@@ -388,7 +386,7 @@
             <div class="container">
                 <?php $this->includePage('Bootstrap:Footer'); ?>
                 <footer>
-                    <p><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p>                                          
+                    <p><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p>
                 </footer>
             </div><!-- container -->
         </div><!-- bottom -->

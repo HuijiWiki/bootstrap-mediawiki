@@ -36,7 +36,14 @@ $(document).ready(function(){
         effect : "fadeIn",
         container: $(".content-wrapper")
     });
-   $('.page-front-enter').click(function(){
+    $("img.lazy").lazyload({
+       effect:"fadeIn",
+        event : "sporty"
+    });
+    $(window).bind("load", function() {
+        setTimeout(function() { $("img.lazy").trigger("sporty") }, 3000);
+    });
+    $('.page-front-enter').click(function(){
        $('.wrapper').addClass('home');
        setTimeout(function(){
            $('.content-wrapper').hide();
