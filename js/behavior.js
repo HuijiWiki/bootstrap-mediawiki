@@ -435,28 +435,50 @@ $(function() {
     } else {
         var talkpage = 'Talk:'+pagename;
     }
-    $.get( "/api.php", {
-        action:"flow",
-        submodule:"view-topiclist",
-        page:talkpage,
-        vtlrender: "",
-        format:"json"})
-        .done(function(data){
-            if (data.flow){
-                var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
-                if (talkCount > 0){
-                    $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
-                    if (!mw.config.get('wgIsMainPage')){
-                        flowAdapter.init(data);
-                        var items = flowAdapter.convert(data);
-                        var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
-                        $('#mw-content-text').after(html);
+    if (mw.config.get('wgIsArticle') && !sessionStorage['flowcache_'+talkpage]){
+        $.get( "http://cdn.huijiwiki.com/"+mw.config.get("wgHuijiPrefix")+"/api.php", {
+                action:"flow",
+                submodule:"view-topiclist",
+                page:talkpage,
+                vtlrender: "",
+                format:"json"})
+                .done(function(data){
+                    sessionStorage.setItem('flowcache_'+talkpage, data);
+                    if (data.flow){
+                        var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
+                        if (talkCount > 0){
+                            $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
+                            if (!mw.config.get('wgIsMainPage')){
+                                flowAdapter.init(data);
+                                var items = flowAdapter.convert(data);
+                                var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
+                                $('#mw-content-text').after(html);
+                            }
+                        }               
                     }
-                }               
-            }
 
-        });
-
+                });        
+    } else if (mw.config.get('wgIsArticle') && sessionStorage['flowcache_'+talkpage]){
+        renderFlowAbstract(sessionStorage['flowcache_'+talkpage]);
+    }
+    /**
+    * Render the flow abstract for article pages and display flow count bubble.
+    * @param data obj from api
+    */
+    function renderFlowAbstract(data){
+        if (data.flow){
+            var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
+            if (talkCount > 0){
+                $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
+                if (!mw.config.get('wgIsMainPage')){
+                    flowAdapter.init(data);
+                    var items = flowAdapter.convert(data);
+                    var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
+                    $('#mw-content-text').after(html);
+                }
+            }               
+        }
+    }
     //user card
     function userCard(username,carduser){
         $.post(
