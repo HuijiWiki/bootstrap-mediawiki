@@ -436,11 +436,10 @@ $(function() {
         var talkpage = 'Talk:'+pagename;
     }
     if (mw.config.get('wgIsArticle') && !sessionStorage['flowcache_'+talkpage]){
-        $.get( "http://cdn.huijiwiki.com/"+mw.config.get("wgHuijiPrefix")+"/api.php", {
+        $.get( "/api.php", {
                 action:"flow",
                 submodule:"view-topiclist",
                 page:talkpage,
-                vtlrender: "",
                 format:"json"})
                 .done(function(data){
                     sessionStorage.setItem('flowcache_'+talkpage, data);
