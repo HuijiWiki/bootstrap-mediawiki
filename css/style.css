@@ -246,9 +246,9 @@ a:hover,a:focus,a:active{
     left: 0;
     right: 0;
     height: 100%;
-    width: 100%;
     overflow: auto;
     background: #fff;
+    opacity: 1;
     z-index: 2;
     background-image:url(about:blank);
     background-attachment:fixed;
@@ -510,15 +510,23 @@ a:hover,a:focus,a:active{
     width: 100%;
     height: 350px;
     /*background: #40bbe1;*/
+    text-align: center;
+    position: relative;
 }
 .bottom-wrapper{
     margin: 10px auto;
     width: 800px;
 }
+.bottom-wrapper:after{
+    content: '';
+    clear: both;
+    display: block;
+}
 .bottom-wrapper .bottom-intro{
     width: 450px;
     float: left;
     color: #333;
+    text-align: left;
 }
 .bottom-intro h2{
     font-weight: 100;
@@ -545,9 +553,6 @@ a:hover,a:focus,a:active{
     -ms-transition: all .5s ;
     -o-transition: all .5s ;
     transition: all .5s ;
-}
-.content-bottom:hover .bottom-intro button{
-    opacity: 1;
 }
 .bottom-wrapper .bottom-login{
     width: 350px;
@@ -596,6 +601,44 @@ a:hover,a:focus,a:active{
     font-size: 16px;
     cursor: pointer;
 }
+.scroll{
+    position: absolute;
+    display: inline-block;
+    bottom: 150px;
+    cursor: pointer;
+}
+@-webkit-keyframes arrow {
+    0%,100% {
+        top:50px;
+    }
+    50% {
+        top:80px;
+    }
+}
+@keyframes arrow {
+    0%,100% {
+        top:50px;
+    }
+    50% {
+        top:80px;
+    }
+}
+.scroll:after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 40px;
+    margin: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-animation: 3s arrow infinite ease;
+    animation: 3s arrow infinite ease;
+    transform: rotate(45deg);
+    border-right: 2px solid #09c;
+    border-bottom: 2px solid #09c;
+}
 .wrapper{
     position: fixed;
     top: 0;
@@ -615,46 +658,117 @@ body{
     /*-webkit-perspective:10000px;*/
     /*-webkit-perspective-origin:top right;*/
     /*background: url("/resources/frontpage/bg6.jpg");*/
-    background:#000;
     background-size: 100%;
 
 }
-.home{
-    transform:perspective(10000px) rotateY(180deg);
-    -webkit-transform:perspective(10000px) rotateY(180deg);
-    -moz-transform:perspective(10000px) rotateY(180deg);
-    -o-transform:perspective(10000px) rotateY(180deg);
-    -ms-transform:perspective(10000px) rotateY(180deg);
-}
+/*.home{*/
+    /*transform:perspective(10000px) rotateY(180deg);*/
+    /*-webkit-transform:perspective(10000px) rotateY(180deg);*/
+    /*-moz-transform:perspective(10000px) rotateY(180deg);*/
+    /*-o-transform:perspective(10000px) rotateY(180deg);*/
+    /*-ms-transform:perspective(10000px) rotateY(180deg);*/
+/*}*/
 
-.content-wrapper{
-    backface-visibility:hidden;
-    -o-backface-visibility:hidden;
-    -ms-backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
-    -moz-backface-visibility:hidden;
+/*.content-wrapper{*/
+    /*backface-visibility:hidden;*/
+    /*-o-backface-visibility:hidden;*/
+    /*-ms-backface-visibility:hidden;*/
+    /*-webkit-backface-visibility:hidden;*/
+    /*-moz-backface-visibility:hidden;*/
+/*}*/
+/*.wrapper .back{*/
+    /*-webkit-transform: none;*/
+    /*-moz-transform: none;*/
+    /*-ms-transform: none;*/
+    /*-o-transform: none;*/
+    /*transform: none;*/
+/*}*/
+/*.wiki-wrapper{*/
+    /*transform:rotateY(180deg);*/
+    /*-webkit-transform: rotateY(180deg);*/
+    /*-moz-transform: rotateY(180deg);*/
+    /*-ms-transform: rotateY(180deg);*/
+    /*-o-transform: rotateY(180deg);*/
+    /*backface-visibility:hidden;*/
+    /*-o-backface-visibility:hidden;*/
+    /*-ms-backface-visibility:hidden;*/
+    /*-webkit-backface-visibility:hidden;*/
+    /*-moz-backface-visibility:hidden;*/
+    /*background: #f9f9f9;*/
+/*}*/
+.first-view .content-wrapper{
+    -webkit-transition: all 1.2s cubic-bezier(.7, 0, .3, 1);
+    -moz-transition: all 1.2s cubic-bezier(.7, 0, .3, 1);
+    -ms-transition: all 1.2s cubic-bezier(.7, 0, .3, 1);
+    -o-transition:all 1.2s cubic-bezier(.7, 0, .3, 1);
+    transition: all 1.2s cubic-bezier(.7, 0, .3, 1);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
 }
-.wrapper .back{
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
+.first-view .wiki-wrapper{
+    -webkit-transition: all 1s .3s;
+    -moz-transition: all 1s .3s;
+    -ms-transition: all 1s .3s;
+    -o-transition: all 1s .3s;
+    transition: all 1s .3s;
+    -webkit-transform: translateY(400px);
+    -moz-transform: translateY(400px);
+    -ms-transform: translateY(400px);
+    -o-transform: translateY(400px);
+    transform: translateY(400px);
+    opacity: 0;
 }
-.wiki-wrapper{
-    transform:rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    backface-visibility:hidden;
-    -o-backface-visibility:hidden;
-    -ms-backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
-    -moz-backface-visibility:hidden;
-    background: #f9f9f9;
+.first-view .wiki-flog-asoiaf-intro{
+    -webkit-transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.3s;
+    -moz-transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.3s;
+    -ms-transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.3s;
+    -o-transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.3s;
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.3s;
+    -webkit-transform: translateY(200px);
+    -moz-transform: translateY(200px);
+    -ms-transform: translateY(200px);
+    -o-transform: translateY(200px);
+    transform: translateY(200px);
+    opacity: 0;
 }
-
+.first-view .wiki-top-right{
+    -webkit-transition: all 2s 2s;
+    -moz-transition: all 2s 2s;
+    -ms-transition: all 2s 2s;
+    -o-transition: all 2s 2s;
+    transition: all 2s 2s;
+    opacity: 0;
+}
+.doscroll .content-wrapper{
+    -webkit-transform: translateY(-100%) scale(0.9);
+    -moz-transform: translateY(-100%) scale(0.9);
+    -ms-transform: translateY(-100%) scale(0.9);
+    -o-transform: translateY(-100%) scale(0.9);
+    transform: translateY(-100%) scale(0.9);
+    opacity: 0;
+}
+.doscroll .wiki-wrapper{
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+}
+.doscroll .wiki-flog-asoiaf-intro{
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+}
+.doscroll .wiki-top-right{
+    opacity: 1;
+}
 .wiki-wrapper{
     position:fixed;
     top: 0;
@@ -663,33 +777,25 @@ body{
     right: 0;
     overflow: auto;
     z-index: 1;
-}
-.wiki-header{
-    height: 60px;
-    /*background-image:linear-gradient(to bottom,rgba(0,0,0,.9),#000);*/
-    background: #333;
-}
-.wiki-header-wrapper{
-    margin: auto;
-    height:60px;
-    background:url("/resources/frontpage/header.png");
-    background-size: 100% 60px;
+    background: #f9f9f9;
 }
 .home-wiki-logo img{
     height: 30px;
     margin: 15px 0;
 }
+
 .wiki-top{
     height: 567px;
-    background: #000;
     overflow: hidden;
     position: relative;
 }
+
 .wiki-flog-wrap{
     width: 1400px;
     height: 100%;
     margin: 0 auto;
     position: relative;
+
 }
 .wiki-flog-asoiaf-intro{
     width: 600px;
@@ -1177,26 +1283,39 @@ body{
     .content-wrapper{
         display: none;
     }
-    .wrapper .back{
-        -webkit-transform: rotateY(0deg);
-        -moz-transform: rotateY(0deg);
-        -ms-transform: rotateY(0deg);
-        -o-transform: rotateY(0deg);
-        transform: rotateY(0deg);
+    .first-view .wiki-wrapper{
+        -webkit-transition:none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none;
+        opacity: 1;
     }
-    .wiki-wrapper{
-        transform:none;
-        -webkit-transform:none;
-        -moz-transform:none;
-        -ms-transform:none;
-        -o-transform:none;
-        position: static;
+    .first-view .wiki-flog-asoiaf-intro{
+        opacity: 1;
+        -webkit-transition: none ;
+        -moz-transition: none ;
+        -ms-transition: none ;
+        -o-transition: none ;
+        transition: none ;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none;
     }
-    .wrapper{
-        position: static;
-    }
-    body{
-        position: static;
+    .first-view .wiki-top-right{
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+        opacity: 1;
     }
 }
 @media screen and (max-width: 999px) {

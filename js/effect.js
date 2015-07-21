@@ -28,7 +28,6 @@ $(document).ready(function(){
         }
         $(".head").css('height',pagetop+"px");
     }
-    getTopHeight();
     window.onresize = function(){
         getTopHeight();
     }
@@ -43,12 +42,8 @@ $(document).ready(function(){
     $(window).bind("load", function() {
         setTimeout(function() { $("img.lazy").trigger("sporty") }, 3000);
     });
-    $('.page-front-enter').click(function(){
-       $('.wrapper').addClass('home');
-       setTimeout(function(){
-           $('.content-wrapper').hide();
-       },500);
-       localStorage.setItem('static','back');
+    $('.scroll,.page-front-enter').click(function(){
+       screenScroll();
    });
     $('.content-wrapper').scroll(function(){
         var scrollTop = $(this).scrollTop();
@@ -57,6 +52,33 @@ $(document).ready(function(){
         $('.firstbg,.secondbg').css('background-position','50%'+''+fscroll);
         $('.thirdbg').css('background-position','50%'+''+tscroll);
     });
+    var scrollFunc = function(e){
+        if (e.wheelDelta&&$('.content-wrapper').scrollTop()>=$('.content-wrapper')[0].scrollHeight-$('.content-wrapper').height()) {//IE/Opera/Chrome
+            if(e.wheelDelta<0){
+                screenScroll();
+            }
+        }
+        else if(e.detail&&$('.content-wrapper').scrollTop()>=$('.content-wrapper')[0].scrollHeight-$('.content-wrapper').height()){
+            if(e.detail>0){
+                screenScroll();
+            }
+        }
+
+    }
+    function screenScroll(){
+        $('.wrapper').addClass('doscroll');
+        setTimeout(function(){
+            $('.content-wrapper').addClass('hide').remove();
+        },1200);
+        $('.wiki-wrapper').scrollTop(0);
+        localStorage.setItem('view','notfirst');
+    }
+    /*注册事件*/
+    if(document.addEventListener){
+        document.addEventListener('DOMMouseScroll',scrollFunc,false);
+    }//W3C
+    window.onmousewheel=document.onmousewheel=scrollFunc; //IE/Opera/Chrome
+
     var loginerror = $('.login-error');
     function wiki_signup(login,email,pass){
         $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+ '&format=json',function(data){
@@ -74,7 +96,7 @@ $(document).ready(function(){
                         if(data.createaccount.result=="Success"){
                             alertime();
                             alertp.text('注册成功');
-                            localStorage.setItem('static','back');
+                            localStorage.setItem('view','notfirst');
                             $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',function(data) {
                                 if (data.login.result == 'NeedToken') {
                                     $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&lgtoken=' + data.login.token + '&format=json',function(){

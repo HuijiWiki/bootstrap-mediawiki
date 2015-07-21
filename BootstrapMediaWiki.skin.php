@@ -738,19 +738,35 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 		return $nav ;
 	}//end get_edit_links	
 	function getPageRawText($title) {
-		global $wgParser, $wgUser;
-		$pageTitle = Title::newFromText($title);
-		if(!$pageTitle->exists()) {
-			return 'Create the page [[Bootstrap:TitleBar]]';
-		} else {
-			$article = new Article($pageTitle);
-			$wgParserOptions = new ParserOptions($wgUser);
-			// get the text as static wiki text, but with already expanded templates,
-			// which also e.g. to use {{#dpl}} (DPL third party extension) for dynamic menus.
-			$parserOutput = $wgParser->preprocess($article->getRawText(), $pageTitle, $wgParserOptions );
-			return $parserOutput;
-		}
+		$output = self::getPageRawTextCache( $title );
+        if ( $output != '' ) {
+            return $output;
+        } else {
+            return self::getPageRawTextPage( $title );
+        }
 	}
+    static function getPageRawTextCache( $title ){
+        global $wgMemc;
+        $key = wfMemcKey( 'page', 'getPageRaw', 'all', $title );
+        $output = $wgMemc->get( $key );
+        return $output;
+    }
+    static function getPageRawTextPage( $title ){
+        global $wgParser, $wgMemc, $wgUser;
+        $key = wfMemcKey( 'page', 'getPageRaw', 'all', $title );
+        $pageTitle = Title::newFromText($title);
+        if(!$pageTitle->exists()) {
+            return 'Create the page [[Bootstrap:TitleBar]]';
+        } else {
+            $article = new Article($pageTitle);
+            $wgParserOptions = new ParserOptions($wgUser);
+            // get the text as static wiki text, but with already expanded templates,
+            // which also e.g. to use {{#dpl}} (DPL third party extension) for dynamic menus.
+            $output = $wgParser->preprocess($article->getRawText(), $pageTitle, $wgParserOptions );
+            $wgMemc->set( $key, $output );
+            return $output;
+        }
+    }
 
 	function includePage($title) {
 		global $wgParser, $wgUser;
@@ -758,9 +774,8 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 		if(!$pageTitle->exists()) {
 			echo 'The page [[' . $title . ']] was not found.';
 		} else {
-			$article = new Article($pageTitle);
 			$wgParserOptions = new ParserOptions($wgUser);
-			$parserOutput = $wgParser->parse($article->getRawText(), $pageTitle, $wgParserOptions);
+			$parserOutput = $wgParser->parse($this->getPageRawText($title), $pageTitle, $wgParserOptions);
 			echo $parserOutput->getText();
 		}
 	}

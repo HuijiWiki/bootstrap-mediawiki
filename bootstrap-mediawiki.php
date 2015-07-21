@@ -82,3 +82,25 @@ if ( isset( $wgSiteJS ) ) {
 if ( isset( $wgSiteCSS ) ) {
 	$wgResourceModules['skins.bootstrapmediawiki']['styles'][] = $skinDir . '/' . $wgSiteCSS;
 }//end if
+
+
+//update page's cache
+$wgHooks['NewRevisionFromEditComplete'][] = 'updatePageRow';
+/**
+ * Update page's cache when someone edit the page(Admin,subnav,footer)
+ */
+function updatePageRow( $article, $revision, $baseRevId ) {
+	global $wgUser, $wgMemc, $wgParser;
+
+	if ( $article->getTitle()->getFullText() === '首页/Admin' 
+		|| $article->getTitle()->getFullText() === 'Bootstrap:TitleBar' 		
+		|| $article->getTitle()->getFullText() === 'Bootstrap:Footer' 
+		|| $article->getTitle()->getFullText() === 'Bootstrap:Subnav' ){
+		$option = new ParserOptions($wgUser);
+    	$key = wfMemcKey( 'page', 'getPageRaw', 'all', $article->getTitle()->getFullText() );
+		$output = $wgParser->preprocess($article->getRawText(), $article->getTitle(), $option );
+		$wgMemc->set( $key, $output );
+		return true;
+	}
+	
+}

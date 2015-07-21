@@ -1,9 +1,11 @@
 <div class="wrapper">
     <div class="content-wrapper">
         <script>
-        if(localStorage.getItem('static') == 'back'){
-            $('.content-wrapper').addClass('hide').remove();
-        }
+            if(localStorage.getItem('view') == 'notfirst'){
+                $('.content-wrapper').addClass('hide').remove();
+            }else{
+                $('.wrapper').addClass('first-view');
+            }
         </script>
         <header>
             <img src="/resources/frontpage/huiji_white.png" class="logo">
@@ -13,6 +15,13 @@
             </div>
         </header>
         <div class="head">
+        <script>
+            var pagetop = ($('body').height()-150);
+                if(pagetop<550){
+                    pagetop = 550;
+                }
+            $(".head").css('height',pagetop+"px");
+        </script>
             <div class="intro-container">
                 <div class="intro">
                     <p><span>你的兴趣 在此起飞</span><span>有多热爱 就飞多高</span></p>
@@ -24,7 +33,7 @@
         <div class="head-content">
         </div>
         <div class="firstbg perspectivebg lazy" data-original="/resources/frontpage/lotr.jpg">
-            <div class="firstbg-intro"></div>
+            <a href="http://lotr.huiji.wiki" target="_black"><div class="firstbg-intro"></div></a>
         </div>
         <div class="fmain-content">
             <ul class="fmain-content-list">
@@ -46,20 +55,19 @@
             </ul>
         </div>
         <div class="secondbg perspectivebg lazy" data-original="/resources/frontpage/asoiaf.jpg">
-            <div class="secondbg-intro"></div>
+            <a href="http://asoiaf.huiji.wiki" target="_black"><div class="secondbg-intro"></div></a>
         </div>
         <div class="smain-content">
 
         </div>
         <div class="thirdbg perspectivebg lazy" data-original="/resources/frontpage/spn.jpg">
-            <div class="thirdbg-intro"></div>
+            <a href="http://spn.huiji.wiki" target="_black"><div class="thirdbg-intro"></div></a>
         </div>
         <div class="content-bottom">
             <div class="bottom-wrapper">
                 <div class="bottom-intro">
                     <h2>灰机wiki</h2>
                     <p>——你的兴趣，在这里起飞。</p>
-                    <button class="page-front-enter"></button>
                 </div>
                 <div class="bottom-login">
                     <form id="home-content-signup">
@@ -72,6 +80,7 @@
                     </form>
                 </div>
             </div>
+            <a class="scroll"></a>
         </div>
         </div>
     </div>
