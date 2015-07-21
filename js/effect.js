@@ -53,14 +53,16 @@ $(document).ready(function(){
         $('.thirdbg').css('background-position','50%'+''+tscroll);
     });
     var scrollFunc = function(e){
-        if (e.wheelDelta&&$('.content-wrapper').scrollTop()>=$('.content-wrapper')[0].scrollHeight-$('.content-wrapper').height()) {//IE/Opera/Chrome
-            if(e.wheelDelta<0){
-                screenScroll();
+        if($('.content-wrapper')[0]!=null&&$('.content-wrapper')[0]!=undefined) {
+            if (e.wheelDelta && $('.content-wrapper').scrollTop() >= $('.content-wrapper')[0].scrollHeight - $('.content-wrapper').height()) {//IE/Opera/Chrome
+                if (e.wheelDelta < 0) {
+                    screenScroll();
+                }
             }
-        }
-        else if(e.detail&&$('.content-wrapper').scrollTop()>=$('.content-wrapper')[0].scrollHeight-$('.content-wrapper').height()){
-            if(e.detail>0){
-                screenScroll();
+            else if (e.detail && $('.content-wrapper').scrollTop() >= $('.content-wrapper')[0].scrollHeight - $('.content-wrapper').height()) {
+                if (e.detail > 0) {
+                    screenScroll();
+                }
             }
         }
 
