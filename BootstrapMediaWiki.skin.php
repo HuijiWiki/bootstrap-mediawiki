@@ -40,8 +40,12 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModules( 'skins.frontpage');
         } 
-        $out->addModules( array('ext.comments.js','ext.socialprofile.usersitefollows.js','ext.socialprofile.useruserfollows.js')); # add js and messages  
-        $out->addModuleScripts( 'skins.bootstrapmediawiki' );          
+        $out->addModules( 
+            array('skins.bootstrapmediawiki.bottom',
+                'skins.bootstrapmediawiki.top',
+                )
+        ); # add js and messages  
+        //$out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
 	}//end initPage
 
@@ -52,9 +56,9 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		global $wgSiteCSS, $wgHuijiPrefix;
 
 		parent::setupSkinUserCss( $out );
-        $out->addModuleStyles( 'skins.bootstrapmediawiki' ); 
+        //$out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
 		// we need to include this here so the file pathing is right
-		$out->addModuleStyles( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
+		$out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
 	}//end setupSkinUserCss
 }
 
@@ -860,6 +864,24 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             
             return $output;
 
+    }
+    /**
+     * Update page's cache when someone edit the page(Admin,subnav,footer)
+     */
+    public static function onNewRevisionFromEditComplete( $article, $revision, $baseRevId ) {
+        global $wgUser, $wgMemc, $wgParser;
+
+        if ( $article->getTitle()->getFullText() === '首页/Admin' 
+            || $article->getTitle()->getFullText() === 'Bootstrap:TitleBar'         
+            || $article->getTitle()->getFullText() === 'Bootstrap:Footer' 
+            || $article->getTitle()->getFullText() === 'Bootstrap:Subnav' ){
+            $option = new ParserOptions($wgUser);
+            $key = wfMemcKey( 'page', 'getPageRaw', 'all', $article->getTitle()->getFullText() );
+            $output = $wgParser->preprocess($article->getRawText(), $article->getTitle(), $option );
+            $wgMemc->set( $key, $output );
+            return true;
+        }
+        
     }
 }
 

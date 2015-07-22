@@ -26,11 +26,11 @@ $skinDirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );
 $skinDir = array_pop( $skinDirParts );
 $src = '/var/www/src';
 
-$wgResourceModules['skins.bootstrapmediawiki'] = array(
+$wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
 		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
-	    $skinDir . '/style.css'                                  => array( 'media' => 'all' ),
+		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
 		$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
 	),
@@ -39,18 +39,33 @@ $wgResourceModules['skins.bootstrapmediawiki'] = array(
 		$skinDir . '/google-code-prettify/prettify.js',
 		$skinDir . '/js/jquery.cookie.js',
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',
-		$skinDir . '/js/flow.js',
 		$skinDir . '/js/behavior.js',
 	),
-	'dependencies' => array(
-		'jquery',
-		'jquery.mwExtension',
-		'jquery.client',
-		//'jquery.cookie',
-	),
+	// 'dependencies' => array(
+	// 	'jquery',
+	// 	'jquery.mwExtension',
+	// 	'jquery.client',
+	// 	//'jquery.cookie',
+	// ),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'top',
 );
+
+$wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
+	'scripts' => array(
+		$skinDir . '/js/flow.js',
+	),
+	// 'styles' => array(
+	// 	$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
+	// 	$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
+	// 	$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
+	// ),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'bottom',	
+);
+
 
 $wgResourceModules['skins.frontpage'] = array(
 	'styles' => array(
@@ -65,6 +80,7 @@ $wgResourceModules['skins.frontpage'] = array(
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'top',
 );
 
 
@@ -76,24 +92,6 @@ if ( isset( $wgSiteCSS ) ) {
 	$wgResourceModules['skins.bootstrapmediawiki']['styles'][] = $skinDir . '/' . $wgSiteCSS;
 }//end if
 
-
 //update page's cache
-$wgHooks['NewRevisionFromEditComplete'][] = 'updatePageRow';
-/**
- * Update page's cache when someone edit the page(Admin,subnav,footer)
- */
-function updatePageRow( $article, $revision, $baseRevId ) {
-	global $wgUser, $wgMemc, $wgParser;
+$wgHooks['NewRevisionFromEditComplete'][] = 'BootstrapMediaWikiTemplate::onNewRevisionFromEditComplete';
 
-	if ( $article->getTitle()->getFullText() === '首页/Admin' 
-		|| $article->getTitle()->getFullText() === 'Bootstrap:TitleBar' 		
-		|| $article->getTitle()->getFullText() === 'Bootstrap:Footer' 
-		|| $article->getTitle()->getFullText() === 'Bootstrap:Subnav' ){
-		$option = new ParserOptions($wgUser);
-    	$key = wfMemcKey( 'page', 'getPageRaw', 'all', $article->getTitle()->getFullText() );
-		$output = $wgParser->preprocess($article->getRawText(), $article->getTitle(), $option );
-		$wgMemc->set( $key, $output );
-		return true;
-	}
-	
-}
