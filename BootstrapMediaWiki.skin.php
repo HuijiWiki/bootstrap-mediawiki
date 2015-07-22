@@ -7,119 +7,101 @@
  * @Copyright Matthew Batchelder 2012 - http://borkweb.com/
  * @License: GPLv2 (http://www.gnu.org/copyleft/gpl.html)
  */
-
 if ( ! defined( 'MEDIAWIKI' ) ) {
-	die( -1 );
+    die( -1 );
 }//end if
-
 //File removed on new mediawiki versions (1.24.1 at least).
 //require_once('includes/SkinTemplate.php');
-
 if(file_exists('includes/SkinTemplate.php')){
     require_once('includes/SkinTemplate.php');
 }
-
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @package MediaWiki
  * @subpackage Skins
  */
 class SkinBootstrapMediaWiki extends SkinTemplate {
-	/** Using Bootstrap */
-	public $skinname = 'bootstrap-mediawiki';
-	public $stylename = 'bootstrap-mediawiki';
-	public $template = 'BootstrapMediaWikiTemplate';
-	public $useHeadElement = true;
-
-	/**
-	 * initialize the page
-	 */
-	public function initPage( OutputPage $out ) {
-		global $wgSiteJS, $wgHuijiPrefix;
-		parent::initPage( $out );
+    /** Using Bootstrap */
+    public $skinname = 'bootstrap-mediawiki';
+    public $stylename = 'bootstrap-mediawiki';
+    public $template = 'BootstrapMediaWikiTemplate';
+    public $useHeadElement = true;
+    /**
+     * initialize the page
+     */
+    public function initPage( OutputPage $out ) {
+        global $wgSiteJS, $wgHuijiPrefix;
+        parent::initPage( $out );
         if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
-            $out->addModuleScripts( 'skins.frontpage');
+            $out->addModules( 'skins.frontpage');
         } 
-        $out->addModuleScripts( 'skins.bootstrapmediawiki' );     
-        $out->addModules( 'ext.comments.js'); # add js and messages       
-        $out->addModuleScripts( 'ext.socialprofile.usersitefollows.js' );
-        $out->addModuleScripts( 'ext.socialprofile.useruserfollows.js' );
-		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
-	}//end initPage
-
-	/**
-	 * prepares the skin's CSS
-	 */
-	public function setupSkinUserCss( OutputPage $out ) {
-		global $wgSiteCSS, $wgHuijiPrefix;
-
-		parent::setupSkinUserCss( $out );
-        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home'  || $wgHuijiPrefix === 'slx.test') && ($this->getSkin()->getTitle()->isMainPage()) ){
-            $out->addModuleStyles( 'skins.frontpage');
-        } 
-        $out->addModuleStyles( 'skins.bootstrapmediawiki' ); 
-        $out->addModuleStyles( 'ext.socialprofile.useruserfollows.css' );
-        $out->addModuleStyles( 'ext.comments.css' );
-
-		// we need to include this here so the file pathing is right
-		$out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
-	}//end setupSkinUserCss
+        $out->addModules( 
+            array('skins.bootstrapmediawiki.bottom',
+                'skins.bootstrapmediawiki.top',
+                )
+        ); # add js and messages  
+        //$out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
+        $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
+    }//end initPage
+    /**
+     * prepares the skin's CSS
+     */
+    public function setupSkinUserCss( OutputPage $out ) {
+        global $wgSiteCSS, $wgHuijiPrefix;
+        parent::setupSkinUserCss( $out );
+        //$out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
+        // we need to include this here so the file pathing is right
+        $out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
+    }//end setupSkinUserCss
 }
-
 /**
  * @package MediaWiki
  * @subpackage Skins
  */
 class BootstrapMediaWikiTemplate extends BaseTemplate {
-	/**
-	 * @var Cached skin object
-	 */
-	public $skin;
-
-	/**
-	 * Template filter callback for Bootstrap skin.
-	 * Takes an associative array of data set from a SkinTemplate-based
-	 * class, and a wrapper for MediaWiki's localization database, and
-	 * outputs a formatted page.
-	 *
-	 * @access private
-	 */
-	public function execute() {
-		global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS;
-		global $wgEnableUploads;
-		global $wgLogo, $wgHuijiPrefix;
-		global $wgTOCLocation;
-		global $wgNavBarClasses;
-		global $wgSubnavBarClasses;
-		global $wgParser, $wgTitle;
-
-		$this->skin = $this->data['skin'];
-		$action = $wgRequest->getText( 'action' );
-		$url_prefix = str_replace( '$1', '', $wgArticlePath );
-		$NS = $wgTitle->getNamespace();
-		// Suppress warnings to prevent notices about missing indexes in $this->data
-		wfSuppressWarnings();
-
-		$this->html('headelement');
-		if ($wgUser->isLoggedIn()){
-			$usf = new UserSiteFollow();
-			$followed = ($usf->checkUserSiteFollow($wgUser, $wgHuijiPrefix) !== false);			
-		}else{
-			$followed = false;
-		}
-
-		?>
+    /**
+     * @var Cached skin object
+     */
+    public $skin;
+    /**
+     * Template filter callback for Bootstrap skin.
+     * Takes an associative array of data set from a SkinTemplate-based
+     * class, and a wrapper for MediaWiki's localization database, and
+     * outputs a formatted page.
+     *
+     * @access private
+     */
+    public function execute() {
+        global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS;
+        global $wgEnableUploads;
+        global $wgLogo, $wgHuijiPrefix;
+        global $wgTOCLocation;
+        global $wgNavBarClasses;
+        global $wgSubnavBarClasses;
+        global $wgParser, $wgTitle;
+        $this->skin = $this->data['skin'];
+        $action = $wgRequest->getText( 'action' );
+        $url_prefix = str_replace( '$1', '', $wgArticlePath );
+        $NS = $wgTitle->getNamespace();
+        // Suppress warnings to prevent notices about missing indexes in $this->data
+        wfSuppressWarnings();
+        $this->html('headelement');
+        if ($wgUser->isLoggedIn()){
+            $usf = new UserSiteFollow();
+            $followed = ($usf->checkUserSiteFollow($wgUser, $wgHuijiPrefix) !== false);         
+        }else{
+            $followed = false;
+        }
+        ?>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
             ga('create', 'UA-10190882-3', 'auto');
             ga('send', 'pageview');
-
         </script>
-		<div id="wrapper" class="toggled">
+        <div id="wrapper" class="toggled">
             <div class="modal alert-return">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -214,16 +196,16 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             include ('frontpage.php');
         } else {?>
                 <!-- Sidebar -->
-	        <div id="sidebar-wrapper">
-	          	
-	            <ul class="sidebar-nav">
+            <div id="sidebar-wrapper">
+                
+                <ul class="sidebar-nav">
                     <li class="left-follow">
                         <ul>
                             <li>
                                 <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
                             </li>
-                            <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button>	</li>
-                        	<li><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php 
+                            <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button> </li>
+                            <li><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php 
                                 $dbr = wfGetDB( DB_SLAVE );
                                 $counter = new SiteStatsInit( $dbr );
                                 $result = $counter->articles();
@@ -278,34 +260,33 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             <?php } ?>
                         </ul>
                     </li>
-                	<?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
-					<li class="sidebar-brand left-author">
-	                    <a href="#">
-	                        主要编辑者
-	                    </a>
+                    <?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
+                    <li class="sidebar-brand left-author">
+                        <a href="#">
+                            主要编辑者
+                        </a>
                         <?php
-
                         $contrib = '{{#contributors:{{FULLPAGENAME}}}}';
                         $wgParserOptions = new ParserOptions($wgUser);
                         $parserOutput = $wgParser->parse($contrib, $this->getSkin()->getTitle(), $wgParserOptions);
                         echo $parserOutput->getText();
                         }
                         ?>
-	                </li>
+                    </li>
 
-	                <?php if($this->data['language_urls']){ ?>
-	                <li class="sidebar-brand left-lang">
-	                    <a href="#">
-	                        语言
-	                    </a>	                	
-	                	<ul>
-		                <?php
-		                	$langlinks = $this->data['language_urls'];
-		                	echo $this->nav($this->listAdapter($langlinks));
-		                ?>
-		                </ul>
-	                </li>
-	                <?php } ?>
+                    <?php if($this->data['language_urls']){ ?>
+                    <li class="sidebar-brand left-lang">
+                        <a href="#">
+                            语言
+                        </a>                        
+                        <ul>
+                        <?php
+                            $langlinks = $this->data['language_urls'];
+                            echo $this->nav($this->listAdapter($langlinks));
+                        ?>
+                        </ul>
+                    </li>
+                    <?php } ?>
                     <li class="sidebar-create">
                         <div class="mw-inputbox-centered" style="">
                             <form name="createbox" class="createbox" action="/index.php" method="get">
@@ -317,10 +298,10 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             </form>
                         </div>
                     </li>
-	            </ul>
-	        </div>
-	        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
-	            <span class="icon-huiji"></span>
+                </ul>
+            </div>
+            <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
+                <span class="icon-huiji"></span>
             </a>
             <script>
                 var menutoggle = localStorage.getItem('menu-toggle');
@@ -329,22 +310,19 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                     $('#menu-toggle').addClass('menu-active');
                 }
             </script>
-	        <!-- /#sidebar-wrapper -->
-			<?php echo $this->showHeader(); ?>
+            <!-- /#sidebar-wrapper -->
+            <?php echo $this->showHeader(); ?>
 
 
-			<div id="wiki-outer-body">
+            <div id="wiki-outer-body">
                 <?php
                 if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {
                     ?>
                     <div id="content-actions" class="subnav subnav-fixed">
                         <div class="container">
                             <?php
-
                             $subnav_select = $this->nav_select( $subnav_links );
-
                             if ( trim( $subnav_select ) ) {
-
                                 ?>
                                 <select id="subnav-select">
                                     <?php echo $subnav_select; ?>
@@ -355,16 +333,16 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             <ul class="nav nav-pills">
 
                                 <?php echo $this->nav( $subnav_links ); ?>
-                                <!-- 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>工具 <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
-									<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
-									<?php if ( $wgEnableUploads ) { ?>
-									<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
-									<?php } ?>
-								</ul>
-							</li> 	 -->
+                                <!--                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>工具 <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
+                                    <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
+                                    <?php if ( $wgEnableUploads ) { ?>
+                                    <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
+                                    <?php } ?>
+                                </ul>
+                            </li>    -->
                             </ul>
 
 
@@ -374,37 +352,52 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                 <?php
                 }//end if
                 ?>
-				<div id="wiki-body" class="container">
-					<div id="content">
-						<?php
-							if ( 'sidebar' == $wgTOCLocation ) {
-								?>
-								<div class="row">
-									<nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
-									<section class="col-md-12 wiki-body-section" role="main">
-								<?php
-							}//end if
-						?>
-						<?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
+                <div id="wiki-body" class="container">
+                    <div id="content">
+                        <?php
+                            if ( 'sidebar' == $wgTOCLocation ) {
+                                ?>
+                                <div class="row">
+                                    <nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
+                                    <section class="col-md-12 wiki-body-section" role="main">
+                                <?php
+                            }//end if
+                        ?>
+                        <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
 
-						<?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
-						<?php if ( $this->data['undelete'] ): ?>
-						<!-- undelete -->
-						<div id="contentSub2" class="alert alert-warning alert-dismissible"><?php $this->html( 'undelete' ) ?></div>
-						<!-- /undelete -->
-						<?php endif; ?>
-						<?php if($this->data['newtalk'] ): ?>
-						<!-- newtalk -->
-						<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
-						<!-- /newtalk -->
-						<?php endif; ?>
+                        <?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
+                        <?php if ( $this->data['undelete'] ): ?>
+                        <!-- undelete -->
+                        <div id="contentSub2" class="alert alert-warning alert-dismissible"><?php $this->html( 'undelete' ) ?></div>
+                        <!-- /undelete -->
+                        <?php endif; ?>
+                        <?php if($this->data['newtalk'] ): ?>
+                        <!-- newtalk -->
+                        <div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
+                        <!-- /newtalk -->
+                        <?php endif; ?>
 
-						<div id="firstHeading" class="pagetitle page-header">
-							<div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
-                 			<h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?></small></div></h1>
-						</div>	
+                        <div id="firstHeading" class="pagetitle page-header">
+                            <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
+                            <h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?>
+                            <?php
+                                if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage())){
+                                    $revPageId = $this->getSkin()->getTitle()->getArticleId();
+                                    $editinfo = UserStats::getLastEditer($revPageId,$wgHuijiPrefix);
+                                    // $edittime = CommentFunctions::getTimeAgo( strtotime( $editinfo['rev_timestamp'] ) );
+                                    $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
+                                    $edittime = CommentFunctions::getTimeAgo( $bjtime );
+                                    if ($edittime === '刚刚') {
+                                        echo $editinfo['rev_user_text'].$edittime.'编辑了此页面';
+                                    }else{
+                                        echo $editinfo['rev_user_text'].'于'.$edittime.'前编辑了此页面';
+                                    }
+                                }
+                            ?>
+                            </small></div></h1>
+                        </div>  
 
-						<div id="bodyContent" class="body">						
+                        <div id="bodyContent" class="body">                     
                         <?php $this->html( 'bodytext' ) ?>
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage())){
@@ -413,338 +406,315 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
                             echo $parserOutput->getText();
                         }?>
-						</div>
+                        </div>
 
-						<?php if ( $this->data['catlinks'] ): ?>
-						<div class="category-links">
-						<!-- catlinks -->
-						<?php $this->html( 'catlinks' ); ?>
-						<!-- /catlinks -->
-						</div>
-						<?php endif; ?>
-						<?php if ( $this->data['dataAfterContent'] ): ?>
-						<div class="data-after-content">
-						<!-- dataAfterContent -->
-						<?php $this->html( 'dataAfterContent' ); ?>                    
-						<!-- /dataAfterContent -->
-						</div>
-						<?php endif; ?>
-						<?php
-							if ( 'sidebar' == $wgTOCLocation ) {
-								?>
-								</section></section>
-								<?php
-							}//end if
-						?>
-					</div>
-				</div><!-- container -->
-			</div>
-			<div class="bottom">
-				<div class="container">
-					<?php $this->includePage('Bootstrap:Footer'); ?>
-					<footer>
+                        <?php if ( $this->data['catlinks'] ): ?>
+                        <div class="category-links">
+                        <!-- catlinks -->
+                        <?php $this->html( 'catlinks' ); ?>
+                        <!-- /catlinks -->
+                        </div>
+                        <?php endif; ?>
+                        <?php if ( $this->data['dataAfterContent'] ): ?>
+                        <div class="data-after-content">
+                        <!-- dataAfterContent -->
+                        <?php $this->html( 'dataAfterContent' ); ?>                    
+                        <!-- /dataAfterContent -->
+                        </div>
+                        <?php endif; ?>
+                        <?php
+                            if ( 'sidebar' == $wgTOCLocation ) {
+                                ?>
+                                </section></section>
+                                <?php
+                            }//end if
+                        ?>
+                    </div>
+                </div><!-- container -->
+            </div>
+            <div class="bottom">
+                <div class="container">
+                    <?php $this->includePage('Bootstrap:Footer'); ?>
+                    <footer>
                         <p><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p> 
-					</footer>
-				</div><!-- container -->
-			</div><!-- bottom -->
-	    </div><!-- /#wrapper -->
+                    </footer>
+                </div><!-- container -->
+            </div><!-- bottom -->
+        </div><!-- /#wrapper -->
         <?php }?> <!-- mainpage if -->
-		<?php
-		$this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
-		$this->html('reporttime');
-
-		if ( $this->data['debug'] ) {
-			?>
-			<!-- Debug output:
-			<?php $this->text( 'debug' ); ?>
-			-->
-			<?php
-		}//end if
-		?>
-		</body>
-		</html>
-		<?php
-	}//end execute
-
-	/**
-	 * Render one or more navigations elements by name, automatically reveresed
-	 * when UI is in RTL mode
-	 */
-	private function nav( $nav ) {
-		$output = '';
-		foreach ( $nav as $topItem ) {
-			$pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
-			if ( array_key_exists( 'sublinks', $topItem ) ) {
-				$output .= '<li class="dropdown">';
-				$output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . ' <b class="caret"></b></a>';
-				$output .= '<ul class="dropdown-menu">';
-
-				foreach ( $topItem['sublinks'] as $subLink ) {
-					if ( 'divider' == $subLink ) {
-						$output .= "<li class='divider'></li>\n";
-					} elseif ( $subLink['textonly'] ) {
-						$output .= "<li class='nav-header'>{$subLink['title']}</li>\n";
-					} else {
-						if( $subLink['local'] && $pageTitle = Title::newFromText( $subLink['link'] ) ) {
-							$href = $pageTitle->getLocalURL();
-						} else {
-							$href = $subLink['link'];
-						}//end else
-
-						$slug = strtolower( str_replace(' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', trim( strip_tags( $subLink['title'] ) ) ) ) );
-						$output .= "<li {$subLink['attributes']}><a href='{$href}' class='{$subLink['class']} {$slug}'>{$subLink['title']}</a>";
-					}//end else
-				}
-				$output .= '</ul>';
-				$output .= '</li>';
-			} else {
-				$requestUrl = $this->getSkin()->getRequest()->getRequestURL();
-				$myLink = $topItem['link'];
-				$query = explode('&', $requestUrl);
-				if (count($query) > 1 && strpos( $requestUrl ,'action' )!== false){
-					$match = ($query[1] === explode('&amp;', $myLink)[1]) &&  ($query[0] === explode('&amp;', $myLink)[0]);
-				}else{
-					if (strpos($requestUrl, 'index.php?title=') != false ){
-						$requestUrl = str_replace("index.php?title=", "wiki/", $requestUrl);
-					}
-					$match = (strpos($requestUrl , $myLink) !==false);
-				}
-				$output .= '<li' . ( $match ? ' class="active" id="ca-'.$topItem['id'] : ' id="ca-'.$topItem['id']) . '"><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
-			}//end else
-		}//end foreach
-		return $output;
-	}//end nav
-	/**
-	 * Render one or more navigations elements by name as notifications, automatically reveresed
-	 * when UI is in RTL mode
-	 */
-	private function nav_notification( $nav ) {
-		$output = '';
-		foreach ( $nav as $topItem ) {
-			$pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
-
-			$output .= '<li id="pt-notifications" ><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
-			
-		}//end foreach
-		return $output;
-	}//end nav
-
-	/**
-	 * Render one or more navigations elements by name in a dropdown select style, automatically reveresed
-	 * when UI is in RTL mode
-	 */
-	private function nav_select( $nav ) {
-		$output = '';
-		foreach ( $nav as $topItem ) {
-			$pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
-			$output .= '<optgroup label="'.strip_tags( $topItem['title'] ).'">';
-			if ( array_key_exists( 'sublinks', $topItem ) ) {
-				foreach ( $topItem['sublinks'] as $subLink ) {
-					if ( 'divider' == $subLink ) {
-						$output .= "<option value='' disabled='disabled' class='unclickable'>----</option>\n";
-					} elseif ( $subLink['textonly'] ) {
-						$output .= "<option value='' disabled='disabled' class='unclickable'>{$subLink['title']}</option>\n";
-					} else {
-						if( $subLink['local'] && $pageTitle = Title::newFromText( $subLink['link'] ) ) {
-							$href = $pageTitle->getLocalURL();
-						} else {
-							$href = $subLink['link'];
-						}//end else
-
-						$output .= "<option value='{$href}'>{$subLink['title']}</option>";
-					}//end else
-				}//end foreach
-			} else {
-				$output .= '<option value="' . $topItem['link'] . '">' . $topItem['title'] . '</option>';
-			}//end else
-			$output .= '</optgroup>';
-		}//end foreach
-
-		return $output;
-	}//end nav_select
-
-	/* generate links from a source page */
-	private function get_page_links( $source ) {
-		$titleBar = $this->getPageRawText( $source );
-		$nav = array();
-		foreach(explode("\n", $titleBar) as $line) {
-			if(trim($line) == '') continue;
-			if( preg_match('/^\*\*\s*divider/', $line ) ) {
-				$nav[ count( $nav ) - 1]['sublinks'][] = 'divider';
-				continue;
-			}//end if
-
-			$sub = false;
-			$link = false;
-			$external = false;
-
-			if(preg_match('/^\*\s*([^\*]*)\[\[:?(.+)\]\]/', $line, $match)) {
-				$sub = false;
-				$link = true;
-			}elseif(preg_match('/^\*\s*([^\*\[]*)\[([^\[ ]+) (.+)\]/', $line, $match)) {
-				$sub = false;
-				$link = true;
-				$external = true;
-			}elseif(preg_match('/^\*\*\s*([^\*\[]*)\[([^\[ ]+) (.+)\]/', $line, $match)) {
-				$sub = true;
-				$link = true;
-				$external = true;
-			}elseif(preg_match('/\*\*\s*([^\*]*)\[\[:?(.+)\]\]/', $line, $match)) {
-				$sub = true;
-				$link = true;
-			}elseif(preg_match('/\*\*\s*([^\* ]*)(.+)/', $line, $match)) {
-				$sub = true;
-				$link = false;
-			}elseif(preg_match('/^\*\s*(.+)/', $line, $match)) {
-				$sub = false;
-				$link = false;
-			}
+        <?php
+        $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
+        $this->html('reporttime');
+        if ( $this->data['debug'] ) {
+            ?>
+            <!-- Debug output:
+            <?php $this->text( 'debug' ); ?>
+            -->
+            <?php
+        }//end if
+        ?>
+        </body>
+        </html>
+        <?php
+    }//end execute
+    /**
+     * Render one or more navigations elements by name, automatically reveresed
+     * when UI is in RTL mode
+     */
+    private function nav( $nav ) {
+        $output = '';
+        foreach ( $nav as $topItem ) {
+            $pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
+            if ( array_key_exists( 'sublinks', $topItem ) ) {
+                $output .= '<li class="dropdown">';
+                $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . ' <b class="caret"></b></a>';
+                $output .= '<ul class="dropdown-menu">';
+                foreach ( $topItem['sublinks'] as $subLink ) {
+                    if ( 'divider' == $subLink ) {
+                        $output .= "<li class='divider'></li>\n";
+                    } elseif ( $subLink['textonly'] ) {
+                        $output .= "<li class='nav-header'>{$subLink['title']}</li>\n";
+                    } else {
+                        if( $subLink['local'] && $pageTitle = Title::newFromText( $subLink['link'] ) ) {
+                            $href = $pageTitle->getLocalURL();
+                        } else {
+                            $href = $subLink['link'];
+                        }//end else
+                        $slug = strtolower( str_replace(' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', trim( strip_tags( $subLink['title'] ) ) ) ) );
+                        $output .= "<li {$subLink['attributes']}><a href='{$href}' class='{$subLink['class']} {$slug}'>{$subLink['title']}</a>";
+                    }//end else
+                }
+                $output .= '</ul>';
+                $output .= '</li>';
+            } else {
+                $requestUrl = $this->getSkin()->getRequest()->getRequestURL();
+                $myLink = $topItem['link'];
+                $query = explode('&', $requestUrl);
+                if (count($query) > 1 && strpos( $requestUrl ,'action' )!== false){
+                    $match = ($query[1] === explode('&amp;', $myLink)[1]) &&  ($query[0] === explode('&amp;', $myLink)[0]);
+                }else{
+                    if (strpos($requestUrl, 'index.php?title=') != false ){
+                        $requestUrl = str_replace("index.php?title=", "wiki/", $requestUrl);
+                    }
+                    $match = (strpos($requestUrl , $myLink) !==false);
+                }
+                $output .= '<li' . ( $match ? ' class="active" id="ca-'.$topItem['id'] : ' id="ca-'.$topItem['id']) . '"><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
+            }//end else
+        }//end foreach
+        return $output;
+    }//end nav
+    /**
+     * Render one or more navigations elements by name as notifications, automatically reveresed
+     * when UI is in RTL mode
+     */
+    private function nav_notification( $nav ) {
+        $output = '';
+        foreach ( $nav as $topItem ) {
+            $pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
+            $output .= '<li id="pt-notifications" ><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
+            
+        }//end foreach
+        return $output;
+    }//end nav
+    /**
+     * Render one or more navigations elements by name in a dropdown select style, automatically reveresed
+     * when UI is in RTL mode
+     */
+    private function nav_select( $nav ) {
+        $output = '';
+        foreach ( $nav as $topItem ) {
+            $pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
+            $output .= '<optgroup label="'.strip_tags( $topItem['title'] ).'">';
+            if ( array_key_exists( 'sublinks', $topItem ) ) {
+                foreach ( $topItem['sublinks'] as $subLink ) {
+                    if ( 'divider' == $subLink ) {
+                        $output .= "<option value='' disabled='disabled' class='unclickable'>----</option>\n";
+                    } elseif ( $subLink['textonly'] ) {
+                        $output .= "<option value='' disabled='disabled' class='unclickable'>{$subLink['title']}</option>\n";
+                    } else {
+                        if( $subLink['local'] && $pageTitle = Title::newFromText( $subLink['link'] ) ) {
+                            $href = $pageTitle->getLocalURL();
+                        } else {
+                            $href = $subLink['link'];
+                        }//end else
+                        $output .= "<option value='{$href}'>{$subLink['title']}</option>";
+                    }//end else
+                }//end foreach
+            } else {
+                $output .= '<option value="' . $topItem['link'] . '">' . $topItem['title'] . '</option>';
+            }//end else
+            $output .= '</optgroup>';
+        }//end foreach
+        return $output;
+    }//end nav_select
+    /* generate links from a source page */
+    private function get_page_links( $source ) {
+        $titleBar = $this->getPageRawText( $source );
+        $nav = array();
+        foreach(explode("\n", $titleBar) as $line) {
+            if(trim($line) == '') continue;
+            if( preg_match('/^\*\*\s*divider/', $line ) ) {
+                $nav[ count( $nav ) - 1]['sublinks'][] = 'divider';
+                continue;
+            }//end if
+            $sub = false;
+            $link = false;
+            $external = false;
+            if(preg_match('/^\*\s*([^\*]*)\[\[:?(.+)\]\]/', $line, $match)) {
+                $sub = false;
+                $link = true;
+            }elseif(preg_match('/^\*\s*([^\*\[]*)\[([^\[ ]+) (.+)\]/', $line, $match)) {
+                $sub = false;
+                $link = true;
+                $external = true;
+            }elseif(preg_match('/^\*\*\s*([^\*\[]*)\[([^\[ ]+) (.+)\]/', $line, $match)) {
+                $sub = true;
+                $link = true;
+                $external = true;
+            }elseif(preg_match('/\*\*\s*([^\*]*)\[\[:?(.+)\]\]/', $line, $match)) {
+                $sub = true;
+                $link = true;
+            }elseif(preg_match('/\*\*\s*([^\* ]*)(.+)/', $line, $match)) {
+                $sub = true;
+                $link = false;
+            }elseif(preg_match('/^\*\s*(.+)/', $line, $match)) {
+                $sub = false;
+                $link = false;
+            }
             $dir = '/wiki/';
-			if( strpos( $match[2], '|' ) !== false ) {
-				$item = explode( '|', $match[2] );
-				$item = array(
-					'title' => $match[1].$item[1],
-					'link' => $sub?$item[0]:$dir.$item[0],
-					'local' => true,
-				);
-			} else {
-				if( $external ) {
-					$item = $match[2];
-					$title = $match[1] . $match[3];
-				} else {
-					$item = $match[1] . $match[2];
-					$title = $item;
+            if( strpos( $match[2], '|' ) !== false ) {
+                $item = explode( '|', $match[2] );
+                $item = array(
+                    'title' => $match[1].$item[1],
+                    'link' => $sub?$item[0]:$dir.$item[0],
+                    'local' => true,
+                );
+            } else {
+                if( $external ) {
+                    $item = $match[2];
+                    $title = $match[1] . $match[3];
+                } else {
+                    $item = $match[1] . $match[2];
+                    $title = $item;
                     if (!$sub){
                         $item = $dir.$item;
                     } 
-				}//end else
-
-				if( $link ) {
-					$item = array('title'=> $title, 'link' => $item, 'local' => ! $external , 'external' => $external );
-				} else {
-					$item = array('title'=> $title, 'link' => $item, 'textonly' => true, 'external' => $external );
-				}//end else
-			}//end else
-
-			if( $sub ) {
-				$nav[count( $nav ) - 1]['sublinks'][] = $item;
-			} else {
-				$nav[] = $item;
-			}//end else
-		}
-
-		return $nav;	
-	}//end get_page_links
-
-	/* notification adapter */
-	private function notificationAdapter($array){
-		$nav = array();
-		$item = next($array);
-		$key = key($array);
-		$link = array(
-			'id' => Sanitizer::escapeId( $key ),
-			'attributes' => $item['attributes'],
-			'link' => htmlspecialchars( $item['href'] ),
-			'key' => $item['key'],
-			'class' => htmlspecialchars( $item['class'] ),
-			'title' => htmlspecialchars( $item['text'] ),
-		);
-		$link['title'] = '<i class="fa fa-bell"></i> <span class="badge">' . $link['title'] .'</span>';
-		$nav[] = $link;
-		return $nav;		
-	}
-
-	/* dropdown button adapter */
-	private function dropdownAdapter( $array, $title, $which ) {
-		$nav = array();
-		$nav[] = array('title' => $title );
-		foreach( $array as $key => $item ) {
-			$link = array(
-				'id' => Sanitizer::escapeId( $key ),
-				'attributes' => $item['attributes'],
-				'link' => htmlspecialchars( $item['href'] ),
-				'key' => $item['key'],
-				'class' => htmlspecialchars( $item['class'] ),
-				'title' => htmlspecialchars( $item['text'] ),
-			);
-
-			if( 'page' == $which ) {
-				switch( $link['title'] ) {
-				case 'Page': $icon = 'file'; break;
-				case 'Discussion': $icon = 'comment'; break;
-				case 'Edit': $icon = 'pencil'; break;
-				case 'History': $icon = 'clock-o'; break;
-				case 'Delete': $icon = 'remove'; break;
-				case 'Move': $icon = 'arrows'; break;
-				case 'Protect': $icon = 'lock'; break;
-				case 'Watch': $icon = 'eye-open'; break;
-				case 'Unwatch': $icon = 'eye-slash'; break;
-				}//end switch
-
-				$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
-			} elseif( 'user' == $which ) {
-				switch( $link['title'] ) {
-				case '讨论': $icon = 'comment'; break;
-				case '设置': $icon = 'cog'; break;
-				case '监视列表': $icon = 'eye'; break;
-				case '贡献': $icon = 'list-alt'; break;
-				case '退出': $icon = 'power-off'; break;
-				default: $icon = 'user'; break;
-				}//end switch
-
-				$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
-			}//end elseif
-
-			$nav[0]['sublinks'][] = $link;
-		}//end foreach
-
-		return $this->nav( $nav );
-	}//end get_array_links
-
-	/* general a list of links adater */
-	private function listAdapter( $array ) {
-		$nav = array();
-		foreach( $array as $key => $item ) {
-
-			$link = array(
-				'id' => Sanitizer::escapeId( $key ),
-				'attributes' => $item['attributes'],
-				'link' => htmlspecialchars( $item['href'] ),
-				'key' => $item['key'],
-				'class' => htmlspecialchars( $item['class'] ),
-				'title' => htmlspecialchars( $item['text'] ),
-			);
-			switch( $link['title'] ) {
-				case '页面': $icon = 'file'; break;
-				case '讨论': $icon = 'comment'; break;
-				case '编辑': $icon = 'pencil'; break;
-				case '编辑源代码': $icon = 'edit'; break;
-				case '历史': $icon = 'clock-o'; break;
-				case '删除': $icon = 'remove'; break;
-				case '移动': $icon = 'arrows'; break;
-				case '保护': $icon = 'lock'; break;
-				case '更改保护': $icon = 'unlock-alt'; break;
-				case '监视': $icon = 'eye'; break;
-				case '取消监视': $icon = 'eye-slash'; break;
-				case '创建': $icon = 'plus'; break;
-				case '创建源代码': $icon = 'plus'; break;
-				case '查看源代码': $icon = 'file-code-o'; break;
-				case '特殊页面': $icon = 'flask'; break;
-				default: $icon = 'bookmark'; break;
-			}
-			$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
-			$nav[] = $link;
-		}//end foreach
-		return $nav ;
-	}//end get_edit_links	
-	function getPageRawText($title) {
-		$output = self::getPageRawTextCache( $title );
+                }//end else
+                if( $link ) {
+                    $item = array('title'=> $title, 'link' => $item, 'local' => ! $external , 'external' => $external );
+                } else {
+                    $item = array('title'=> $title, 'link' => $item, 'textonly' => true, 'external' => $external );
+                }//end else
+            }//end else
+            if( $sub ) {
+                $nav[count( $nav ) - 1]['sublinks'][] = $item;
+            } else {
+                $nav[] = $item;
+            }//end else
+        }
+        return $nav;    
+    }//end get_page_links
+    /* notification adapter */
+    private function notificationAdapter($array){
+        $nav = array();
+        $item = next($array);
+        $key = key($array);
+        $link = array(
+            'id' => Sanitizer::escapeId( $key ),
+            'attributes' => $item['attributes'],
+            'link' => htmlspecialchars( $item['href'] ),
+            'key' => $item['key'],
+            'class' => htmlspecialchars( $item['class'] ),
+            'title' => htmlspecialchars( $item['text'] ),
+        );
+        $link['title'] = '<i class="fa fa-bell"></i> <span class="badge">' . $link['title'] .'</span>';
+        $nav[] = $link;
+        return $nav;        
+    }
+    /* dropdown button adapter */
+    private function dropdownAdapter( $array, $title, $which ) {
+        $nav = array();
+        $nav[] = array('title' => $title );
+        foreach( $array as $key => $item ) {
+            $link = array(
+                'id' => Sanitizer::escapeId( $key ),
+                'attributes' => $item['attributes'],
+                'link' => htmlspecialchars( $item['href'] ),
+                'key' => $item['key'],
+                'class' => htmlspecialchars( $item['class'] ),
+                'title' => htmlspecialchars( $item['text'] ),
+            );
+            if( 'page' == $which ) {
+                switch( $link['title'] ) {
+                case 'Page': $icon = 'file'; break;
+                case 'Discussion': $icon = 'comment'; break;
+                case 'Edit': $icon = 'pencil'; break;
+                case 'History': $icon = 'clock-o'; break;
+                case 'Delete': $icon = 'remove'; break;
+                case 'Move': $icon = 'arrows'; break;
+                case 'Protect': $icon = 'lock'; break;
+                case 'Watch': $icon = 'eye-open'; break;
+                case 'Unwatch': $icon = 'eye-slash'; break;
+                }//end switch
+                $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
+            } elseif( 'user' == $which ) {
+                switch( $link['title'] ) {
+                case '讨论': $icon = 'comment'; break;
+                case '设置': $icon = 'cog'; break;
+                case '监视列表': $icon = 'eye'; break;
+                case '贡献': $icon = 'list-alt'; break;
+                case '退出': $icon = 'power-off'; break;
+                default: $icon = 'user'; break;
+                }//end switch
+                $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
+            }//end elseif
+            $nav[0]['sublinks'][] = $link;
+        }//end foreach
+        return $this->nav( $nav );
+    }//end get_array_links
+    /* general a list of links adater */
+    private function listAdapter( $array ) {
+        $nav = array();
+        foreach( $array as $key => $item ) {
+            $link = array(
+                'id' => Sanitizer::escapeId( $key ),
+                'attributes' => $item['attributes'],
+                'link' => htmlspecialchars( $item['href'] ),
+                'key' => $item['key'],
+                'class' => htmlspecialchars( $item['class'] ),
+                'title' => htmlspecialchars( $item['text'] ),
+            );
+            switch( $link['title'] ) {
+                case '页面': $icon = 'file'; break;
+                case '讨论': $icon = 'comment'; break;
+                case '编辑': $icon = 'pencil'; break;
+                case '编辑源代码': $icon = 'edit'; break;
+                case '历史': $icon = 'clock-o'; break;
+                case '删除': $icon = 'remove'; break;
+                case '移动': $icon = 'arrows'; break;
+                case '保护': $icon = 'lock'; break;
+                case '更改保护': $icon = 'unlock-alt'; break;
+                case '监视': $icon = 'eye'; break;
+                case '取消监视': $icon = 'eye-slash'; break;
+                case '创建': $icon = 'plus'; break;
+                case '创建源代码': $icon = 'plus'; break;
+                case '查看源代码': $icon = 'file-code-o'; break;
+                case '特殊页面': $icon = 'flask'; break;
+                default: $icon = 'bookmark'; break;
+            }
+            $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
+            $nav[] = $link;
+        }//end foreach
+        return $nav ;
+    }//end get_edit_links   
+    function getPageRawText($title) {
+        $output = self::getPageRawTextCache( $title );
         if ( $output != '' ) {
             return $output;
         } else {
             return self::getPageRawTextPage( $title );
         }
-	}
+    }
     static function getPageRawTextCache( $title ){
         global $wgMemc;
         $key = wfMemcKey( 'page', 'getPageRaw', 'all', $title );
@@ -767,21 +737,20 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             return $output;
         }
     }
-
-	function includePage($title) {
-		global $wgParser, $wgUser;
-		$pageTitle = Title::newFromText($title);
-		if(!$pageTitle->exists()) {
-			echo 'The page [[' . $title . ']] was not found.';
-		} else {
-			$wgParserOptions = new ParserOptions($wgUser);
-			$parserOutput = $wgParser->parse($this->getPageRawText($title), $pageTitle, $wgParserOptions);
-			echo $parserOutput->getText();
-		}
-	}
+    function includePage($title) {
+        global $wgParser, $wgUser;
+        $pageTitle = Title::newFromText($title);
+        if(!$pageTitle->exists()) {
+            echo 'The page [[' . $title . ']] was not found.';
+        } else {
+            $wgParserOptions = new ParserOptions($wgUser);
+            $parserOutput = $wgParser->parse($this->getPageRawText($title), $pageTitle, $wgParserOptions);
+            echo $parserOutput->getText();
+        }
+    }
     //index content block
     // $socurce  json data
-	function getIndexBlock( $source ) {
+    function getIndexBlock( $source ) {
         $content = $this->getPageRawText( $source );
         $result = json_decode( $content );
         return $result;
@@ -803,7 +772,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                 <span class="icon-bar"></span>
                             </button>
                         <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand"><img alt="Logo" src="/resources/assets/huiji_white.png"> </a>  </div>
-
                         <div class="collapse navbar-collapse">
                             <ul id="icon-section" class="nav navbar-nav">
                                     <li>
@@ -830,7 +798,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                         <a href="http://home.huiji.wiki/wiki/创建新wiki">创建新wiki</a>
                                     </li>
                             </ul>';
-
                         if ( $wgUser->isLoggedIn() ) {
                             if ( count( $this->data['personal_urls'] ) > 0 ) {
                                 $avatar = new wAvatar( $wgUser->getID(), 'l' );
@@ -845,7 +812,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right">'.$user_notify.$user_nav.'</ul>';
                         } else {  // else if is logged in 
                                     //old login 
-
                             $output .= '<ul class="nav navbar-nav navbar-right">
                                 <li id= "pt-login" data-toggle="modal" data-target=".user-login">
                                     <a class="login-in">登录</a>
@@ -867,7 +833,22 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             </header>';
             
             return $output;
-
+    }
+    /**
+     * Update page's cache when someone edit the page(Admin,subnav,footer)
+     */
+    public static function onNewRevisionFromEditComplete( $article, $revision, $baseRevId ) {
+        global $wgUser, $wgMemc, $wgParser;
+        if ( $article->getTitle()->getFullText() === '首页/Admin' 
+            || $article->getTitle()->getFullText() === 'Bootstrap:TitleBar'         
+            || $article->getTitle()->getFullText() === 'Bootstrap:Footer' 
+            || $article->getTitle()->getFullText() === 'Bootstrap:Subnav' ){
+            $option = new ParserOptions($wgUser);
+            $key = wfMemcKey( 'page', 'getPageRaw', 'all', $article->getTitle()->getFullText() );
+            $output = $wgParser->preprocess($article->getRawText(), $article->getTitle(), $option );
+            $wgMemc->set( $key, $output );
+            return true;
+        }
+        
     }
 }
-
