@@ -38,12 +38,10 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		global $wgSiteJS, $wgHuijiPrefix;
 		parent::initPage( $out );
         if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
-            $out->addModuleScripts( 'skins.frontpage');
+            $out->addModules( 'skins.frontpage');
         } 
-        $out->addModuleScripts( 'skins.bootstrapmediawiki' );     
-        $out->addModules( 'ext.comments.js'); # add js and messages       
-        $out->addModuleScripts( 'ext.socialprofile.usersitefollows.js' );
-        $out->addModuleScripts( 'ext.socialprofile.useruserfollows.js' );
+        $out->addModules( array('ext.comments.js','ext.socialprofile.usersitefollows.js','ext.socialprofile.useruserfollows.js')); # add js and messages  
+        $out->addModuleScripts( 'skins.bootstrapmediawiki' );          
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
 	}//end initPage
 
@@ -54,15 +52,9 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 		global $wgSiteCSS, $wgHuijiPrefix;
 
 		parent::setupSkinUserCss( $out );
-        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home'  || $wgHuijiPrefix === 'slx.test') && ($this->getSkin()->getTitle()->isMainPage()) ){
-            $out->addModuleStyles( 'skins.frontpage');
-        } 
         $out->addModuleStyles( 'skins.bootstrapmediawiki' ); 
-        $out->addModuleStyles( 'ext.socialprofile.useruserfollows.css' );
-        $out->addModuleStyles( 'ext.comments.css' );
-
 		// we need to include this here so the file pathing is right
-		$out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
+		$out->addModuleStyles( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
 	}//end setupSkinUserCss
 }
 

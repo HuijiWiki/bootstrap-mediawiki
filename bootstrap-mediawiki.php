@@ -46,14 +46,7 @@ $wgResourceModules['skins.bootstrapmediawiki'] = array(
 		'jquery',
 		'jquery.mwExtension',
 		'jquery.client',
-//		'jquery.cookie',
-	),
-	'messages' => array(
-		'comments-voted-label', 'comments-loading',
-		'comments-auto-refresher-pause', 'comments-auto-refresher-enable',
-		'comments-cancel-reply', 'comments-reply-to',
-		'comments-block-warning-anon', 'comments-block-warning-user',
-		'comments-delete-warning'
+		//'jquery.cookie',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
