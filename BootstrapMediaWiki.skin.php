@@ -43,17 +43,16 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         //$out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
     }//end initPage
-	/**
-	 * prepares the skin's CSS
-	 */
-	public function setupSkinUserCss( OutputPage $out ) {
-		global $wgSiteCSS, $wgHuijiPrefix;
-
-		parent::setupSkinUserCss( $out );
+    /**
+     * prepares the skin's CSS
+     */
+    public function setupSkinUserCss( OutputPage $out ) {
+        global $wgSiteCSS, $wgHuijiPrefix;
+        parent::setupSkinUserCss( $out );
         //$out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
-		// we need to include this here so the file pathing is right
-		$out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
-	}//end setupSkinUserCss
+        // we need to include this here so the file pathing is right
+        $out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
+    }//end setupSkinUserCss
 }
 /**
  * @package MediaWiki
@@ -385,13 +384,14 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                 if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage())){
                                     $revPageId = $this->getSkin()->getTitle()->getArticleId();
                                     $editinfo = UserStats::getLastEditer($revPageId,$wgHuijiPrefix);
-                                    // $edittime = CommentFunctions::getTimeAgo( strtotime( $editinfo['rev_timestamp'] ) );
+                                    $userPage = Title::makeTitle( NS_USER, $editinfo['rev_user_text'] );
+                                    $userPageURL = htmlspecialchars( $userPage->getFullURL() );
                                     $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
                                     $edittime = CommentFunctions::getTimeAgo( $bjtime );
                                     if ($edittime === '刚刚') {
-                                        echo $editinfo['rev_user_text'].$edittime.'编辑了此页面';
+                                        echo '<a href="'.$userPageURL.'">'.$editinfo['rev_user_text'].$edittime.'</a>编辑了此页面';
                                     }else{
-                                        echo $editinfo['rev_user_text'].'于'.$edittime.'前编辑了此页面';
+                                        echo '<a href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>于'.$edittime.'前编辑了此页面';
                                     }
                                 }
                             ?>
@@ -853,4 +853,3 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
         
     }
 }
-
