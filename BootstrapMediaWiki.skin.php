@@ -53,6 +53,20 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         // we need to include this here so the file pathing is right
         $out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
     }//end setupSkinUserCss
+		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
+	}//end initPage
+
+	/**
+	 * prepares the skin's CSS
+	 */
+	public function setupSkinUserCss( OutputPage $out ) {
+		global $wgSiteCSS, $wgHuijiPrefix;
+
+		parent::setupSkinUserCss( $out );
+        //$out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
+		// we need to include this here so the file pathing is right
+		$out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
+	}//end setupSkinUserCss
 }
 /**
  * @package MediaWiki
@@ -852,3 +866,4 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
         
     }
 }
+
