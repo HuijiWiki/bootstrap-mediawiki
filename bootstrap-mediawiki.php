@@ -54,7 +54,8 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 
 $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'scripts' => array(
-		$skinDir . '/js/flow.js',
+		$skinDir . '/js/huiji.flow.js',
+		$skinDir . '/js/huiji.ready.js'
 	),
 	// 'styles' => array(
 	// 	$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
