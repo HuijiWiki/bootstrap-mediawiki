@@ -36,12 +36,8 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',
 		$skinDir . '/js/behavior.js',
 	),
-	// 'dependencies' => array(
-	// 	'jquery',
-	// 	'jquery.mwExtension',
-	// 	'jquery.client',
-	// 	//'jquery.cookie',
-	// ),
+	'dependencies' => array(
+	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
@@ -51,11 +47,12 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/huiji.flow.js',
 		$skinDir . '/js/huiji.ready.js'
 	),
-	// 'styles' => array(
-	// 	$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
-	// 	$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
-	// 	$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
-	// ),
+	'styles' => array(
+		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
+	),
+	'dependencies' => array(
+		'mediawiki.cookie',
+	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'bottom',	
