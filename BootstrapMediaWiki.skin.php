@@ -381,7 +381,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
                             <h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?>
                             <?php
-                                if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage())){
+                                if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
                                     $revPageId = $this->getSkin()->getTitle()->getArticleId();
                                     $editinfo = UserStats::getLastEditer($revPageId,$wgHuijiPrefix);
                                     $userPage = Title::makeTitle( NS_USER, $editinfo['rev_user_text'] );
@@ -389,9 +389,9 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                     $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
                                     $edittime = CommentFunctions::getTimeAgo( $bjtime );
                                     if ($edittime === '刚刚') {
-                                        echo '<a href="'.$userPageURL.'">'.$editinfo['rev_user_text'].$edittime.'</a>编辑了此页面';
+                                        echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].$edittime.'</a>编辑了此页面';
                                     }else{
-                                        echo '<a href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>于'.$edittime.'前编辑了此页面';
+                                        echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>于'.$edittime.'前编辑了此页面';
                                     }
                                 }
                             ?>
@@ -400,15 +400,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 
                         <div id="bodyContent" class="body">                     
                         <?php $this->html( 'bodytext' ) ?>
-                        <?php 
-                        if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage())){
-                            $articles = $this->msgWiki('tucao-wikitext');
-                            $wgParserOptions = new ParserOptions($wgUser);
-                            $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
-                            echo $parserOutput->getText();
-                        }?>
-                        </div>
-
                         <?php if ( $this->data['catlinks'] ): ?>
                         <div class="category-links">
                         <!-- catlinks -->
@@ -416,6 +407,16 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                         <!-- /catlinks -->
                         </div>
                         <?php endif; ?>
+                        <?php 
+                        if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
+                            $articles = $this->msgWiki('tucao-wikitext');
+                            $wgParserOptions = new ParserOptions($wgUser);
+                            $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
+                            echo $parserOutput->getText();
+                        }?>
+                        </div>
+
+
                         <?php if ( $this->data['dataAfterContent'] ): ?>
                         <div class="data-after-content">
                         <!-- dataAfterContent -->
