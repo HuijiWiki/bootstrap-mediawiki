@@ -842,7 +842,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
      */
     public static function onNewRevisionFromEditComplete( $article, $revision, $baseRevId ) {
         global $wgUser, $wgMemc, $wgParser;
-        if ( $article->getTitle()->getFullText() === '首页/Admin' 
+        if ( $article->getTitle()->exists() && $article->getTitle()->getFullText() === '首页/Admin' 
             || $article->getTitle()->getFullText() === 'Bootstrap:TitleBar'         
             || $article->getTitle()->getFullText() === 'Bootstrap:Footer' 
             || $article->getTitle()->getFullText() === 'Bootstrap:Subnav' ){
