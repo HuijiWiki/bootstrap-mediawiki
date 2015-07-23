@@ -1,3 +1,4 @@
+/* fix element position and size in this file */
 $(function() {
     $('html').removeClass('client-nojs');
     setInterval(function(){

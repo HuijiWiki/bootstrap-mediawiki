@@ -640,12 +640,13 @@ a:hover,a:focus,a:active{
     border-bottom: 2px solid #09c;
 }
 .wrapper{
-    position: fixed;
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     transition:all 1.5s;
+    overflow: hidden;
     -webkit-transition: all 1.5s;
     -moz-transition: all 1.5s;
     -ms-transition: all 1.5s;
@@ -770,7 +771,7 @@ body{
     opacity: 1;
 }
 .wiki-wrapper{
-    position:fixed;
+    position:absolute;
     top: 0;
     bottom:0;
     left: 0;
@@ -1316,6 +1317,12 @@ body{
         -o-transition: none;
         transition: none;
         opacity: 1;
+    }
+    .wrapper{
+        position: static;
+    }
+    .wiki-wrapper{
+        position: static;
     }
 }
 @media screen and (max-width: 999px) {
