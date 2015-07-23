@@ -17,6 +17,7 @@ $wgExtensionCredits['skin'][] = array(
 );
 $wgValidSkinNames['bootstrapmediawiki'] = 'BootstrapMediaWiki';
 $wgAutoloadClasses['SkinBootstrapMediaWiki'] = __DIR__ . '/BootstrapMediaWiki.skin.php';
+$wgAutoloadClasses['BootstrapMediawikiHooks'] = __DIR__ . '/BootstrapMediawikiHooks.php';
 $wgMessagesDirs['bootstrapmediawiki'] = __DIR__ . '/i18n';
 $skinDirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );
 $skinDir = array_pop( $skinDirParts );
@@ -79,4 +80,4 @@ if ( isset( $wgSiteCSS ) ) {
 	$wgResourceModules['skins.bootstrapmediawiki']['styles'][] = $skinDir . '/' . $wgSiteCSS;
 }//end if
 //update page's cache
-$wgHooks['NewRevisionFromEditComplete'][] = 'BootstrapMediaWikiTemplate::onNewRevisionFromEditComplete';
+$wgHooks['NewRevisionFromEditComplete'][] = 'BootstrapMediawikiHooks::onNewRevisionFromEditComplete';
