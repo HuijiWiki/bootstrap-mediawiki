@@ -840,7 +840,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
     /**
      * Update page's cache when someone edit the page(Admin,subnav,footer)
      */
-    public static function onNewRevisionFromEditComplete( $article, $revision, $baseRevId ) {
+    public static function onNewRevisionFromEditComplete( $article, $revision, $baseRevId, $user ) {
         global $wgUser, $wgMemc, $wgParser;
         if ( $article->getTitle()->exists() && $article->getTitle()->getFullText() === '首页/Admin' 
             || $article->getTitle()->getFullText() === 'Bootstrap:TitleBar'         
