@@ -49,7 +49,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
     public function setupSkinUserCss( OutputPage $out ) {
         global $wgSiteCSS, $wgHuijiPrefix;
         parent::setupSkinUserCss( $out );
-        //$out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
+        $out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
         // we need to include this here so the file pathing is right
         $out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
     }//end setupSkinUserCss
@@ -415,7 +415,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             echo $parserOutput->getText();
                         }?>
                         </div>
-
 
                         <?php if ( $this->data['dataAfterContent'] ): ?>
                         <div class="data-after-content">
