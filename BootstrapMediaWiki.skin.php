@@ -400,6 +400,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 
                         <div id="bodyContent" class="body">                     
                         <?php $this->html( 'bodytext' ) ?>
+                        </div>
                         <?php if ( $this->data['catlinks'] ): ?>
                         <div class="category-links">
                         <!-- catlinks -->
@@ -407,6 +408,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                         <!-- /catlinks -->
                         </div>
                         <?php endif; ?>
+                        <div class="tucao">
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
                             $articles = $this->msgWiki('tucao-wikitext');
