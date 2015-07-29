@@ -1462,3 +1462,8 @@ sup.reference {
     height: 185px;
     visibility: hidden;
 }
+#searchText{
+    display: inline-block;
+    width: 70%;
+    max-width: 500px;
+}

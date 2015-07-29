@@ -275,10 +275,10 @@ $(document).ready(function(){
                 var sex;
                 if(res.result.gender == "female"){
                     res.result.gender = "♀";
-                    sex = "他";
+                    sex = "她";
                 }else if(res.result.gender == "male"){
                     res.result.gender = "♂";
-                    sex = "她";
+                    sex = "他";
                 }else{
                     res.result.gender ='♂/♀';
                     sex = "Ta";
