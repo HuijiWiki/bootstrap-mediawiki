@@ -1046,6 +1046,9 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
     .nav-up{
         top: 0;
     }
+    #firstHeading h1 {
+        font-size: 36px;
+    }
 }
 /*@media (max-device-width: 480px) and (orientation: landscape) {*/
     /*.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {*/
@@ -1363,4 +1366,13 @@ sup.reference {
     margin-top: -185px;
     height: 185px;
     visibility: hidden;
+}
+#searchText{
+    display: inline-block;
+    width: 70%;
+    max-width: 500px;
+}
+.mw-search-results div.searchresult {
+	width: auto;
+	max-width: 540px;
 }

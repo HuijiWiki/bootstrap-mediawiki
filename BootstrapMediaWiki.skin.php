@@ -7,119 +7,101 @@
  * @Copyright Matthew Batchelder 2012 - http://borkweb.com/
  * @License: GPLv2 (http://www.gnu.org/copyleft/gpl.html)
  */
-
 if ( ! defined( 'MEDIAWIKI' ) ) {
-	die( -1 );
+    die( -1 );
 }//end if
-
 //File removed on new mediawiki versions (1.24.1 at least).
 //require_once('includes/SkinTemplate.php');
-
 if(file_exists('includes/SkinTemplate.php')){
     require_once('includes/SkinTemplate.php');
 }
-
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @package MediaWiki
  * @subpackage Skins
  */
 class SkinBootstrapMediaWiki extends SkinTemplate {
-	/** Using Bootstrap */
-	public $skinname = 'bootstrap-mediawiki';
-	public $stylename = 'bootstrap-mediawiki';
-	public $template = 'BootstrapMediaWikiTemplate';
-	public $useHeadElement = true;
-
-	/**
-	 * initialize the page
-	 */
-	public function initPage( OutputPage $out ) {
-		global $wgSiteJS, $wgHuijiPrefix;
-		parent::initPage( $out );
+    /** Using Bootstrap */
+    public $skinname = 'bootstrap-mediawiki';
+    public $stylename = 'bootstrap-mediawiki';
+    public $template = 'BootstrapMediaWikiTemplate';
+    public $useHeadElement = true;
+    /**
+     * initialize the page
+     */
+    public function initPage( OutputPage $out ) {
+        global $wgSiteJS, $wgHuijiPrefix;
+        parent::initPage( $out );
         if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
-            $out->addModuleScripts( 'skins.frontpage');
+            $out->addModules( 'skins.frontpage');
         } 
-        $out->addModuleScripts( 'skins.bootstrapmediawiki' );     
-        $out->addModules( 'ext.comments.js'); # add js and messages       
-        $out->addModuleScripts( 'ext.socialprofile.usersitefollows.js' );
-        $out->addModuleScripts( 'ext.socialprofile.useruserfollows.js' );
-		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
-	}//end initPage
-
-	/**
-	 * prepares the skin's CSS
-	 */
-	public function setupSkinUserCss( OutputPage $out ) {
-		global $wgSiteCSS, $wgHuijiPrefix;
-
-		parent::setupSkinUserCss( $out );
-        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home'  || $wgHuijiPrefix === 'slx.test') && ($this->getSkin()->getTitle()->isMainPage()) ){
-            $out->addModuleStyles( 'skins.frontpage');
-        } 
-        $out->addModuleStyles( 'skins.bootstrapmediawiki' ); 
-        $out->addModuleStyles( 'ext.socialprofile.useruserfollows.css' );
-        $out->addModuleStyles( 'ext.comments.css' );
-
-		// we need to include this here so the file pathing is right
-		$out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
-	}//end setupSkinUserCss
+        $out->addModules( 
+            array('skins.bootstrapmediawiki.bottom',
+                'skins.bootstrapmediawiki.top',
+                )
+        ); # add js and messages  
+        //$out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
+        $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
+    }//end initPage
+    /**
+     * prepares the skin's CSS
+     */
+    public function setupSkinUserCss( OutputPage $out ) {
+        global $wgSiteCSS, $wgHuijiPrefix;
+        parent::setupSkinUserCss( $out );
+        $out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
+        // we need to include this here so the file pathing is right
+        $out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
+    }//end setupSkinUserCss
 }
-
 /**
  * @package MediaWiki
  * @subpackage Skins
  */
 class BootstrapMediaWikiTemplate extends BaseTemplate {
-	/**
-	 * @var Cached skin object
-	 */
-	public $skin;
-
-	/**
-	 * Template filter callback for Bootstrap skin.
-	 * Takes an associative array of data set from a SkinTemplate-based
-	 * class, and a wrapper for MediaWiki's localization database, and
-	 * outputs a formatted page.
-	 *
-	 * @access private
-	 */
-	public function execute() {
-		global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS;
-		global $wgEnableUploads;
-		global $wgLogo, $wgHuijiPrefix;
-		global $wgTOCLocation;
-		global $wgNavBarClasses;
-		global $wgSubnavBarClasses;
-		global $wgParser, $wgTitle;
-
-		$this->skin = $this->data['skin'];
-		$action = $wgRequest->getText( 'action' );
-		$url_prefix = str_replace( '$1', '', $wgArticlePath );
-		$NS = $wgTitle->getNamespace();
-		// Suppress warnings to prevent notices about missing indexes in $this->data
-		wfSuppressWarnings();
-
-		$this->html('headelement');
-		if ($wgUser->isLoggedIn()){
-			$usf = new UserSiteFollow();
-			$followed = ($usf->checkUserSiteFollow($wgUser, $wgHuijiPrefix) !== false);			
-		}else{
-			$followed = false;
-		}
-
-		?>
+    /**
+     * @var Cached skin object
+     */
+    public $skin;
+    /**
+     * Template filter callback for Bootstrap skin.
+     * Takes an associative array of data set from a SkinTemplate-based
+     * class, and a wrapper for MediaWiki's localization database, and
+     * outputs a formatted page.
+     *
+     * @access private
+     */
+    public function execute() {
+        global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS;
+        global $wgEnableUploads;
+        global $wgLogo, $wgHuijiPrefix;
+        global $wgTOCLocation;
+        global $wgNavBarClasses;
+        global $wgSubnavBarClasses;
+        global $wgParser, $wgTitle;
+        $this->skin = $this->data['skin'];
+        $action = $wgRequest->getText( 'action' );
+        $url_prefix = str_replace( '$1', '', $wgArticlePath );
+        $NS = $wgTitle->getNamespace();
+        // Suppress warnings to prevent notices about missing indexes in $this->data
+        wfSuppressWarnings();
+        $this->html('headelement');
+        if ($wgUser->isLoggedIn()){
+            $usf = new UserSiteFollow();
+            $followed = ($usf->checkUserSiteFollow($wgUser, $wgHuijiPrefix) !== false);         
+        }else{
+            $followed = false;
+        }
+        ?>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
             ga('create', 'UA-10190882-3', 'auto');
             ga('send', 'pageview');
-
         </script>
-		<div id="wrapper" class="toggled">
+        <div id="wrapper" class="toggled">
             <div class="modal alert-return">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -214,16 +196,16 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             include ('frontpage.php');
         } else {?>
                 <!-- Sidebar -->
-	        <div id="sidebar-wrapper">
-	          	
-	            <ul class="sidebar-nav">
+            <div id="sidebar-wrapper">
+                
+                <ul class="sidebar-nav">
                     <li class="left-follow">
                         <ul>
                             <li>
                                 <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
                             </li>
-                            <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button>	</li>
-                        	<li><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php 
+                            <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button> </li>
+                            <li><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php 
                                 $dbr = wfGetDB( DB_SLAVE );
                                 $counter = new SiteStatsInit( $dbr );
                                 $result = $counter->articles();
@@ -278,34 +260,33 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             <?php } ?>
                         </ul>
                     </li>
-                	<?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
-					<li class="sidebar-brand left-author">
-	                    <a href="#">
-	                        主要编辑者
-	                    </a>
+                    <?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
+                    <li class="sidebar-brand left-author">
+                        <a href="#">
+                            主要编辑者
+                        </a>
                         <?php
-
                         $contrib = '{{#contributors:{{FULLPAGENAME}}}}';
                         $wgParserOptions = new ParserOptions($wgUser);
                         $parserOutput = $wgParser->parse($contrib, $this->getSkin()->getTitle(), $wgParserOptions);
                         echo $parserOutput->getText();
                         }
                         ?>
-	                </li>
+                    </li>
 
-	                <?php if($this->data['language_urls']){ ?>
-	                <li class="sidebar-brand left-lang">
-	                    <a href="#">
-	                        语言
-	                    </a>	                	
-	                	<ul>
-		                <?php
-		                	$langlinks = $this->data['language_urls'];
-		                	echo $this->nav($this->listAdapter($langlinks));
-		                ?>
-		                </ul>
-	                </li>
-	                <?php } ?>
+                    <?php if($this->data['language_urls']){ ?>
+                    <li class="sidebar-brand left-lang">
+                        <a href="#">
+                            语言
+                        </a>                        
+                        <ul>
+                        <?php
+                            $langlinks = $this->data['language_urls'];
+                            echo $this->nav($this->listAdapter($langlinks));
+                        ?>
+                        </ul>
+                    </li>
+                    <?php } ?>
                     <li class="sidebar-create">
                         <div class="mw-inputbox-centered" style="">
                             <form name="createbox" class="createbox" action="/index.php" method="get">
@@ -326,22 +307,19 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                     $('#menu-toggle').addClass('menu-active');
                 }
             </script>
-	        <!-- /#sidebar-wrapper -->
-			<?php echo $this->showHeader(); ?>
+            <!-- /#sidebar-wrapper -->
+            <?php echo $this->showHeader(); ?>
 
 
-			<div id="wiki-outer-body">
+            <div id="wiki-outer-body">
                 <?php
                 if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {
                     ?>
                     <div id="content-actions" class="subnav subnav-fixed">
                         <div class="container">
                             <?php
-
                             $subnav_select = $this->nav_select( $subnav_links );
-
                             if ( trim( $subnav_select ) ) {
-
                                 ?>
                                 <select id="subnav-select">
                                     <?php echo $subnav_select; ?>
@@ -352,16 +330,16 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             <ul class="nav nav-pills">
 
                                 <?php echo $this->nav( $subnav_links ); ?>
-                                <!-- 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>工具 <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
-									<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
-									<?php if ( $wgEnableUploads ) { ?>
-									<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
-									<?php } ?>
-								</ul>
-							</li> 	 -->
+                                <!--                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>工具 <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
+                                    <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
+                                    <?php if ( $wgEnableUploads ) { ?>
+                                    <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
+                                    <?php } ?>
+                                </ul>
+                            </li>    -->
                             </ul>
 
 
@@ -371,80 +349,98 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                 <?php
                 }//end if
                 ?>
-				<div id="wiki-body" class="container">
-					<div id="content">
-						<?php
-							if ( 'sidebar' == $wgTOCLocation ) {
-								?>
-								<div class="row">
-									<nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
-									<section class="col-md-12 wiki-body-section" role="main">
-								<?php
-							}//end if
-						?>
-						<?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
+                <div id="wiki-body" class="container">
+                    <div id="content">
+                        <?php
+                            if ( 'sidebar' == $wgTOCLocation ) {
+                                ?>
+                                <div class="row">
+                                    <nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
+                                    <section class="col-md-12 wiki-body-section" role="main">
+                                <?php
+                            }//end if
+                        ?>
+                        <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
 
-						<?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
-						<?php if ( $this->data['undelete'] ): ?>
-						<!-- undelete -->
-						<div id="contentSub2" class="alert alert-warning alert-dismissible"><?php $this->html( 'undelete' ) ?></div>
-						<!-- /undelete -->
-						<?php endif; ?>
-						<?php if($this->data['newtalk'] ): ?>
-						<!-- newtalk -->
-						<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
-						<!-- /newtalk -->
-						<?php endif; ?>
+                        <?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
+                        <?php if ( $this->data['undelete'] ): ?>
+                        <!-- undelete -->
+                        <div id="contentSub2" class="alert alert-warning alert-dismissible"><?php $this->html( 'undelete' ) ?></div>
+                        <!-- /undelete -->
+                        <?php endif; ?>
+                        <?php if($this->data['newtalk'] ): ?>
+                        <!-- newtalk -->
+                        <div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
+                        <!-- /newtalk -->
+                        <?php endif; ?>
 
-						<div id="firstHeading" class="pagetitle page-header">
-							<div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
-                 			<h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?></small></div></h1>
-						</div>	
+                        <div id="firstHeading" class="pagetitle page-header">
+                            <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
+                            <h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?>
+                            <?php
+                                if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
+                                    $revPageId = $this->getSkin()->getTitle()->getArticleId();
+                                    $editinfo = UserStats::getLastEditer($revPageId,$wgHuijiPrefix);
+                                    $userPage = Title::makeTitle( NS_USER, $editinfo['rev_user_text'] );
+                                    $userPageURL = htmlspecialchars( $userPage->getFullURL() );
+                                    $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
+                                    $edittime = CommentFunctions::getTimeAgo( $bjtime );
+                                    if ($edittime === '刚刚') {
+                                        echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>'.$edittime.'编辑了此页面';
+                                    }else{
+                                        echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>于'.$edittime.'前编辑了此页面';
+                                    }
+                                }
+                            ?>
+                            </small></div></h1>
+                        </div>  
 
-						<div id="bodyContent" class="body">						
+                        <div id="bodyContent" class="body">                     
                         <?php $this->html( 'bodytext' ) ?>
+                        </div>
+                        <?php if ( $this->data['catlinks'] ): ?>
+                        <div class="category-links">
+                        <!-- catlinks -->
+                        <?php $this->html( 'catlinks' ); ?>
+                        <!-- /catlinks -->
+                        </div>
+                        <?php endif; ?>
+                        <div class="tucao">
                         <?php 
-                        if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage())){
+                        if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
                             $articles = $this->msgWiki('tucao-wikitext');
                             $wgParserOptions = new ParserOptions($wgUser);
                             $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
                             echo $parserOutput->getText();
                         }?>
-						</div>
+                        </div>
 
-						<?php if ( $this->data['catlinks'] ): ?>
-						<div class="category-links">
-						<!-- catlinks -->
-						<?php $this->html( 'catlinks' ); ?>
-						<!-- /catlinks -->
-						</div>
-						<?php endif; ?>
-						<?php if ( $this->data['dataAfterContent'] ): ?>
-						<div class="data-after-content">
-						<!-- dataAfterContent -->
-						<?php $this->html( 'dataAfterContent' ); ?>                    
-						<!-- /dataAfterContent -->
-						</div>
-						<?php endif; ?>
-						<?php
-							if ( 'sidebar' == $wgTOCLocation ) {
-								?>
-								</section></section>
-								<?php
-							}//end if
-						?>
-					</div>
-				</div><!-- container -->
-			</div>
-			<div class="bottom">
-				<div class="container">
-					<?php $this->includePage('Bootstrap:Footer'); ?>
-					<footer>
+                        <?php if ( $this->data['dataAfterContent'] ): ?>
+                        <div class="data-after-content">
+                        <!-- dataAfterContent -->
+                        <?php $this->html( 'dataAfterContent' ); ?>                    
+                        <!-- /dataAfterContent -->
+                        </div>
+                        <?php endif; ?>
+                        <?php
+                            if ( 'sidebar' == $wgTOCLocation ) {
+                                ?>
+                                </section></section>
+                                <?php
+                            }//end if
+                        ?>
+                    </div>
+                </div><!-- container -->
+            </div>
+            <div class="bottom">
+                <div class="container">
+                    <?php $this->includePage('Bootstrap:Footer'); ?>
+                    <footer>
                         <p><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p> 
-					</footer>
-				</div><!-- container -->
-			</div><!-- bottom -->
-	    </div><!-- /#wrapper -->
+                    </footer>
+                </div><!-- container -->
+            </div><!-- bottom -->
+        </div><!-- /#wrapper -->
         <?php }?> <!-- mainpage if -->
 		<?php
 		$this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
@@ -597,20 +593,20 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 				$link = false;
 			}
             $dir = '/wiki/';
-			if( strpos( $match[2], '|' ) !== false ) {
-				$item = explode( '|', $match[2] );
-				$item = array(
-					'title' => $match[1].$item[1],
-					'link' => $sub?$item[0]:$dir.$item[0],
-					'local' => true,
-				);
-			} else {
-				if( $external ) {
-					$item = $match[2];
-					$title = $match[1] . $match[3];
-				} else {
-					$item = $match[1] . $match[2];
-					$title = $item;
+            if( strpos( $match[2], '|' ) !== false ) {
+                $item = explode( '|', $match[2] );
+                $item = array(
+                    'title' => $match[1].$item[1],
+                    'link' => $sub?$item[0]:$dir.$item[0],
+                    'local' => true,
+                );
+            } else {
+                if( $external ) {
+                    $item = $match[2];
+                    $title = $match[1] . $match[3];
+                } else {
+                    $item = $match[1] . $match[2];
+                    $title = $item;
                     if (!$sub){
                         $item = $dir.$item;
                     } 
@@ -742,7 +738,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
         } else {
             return self::getPageRawTextPage( $title );
         }
-	}
+    }
     static function getPageRawTextCache( $title ){
         global $wgMemc;
         $key = wfMemcKey( 'page', 'getPageRaw', 'all', $title );
@@ -765,21 +761,20 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             return $output;
         }
     }
-
-	function includePage($title) {
-		global $wgParser, $wgUser;
-		$pageTitle = Title::newFromText($title);
-		if(!$pageTitle->exists()) {
-			echo 'The page [[' . $title . ']] was not found.';
-		} else {
-			$wgParserOptions = new ParserOptions($wgUser);
-			$parserOutput = $wgParser->parse($this->getPageRawText($title), $pageTitle, $wgParserOptions);
-			echo $parserOutput->getText();
-		}
-	}
+    function includePage($title) {
+        global $wgParser, $wgUser;
+        $pageTitle = Title::newFromText($title);
+        if(!$pageTitle->exists()) {
+            echo 'The page [[' . $title . ']] was not found.';
+        } else {
+            $wgParserOptions = new ParserOptions($wgUser);
+            $parserOutput = $wgParser->parse($this->getPageRawText($title), $pageTitle, $wgParserOptions);
+            echo $parserOutput->getText();
+        }
+    }
     //index content block
     // $socurce  json data
-	function getIndexBlock( $source ) {
+    function getIndexBlock( $source ) {
         $content = $this->getPageRawText( $source );
         $result = json_decode( $content );
         return $result;
@@ -825,7 +820,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                         <a href="http://home.huiji.wiki/wiki/创建新wiki">创建新wiki</a>
                                     </li>
                             </ul>';
-
                         if ( $wgUser->isLoggedIn() ) {
                             if ( count( $this->data['personal_urls'] ) > 0 ) {
                                 $avatar = new wAvatar( $wgUser->getID(), 'l' );
@@ -849,7 +843,6 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             $output .= '</ul>';
                         } else {  // else if is logged in 
                                     //old login 
-
                             $output .= '<ul class="nav navbar-nav navbar-right">
                                 <li id= "pt-login" data-toggle="modal" data-target=".user-login">
                                     <a class="login-in">登录</a>
@@ -872,7 +865,5 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             </header>';
             
             return $output;
-
     }
 }
-
