@@ -188,8 +188,10 @@ $(document).ready(function(){
     $('.previous,.next').click(function(){
         setTimeout(function(){
             var now = $('.sb-slider .sb-current img').data('src');
-            $('.wiki-flog-left img').attr('src',"/resources/frontpage/"+now+"left.jpg");
-            $('.wiki-flog-right img').attr('src',"/resources/frontpage/"+now+"right.jpg");
+            if(now!=undefined) {
+                $('.wiki-flog-left img').attr('src', "/resources/frontpage/" + now + "left.jpg");
+                $('.wiki-flog-right img').attr('src', "/resources/frontpage/" + now + "right.jpg");
+            }
         },700);
     });
     $('.wiki-content-header li').hover(function(){
