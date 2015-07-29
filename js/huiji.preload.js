@@ -140,8 +140,8 @@ $(function() {
     $('.thumbinner').each(function(){
         $(this).width($(this).width()+6);
     });
-
-
-
+    $('.internal').each(function(){
+	$(this).html('<i class="fa fa-arrows-alt"></i>');
+    });
 
 });

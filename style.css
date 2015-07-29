@@ -1471,3 +1471,6 @@ sup.reference {
 	width: auto;
 	max-width: 540px;
 }
+.ve-activated .tucao {
+	display:none;
+}
