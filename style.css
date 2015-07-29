@@ -1467,3 +1467,7 @@ sup.reference {
     width: 70%;
     max-width: 500px;
 }
+.mw-search-results div.searchresult {
+	width: auto;
+	max-width: 540px;
+}
