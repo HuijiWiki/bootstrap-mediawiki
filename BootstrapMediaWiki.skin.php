@@ -41,6 +41,8 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
                 )
         ); # add js and messages  
         //$out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
+	$out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
+	$out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的UGC兴趣百科社区。');
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
     }//end initPage
     /**
