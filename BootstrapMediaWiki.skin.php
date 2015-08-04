@@ -34,13 +34,15 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         parent::initPage( $out );
         if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModules( 'skins.frontpage');
+	    $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的UGC兴趣百科社区。');
         } 
         $out->addModules( 
-            array('skins.bootstrapmediawiki.bottom',
-                'skins.bootstrapmediawiki.top',
-                )
+            array('skins.bootstrapmediawiki.bottom')
         ); # add js and messages  
-        //$out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
+        $out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
+	if ($wgHuijiPrefix !== 'home'){
+		$out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
+	}
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
     }//end initPage
     /**
