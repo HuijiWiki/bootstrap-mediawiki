@@ -9,6 +9,20 @@ $(document).ready(function(){
         });
 	}
 
+
+	function  insertDataIntoDB(userId, wikiSite, entityName) {
+		//var url = "http://test.huiji.wiki/euler/node.js/insertData.js";
+		var url = 'http://zjx.test.huiji.wiki:50007/insertData/';
+	 	jQuery.post(
+			url, 
+			{
+                		userId:userId,
+				wikiSite:wikiSite,
+				entityName:entityName
+           		 }
+		)
+	}
+
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
         //var menuToggle = $('#menu-toggle');
@@ -25,7 +39,9 @@ $(document).ready(function(){
         //else{
         //    $('#wrapper').css('padding-left','0px');
         //    $('#sidebar-wrapper').css('width','0');
-        //}
+        //}a
+
+	insertDataIntoDB('100002','test01','cool');
         if(mw.cookie.get('animation') == 'none' || mw.cookie.get('animation') == null) {
             mw.cookie.set('animation', 'none');
             $('#menu-toggle').css({
