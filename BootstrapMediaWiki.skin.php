@@ -410,16 +410,12 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                         <!-- /catlinks -->
                         </div>
                         <?php endif; ?>
-                        <div class="tucao">
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
-                            $articles = $this->msgWiki('tucao-wikitext');
-                            $wgParserOptions = new ParserOptions($wgUser);
-                            $parserOutput = $wgParser->parse($articles, $this->getSkin()->getTitle(), $wgParserOptions);
-                            echo $parserOutput->getText();
+                            $commentHtml = '<h2 class="tucao">'.$articles = $this->msgWiki('tucao-text').'</h2>';
+                            $commentHtml .= CommentsHooks::displayComments( '', array(), $wgParser); 
+			    echo $commentHtml;
                         }?>
-                        </div>
-
                         <?php if ( $this->data['dataAfterContent'] ): ?>
                         <div class="data-after-content">
                         <!-- dataAfterContent -->
