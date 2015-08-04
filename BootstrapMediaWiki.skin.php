@@ -412,7 +412,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                         <?php endif; ?>
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
-                            $commentHtml = '<h2 class="tucao">'.$articles = $this->msgWiki('tucao-text').'</h2>';
+                            $commentHtml = '<div class="clearfix"></div>';
                             $commentHtml .= CommentsHooks::displayComments( '', array(), $wgParser); 
 			    echo $commentHtml;
                         }?>
