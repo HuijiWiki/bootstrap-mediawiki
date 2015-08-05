@@ -85,7 +85,7 @@ var flowAdapter = {
 			rootRev = self.data.flow["view-topiclist"].result.topiclist.posts[root][0];
 			items.topics.push(self.convertTopic(rootRev));
 		}
-		console.log(items);
+		
 		return items;
 	},
 	convertTopic: function(rev){
