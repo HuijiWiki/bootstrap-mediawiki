@@ -440,10 +440,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                 <div class="container">
                     <?php $this->includePage('Bootstrap:Footer'); ?>
                     <?php if( $this->data['sitenotice'] ) { ?>
-                        <div id="siteNotice" class="alert-message warning">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <div id="siteNotice" class="site-notice">
                             <?php $this->html('sitenotice') ?>
                         </div>
                     <?php } ?>
