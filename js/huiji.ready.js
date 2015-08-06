@@ -26,7 +26,7 @@ $(document).ready(function(){
 	}
 	
 
-	insertRecordIntoDB(userId,wikiName,titleName);
+	//insertRecordIntoDB(userId,wikiName,titleName);
 	
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
