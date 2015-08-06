@@ -84,7 +84,7 @@ if ( isset( $wgSiteCSS ) ) {
 // update page's cache
 $wgHooks['NewRevisionFromEditComplete'][] = 'BootstrapMediawikiHooks::onNewRevisionFromEditComplete';
 // add site notice to the bottom of skin
-require_once '$SP/skins/bootstrap-mediawiki/wgSiteNotice.php';
+require_once "$SP/skins/bootstrap-mediawiki/wgSiteNotice.php";
 
 
 
