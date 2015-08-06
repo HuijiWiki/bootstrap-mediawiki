@@ -29,6 +29,7 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
 		$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
+		$skinDir . '/css/huiji.ext.css'                          => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.js',
@@ -79,5 +80,12 @@ if ( isset( $wgSiteJS ) ) {
 if ( isset( $wgSiteCSS ) ) {
 	$wgResourceModules['skins.bootstrapmediawiki']['styles'][] = $skinDir . '/' . $wgSiteCSS;
 }//end if
-//update page's cache
+
+// update page's cache
 $wgHooks['NewRevisionFromEditComplete'][] = 'BootstrapMediawikiHooks::onNewRevisionFromEditComplete';
+// add site notice to the bottom of skin
+require_once 'wgSiteNotice.php';
+
+
+
+
