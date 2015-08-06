@@ -34,7 +34,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         parent::initPage( $out );
         if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModules( 'skins.frontpage');
-	    $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
+            $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
         } 
         $out->addModules( 
             array('skins.bootstrapmediawiki.bottom')
@@ -366,11 +366,14 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             }//end if
                         ?>
                         <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
-
-                        <?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
                         <?php if ( $this->data['undelete'] ): ?>
                         <!-- undelete -->
-                        <div id="contentSub2" class="alert alert-warning alert-dismissible"><?php $this->html( 'undelete' ) ?></div>
+                        <div id="contentSub2" class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <?php $this->html( 'undelete' ) ?>
+                        </div>
                         <!-- /undelete -->
                         <?php endif; ?>
                         <?php if($this->data['newtalk'] ): ?>
@@ -414,7 +417,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
                             $commentHtml = '<div class="clearfix"></div>';
                             $commentHtml .= CommentsHooks::displayComments( '', array(), $wgParser); 
-			    echo $commentHtml;
+                            echo $commentHtml;
                         }?>
                         <?php if ( $this->data['dataAfterContent'] ): ?>
                         <div class="data-after-content">
@@ -436,8 +439,16 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             <div class="bottom">
                 <div class="container">
                     <?php $this->includePage('Bootstrap:Footer'); ?>
+                    <?php if( $this->data['sitenotice'] ) { ?>
+                        <div id="siteNotice" class="alert-message warning">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <?php $this->html('sitenotice') ?>
+                        </div>
+                    <?php } ?>
                     <footer>
-                        <p><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a>|<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p> 
+                        <p class="text-center"><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p> 
                     </footer>
                 </div><!-- container -->
             </div><!-- bottom -->
