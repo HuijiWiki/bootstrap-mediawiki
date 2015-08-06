@@ -103,6 +103,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             ga('create', 'UA-10190882-3', 'auto');
             ga('send', 'pageview');
         </script>
+
         <div id="wrapper" class="toggled">
             <div class="modal alert-return">
                 <div class="modal-dialog">
