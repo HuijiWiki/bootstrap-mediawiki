@@ -80,7 +80,7 @@ $(document).ready(function(){
         self.popover(options);
     });
 
-    $('#wiki-outer-body').on('click','a[href^=#][role!=tab]',function(e){
+    $('.ve-available:not(".ve-active") #wiki-outer-body').on('click','a[href^=#][role!=tab]',function(e){
         e.preventDefault();
         var self = $(this);
         // Let popover.js handle cite note
