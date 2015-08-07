@@ -12,13 +12,13 @@ $wgSiteNotice = '
 <div class="bs-callout bs-callout-success">
 <h4>7月月最佳</h4>
 荣誉属于[[User:AemonTargaryen]]，祝贺他！
+[[huiji:User:AemonTargaryen|<span class="mw-ui-button">去恭喜他</span>]]
 </div>
 </option>
 <option>
 <div class="bs-callout bs-callout-default">
 <h4>你知道吗？</h4>
 你可以在吐槽和留言板中使用‘@’功能，来提醒其他用户注意……
-[[witcher:首页|<span class="mw-ui-button">访问猎魔人维基</span>]]
 </div>
 </option>
 </option>
@@ -48,7 +48,7 @@ TFBOYS是新生代偶像组合 由北京时代峰峻文化艺术发展有限公�
 <div class="bs-callout bs-callout-info">
 <h4>客官，请留步</h4>
 本维基的所有词条都是由像你一样的爱好者编写的……为什么不参与进来呢？<br>
-[{{canonicalurl:{{PAGENAME}}|action=edit}} <span class="mw-ui-button">编辑这个词条！</span>]
+[[h:维基家园开拓者计划|<span class="mw-ui-button">参与其中</span>]]
 </div>
 </option>
 </choose>';
