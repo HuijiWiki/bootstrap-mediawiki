@@ -394,11 +394,8 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                     $userPageURL = htmlspecialchars( $userPage->getFullURL() );
                                     $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
                                     $edittime = CommentFunctions::getTimeAgo( $bjtime );
-                                    if ($edittime === '刚刚') {
-                                        echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>'.$edittime.'编辑了此页面';
-                                    }else{
-                                        echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>于'.$edittime.'前编辑了此页面';
-                                    }
+                                    echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>于'.$edittime.'前编辑了此页面';
+                                    
                                 }
                             ?>
                             </small></div></h1>
