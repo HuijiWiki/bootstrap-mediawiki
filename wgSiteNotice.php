@@ -26,7 +26,7 @@ $wgSiteNotice = '
 <div class="bs-callout bs-callout-default">
 <h4>你认识他们吗？</h4>
 TFBOYS是新生代偶像组合 由北京时代峰峻文化艺术发展有限公司于2013年8月6日推出。由王俊凯、王源和易烊千玺3名成员组成。
-[[tfboys:|<span class="mw-ui-button">访问TFBOYS维基</span>]]
+[[tfboys:首页|<span class="mw-ui-button">访问TFBOYS维基</span>]]
 </div>
 </option>
 <option>
