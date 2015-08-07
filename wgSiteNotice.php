@@ -32,7 +32,7 @@ TFBOYS是新生代偶像组合 由北京时代峰峻文化艺术发展有限公�
 <option>
 <div class="bs-callout bs-callout-default">
 <h4>你可能喜欢的</h4>
-[[File:witcher-tuijian.jpg|left|link=witcher:]]猎魔人（Witcher)是那些专门被普通人雇佣来猎杀怪物的变种人类。他们在孩童时期，就开始接受炼金术的身体改造，最后他们将通过青草试炼来决定是否能够……
+猎魔人（Witcher)是那些专门被普通人雇佣来猎杀怪物的变种人类。他们在孩童时期，就开始接受炼金术的身体改造，最后他们将通过青草试炼来决定是否能够……
 [[witcher:首页|<span class="mw-ui-button">访问猎魔人维基</span>]]
 </div>
 </option>
