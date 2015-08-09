@@ -92,7 +92,9 @@ $(document).ready(function(){
 	e.preventDefault();
         // Let popover.js handle cite note
         if (self.attr('href').match(/^\#cite_note/g)){
-	    self.focus();
+	    if (document.activeElement != this){
+		 self.focus();
+	    }
 	    return;
         }
         var target = self.attr('href').replace(/\./g, '\\.');
