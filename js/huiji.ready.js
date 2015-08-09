@@ -75,24 +75,25 @@ $(document).ready(function(){
         }
     });
 
-	$('a[href^=#cite_note]').each(function(){
-        var self = $(this);
-        var options = {};
-        var ref = $.escape(self.attr('href'));
-        var innerHtml = $(ref+' .reference-text').html();
-        options.content = innerHtml;
-        options.placement = 'auto';
-        options.html = true;
-        options.trigger = 'focus';
-        self.popover(options);
+    $('a[href^=#cite_note]').each(function(){
+	    var self = $(this);
+            var options = {};
+            var ref = $.escape(self.attr('href'));
+            var innerHtml = $(ref+' .reference-text').html();
+            options.content = innerHtml;
+            options.placement = 'auto';
+            options.html = true;
+            options.trigger = 'focus';
+            self.popover(options);
     });
 
     $('.ve-available:not(".ve-active") #wiki-outer-body').on('click','a[href^=#][role!=tab]',function(e){
-        e.preventDefault();
         var self = $(this);
+	e.preventDefault();
         // Let popover.js handle cite note
         if (self.attr('href').match(/^\#cite_note/g)){
-            return;
+	    self.focus();
+	    return;
         }
         var target = self.attr('href').replace(/\./g, '\\.');
         if (target != '#' && $( target ) != undefined){
@@ -197,7 +198,7 @@ $(document).ready(function(){
                             alertp.text('登录成功');
                             //document.location.reload();
                             if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
-                                history.go(-1);
+                                location.href=document.referrer;//refresh page from server
                             }else {
                                 window.location.reload(true);
                             }
