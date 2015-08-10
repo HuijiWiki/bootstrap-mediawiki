@@ -235,7 +235,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                 <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
                             <?php } ?>
                             <li>
-                                <a href="http://home.huiji.wiki/wiki/Help:编辑手册"><i class="fa fa-book"></i> 编辑手册</a>
+                                <a href="http://home.huiji.wiki/wiki/Help:维基条目编写指南"><i class="fa fa-book"></i> 编写指南</a>
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
