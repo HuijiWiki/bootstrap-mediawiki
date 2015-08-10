@@ -51,7 +51,7 @@ TFBOYS是新生代偶像组合 由北京时代峰峻文化艺术发展有限公�
 [[h:维基家园开拓者计划|<span class="mw-ui-button">参与其中</span>]]
 </div>
 </option>
-<option weight="10">
+<option weight="5">
 </option>
 </choose>';
 ?>
