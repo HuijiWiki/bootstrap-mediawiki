@@ -369,6 +369,24 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <?php
                             }//end if
                         ?>
+
+                        <div id="firstHeading" class="pagetitle page-header">
+                            <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
+                            <h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?>
+                            <?php
+                                if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
+                                    $revPageId = $this->getSkin()->getTitle()->getArticleId();
+                                    $editinfo = UserStats::getLastEditer($revPageId,$wgHuijiPrefix);
+                                    $userPage = Title::makeTitle( NS_USER, $editinfo['rev_user_text'] );
+                                    $userPageURL = htmlspecialchars( $userPage->getFullURL() );
+                                    $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
+                                    $edittime = CommentFunctions::getTimeAgo( $bjtime );
+                                    echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>于'.$edittime.'前编辑了此页面';
+                                    
+                                }
+                            ?>
+                            </small></div></h1>
+                        </div>  
                         <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
                         <!-- ConfirmEmail -->
                         <?php
@@ -399,25 +417,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
                         <!-- /newtalk -->
                         <?php endif; ?>
-
-                        <div id="firstHeading" class="pagetitle page-header">
-                            <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
-                            <h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?>
-                            <?php
-                                if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
-                                    $revPageId = $this->getSkin()->getTitle()->getArticleId();
-                                    $editinfo = UserStats::getLastEditer($revPageId,$wgHuijiPrefix);
-                                    $userPage = Title::makeTitle( NS_USER, $editinfo['rev_user_text'] );
-                                    $userPageURL = htmlspecialchars( $userPage->getFullURL() );
-                                    $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
-                                    $edittime = CommentFunctions::getTimeAgo( $bjtime );
-                                    echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>于'.$edittime.'前编辑了此页面';
-                                    
-                                }
-                            ?>
-                            </small></div></h1>
-                        </div>  
-
                         <div id="bodyContent" class="body">                     
                         <?php $this->html( 'bodytext' ) ?>
                         </div>
