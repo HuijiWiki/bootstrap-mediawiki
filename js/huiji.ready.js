@@ -8,19 +8,21 @@ $(document).ready(function(){
             '-o-animation':'none'
         });
 	}
-
-
+	 
+	var fromSource    = document.referrer; 
+	var navigatorInfo = navigator.userAgent.toLowerCase();
 	var userId    = mw.config.get("wgUserId");
 	var userName  = mw.config.get("wgUserName");
 	var wikiSite  = mw.config.get("wgHuijiPrefix");
 	var siteName  = mw.config.get("wgSiteName");
-	var titleName = mw.config.get("wgTitle");
+	var titleName = mw.config.get("wgPageName");
 	var articleId = mw.config.get("wgArticleId");
 	var url = 'http://test.huiji.wiki:50007/insertViewRecord/';
-	function  insertRecordIntoDB(url,userId,userName,wikiSite,siteName,titleName,articleId) {
+/*	function  insertRecordIntoDB(url,fromSource,userId,userName,wikiSite,siteName,titleName,articleId) {
 	 	jQuery.post(
 			url, 
 			{
+				fromSource:fromSource,
                 		userId:userId,
 				userName:userName,
 				articleId:articleId,
@@ -31,9 +33,9 @@ $(document).ready(function(){
            		 }
 		)
 	}
-	
+*/	
 
-	insertRecordIntoDB(url,userId,userName,wikiSite,siteName,titleName,articleId);
+	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
 	
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
