@@ -6,10 +6,10 @@ Class HuijiSkinTemplate extends BaseTemplate {
 	private $pageParts = array('首页/Admin','Bootstrap:TitleBar','Bootstrap:Footer','Bootstrap:Subnav');
 	private $sharedPageParts = array('Mediawiki:Sitenotice');
 	public static function getPageParts(){
-		return $pageParts;
+		return $this->pageParts;
 	}
 	public static function getSharedParts(){
-		return $sharedPageParts;
+		return 	$this->sharedPageParts;
 	}
 	/**
      * Template filter callback for Bootstrap skin.
