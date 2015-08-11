@@ -3,13 +3,13 @@ Class HuijiSkinTemplate extends BaseTemplate {
 	/**
 	 * Reserved Page parts
 	 */
-	private $pageParts = array('首页/Admin','Bootstrap:TitleBar','Bootstrap:Footer','Bootstrap:Subnav');
-	private $sharedPageParts = array('Mediawiki:Sitenotice');
+	private static $pageParts = array('首页/Admin','Bootstrap:TitleBar','Bootstrap:Footer','Bootstrap:Subnav');
+	private static $sharedPageParts = array('Mediawiki:Sitenotice');
 	public static function getPageParts(){
-		return $this->pageParts;
+		return self::$pageParts;
 	}
 	public static function getSharedParts(){
-		return 	$this->sharedPageParts;
+		return self::$sharedPageParts;
 	}
 	/**
      * Template filter callback for Bootstrap skin.
