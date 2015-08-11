@@ -390,7 +390,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
                         <!-- ConfirmEmail -->
                         <?php
-                            if ( $wgUser->isLoggedIn()&&!$wgUser->isEmailConfirmed() ) {
+                            if ( $wgUser->isLoggedIn()&&!$wgUser->isEmailConfirmed() && !($this->getSkin()->getTitle()->isMainPage()) ) {
                         ?>
                         <div class="alert alert-danger" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
