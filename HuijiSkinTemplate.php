@@ -404,7 +404,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 $name =  $wgUser->getName() ;
                                 $personal_urls = $this->data['personal_urls'];
                                 unset($personal_urls['notifications']);
-                                $user_nav = $tisLoghis->dropdownAdapter( $personal_urls, $user_icon.$name, 'user' );
+                                $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon.$name, 'user' );
                                 $user_notify = $this->nav_notification($this->notificationAdapter($this->data['personal_urls']));
                             }
                             $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right">'.$user_notify.$user_nav.'</ul>';
