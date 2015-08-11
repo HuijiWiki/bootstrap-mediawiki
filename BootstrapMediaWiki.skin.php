@@ -83,7 +83,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         global $wgNavBarClasses;
         global $wgSubnavBarClasses;
         global $wgParser, $wgTitle;
-        global $wgSiteNotice;
 
         $this->skin = $this->data['skin'];
         $action = $wgRequest->getText( 'action' );
@@ -371,6 +370,20 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             }//end if
                         ?>
                         <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
+                        <!-- ConfirmEmail -->
+                        <?php
+                            if ( $wgUser->isLoggedIn()&&!$wgUser->isEmailConfirmed() ) {
+                        ?>
+                        <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            只有确认邮件后才能对页面进行编辑&nbsp:)
+                            <a href="/wiki/%E7%89%B9%E6%AE%8A:%E7%A1%AE%E8%AE%A4%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6">点此确认</a>
+                        </div> 
+                        <?php
+                            }
+                        ?>  
+                        <!-- /ConfirmEmail -->
                         <?php if ( $this->data['undelete'] ): ?>
                         <!-- undelete -->
                         <div id="contentSub2" class="alert alert-warning alert-dismissible">
@@ -440,7 +453,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             </div>
             <div class="bottom">
                 <div class="container">
-                    <?php $this->includePage('Bootstrap:Footer'); ?>
+                    <?php self::includePage('Bootstrap:Footer'); ?>
                     <?php if( $this->data['sitenotice'] ) { ?>
                         <div id="siteNotice" class="site-notice">
                             <?php $this->html('sitenotice') ?>
