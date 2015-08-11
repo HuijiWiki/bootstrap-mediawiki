@@ -82,7 +82,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         global $wgTOCLocation;
         global $wgNavBarClasses;
         global $wgSubnavBarClasses;
-        global $wgParser, $wgTitle;
+        global $wgParser, $wgTitle, $wgEmailAuthentication;
 
         $this->skin = $this->data['skin'];
         $action = $wgRequest->getText( 'action' );
