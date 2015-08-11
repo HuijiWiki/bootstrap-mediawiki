@@ -360,8 +360,7 @@
             <div class="wikis-wrap ">
                 <ul class="wikis">
                 <?php
-                    $res = new BootstrapMediaWikiTemplate();
-                    $block = $res->getIndexBlock( '首页/Admin' );
+                    $block = BootstrapMediaWikiTemplate::getIndexBlock( '首页/Admin' );
                     $n = count($block);
                     // if( $block ){
                         for ($i=0; $i < $n; $i++) {
@@ -393,7 +392,7 @@
         </div>
         <div class="bottom">
             <div class="container">
-                <?php $this->includePage('Bootstrap:Footer'); ?>
+                <?php self::includePage('Bootstrap:Footer'); ?>
                 <footer>
                     <p class="text-center"><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p> 
                 </footer>

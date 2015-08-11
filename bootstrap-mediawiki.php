@@ -18,6 +18,7 @@ $wgExtensionCredits['skin'][] = array(
 $wgValidSkinNames['bootstrapmediawiki'] = 'BootstrapMediaWiki';
 $wgAutoloadClasses['SkinBootstrapMediaWiki'] = __DIR__ . '/BootstrapMediaWiki.skin.php';
 $wgAutoloadClasses['BootstrapMediawikiHooks'] = __DIR__ . '/BootstrapMediawikiHooks.php';
+$wgAutoloadClasses['HuijiSkinTemplate'] = __DIR__ . '/HuijiSkinTemplate.php';
 $wgMessagesDirs['bootstrapmediawiki'] = __DIR__ . '/i18n';
 $skinDirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );
 $skinDir = array_pop( $skinDirParts );
@@ -83,9 +84,5 @@ if ( isset( $wgSiteCSS ) ) {
 
 // update page's cache
 $wgHooks['NewRevisionFromEditComplete'][] = 'BootstrapMediawikiHooks::onNewRevisionFromEditComplete';
-// add site notice to the bottom of skin
-require_once "$SP/skins/bootstrap-mediawiki/wgSiteNotice.php";
-
-
 
 
