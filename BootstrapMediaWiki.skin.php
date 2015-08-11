@@ -396,7 +396,8 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             <span class="sr-only">Error:</span>
                             只有确认邮件后才能对页面进行编辑&nbsp:)
-                            <a href="/wiki/%E7%89%B9%E6%AE%8A:%E7%A1%AE%E8%AE%A4%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6">点此确认</a>
+                            <a href="/wiki/%E7%89%B9%E6%AE%8A:%E7%A1%AE%E8%AE%A4%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6">点此确认</a>&nbsp|&nbsp
+                            <a href="/wiki/特殊:修改邮箱地址">修改邮箱地址</a>
                         </div> 
                         <?php
                             }
