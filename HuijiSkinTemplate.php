@@ -355,7 +355,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
      * Display the wiki header area.
      */
     public function showHeader(){
-        global $wgUser, $wgSitename;
+        global $wgUser, $wgSitename, $wgLogo;
         global $wgNavBarClasses;
         
         // $output = '';
@@ -369,7 +369,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand"><img alt="Logo" src="/resources/assets/huiji_white.png"> </a>  </div>
+                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand"><img alt="Logo" src="'.$wgLogo.'"> </a>  </div>
                         <div class="collapse navbar-collapse">
                             <ul id="icon-section" class="nav navbar-nav">
                                     <li>
