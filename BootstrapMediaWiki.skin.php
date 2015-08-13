@@ -53,7 +53,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
     public function setupSkinUserCss( OutputPage $out ) {
         global $wgSiteCSS, $wgHuijiPrefix;
         parent::setupSkinUserCss( $out );
-        //$out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
+        $out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
         // we need to include this here so the file pathing is right
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css' );
     }//end setupSkinUserCss
