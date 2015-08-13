@@ -32,6 +32,7 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.js',
+		$skinDir . '/js/fastclick.js',
 		$skinDir . '/google-code-prettify/prettify.js',
 		$skinDir . '/js/jquery.cookie.js',
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',

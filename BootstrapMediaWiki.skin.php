@@ -49,7 +49,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
     public function setupSkinUserCss( OutputPage $out ) {
         global $wgSiteCSS, $wgHuijiPrefix;
         parent::setupSkinUserCss( $out );
-        $out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
+        //$out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
         // we need to include this here so the file pathing is right
         $out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
     }//end setupSkinUserCss
@@ -102,6 +102,12 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             ga('send', 'pageview');
         </script>
         <div id="wrapper" class="toggled">
+        <script>
+            var menutoggle;
+            document.domain = "huiji.wiki";
+            menutoggle = localStorage.getItem("menu-toggle");
+            $("#wrapper").attr("class",menutoggle);
+        </script>
             <div class="modal alert-return">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -199,31 +205,39 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
             <div id="sidebar-wrapper">
                 
                 <ul class="sidebar-nav">
-                    <li class="left-follow">
-                        <ul>
-                            <li>
-                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
-                            </li>
-                            <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button> </li>
-                            <li><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php 
-                                $dbr = wfGetDB( DB_SLAVE );
-                                $counter = new SiteStatsInit( $dbr );
-                                $result = $counter->articles();
-                                echo $result;
-                            ?></a>篇条目，<span id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo UserSiteFollow::getSiteCount($wgHuijiPrefix) ?></span>人关注。</p></li>
-                        </ul>
+                    <li class="sidebar-header">
+                        <a href="<?php echo $this->getSkin()->getTitle()->getFullUrl(); ?>"><?php echo $this->getSkin()->getTitle()->getPrefixedText(); ?></a>
+                        <?php
+                            if ( isset( $this->data['content_actions']['watch'])){
+                                echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['watchlist']['id'].'">
+                                <a href="'.$this->data['content_actions']['watch']['href'].'">'.$this->data['content_actions']['watch']['text'].'</a></button>';
+                                unset( $this->data['content_actions']['watch']);
+                            } else if ( isset( $this->data['content_actions']['unwatch'])){
+                                echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['unwatch']['id'].'">
+                                <a href="'.$this->data['content_actions']['unwatch']['href'].'">'.$this->data['content_actions']['unwatch']['text'].'</a></button>';
+                                unset ( $this->data['content_actions']['unwatch']);
+                            }else{
+                            echo '<a>sdsssds</a>';
+                            }
+                         ?>
+
                     </li>
-                    <li class="sidebar-brand left-nav">
+                    <li class="sidebar-behavior">
                         <a href="#">
-                            站点导航
+                            本页面
                         </a>
                         <ul>
-                            <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
+                        <?php
+                        $subnav_links = $this->listAdapter( $this->data['content_actions']);
+                        if( $NS !== NS_USER && $NS !== NS_USER_TALK){
+                            echo $this->nav( $subnav_links );
+                        }
+                        ?>
                         </ul>
                     </li>
                     <li class="sidebar-brand left-tool">
                         <a href="#">
-                            工具
+                            全站工具
                         </a>
                         <ul>
                             <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
@@ -258,7 +272,56 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                 </ul>
                             </li>
                             <?php } ?>
+                            <li class="sidebar-create">
+                                <div class="mw-inputbox-centered" style="">
+                                    <form name="createbox" class="createbox" action="/index.php" method="get">
+                                        <input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden">
+                                        <input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden">
+                                        <input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden">
+                                        <input name="minor" value="" type="hidden">
+                                        <div class="input-group create-group">
+                                            <input name="title" class="createboxInput form-control" placeholder="新页面名称" value="" dir="ltr" type="text">
+                                            <span class="input-group-btn">
+                                                <button name="create" class="btn btn-default" type="submit">创建</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
                         </ul>
+                    </li>
+                    <li class="sidebar-brand left-manager">
+                        <a>管理员</a>
+                        <div>
+                        <?php
+                            // echo $wgHuijiPrefix;
+                            $fanbox_link = SpecialPage::getTitleFor( 'UserList' );
+                            $group = 'sysop';
+                            $ums = self::getSiteManager( $wgHuijiPrefix,$group );
+                            foreach ($ums as $value) {
+                            // echo $value->ug_user;
+                            $uname = User::newFromId( $value );
+                            $usersys['count'] = UserStats::getSiteEditsCount( $uname, $wgHuijiPrefix );
+                            $userPage = Title::makeTitle( NS_USER, $uname->getName() );
+                            $usersys['url'] = htmlspecialchars( $userPage->getFullURL() );
+                            $avatar = new wAvatar( $value, 'm' );
+                            $usersys['avatar'] = $avatar->getAvatarURL();
+                            // echo '<a href="'.$userPageURL.'">'.$avatar_img.'</a>';
+                            $sysop[] = $usersys;
+                            }
+                            foreach ($sysop as $key => $value) {
+                            $count[$key] = $value['count'];
+                            }
+                            array_multisort($count, SORT_DESC, $sysop);
+                            $nums = ( count($ums) > 5 )?5:count($ums);
+                            for ($j=0; $j < $nums; $j++) {
+                            echo '<a href="'.$sysop[$j]['url'].'">'.$sysop[$j]['avatar'].'</a>';
+                            }
+                            if ( count($ums) > 5 ) {
+                            echo Linker::link( $fanbox_link, '更多', array(), array( 'group' => $group,'limit' => 50 ) );
+                            }
+                            ?>
+                        </div>
                     </li>
                     <?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
                     <li class="sidebar-brand left-author">
@@ -287,26 +350,8 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                         </ul>
                     </li>
                     <?php } ?>
-                    <li class="sidebar-create">
-                        <div class="mw-inputbox-centered" style="">
-                            <form name="createbox" class="createbox" action="/index.php" method="get">
-                                <input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden">
-                                <input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden">
-                                <input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden">
-                                <input name="minor" value="" type="hidden"><input name="title" class="createboxInput form-control" value="" placeholder="输入页面名称" dir="ltr" type="text">
-                                <input name="create" class="mw-ui-button mw-ui-progressive" value="创建页面" type="submit">
-                            </form>
-                        </div>
-                    </li>
 	            </ul>
 	        </div>
-            <script>
-                var menutoggle = localStorage.getItem('menu-toggle');
-                $('#wrapper').attr('class',menutoggle);
-                if($('#wrapper').hasClass('toggled')){
-                    $('#menu-toggle').addClass('menu-active');
-                }
-            </script>
             <!-- /#sidebar-wrapper -->
             <?php echo $this->showHeader(); ?>
 
@@ -316,7 +361,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                 if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {
                     ?>
                     <div id="content-actions" class="subnav subnav-fixed">
-                        <div class="container">
+                        <div class="container-fluid">
                             <?php
                             $subnav_select = $this->nav_select( $subnav_links );
                             if ( trim( $subnav_select ) ) {
@@ -328,22 +373,20 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                             }//end if
                             ?>
                             <ul class="nav nav-pills">
-
-                                <?php echo $this->nav( $subnav_links ); ?>
-                                <!--                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>工具 <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
-                                    <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
-                                    <?php if ( $wgEnableUploads ) { ?>
-                                    <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
-                                    <?php } ?>
-                                </ul>
-                            </li>    -->
+                                <li>
+                                    <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
+                                </li>
+                                <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
+                                <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
+                                <li class="site-count"><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php
+                                    $dbr = wfGetDB( DB_SLAVE );
+                                    $counter = new SiteStatsInit( $dbr );
+                                    $result = $counter->articles();
+                                    $result2 = $counter->files();
+                                    echo $result;
+                                ?></a>页面<a><?php echo $result2; ?></a>文件<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo UserSiteFollow::getSiteCount($wgHuijiPrefix) ?></a>关注</p></li>
+                                <i class="fa fa-ellipsis-h" id="subnav-toggle"></i>
                             </ul>
-
-
-
                         </div>
                     </div>
                 <?php
@@ -393,8 +436,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
                                 }
                             ?>
                             </small></div></h1>
-                        </div>  
-
+                        </div>
                         <div id="bodyContent" class="body">                     
                         <?php $this->html( 'bodytext' ) ?>
                         </div>
@@ -463,15 +505,20 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 	 * Render one or more navigations elements by name, automatically reveresed
 	 * when UI is in RTL mode
 	 */
-	private function nav( $nav ) {
+	private function nav( $nav,$nl = '' ) {
 		$output = '';
 		foreach ( $nav as $topItem ) {
 			$pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
 			if ( array_key_exists( 'sublinks', $topItem ) ) {
-				$output .= '<li class="dropdown">';
+				if($nl == 'set'){
+				$output .= '<li class="dropdown set">';
 				$output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . '</a>';
-				$output .= '<ul class="dropdown-menu">';
-
+				$output .= '<ul class="dropdown-menu set-menu">';
+                }else{
+                $output .= '<li class="dropdown">';
+                				$output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . '</a>';
+                				$output .= '<ul class="dropdown-menu">';
+                }
 				foreach ( $topItem['sublinks'] as $subLink ) {
 					if ( 'divider' == $subLink ) {
 						$output .= "<li class='divider'></li>\n";
@@ -642,8 +689,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 			'class' => htmlspecialchars( $item['class'] ),
 			'title' => htmlspecialchars( $item['text'] ),
 		);
-		/*$link['title'] = '<i class="fa fa-envelope-o"></i> <span class="badge">' . $link['title'] .'</span>';*/
-		$link['title'] = '<i class="fa fa-envelope-o"></i></span>';
+		$link['title'] = '<i class="fa fa-envelope-o"></i> <span class="badge">' . $link['title'] .'</span>';
 		$nav[] = $link;
 		return $nav;		
 	}
@@ -692,7 +738,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 			$nav[0]['sublinks'][] = $link;
 		}//end foreach
 
-		return $this->nav( $nav );
+		return $this->nav( $nav,$nl = 'set' );
 	}//end get_array_links
 
 	/* general a list of links adater */
@@ -712,7 +758,7 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 				case '页面': $icon = 'file'; break;
 				case '讨论': $icon = 'comment'; break;
 				case '编辑': $icon = 'pencil'; break;
-				case '编辑源代码': $icon = 'edit'; break;
+				case '编辑源码': $icon = 'edit'; break;
 				case '历史': $icon = 'clock-o'; break;
 				case '删除': $icon = 'remove'; break;
 				case '移动': $icon = 'arrows'; break;
@@ -721,8 +767,8 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
 				case '监视': $icon = 'eye'; break;
 				case '取消监视': $icon = 'eye-slash'; break;
 				case '创建': $icon = 'plus'; break;
-				case '创建源代码': $icon = 'plus'; break;
-				case '查看源代码': $icon = 'file-code-o'; break;
+				case '创建源码': $icon = 'plus'; break;
+				case '查看源码': $icon = 'file-code-o'; break;
 				case '特殊页面': $icon = 'flask'; break;
 				default: $icon = 'bookmark'; break;
 			}
@@ -787,83 +833,205 @@ class BootstrapMediaWikiTemplate extends BaseTemplate {
         // $output = '';
         $output ='
             <header class="header navbar navbar-default navbar-fixed-top'.$wgNavBarClasses.'" role="navigation">
-                    <div class="navbar-container">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </a>
-                            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand"><img alt="Logo" src="/resources/assets/huiji_white.png"> </a>
-                        </div>
-
-                        <div class="collapse navbar-collapse">
-                            <ul id="icon-section" class="nav navbar-nav">
-                                    <li class="dropdown">
-                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
-                                      <ul class="dropdown-menu" role="menu">
-                                        <li><a href="http://lotr.huiji.wiki">魔戒中文维基</a></li>
-                                        <li><a href="http://asoiaf.huiji.wiki">冰与火之歌中文维基</a></li>
-                                        <li><a href="http://allglory.huiji.wiki">荣耀百科全书</a></li>
-                                        <li><a href="http://downtonabbey.huiji.wiki/">唐顿庄园中文维基</a></li>
-                                        <li><a href="http://jiuzhou.huiji.wiki">九州奇幻世界百科</a></li>
-                                        <li><a href="/wiki/Special:Randomwiki">随机一下试试</a></li>
-                                      </ul>
-                                    </li>
-                                    <li>
-                                        <a href="http://home.huiji.wiki/wiki/创建新wiki">创建新wiki</a>
-                                    </li>
-                            </ul>';
-                        if ( $wgUser->isLoggedIn() ) {
-                            if ( count( $this->data['personal_urls'] ) > 0 ) {
-                                $avatar = new wAvatar( $wgUser->getID(), 'l' );
-                                // $user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
-                                $user_icon = '<i class="fa fa-cog"></i>';
-                                $name =  $wgUser->getName() ;
-                                $personal_urls = $this->data['personal_urls'];
-                                unset($personal_urls['notifications']);
-                                unset($personal_urls['userpage']);
-                                $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon, 'user' );
-                                $user_notify = $this->nav_notification($this->notificationAdapter($this->data['personal_urls']));
-                            }
-                            $userPage = Title::makeTitle( NS_USER, $wgUser->getName() );
-                            $userPageURL = htmlspecialchars( $userPage->getFullURL() );
-                            /*$avatar = new wAvatar( $wgUser->getID(), 'l' );*/
-                            $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right">';
-                            $output .= '<li><a href="'.$userPageURL.'"><span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span>'.$wgUser->getName().'</a></li>';
-                            $output .= $user_notify;
-                            $output .= '<li><i class="fa fa-star-o"></i></li>';
-                            $output .= $user_nav;
-                            $output .= '</ul>';
-                        } else {  // else if is logged in 
-                                    //old login 
-                            $output .= '<ul class="nav navbar-nav navbar-right">
-                                <li id= "pt-login" data-toggle="modal" data-target=".user-login">
-                                    <a class="login-in">登录</a>
-                                </li>
-                                <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') ).'
-                                </li>   
-                            </ul>';
-                        }
-                        
-                        
-                        $output .= '<form class="navbar-search navbar-form table-cell" action="/index.php" id="searchform" role="search">
+                <div class="navbar-container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
+                            <script>
+                                if($("#wrapper").hasClass("toggled")){
+                                    $("#menu-toggle").addClass("menu-active");
+                                }
+                            </script>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a class="visible-xs-inline-block search-toggle">
+                            <span class="fa fa-search navbar-search"></span>
+                        </a>
+                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand hidden-xs"><img alt="Logo" src="/resources/assets/huiji_white.png"> </a>
+                        <a class="visible-sm-block wiki-toggle">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <form class="navbar-search navbar-form" action="/index.php" id="searchformphone" role="search">
                             <div>
-                                <span class="glyphicon glyphicon-search navbar-search"></span>
-                                <input class="form-control" type="search" name="search" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
+                                <input class="form-control" type="search" name="search" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInputPhone" autocomplete="off">
                                 <input type="hidden" name="title" value="Special:Search">
                             </div>
                         </form>
-                        </div>
                     </div>
+
+                    <div class="collapse navbar-collapse">
+                        <ul id="icon-section" class="nav navbar-nav">
+                                <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
+                                  <ul class="dropdown-menu hub-menu" role="menu">
+                                    <li>
+                                        <ul class="hub-list">
+                                            <li class="letter active" data-toggle="letter">文学</li>
+                                            <li class="movie" data-toggle="movie">影视</li>
+                                            <li class="anime" data-toggle="anime">动漫</li>
+                                            <li class="game" data-toggle="game">游戏</li>
+                                            <li class="star" data-toggle="star">明星</li>
+                                            <li class="more" data-toggle="more">更多</li>
+                                        </ul>
+                                    </li>
+                                    <li class="a">
+                                        <ul class="hub-selection letter-link active">
+                                            <li><a href="http://lotr.huiji.wiki">魔戒</a></li>
+                                            <li><a href="http://asoiaf.huiji.wiki">冰与火之歌</a></li>
+                                            <li><a href="http://allglory.huiji.wiki">荣耀百科全书</a></li>
+                                            <li><a href="http://wicher.huiji.wiki">猎魔人</a></li>
+                                        </ul>
+                                        <ul class="hub-selection movie-link">
+                                            <li><a href="http://spn.huiji.wiki">邪恶力量</a></li>
+                                            <li><a href="http://kaixinmahua.huiji.wiki">开心麻花</a></li>
+                                            <li><a href="http://wire.huiji.wiki">火线</a></li>
+                                            <li><a href="http://downtonabbey.huiji.wiki">唐顿庄园</a></li>
+                                        </ul>
+                                        <ul class="hub-selection anime-link">
+                                            <li><a href="http://kaiji.huiji.wiki">逆境无赖</a></li>
+                                            <li><a href="http://onepiece.huiji.wiki">海贼王</a></li>
+                                            <li><a href="http://gundam.huiji.wiki">高达</a></li>
+                                            <li><a href="http://flash.huiji.wiki">闪电侠</a></li>
+                                        </ul>
+                                        <ul class="hub-selection game-link">
+                                            <li><a href="http://gjqt.huiji.wiki">古剑奇谭</a></li>
+                                            <li><a href="http://hearthstone.huiji.wiki">炉石传说</a></li>
+                                            <li><a href="http://zhuoyou.huiji.wiki">桌游规则中文百科</a></li>
+                                            <li><a href="http://assassinscreed.huiji.wiki">刺客信条</a></li>
+                                        </ul>
+                                        <ul class="hub-selection star-link">
+                                            <li><a href="http://tfboys.huiji.wiki">TFBOYS</a></li>
+                                            <li><a href="http://mfassbender.huiji.wiki">迈克尔·法斯宾德</a></li>
+                                            <li><a href="http://uenojuri.huiji.wiki">上野树里</a></li>
+                                            <li><a href="http://jiangqinqin.huiji.wiki">蒋勤勤</a></li>
+                                        </ul>
+                                        <ul class="hub-selection more-link">
+                                            <li><a href="http://tisiwi.huiji.wiki">天使湾</a></li>
+                                            <li><a href="http://mahjong.huiji.wiki">麻将</a></li>
+                                            <li><a href="http://jurchen.huiji.wiki">满族姓氏考</a></li>
+                                            <li><a href="http://uiparty.huiji.wiki">UI Party</a></li>
+                                            <a href="/wiki/Special:Randomwiki" class="wiki-random">
+                                                随机一下试试
+                                            </a>
+                                        </ul>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li>
+                                    <a href="http://home.huiji.wiki/wiki/创建新wiki">创建wiki</a>
+                                </li>
+                        </ul>';
+                    if ( $wgUser->isLoggedIn() ) {
+                        if ( count( $this->data['personal_urls'] ) > 0 ) {
+                            $avatar = new wAvatar( $wgUser->getID(), 'l' );
+                            // $user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
+                            $user_icon = '<i class="fa fa-cog"></i>';
+                            $name =  $wgUser->getName() ;
+                            $personal_urls = $this->data['personal_urls'];
+                            unset($personal_urls['notifications']);
+                            unset($personal_urls['userpage']);
+                            $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon, 'user' );
+                            $user_notify = $this->nav_notification($this->notificationAdapter($this->data['personal_urls']));
+                        }
+                        $userPage = Title::makeTitle( NS_USER, $wgUser->getName() );
+                        $userPageURL = htmlspecialchars( $userPage->getFullURL() );
+                        /*$avatar = new wAvatar( $wgUser->getID(), 'l' );*/
+                        $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right navbar-user">';
+                        $output .= '<li><a href="'.$userPageURL.'"><span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span><span class="hidden-xs">'.$wgUser->getName().'</span></a></li>';
+                        $output .= $user_notify;
+                        $output .= '<li class="dropdown collect"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-star-o"></i></a><ul class="dropdown-menu collect-menu">';
+                        $sites = UserSiteFollow::getFullFollowedSites( $wgUser->getId(),$wgUser->getId() );
+                        $count = count($sites);
+                           if( $count > 0){
+                           foreach ( $sites as $user ) {
+                               $site_name[] = $user['val'];
+                               $domain_name[] = $user['key'];
+                               $num = ($count > 4)?4:$count;
+                               for($i=0;$i<$num;$i++){
+                                    $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki>'.$site_name[$i].'</a></li>';
+                               }
+                               if($count > 4){
+                                    $output .='<li><a href="/index.php?title=Special:FollowSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">全部我关注的维基</a></li>';
+                               }
+                           }
+                           }else{
+                           $output.='<li><a>暂无</a></li>';
+                            }
+                        $output .= '</ul></li>';
+                        $output .= $user_nav;
+                        $output .= '</ul>';
+                    } else {  // else if is logged in
+                                //old login
+                        $output .= '<ul class="nav navbar-nav navbar-right navbar-login">
+                            <li id= "pt-login" data-toggle="modal" data-target=".user-login">
+                                <a class="login-in">登录</a>
+                            </li>
+                            <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') ).'
+                            </li>
+                        </ul>';
+                    }
+                    $output .= '<form class="navbar-search navbar-form table-cell hidden-xs" action="/index.php" id="searchform" role="search">
+                        <div>
+                            <span class="fa fa-search navbar-search"></span>
+                            <input class="form-control" type="search" name="search" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
+                            <input type="hidden" name="title" value="Special:Search">
+                        </div>
+                    </form>
+                    </div>
+                </div>
             </header>';
             
             return $output;
     }
+        /**
+         * the site's sysop/staff
+         * @return array user's avater
+         */
+        static function getSiteManager( $prefix,$group ){
+            $data = self::getSiteManagerCache( $prefix,$group );
+            if ( $data != '' ) {
+                wfDebug( "Got sitemanagers from cache\n" );
+                return $data;
+            } else {
+                return self::getSiteManagerDB( $prefix,$group );
+            }
+        }
+
+        static function getSiteManagerCache( $prefix,$group ){
+            global $wgMemc;
+            $key = wfForeignMemcKey('huiji','', 'user_group', 'sitemanager', $prefix,$group );
+            $data = $wgMemc->get( $key );
+            if ( $data != '' ) {
+                return $data;
+            }
+        }
+
+        static function getSiteManagerDB( $prefix,$group ){
+            global $wgMemc;
+            $key = wfForeignMemcKey('huiji','', 'user_group', 'sitemanager', $prefix,$group );
+            $dbr = wfGetDB( DB_SLAVE );
+            $data = array();
+            $res = $dbr->select(
+                'user_groups',
+                array(
+                    'ug_user'
+                ),
+                array(
+                    'ug_group' => $group
+                ),
+                __METHOD__
+            );
+            if($res){
+                foreach ($res as $value) {
+                    $data[] = $value->ug_user;
+                }
+                $wgMemc->set( $key, $data, 60*60*24 );
+                return $data;
+            }
+
+        }
 }
