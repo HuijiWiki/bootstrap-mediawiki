@@ -26,24 +26,25 @@ function getPageViewCountOnAllWikis(url,fromTimeStamp)
 		url,
 		{
 			fromTimeStamp:fromTimeStamp,
+		},
+		function(data){
+			if(data.status == 'success'){
+				//alert(data.count);
+				return data.count;
+
+			}else{
+				alert("backend err");
+			}	
 		}
-	)	
+	).error(function(){alert("error")});	
 
 }
 	
-/*
-var fromSource    = document.referrer; 
-var navigatorInfo = navigator.userAgent.toLowCase();
-var userId    = mw.config.get("wgUserId");
-var userName  = mw.config.get("wgUserName");
-var wikiSite  = mw.config.get("wgHuijiPrefix");
-var siteName  = mw.config.get("wgSiteName");
-var titleName = mw.config.get("wgPageName");
-var articleId = mw.config.get("wgArticleId");
-var url = 'http://test.huiji.wiki:50007/insertViewRecord/';
+function getPageViewCountOnWikisiteId(url,wikiSiteId,fromTimeStamp)
+{
 
 
-insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
-*/	
 
+
+}
 

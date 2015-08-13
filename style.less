@@ -1,13 +1,17 @@
 //@background-color:#333,#fff,#333,#d5d5d5,#f5f5f5;
 @import "default_theme";
 @import "animation";
-@header-color:#333,#fff,#e7e7e7;
+@header-color:#333,#fff,#e7e7e7,#0099cc;
 .transition(){
   -webkit-transition:all 0.9s;
   -moz-transition:all 0.9s;
   -ms-transition:all 0.9s;
   -o-transition:all 0.9s;
   transition:all 0.9s;
+}
+.table-cell{
+  display: table-cell;
+  vertical-align: middle;
 }
 .leftbar-transition{
   -webkit-transition:all 0.5s;
@@ -20,7 +24,7 @@ a{
   .transition;
 }
 .header{
-  background-color:extract(@header-color,1);
+  background-color:extract(@header-color,2);
   border-color:extract(@header-color,3);
   .navbar-nav>li>a{
     color: extract(@header-color, 2);
@@ -33,19 +37,106 @@ a{
   }
   margin-bottom: 0;
   transition: top 0.2s ease-in-out;
-  min-height: 60px;
-  .navbar-brand img {
-    margin-right: 0.5em;
-    max-height: 30px;
+  .navbar-header {
+    background-color:extract(@header-color,1);
+    #menu-toggle{
+      z-index: 1200;
+      color: #09c;
+      border-right: 1px solid #666;
+      padding-top: 15px;
+      margin-right: 10px;
+      animation:buzz-out 4s infinite linear 5s;
+      -webkit-animation:buzz-out 4s infinite linear 5s;
+      -moz-animation:buzz-out 4s infinite linear 5s;
+      -o-animation:buzz-out 4s infinite linear 5s;
+      .transition;
+      &:hover{
+        opacity: 0.7;
+      }
+      &.menu-active{
+        color: #fff;
+        transform:rotateY(180deg);
+        -moz-transform:rotateY(180deg);
+      }
+      .icon-bar{
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #fff;
+        &+.icon-bar{
+          margin-top: 6px;
+          width: 17px;
+        }
+        &:last-child{
+          width: 12px;
+        }
+      }
+    }
+    .navbar-brand {
+      padding: 10px;
+      img {
+        margin-right: 0.5em;
+        max-height: 30px;
+      }
+    }
+  }
+<<<<<<< HEAD
+  .navbar .navbar-inner .btn {
+    margin-top: 0;
+=======
+  #icon-section{
+    background-color:extract(@header-color,1);
+  }
+  .navbar-form{
+    width: 2000px;
+    padding-left: 30px;
+    .navbar-search{
+      font-size: 18px;
+      position: absolute;
+      left: 380px;
+      top: 15px;
+      color: #888;
+    }
+    .form-control{
+      width: 100%;
+      margin-top: 8px;
+      border: none;
+      box-shadow: none;
+    }
+>>>>>>> 9cdb4f33460137ee8fc796174910de5745d3788c
+  }
+  .navbar-right{
+    border-left: 1px solid extract(@header-color,3);
+    &>li>a{
+      color: extract(@header-color, 1);
+      &:hover{
+        color:extract(@header-color,1);
+      }
+      &:focus{
+        color: extract(@header-color,1);
+      }
+    }
+    li{
+      line-height: 50px;
+      padding: 0 8px;
+      &.open>a,&.open>a:hover,&.open>a:focus{
+        background: none;
+        .fa{
+          color: extract(@header-color,4);
+        }
+      }
+      a{
+        padding: 0;
+        line-height: 50px;
+      }
+      .fa{
+        font-size: 18px;
+        cursor: pointer;
+      }
+    }
   }
   .navbar .navbar-inner .btn {
     margin-top: 0;
-  }
-  .navbar-container,.navbar-header,.navbar-collapse,.navbar-collapse ul,.navbar-collapse ul li{
-    min-height: 60px;
-  }
-  .nav > li > a {
-    padding: 20px;
   }
   .user-icon {
     display: inline-block;
@@ -242,29 +333,6 @@ body{
   }
 }
 
-#menu-toggle{
-  height: 34px;
-  padding: 5px 10px;
-  position:fixed;
-  left: 5px;
-  top: 65px;
-  z-index: 1200;
-  color: #09c;
-  font-size: 24px;
-  animation:buzz-out 4s infinite linear 5s;
-  -webkit-animation:buzz-out 4s infinite linear 5s;
-  -moz-animation:buzz-out 4s infinite linear 5s;
-  -o-animation:buzz-out 4s infinite linear 5s;
-  .transition;
-  &:hover{
-    opacity: 0.7;
-  }
-  &.menu-active{
-    color: #fff;
-    transform:rotateY(180deg);
-    -moz-transform:rotateY(180deg);
-  }
-}
 .bell-animation{
   color: red;
   animation:bell 5s infinite linear;
