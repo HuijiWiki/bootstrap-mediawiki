@@ -431,6 +431,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
                             $commentHtml = '<div class="clearfix"></div>';
+                            $wgParser->setTitle($this->getSkin()->getTitle());
                             $commentHtml .= CommentsHooks::displayComments( '', array(), $wgParser); 
                             echo $commentHtml;
                         }?>

@@ -37,6 +37,10 @@ $(document).ready(function(){
 
 	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
 	
+
+
+	var url = 'http://test.huiji.wiki:50007/getPageViewCountOnAllWikis/';
+	getPageViewCountOnAllWikis(url);
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
         //var menuToggle = $('#menu-toggle');

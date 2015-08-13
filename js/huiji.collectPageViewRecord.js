@@ -26,11 +26,8 @@ function getPageViewCountOnAllWikis(url,fromTimeStamp)
 		url,
 		{
 			fromTimeStamp:fromTimeStamp,
-		},
-		function(data){
-			alert(" Return  :" + data);
 		}
-	);	
+	)	
 
 }
 	
