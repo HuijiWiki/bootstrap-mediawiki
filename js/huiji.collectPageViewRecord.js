@@ -20,6 +20,19 @@ function clearSourceUrl(sourceUrl){
         return matches ? matches[1]:sourceUrl;
 }
 
+function getPageViewCountOnAllWikis(url,fromTimeStamp)
+{
+	jQuery.post(
+		url,
+		{
+			fromTimeStamp:fromTimeStamp,
+		},
+		function(data){
+			alert(" Return  :" + data);
+		}
+	);	
+
+}
 	
 /*
 var fromSource    = document.referrer; 
