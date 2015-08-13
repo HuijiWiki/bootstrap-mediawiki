@@ -53,7 +53,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
     public function setupSkinUserCss( OutputPage $out ) {
         global $wgSiteCSS, $wgHuijiPrefix;
         parent::setupSkinUserCss( $out );
-        $out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
+        //$out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
         // we need to include this here so the file pathing is right
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css' );
     }//end setupSkinUserCss
@@ -108,6 +108,12 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         </script>
 
         <div id="wrapper" class="toggled">
+        <script>
+            var menutoggle;
+            document.domain = "huiji.wiki";
+            menutoggle = localStorage.getItem("menu-toggle");
+            $("#wrapper").attr("class",menutoggle);
+        </script>
             <div class="modal alert-return">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -205,31 +211,39 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             <div id="sidebar-wrapper">
                 
                 <ul class="sidebar-nav">
-                    <li class="left-follow">
-                        <ul>
-                            <li>
-                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
-                            </li>
-                            <li><button id="user-site-follow" class="mw-ui-button  <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></button> </li>
-                            <li><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php 
-                                $dbr = wfGetDB( DB_SLAVE );
-                                $counter = new SiteStatsInit( $dbr );
-                                $result = $counter->articles();
-                                echo $result;
-                            ?></a>篇条目，<span id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo UserSiteFollow::getSiteCount($wgHuijiPrefix) ?></span>人关注。</p></li>
-                        </ul>
+                    <li class="sidebar-header">
+                        <a href="<?php echo $this->getSkin()->getTitle()->getFullUrl(); ?>"><?php echo $this->getSkin()->getTitle()->getPrefixedText(); ?></a>
+                        <?php
+                            if ( isset( $this->data['content_actions']['watch'])){
+                                echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['watchlist']['id'].'">
+                                <a href="'.$this->data['content_actions']['watch']['href'].'">'.$this->data['content_actions']['watch']['text'].'</a></button>';
+                                unset( $this->data['content_actions']['watch']);
+                            } else if ( isset( $this->data['content_actions']['unwatch'])){
+                                echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['unwatch']['id'].'">
+                                <a href="'.$this->data['content_actions']['unwatch']['href'].'">'.$this->data['content_actions']['unwatch']['text'].'</a></button>';
+                                unset ( $this->data['content_actions']['unwatch']);
+                            }else{
+                            echo '<a>sdsssds</a>';
+                            }
+                         ?>
+
                     </li>
-                    <li class="sidebar-brand left-nav">
+                    <li class="sidebar-behavior">
                         <a href="#">
-                            站点导航
+                            本页面
                         </a>
                         <ul>
-                            <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
+                        <?php
+                        $subnav_links = $this->listAdapter( $this->data['content_actions']);
+                        if( $NS !== NS_USER && $NS !== NS_USER_TALK){
+                            echo $this->nav( $subnav_links );
+                        }
+                        ?>
                         </ul>
                     </li>
                     <li class="sidebar-brand left-tool">
                         <a href="#">
-                            工具
+                            全站工具
                         </a>
                         <ul>
                             <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
@@ -264,7 +278,56 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 </ul>
                             </li>
                             <?php } ?>
+                            <li class="sidebar-create">
+                                <div class="mw-inputbox-centered" style="">
+                                    <form name="createbox" class="createbox" action="/index.php" method="get">
+                                        <input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden">
+                                        <input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden">
+                                        <input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden">
+                                        <input name="minor" value="" type="hidden">
+                                        <div class="input-group create-group">
+                                            <input name="title" class="createboxInput form-control" placeholder="新页面名称" value="" dir="ltr" type="text">
+                                            <span class="input-group-btn">
+                                                <button name="create" class="btn btn-default" type="submit">创建</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
                         </ul>
+                    </li>
+                    <li class="sidebar-brand left-manager">
+                        <a>管理员</a>
+                        <div>
+                        <?php
+                            // echo $wgHuijiPrefix;
+                            $fanbox_link = SpecialPage::getTitleFor( 'UserList' );
+                            $group = 'sysop';
+                            $ums = self::getSiteManager( $wgHuijiPrefix,$group );
+                            foreach ($ums as $value) {
+                            // echo $value->ug_user;
+                            $uname = User::newFromId( $value );
+                            $usersys['count'] = UserStats::getSiteEditsCount( $uname, $wgHuijiPrefix );
+                            $userPage = Title::makeTitle( NS_USER, $uname->getName() );
+                            $usersys['url'] = htmlspecialchars( $userPage->getFullURL() );
+                            $avatar = new wAvatar( $value, 'm' );
+                            $usersys['avatar'] = $avatar->getAvatarURL();
+                            // echo '<a href="'.$userPageURL.'">'.$avatar_img.'</a>';
+                            $sysop[] = $usersys;
+                            }
+                            foreach ($sysop as $key => $value) {
+                            $count[$key] = $value['count'];
+                            }
+                            array_multisort($count, SORT_DESC, $sysop);
+                            $nums = ( count($ums) > 5 )?5:count($ums);
+                            for ($j=0; $j < $nums; $j++) {
+                            echo '<a href="'.$sysop[$j]['url'].'">'.$sysop[$j]['avatar'].'</a>';
+                            }
+                            if ( count($ums) > 5 ) {
+                            echo Linker::link( $fanbox_link, '更多', array(), array( 'group' => $group,'limit' => 50 ) );
+                            }
+                            ?>
+                        </div>
                     </li>
                     <?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
                     <li class="sidebar-brand left-author">
@@ -293,26 +356,8 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         </ul>
                     </li>
                     <?php } ?>
-                    <li class="sidebar-create">
-                        <div class="mw-inputbox-centered" style="">
-                            <form name="createbox" class="createbox" action="/index.php" method="get">
-                                <input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden">
-                                <input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden">
-                                <input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden">
-                                <input name="minor" value="" type="hidden"><input name="title" class="createboxInput form-control" value="" placeholder="输入页面名称" dir="ltr" type="text">
-                                <input name="create" class="mw-ui-button mw-ui-progressive" value="创建页面" type="submit">
-                            </form>
-                        </div>
-                    </li>
 	            </ul>
 	        </div>
-            <script>
-                var menutoggle = localStorage.getItem('menu-toggle');
-                $('#wrapper').attr('class',menutoggle);
-                if($('#wrapper').hasClass('toggled')){
-                    $('#menu-toggle').addClass('menu-active');
-                }
-            </script>
             <!-- /#sidebar-wrapper -->
             <?php echo $this->showHeader(); ?>
 
@@ -322,7 +367,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {
                     ?>
                     <div id="content-actions" class="subnav subnav-fixed">
-                        <div class="container">
+                        <div class="container-fluid">
                             <?php
                             $subnav_select = $this->nav_select( $subnav_links );
                             if ( trim( $subnav_select ) ) {
@@ -334,22 +379,20 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             }//end if
                             ?>
                             <ul class="nav nav-pills">
-
-                                <?php echo $this->nav( $subnav_links ); ?>
-                                <!--                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>工具 <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
-                                    <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
-                                    <?php if ( $wgEnableUploads ) { ?>
-                                    <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
-                                    <?php } ?>
-                                </ul>
-                            </li>    -->
+                                <li>
+                                    <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
+                                </li>
+                                <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
+                                <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
+                                <li class="site-count"><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php
+                                    $dbr = wfGetDB( DB_SLAVE );
+                                    $counter = new SiteStatsInit( $dbr );
+                                    $result = $counter->articles();
+                                    $result2 = $counter->files();
+                                    echo $result;
+                                ?></a>页面<a><?php echo $result2; ?></a>文件<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo UserSiteFollow::getSiteCount($wgHuijiPrefix) ?></a>关注</p></li>
+                                <i class="fa fa-ellipsis-h" id="subnav-toggle"></i>
                             </ul>
-
-
-
                         </div>
                     </div>
                 <?php
@@ -464,6 +507,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             </div><!-- bottom -->
         </div><!-- /#wrapper -->
         <?php }?> <!-- mainpage if -->
+
         <?php
         $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
         $this->html('reporttime');

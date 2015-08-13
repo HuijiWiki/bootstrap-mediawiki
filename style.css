@@ -1,6 +1,7 @@
 *{
     outline: none;
 }
+/*icon*/
 @font-face {
     font-family: 'icomoon';
     src:url('fonts/icomoon.eot?-7049x4');
@@ -20,7 +21,6 @@
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -57,6 +57,40 @@ p {
 	margin-bottom: 15px;
 }
 
+.hub-menu::before{
+    content: '';
+    background-image: url(./images/angle.png);
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 11px;
+    position: absolute;
+    z-index: 101;
+    top: -11px;
+    left: 45px;
+}
+.set-menu::before{
+    content: '';
+    background-image: url(./images/angle.png);
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 11px;
+    position: absolute;
+    z-index: 101;
+    top: -11px;
+    right: 15px;
+}
+.collect-menu::before{
+    content: '';
+    background-image: url(./images/angle.png);
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 11px;
+    position: absolute;
+    z-index: 101;
+    top: -11px;
+    right: 15px;
+}
+
 .mw-content-ltr ul, .mw-content-ltr ol {
 	margin-bottom: 9px;;
 }
@@ -66,13 +100,8 @@ p {
 ol.references {
     margin-top: 0;
 }
-.subnav .nav > li > a{
-    height: 50px;
-    line-height: 25px;
-}
 #content-actions {
 	margin-top : 0px;
-    display: none;
 }
 
 /* begin toc style */
@@ -215,9 +244,6 @@ option.unclickable {
 	color: #ccc;
 }
 
-#subnav-select {
-	display: none;
-}
 
 
 #wiki-body h2, #DiscussionSnapshot {
@@ -436,20 +462,6 @@ img.thumbborder {
 /*}*/
 
 /* Subnav */
-.subnav {
-  	width: 100%;
-  	height: 50px;
-	margin-top: 2px;
-/*	-webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
-	   -moz-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
-	        box-shadow: 0 1px 10px rgba(0,0,0,0.1);*/
-	border-width: 0 0 1px;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	border-radius: 0;
-	transition: top 0.2s ease-in-out;
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
 
 
 .notransition {
@@ -468,89 +480,8 @@ img.thumbborder {
         margin-left: 0;
     }
 }
-
-@media (max-width: 979px) {
-}
-
-.subnav .container .nav{
-  margin-bottom: 0;
-}
-
-.subnav .nav > li > a {
-	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.1);
-	text-decoration: none;
-  margin: 0;
-  padding-top:    10px;
-  padding-bottom: 11px;
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  -webkit-border-radius: 0;
-     -moz-border-radius: 0;
-          border-radius: 0;
-}
-
-.subnav .nav > li > a:hover,
-.subnav .nav > .active > a,
-.subnav .nav > .active > a:hover {
-
-  border-right-color: transparent;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
-     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
-          box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
-}
-.subnav .nav-tabs .dropdown-toggle .caret, 
-.subnav .nav-pills .dropdown-toggle .caret {
-	border-top-color: #000;
-}
-
-.subnav .nav > .active > a .caret,
-.subnav .nav > .active > a:hover .caret {
-  border-top-color: #000;
-}
-.subnav .nav > li:first-child > a,
-.subnav .nav > li:first-child > a:hover {
-  border-left: 0;
-  padding-left: 12px;
-  -webkit-border-radius: 4px 0 0 4px;
-     -moz-border-radius: 4px 0 0 4px;
-          border-radius: 4px 0 0 4px;
-}
-.subnav .nav > li:last-child > a {
-  border-right: 0;
-}
-.subnav .dropdown-menu {
-  -webkit-border-radius: 0 0 4px 4px;
-     -moz-border-radius: 0 0 4px 4px;
-          border-radius: 0 0 4px 4px;
-}
-
-
 pre.linenums ol {
 	margin-bottom: 0;
-}
-
-
-/* Fixed subnav on scroll, but only for 980px and up (sorry IE!) */
-.subnav-fixed {
-	position:fixed;
-	top:60px;
-	z-index: 100; /* 10 less than .navbar-fixed to prevent any overlap */
-	border-width: 0 0 1px; /* drop the border on the fixed edges */
-	-webkit-border-radius: 0;
-		 -moz-border-radius: 0;
-					border-radius: 0;
-}
-.subnav-fixed .nav {
-	width: 1170px;
-	margin: 0 auto;
-	margin-left: -12px;
-	padding: 0 1px;
-}
-.subnav .nav > li:first-child > a,
-.subnav .nav > li:first-child > a:hover {
-	-webkit-border-radius: 0;
-		 -moz-border-radius: 0;
-					border-radius: 0;
 }
 
 
@@ -559,20 +490,6 @@ pre.linenums ol {
 	.mw-headline {
 		margin-top: -103px;
 		padding-top: 103px;
-	}
-
-	.subnav #subnav-select {
-		float: right;
-		display: inline-block;
-	}
-
-	.subnav .nav {
-		display: none;
-	}
-
-	.subnav .container {
-		padding-bottom: 1rem;
-		padding-top: 1rem;
 	}
 }
 
@@ -848,9 +765,6 @@ table.list th {
 .nav-up {
     top: -53px;
 }
-.subnav-up {
-	top:-103px;
-}
 .sidebar-wrapper-up {
 	top:-103px;
 }
@@ -886,17 +800,14 @@ table.list th {
 .wikiEditor-ui-controls, .wikiEditor-ui-tabs, .wikiEditor-ui-buttons {
 	background: transparent!important;
 }
-#sidebar-wrapper{
-    overflow-y: auto;
-    overflow-x: hidden;
-}
 body .mw-echo-overlay {
 	z-index: 1300;
 	width: 300px;
     position: fixed;
+    top: 50px;
 }
-body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
-    left: 223px !important;
+body.ltr .mw-echo-overlay::before{
+    left: 206px !important;
 }
 
 
@@ -1022,40 +933,12 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
         margin-left: auto;
     }
 }
-@media screen and (max-width: 1200px){
-    #icon-section {
-        margin-left: 5px;
-    }
-    .subnav-up{
-        top: -42px;
-    }
-    .nav-up{
-        top: 0;
-    }
-}
-@media screen and (max-width: 767px){
-    .subnav.subnav-fixed{
-        position: absolute;
-    }
-    .subnav-fixed {
-        top: 60px;
-    }
-    .subnav-up{
-        top:60px;
-    }
-    .nav-up{
-        top: 0;
-    }
-    #firstHeading h1 {
-        font-size: 36px;
-    }
-}
-/*@media (max-device-width: 480px) and (orientation: landscape) {*/
-    /*.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {*/
-        /*max-height: 200px;*/
-    /*}*/
-/*}*/
+
+/*手机上图片不超过手机宽度*/
 @media screen and (min-width:320px ) and (max-width:414px ){
+    #mw-content-text>*{
+        max-width: 100%;
+    }
     .infobox{
         width:100%!important;
     }
@@ -1063,7 +946,7 @@ body.ltr .mw-echo-overlay::before, body.ltr .mw-echo-overlay::before {
         max-width: 100%!important;
         height: auto;
     }
-    div.thumb,.thumbinner{
+    div.thumb,.thumbinner {
         margin: 0 auto;
         float: none;
     }

@@ -21,18 +21,24 @@ Class HuijiSkinTemplate extends BaseTemplate {
      */
     public function execute() {}
 
-	/**
+    /**
      * Render one or more navigations elements by name, automatically reveresed
      * when UI is in RTL mode
      */
-    protected function nav( $nav ) {
+    protected function nav( $nav,$nl = '' ) {
         $output = '';
         foreach ( $nav as $topItem ) {
             $pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
             if ( array_key_exists( 'sublinks', $topItem ) ) {
+                if($nl == 'set'){
+                $output .= '<li class="dropdown set">';
+                $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . '</a>';
+                $output .= '<ul class="dropdown-menu set-menu">';
+                }else{
                 $output .= '<li class="dropdown">';
-                $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . ' <b class="caret"></b></a>';
-                $output .= '<ul class="dropdown-menu">';
+                                $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . '</a>';
+                                $output .= '<ul class="dropdown-menu">';
+                }
                 foreach ( $topItem['sublinks'] as $subLink ) {
                     if ( 'divider' == $subLink ) {
                         $output .= "<li class='divider'></li>\n";
@@ -44,6 +50,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         } else {
                             $href = $subLink['link'];
                         }//end else
+
                         $slug = strtolower( str_replace(' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', trim( strip_tags( $subLink['title'] ) ) ) ) );
                         $output .= "<li {$subLink['attributes']}><a href='{$href}' class='{$subLink['class']} {$slug}'>{$subLink['title']}</a>";
                     }//end else
@@ -67,8 +74,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
         }//end foreach
         return $output;
     }//end nav
-
-     /**
+    /**
      * Render one or more navigations elements by name as notifications, automatically reveresed
      * when UI is in RTL mode
      */
@@ -76,6 +82,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
         $output = '';
         foreach ( $nav as $topItem ) {
             $pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
+
             $output .= '<li id="pt-notifications" ><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
             
         }//end foreach
@@ -103,6 +110,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         } else {
                             $href = $subLink['link'];
                         }//end else
+
                         $output .= "<option value='{$href}'>{$subLink['title']}</option>";
                     }//end else
                 }//end foreach
@@ -111,12 +119,13 @@ Class HuijiSkinTemplate extends BaseTemplate {
             }//end else
             $output .= '</optgroup>';
         }//end foreach
+
         return $output;
     }//end nav_select
 
     /* generate links from a source page */
     protected function get_page_links( $source ) {
-        $titleBar = $this->getPageRawText( $source );
+        $titleBar = self::getPageRawText( $source );
         $nav = array();
         foreach(explode("\n", $titleBar) as $line) {
             if(trim($line) == '') continue;
@@ -124,9 +133,11 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 $nav[ count( $nav ) - 1]['sublinks'][] = 'divider';
                 continue;
             }//end if
+
             $sub = false;
             $link = false;
             $external = false;
+
             if(preg_match('/^\*\s*([^\*]*)\[\[:?(.+)\]\]/', $line, $match)) {
                 $sub = false;
                 $link = true;
@@ -167,20 +178,24 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         $item = $dir.$item;
                     } 
                 }//end else
+
                 if( $link ) {
                     $item = array('title'=> $title, 'link' => $item, 'local' => ! $external , 'external' => $external );
                 } else {
                     $item = array('title'=> $title, 'link' => $item, 'textonly' => true, 'external' => $external );
                 }//end else
             }//end else
+
             if( $sub ) {
                 $nav[count( $nav ) - 1]['sublinks'][] = $item;
             } else {
                 $nav[] = $item;
             }//end else
         }
+
         return $nav;    
     }//end get_page_links
+
     /* notification adapter */
     protected function notificationAdapter($array){
         $nav = array();
@@ -194,10 +209,11 @@ Class HuijiSkinTemplate extends BaseTemplate {
             'class' => htmlspecialchars( $item['class'] ),
             'title' => htmlspecialchars( $item['text'] ),
         );
-        $link['title'] = '<i class="fa fa-bell"></i> <span class="badge">' . $link['title'] .'</span>';
+        $link['title'] = '<i class="fa fa-envelope-o"></i> <span class="badge">' . $link['title'] .'</span>';
         $nav[] = $link;
         return $nav;        
     }
+
     /* dropdown button adapter */
     protected function dropdownAdapter( $array, $title, $which ) {
         $nav = array();
@@ -211,6 +227,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 'class' => htmlspecialchars( $item['class'] ),
                 'title' => htmlspecialchars( $item['text'] ),
             );
+
             if( 'page' == $which ) {
                 switch( $link['title'] ) {
                 case 'Page': $icon = 'file'; break;
@@ -223,6 +240,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case 'Watch': $icon = 'eye-open'; break;
                 case 'Unwatch': $icon = 'eye-slash'; break;
                 }//end switch
+
                 $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
             } elseif( 'user' == $which ) {
                 switch( $link['title'] ) {
@@ -233,17 +251,21 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '退出': $icon = 'power-off'; break;
                 default: $icon = 'user'; break;
                 }//end switch
+
                 $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
             }//end elseif
+
             $nav[0]['sublinks'][] = $link;
         }//end foreach
-        return $this->nav( $nav );
+
+        return $this->nav( $nav,$nl = 'set' );
     }//end get_array_links
 
     /* general a list of links adater */
     protected function listAdapter( $array ) {
         $nav = array();
         foreach( $array as $key => $item ) {
+
             $link = array(
                 'id' => Sanitizer::escapeId( $key ),
                 'attributes' => $item['attributes'],
@@ -256,7 +278,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '页面': $icon = 'file'; break;
                 case '讨论': $icon = 'comment'; break;
                 case '编辑': $icon = 'pencil'; break;
-                case '编辑源代码': $icon = 'edit'; break;
+                case '编辑源码': $icon = 'edit'; break;
                 case '历史': $icon = 'clock-o'; break;
                 case '删除': $icon = 'remove'; break;
                 case '移动': $icon = 'arrows'; break;
@@ -265,8 +287,8 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '监视': $icon = 'eye'; break;
                 case '取消监视': $icon = 'eye-slash'; break;
                 case '创建': $icon = 'plus'; break;
-                case '创建源代码': $icon = 'plus'; break;
-                case '查看源代码': $icon = 'file-code-o'; break;
+                case '创建源码': $icon = 'plus'; break;
+                case '查看源码': $icon = 'file-code-o'; break;
                 case '特殊页面': $icon = 'flask'; break;
                 default: $icon = 'bookmark'; break;
             }
@@ -274,7 +296,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
             $nav[] = $link;
         }//end foreach
         return $nav ;
-    }//end get_edit_links  
+    }//end get_edit_links   
 
 
     /**
@@ -351,86 +373,214 @@ Class HuijiSkinTemplate extends BaseTemplate {
         return $result;
     }
 
-    /**
-     * Display the wiki header area.
-     */
-    public function showHeader(){
-        global $wgUser, $wgSitename, $wgLogo;
+    //show header
+    function showHeader(){
+        global $wgUser, $wgSitename;
         global $wgNavBarClasses;
         
         // $output = '';
         $output ='
             <header class="header navbar navbar-default navbar-fixed-top'.$wgNavBarClasses.'" role="navigation">
-                    <div class="navbar-container">
-                        <div class="navbar-header">
-                            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand"><img alt="Logo" src="'.$wgLogo.'"> </a>  </div>
-                        <div class="collapse navbar-collapse">
-                            <ul id="icon-section" class="nav navbar-nav">
-                                    <li>
-                                        <a href="'.$this->data['nav_urls']['mainpage']['href'].'">';
-                                        if( $wgSitename < 8) {
-                                            $output .= $wgSitename; 
-                                        }else{
-                                            $output .= 'wiki首页';
-                                        }
-                                        $output .= '</a>
-                                    </li>
-                                    <li class="dropdown">
-                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
-                                      <ul class="dropdown-menu" role="menu">
-                                        <li><a href="http://lotr.huiji.wiki">魔戒中文维基</a></li>
-                                        <li><a href="http://asoiaf.huiji.wiki">冰与火之歌中文维基</a></li>
-                                        <li><a href="http://allglory.huiji.wiki">荣耀百科全书</a></li>
-                                        <li><a href="http://downtonabbey.huiji.wiki/">唐顿庄园中文维基</a></li>
-                                        <li><a href="http://jiuzhou.huiji.wiki">九州奇幻世界百科</a></li>
-                                        <li><a href="/wiki/Special:Randomwiki">随机一下试试</a></li>
-                                      </ul>
-                                    </li>
-                                    <li>
-                                        <a href="http://home.huiji.wiki/wiki/创建新wiki">创建新wiki</a>
-                                    </li>
-                            </ul>';
-                        if ( $wgUser->isLoggedIn() ) {
-                            if ( count( $this->data['personal_urls'] ) > 0 ) {
-                                $avatar = new wAvatar( $wgUser->getID(), 'l' );
-                                // $user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
-                                $user_icon = '<span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span>';
-                                $name =  $wgUser->getName() ;
-                                $personal_urls = $this->data['personal_urls'];
-                                unset($personal_urls['notifications']);
-                                $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon.$name, 'user' );
-                                $user_notify = $this->nav_notification($this->notificationAdapter($this->data['personal_urls']));
-                            }
-                            $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right">'.$user_notify.$user_nav.'</ul>';
-                        } else {  // else if is logged in 
-                                    //old login 
-                            $output .= '<ul class="nav navbar-nav navbar-right">
-                                <li id= "pt-login" data-toggle="modal" data-target=".user-login">
-                                    <a class="login-in">登录</a>
-                                </li>
-                                <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') ).'
-                                </li>   
-                            </ul>';
-                        }
-                        
-                        
-                        $output .= '<form class="navbar-search navbar-form navbar-right" action="/index.php" id="searchform" role="search">
+                <div class="navbar-container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
+                            <script>
+                                if($("#wrapper").hasClass("toggled")){
+                                    $("#menu-toggle").addClass("menu-active");
+                                }
+                            </script>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a class="visible-xs-inline-block search-toggle">
+                            <span class="fa fa-search navbar-search"></span>
+                        </a>
+                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand hidden-xs"><img alt="Logo" src="'.$wgLogo.'"> </a>
+                        <a class="visible-sm-block wiki-toggle">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <form class="navbar-search navbar-form" action="/index.php" id="searchformphone" role="search">
                             <div>
-                                <input class="form-control" type="search" name="search" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
+                                <input class="form-control" type="search" name="search" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInputPhone" autocomplete="off">
                                 <input type="hidden" name="title" value="Special:Search">
                             </div>
                         </form>
-                        </div>
                     </div>
+
+                    <div class="collapse navbar-collapse">
+                        <ul id="icon-section" class="nav navbar-nav">
+                                <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
+                                  <ul class="dropdown-menu hub-menu" role="menu">
+                                    <li>
+                                        <ul class="hub-list">
+                                            <li class="letter active" data-toggle="letter">文学</li>
+                                            <li class="movie" data-toggle="movie">影视</li>
+                                            <li class="anime" data-toggle="anime">动漫</li>
+                                            <li class="game" data-toggle="game">游戏</li>
+                                            <li class="star" data-toggle="star">明星</li>
+                                            <li class="more" data-toggle="more">更多</li>
+                                        </ul>
+                                    </li>
+                                    <li class="a">
+                                        <ul class="hub-selection letter-link active">
+                                            <li><a href="http://lotr.huiji.wiki">魔戒</a></li>
+                                            <li><a href="http://asoiaf.huiji.wiki">冰与火之歌</a></li>
+                                            <li><a href="http://allglory.huiji.wiki">荣耀百科全书</a></li>
+                                            <li><a href="http://wicher.huiji.wiki">猎魔人</a></li>
+                                        </ul>
+                                        <ul class="hub-selection movie-link">
+                                            <li><a href="http://spn.huiji.wiki">邪恶力量</a></li>
+                                            <li><a href="http://kaixinmahua.huiji.wiki">开心麻花</a></li>
+                                            <li><a href="http://wire.huiji.wiki">火线</a></li>
+                                            <li><a href="http://downtonabbey.huiji.wiki">唐顿庄园</a></li>
+                                        </ul>
+                                        <ul class="hub-selection anime-link">
+                                            <li><a href="http://kaiji.huiji.wiki">逆境无赖</a></li>
+                                            <li><a href="http://onepiece.huiji.wiki">海贼王</a></li>
+                                            <li><a href="http://gundam.huiji.wiki">高达</a></li>
+                                            <li><a href="http://flash.huiji.wiki">闪电侠</a></li>
+                                        </ul>
+                                        <ul class="hub-selection game-link">
+                                            <li><a href="http://gjqt.huiji.wiki">古剑奇谭</a></li>
+                                            <li><a href="http://hearthstone.huiji.wiki">炉石传说</a></li>
+                                            <li><a href="http://zhuoyou.huiji.wiki">桌游规则中文百科</a></li>
+                                            <li><a href="http://assassinscreed.huiji.wiki">刺客信条</a></li>
+                                        </ul>
+                                        <ul class="hub-selection star-link">
+                                            <li><a href="http://tfboys.huiji.wiki">TFBOYS</a></li>
+                                            <li><a href="http://mfassbender.huiji.wiki">迈克尔·法斯宾德</a></li>
+                                            <li><a href="http://uenojuri.huiji.wiki">上野树里</a></li>
+                                            <li><a href="http://jiangqinqin.huiji.wiki">蒋勤勤</a></li>
+                                        </ul>
+                                        <ul class="hub-selection more-link">
+                                            <li><a href="http://tisiwi.huiji.wiki">天使湾</a></li>
+                                            <li><a href="http://mahjong.huiji.wiki">麻将</a></li>
+                                            <li><a href="http://jurchen.huiji.wiki">满族姓氏考</a></li>
+                                            <li><a href="http://uiparty.huiji.wiki">UI Party</a></li>
+                                            <a href="/wiki/Special:Randomwiki" class="wiki-random">
+                                                随机一下试试
+                                            </a>
+                                        </ul>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li>
+                                    <a href="http://home.huiji.wiki/wiki/创建新wiki">创建wiki</a>
+                                </li>
+                        </ul>';
+                    if ( $wgUser->isLoggedIn() ) {
+                        if ( count( $this->data['personal_urls'] ) > 0 ) {
+                            $avatar = new wAvatar( $wgUser->getID(), 'l' );
+                            // $user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
+                            $user_icon = '<i class="fa fa-cog"></i>';
+                            $name =  $wgUser->getName() ;
+                            $personal_urls = $this->data['personal_urls'];
+                            unset($personal_urls['notifications']);
+                            unset($personal_urls['userpage']);
+                            $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon, 'user' );
+                            $user_notify = $this->nav_notification($this->notificationAdapter($this->data['personal_urls']));
+                        }
+                        $userPage = Title::makeTitle( NS_USER, $wgUser->getName() );
+                        $userPageURL = htmlspecialchars( $userPage->getFullURL() );
+                        /*$avatar = new wAvatar( $wgUser->getID(), 'l' );*/
+                        $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right navbar-user">';
+                        $output .= '<li><a href="'.$userPageURL.'"><span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span><span class="hidden-xs">'.$wgUser->getName().'</span></a></li>';
+                        $output .= $user_notify;
+                        $output .= '<li class="dropdown collect"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-star-o"></i></a><ul class="dropdown-menu collect-menu">';
+                        $sites = UserSiteFollow::getFullFollowedSites( $wgUser->getId(),$wgUser->getId() );
+                        $count = count($sites);
+                           if( $count > 0){
+                           foreach ( $sites as $user ) {
+                               $site_name[] = $user['val'];
+                               $domain_name[] = $user['key'];
+                               $num = ($count > 4)?4:$count;
+                               for($i=0;$i<$num;$i++){
+                                    $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki>'.$site_name[$i].'</a></li>';
+                               }
+                               if($count > 4){
+                                    $output .='<li><a href="/index.php?title=Special:FollowSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">全部我关注的维基</a></li>';
+                               }
+                           }
+                           }else{
+                           $output.='<li><a>暂无</a></li>';
+                            }
+                        $output .= '</ul></li>';
+                        $output .= $user_nav;
+                        $output .= '</ul>';
+                    } else {  // else if is logged in
+                                //old login
+                        $output .= '<ul class="nav navbar-nav navbar-right navbar-login">
+                            <li id= "pt-login" data-toggle="modal" data-target=".user-login">
+                                <a class="login-in">登录</a>
+                            </li>
+                            <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') ).'
+                            </li>
+                        </ul>';
+                    }
+                    $output .= '<form class="navbar-search navbar-form table-cell hidden-xs" action="/index.php" id="searchform" role="search">
+                        <div>
+                            <span class="fa fa-search navbar-search"></span>
+                            <input class="form-control" type="search" name="search" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
+                            <input type="hidden" name="title" value="Special:Search">
+                        </div>
+                    </form>
+                    </div>
+                </div>
             </header>';
             
             return $output;
     }
+        /**
+         * the site's sysop/staff
+         * @return array user's avater
+         */
+        static function getSiteManager( $prefix,$group ){
+            $data = self::getSiteManagerCache( $prefix,$group );
+            if ( $data != '' ) {
+                wfDebug( "Got sitemanagers from cache\n" );
+                return $data;
+            } else {
+                return self::getSiteManagerDB( $prefix,$group );
+            }
+        }
+
+        static function getSiteManagerCache( $prefix,$group ){
+            global $wgMemc;
+            $key = wfForeignMemcKey('huiji','', 'user_group', 'sitemanager', $prefix,$group );
+            $data = $wgMemc->get( $key );
+            if ( $data != '' ) {
+                return $data;
+            }
+        }
+
+        static function getSiteManagerDB( $prefix,$group ){
+            global $wgMemc;
+            $key = wfForeignMemcKey('huiji','', 'user_group', 'sitemanager', $prefix,$group );
+            $dbr = wfGetDB( DB_SLAVE );
+            $data = array();
+            $res = $dbr->select(
+                'user_groups',
+                array(
+                    'ug_user'
+                ),
+                array(
+                    'ug_group' => $group
+                ),
+                __METHOD__
+            );
+            if($res){
+                foreach ($res as $value) {
+                    $data[] = $value->ug_user;
+                }
+                $wgMemc->set( $key, $data, 60*60*24 );
+                return $data;
+            }
+
+        }
 }
 ?>

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    FastClick.attach(document.body);
 	if (mw.cookie.get('animation') == 'none'){
 		$('#menu-toggle').css({
             'animation':'none',
@@ -8,7 +8,6 @@ $(document).ready(function(){
             '-o-animation':'none'
         });
 	}
-	 
 	var fromSource    = document.referrer; 
 	var navigatorInfo = navigator.userAgent.toLowerCase();
 	var userId    = mw.config.get("wgUserId");
@@ -18,46 +17,11 @@ $(document).ready(function(){
 	var titleName = mw.config.get("wgPageName");
 	var articleId = mw.config.get("wgArticleId");
 	var url = 'http://test.huiji.wiki:50007/insertViewRecord/';
-/*	function  insertRecordIntoDB(url,fromSource,userId,userName,wikiSite,siteName,titleName,articleId) {
-	 	jQuery.post(
-			url, 
-			{
-				fromSource:fromSource,
-                		userId:userId,
-				userName:userName,
-				articleId:articleId,
-				titleName:titleName,
-				siteName:siteName,
-				wikiSite:wikiSite,
-			
-           		 }
-		)
-	}
-*/	
-
 	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
-	
-
-
 	var url = 'http://test.huiji.wiki:50007/getPageViewCountOnAllWikis/';
 	getPageViewCountOnAllWikis(url);
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
-        //var menuToggle = $('#menu-toggle');
-        //if(menuToggle.css('right')=="20px") {
-        //        menuToggle.fadeOut(0).css('right', '-60px').fadeIn(1000);
-        //}else{
-        //    menuToggle.fadeOut(0).css('right', '20px').fadeIn(1000);
-        //}
-
-        //if($('#wrapper').css('padding-left')=='0px'){
-        //    $('#wrapper').css('padding-left','265px');
-        //    $('#sidebar-wrapper').css('width','265px');
-        //}
-        //else{
-        //    $('#wrapper').css('padding-left','0px');
-        //    $('#sidebar-wrapper').css('width','0');
-        //}a
 
         if(mw.cookie.get('animation') == 'none' || mw.cookie.get('animation') == null) {
             mw.cookie.set('animation', 'none');
@@ -74,11 +38,56 @@ $(document).ready(function(){
             $('#wrapper').removeClass('smtoggled');
             $('#menu-toggle').removeClass('smenu-active');
         }
+        else if(window.innerWidth<=767&&window.innerWidth>=320){
+            if($('#wrapper').hasClass('smtoggled')){
+                $('body').append('<div class="phone-wrapper"></div>');
+            }else{
+                $('.phone-wrapper').remove();
+            }
+        }
         if($('#wrapper').hasClass('toggled')){
+            document.domain = "huiji.wiki";
             localStorage.setItem('menu-toggle','toggled')
         }else{
+            document.domain = "huiji.wiki";
             localStorage.setItem('menu-toggle','')
         }
+    });
+    $('body').on('touchstart','.phone-wrapper',function(){
+        $('#menu-toggle').trigger('click');
+    });
+    $('.hub-list li').hover(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+        var toggle = $(this).data('toggle');
+        $('.a').find('.'+toggle+'-link').addClass('active').siblings().removeClass('active');
+    });
+    $('.wiki-toggle').click(function(){
+       $('#icon-section').toggleClass('xs-show');
+    });
+    $('.search-toggle').click(function(){
+       $('#searchformphone').toggleClass('visible-xs-block');
+    });
+    $('.subnav .nav .dropdown:first').addClass('phone-active');
+    $('.subnav .nav .dropdown-menu:first').addClass('phone-active');
+    $('.subnav #subnav-toggle').click(function(){
+        var length;
+        $('.subnav .nav .dropdown').toggle();
+        length = $('.subnav .nav>.dropdown').length;
+        if($('.subnav .nav').hasClass('phone-open')){
+            $('.subnav .nav').removeClass('phone-open')
+        }else{
+            $('.subnav .nav').addClass('phone-open');
+        }
+        if(length<6){
+            $('.subnav .nav .dropdown-menu').css('max-height','192px');
+        }else {
+            $('.subnav .nav .dropdown-menu').css('max-height', length * 32 + 'px');
+        }
+    });
+    $('.nav .dropdown>a').hover(function(){
+        $(this).parent().addClass('phone-active').siblings().removeClass('phone-active');
+        $('.nav .dropdown').find('.dropdown-menu').removeClass('phone-active');
+        $(this).parent().find('.dropdown-menu').addClass('phone-active');
     });
 
     $('a[href^=#cite_note]').each(function(){

@@ -1,31 +1,32 @@
 //@background-color:#333,#fff,#333,#d5d5d5,#f5f5f5;
 @import "default_theme";
 @import "animation";
-@header-color:#333,#fff,#e7e7e7,#0099cc;
-.transition(){
-  -webkit-transition:all 0.9s;
-  -moz-transition:all 0.9s;
-  -ms-transition:all 0.9s;
-  -o-transition:all 0.9s;
-  transition:all 0.9s;
+@header-color:#333,#fff,#e7e7e7,#0099cc,#e0e0e0;
+.transition(@time){
+  -webkit-transition:all @time;
+  -moz-transition:all @time;
+  -ms-transition:all @time;
+  -o-transition:all @time;
+  transition:all @time;
 }
 .table-cell{
   display: table-cell;
   vertical-align: middle;
 }
-.leftbar-transition{
-  -webkit-transition:all 0.5s;
-  -moz-transition:all 0.5s;
-  -ms-transition:all 0.5s;
-  -o-transition:all 0.5s;
-  transition:all 0.2s;
-}
 a{
-  .transition;
+  .transition(0.9s);
 }
+
+//header
 .header{
   background-color:extract(@header-color,2);
   border-color:extract(@header-color,3);
+  margin-bottom: 0;
+  transition: top 0.2s ease-in-out;
+  border: none;
+  .navbar-container{
+    box-shadow: 0 0 10px rgba(0,0,0,.8);
+  }
   .navbar-nav>li>a{
     color: extract(@header-color, 2);
     &:hover{
@@ -35,13 +36,10 @@ a{
       color: extract(@header-color,2);
     }
   }
-  margin-bottom: 0;
-  transition: top 0.2s ease-in-out;
   .navbar-header {
     background-color:extract(@header-color,1);
     #menu-toggle{
       z-index: 1200;
-      color: #09c;
       border-right: 1px solid #666;
       padding-top: 15px;
       margin-right: 10px;
@@ -49,20 +47,25 @@ a{
       -webkit-animation:buzz-out 4s infinite linear 5s;
       -moz-animation:buzz-out 4s infinite linear 5s;
       -o-animation:buzz-out 4s infinite linear 5s;
-      .transition;
+      .transition(0.9s);
       &:hover{
         opacity: 0.7;
       }
       &.menu-active{
         color: #fff;
-        transform:rotateY(180deg);
-        -moz-transform:rotateY(180deg);
+        .icon-bar:nth-child(3){
+          margin-left: 5px;
+        }
+        .icon-bar:last-child{
+          margin-left: 10px;
+        }
       }
       .icon-bar{
         display: block;
         width: 22px;
         height: 2px;
         background: #fff;
+        .transition(0.2s);
         &+.icon-bar{
           margin-top: 6px;
           width: 17px;
@@ -72,6 +75,28 @@ a{
         }
       }
     }
+    .search-toggle{
+      float: right;
+      line-height: 50px;
+      margin:0;
+      color: #fff;
+      font-size: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .navbar-toggle {
+      position: relative;
+      float: right;
+      font-size: 20px;
+      line-height: 50px;
+      padding: 0;
+      margin: 0;
+      padding:0 10px;
+      background-color: transparent;
+      background-image: none;
+      border: none;
+      color: extract(@header-color,2);
+    }
     .navbar-brand {
       padding: 10px;
       img {
@@ -79,13 +104,64 @@ a{
         max-height: 30px;
       }
     }
+    .wiki-toggle{
+      float: left;
+      color: #fff;
+      height: 50px;
+      line-height: 50px;
+      padding-right: 20px;
+      cursor: pointer;
+    }
+    #searchformphone{
+      display: none;
+    }
   }
-<<<<<<< HEAD
-  .navbar .navbar-inner .btn {
-    margin-top: 0;
-=======
   #icon-section{
     background-color:extract(@header-color,1);
+    .hub-menu{
+      padding: 0;
+      width: 250px;
+      background-color:extract(@header-color,5);
+      &>li{
+        float: left;
+        &>ul{
+          padding-left: 0;
+          &>li{
+            list-style-type: none;
+            padding: 5px 10px;
+            cursor: pointer;
+          }
+        }
+      }
+      .hub-list{
+        background: extract(@header-color,2);
+        color: #999;
+        .active{
+          background-color:extract(@header-color,5);
+          color: extract(@header-color,1);
+        }
+      }
+      .hub-selection{
+        display: none;
+        background-color:extract(@header-color,5);
+        .wiki-random{
+          position: absolute;
+          bottom: 5px;
+          right: 10px;
+          font-size: 12px;
+          color: extract(@header-color,4);
+        }
+        a{
+          color: extract(@header-color,1);
+          &:hover{
+            text-decoration: none;
+          }
+        }
+        &.active{
+          display: block;
+        }
+      }
+    }
   }
   .navbar-form{
     width: 2000px;
@@ -93,7 +169,7 @@ a{
     .navbar-search{
       font-size: 18px;
       position: absolute;
-      left: 380px;
+      left: 370px;
       top: 15px;
       color: #888;
     }
@@ -103,10 +179,32 @@ a{
       border: none;
       box-shadow: none;
     }
->>>>>>> 9cdb4f33460137ee8fc796174910de5745d3788c
   }
-  .navbar-right{
+  .navbar-user{
     border-left: 1px solid extract(@header-color,3);
+    .set{
+      padding-right: 20px;
+      .set-menu{
+        min-width: 110px;
+      }
+    }
+    #pt-notifications .badge{
+      background: rgba(220, 0, 0, 1);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 10px;
+      line-height: 15px;
+      text-align: center;
+      position: absolute;
+      top: 8px;
+      right: -8px;
+      padding: 0;
+      width: 15px;
+      height: 15px;
+    }
+    .collect-menu{
+      right: -10px;
+    }
     &>li>a{
       color: extract(@header-color, 1);
       &:hover{
@@ -114,6 +212,15 @@ a{
       }
       &:focus{
         color: extract(@header-color,1);
+      }
+    }
+    .dropdown-menu{
+      li {
+        padding: 0 2px;
+        a {
+          line-height: 30px;
+          padding-left: 10px;
+        }
       }
     }
     li{
@@ -149,15 +256,18 @@ a{
       height: 20px;
     }
   }
+  .navbar-login>li>a{
+    color: extract(@header-color,1);
+  }
 }
 body{
   background-color: extract(@background-color,1);
   color: extract(@font-color,1);
-  font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
   #wrapper{
-    .leftbar-transition;
+    .transition(0.2s);
   }
   ::selection {
     background:extract(@selection-color,1);
@@ -178,26 +288,31 @@ body{
   top: 0;
   height: 100%;
   left:-240px;
-  .leftbar-transition;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling:touch;
+  .transition(0.2s);
   .sidebar-nav {
     position: absolute;
     padding-top: 60px;
     padding-left: 0px;
     list-style: none;
+    &>li{
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
     li{
       height: auto;
       display: block;
       text-indent: 25px;
     }
     ul{
-      border-bottom: 1px solid;
-      border-color:@sidebar-border-color;
       padding-left: 20px;
       padding-right: 20px;
       li{
         text-indent: 15px;
         line-height: 30px;
-        .transition;
+        .transition(0.9s);
         a {
           display: block;
           text-decoration: none;
@@ -236,6 +351,33 @@ body{
       color:#333;
       font-size: 12px;
     }
+    .sidebar-header{
+      text-align: center;
+      text-indent: 0;
+      &>a{
+        display: block;
+        font-size: 24px;
+      }
+      button{
+        display: block;
+        padding: 0;
+        margin: 5px auto;
+      }
+    }
+    .sidebar-behavior{
+      ul::after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+      li{
+        width: 50%;
+        float: left;
+        a{
+          white-space:nowrap;
+        }
+      }
+    }
     .left-follow{
       padding-top:15px;
       .logo-wiki-user{
@@ -259,6 +401,13 @@ body{
       }
     }
     .sidebar-brand {
+      border-top: 1px solid;
+      border-color:@sidebar-border-color;
+      font-size: 12px;
+      line-height: 34px;
+      .headimg{
+        border-color: extract(@background-color,2);
+      }
       a{
         overflow: hidden;
         text-overflow: ellipsis;
@@ -275,7 +424,6 @@ body{
         }
       }
     }
-
     .left-author>ul {
       li{
         height: 30px;
@@ -306,20 +454,20 @@ body{
     .sidebar-create {
       padding-top: 5px;
       padding-bottom: 5px;
-      text-indent: 15px !important;
-      .createboxInput {
-        width: 55%;
-        height: 30px;
-        display: inline-block;
+      text-indent: 0;
+      .create-group{
+        margin: auto 15px;
+        .createboxInput {
+          height: 30px;
+        }
+        button{
+          height: 30px;
+          padding: 0 12px;
+        }
       }
-      .mw-ui-button {
-        padding: 5px;
-        margin-bottom: 3px;
+      &:hover{
+        background-color: extract(@header-color,1);
       }
-    }
-    .sidebar-brand {
-      font-size: 12px;
-      line-height: 34px;
     }
   }
   a{
@@ -329,6 +477,80 @@ body{
     @leftbar-hover;
     .dropdown-menu a{
       color:#333;
+    }
+  }
+}
+.subnav{
+@hover{
+  background-color: extract(@sub-hover-color,1);
+  color:extract(@sub-hover-color,2);
+}
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  background-color: extract(@background-color,3);
+  border-bottom: 1px solid;
+  border-color: @sub-border-color;
+  font-size: 14px;
+  width: 100%;
+  position:fixed;
+  top:50px;
+  z-index: 100;
+  &.subnav-up {
+    top:-1000px;
+    display: none;
+  }
+  .nav>li:first-child a{
+    font-size: 26px;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  #subnav-select{
+    display: none;
+  }
+  #user-site-follow{
+    min-width: 40px;
+    padding: 0 5px;
+    margin-top: 10px;
+    span{
+      display:none;
+    }
+  }
+  .site-count{
+    float: right;
+    &>p {
+      margin-bottom: 0;
+      margin-top: 5px;
+      float: right;
+      a {
+        font-size: 24px;
+        color: @sub-site-count-color;
+        cursor: pointer;
+      }
+    }
+  }
+  #subnav-toggle{
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 18px;
+  }
+  .dropdown-menu{
+    @media screen and (min-width: 769px) {
+      max-height: none!important;
+    }
+  }
+  .nav>li>a{
+    color:extract(@a-color,2);
+    border: none;
+    font-size: 16px;
+    height: 50px;
+    padding-top: 15px;
+    border-radius: 0;
+    &:hover,&:focus,&:active{
+    @hover;
+    }
+    &.active{
+    @hover;
     }
   }
 }
@@ -366,7 +588,7 @@ body{
 }
 .skin-bootstrap-mediawiki{
   .action-edit #wiki-outer-body, form#edit-form, .wikiEditor-ui, .editOptions{
-  	font-size: 14px;
+    font-size: 14px;
     font-family: "Consolas",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
   }
 }
@@ -381,31 +603,10 @@ body{
 }
 #wiki-outer-body {
   @media (min-width: 769px){
-    margin-top: 111px;
+    margin-top: 100px;
   }
   @media (max-width: 768px){
-    padding-top: 60px;
-  }
-  .subnav{
-  @hover{
-    background-color: extract(@sub-hover-color,1);
-    color:extract(@sub-hover-color,2);
-  }
-    background-color: extract(@background-color,3);
-    border-bottom: 1px solid;
-    border-color: @sub-border-color;
-    font-size: 14px;
-    li{
-      &:hover a{
-      @hover;
-      }
-      a{
-        color:extract(@a-color,2);
-      }
-      &.active a{
-      @hover;
-      }
-    }
+    padding-top: 50px;
   }
   .toc-sidebar li{
     a{
@@ -439,13 +640,265 @@ body{
 @media screen and (max-width: 1365px) {
   #menu-toggle{
     &.menu-active{
-      color:#09c;
-      transform:rotateY(0deg);
+      .icon-bar:nth-child(2){
+        margin-left: 0;
+      }
+      .icon-bar:last-child{
+        margin-left: 0;
+      }
     }
     &.smenu-active{
-      color: #fff;
-      transform:rotateY(180deg);
+      .icon-bar:nth-child(3){
+        margin-left: 5px;
+      }
+      .icon-bar:last-child{
+        margin-left: 10px;
+      }
     }
+  }
+}
+@media screen and (max-width: 1200px){
+  .subnav-up{
+    top: -42px;
+  }
+  .nav-up{
+    top: 0;
+  }
+}
+@media  screen and (min-width: 992px) and (max-width: 1199px) {
+  .subnav {
+    .nav > li:nth-child(n+7) {
+      display: none;
+    }
+    .nav > li.site-count{
+      display: inline-block;
+    }
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px){
+  .header {
+    #icon-section {
+      position: absolute;
+      display: none;
+      top: 50px;
+      &.xs-show{
+        display: block;
+      }
+      & > li {
+        float: none;
+        width: 300px;
+        top: 30px;
+        &:last-child {
+          top: auto;
+          bottom: 30px;
+        }
+        & > a {
+          line-height: 30px;
+          padding: 0;
+          padding-left: 10px;
+          .caret {
+            display: none;
+          }
+        }
+        .hub-menu {
+          display: block;
+          width: 300px ;
+          background-color: #444 ;
+          border: none;
+          &::before{
+            display: none;
+          }
+          .hub-list {
+            background: #333;
+            color: #fff;
+            .active {
+              background-color: #444;
+              color: #fff;
+            }
+          }
+          .hub-selection{
+            background-color: #444;
+            color: extract(@header-color,2);
+            a{
+              color: extract(@header-color,2);
+            }
+          }
+        }
+      }
+      &>.open>a, &>.open>a:hover, &>.open>a:focus {
+        color: extract(@header-color,2);
+        background-color: extract(@header-color,1);
+      }
+    }
+    .navbar-form .navbar-search {
+      left: 230px;
+    }
+  }
+  .subnav {
+    .nav > li:nth-child(n+5) {
+      display: none;
+    }
+    .nav > li.site-count {
+      display: inline-block;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .header{
+    #searchformphone{
+      position: absolute;
+      padding: 0;
+      margin: 0;
+      top: 50px;
+      width: 100%;
+      z-index:1;
+      .form-control{
+        margin-top: 0;
+        box-shadow: 0 0 5px rgba(0,0,0,.8);
+        border-radius: 0;
+        border: none;
+      }
+    }
+    .navbar-collapse{
+      background-color: extract(@header-color,1);
+      padding: 0px;
+      &.in{
+        overflow-y: visible;
+      }
+      #icon-section{
+        margin: 0;
+        float: left;
+        .hub-menu{
+          position: absolute;
+          width: 100%;
+        }
+        &>li{
+          float: left;
+          position: static;
+          .caret{
+            display: none;
+          }
+        }
+        &>.open>a, &>.open>a:hover, &>.open>a:focus {
+          color: extract(@header-color,2);
+          background-color: extract(@header-color,1);
+        }
+      }
+      .navbar-user{
+        float: right;
+        border-left: none;
+        margin: 0;
+        li{
+          float: left;
+          padding: 0 5px;
+          position: static;
+          &.set{
+            padding-right: 20px;
+          }
+          a{
+            line-height: 40px;
+            color: #fff;
+            .user-icon{
+              margin-right: 0;
+            }
+          }
+        }
+        .collect-menu::before {
+          right: 52px;
+        }
+        .open .dropdown-menu{
+          position: absolute;
+          background-color: extract(@header-color,2);
+          border: 1px solid #ccc;
+          border: 1px solid rgba(0,0,0,.15);
+          border-radius: 4px;
+          -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+          box-shadow: 0 6px 12px rgba(0,0,0,.175);
+          width: 100%;
+        }
+        .nav{
+          margin: 0;
+        }
+      }
+      .navbar-login{
+        margin: 0;
+        float: right;
+        &>li{
+          display: inline-block;
+          &>a{
+            color: extract(@header-color,2);
+          }
+        }
+
+      }
+    }
+  }
+  .subnav{
+    position: absolute;
+    top: 50px;
+    .nav{
+      &.phone-open{
+        min-height: 242px;
+      }
+      .dropdown {
+        position: static;
+        clear: left;
+        float: none;
+        background: extract(@header-color, 2);
+        display: none;
+        & > a {
+          padding: 5px 10px;
+          background: extract(@background-color, 3);
+          width: 150px;
+          height: inherit;
+        }
+        &.phone-active > a {
+          background: extract(@header-color, 2);
+        }
+      }
+      .dropdown-menu {
+        left: 152px;
+        right: 0;
+        top: 50px;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling:touch;
+        display: none!important;
+        &.phone-active {
+          display: block!important;
+        }
+      }
+    }
+    .site-count{
+      display: none;
+    }
+    #subnav-toggle{
+      display: block;
+    }
+  }
+  .container-fluid{
+    padding: 0;
+  }
+  .subnav-up{
+    top:50px;
+  }
+  .nav-up{
+    top: 0;
+  }
+  #firstHeading h1{
+    font-size: 36px;
+  }
+  .phone-wrapper{
+    position: fixed;
+    left:0;
+    right: 0;
+    top: 50px;
+    bottom: 0;
+    background: rgba(0,0,0,.1);
+    z-index: 100;
   }
 }
 #wiki-body ul.profile-interactive li{
