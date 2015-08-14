@@ -48,3 +48,26 @@ function getPageViewCountOnWikisiteId(url,wikiSiteId,fromTimeStamp)
 
 }
 
+function getActiveUsersCountOnAllWikis(url,fromTimeStamp)
+{
+	
+	jQuery.post(
+		url,
+		{
+			fromTimeStamp:fromTimeStamp,
+		},
+		function(data){
+			if(data.status == 'success'){
+				alert(data.count);
+				return data.count;
+
+			}else{
+				alert("backend err");
+			}	
+		}
+	).error(function(){alert("error")});	
+}
+
+
+
+
