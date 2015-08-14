@@ -431,7 +431,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://lotr.huiji.wiki">魔戒</a></li>
                                             <li><a href="http://asoiaf.huiji.wiki">冰与火之歌</a></li>
                                             <li><a href="http://allglory.huiji.wiki">荣耀百科全书</a></li>
-                                            <li><a href="http://wicher.huiji.wiki">猎魔人</a></li>
+                                            <li><a href="http://witcher.huiji.wiki">猎魔人</a></li>
                                         </ul>
                                         <ul class="hub-selection movie-link">
                                             <li><a href="http://spn.huiji.wiki">邪恶力量</a></li>
@@ -495,13 +495,13 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         $sites = UserSiteFollow::getFullFollowedSites( $wgUser->getId(),$wgUser->getId() );
                         $count = count($sites);
                         if( $count > 0){
-                            $num = ($count > 3)?3:$count;
+                            $num = ($count > 8)?8:$count;
                             foreach ( $sites as $user ) {
                                 $site_name[] = $user['val'];
                                 $domain_name[] = $user['key'];
                             }
                             for($i=0;$i<$num;$i++){
-                                $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki><i class="fa fa-star-o"></i>&nbsp'.$site_name[$i].$count.'</a></li>';
+                                $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki><i class="fa fa-star-o"></i>&nbsp'.$site_name[$i].'</a></li>';
                             }
                             if($count > 3){
                                 $output .='<li><a href="/index.php?title=Special:FollowSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">全部我关注的维基</a></li>';

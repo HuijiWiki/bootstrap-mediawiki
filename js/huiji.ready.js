@@ -98,6 +98,7 @@ $(document).ready(function(){
         $(this).parent().addClass('phone-active').siblings().removeClass('phone-active');
         $('.nav .dropdown').find('.dropdown-menu').removeClass('phone-active');
         $(this).parent().find('.dropdown-menu').addClass('phone-active');
+        $('.mw-echo-overlay').remove();
     });
     $('a[href^=#cite_note]').each(function(){
 	    var self = $(this);
@@ -151,7 +152,7 @@ $(document).ready(function(){
                     if (data.flow){
                         var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
                         if (talkCount > 0){
-                            $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
+                            $("#ca-talk a").append("<sup><span class='badge'>"+talkCount+"</span></sup>");
                             if (!mw.config.get('wgIsMainPage')){
                                 flowAdapter.init(data);
                                 var items = flowAdapter.convert(data);
