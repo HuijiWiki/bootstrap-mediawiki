@@ -222,16 +222,11 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['unwatch']['id'].'">
                                 <a href="'.$this->data['content_actions']['unwatch']['href'].'">'.$this->data['content_actions']['unwatch']['text'].'</a></button>';
                                 unset ( $this->data['content_actions']['unwatch']);
-                            }else{
-                            echo '<a>sdsssds</a>';
                             }
                          ?>
 
                     </li>
                     <li class="sidebar-behavior">
-                        <a href="#">
-                            本页面
-                        </a>
                         <ul>
                         <?php
                         $subnav_links = $this->listAdapter( $this->data['content_actions']);
@@ -305,8 +300,8 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             $group = 'sysop';
                             $ums = self::getSiteManager( $wgHuijiPrefix,$group );
                             foreach ($ums as $value) {
-                            // echo $value->ug_user;
                             $uname = User::newFromId( $value );
+                            $usersys['user_name'] = $uname->getName();
                             $usersys['count'] = UserStats::getSiteEditsCount( $uname, $wgHuijiPrefix );
                             $userPage = Title::makeTitle( NS_USER, $uname->getName() );
                             $usersys['url'] = htmlspecialchars( $userPage->getFullURL() );
@@ -321,10 +316,10 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             array_multisort($count, SORT_DESC, $sysop);
                             $nums = ( count($ums) > 5 )?5:count($ums);
                             for ($j=0; $j < $nums; $j++) {
-                            echo '<a href="'.$sysop[$j]['url'].'">'.$sysop[$j]['avatar'].'</a>';
+                            echo '<a href="'.$sysop[$j]['url'].'"  title="'.$sysop[$j]['user_name'].'">'.$sysop[$j]['avatar'].'</a>';
                             }
-                            if ( count($ums) > 5 ) {
-                            echo Linker::link( $fanbox_link, '更多', array(), array( 'group' => $group,'limit' => 50 ) );
+                            if ( count($ums) > 1 ) {
+                            echo Linker::link( $fanbox_link, '>>', array('class'=> 'more'), array( 'group' => $group,'limit' => 50 ) );
                             }
                             ?>
                         </div>
