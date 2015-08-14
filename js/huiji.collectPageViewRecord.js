@@ -69,5 +69,30 @@ function getActiveUsersCountOnAllWikis(url,fromTimeStamp)
 }
 
 
+function getEditRecordsFromUserId(url,userId,fromTimeStamp)
+{
+	jQuery.post(
+		url,
+		{
+			userId:userId,
+			fromTimeStamp:fromTimeStamp,
+
+		},
+		function(data){
+			if(data.status == 'success'){
+				alert(data);
+				return data;
+
+			}else{
+				alert("backend err");
+			}	
+		}
+	).error(function(){alert("error")});	
+	
+
+
+
+
+}
 
 
