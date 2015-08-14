@@ -23,7 +23,7 @@ $(document).ready(function(){
 	var url = 'http://test.huiji.wiki:50007/getActiveUsersCountOnAllWikis/';
 //	getActiveUsersCountOnAllWikis(url);
 	var url = 'http://test.huiji.wiki:50007/getEditRecordsFromUserId/';
-	//getEditRecordsFromUserId(url,userId);
+	getEditRecordsFromUserId(url,userId);
 
 
 

@@ -119,7 +119,7 @@
                 </div>
                 <div class="wiki-top-right">
                     <img src="/resources/frontpage/huijilargelogo.png">
-                    <h3>你的兴趣 在此起飞</h3>
+                    <h3><a href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">推荐wiki >></a></h3>
                     <ul>
                         <li>
                             <h5>现有条目</h5>

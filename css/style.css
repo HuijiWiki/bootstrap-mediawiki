@@ -889,7 +889,11 @@ body{
     margin: 80px 10% 0 10%;
 }
 .wiki-top-right h3{
-    text-align: center;
+    text-align: right;
+    margin-right: 20px;
+}
+.wiki-top-right h3 a{
+    color: #fff;
 }
 .wiki-top-right ul{
     padding: 20px;
