@@ -391,7 +391,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     $result2 = $counter->files();
                                     echo $result;
                                 ?></a>页面<a><?php echo $result2; ?></a>文件<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo UserSiteFollow::getSiteCount($wgHuijiPrefix) ?></a>关注</p></li>
-                                <i class="fa fa-ellipsis-h" id="subnav-toggle"></i>
+                                <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
                             </ul>
                         </div>
                     </div>

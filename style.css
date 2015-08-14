@@ -806,7 +806,7 @@ body .mw-echo-overlay {
     position: fixed;
     top: 50px;
 }
-body.ltr .mw-echo-overlay::before{
+body .mw-echo-overlay::before{
     left: 206px !important;
 }
 

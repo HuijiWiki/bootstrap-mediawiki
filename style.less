@@ -188,7 +188,7 @@ a{
         min-width: 110px;
       }
     }
-    #pt-notifications .badge{
+    .badge{
       background: rgba(220, 0, 0, 1);
       color: #fff;
       border-radius: 50%;
@@ -248,8 +248,6 @@ a{
   .user-icon {
     display: inline-block;
     margin-right: 0.5em;
-    width: 20px;
-    height: 20px;
     img {
       border:none;
       width: 20px;
@@ -278,6 +276,17 @@ body{
     background:extract(@selection-color,1);
     color:extract(@selection-color,2);
     text-shadow: none;
+  }
+  @media screen and (max-width: 767px) {
+    .mw-echo-overlay{
+      top:90px;
+      width: 100%;
+      left: 0!important;
+      &::before{
+        left: auto!important;
+        right: 69px;
+      }
+    }
   }
 }
 #sidebar-wrapper{
@@ -531,8 +540,11 @@ body{
     display: none;
     position: absolute;
     right: 15px;
-    top: 15px;
+    top: 0;
     font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
   }
   .dropdown-menu{
     @media screen and (min-width: 769px) {
@@ -804,7 +816,7 @@ body{
           }
         }
         .collect-menu::before {
-          right: 52px;
+          right: 42px;
         }
         .open .dropdown-menu{
           position: absolute;
@@ -829,7 +841,6 @@ body{
             color: extract(@header-color,2);
           }
         }
-
       }
     }
   }
@@ -851,6 +862,10 @@ body{
           background: extract(@background-color, 3);
           width: 150px;
           height: inherit;
+//          &:hover{
+//            background-color: extract(@background-color, 3);
+//            color:extract(@sub-hover-color,2);
+//          }
         }
         &.phone-active > a {
           background: extract(@header-color, 2);
@@ -882,8 +897,9 @@ body{
   .container-fluid{
     padding: 0;
   }
-  .subnav-up{
+  .subnav.subnav-up{
     top:50px;
+    display: block;
   }
   .nav-up{
     top: 0;
