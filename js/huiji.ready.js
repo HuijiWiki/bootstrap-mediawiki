@@ -21,13 +21,9 @@ $(document).ready(function(){
 	var url = 'http://test.huiji.wiki:50007/getPageViewCountOnAllWikis/';
 	//getPageViewCountOnAllWikis(url);
 	var url = 'http://test.huiji.wiki:50007/getActiveUsersCountOnAllWikis/';
-//	getActiveUsersCountOnAllWikis(url);
+    //	getActiveUsersCountOnAllWikis(url);
 	var url = 'http://test.huiji.wiki:50007/getEditRecordsFromUserId/';
-	getEditRecordsFromUserId(url,userId);
-
-
-
-
+	//getEditRecordsFromUserId(url,userId);
 
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
