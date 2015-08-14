@@ -431,7 +431,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://lotr.huiji.wiki">魔戒</a></li>
                                             <li><a href="http://asoiaf.huiji.wiki">冰与火之歌</a></li>
                                             <li><a href="http://allglory.huiji.wiki">荣耀百科全书</a></li>
-                                            <li><a href="http://wicher.huiji.wiki">猎魔人</a></li>
+                                            <li><a href="http://witcher.huiji.wiki">猎魔人</a></li>
                                         </ul>
                                         <ul class="hub-selection movie-link">
                                             <li><a href="http://spn.huiji.wiki">邪恶力量</a></li>
