@@ -89,7 +89,6 @@ $(document).ready(function(){
         $('.nav .dropdown').find('.dropdown-menu').removeClass('phone-active');
         $(this).parent().find('.dropdown-menu').addClass('phone-active');
     });
-
     $('a[href^=#cite_note]').each(function(){
 	    var self = $(this);
             var options = {};
@@ -277,36 +276,36 @@ $(document).ready(function(){
        })
     });
 
-    var ahover = false;      //是否在a标签上
-    var areaon = false;        //是否进入应该出现nav的这个区域并且不包括a标签
-    var clientY;
-    $('body').on("mouseover mouseout","a",function(event){
-        if(event.type == "mouseover"){
-            ahover = true;
-        }else if(event.type == "mouseout"){
-            ahover = false;
-        }
-        areaon = false;
-    });
-    $('body').on('mousemove',function(e){
-        clientY= e.clientY;
-        if($('body').scrollTop()>0) {
-            if (clientY >= 60 && clientY <= 110) {
-                if(!ahover) areaon = true;
-                setTimeout(function () {
-                    if (ahover||!areaon) return;
-                    if ($('#content-actions').hasClass('subnav-up')) {
-                        $('#content-actions').removeClass('subnav-up').addClass('subnav-down');
-                    }
-                }, 300)
-            } else if ((clientY > 110 && clientY < 120) || (clientY > 50 && clientY < 60)) {
-                areaon = false;
-                if ($('#content-actions').hasClass('subnav-down')) {
-                    $('#content-actions').addClass('subnav-up').removeClass('subnav-down');
-                }
-            }
-        }
-    });
+//    var ahover = false;      //是否在a标签上
+//    var areaon = false;        //是否进入应该出现nav的这个区域并且不包括a标签
+//    var clientY;
+//    $('body').on("mouseover mouseout","a",function(event){
+//        if(event.type == "mouseover"){
+//            ahover = true;
+//        }else if(event.type == "mouseout"){
+//            ahover = false;
+//        }
+//        areaon = false;
+//    });
+//    $('body').on('mousemove',function(e){
+//        clientY= e.clientY;
+//        if($('body').scrollTop()>0) {
+//            if (clientY >= 60 && clientY <= 110) {
+//                if(!ahover) areaon = true;
+//                setTimeout(function () {
+//                    if (ahover||!areaon) return;
+//                    if ($('#content-actions').hasClass('subnav-up')) {
+//                        $('#content-actions').removeClass('subnav-up').addClass('subnav-down');
+//                    }
+//                }, 300)
+//            } else if ((clientY > 110 && clientY < 120) || (clientY > 50 && clientY < 60)) {
+//                areaon = false;
+//                if ($('#content-actions').hasClass('subnav-down')) {
+//                    $('#content-actions').addClass('subnav-up').removeClass('subnav-down');
+//                }
+//            }
+//        }
+//    });
     //user card
     function userCard(username,carduser){
         $.post(
@@ -484,10 +483,6 @@ $(document).ready(function(){
     var delta = 100;
     var navbarHeight = $('header').outerHeight();
     var ww = $(window).width();
-    if (ww < 768){
-        $('#pt-notifications').removeAttr('id');
-        $('ul.navbar-right').removeClass('navbar-right');
-    }
     $(window).scroll(function(event){
         didScroll = true;
     });
