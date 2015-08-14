@@ -19,7 +19,14 @@ $(document).ready(function(){
 	var url = 'http://test.huiji.wiki:50007/insertViewRecord/';
 	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
 	var url = 'http://test.huiji.wiki:50007/getPageViewCountOnAllWikis/';
-	getPageViewCountOnAllWikis(url);
+	//getPageViewCountOnAllWikis(url);
+	var url = 'http://test.huiji.wiki:50007/getActiveUsersCountOnAllWikis/';
+//	getActiveUsersCountOnAllWikis(url);
+
+
+
+
+
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
 
