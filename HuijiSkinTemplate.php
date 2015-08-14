@@ -376,7 +376,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
     //show header
     function showHeader(){
         global $wgUser, $wgSitename;
-        global $wgNavBarClasses;
+        global $wgNavBarClasses, $wgLogo;
         
         // $output = '';
         $output ='
@@ -494,21 +494,21 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         $output .= '<li class="dropdown collect"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-star-o"></i></a><ul class="dropdown-menu collect-menu">';
                         $sites = UserSiteFollow::getFullFollowedSites( $wgUser->getId(),$wgUser->getId() );
                         $count = count($sites);
-                           if( $count > 0){
-                           foreach ( $sites as $user ) {
-                               $site_name[] = $user['val'];
-                               $domain_name[] = $user['key'];
-                               $num = ($count > 4)?4:$count;
-                               for($i=0;$i<$num;$i++){
-                                    $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki>'.$site_name[$i].'</a></li>';
-                               }
-                               if($count > 4){
-                                    $output .='<li><a href="/index.php?title=Special:FollowSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">全部我关注的维基</a></li>';
-                               }
-                           }
-                           }else{
-                           $output.='<li><a>暂无</a></li>';
+                        if( $count > 0){
+                            $num = ($count > 3)?3:$count;
+                            foreach ( $sites as $user ) {
+                                $site_name[] = $user['val'];
+                                $domain_name[] = $user['key'];
                             }
+                            for($i=0;$i<$num;$i++){
+                                $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki><i class="fa fa-star-o"></i>&nbsp'.$site_name[$i].$count.'</a></li>';
+                            }
+                            if($count > 3){
+                                $output .='<li><a href="/index.php?title=Special:FollowSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">全部我关注的维基</a></li>';
+                            }
+                        }else{
+                            $output.='<li><a>暂无</a></li>';
+                        }
                         $output .= '</ul></li>';
                         $output .= $user_nav;
                         $output .= '</ul>';
