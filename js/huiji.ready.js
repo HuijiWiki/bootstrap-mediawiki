@@ -150,7 +150,7 @@ $(document).ready(function(){
                     if (data.flow){
                         var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
                         if (talkCount > 0){
-                            $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
+                            $("#ca-talk a").append("<sup><span class='badge'>"+talkCount+"</span></sup>");
                             if (!mw.config.get('wgIsMainPage')){
                                 flowAdapter.init(data);
                                 var items = flowAdapter.convert(data);
