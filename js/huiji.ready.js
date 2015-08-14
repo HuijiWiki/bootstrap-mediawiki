@@ -203,9 +203,11 @@ $(document).ready(function(){
     if($('#pt-notifications span').text()!=0){
         $('#pt-notifications i').addClass('bell-animation');
         $('.mw-ui-quiet').click(function(){
-            $('.badge').text('0');
+            $('.badge').text('0').hide();
             $('#pt-notifications i').removeClass('bell-animation');
         });
+    }else if($('#pt-notifications span').text()==0){
+        $('.badge').hide();
     }
     $('#ca-edit > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
 
