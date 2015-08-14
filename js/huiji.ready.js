@@ -56,7 +56,8 @@ $(document).ready(function(){
     $('body').on('touchstart','.phone-wrapper',function(){
         $('#menu-toggle').trigger('click');
     });
-    $('.hub-list li').hover(function(){
+    $('.hub-list li').click(function(e){
+        e.stopPropagation();
         $(this).addClass('active').siblings().removeClass('active');
         var toggle = $(this).data('toggle');
         $('.a').find('.'+toggle+'-link').addClass('active').siblings().removeClass('active');
@@ -84,7 +85,7 @@ $(document).ready(function(){
             $('.subnav .nav .dropdown-menu').css('max-height', length * 32 + 'px');
         }
     });
-    $('.nav .dropdown>a').hover(function(){
+    $('.nav .dropdown>a').click(function(){
         $(this).parent().addClass('phone-active').siblings().removeClass('phone-active');
         $('.nav .dropdown').find('.dropdown-menu').removeClass('phone-active');
         $(this).parent().find('.dropdown-menu').addClass('phone-active');

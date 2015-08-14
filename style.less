@@ -862,6 +862,10 @@ body{
           background: extract(@background-color, 3);
           width: 150px;
           height: inherit;
+//          &:hover{
+//            background-color: extract(@background-color, 3);
+//            color:extract(@sub-hover-color,2);
+//          }
         }
         &.phone-active > a {
           background: extract(@header-color, 2);
@@ -893,8 +897,9 @@ body{
   .container-fluid{
     padding: 0;
   }
-  .subnav-up{
+  .subnav.subnav-up{
     top:50px;
+    display: block;
   }
   .nav-up{
     top: 0;
