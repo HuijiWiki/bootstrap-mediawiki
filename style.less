@@ -874,6 +874,9 @@ body{
         &.phone-active > a {
           background: extract(@header-color, 2);
         }
+        &.primary-nav a{
+          color: extract(@a-color,3);
+        }
       }
       .dropdown-menu {
         left: 152px;
@@ -889,6 +892,10 @@ body{
         &.phone-active {
           display: block!important;
         }
+      }
+      .nav>li:first-child a {
+        font-size: 16px;
+        font-weight: 600;
       }
     }
     .site-count{

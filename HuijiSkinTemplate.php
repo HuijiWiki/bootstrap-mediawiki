@@ -69,7 +69,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                     }
                     $match = (strpos($requestUrl , $myLink) !==false);
                 }
-                $output .= '<li' . ( $match ? ' class="dropdown active"' : ''). '><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
+                $output .= '<li' . ( $match ? ' class="dropdown active"' : ' class="dropdown primary-nav"'). '><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
             }//end else
         }//end foreach
         return $output;
