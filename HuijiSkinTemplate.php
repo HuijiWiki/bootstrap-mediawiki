@@ -58,7 +58,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 $output .= '</ul>';
                 $output .= '</li>';
             } else {
-                $requestUrl = $this->getSkin()->getRequest()->getRequestURL();
+		$requestUrl = $this->getSkin()->getRequest()->getRequestURL();
                 $myLink = $topItem['link'];
                 $query = explode('&', $requestUrl);
                 if (count($query) > 1 && strpos( $requestUrl ,'action' )!== false){
@@ -69,7 +69,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                     }
                     $match = (strpos($requestUrl , $myLink) !==false);
                 }
-                $output .= '<li' . ( $match ? ' class="active" id="ca-'.$topItem['id'] : ' id="ca-'.$topItem['id']) . '"><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
+                $output .= '<li' . ( $match ? ' class="dropdown active"' : ''). '><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
             }//end else
         }//end foreach
         return $output;

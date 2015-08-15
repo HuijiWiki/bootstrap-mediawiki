@@ -204,9 +204,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 <!--            <div class="alert-wrap">-->
 <!--                <div class="alert" role="alert">good</div>-->
 <!--            </div>-->
-        <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home'  || $wgHuijiPrefix === 'slx.test') && ($this->getSkin()->getTitle()->isMainPage()) ){ 
-            include ('frontpage.php');
-        } else {?>
+
                 <!-- Sidebar -->
             <div id="sidebar-wrapper">
                 
@@ -354,12 +352,17 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 	            </ul>
 	        </div>
             <!-- /#sidebar-wrapper -->
+
+
+        <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home'  || $wgHuijiPrefix === 'slx.test') && ($this->getSkin()->getTitle()->isMainPage()) ){ 
+            include ('frontpage.php');
+        } else {?>
             <?php echo $this->showHeader(); ?>
 
 
             <div id="wiki-outer-body">
                 <?php
-                if(($subnav_links = $this->listAdapter( $this->data['content_actions'])) && $NS !== NS_USER && $NS !== NS_USER_TALK ) {
+                if(($subnav_links = $this->listAdapter( $this->data['content_actions']))) {
                     ?>
                     <div id="content-actions" class="subnav subnav-fixed">
                         <div class="container-fluid">

@@ -80,14 +80,16 @@ function getEditRecordsFromUserId(url,userId,fromTimeStamp)
 		},
 		function(data){
 			if(data.status == 'success'){
-				alert(data);
+				//alert(data);
 				return data;
 
 			}else{
-				alert("backend err");
+				//alert("backend err");
 			}	
 		}
-	).error(function(){alert("error")});	
+	).error(function(){
+	//	alert("error")
+	});	
 	
 
 
