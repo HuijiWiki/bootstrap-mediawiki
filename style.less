@@ -806,10 +806,13 @@ body{
         margin: 0;
         li{
           float: left;
-          padding: 0 5px;
+          padding: 0;
           position: static;
           &.set{
             padding-right: 20px;
+          }
+          &>a{
+            padding: 0 5px;
           }
           a{
             line-height: 40px;
@@ -893,7 +896,7 @@ body{
           display: block!important;
         }
       }
-      .nav>li:first-child a {
+      &>li:first-child a {
         font-size: 16px;
         font-weight: 600;
       }

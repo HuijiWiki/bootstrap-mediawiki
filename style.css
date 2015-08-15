@@ -936,7 +936,7 @@ body .mw-echo-overlay::before{
 
 /*手机上图片不超过手机宽度*/
 @media screen and (min-width:320px ) and (max-width:414px ){
-    #mw-content-text>*{
+    .ns-0 #mw-content-text>*{
         max-width: 100%;
     }
     .infobox{
