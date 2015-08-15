@@ -90,6 +90,7 @@
             $('.wiki-wrapper').addClass('back');
         }
     </script>
+    <?php include 'View/Sidebar.php'; ?>
     <?php
         echo $this->showHeader();
     ?>
