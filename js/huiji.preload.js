@@ -1,7 +1,4 @@
 /* fix element position and size in this file */
-function menuStyle(){
-    alert('aaa');
-}
 $(function() {
     $('html').removeClass('client-nojs');
     setInterval(function(){

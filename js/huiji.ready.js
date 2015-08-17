@@ -27,7 +27,7 @@ $(document).ready(function(){
     	//getEditRecordsFromUserId(url,userId);
 	   get1(userId);
     }
-
+    $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
 
