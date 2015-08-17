@@ -289,8 +289,11 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '创建': $icon = 'plus'; break;
                 case '创建源代码': $icon = 'plus'; break;
                 case '查看源代码': $icon = 'file-code-o'; break;
+                case '分类': $icon = 'files-o'; break;
+                case '模板': $icon = 'puzzle-piece'; break;
+                case '模块': $icon = 'puzzle-cube'; break;
                 case '特殊页面': $icon = 'flask'; break;
-                default: $icon = 'thumb-tack'; break;
+                default: $icon = 'fa-file'; break;
             }
             $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
             $nav[] = $link;
