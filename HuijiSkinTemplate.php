@@ -278,7 +278,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '页面': $icon = 'file'; break;
                 case '讨论': $icon = 'comment'; break;
                 case '编辑': $icon = 'pencil'; break;
-                case '编辑源码': $icon = 'edit'; break;
+                case '编辑源代码': $icon = 'edit'; break;
                 case '历史': $icon = 'clock-o'; break;
                 case '删除': $icon = 'remove'; break;
                 case '移动': $icon = 'arrows'; break;
@@ -287,10 +287,10 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '监视': $icon = 'eye'; break;
                 case '取消监视': $icon = 'eye-slash'; break;
                 case '创建': $icon = 'plus'; break;
-                case '创建源码': $icon = 'plus'; break;
-                case '查看源码': $icon = 'file-code-o'; break;
+                case '创建源代码': $icon = 'plus'; break;
+                case '查看源代码': $icon = 'file-code-o'; break;
                 case '特殊页面': $icon = 'flask'; break;
-                default: $icon = 'bookmark'; break;
+                default: $icon = 'thumb-tack'; break;
             }
             $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
             $nav[] = $link;
