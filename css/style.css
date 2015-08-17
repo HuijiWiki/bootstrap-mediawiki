@@ -271,19 +271,6 @@ a:hover,a:focus,a:active{
     -o-transition: background 1s;
     transition: background 1s;
 }
-/*.header-scroll header{*/
-    /*background:rgba(0,0,0,.65);*/
-/*}*/
-/*.header-scroll .logo{*/
-    /*width: 100px;*/
-    /*top: 10px;*/
-/*}*/
-/*.header-scroll .login{*/
-    /*top: 10px;*/
-/*}*/
-/*.header-scroll .login button{*/
-    /*padding: 2px 20px;*/
-/*}*/
 .logo{
     width: 150px;
     position: absolute;
@@ -1184,9 +1171,6 @@ body{
 .wiki-sidebar .top-fan-points{
     float: right;
     margin-top: 15px;
-}
-.navbar {
-    position: relative;
 }
 .all-wiki{
     position: absolute;

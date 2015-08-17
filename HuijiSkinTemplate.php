@@ -36,7 +36,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 $output .= '<ul class="dropdown-menu set-menu">';
                 }else{
                 $output .= '<li class="dropdown">';
-                                $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . '</a>';
+                                $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . '<span class="caret"></span></a>';
                                 $output .= '<ul class="dropdown-menu">';
                 }
                 foreach ( $topItem['sublinks'] as $subLink ) {
@@ -525,7 +525,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki><i class="fa fa-heart-o"></i></i>&nbsp'.$site_name[$i].'</a></li>';
                             }
                             if($count > 3){
-                                $output .='<li><a href="/index.php?title=Special:FollowSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">全部我关注的维基</a></li>';
+                                $output .='<li><a href="/index.php?title=Special:FollowSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">我关注的全部维基</a></li>';
                             }
                         }else{
                             $output.='<li><a>暂无</a></li>';
