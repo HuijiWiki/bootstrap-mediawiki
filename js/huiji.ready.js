@@ -25,7 +25,7 @@ $(document).ready(function(){
         //	getActiveUsersCountOnAllWikis(url);
     	var url = 'http://test.huiji.wiki:50007/getEditRecordsFromUserId/';
     	//getEditRecordsFromUserId(url,userId);
-	get1(userId);
+	   get1(userId);
     }
 
     $('#menu-toggle').click(function(e) {
@@ -151,7 +151,7 @@ $(document).ready(function(){
                     if (data.flow){
                         var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
                         if (talkCount > 0){
-                            $("#ca-talk a").append("<sup><span class='badge'>"+talkCount+"</span></sup>");
+                            $("#ca-talk a").append("<sup><span class='badge' style='display:inline'>"+talkCount+"</span></sup>");
                             if (!mw.config.get('wgIsMainPage')){
                                 flowAdapter.init(data);
                                 var items = flowAdapter.convert(data);
