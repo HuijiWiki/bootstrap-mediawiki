@@ -36,7 +36,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 $output .= '<ul class="dropdown-menu set-menu">';
                 }else{
                 $output .= '<li class="dropdown">';
-                                $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . '<span class="caret"></span></a>';
+                                $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . '&nbsp;<span class="caret"></span></a>';
                                 $output .= '<ul class="dropdown-menu">';
                 }
                 foreach ( $topItem['sublinks'] as $subLink ) {
