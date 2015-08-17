@@ -293,7 +293,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '模板': $icon = 'puzzle-piece'; break;
                 case '模块': $icon = 'puzzle-cube'; break;
                 case '特殊页面': $icon = 'flask'; break;
-                default: $icon = 'fa-file'; break;
+                default: $icon = 'clone'; break;
             }
             $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
             $nav[] = $link;
