@@ -18,12 +18,14 @@ $(document).ready(function(){
 	var articleId = mw.config.get("wgArticleId");
 	var url = 'http://test.huiji.wiki:50007/insertViewRecord/';
 	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
-	var url = 'http://test.huiji.wiki:50007/getPageViewCountOnAllWikis/';
-	//getPageViewCountOnAllWikis(url);
-	var url = 'http://test.huiji.wiki:50007/getActiveUsersCountOnAllWikis/';
-    //	getActiveUsersCountOnAllWikis(url);
-	var url = 'http://test.huiji.wiki:50007/getEditRecordsFromUserId/';
-//	getEditRecordsFromUserId(url,userId);
+    if (mw.config.get('wgCookieDomain') == '.test.huiji.wiki'){
+    	var url = 'http://test.huiji.wiki:50007/getPageViewCountOnAllWikis/';
+    	//getPageViewCountOnAllWikis(url);
+    	var url = 'http://test.huiji.wiki:50007/getActiveUsersCountOnAllWikis/';
+        //	getActiveUsersCountOnAllWikis(url);
+    	var url = 'http://test.huiji.wiki:50007/getEditRecordsFromUserId/';
+    	getEditRecordsFromUserId(url,userId);
+    }
 
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
@@ -113,15 +115,15 @@ $(document).ready(function(){
 	e.preventDefault();
         // Let popover.js handle cite note
         if (self.attr('href').match(/^\#cite_note/g)){
-	    if (document.activeElement != this){
-		 self.focus();
-	    }
-	    return;
+            if (document.activeElement != this){
+                self.focus();
+            }
+            return;
         }
         var target = self.attr('href').replace(/\./g, '\\.');
         if (target != '#' && $( target ) != undefined){
             $('html, body').animate({
-                scrollTop: $( target ).offset().top - 200
+                scrollTop: $( target ).offset().top - ($(window).width()>=768?200:50)
             }, 250);
         }
     });

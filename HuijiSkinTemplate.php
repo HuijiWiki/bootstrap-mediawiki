@@ -512,7 +512,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right navbar-user">';
                         $output .= '<li><a href="'.$userPageURL.'"><span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span><span class="hidden-xs">'.$wgUser->getName().'</span></a></li>';
                         $output .= $user_notify;
-                        $output .= '<li class="dropdown collect"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-star-o"></i></a><ul class="dropdown-menu collect-menu">';
+                        $output .= '<li class="dropdown collect"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-heart"></i></i></a><ul class="dropdown-menu collect-menu">';
                         $sites = UserSiteFollow::getFullFollowedSites( $wgUser->getId(),$wgUser->getId() );
                         $count = count($sites);
                         if( $count > 0){
@@ -522,7 +522,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 $domain_name[] = $user['key'];
                             }
                             for($i=0;$i<$num;$i++){
-                                $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki><i class="fa fa-star-o"></i>&nbsp'.$site_name[$i].'</a></li>';
+                                $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki><i class="fa fa-heart"></i></i>&nbsp'.$site_name[$i].'</a></li>';
                             }
                             if($count > 3){
                                 $output .='<li><a href="/index.php?title=Special:FollowSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">全部我关注的维基</a></li>';
