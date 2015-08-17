@@ -91,10 +91,29 @@ function getEditRecordsFromUserId(url,userId,fromTimeStamp)
 		console.log("error");
 	});	
 	
-
-
-
-
 }
+
+function get1(userId){
+	var url = 'http://test.huiji.wiki:50007/get1/';
+	jQuery.post(
+		url,
+		{
+			userId:userId,
+		},
+		function(data){
+			if(data.status == 'success'){
+				console.log(data.result);
+				return data;
+
+			}else{
+				console.log("backend err");
+			}	
+		}
+	).error(function(){
+		console.log("error");
+	});	
+}
+
+
 
 

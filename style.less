@@ -301,9 +301,6 @@ body{
   overflow-x: hidden;
   -webkit-overflow-scrolling:touch;
   .transition(0.2s);
-  .fa {
-    width: 14px;
-  }
   .sidebar-nav {
     padding-left: 0px;
     &>li{
@@ -349,8 +346,14 @@ body{
       font-size: 12px;
     }
     i{
-      display: inline;
+      display: inline-block;
       margin-right: 5px;
+      height: 14px;
+      width: 14px;
+      &:before{
+        position:relative;
+        right:14px;
+      }
     }
     ul>li>a:hover{
       background: none;

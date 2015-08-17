@@ -24,7 +24,8 @@ $(document).ready(function(){
     	var url = 'http://test.huiji.wiki:50007/getActiveUsersCountOnAllWikis/';
         //	getActiveUsersCountOnAllWikis(url);
     	var url = 'http://test.huiji.wiki:50007/getEditRecordsFromUserId/';
-    	getEditRecordsFromUserId(url,userId);
+    	//getEditRecordsFromUserId(url,userId);
+	get1(userId);
     }
 
     $('#menu-toggle').click(function(e) {
@@ -207,8 +208,6 @@ $(document).ready(function(){
     }else if($('#pt-notifications span').text()==0){
         $('.badge').hide();
     }
-    $('#ca-edit > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
-
     //alert-return
     var alreturn = $('.alert-return');
     var alertp = $('.alert-return p');
