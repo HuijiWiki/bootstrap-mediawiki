@@ -943,10 +943,11 @@ body{
     width: 100%;
     margin-bottom: 20px;
     position: relative;
+    font-size: 0;
+    white-space: nowrap;
 }
 .wiki-content-header li{
     box-sizing: border-box;
-    float: left;
     width: 20%;
     height: 280px;
     padding: 3px;
@@ -959,6 +960,9 @@ body{
     transition: width .5s;
     position: relative;
     overflow: hidden;
+    display: inline-block;
+    font-size: 14px;
+    white-space:normal;
 }
 .wiki-content-header li div{
     width: 277px;
