@@ -776,6 +776,7 @@ body{
     height: 567px;
     overflow: hidden;
     position: relative;
+    margin-top: 50px;
 }
 
 .wiki-flog-wrap{
