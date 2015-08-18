@@ -37,14 +37,19 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModules( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
+            $out->addHeadItem( 'canonical',
+                '<link rel="canonical" href="http://www.huiji.wiki/" />' . "\n");     
+        } else {
+            $out->addHeadItem( 'canonical',
+                '<link rel="canonical" href="' . htmlspecialchars( $out->getTitle()->getCanonicalURL()) . '" />' . "\n");            
         } 
         $out->addModules( 
             array('skins.bootstrapmediawiki.bottom')
         ); # add js and messages  
         $out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
-	if ($wgHuijiPrefix !== 'home'){
-		$out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
-	}
+    	if ($wgHuijiPrefix !== 'home'){
+    		$out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
+    	}
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
     }//end initPage
     /**
