@@ -37,6 +37,8 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModules( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
+            $baiduHtml = '<script type="text/javascript" name="baidu-tc-cerfication" data-appid="3232728" src="http://apps.bdimg.com/cloudaapi/lightapp.js"></script>';
+            $out->addScript($baiduHtml);
         } 
         $out->addModules( 
             array('skins.bootstrapmediawiki.bottom')
