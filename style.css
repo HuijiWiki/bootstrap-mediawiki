@@ -90,7 +90,9 @@ p {
     top: -11px;
     right: 15px;
 }
-
+#mw-content-text p{
+    text-align: justify;
+}
 .mw-content-ltr ul, .mw-content-ltr ol {
 	margin-bottom: 9px;;
 }
