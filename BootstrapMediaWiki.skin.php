@@ -248,7 +248,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     $result = self::format_nice_number($counter->articles());
                                     $result2 = self::format_nice_number($counter->edits());
                                     echo $result;
-                                ?></a>页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo self::format_nice_number(UserSiteFollow::getSiteCount($wgHuijiPrefix)) ?></a>关注</p></li>
+                                ?></a>&nbsp页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>&nbsp编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo self::format_nice_number(UserSiteFollow::getSiteCount($wgHuijiPrefix)) ?></a>&nbsp关注</p></li>
                                 <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
                             </ul>
                         </div>
@@ -270,20 +270,48 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 
                         <div id="firstHeading" class="pagetitle page-header">
                             <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
-                            <h1><?php $this->html( 'title' ) ?> <div id="contentSub"><small><?php $this->html('subtitle') ?>
-                            <?php
-                                if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
-                                    $revPageId = $this->getSkin()->getTitle()->getArticleId();
-                                    $editinfo = UserStats::getLastEditer($revPageId,$wgHuijiPrefix);
-                                    $userPage = Title::makeTitle( NS_USER, $editinfo['rev_user_text'] );
-                                    $userPageURL = htmlspecialchars( $userPage->getFullURL() );
-                                    $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
-                                    $edittime = CommentFunctions::getTimeAgo( $bjtime );
-                                    echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>于'.$edittime.'前编辑了此页面';
-                                    
-                                }
-                            ?>
-                            </small></div></h1>
+                            <h1><?php $this->html( 'title' ) ?> 
+                                <?php 
+                                    if (isset( $this->data['content_actions']['edit']) ){
+                                        $isVisualEditorEnabled = $wgUser->getOption('visualeditor-enable','1');
+                                        $editHref = $this->data['content_actions']['edit']['href'];
+                                        $veHref = $this->data['content_actions']['ve-edit']['href'];
+                                        if ($isVisualEditorEnabled == 1 ){ ?>
+                                            <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
+                                                <span class="mw-editsection-divider"><?php echo wfMsg('pipe-separator'); ?></span>
+                                                <a href="<?php echo $veHref; ?>" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>">
+                                                <i class="fa fa-pencil"></i>
+                                                </a>
+
+                                                <a href="<?php echo $editHref ?>" title="<?php echo wfMsg('visualeditor-ca-editsource'); ?>">
+                                                <i class="fa fa-code"></i>
+                                                </a>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
+                                                <a href="<?php echo $editHref ?>" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>">
+                                                <i class="fa fa-code"></i>
+                                                </a>
+                                            </div>                                   
+                                        <?php }
+                                    } ?>
+                                <div id="contentSub">
+                                    <small><?php $this->html('subtitle') ?>
+                                <?php
+                                    if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
+                                        $revPageId = $this->getSkin()->getTitle()->getArticleId();
+                                        $editinfo = UserStats::getLastEditer($revPageId,$wgHuijiPrefix);
+                                        $userPage = Title::makeTitle( NS_USER, $editinfo['rev_user_text'] );
+                                        $userPageURL = htmlspecialchars( $userPage->getFullURL() );
+                                        $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
+                                        $edittime = CommentFunctions::getTimeAgo( $bjtime );
+                                        echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>&nbsp于'.$edittime.'前编辑了此页面';
+                                        
+                                    }
+                                ?>
+                                    </small>
+                                </div>
+                            </h1>
                         </div>  
                         <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
                         <!-- ConfirmEmail -->

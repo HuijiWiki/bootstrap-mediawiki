@@ -394,10 +394,6 @@ Class HuijiSkinTemplate extends BaseTemplate {
         return $result;
     }
 
-    function showSidebar(){
-    	
-    }
-
     //show header
     function showHeader(){
         global $wgUser, $wgSitename;

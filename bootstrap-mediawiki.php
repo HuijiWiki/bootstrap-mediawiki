@@ -86,5 +86,5 @@ if ( isset( $wgSiteCSS ) ) {
 
 // update page's cache
 $wgHooks['NewRevisionFromEditComplete'][] = 'BootstrapMediawikiHooks::onNewRevisionFromEditComplete';
-
+$wgHooks['OutputPageBeforeHTML'][]  = 'BootstrapMediawikiHooks::wfEditSectionLinkTransform'; 
 

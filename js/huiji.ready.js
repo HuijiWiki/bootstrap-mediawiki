@@ -18,15 +18,6 @@ $(document).ready(function(){
 	var articleId = mw.config.get("wgArticleId");
 	var url = 'http://test.huiji.wiki:50007/insertViewRecord/';
 	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
-    if (mw.config.get('wgCookieDomain') == '.test.huiji.wiki'){
-    	var url = 'http://test.huiji.wiki:50007/getPageViewCountOnAllWikis/';
-    	//getPageViewCountOnAllWikis(url);
-    	var url = 'http://test.huiji.wiki:50007/getActiveUsersCountOnAllWikis/';
-        //	getActiveUsersCountOnAllWikis(url);
-    	var url = 'http://test.huiji.wiki:50007/getEditRecordsFromUserId/';
-    	//getEditRecordsFromUserId(url,userId);
-	   get1(userId);
-    }
     $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
@@ -547,4 +538,11 @@ $(document).ready(function(){
         }
         lastScrollTop = st;
     }
+
+    //show edit section
+    $('h2, h3, h4, h5, h6').hover(function(){
+        $(this).children('.mw-editsection').show();
+    }, function(){
+        $(this).children('.mw-editsection').hide();
+    });
 });

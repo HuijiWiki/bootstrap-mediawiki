@@ -1264,3 +1264,11 @@ sup.reference {
 .ve-activated .comments-body {
 	display:none;
 }
+.huiji-h1-edit-button{
+    display: inline;
+    font-size: 0.5em;
+    padding-left: 1em;
+}
+.mw-editsection{
+	display:none;
+}
