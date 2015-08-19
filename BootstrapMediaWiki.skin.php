@@ -354,8 +354,10 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <!-- /catlinks -->
                         </div>
                         <?php endif; ?>
+			<?php if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()):?>
                         <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="bds_weixin" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_1" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_1" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_1" data-cmd="douban" title="分享到豆瓣网"></a></div>
-                        <?php 
+                        <?php endif;?>
+			<?php
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
                             $commentHtml = '<div class="clearfix"></div>';
                             $wgParser->setTitle($this->getSkin()->getTitle());

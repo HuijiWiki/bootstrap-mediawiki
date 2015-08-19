@@ -29,11 +29,11 @@ Class BootstrapMediawikiHooks {
         if ($isVisualEditorEnabled != 1){
             /* when disable visual editor */
             $pattern = ''
-                    .'#'
+                    .'|'
                     .'<span class="mw-editsection-bracket">\[<\/span>'
                     .'<a href="(.+)" title="(.+)">'.wfMsg('editsection').'<\/a>'
                     .'<span class="mw-editsection-bracket">\]<\/span>'
-                    .'#Ui'
+                    .'|ui'
                     ;
             $replacement = ''
                     .'<a href="$1" title="$2">'
@@ -48,11 +48,11 @@ Class BootstrapMediawikiHooks {
             // $pattern = '#<span class="mw-editsection-divider">'.wfMsg('pipe-separator').'<\/span>#Ui';
             // $text = preg_replace( $pattern, $replacement, $text );
             $pattern = ''
-                    .'#'
+                    .'|'
                     .'<span class="mw-editsection-bracket">\[<\/span>'
                     .'<a href="(.+)" title="(.+)">'.wfMsg('editsection').'<\/a>'
 
-                    .'#Ui'
+                    .'|ui'
                     ;
             $replacement = ''
                     .'<a href="$1" title="$2">'
@@ -62,10 +62,10 @@ Class BootstrapMediawikiHooks {
 
             $text = preg_replace( $pattern, $replacement, $text );
             $pattern = ''
-                    .'#'
+                    .'|'
                     .'<a href="(.+)" title="(.+)">'.wfMsg('visualeditor-ca-editsource-section').'<\/a>'
                     .'<span class="mw-editsection-bracket">\]<\/span>'
-                    .'#Ui'
+                    .'|ui'
                     ;    
             $replacement = ''
                     .'<a href="$1" title="$2">'
