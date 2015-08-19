@@ -413,7 +413,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 "bdText": $('#mw-content-text p').text(),
                 "bdMini": "2",
                 "bdMiniList": false,
-                "bdPic": $('.image img').prop('src'),
+                "bdPic": $('.infobox .image img').prop('src'),
                 "bdStyle": "2"
             },
             "share": [
