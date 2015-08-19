@@ -290,7 +290,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         <?php } else { ?>
                                             <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
                                                 <a href="<?php echo $editHref ?>" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>">
-                                                <i class="fa fa-code"></i>
+                                                <i class="fa fa-pencil"></i>
                                                 </a>
                                             </div>                                   
                                         <?php }
