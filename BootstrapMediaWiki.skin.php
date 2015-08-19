@@ -306,7 +306,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
                                         $edittime = CommentFunctions::getTimeAgo( $bjtime );
                                         echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>&nbsp于'.$edittime.'前编辑了此页面';
-                                        
+                                        echo '<div class="bdsharebuttonbox pull-right" data-tag="share_2"><a href="#" class="bds_weixin" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
                                     }
                                 ?>
                                     </small>
@@ -354,6 +354,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <!-- /catlinks -->
                         </div>
                         <?php endif; ?>
+                        <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="bds_weixin" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_1" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_1" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_1" data-cmd="douban" title="分享到豆瓣网"></a></div>
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
                             $commentHtml = '<div class="clearfix"></div>';
@@ -393,7 +394,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             </div><!-- bottom -->
         </div><!-- /#wrapper -->
         <?php }?> <!-- mainpage if -->
-
         <?php
         $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
         $this->html('reporttime');
@@ -405,6 +405,26 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             <?php
         }//end if
         ?>
+        <script>window._bd_share_config={
+            "common": {
+                "bdSnsKey": {},
+                "bdText": "",
+                "bdMini": "2",
+                "bdMiniList": false,
+                "bdPic": "",
+                "bdStyle": "2"
+            },
+            "share": [
+                {
+                    "tag": "share_1",
+                    "bdSize": 32
+                },
+                {
+                    "tag": "share_2",
+                    "bdSize": 16
+                }
+            ]
+        };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>        
         </body>
         </html>
         <?php
