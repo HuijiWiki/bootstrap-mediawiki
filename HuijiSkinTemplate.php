@@ -453,36 +453,33 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://asoiaf.huiji.wiki">冰与火之歌</a></li>
                                             <li><a href="http://allglory.huiji.wiki">荣耀百科全书</a></li>
                                             <li><a href="http://witcher.huiji.wiki">猎魔人</a></li>
+                                            <li><a href="http://coppermind.huiji.wiki/wiki">红铜智库</a></li>
+                                            <li><a href="http://jiuzhou.huiji.wiki">九州</a></li>
+
                                         </ul>
                                         <ul class="hub-selection movie-link">
                                             <li><a href="http://spn.huiji.wiki">邪恶力量</a></li>
                                             <li><a href="http://kaixinmahua.huiji.wiki">开心麻花</a></li>
                                             <li><a href="http://wire.huiji.wiki">火线</a></li>
                                             <li><a href="http://downtonabbey.huiji.wiki">唐顿庄园</a></li>
+                                            <li><a href="http://mcu.huiji.wiki">漫威电影宇宙</a></li>
                                         </ul>
                                         <ul class="hub-selection anime-link">
                                             <li><a href="http://kaiji.huiji.wiki">逆境无赖</a></li>
-                                            <li><a href="http://onepiece.huiji.wiki">海贼王</a></li>
                                             <li><a href="http://gundam.huiji.wiki">高达</a></li>
-                                            <li><a href="http://flash.huiji.wiki">闪电侠</a></li>
                                         </ul>
                                         <ul class="hub-selection game-link">
                                             <li><a href="http://gjqt.huiji.wiki">古剑奇谭</a></li>
                                             <li><a href="http://hearthstone.huiji.wiki">炉石传说</a></li>
-                                            <li><a href="http://zhuoyou.huiji.wiki">桌游规则中文百科</a></li>
                                             <li><a href="http://assassinscreed.huiji.wiki">刺客信条</a></li>
+                                            <li><a href="http://3pz.huiji.wiki">三国志puzzle大战</a></li>
                                         </ul>
                                         <ul class="hub-selection star-link">
                                             <li><a href="http://tfboys.huiji.wiki">TFBOYS</a></li>
-                                            <li><a href="http://mfassbender.huiji.wiki">迈克尔·法斯宾德</a></li>
-                                            <li><a href="http://uenojuri.huiji.wiki">上野树里</a></li>
-                                            <li><a href="http://jiangqinqin.huiji.wiki">蒋勤勤</a></li>
                                         </ul>
                                         <ul class="hub-selection more-link">
-                                            <li><a href="http://tisiwi.huiji.wiki">天使湾</a></li>
                                             <li><a href="http://mahjong.huiji.wiki">麻将</a></li>
-                                            <li><a href="http://jurchen.huiji.wiki">满族姓氏考</a></li>
-                                            <li><a href="http://uiparty.huiji.wiki">UI Party</a></li>
+                                            <li><a href="http://epiccn.huiji.wiki">史诗图书</a></li>
                                             <a href="/wiki/Special:Randomwiki" class="wiki-random">
                                                 随机一下试试
                                             </a>

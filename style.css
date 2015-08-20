@@ -1268,7 +1268,16 @@ sup.reference {
     display: inline;
     font-size: 0.5em;
     padding-left: 1em;
+    position: relative;
+    bottom: 10px;
 }
 .mw-editsection{
-	display:none;
+    display:none;
+    position:relative;
+}
+h2 .mw-editsection{
+    bottom:8px;
+}
+h3 .mw-editsection{
+    bottom:5px;
 }
