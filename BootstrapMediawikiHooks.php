@@ -22,7 +22,7 @@ Class BootstrapMediawikiHooks {
         
     }
     public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
-        global $wgScriptPath, $wgLogo, $wgFavicon, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
+        global $IP, $wgScriptPath, $wgLogo, $wgFavicon, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
         if ($user->isAllowed('editinterface')){
             $wgScriptPath = "";
             $wgLogo = "$wgScriptPath/resources/assets/huiji_white.png";
