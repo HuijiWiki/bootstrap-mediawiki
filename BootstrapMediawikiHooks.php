@@ -21,6 +21,25 @@ Class BootstrapMediawikiHooks {
 
         
     }
+    public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
+        global $wgScriptPath, $wgLogo, $wgFavicon, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
+        if ($user->isAllowed('editinterface')){
+            $wgScriptPath = "";
+            $wgLogo = "$wgScriptPath/resources/assets/huiji_white.png";
+            $wgFavicon = "$wgScriptPath/resources/assets/favicon.ico";
+            $wgUploadPath       = "/uploads";
+            $wgUploadDirectory  = "$IP/uploads";
+            $wgCdnScriptPath = $wgScriptPath;
+            $wgLoadScript = "{$wgCdnScriptPath}/load.php";
+            $wgStylePath = "{$wgCdnScriptPath}/skins";
+            $wgExtensionAssetsPath = "{$wgCdnScriptPath}/extensions";
+            $wgLogo = "{$wgCdnScriptPath}/resources/assets/huiji_white.png";
+            $wgFavicon = "{$wgCdnScriptPath}/resources/assets/favicon.ico";
+            $wgResourceBasePath = $wgCdnScriptPath;            
+        }
+        return true;
+
+    }
  
     public static function wfEditSectionLinkTransform( &$parser, &$text )
     {
