@@ -71,6 +71,7 @@ $(document).ready(function(){
         $('.wrapper').addClass('doscroll');
         setTimeout(function(){
             $('.content-wrapper').addClass('hide').remove();
+            $('.wrapper').removeClass('doscroll first-view');
         },1200);
         $('.wiki-wrapper').scrollTop(0);
         localStorage.setItem('view','notfirst');
