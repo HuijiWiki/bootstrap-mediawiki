@@ -638,9 +638,9 @@ a:hover,a:focus,a:active{
     -moz-transition: all 1.5s;
     -ms-transition: all 1.5s;
     -o-transition: all 1.5s;
-    transform-style:preserve-3d;
-    -webkit-transform-style:preserve-3d;
-    -moz-transform-style:preserve-3d;
+    /*transform-style:preserve-3d;*/
+    /*-webkit-transform-style:preserve-3d;*/
+    /*-moz-transform-style:preserve-3d;*/
 }
 body{
     /*-webkit-perspective:10000px;*/
@@ -766,6 +766,7 @@ body{
     overflow: auto;
     z-index: 1;
     background: #f9f9f9;
+    padding-top: 50px;
 }
 .home-wiki-logo img{
     height: 30px;
@@ -776,7 +777,6 @@ body{
     height: 567px;
     overflow: hidden;
     position: relative;
-    margin-top: 50px;
 }
 
 .wiki-flog-wrap{
