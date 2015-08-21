@@ -27,6 +27,7 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
 		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
+		$skinDir . '/css/fronts.css'                             => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
 		$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
@@ -50,7 +51,6 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/huiji.flow.js',
 		$skinDir . '/js/huiji.collectPageViewRecord.js',
 		$skinDir . '/js/huiji.ready.js',
-
 	),
 	'styles' => array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),

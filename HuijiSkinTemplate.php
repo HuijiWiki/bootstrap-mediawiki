@@ -455,7 +455,6 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://witcher.huiji.wiki">猎魔人</a></li>
                                             <li><a href="http://coppermind.huiji.wiki/wiki">红铜智库</a></li>
                                             <li><a href="http://jiuzhou.huiji.wiki">九州</a></li>
-
                                         </ul>
                                         <ul class="hub-selection movie-link">
                                             <li><a href="http://spn.huiji.wiki">邪恶力量</a></li>
