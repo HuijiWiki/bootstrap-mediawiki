@@ -487,7 +487,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                   </ul>
                                 </li>
                                 <li>
-                                    <a href="http://home.huiji.wiki/wiki/创建新wiki">创建wiki</a>
+                                    <a href="http://www.huiji.wiki/wiki/创建新wiki">创建wiki</a>
                                 </li>
                         </ul>';
                     if ( $wgUser->isLoggedIn() ) {
