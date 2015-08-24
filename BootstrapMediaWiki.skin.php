@@ -34,7 +34,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
-        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
+        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModules( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addHeadItem( 'canonical',
@@ -47,7 +47,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             array('skins.bootstrapmediawiki.bottom')
         ); # add js and messages  
         $out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
-    	if ($wgHuijiPrefix !== 'home'){
+    	if ($wgHuijiPrefix !== 'www'){
     		$out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
     	}
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
@@ -213,7 +213,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
        
 
 
-        <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home'  || $wgHuijiPrefix === 'slx.test') && ($this->getSkin()->getTitle()->isMainPage()) ){ 
+        <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'www') && ($this->getSkin()->getTitle()->isMainPage()) ){ 
             include ('frontpage.php');
         } else {?>
             <?php echo $this->showHeader(); ?>
@@ -282,7 +282,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                                 <a href="<?php echo $veHref; ?>" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>">
                                                 <i class="fa fa-pencil"></i>
                                                 </a>
-                                                
+
                                                 <span class="mw-editsection-divider"><?php echo wfMsg('pipe-separator'); ?></span>
 
                                                 <a href="<?php echo $editHref ?>" title="<?php echo wfMsg('visualeditor-ca-editsource'); ?>">
@@ -390,7 +390,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         </div>
                     <?php } ?>
                     <footer>
-                        <p class="text-center"><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p> 
+                        <p class="text-center"><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p> 
                     </footer>
                 </div><!-- container -->
             </div><!-- bottom -->
