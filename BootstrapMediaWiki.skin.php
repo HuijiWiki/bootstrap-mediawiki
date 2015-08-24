@@ -34,12 +34,11 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
-        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
+        if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home' || $wgHuijiPrefix === 'slx.test' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModules( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="http://www.huiji.wiki/" />' . "\n");     
-	    $out->addHeadItem( 'script', '<script type="text/javascript" name="baidu-tc-cerfication" data-appid="3232728" src="http://apps.bdimg.com/cloudaapi/lightapp.js"></script>');
         } else {
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="' . htmlspecialchars( $out->getTitle()->getCanonicalURL()) . '" />' . "\n");            
@@ -48,7 +47,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             array('skins.bootstrapmediawiki.bottom')
         ); # add js and messages  
         $out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
-    	if ($wgHuijiPrefix !== 'www'){
+    	if ($wgHuijiPrefix !== 'home'){
     		$out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
     	}
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
@@ -214,7 +213,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
        
 
 
-        <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'www') && ($this->getSkin()->getTitle()->isMainPage()) ){ 
+        <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'home'  || $wgHuijiPrefix === 'slx.test') && ($this->getSkin()->getTitle()->isMainPage()) ){ 
             include ('frontpage.php');
         } else {?>
             <?php echo $this->showHeader(); ?>
@@ -249,7 +248,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     $result = self::format_nice_number($counter->articles());
                                     $result2 = self::format_nice_number($counter->edits());
                                     echo $result;
-                                ?></a>&nbsp页面&nbsp<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>&nbsp编辑&nbsp<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo self::format_nice_number(UserSiteFollow::getSiteCount($wgHuijiPrefix)) ?></a>&nbsp关注&nbsp</p></li>
+                                ?></a>&nbsp页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>&nbsp编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo self::format_nice_number(UserSiteFollow::getSiteCount($wgHuijiPrefix)) ?></a>&nbsp关注</p></li>
                                 <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
                             </ul>
                         </div>
@@ -277,12 +276,14 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         $isVisualEditorEnabled = $wgUser->getOption('visualeditor-enable','1');
                                         $editHref = $this->data['content_actions']['edit']['href'];
                                         $veHref = $this->data['content_actions']['ve-edit']['href'];
-                                        if ($isVisualEditorEnabled == 1 ){ ?>
+                                        if ($isVisualEditorEnabled == 1 && isset($this->data['content_actions']['ve-edit'])){ ?>
                                             <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
-                                                <span class="mw-editsection-divider"><?php echo wfMsg('pipe-separator'); ?></span>
+                                                
                                                 <a href="<?php echo $veHref; ?>" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>">
                                                 <i class="fa fa-pencil"></i>
                                                 </a>
+                                                
+                                                <span class="mw-editsection-divider"><?php echo wfMsg('pipe-separator'); ?></span>
 
                                                 <a href="<?php echo $editHref ?>" title="<?php echo wfMsg('visualeditor-ca-editsource'); ?>">
                                                 <i class="fa fa-code"></i>
@@ -291,7 +292,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         <?php } else { ?>
                                             <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
                                                 <a href="<?php echo $editHref ?>" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>">
-                                                <i class="fa fa-pencil"></i>
+                                                <i class="fa fa-code"></i>
                                                 </a>
                                             </div>                                   
                                         <?php }
@@ -307,7 +308,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
                                         $edittime = CommentFunctions::getTimeAgo( $bjtime );
                                         echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>&nbsp于'.$edittime.'前编辑了此页面';
-                                        echo '<div class="bdsharebuttonbox pull-right hidden-xs hidden-sm" data-tag="share_2"><a href="#" class="bds_weixin" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
+                                        echo '<div class="bdsharebuttonbox pull-right" data-tag="share_2"><a href="#" class="bds_weixin" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
                                     }
                                 ?>
                                     </small>
@@ -355,10 +356,8 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <!-- /catlinks -->
                         </div>
                         <?php endif; ?>
-			<?php if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()):?>
-                        <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="bds_weixin hidden-xs" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_1" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_1" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_1" data-cmd="douban" title="分享到豆瓣网"></a></div>
-                        <?php endif;?>
-			<?php
+                        <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="bds_weixin" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_1" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_1" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_1" data-cmd="douban" title="分享到豆瓣网"></a></div>
+                        <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
                             $commentHtml = '<div class="clearfix"></div>';
                             $wgParser->setTitle($this->getSkin()->getTitle());
@@ -391,7 +390,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         </div>
                     <?php } ?>
                     <footer>
-                        <p class="text-center"><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p> 
+                        <p class="text-center"><a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> | <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://home.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a><br>Powered by <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p> 
                     </footer>
                 </div><!-- container -->
             </div><!-- bottom -->
@@ -411,10 +410,10 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         <script>window._bd_share_config={
             "common": {
                 "bdSnsKey": {},
-                "bdText": $('#mw-content-text p').text(),
+                "bdText": "",
                 "bdMini": "2",
                 "bdMiniList": false,
-                "bdPic": $('.infobox .image img').prop('src'),
+                "bdPic": "",
                 "bdStyle": "2"
             },
             "share": [
