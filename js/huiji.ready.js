@@ -1,5 +1,7 @@
 $(document).ready(function(){
     FastClick.attach(document.body);
+    $( function() { $( "#editform" ).sisyphus( { locationBased: true, timeout: 10 } ); } );
+    $( function() { $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); } );
 	if (mw.cookie.get('animation') == 'none'){
 		$('#menu-toggle').css({
             'animation':'none',
@@ -545,4 +547,5 @@ $(document).ready(function(){
     }, function(){
         $(this).children('.mw-editsection').hide();
     });
+
 });

@@ -35,7 +35,7 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/css/huiji.ext.css'                          => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
-		$skinDir . '/bootstrap/js/bootstrap.js',
+		$skinDir . '/bootstrap/js/bootstrap.js',		
 		$skinDir . '/js/fastclick.js',
 	),
 	'dependencies' => array(
@@ -48,6 +48,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'scripts' => array(
 		$skinDir . '/google-code-prettify/prettify.js',
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',
+		$skinDir . '/js/sisyphus.min.js',
 		$skinDir . '/js/huiji.preload.js',
 		$skinDir . '/js/huiji.flow.js',
 		$skinDir . '/js/huiji.collectPageViewRecord.js',

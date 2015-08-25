@@ -308,7 +308,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
                                         $edittime = CommentFunctions::getTimeAgo( $bjtime );
                                         echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>&nbsp于'.$edittime.'前编辑了此页面';
-                                        echo '<div class="bdsharebuttonbox pull-right" data-tag="share_2"><a href="#" class="bds_weixin" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
+                                        echo '<div class="bdsharebuttonbox pull-right hidden-sm hidden-xs" data-tag="share_2"><a href="#" class="bds_weixin" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
                                     }
                                 ?>
                                     </small>
@@ -356,7 +356,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <!-- /catlinks -->
                         </div>
                         <?php endif; ?>
-                        <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="bds_weixin" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_1" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_1" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_1" data-cmd="douban" title="分享到豆瓣网"></a></div>
+                        <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="bds_weixin hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_1" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_1" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_1" data-cmd="douban" title="分享到豆瓣网"></a></div>
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
                             $commentHtml = '<div class="clearfix"></div>';
