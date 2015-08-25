@@ -1,5 +1,7 @@
 $(document).ready(function(){
     FastClick.attach(document.body);
+    if ($("#editform").length > 0){
+
     var editFormSisyphus = $( "#editform" ).sisyphus( {
 	locationBased: true, 
 	timeout: 0,
@@ -8,8 +10,7 @@ $(document).ready(function(){
 	    $('#autoRestoreModal').modal({
 	        keyboard: false,
 		backdrop: 'static'
-	    })
-	    $('#autoRestoreModal').modal('show');
+	    }); 
             return false;
 	}
     } ); 
@@ -21,6 +22,7 @@ $(document).ready(function(){
         $('#autoRestoreModal').modal('hide');
     });
 
+    }
     $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); 
 	if (mw.cookie.get('animation') == 'none'){
 		$('#menu-toggle').css({
