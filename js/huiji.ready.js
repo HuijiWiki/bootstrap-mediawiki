@@ -1,7 +1,27 @@
 $(document).ready(function(){
     FastClick.attach(document.body);
-    $( function() { $( "#editform" ).sisyphus( { locationBased: true, timeout: 10 } ); } );
-    $( function() { $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); } );
+    var editFormSisyphus = $( "#editform" ).sisyphus( {
+	locationBased: true, 
+	timeout: 0,
+	autoRelease: true,
+	onBeforeRestore:function(){
+	    $('#autoRestoreModal').modal({
+	        keyboard: false,
+		backdrop: 'static'
+	    })
+	    $('#autoRestoreModal').modal('show');
+            return false;
+	}
+    } ); 
+    $( "#autoRestoreModal .btn-default, #autoRestoreModal .close, #mw-editform-cancel, #editform > div.wikiEditor-ui > div.wikiEditor-ui-controls > div.wikiEditor-ui-buttons > button:nth-child(2)").click(function(){
+        editFormSisyphus.manuallyReleaseData();
+    });
+    $( "#autoRestoreModal .btn-primary").click(function(){
+        editFormSisyphus.restoreAllData();
+        $('#autoRestoreModal').modal('hide');
+    });
+
+    $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); 
 	if (mw.cookie.get('animation') == 'none'){
 		$('#menu-toggle').css({
             'animation':'none',

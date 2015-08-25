@@ -119,6 +119,24 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             menutoggle = localStorage.getItem("menu-toggle");
             $("#wrapper").attr("class",menutoggle);
         </script>
+<!-- Autosave Modal -->
+<div class="modal fade" id="autoRestoreModal" tabindex="-1" role="dialog" aria-labelledby="autoRestoreModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">发现虫洞</h4>
+      </div>
+      <div class="modal-body">
+        <p>灰机发现您在该页面有未保存的更改，是否现在恢复？</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">不恢复</button>
+        <button type="button" class="btn btn-primary">恢复</button>
+      </div>
+    </div>
+  </div>
+</div>
             <div class="modal alert-return">
                 <div class="modal-dialog">
                     <div class="modal-content">
