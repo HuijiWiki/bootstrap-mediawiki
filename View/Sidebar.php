@@ -93,7 +93,7 @@
                                 $uname = User::newFromId( $value );
                                 $user_group = $uname->getEffectiveGroups();
                                 if ( !in_array('bot', $user_group) && !in_array('bot-global',$user_group) ) {
-                                    $usersys['user_name'] = $uname->getName().'<br>';
+                                    $usersys['user_name'] = $uname->getName();
                                     $usersys['count'] = UserStats::getSiteEditsCount( $uname, $wgHuijiPrefix );
                                     $userPage = Title::makeTitle( NS_USER, $uname->getName() );
                                     $usersys['url'] = htmlspecialchars( $userPage->getFullURL() );
