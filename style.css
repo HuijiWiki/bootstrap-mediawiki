@@ -250,14 +250,16 @@ option.unclickable {
 
 #wiki-body h2, #DiscussionSnapshot {
 	border-bottom: none;
-	margin-bottom: 0.5em;
-	margin-top: 50px;
+	padding-bottom: 0.5em;
+	padding-top: 50px;
+    margin:0;
 }
 
 #wiki-body h3 {
 	border-bottom: none;
-	margin-bottom: 0.5em;
-	margin-top: 25px;
+    padding-bottom: 0.5em;
+    padding-top: 25px;
+    margin:0;
 }
 
 #wiki-body li {
@@ -1272,12 +1274,66 @@ sup.reference {
     bottom: 10px;
 }
 .mw-editsection{
-    display:none;
+    opacity: 0;
+    left: -10px;
     position:relative;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+#huiji-h1-edit-button .mw-editsection-divider{
+    width: 1px;
+    height: 25px;
+    background: #555;
+    display: inline-block;
+}
+#huiji-h1-edit-button a{
+    -webkit-transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    -ms-transition-duration: .2s;
+    -o-transition-duration: .2s;
+    transition-duration: .2s;
+}
+#huiji-h1-edit-button a:hover{
+    font-size: 40px;
+}
+.ns-0 #wiki-outer-body #huiji-h1-edit-button a{
+    color: #555;
 }
 h2 .mw-editsection{
     bottom:8px;
 }
 h3 .mw-editsection{
     bottom:5px;
+}
+.mw-editsection>:nth-child(n+2){
+    opacity: 0;
+    -webkit-transition: opacity .2s .4s;
+    -moz-transition: opacity .2s .4s;
+    -ms-transition: opacity .2s .4s;
+    -o-transition: opacity .2s .4s;
+    transition: opacity .2s .4s;
+}
+.mw-editsection.edit-active{
+    left: 0;
+    opacity: 1;
+}
+.edit-active.mw-editsection>:nth-child(n+2){
+    opacity: 1;
+}
+#wiki-body .bdsharebuttonbox a{
+    float: none;
+    font-size: 18px;
+    line-height:normal;
+    height:auto;
+    background-image: none;
+    cursor: pointer;
+    margin:0;
+    color: #fff!important;
+    background-color: #09c;
+    border-radius: 50%;
+    padding: 5px;
+    margin-right: 5px;
 }

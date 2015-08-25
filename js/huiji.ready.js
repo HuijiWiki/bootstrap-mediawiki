@@ -543,9 +543,9 @@ $(document).ready(function(){
 
     //show edit section
     $('h2, h3, h4, h5, h6').hover(function(){
-        $(this).children('.mw-editsection').show();
+        $(this).find('.mw-editsection').addClass('edit-active');
     }, function(){
-        $(this).children('.mw-editsection').hide();
+        $(this).find('.mw-editsection').removeClass('edit-active');
     });
 
 });

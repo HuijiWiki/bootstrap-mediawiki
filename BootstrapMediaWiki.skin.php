@@ -279,21 +279,15 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         if ($isVisualEditorEnabled == 1 && isset($this->data['content_actions']['ve-edit'])){ ?>
                                             <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
                                                 
-                                                <a href="<?php echo $veHref; ?>" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>">
-                                                <i class="fa fa-pencil"></i>
-                                                </a>
+                                                <a href="<?php echo $veHref; ?>" class="icon-pencil" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>"></a>
 
-                                                <span class="mw-editsection-divider"><?php echo wfMsg('pipe-separator'); ?></span>
+                                                <span class="mw-editsection-divider"></span>
 
-                                                <a href="<?php echo $editHref ?>" title="<?php echo wfMsg('visualeditor-ca-editsource'); ?>">
-                                                <i class="fa fa-code"></i>
-                                                </a>
+                                                <a href="<?php echo $editHref ?>" class="icon-edit-code" title="<?php echo wfMsg('visualeditor-ca-editsource'); ?>"></a>
                                             </div>
                                         <?php } else { ?>
                                             <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
-                                                <a href="<?php echo $editHref ?>" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>">
-                                                <i class="fa fa-code"></i>
-                                                </a>
+                                                <a href="<?php echo $editHref ?>" class="icon-edit-code" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>"></a>
                                             </div>                                   
                                         <?php }
                                     } ?>
@@ -308,7 +302,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
                                         $edittime = CommentFunctions::getTimeAgo( $bjtime );
                                         echo '<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="'.$userPageURL.'">'.$editinfo['rev_user_text'].'</a>&nbsp于'.$edittime.'前编辑了此页面';
-                                        echo '<div class="bdsharebuttonbox pull-right hidden-sm hidden-xs" data-tag="share_2"><a href="#" class="bds_weixin" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_douban" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
+                                        echo '<div class="bdsharebuttonbox pull-right hidden-sm hidden-xs" data-tag="share_2"><a href="#" class="icon-weixin-share" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-qqspace-share" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="icon-tieba-share" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="icon-douban-share" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
                                     }
                                 ?>
                                     </small>
