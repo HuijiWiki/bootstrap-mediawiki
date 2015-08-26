@@ -35,10 +35,10 @@ p.mw-edittools-section {
 	border-right: 1px solid silver;*/
 	padding: 0px 10px;
 }
-.#wikiEditor-section-main > div.group.group-format > a:nth-child(1){
+#wikiEditor-section-main > div.group.group-format > a:nth-child(1){
 	background-position-y: -142px !important;
 }
-.#wikiEditor-section-main > div.group.group-format > a:nth-child(2){
+#wikiEditor-section-main > div.group.group-format > a:nth-child(2){
 	background-position-y: -862px !important;
 }
 .no-js #loader { display: none;  }
