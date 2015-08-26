@@ -49,7 +49,19 @@ Class BootstrapMediawikiHooks {
                 '<script language="JavaScript">' . "\n" . 
                     '$(window).load(function() {' . "\n" . 
                     '// Animate loader off screen' . "\n" . 
-                        '$(".se-pre-con").fadeOut("slow");;' . "\n" . 
+                        '$(".se-pre-con").fadeOut("slow");' . "\n" . 
+                        'var editFormSisyphus = $( "#editform" ).sisyphus( {' . "\n" . 
+                            'locationBased: true, ' . "\n" . 
+                            'timeout: 0,' . "\n" . 
+                            'autoRelease: true,' . "\n" . 
+                            'onBeforeRestore:function(){' . "\n" . 
+                                '$("#autoRestoreModal").modal({' . "\n" . 
+                                    'keyboard: false,' . "\n" . 
+                                    'backdrop: "static"' . "\n" . 
+                                '}); ' . "\n" . 
+                                'return false;' . "\n" . 
+                            '}' . "\n" . 
+                        '} ); ' . "\n" . 
                     '});' . "\n" . 
                 '</script>');  
         $output->prependHTML('<div class="se-pre-con"></div>');

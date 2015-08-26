@@ -1,23 +1,5 @@
 
-var editFormSisyphus = $( "#editform" ).sisyphus( {
-locationBased: true, 
-timeout: 0,
-autoRelease: true,
-onBeforeRestore:function(){
-    $('#autoRestoreModal').modal({
-        keyboard: false,
-		backdrop: 'static'
-    }); 
-    return false;
-}
-} ); 
-$( "#autoRestoreModal .btn-default, #autoRestoreModal .close, #mw-editform-cancel, #editform > div.wikiEditor-ui > div.wikiEditor-ui-controls > div.wikiEditor-ui-buttons > button:nth-child(2)").click(function(){
-    editFormSisyphus.manuallyReleaseData();
-});
-$( "#autoRestoreModal .btn-primary").click(function(){
-    editFormSisyphus.restoreAllData();
-    $('#autoRestoreModal').modal('hide');
-});
+
 
 var customizeToolbar = function() {
 	/* Your code goes here */
@@ -63,6 +45,25 @@ if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
 /*global jQuery, mediaWiki*/
 (function ($, mw) {
 	"use strict";
+	var editFormSisyphus = $( "#editform" ).sisyphus( {
+		locationBased: true, 
+		timeout: 0,
+		autoRelease: true,
+		onBeforeRestore:function(){
+		    $('#autoRestoreModal').modal({
+		        keyboard: false,
+				backdrop: 'static'
+		    }); 
+		    return false;
+		}
+	} ); 
+	$( "#autoRestoreModal .btn-default, #autoRestoreModal .close, #mw-editform-cancel, #editform > div.wikiEditor-ui > div.wikiEditor-ui-controls > div.wikiEditor-ui-buttons > button:nth-child(2)").click(function(){
+	    editFormSisyphus.manuallyReleaseData();
+	});
+	$( "#autoRestoreModal .btn-primary").click(function(){
+	    editFormSisyphus.restoreAllData();
+	    $('#autoRestoreModal').modal('hide');
+	});
 
 	var conf, editTools, $sections;
 
