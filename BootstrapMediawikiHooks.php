@@ -42,8 +42,10 @@ Class BootstrapMediawikiHooks {
     public static function onGetDefaultSortkey( $title, &$sortkey ) { 
         $sortkey = strtoupper(CUtf8_PY::encode($title->getText(),'all'));
     }
+    public static function addEditModule(EditPage $editPage, OutputPage $output ) {
+        $output->addModules( 'ext.wikieditor.huijiextra' );
+    }
 
- 
     public static function wfEditSectionLinkTransform( &$parser, &$text )
     {
         global $wgUser;

@@ -1292,33 +1292,12 @@ sup.reference {
 #huiji-h1-edit-button .tooltip{
     white-space: nowrap;
 }
-/*#huiji-h1-edit-button a{*/
-    /*-webkit-transition-duration: .2s;*/
-    /*-moz-transition-duration: .2s;*/
-    /*-ms-transition-duration: .2s;*/
-    /*-o-transition-duration: .2s;*/
-    /*transition-duration: .2s;*/
-/*}*/
-/*#huiji-h1-edit-button a:hover{*/
-    /*font-size: 40px;*/
-/*}*/
-/*.ns-0 #wiki-outer-body #huiji-h1-edit-button a{*/
-    /*color: #555;*/
-/*}*/
 h2 .mw-editsection{
     bottom:8px;
 }
 h3 .mw-editsection{
     bottom:5px;
 }
-/*.mw-editsection>:nth-child(n+2){*/
-    /*opacity: 0;*/
-    /*-webkit-transition: opacity .2s .4s;*/
-    /*-moz-transition: opacity .2s .4s;*/
-    /*-ms-transition: opacity .2s .4s;*/
-    /*-o-transition: opacity .2s .4s;*/
-    /*transition: opacity .2s .4s;*/
-/*}*/
 .ve-active .bdsharebuttonbox{
 	display:none;
 }
@@ -1330,9 +1309,6 @@ h3 .mw-editsection{
     position: relative;
     bottom:2px;
 }
-/*.edit-active.mw-editsection>:nth-child(n+2){*/
-    /*opacity: 1;*/
-/*}*/
 #wiki-body .bdsharebuttonbox a{
     float: none;
     font-size: 18px;
