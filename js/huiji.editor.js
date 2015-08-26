@@ -19,7 +19,36 @@ $( "#autoRestoreModal .btn-primary").click(function(){
     $('#autoRestoreModal').modal('hide');
 });
 
-jQuery(".mw-editTools").detach().insertAfter('#wikiEditor-ui-toolbar');
+var customizeToolbar = function() {
+	/* Your code goes here */
+
+	$( '#wpTextbox1' ).wikiEditor( 'addToToolbar', {
+		'sections': {
+			'quick-insert': {
+				'type': 'booklet',
+				'label': '快速插入'
+			}
+		}
+	} );
+	$( '#wpTextbox1' ).on( 'wikiEditor-toolbar-doneInitialSections', function () {
+    	jQuery(".mw-editTools").detach().appendTo('#wikiEditor-section-quick-insert > div.pages');
+    	jQuery("#wikiEditor-section-quick-insert > div.index").remove();
+	} );
+
+};
+
+/* Check if view is in edit mode and that the required modules are available. Then, customize the toolbar … */
+if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
+	mw.loader.using( 'user.options', function () {
+		// This can be the string "0" if the user disabled the preference ([[phab:T54542#555387]])
+		if ( mw.user.options.get( 'usebetatoolbar' ) == 1 ) {
+			$.when(
+				mw.loader.using( 'ext.wikiEditor.toolbar' ), $.ready
+			).then( customizeToolbar );
+		}
+	} );
+}
+
 /**
  * EditTools support: add a selector, change <a> into buttons.
  * The special characters to insert are defined at [[MediaWiki:Edittools]].
