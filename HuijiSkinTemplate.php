@@ -292,7 +292,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '查看源代码': $icon = 'file-code-o'; break;
                 case '分类': $icon = 'files-o'; break;
                 case '模板': $icon = 'puzzle-piece'; break;
-                case '模块': $icon = 'puzzle-cube'; break;
+                case '模块': $icon = 'cube'; break;
                 case '特殊页面': $icon = 'flask'; break;
                 default: $icon = 'clone'; break;
             }
