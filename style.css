@@ -90,7 +90,7 @@ p {
     top: -11px;
     right: 15px;
 }
-#mw-content-text p{
+#mw-content-text>p{
     text-align: justify;
 }
 .mw-content-ltr ul, .mw-content-ltr ol {
@@ -103,17 +103,17 @@ ol.references {
     margin-top: 0;
 }
 #content-actions {
-	margin-top : 0px;
+	margin-top : 0;
 }
 
 /* begin toc style */
 .toc-sidebar {
-	margin-top: 30px
+	margin-top: 30px;
 }
 
 .toc-sidebar.affix{
 	position:static;
-	transform: none
+	transform: none;
 }
 
 @media (min-width:768px){

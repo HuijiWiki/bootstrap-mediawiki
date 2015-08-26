@@ -22,8 +22,8 @@ $(function() {
     $('pre:not([data-raw="true"])').addClass('prettyprint linenums');
     $('.jumbotron pre').removeClass('prettyprint linenums');
 
-    $('input[type=submit],input[type=button],input[type=reset]').addClass('mw-ui-button');
-    $('input[type=submit]').addClass(' mw-ui-progressive');
+    $('input[type=submit]:not(".keep"),input[type=button]:not(".keep"),input[type=reset]:not(".keep")').addClass('mw-ui-button');
+    $('input[type=submit]:not(".keep")').addClass('mw-ui-progressive');
 
     // $('input[type=checkbox],input[type=radio]').each(function() {
     //  var $el = $(this);
@@ -103,10 +103,6 @@ $(function() {
     }//end if
 
     prettyPrint();
-
-
-
-
 
     //parallax Jumbotron
     var jumboHeight = $('.parallax-jumbotron').outerHeight();

@@ -43,7 +43,16 @@ Class BootstrapMediawikiHooks {
         $sortkey = strtoupper(CUtf8_PY::encode($title->getText(),'all'));
     }
     public static function addEditModule(EditPage $editPage, OutputPage $output ) {
-        $output->addModules( 'ext.wikieditor.huijiextra' );
+        $output->addModules( 'ext.wikieditor.huijiextra.top' );
+        $output->addModules( 'ext.wikieditor.huijiextra.bottom' );
+        $output->addHeadItem('loader',
+                '<script language="JavaScript">' . "\n" . 
+                    '$(window).load(function() {' . "\n" . 
+                    '// Animate loader off screen' . "\n" . 
+                        '$(".se-pre-con").fadeOut("slow");;' . "\n" . 
+                    '});' . "\n" . 
+                '</script>');  
+        $output->prependHTML('<div class="se-pre-con"></div>');
     }
 
     public static function wfEditSectionLinkTransform( &$parser, &$text )

@@ -79,16 +79,22 @@ $wgResourceModules['skins.frontpage'] = array(
 	'position' => 'top',
 );
 /* Resource for wiki editor */
-$wgResourceModules['ext.wikieditor.huijiextra'] = array(
-	'scripts' => array(
-		$skinDir . '/sisyphus/sisyphus.js',
-		$skinDir . '/js/huiji.editor.js',
-	), 
+$wgResourceModules['ext.wikieditor.huijiextra.top'] = array(
 	'styles' => array(
 		$skinDir . '/css/editor.css'         					 => array( 'media' => 'all' ),
 	),	
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
+	'position' => 'top',
+);
+$wgResourceModules['ext.wikieditor.huijiextra.bottom'] = array(
+	'scripts' => array(
+		$skinDir . '/sisyphus/sisyphus.js',
+		$skinDir . '/js/huiji.editor.js',
+	), 
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
+	'position' => 'bottom',
 );
 if ( isset( $wgSiteJS ) ) {
 	$wgResourceModules['skins.bootstrapmediawiki']['scripts'][] = $skinDir . '/' . $wgSiteJS;

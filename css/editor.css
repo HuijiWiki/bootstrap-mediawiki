@@ -1,0 +1,48 @@
+/*.wikiEditor-ui-controls, .wikiEditor-ui-tabs, .wikiEditor-ui-buttons {
+	background: transparent!important;
+}*/
+.skin-bootstrap-mediawiki form#edit-form,.skin-bootstrap-mediawiki .wikiEditor-ui,.skin-bootstrap-mediawiki .editOptions{
+    font-size: 14px;
+}
+/*.wikiEditor-ui-toolbar .page-characters div span{
+    height: auto!important;
+}
+.wikiEditor-preview-contents,#wpTextbox1{
+    font-size: 16px;
+}*/
+/*@media screen*/
+.editOptions {
+    background-color: #F0F0F0;
+    border: 1px solid silver;
+    border-top: none;
+    padding: 1em 1em 1.5em 1em;
+    margin-bottom: 2em;
+}
+.client-js .mw-edittools-section input[type="button"] {
+    font-size: 0.9em;
+    padding-left: 1px;
+    padding-right: 1px;
+    margin-left: 1px;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: push-button; 
+}
+p.mw-edittools-section {
+	display:inline;
+}
+.mw-editTools {
+	border-left: 1px solid silver;
+	border-right: 1px solid silver;
+	padding: 0px 10px;
+}
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(http://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #fff;
+}
