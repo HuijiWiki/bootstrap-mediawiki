@@ -92,6 +92,9 @@ $wgResourceModules['ext.wikieditor.huijiextra.bottom'] = array(
 		$skinDir . '/sisyphus/sisyphus.js',
 		$skinDir . '/js/huiji.editor.js',
 	), 
+	'messages' => array( 
+		'edittools'
+	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
 	'position' => 'bottom',
