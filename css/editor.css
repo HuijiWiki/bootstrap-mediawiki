@@ -4,12 +4,12 @@
 .skin-bootstrap-mediawiki form#edit-form,.skin-bootstrap-mediawiki .wikiEditor-ui,.skin-bootstrap-mediawiki .editOptions{
     font-size: 14px;
 }
-/*.wikiEditor-ui-toolbar .page-characters div span{
+.wikiEditor-ui-toolbar .page-characters div span{
     height: auto!important;
 }
 .wikiEditor-preview-contents,#wpTextbox1{
     font-size: 16px;
-}*/
+}
 /*@media screen*/
 .editOptions {
     background-color: #F0F0F0;
