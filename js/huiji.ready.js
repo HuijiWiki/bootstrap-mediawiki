@@ -2,25 +2,25 @@ $(document).ready(function(){
     FastClick.attach(document.body);
     if ($("#editform").length > 0){
 
-    var editFormSisyphus = $( "#editform" ).sisyphus( {
-	locationBased: true, 
-	timeout: 0,
-	autoRelease: true,
-	onBeforeRestore:function(){
-	    $('#autoRestoreModal').modal({
-	        keyboard: false,
-		backdrop: 'static'
-	    }); 
-            return false;
-	}
-    } ); 
-    $( "#autoRestoreModal .btn-default, #autoRestoreModal .close, #mw-editform-cancel, #editform > div.wikiEditor-ui > div.wikiEditor-ui-controls > div.wikiEditor-ui-buttons > button:nth-child(2)").click(function(){
-        editFormSisyphus.manuallyReleaseData();
-    });
-    $( "#autoRestoreModal .btn-primary").click(function(){
-        editFormSisyphus.restoreAllData();
-        $('#autoRestoreModal').modal('hide');
-    });
+        var editFormSisyphus = $( "#editform" ).sisyphus( {
+    	locationBased: true, 
+    	timeout: 0,
+    	autoRelease: true,
+    	onBeforeRestore:function(){
+    	    $('#autoRestoreModal').modal({
+    	        keyboard: false,
+    		backdrop: 'static'
+    	    }); 
+                return false;
+    	}
+        } ); 
+        $( "#autoRestoreModal .btn-default, #autoRestoreModal .close, #mw-editform-cancel, #editform > div.wikiEditor-ui > div.wikiEditor-ui-controls > div.wikiEditor-ui-buttons > button:nth-child(2)").click(function(){
+            editFormSisyphus.manuallyReleaseData();
+        });
+        $( "#autoRestoreModal .btn-primary").click(function(){
+            editFormSisyphus.restoreAllData();
+            $('#autoRestoreModal').modal('hide');
+        });
 
     }
     $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); 
