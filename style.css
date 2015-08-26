@@ -1316,6 +1316,9 @@ h3 .mw-editsection{
     /*-o-transition: opacity .2s .4s;*/
     /*transition: opacity .2s .4s;*/
 /*}*/
+.ve-active .bdsharebuttonbox{
+	display:none;
+}
 .mw-editsection.edit-active{
     left: 0;
     opacity: 1;

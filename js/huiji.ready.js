@@ -570,4 +570,5 @@ $(document).ready(function(){
         $(this).find('.mw-editsection').removeClass('edit-active');
     });
 
+    $('[data-toggle="tooltip"]').tooltip();
 });

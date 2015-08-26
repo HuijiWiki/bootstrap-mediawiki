@@ -58,8 +58,7 @@ Class BootstrapMediawikiHooks {
                     .'|ui'
                     ;
             $replacement = ''
-                    .'<a href="$1" title="$2">'
-                    .'<i class="fa fa-pencil"></i>'
+                    .'<a href="$1" title="$2" class="icon-edit-code">'
                     .'</a>'
                     ;
 
@@ -78,7 +77,7 @@ Class BootstrapMediawikiHooks {
                     ;
             $replacement = ''
                     .'<a href="$1" title="$2">'
-                    .'<i class="fa fa-pencil"></i>'
+                    .'<i class="icon-pencil"></i>'
                     .'</a>'
                     ;
 
@@ -91,7 +90,7 @@ Class BootstrapMediawikiHooks {
                     ;    
             $replacement = ''
                     .'<a href="$1" title="$2">'
-                    .'<i class="fa fa-code"></i>'
+                    .'<i class="icon-edit-code"></i>'
                     .'</a>'
                     // .'<span class="mw-editsection-bracket">]</span>'
                     ;
