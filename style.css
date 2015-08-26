@@ -801,9 +801,7 @@ table.list th {
     font-weight: bold;
     line-height: 1.3em !important;
 }
-.wikiEditor-ui-controls, .wikiEditor-ui-tabs, .wikiEditor-ui-buttons {
-	background: transparent!important;
-}
+
 body .mw-echo-overlay {
 	z-index: 1300;
 	width: 300px;
@@ -998,9 +996,7 @@ body .mw-echo-overlay::before{
 .heading-hero-image {
 	display:none;
 }
-.skin-bootstrap-mediawiki form#edit-form,.skin-bootstrap-mediawiki .wikiEditor-ui,.skin-bootstrap-mediawiki .editOptions{
-    font-size: 14px;
-}
+
 #contentSub{
     font-size: 24px;
 }
@@ -1013,9 +1009,6 @@ sup.reference {
 }
 .popover {
 	width:276px;
-}
-.wikiEditor-ui-toolbar .page-characters div span{
-    height: auto!important;
 }
 /* fix msupload */
 #upload-list .file {
@@ -1228,15 +1221,11 @@ sup.reference {
     text-overflow:ellipsis;
     white-space:nowrap;
 }
-
 .oo-ui-popupToolGroup-handle {
     min-height: 3.1em;
 }
 .oo-ui-barToolGroup > .oo-ui-toolGroup-tools > .oo-ui-tool > .oo-ui-tool-link{
     padding:  0 0.625em!important;
-}
-.wikiEditor-preview-contents,#wpTextbox1{
-    font-size: 16px;
 }
 .user-card>.fa-spinner{
     text-align: center;

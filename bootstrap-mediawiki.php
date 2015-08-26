@@ -84,6 +84,9 @@ $wgResourceModules['ext.wikieditor.huijiextra'] = array(
 		$skinDir . '/sisyphus/sisyphus.js',
 		$skinDir . '/js/huiji.editor.js',
 	), 
+	'styles' => array(
+		$skinDir . '/css/editor.css'         					 => array( 'media' => 'all' ),
+	),	
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
 );
