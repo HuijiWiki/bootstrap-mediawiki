@@ -43,6 +43,8 @@
 <charinsert>&#123;&#123;#translation:&#125;&#125;</charinsert> &nbsp;
 <charinsert>&#123;&#123;DEFAULTSORT:+&#125;&#125;</charinsert> &nbsp;
 <charinsert><s>+</s></charinsert>
+<charinsert><center>+</center></charinsert>
+<charinsert>----</charinsert>
 </p>
 
 <p class=\"mw-edittools-section\" data-section-title=\"Latin\" style=\"display: none;\">
