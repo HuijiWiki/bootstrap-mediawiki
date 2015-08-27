@@ -1312,6 +1312,6 @@ h3 .mw-editsection{
     padding: 5px;
     margin-right: 5px;
 }
-body.mediawiki{
+body.mediawiki:not(".ns--1"){
 	display:none;
 }
