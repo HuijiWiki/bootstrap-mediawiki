@@ -6,7 +6,19 @@ $(function() {
             $('#wrapper').removeClass('smtoggled');
         }
     },500);
+    $('.subnav .nav .dropdown:first').addClass('phone-active');
+    $('.subnav .nav .dropdown-menu:first').addClass('phone-active');
     $('#preftoc').addClass('nav nav-tabs');
+    // bell animation
+    if($('#pt-notifications span').text()!=0){
+        $('#pt-notifications i').addClass('bell-animation');
+        $('.mw-ui-quiet').click(function(){
+            $('.badge').text('0').hide();
+            $('#pt-notifications i').removeClass('bell-animation');
+        });
+    }else if($('#pt-notifications span').text()==0){
+        $('.badge').hide();
+    }
 
     $('table.article-table')
         .each(function() {
@@ -19,8 +31,8 @@ $(function() {
             }//end if
         });
 
-    $('pre:not([data-raw="true"])').addClass('prettyprint linenums');
-    $('.jumbotron pre').removeClass('prettyprint linenums');
+    // $('pre:not([data-raw="true"])').addClass('prettyprint linenums');
+    // $('.jumbotron pre').removeClass('prettyprint linenums');
 
     $('input[type=submit]:not(".keep"),input[type=button]:not(".keep"),input[type=reset]:not(".keep")').addClass('mw-ui-button');
     $('input[type=submit]:not(".keep")').addClass('mw-ui-progressive');
@@ -102,7 +114,10 @@ $(function() {
         }//end if
     }//end if
 
-    prettyPrint();
+    // prettyPrint();
+
+    /* add missing icons caused by visual editor */
+    // $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
 
     //parallax Jumbotron
     var jumboHeight = $('.parallax-jumbotron').outerHeight();
@@ -137,7 +152,9 @@ $(function() {
         $(this).width($(this).width()+6);
     });
     $('.internal').each(function(){
-	$(this).html('<i class="fa fa-arrows-alt"></i>');
+	   $(this).html('<i class="fa fa-arrows-alt"></i>');
     });
 
+    // done for preload. Let's show the page.
+    $('body.mediawiki').show();
 });

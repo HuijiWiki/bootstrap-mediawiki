@@ -27,7 +27,6 @@ $src = '/var/www/src';
 $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
-		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
@@ -36,7 +35,7 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.js',		
-		$skinDir . '/js/fastclick.js',
+		$skinDir . '/js/huiji.preload.js',
 	),
 	'dependencies' => array(
 	),
@@ -46,9 +45,8 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 );
 $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'scripts' => array(
-		$skinDir . '/google-code-prettify/prettify.js',
+		$skinDir . '/js/fastclick.js',
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',
-		$skinDir . '/js/huiji.preload.js',
 		$skinDir . '/js/huiji.flow.js',
 		$skinDir . '/js/huiji.collectPageViewRecord.js',
 		$skinDir . '/js/huiji.ready.js',

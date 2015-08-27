@@ -186,13 +186,13 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         if ($isVisualEditorEnabled == 1 && isset($this->data['content_actions']['ve-edit'])){ ?>
                                             <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
 
-                                                <a href="<?php echo $veHref; ?>" class="icon-pencil" data-toggle="tooltip" data-placement="top" title="使用可视化编辑器"></a>
+                                                <a id="ca-ve-edit" href="<?php echo $veHref; ?>" class="icon-pencil" data-toggle="tooltip" data-placement="top" title="使用可视化编辑器"></a>
                                                 <span class="mw-editsection-divider"></span>
-                                                <a href="<?php echo $editHref ?>" class="icon-edit-code" data-toggle="tooltip" data-placement="top" title="使用源代码编辑器"></a>
+                                                <a id="ca-edit" href="<?php echo $editHref ?>" class="icon-edit-code " data-toggle="tooltip" data-placement="top" title="使用源代码编辑器"></a>
                                             </div>
                                         <?php } else { ?>
                                             <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
-                                                <a href="<?php echo $editHref ?>" class="icon-edit-code" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>"></a>
+                                                <a id="ca-edit" href="<?php echo $editHref ?>" class="icon-edit-code" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>"></a>
                                             </div>                                   
                                         <?php }
                                     } ?>

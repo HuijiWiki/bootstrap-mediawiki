@@ -1,5 +1,7 @@
 $(document).ready(function(){
     FastClick.attach(document.body);
+    /* add missing icons caused by visual editor */
+    $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
     // $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); 
 	if (mw.cookie.get('animation') == 'none'){
 		$('#menu-toggle').css({
@@ -19,7 +21,7 @@ $(document).ready(function(){
 	var articleId = mw.config.get("wgArticleId");
 	var url = 'http://test.huiji.wiki:50007/insertViewRecord/';
 	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
-    $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
+    
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
 
@@ -68,8 +70,6 @@ $(document).ready(function(){
     $('.search-toggle').click(function(){
        $('#searchformphone').toggleClass('visible-xs-block');
     });
-    $('.subnav .nav .dropdown:first').addClass('phone-active');
-    $('.subnav .nav .dropdown-menu:first').addClass('phone-active');
     $('.subnav #subnav-toggle').click(function(){
         var length;
         $('.subnav .nav .dropdown').toggle();
@@ -91,6 +91,7 @@ $(document).ready(function(){
         $(this).parent().find('.dropdown-menu').addClass('phone-active');
         $('.mw-echo-overlay').remove();
     });
+
     $('a[href^=#cite_note]').each(function(){
 	    var self = $(this);
             var options = {};
@@ -105,7 +106,7 @@ $(document).ready(function(){
 
     $('.ve-available:not(".ve-active") #wiki-outer-body').on('click','a[href^=#][role!=tab]',function(e){
         var self = $(this);
-	e.preventDefault();
+	   e.preventDefault();
         // Let popover.js handle cite note
         if (self.attr('href').match(/^\#cite_note/g)){
             if (document.activeElement != this){
@@ -190,16 +191,7 @@ $(document).ready(function(){
         mw.popups.render.API_DELAY = 50;
 
     });
-    // bell animation
-    if($('#pt-notifications span').text()!=0){
-        $('#pt-notifications i').addClass('bell-animation');
-        $('.mw-ui-quiet').click(function(){
-            $('.badge').text('0').hide();
-            $('#pt-notifications i').removeClass('bell-animation');
-        });
-    }else if($('#pt-notifications span').text()==0){
-        $('.badge').hide();
-    }
+
     //alert-return
     var alreturn = $('.alert-return');
     var alertp = $('.alert-return p');

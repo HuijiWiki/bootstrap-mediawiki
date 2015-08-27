@@ -277,9 +277,12 @@ Class HuijiSkinTemplate extends BaseTemplate {
             );
             switch( $link['title'] ) {
                 case '页面': $icon = 'file'; break;
+                case '项目页面': $icon = 'file'; break;
                 case '讨论': $icon = 'comment'; break;
                 case '编辑': $icon = 'pencil'; break;
-                case '编辑源代码': $icon = 'edit'; break;
+                case '编辑源代码': $icon = 'code';
+                    unset($link['id']);
+                    break;
                 case '历史': $icon = 'clock-o'; break;
                 case '删除': $icon = 'remove'; break;
                 case '移动': $icon = 'arrows'; break;
