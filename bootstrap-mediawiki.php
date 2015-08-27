@@ -79,7 +79,7 @@ $wgResourceModules['skins.frontpage'] = array(
 /* Resource for wiki editor */
 $wgResourceModules['ext.wikieditor.huijiextra.top'] = array(
 	'styles' => array(
-		$skinDir . '/css/editor.css'         					 => array( 'media' => 'all' ),
+		$skinDir . '/css/huiji.editor.css'         					 => array( 'media' => 'all' ),
 	),	
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
