@@ -47,9 +47,9 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             array('skins.bootstrapmediawiki.bottom')
         ); # add js and messages  
         $out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
-    	if ($wgHuijiPrefix !== 'www'){
-    		$out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
-    	}
+        if ($wgHuijiPrefix !== 'www'){
+            $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
+        }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
     }//end initPage
     /**
@@ -88,7 +88,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         global $wgNavBarClasses;
         global $wgSubnavBarClasses;
         global $wgParser, $wgTitle, $wgEmailAuthentication;
-
         $this->skin = $this->data['skin'];
         $action = $wgRequest->getText( 'action' );
         $url_prefix = str_replace( '$1', '', $wgArticlePath );
