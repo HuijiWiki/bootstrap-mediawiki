@@ -25,7 +25,7 @@ a{
   transition: top 0.2s ease-in-out;
   border: none;
   .navbar-container{
-    box-shadow: 0 0 10px rgba(0,0,0,.8);
+    .box-shadow();
   }
   .navbar-nav>li>a{
     color: extract(@header-color, 2);
@@ -501,10 +501,9 @@ body{
   background-color: extract(@sub-hover-color,1);
   color:extract(@sub-hover-color,2);
 }
+  .box-shadow();
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   background-color: extract(@background-color,3);
-  border-bottom: 1px solid;
-  border-color: @sub-border-color;
   font-size: 14px;
   width: 100%;
   position:fixed;
