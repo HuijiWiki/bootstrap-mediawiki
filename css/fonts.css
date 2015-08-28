@@ -23,6 +23,27 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-more:before {
+    content: "\e607";
+}
+.icon-jianti:before {
+    content: "\e608";
+}
+.icon-huiji:before {
+    content: "\e609";
+}
+.icon-fanti:before {
+    content: "\e60a";
+}
+.icon-editjs:before {
+    content: "\e60b";
+}
+.icon-editCSS:before {
+    content: "\e60c";
+}
+.icon-downward:before {
+    content: "\e60d";
+}
 .icon-weixin-share:before {
     content: "\e600";
 }
