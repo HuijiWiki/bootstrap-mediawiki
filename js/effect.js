@@ -154,6 +154,7 @@ $(document).ready(function(){
         var pass=$('#home-content-signup .sign-pass').val();
 //        var passagin=$('#home-content-signup .sign-pass-agin').val();
         wiki_signup(login,email,pass);
+        $(this).indexOf
     });
     $('#home-content-signup .sign-username,#home-content-signup .sign-email,#home-content-signup .sign-pass').focus(function(){
         $('.login-error').hide();
