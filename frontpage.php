@@ -318,7 +318,7 @@
                     <!-- total -->
                     <div class="top-users total-rank hide">
                     <?php
-                        $count = 10;
+                        $count = 20;
                         $params['ORDER BY'] = 'stats_total_points DESC';
                         $params['LIMIT'] = $count;
                         $dbr = wfGetDB( DB_SLAVE );
@@ -341,6 +341,7 @@
                             }
                         }
                         $z = 0;
+                        $user_list_total = array_slice($user_list_total, 0, 10);  
                         foreach ( $user_list_total as $user ) {
                                 $user_title = Title::makeTitle( NS_USER, $user['user_name'] );
                                 $avatar = new wAvatar( $user['user_id'], 'ml' );
