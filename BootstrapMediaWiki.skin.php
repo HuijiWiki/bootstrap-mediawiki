@@ -102,6 +102,11 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             $followed = false;
         }
         ?>
+        <!--[if lt IE 8]>
+            <p class="alert alert-warning alert-dismissible browsehappy">
+              你正在使用一个<strong>过时</strong>的浏览器。请<a class="link" href="http://browsehappy.com">升级你的浏览器</a>以查看此页面。</p>
+            </p>
+        <![endif]-->
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
