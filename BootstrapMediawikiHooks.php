@@ -10,7 +10,7 @@ Class BootstrapMediawikiHooks {
             $key = wfMemcKey( 'page', 'getPageRaw', 'all', $article->getTitle()->getFullText() );
             $output = $wgParser->preprocess($article->getContent()->getNativeData(), $article->getTitle(), $option );
             $wgMemc->set( $key, $output );
-        } elseif ( $wgHuijiPrefix == 'home' && in_array($article->getTitle()->getFullText(), HuijiSkinTemplate::getSharedParts())) {
+        } elseif ( $wgHuijiPrefix == 'www' && in_array($article->getTitle()->getFullText(), HuijiSkinTemplate::getSharedParts())) {
             $option = new ParserOptions($user);
             $key = wfForeignMemcKey( 'huiji','','page', 'getPageRaw', 'shared', $article->getTitle()->getFullText() );
             $output = $wgParser->preprocess($article->getContent()->getNativeData(), $article->getTitle(), $option );
@@ -23,12 +23,21 @@ Class BootstrapMediawikiHooks {
     }
     public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
         global $IP, $wgScriptPath, $wgLogo, $wgFavicon, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
+        if ( $request->getVal('avatar_data') != '' && $request->wasPosted() ){
+            new CropAvatar(
+              $request->getVal('avatar_src'),
+              $request->getVal('avatar_data'),
+              $_FILES['avatar_file'],
+              $output
+            );
+            return false;
+        }
         if ($user->isAllowed('editinterface')){
             $wgCdnScriptPath = $wgScriptPath;
             $wgLoadScript = "{$wgCdnScriptPath}/load.php";
             $wgStylePath = "{$wgCdnScriptPath}/skins";
             $wgExtensionAssetsPath = "{$wgCdnScriptPath}/extensions";
-            $wgResourceBasePath = $wgCdnScriptPath;            
+            $wgResourceBasePath = $wgCdnScriptPath;     
         } 
         if ($user->isAllowed('reupload')){
             //$wgLogo = "$wgScriptPath/resources/assets/huiji_white.png";

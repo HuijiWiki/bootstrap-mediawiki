@@ -1,5 +1,7 @@
 $(document).ready(function(){
     FastClick.attach(document.body);
+    $('#preftoc').addClass('nav nav-tabs');
+
     /* add missing icons caused by visual editor */
     $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
     // $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); 

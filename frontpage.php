@@ -230,11 +230,15 @@
                             );
 
                             foreach ( $res as $row ) {
-                                $user_list[] = array(
-                                    'user_id' => $row->up_user_id,
-                                    'user_name' => $row->up_user_name,
-                                    'points' => $row->up_points
-                                );
+                                $userObj = User::newFromId( $row->up_user_id );
+                                $user_group = $userObj->getEffectiveGroups();
+                                if ( !in_array('bot', $user_group) && !in_array('bot-global',$user_group)  ) {
+                                    $user_list[] = array(
+                                        'user_id' => $row->up_user_id,
+                                        'user_name' => $row->up_user_name,
+                                        'points' => $row->up_points
+                                    );
+                                }
                             }
                             $x = 0;
                             foreach ( $user_list as $user ) {
@@ -277,11 +281,15 @@
                             );
 
                             foreach ( $res as $row ) {
-                                $user_list_month[] = array(
-                                    'user_id' => $row->up_user_id,
-                                    'user_name' => $row->up_user_name,
-                                    'points' => $row->up_points
-                                );
+                                $userObj = User::newFromId( $row->up_user_id );
+                                $user_group = $userObj->getEffectiveGroups();
+                                if ( !in_array('bot', $user_group) && !in_array('bot-global',$user_group)  ) {
+                                    $user_list_month[] = array(
+                                        'user_id' => $row->up_user_id,
+                                        'user_name' => $row->up_user_name,
+                                        'points' => $row->up_points
+                                    );
+                                }
                             }
                             $y = 0;
                             foreach ( $user_list_month as $user ) {
@@ -310,7 +318,7 @@
                     <!-- total -->
                     <div class="top-users total-rank hide">
                     <?php
-                        $count = 10;
+                        $count = 20;
                         $params['ORDER BY'] = 'stats_total_points DESC';
                         $params['LIMIT'] = $count;
                         $dbr = wfGetDB( DB_SLAVE );
@@ -322,13 +330,18 @@
                             $params
                         );
                         foreach ( $res as $row ) {
-                            $user_list_total[] = array(
-                                'user_id' => $row->stats_user_id,
-                                'user_name' => $row->stats_user_name,
-                                'points' => $row->stats_total_points
-                            );
+                            $userObj = User::newFromId( $row->stats_user_id );
+                            $user_group = $userObj->getEffectiveGroups();
+                            if ( !in_array('bot', $user_group) && !in_array('bot-global',$user_group)  ) {
+                                $user_list_total[] = array(
+                                    'user_id' => $row->stats_user_id,
+                                    'user_name' => $row->stats_user_name,
+                                    'points' => $row->stats_total_points
+                                );
+                            }
                         }
                         $z = 0;
+                        $user_list_total = array_slice($user_list_total, 0, 10);  
                         foreach ( $user_list_total as $user ) {
                                 $user_title = Title::makeTitle( NS_USER, $user['user_name'] );
                                 $avatar = new wAvatar( $user['user_id'], 'ml' );
