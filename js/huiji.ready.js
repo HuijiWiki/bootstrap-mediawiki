@@ -372,12 +372,10 @@ $(document).ready(function(){
             position.y+=ele.offsetTop;
             ele=ele.offsetParent;
             offsetParent=ele.offsetParent;
-            //if(offsetParent==document.body)
-            //return pos;
-            //只有body没有offsetParent，body已经是顶级元素了
         }
         return position;
     }
+
     var enter = false;
     var exist = false;
     var own = false;
