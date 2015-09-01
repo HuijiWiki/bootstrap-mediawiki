@@ -10,7 +10,7 @@ Class BootstrapMediawikiHooks {
             $key = wfMemcKey( 'page', 'getPageRaw', 'all', $article->getTitle()->getFullText() );
             $output = $wgParser->preprocess($article->getContent()->getNativeData(), $article->getTitle(), $option );
             $wgMemc->set( $key, $output );
-        } elseif ( $wgHuijiPrefix == 'home' && in_array($article->getTitle()->getFullText(), HuijiSkinTemplate::getSharedParts())) {
+        } elseif ( $wgHuijiPrefix == 'www' && in_array($article->getTitle()->getFullText(), HuijiSkinTemplate::getSharedParts())) {
             $option = new ParserOptions($user);
             $key = wfForeignMemcKey( 'huiji','','page', 'getPageRaw', 'shared', $article->getTitle()->getFullText() );
             $output = $wgParser->preprocess($article->getContent()->getNativeData(), $article->getTitle(), $option );
