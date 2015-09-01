@@ -8,7 +8,6 @@ $(function() {
     },500);
     $('.subnav .nav .dropdown:first').addClass('phone-active');
     $('.subnav .nav .dropdown-menu:first').addClass('phone-active');
-    $('#preftoc').addClass('nav nav-tabs');
     // bell animation
     if($('#pt-notifications span').text()!=0){
         $('#pt-notifications i').addClass('bell-animation');
