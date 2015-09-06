@@ -199,6 +199,17 @@ $(document).ready(function(){
     var login ='';
     var pass = '';
         //login
+
+    function updateQueryStringParameter(uri, key, value) {
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+        if (uri.match(re)) {
+            return uri.replace(re, '$1' + key + "=" + value + '$2');
+        }
+        else {
+            return uri + separator + key + "=" + value;
+        }
+    }
     function wiki_auth(login, pass, ref){
         $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',function(data){
             if(data.login.result == 'NeedToken'){
@@ -209,9 +220,9 @@ $(document).ready(function(){
                             alertp.text('登录成功');
                             //document.location.reload();
                             if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
-                                location.href=document.referrer;
+                                location.href = document.referrer;
                             }else {                                
-                                location.href=location.href;
+                                location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
                             }
                         }else{
                             alertime();
