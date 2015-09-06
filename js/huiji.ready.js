@@ -5,14 +5,14 @@ $(document).ready(function(){
     /* add missing icons caused by visual editor */
     $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
     // $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); 
-	if (mw.cookie.get('animation') == 'none'){
-		$('#menu-toggle').css({
-            'animation':'none',
-            '-webkit-animation':'none',
-            '-moz-animation':'none',
-            '-o-animation':'none'
-        });
-	}
+	// if (mw.cookie.get('Animation') == 'none'){
+	// 	$('#menu-toggle').css({
+ //            'animation':'none',
+ //            '-webkit-animation':'none',
+ //            '-moz-animation':'none',
+ //            '-o-animation':'none'
+ //        });
+	// }
 	var fromSource    = document.referrer; 
 	var navigatorInfo = navigator.userAgent.toLowerCase();
 	var userId    = mw.config.get("wgUserId");
@@ -27,15 +27,15 @@ $(document).ready(function(){
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
 
-        if(mw.cookie.get('animation') == 'none' || mw.cookie.get('animation') == null) {
-            mw.cookie.set('animation', 'none');
-            $('#menu-toggle').css({
-                'animation': 'none',
-                '-webkit-animation': 'none',
-                '-moz-animation': 'none',
-                '-o-animation': 'none'
-            });
-        }
+        // if(mw.cookie.get('Animation') == 'none' || mw.cookie.get('Animation') == null) {
+        //     mw.cookie.set('Animation', 'none');
+        //     $('#menu-toggle').css({
+        //         'animation': 'none',
+        //         '-webkit-animation': 'none',
+        //         '-moz-animation': 'none',
+        //         '-o-animation': 'none'
+        //     });
+        // }
         $('#wrapper').toggleClass("toggled").toggleClass('smtoggled');
         $('#menu-toggle').toggleClass('menu-active').toggleClass('smenu-active');
         if(window.innerWidth>=1366){
@@ -49,12 +49,11 @@ $(document).ready(function(){
                 $('.phone-wrapper').remove();
             }
         }
+        document.domain = "huiji.wiki";
         if($('#wrapper').hasClass('toggled')){
-            document.domain = "huiji.wiki";
-            localStorage.setItem('menu-toggle','toggled')
+            localStorage.setItem('menu-toggle','toggled');
         }else{
-            document.domain = "huiji.wiki";
-            localStorage.setItem('menu-toggle','')
+            localStorage.setItem('menu-toggle','');
         }
     });
     $('body').on('touchstart','.phone-wrapper',function(){
@@ -209,9 +208,10 @@ $(document).ready(function(){
                             alertime();
                             alertp.text('登录成功');
                             //document.location.reload();
+                            mw.cookie.set('JustLoggedIn',true);
                             if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
-                                location.href=document.referrer;//refresh page from server
-                            }else {
+                                location.href=document.referrer;
+                            }else {                                
                                 window.location.reload(true);
                             }
                         }else{
