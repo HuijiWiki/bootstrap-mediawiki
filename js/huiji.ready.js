@@ -208,11 +208,10 @@ $(document).ready(function(){
                             alertime();
                             alertp.text('登录成功');
                             //document.location.reload();
-                            mw.cookie.set('JustLoggedIn',true);
                             if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
                                 location.href=document.referrer;
                             }else {                                
-                                window.location.reload(true);
+                                location.href=location.href;
                             }
                         }else{
                             alertime();
@@ -374,10 +373,12 @@ $(document).ready(function(){
             position.y+=ele.offsetTop;
             ele=ele.offsetParent;
             offsetParent=ele.offsetParent;
+            //if(offsetParent==document.body)
+            //return pos;
+            //只有body没有offsetParent，body已经是顶级元素了
         }
         return position;
     }
-
     var enter = false;
     var exist = false;
     var own = false;
