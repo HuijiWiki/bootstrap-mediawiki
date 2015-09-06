@@ -294,12 +294,11 @@ body{
   z-index: 1000;
   position: fixed;
   width: 240px;
-  top: 0;
-  padding-top: 50px;
-  height: 100%;
+  top: 50px;
+  bottom: 0;
   left:-240px;
-  overflow-y: auto;
   overflow-x: hidden;
+  overflow-y:auto;
   -webkit-overflow-scrolling:touch;
   .transition(0.2s);
   .sidebar-nav {
@@ -668,6 +667,22 @@ body{
       }
     }
   }
+}@media screen and (min-width: 1200px) {
+  .scrollDiv {
+    width: 10px;
+    position: absolute;
+    top: 0;
+    background: rgba(225,225,225,.15);
+    border-radius: 10px;
+  }
+  #sidebar-wrapper{
+    overflow-y: hidden;
+    .sidebar-nav{
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
 }
 @media screen and (max-width: 1200px){
   .subnav-up{
@@ -929,4 +944,11 @@ body{
 }
 #wiki-body ul.profile-interactive li{
   line-height: 34px;
+}
+.dropping{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
 }

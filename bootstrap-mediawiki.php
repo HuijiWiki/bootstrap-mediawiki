@@ -46,6 +46,7 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'scripts' => array(
 		$skinDir . '/js/fastclick.js',
+		$skinDir . '/js/scroll.js',
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',
 		$skinDir . '/js/huiji.flow.js',
 		$skinDir . '/js/huiji.collectPageViewRecord.js',
