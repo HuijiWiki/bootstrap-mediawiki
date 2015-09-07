@@ -154,10 +154,8 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
                                 <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
                                 <li class="site-count"><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php
-                                    $dbr = wfGetDB( DB_SLAVE );
-                                    $counter = new SiteStatsInit( $dbr );
-                                    $result = self::format_nice_number($counter->articles());
-                                    $result2 = self::format_nice_number($counter->edits());
+                                    $result = self::format_nice_number(SiteStats::articles());
+                                    $result2 = self::format_nice_number(SiteStats::edits());
                                     echo $result;
                                 ?></a>&nbsp页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>&nbsp编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo self::format_nice_number(UserSiteFollow::getSiteCount($wgHuijiPrefix)) ?></a>&nbsp关注</p></li>
                                 <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
