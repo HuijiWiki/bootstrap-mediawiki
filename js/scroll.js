@@ -46,6 +46,7 @@ addScroll.prototype = {
         var contentBox = doc.getElementById(contentBox);
         var scrollDiv = this._createScroll(mainBox, className);
         this._resizeScorll(scrollDiv, mainBox, contentBox);
+        this._responseScroll(scrollDiv,mainBox,contentBox);
         this._tragScroll(scrollDiv, mainBox, contentBox);
         this._wheelChange(scrollDiv, mainBox, contentBox);
         this._clickScroll(scrollDiv, mainBox, contentBox);
@@ -57,7 +58,7 @@ addScroll.prototype = {
         var span = doc.createElement('span');
         _scrollBox.appendChild(_scroll);
         _scroll.appendChild(span);
-        _scroll.className = className;
+        _scroll.id = className;
         mainBox.appendChild(_scrollBox);
         return _scroll;
     },
@@ -65,7 +66,6 @@ addScroll.prototype = {
     _resizeScorll : function(element, mainBox, contentBox) {
         var p = element.parentNode;
         var conHeight = contentBox.offsetHeight;
-        var _width = mainBox.clientWidth;
         var _height = mainBox.clientHeight;
         var _scrollWidth = element.offsetWidth;
         p.style.width = _scrollWidth + "px";
@@ -75,8 +75,17 @@ addScroll.prototype = {
         var _scrollHeight = parseInt(_height * (_height / conHeight));
         if (_scrollHeight >= mainBox.clientHeight) {
             element.parentNode.style.display = "none";
+        }else{
+            element.parentNode.style.display = "block";
         }
         element.style.height = _scrollHeight + "px";
+    },
+    //改变窗口重新调整滚动条
+    _responseScroll : function(element,mainBox,contentBox){
+        var _this=this;
+        window.onresize=function(){
+            _this._resizeScorll(element,mainBox,contentBox);
+        }
     },
     //拖动滚动条
     _tragScroll : function(element, mainBox, contentBox) {
@@ -86,7 +95,7 @@ addScroll.prototype = {
             var _scrollTop = element.offsetTop;
             var e = event || window.event;
             var top = e.clientY;
-            //this.onmousemove=scrollGo;
+//            this.onmousemove=scrollGo;
             $('#wrapper').addClass('dropping');
             document.onmousemove = scrollGo;
             document.onmouseup = function(event) {
@@ -97,8 +106,8 @@ addScroll.prototype = {
                 var e = event || window.event;
                 var _top = e.clientY;
                 var _t = _top - top + _scrollTop;
-                if (_t > (mainHeight - element.offsetHeight)) {
-                    _t = mainHeight - element.offsetHeight;
+                if (_t > (mainBox.clientHeight - element.offsetHeight)) {
+                    _t = mainBox.clientHeight - element.offsetHeight;
                 }
                 if (_t <= 0) {
                     _t = 0;
@@ -158,7 +167,8 @@ addScroll.prototype = {
             var sTop = document.documentElement.scrollTop > 0 ? document.documentElement.scrollTop
                 : document.body.scrollTop;
             var top = mainBox.offsetTop;
-            var _top = e.clientY + sTop - top - element.offsetHeight
+//            var _top = e.clientY + sTop - top - element.offsetHeight  不是fix时
+            var _top = e.clientY - top - element.offsetHeight
                 / 2;
             if (_top <= 0) {
                 _top = 0;
@@ -178,4 +188,9 @@ addScroll.prototype = {
 };
 if(window.innerWidth>1200&&$('#sidebar-wrapper').get(0).offsetHeight<$('.sidebar-nav').get(0).offsetHeight) {
     new addScroll('sidebar-wrapper', 'sidebar-content', 'scrollDiv');
+}else {
+    window.onresize = function () {
+        if (window.innerWidth > 1200 && $('#sidebar-wrapper').get(0).offsetHeight < $('.sidebar-nav').get(0).offsetHeight)
+        new addScroll('sidebar-wrapper', 'sidebar-content', 'scrollDiv');
+    };
 }
