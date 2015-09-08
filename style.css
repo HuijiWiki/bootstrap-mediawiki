@@ -12,8 +12,14 @@ body.page-Category_CSS .page-header { display: none; }
 
 textarea {
 	width: 95%;
+    color: #333;
 }
-
+.wikiEditor-ui{
+    color: #333;
+}
+.modal-dialog{
+    color: #333;
+}
 .category-links {
 	clear: both;
 }
