@@ -33,11 +33,20 @@ function getViewRecordsFromUserIdGroupByWikiSite(userId,fromTime,toTime,callback
 		},
 		function(data){
 		//	console.log(data);
-			if(callback != null) callback(data);				
+			if(callback != null) {
+				callback(data);
+			}else{
+				return data;
+			}				
 		}
 	).error(function(){
 		//console.log("error");
-		if(callback != null) callback({'status':'fail'});
+		var errInfo = {'status':'fail'};
+		if(callback != null){
+			 callback(errInfo);
+		}else{
+			return errInfo;
+		}	
 	});	
 }
 
@@ -52,11 +61,20 @@ function getEditRecordsFromUserIdGroupByWikiSite(userId,fromTime,toTime,callback
 		},
 		function(data){
 		//	console.log(data);
-			if(callback != null) callback(data);				
+			if(callback != null){	
+				 callback(data);
+			}else{
+				return data;
+			}		
 		}
 	).error(function(){
 		//console.log("error");
-		if(callback != null) callback({'status':'fail'});
+		var errInfo = {'status':'fail'};
+		if(callback != null) {
+			callback(errInfo);
+		}else{
+			return errInfo;
+		}
 	});	
 }
 
@@ -70,12 +88,85 @@ function getEditorCountGroupByWikiSite(fromTime,toTime,callback){
 		},
 		function(data){
 		//	console.log(data);
-			if(callback != null) callback(data);				
+			if(callback != null) {
+				callback(data);
+			}else{
+				return data;
+			}				
 		}
 	).error(function(){
 		//console.log("error");
-		if(callback != null) callback({'status':'fail'});
+		var result = {'status':'fail'};
+		if(callback != null) {
+			callback(result);
+		}else{
+			return result;
+		}
 	});	
+}
+
+function getEditRecordsOnWikiSiteFromUserIdGroupByDay(userId,wikiSite,fromTime,toTime,callback)
+{
+	var url = 'http://test.huiji.wiki:50007/getEditRecordsOnWikiSiteFromUserIdGroupByDay/';
+	jQuery.post(
+		url,
+		{
+			userId:userId,
+			wikiSite:wikiSite,
+			fromTime:fromTime,
+			toTime:toTime,
+		},
+		function(data){
+		//	console.log(data);
+			if(callback != null) {
+				callback(data);
+			}else{
+				return data;
+			}				
+		}
+	).error(function(){
+		//console.log("error");
+		var result = {'status':'fail'};
+		if(callback != null){
+			 callback();
+		}else{
+			return result;
+		}
+	});	
+
+} 
+
+
+
+function getViewRecordsOnWikiSiteFromUserIdGroupByDay(userId,wikiSite,fromTime,toTime,callback)
+{
+	var url = 'http://test.huiji.wiki:50007/getViewRecordsOnWikiSiteFromUserIdGroupByDay/';
+	jQuery.post(
+		url,
+		{
+			userId:userId,
+			wikiSite:wikiSite,
+			fromTime:fromTime,
+			toTime:toTime,
+		},
+		function(data){
+//			console.log(data);
+			if(callback != null) {
+				callback(data);
+			}else{
+				return data;
+			}				
+		}
+	).error(function(){
+		//console.log("error");
+		var result = {'status':'fail'};
+		if(callback != null){
+			 callback();
+		}else{
+			return result;
+		}
+	});	
+
 }
 
 
