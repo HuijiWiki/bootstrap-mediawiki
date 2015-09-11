@@ -23,15 +23,6 @@ Class BootstrapMediawikiHooks {
     }
     public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
         global $IP, $wgScriptPath, $wgLogo, $wgFavicon, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
-        if ( $request->getVal('avatar_data') != '' && $request->wasPosted() ){
-            new CropAvatar(
-              $request->getVal('avatar_src'),
-              $request->getVal('avatar_data'),
-              $_FILES['avatar_file'],
-              $output
-            );
-            return false;
-        }
         if ($user->isAllowed('editinterface')){
             $wgCdnScriptPath = $wgScriptPath;
             $wgLoadScript = "{$wgCdnScriptPath}/load.php";
@@ -40,8 +31,6 @@ Class BootstrapMediawikiHooks {
             $wgResourceBasePath = $wgCdnScriptPath;     
         } 
         if ($user->isAllowed('reupload')){
-            //$wgLogo = "$wgScriptPath/resources/assets/huiji_white.png";
-            $wgFavicon = "$wgScriptPath/resources/assets/favicon.ico";
             $wgUploadPath       = "/uploads";
             $wgUploadDirectory  = "$IP/uploads";            
         }

@@ -123,7 +123,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             menutoggle = localStorage.getItem("menu-toggle");
             $("#wrapper").attr("class",menutoggle);
         </script>
-        <?php include ('View/Modal.php'); ?>
+
         <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'www') && ($this->getSkin()->getTitle()->isMainPage()) ){ 
             include ('frontpage.php');
         } else {?>
@@ -308,6 +308,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             <?php
         }//end if
         ?>
+        <?php include ('View/Modal.php'); ?>
         <script>window._bd_share_config={
             "common": {
                 "bdSnsKey": {},
