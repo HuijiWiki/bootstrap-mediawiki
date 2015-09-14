@@ -839,3 +839,7 @@
 		window.FastClick = FastClick;
 	}
 }());
+$(document).ready(function(){
+	FastClick.attach(document.body);
+})
+

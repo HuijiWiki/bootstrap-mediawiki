@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    FastClick.attach(document.body);
+    
     $('#preftoc').addClass('nav nav-tabs');
 
     /* add missing icons caused by visual editor */
@@ -24,22 +24,6 @@ $(document).ready(function(){
 	var url = 'http://test.huiji.wiki:50007/insertViewRecord/';
 	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
 
-	
-/*	var userId = "-1";
-	var fromTime = "";
-	var toTime = "";
-	var wikiSite = "";
-	var callback = function(data){
-		console.log(data);
-	}
-	getPreviousEditRecords(wikiSite,7,callback);
-
-//	getViewRecordsOnWikiSiteFromUserIdGroupByDay(userId,wikiSite,fromTime,toTime,callback)
-//	getEditRecordsOnWikiSiteFromUserIdGroupByDay(userId,wikiSite,fromTime,toTime,callback)
-//	getEditorCountGroupByWikiSite(fromTime,toTime,callback)
-//	getViewRecordsFromUserIdGroupByWikiSite(userId,fromTime,toTime,callback);
-//	getEditRecordsFromUserIdGroupByWikiSite(userId,fromTime,toTime,callback);
-*/
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
 
@@ -569,5 +553,4 @@ $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    getViewRecordsFromUserIdGroupByWikiSite('-1','','');
 });
