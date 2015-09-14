@@ -99,6 +99,14 @@ $wgResourceModules['ext.wikieditor.huijiextra.bottom'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
 	'position' => 'bottom',
 );
+$wgResourceModules['skin.bootstrapmediawiki.huiji.getRecordsInterface.js'] = array(
+	'scripts' => array(
+		$skinDir . '/js/huiji.getRecordsInterface.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	// 'position' => 'top',	
+);
 if ( isset( $wgSiteJS ) ) {
 	$wgResourceModules['skins.bootstrapmediawiki']['scripts'][] = $skinDir . '/' . $wgSiteJS;
 }//end if

@@ -99,7 +99,6 @@ function getEditRecordsOnWikiSiteFromUserIdGroupByDay(userId,wikiSite,fromTime,t
 				callback(data);
 			}else{
 				return data;
-q
 			}				
 		}
 	).error(function(){
