@@ -492,6 +492,9 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 <li>
                                     <a href="http://www.huiji.wiki/wiki/创建新wiki">创建wiki</a>
                                 </li>
+                                <li clsss="col-xs-hidden col-sm-hidden">
+                                    <a href="http://www.huiji.wiki/wiki/%E5%B8%AE%E5%8A%A9:%E7%BC%96%E8%BE%91%E6%89%8B%E5%86%8C">帮助文档</a>
+                                </li>
                         </ul>';
                     if ( $wgUser->isLoggedIn() ) {
                         if ( count( $this->data['personal_urls'] ) > 0 ) {

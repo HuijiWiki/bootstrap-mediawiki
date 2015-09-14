@@ -51,6 +51,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/huiji.flow.js',
 		$skinDir . '/js/huiji.collectPageViewRecord.js',
 		$skinDir . '/js/huiji.ready.js',
+//		$skinDir . '/js/copy.js',
 	),
 	'styles' => array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),

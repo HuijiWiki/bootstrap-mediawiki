@@ -568,4 +568,6 @@ $(document).ready(function(){
     });
 
     $('[data-toggle="tooltip"]').tooltip();
+
+    getViewRecordsFromUserIdGroupByWikiSite('-1','','');
 });

@@ -89,7 +89,6 @@ a{
       float: right;
       font-size: 20px;
       line-height: 50px;
-      padding: 0;
       margin: 0;
       padding:0 10px;
       background-color: transparent;
@@ -98,10 +97,10 @@ a{
       color: extract(@header-color,2);
     }
     .navbar-brand {
-      padding:15px 10px;
+      padding:10px;
       img {
         margin-right: 0.5em;
-        max-height: 20px;
+        max-height: 30px;
       }
     }
     .wiki-toggle{
@@ -169,7 +168,7 @@ a{
     .navbar-search{
       font-size: 18px;
       position: absolute;
-      left: 345px;
+      left: 460px;
       top: 15px;
       color: #888;
     }
@@ -715,7 +714,7 @@ body{
         float: none;
         width: 300px;
         top: 30px;
-        &:last-child {
+        &:nth-child(2) {
           top: auto;
           bottom: 30px;
         }
