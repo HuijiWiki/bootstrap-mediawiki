@@ -32,7 +32,6 @@
                 全站工具
             </a>
             <ul>
-//                <li><a id="wiki-copy"><i class="icon-doc"></i>复制维基</a></li>
                 <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
                 <li><a href="<?php echo $url_prefix; ?>Special:Randompage" class="random-page"><i class="fa fa-random "></i> 随机页面</a></li>
                 <?php if ( $wgEnableUploads ) { ?>
