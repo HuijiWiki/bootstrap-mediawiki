@@ -31,8 +31,8 @@ Class BootstrapMediawikiHooks {
             $wgResourceBasePath = $wgCdnScriptPath;     
         } 
         if ($user->isAllowed('reupload')){
-            $wgUploadPath       = "/uploads";
-            $wgUploadDirectory  = "$IP/uploads";            
+            $wgUploadPath       = "{$wgScriptPath}/uploads";
+            #$wgUploadDirectory  = "{$IP}/uploads";            
         }
         return true;
     }
