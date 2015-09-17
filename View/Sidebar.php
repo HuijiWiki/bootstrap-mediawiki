@@ -32,15 +32,11 @@
                 全站工具
             </a>
             <ul>
-//                <li><a id="wiki-copy"><i class="icon-doc"></i>复制维基</a></li>
                 <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> 最近更改</a></li>
                 <li><a href="<?php echo $url_prefix; ?>Special:Randompage" class="random-page"><i class="fa fa-random "></i> 随机页面</a></li>
                 <?php if ( $wgEnableUploads ) { ?>
                     <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> 上传文件</a></li>
                 <?php } ?>
-                <li>
-                    <a href="http://home.huiji.wiki/wiki/Help:维基条目编写指南"><i class="fa fa-book"></i> 编写指南</a>
-                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bar-chart"></i> 数据统计 <b class="caret"></b>

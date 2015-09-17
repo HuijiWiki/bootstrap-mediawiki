@@ -465,6 +465,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://wire.huiji.wiki">火线</a></li>
                                             <li><a href="http://downtonabbey.huiji.wiki">唐顿庄园</a></li>
                                             <li><a href="http://mcu.huiji.wiki">漫威电影宇宙</a></li>
+                                            <li><a href="http://htgawm.huiji.wiki/">逍遥法外</a></li>
                                         </ul>
                                         <ul class="hub-selection anime-link">
                                             <li><a href="http://kaiji.huiji.wiki">逆境无赖</a></li>
