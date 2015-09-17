@@ -43,7 +43,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo $url_prefix; ?>Special:EditRank" class="bootstrap-subnav"><i class="fa fa-list-ol"></i> 本站编辑排行</a></li>
-                        <li><a href="<?php echo $url_prefix; ?>Special:TopUsers" class="bootstrap-subnav"><i class="fa fa-list-ol"></i> 等级积分排行</a></li>
+                        <li><a href="<?php echo $url_prefix; ?>Special:TopUsers" class="bootstrap-subnav"><i class="fa fa-th-list"></i> 等级积分排行</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Special:统计信息" class="bootstrap-subnav"><i class="fa fa-line-chart"></i> 统计信息</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Special:所有页面" class="bootstrap-subnav"><i class="fa fa-folder-open"></i> 所有页面</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> 特殊页面</a></li>
@@ -55,6 +55,7 @@
                         <i class="fa fa-briefcase"></i> 管理员选项 <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
+                        <li><a href="<?php echo $url_prefix; ?>特殊:AdminDashboard" class="bootstrap-subnav"><i class="fa fa-tachometer"></i> 管理面板</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Bootstrap:Subnav" class="bootstrap-subnav"><i class="fa fa-bars"></i> 修改站点导航</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.css" class="bootstrap-subnav"><i class="fa fa-css3"></i> 修改站点CSS</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.js" class="bootstrap-subnav"><i class="fa fa-code"></i> 修改站点js</a></li>
