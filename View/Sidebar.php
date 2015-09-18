@@ -20,17 +20,25 @@
         <li class="sidebar-behavior">
             <ul>
             <?php
+            if ( $this->data['isarticle'] ){
+                $this->data['content_actions']['ca-fork'] = array(
+                        "key" => "ca-fork",
+                        "href" => "#",
+                        "class" => "wiki-copy",
+                        "text" => "搬运",
+                    );
+            }
             $subnav_links = $this->listAdapter( $this->data['content_actions']);
             if( $NS !== NS_USER && $NS !== NS_USER_TALK){
                 echo $this->nav( $subnav_links );
             }
             ?>
-            <li class="dropdown wiki-copy">
+<!--             <li class="dropdown wiki-copy">
                 <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-doc"></i> 搬运</a>
                 <ul class="dropdown-menu">
                     <i class="fa fa-spinner fa-pulse"></i>
                 </ul>
-            </li>
+            </li> -->
             </ul>
         </li>
         <li class="sidebar-brand left-tool">
