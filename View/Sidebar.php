@@ -24,7 +24,7 @@
                 $this->data['content_actions']['ca-fork'] = array(
                         "key" => "ca-fork",
                         "href" => "#",
-                        "class" => "wiki-copy",
+                        "class" => "wiki-copy ",
                         "text" => "搬运",
                     );
             }
@@ -33,12 +33,6 @@
                 echo $this->nav( $subnav_links );
             }
             ?>
-<!--             <li class="dropdown wiki-copy">
-                <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-doc"></i> 搬运</a>
-                <ul class="dropdown-menu">
-                    <i class="fa fa-spinner fa-pulse"></i>
-                </ul>
-            </li> -->
             </ul>
         </li>
         <li class="sidebar-brand left-tool">

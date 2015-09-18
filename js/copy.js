@@ -8,13 +8,15 @@ function copyWiki(){
 copyWiki.prototype ={
     init: function(){
         this._addListener();
+        this._addModal();
     },
     _addListener: function(){
-        $('.wiki-copy a').on('click', $.proxy(this._getFollow, this));
-        $('.wiki-copy').on('click','.copy', $.proxy(this._wikiSelect, this));
+        $('#ca-ca-fork a').on('click', $.proxy(this._getFollow, this));
+        $('#ca-ca-fork').on('click','.copy', $.proxy(this._wikiSelect, this));
     },
     _getFollow: function(){
         var user_name = mw.config.get('wgUserName');
+        $('.copy-modal').modal();
         if(user_name == null){
             e.preventDefault();
             $('.wiki-copy .dropdown-menu').empty().append('请登录');
@@ -32,35 +34,33 @@ copyWiki.prototype ={
                     if (res.success == true) {
                         if (res.result.length == 0) {
                             content = '<a>没有关注维基</a>';
-                            this._addModal(content);
-                            $('.wiki-copy .dropdown-menu').empty().append(html);
+                            $('.copy-modal .modal-body').empty().append(content);
                         }
                         $.each(res.result,
                             function (i, item) {
                                 content += '<li><a class="copy" data-src="' + item.key + '">' + item.val + '</a></li>'
                             }
                         );
-                        this._addModal(content);
-                        $('.wiki-copy .dropdown-menu').empty().append(html);
+                        $('.copy-modal .modal-body').empty().append(html);
                     }
                 }
             );
         }
     },
-    _addModal: function(content){
-        var html = '<div class="modal fade bs-example-modal-sm in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'+
+    _addModal: function(){
+        var modal = '<div class="modal fade copy-modal in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'+
             '<div class="modal-dialog modal-sm">'+
             '<div class="modal-content">'+
                 '<div class="modal-header">'+
                     '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'+
                     '<h4 class="modal-title" id="mySmallModalLabel">搬运维基目标</h4>'+
                 '</div>'+
-                '<div class="modal-body">'+content+
+                '<div class="modal-body">'+
                 '</div>'+
             '</div><!-- /.modal-content -->'+
         '</div><!-- /.modal-dialog -->'+
         '</div>';
-        return html;
+        $("body").append(modal);
     },
     _wikiSelect: function(e){
         e.stopPropagation();
