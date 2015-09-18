@@ -31,19 +31,36 @@ copyWiki.prototype ={
                     var content = '';
                     if (res.success == true) {
                         if (res.result.length == 0) {
-                            content = '<li><a>没有关注维基</a></li>';
-                            $('.wiki-copy .dropdown-menu').empty().append(content);
+                            content = '<a>没有关注维基</a>';
+                            this._addModal(content);
+                            $('.wiki-copy .dropdown-menu').empty().append(html);
                         }
                         $.each(res.result,
                             function (i, item) {
                                 content += '<li><a class="copy" data-src="' + item.key + '">' + item.val + '</a></li>'
                             }
                         );
-                        $('.wiki-copy .dropdown-menu').empty().append(content);
+                        this._addModal(content);
+                        $('.wiki-copy .dropdown-menu').empty().append(html);
                     }
                 }
             );
         }
+    },
+    _addModal: function(content){
+        var html = '<div class="modal fade bs-example-modal-sm in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'+
+            '<div class="modal-dialog modal-sm">'+
+            '<div class="modal-content">'+
+                '<div class="modal-header">'+
+                    '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'+
+                    '<h4 class="modal-title" id="mySmallModalLabel">搬运维基目标</h4>'+
+                '</div>'+
+                '<div class="modal-body">'+content+
+                '</div>'+
+            '</div><!-- /.modal-content -->'+
+        '</div><!-- /.modal-dialog -->'+
+        '</div>';
+        return html;
     },
     _wikiSelect: function(e){
         e.stopPropagation();
@@ -109,12 +126,9 @@ copyWiki.prototype ={
         $.ajax({
             url:this.ajaxurl,
             data:{
-                action: 'edit',
-                title: mw.config.get('wgTitle'),
-                createonly: true,
-                text: '',
+                action: 'query',
+                titles: mw.config.get('wgTitle'),
                 format: 'json',
-                token: token,
                 origin:'http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki'
             },
             xhrFields: {
@@ -122,10 +136,10 @@ copyWiki.prototype ={
             },
             type: 'post',
             success: $.proxy(function(data){
-                if(data.edit!=undefined){
-                    this._importWiki();
-                }else if(data.error){
-                    if(data.error.code=="articleexists") {
+                for (var key in data.query.pages){
+                    if (key < 0){
+                        this._importWiki(token);
+                    }else{
                         var warn = '<div class="alert alert-danger copy-warn alert-dismissible fade in" role="alert">' +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>' +
                             '<h4>页面已存在!</h4>' +
@@ -133,8 +147,6 @@ copyWiki.prototype ={
                             '<p><button type="button" class="btn btn-danger" data-loading-text="搬运中" autocomplete="off">覆盖</button></p>' +
                             '</div>';
                         $('body').append(warn).on('click', '.copy-warn .btn', $.proxy(this._importWiki, this, token));
-                    }else{
-                        console.log(data.error);
                     }
                 }
             },this),
