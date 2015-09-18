@@ -21,8 +21,8 @@
             <ul>
             <?php
             if ( $this->data['isarticle'] ){
-                $this->data['content_actions']['ca-fork'] = array(
-                        "key" => "ca-fork",
+                $this->data['content_actions']['fork'] = array(
+                        "key" => "fork",
                         "href" => "#",
                         "class" => "wiki-copy ",
                         "text" => "搬运",
