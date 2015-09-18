@@ -132,39 +132,25 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             <?php include 'View/Sidebar.php';?>
 
             <div id="wiki-outer-body">
-                <?php
-                if(($subnav_links = $this->listAdapter( $this->data['content_actions']))) {
-                    ?>
-                    <div id="content-actions" class="subnav subnav-fixed">
-                        <div class="container-fluid">
-                            <?php
-                            $subnav_select = $this->nav_select( $subnav_links );
-                            if ( trim( $subnav_select ) ) {
-                                ?>
-                                <select id="subnav-select">
-                                    <?php echo $subnav_select; ?>
-                                </select>
-                            <?php
-                            }//end if
-                            ?>
-                            <ul class="nav nav-pills">
-                                <li>
-                                    <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
-                                </li>
-                                <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
-                                <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
-                                <li class="site-count"><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php
-                                    $result = self::format_nice_number(SiteStats::articles());
-                                    $result2 = self::format_nice_number(SiteStats::edits());
-                                    echo $result;
-                                ?></a>&nbsp页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>&nbsp编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo self::format_nice_number(UserSiteFollow::getSiteCount($wgHuijiPrefix)) ?></a>&nbsp关注</p></li>
-                                <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
-                            </ul>
-                        </div>
+
+                <div id="content-actions" class="subnav subnav-fixed">
+                    <div class="container-fluid">
+                        <ul class="nav nav-pills">
+                            <li>
+                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
+                            </li>
+                            <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
+                            <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
+                            <li class="site-count"><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php
+                                $result = self::format_nice_number(SiteStats::articles());
+                                $result2 = self::format_nice_number(SiteStats::edits());
+                                echo $result;
+                            ?></a>&nbsp页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>&nbsp编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo self::format_nice_number(UserSiteFollow::getSiteCount($wgHuijiPrefix)) ?></a>&nbsp关注</p></li>
+                            <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
+                        </ul>
                     </div>
-                <?php
-                }//end if
-                ?>
+                </div>
+
                 <div id="wiki-body" class="container">
                     <div id="content">
                         <?php
