@@ -145,7 +145,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 $result = self::format_nice_number(SiteStats::articles());
                                 $result2 = self::format_nice_number(SiteStats::edits());
                                 echo $result;
-                            ?></a>&nbsp页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>&nbsp编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo self::format_nice_number(UserSiteFollow::getSiteCount($wgHuijiPrefix)) ?></a>&nbsp关注</p></li>
+                            ?></a>页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo self::format_nice_number(UserSiteFollow::getSiteCount($wgHuijiPrefix)) ?></a>关注</p></li>
                             <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
                         </ul>
                     </div>
