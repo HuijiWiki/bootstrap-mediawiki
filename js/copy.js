@@ -11,8 +11,8 @@ copyWiki.prototype ={
         this._addModal();
     },
     _addListener: function(){
-        $('#ca-ca-fork a').on('click', $.proxy(this._getFollow, this));
-        $('#ca-ca-fork').on('click','.copy', $.proxy(this._wikiSelect, this));
+        $('#ca-fork a').on('click', $.proxy(this._getFollow, this));
+        $('body').on('click','.copy-modal .copy', $.proxy(this._wikiSelect, this));
     },
     _getFollow: function(){
         var user_name = mw.config.get('wgUserName');
@@ -38,10 +38,10 @@ copyWiki.prototype ={
                         }
                         $.each(res.result,
                             function (i, item) {
-                                content += '<li><a class="copy" data-src="' + item.key + '">' + item.val + '</a></li>'
+                                content += '<p><a class="copy" data-src="' + item.key + '">' + item.val + '</a></p>'
                             }
                         );
-                        $('.copy-modal .modal-body').empty().append(html);
+                        $('.copy-modal .modal-body').empty().append(content);
                     }
                 }
             );
@@ -56,6 +56,7 @@ copyWiki.prototype ={
                     '<h4 class="modal-title" id="mySmallModalLabel">搬运维基目标</h4>'+
                 '</div>'+
                 '<div class="modal-body">'+
+                '<i class="fa fa-spinner fa-pulse"></i>'+
                 '</div>'+
             '</div><!-- /.modal-content -->'+
         '</div><!-- /.modal-dialog -->'+
@@ -64,6 +65,7 @@ copyWiki.prototype ={
     },
     _wikiSelect: function(e){
         e.stopPropagation();
+        console.log('aaa');
         var ajaxurl = 'http://'+$(e.target).data('src')+'.huiji.wiki/api.php';
         $(e.target).append('<i class="fa fa-spinner fa-pulse"></i>');
         this.ajaxurl = ajaxurl;
@@ -86,7 +88,7 @@ copyWiki.prototype ={
             context: this,
             success: function( data ){
                 var token = data.query.tokens.csrftoken;
-                this._createPage(token);
+                this._queryPage(token);
             },
             error: function( error ){
                 console.log( error );
@@ -112,7 +114,7 @@ copyWiki.prototype ={
             type: 'POST',
             success: function( data ) {
                 console.log(data);
-                _this._importData(data);
+                this._importData(data);
             },
             error: function( xhr ) {
                 alert( 'Error: Request failed.' );
@@ -122,7 +124,7 @@ copyWiki.prototype ={
     _copyContent: function(){
 
     },
-    _createPage: function(token){
+    _queryPage: function(token){
         $.ajax({
             url:this.ajaxurl,
             data:{
@@ -147,6 +149,10 @@ copyWiki.prototype ={
                             '<p><button type="button" class="btn btn-danger" data-loading-text="搬运中" autocomplete="off">覆盖</button></p>' +
                             '</div>';
                         $('body').append(warn).on('click', '.copy-warn .btn', $.proxy(this._importWiki, this, token));
+                        $('body').append(warn).on('click', '.copy-warn .close',function(){
+                            $('.copy-modal').modal('hide');
+                            $('.copy-warn').remove();
+                        });
                     }
                 }
             },this),
@@ -182,6 +188,7 @@ copyWiki.prototype ={
                     $('.copy-warn .close').trigger('click');
                     alertime();
                     alertp.text('搬运成功');
+                    $('.copy-modal').modal('hide');
                     this._addSource(token);
                 }else if(error.code == 'cantimport'){
                     alertime();
