@@ -1,3 +1,11 @@
+var alreturn = $('.alert-return');
+var alertp = $('.alert-return p');
+function alertime(){
+    alreturn.show();
+    setTimeout(function(){
+        alreturn.hide()
+    },1000);
+}
 $(document).ready(function(){
     
     $('#preftoc').addClass('nav nav-tabs');
@@ -194,8 +202,6 @@ $(document).ready(function(){
     });
 
     //alert-return
-    var alreturn = $('.alert-return');
-    var alertp = $('.alert-return p');
     var login ='';
     var pass = '';
         //login
@@ -268,12 +274,6 @@ $(document).ready(function(){
         });
         wiki_auth(login,pass,'/');
     })
-    function alertime(){
-        alreturn.show();
-        setTimeout(function(){
-            alreturn.hide()
-        },1000);
-    }
     $('.login-in').click(function(){
        $(document).keyup(function(event){
            if(event.keyCode == 13){

@@ -23,6 +23,16 @@ textarea {
 .category-links {
 	clear: both;
 }
+.copy-warn{
+    position: fixed;
+    top: 300px;
+    left: 50%;
+    margin-left: -215px;
+}
+.copy-warn .btn{
+    float: right;
+    margin-top: 10px;
+}
 
 
 h2 .mw-headline { font-size: 32px; }

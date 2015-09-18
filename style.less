@@ -381,11 +381,18 @@ body{
         display: block;
         clear: both;
       }
-      li{
+      &>ul>li{
         width: 50%;
         float: left;
         a{
           white-space:nowrap;
+        }
+      }
+      .copy i{
+        float: right;
+        margin-right: 10px;
+        ::before{
+          position: static!important;
         }
       }
     }
