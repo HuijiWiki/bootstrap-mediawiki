@@ -234,9 +234,9 @@ copyWiki.prototype ={
             xhrFields: {
                 withCredentials: true
             },
-            success: function(data){
+            success: $.proxy(function(data){
                 window.location = this.redirectUrl;
-            }
+            },this)
         });
     }
 };
