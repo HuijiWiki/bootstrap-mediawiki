@@ -23,7 +23,7 @@
             if ( $this->data['isarticle'] ){
                 $this->data['content_actions']['fork'] = array(
                         "key" => "fork",
-                        "href" => "",
+                        "href" => "#",
                         "class" => "wiki-copy ",
                         "text" => "搬运",
                     );
@@ -31,7 +31,7 @@
             if ( $this->data['isarticle'] && $wgUser->isAllowed('quickpurge') ){
                 $this->data['content_actions']['purge'] = array(
                         "key" => "purge",
-                        "href" => "",
+                        "href" => "#action=purge",
                         "class" => "purge ",
                         "text" => "清除缓存",
                     );
@@ -39,7 +39,7 @@
             if ( $wgUser->isAllowed('quickdebug') ){
                 $this->data['content_actions']['debug'] = array(
                         "key" => "debug",
-                        "href" => "",
+                        "href" => "#?debug=1",
                         "class" => "debug ",
                         "text" => "调试",
                     );

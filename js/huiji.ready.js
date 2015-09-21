@@ -219,9 +219,11 @@ $(document).ready(function(){
 
     // add functions for sidebar buttons
     $('#ca-purge').click(function(event){
+        event.preventDefault();
         location.href = updateQueryStringParameter(location.href, 'action', 'purge');
     });
     $('#ca-debug').click(function(event){
+        event.preventDefault();
         location.href = updateQueryStringParameter(location.href, 'debug', '1');
     });
 
