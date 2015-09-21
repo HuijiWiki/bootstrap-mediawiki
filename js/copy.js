@@ -60,7 +60,7 @@ copyWiki.prototype ={
                 '<div class="modal-header">'+
                     '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'+
                     '<h4 class="modal-title" id="mySmallModalLabel">把这个页面搬运到哪？</h4>'+
-                    '<p>根据页面历史长短和嵌套的模板数量，搬运会需要与之相应的等候时间</p>'+
+                    '<p>根据页面历史长短和嵌套的模板数量，搬运会需要相应的等候时间。</p>'+
                 '</div>'+
                 '<div class="modal-body">'+
                 '<i class="fa fa-spinner fa-pulse"></i>'+
@@ -235,7 +235,7 @@ copyWiki.prototype ={
                 withCredentials: true
             },
             success: function(data){
-                //window.location = this.redirectUrl;
+                window.location = this.redirectUrl;
             }
         });
     }
