@@ -176,7 +176,7 @@ copyWiki.prototype ={
     _importWiki: function(token){
         var $btn = $('.copy-warn .btn').button('loading');
         $.ajax({
-            url: this.ajaxurl+'?origin = http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
+            url: this.ajaxurl+'?origin=http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
             data: {
                 action: 'import',
                 interwikisource: mw.config.get('wgHuijiPrefix'),
@@ -221,7 +221,7 @@ copyWiki.prototype ={
     },
     _addSource: function(token){
         $.ajax({
-            url: this.ajaxurl+'?origin = http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
+            url: this.ajaxurl+'?origin=http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
             data:{
                 action: "edit",
                 title: mw.config.get('wgTitle'),
