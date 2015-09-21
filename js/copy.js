@@ -109,12 +109,11 @@ copyWiki.prototype ={
         $.ajax({
             url:this.ajaxurl,
             data:{
-                action: 'edit',
-                title: mw.config.get('wgTitle'),
-                createonly: true,
-                text: '',
+                action: 'query',
+                titles: mw.config.get('wgTitle'),
+                
                 format: 'json',
-                token: token,
+                
                 origin:'http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki'
             },
             xhrFields: {
@@ -122,10 +121,12 @@ copyWiki.prototype ={
             },
             type: 'post',
             success: $.proxy(function(data){
-                if(data.edit!=undefined){
-                    this._importWiki();
-                }else if(data.error){
-                    if(data.error.code=="articleexists") {
+                console.log(data.query.pages);
+                for (var key in data.query.pages){
+                    if (key < 0){
+                        this._importWiki(token);
+                    }else{
+                        console.log(data);
                         var warn = '<div class="alert alert-danger copy-warn alert-dismissible fade in" role="alert">' +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>' +
                             '<h4>页面已存在!</h4>' +
@@ -133,8 +134,6 @@ copyWiki.prototype ={
                             '<p><button type="button" class="btn btn-danger" data-loading-text="搬运中" autocomplete="off">覆盖</button></p>' +
                             '</div>';
                         $('body').append(warn).on('click', '.copy-warn .btn', $.proxy(this._importWiki, this, token));
-                    }else{
-                        console.log(data.error);
                     }
                 }
             },this),
