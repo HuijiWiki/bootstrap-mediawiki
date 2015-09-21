@@ -183,7 +183,7 @@ copyWiki.prototype ={
                 interwikipage: mw.config.get('wgTitle'),
                 token: token,
                 format:'json',
-                fullhistory: true,
+                // fullhistory: true,
                 templates: true,
                 createonly: true
             },
