@@ -21,6 +21,16 @@ Class BootstrapMediawikiHooks {
 
         
     }
+
+    // public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) { 
+    //     global $wgUser;
+    //     if ($wgUser->isAllowed('reupload')){
+    //         // $wgUploadPath       = "{$wgScriptPath}/uploads";
+    //         // #$wgUploadDirectory  = "{$IP}/uploads";            
+    //         $out = str_replace('http://cdn.huijiwiki.com/', 'http://cdn.huiji.wiki/', $out);
+    //     }
+
+    // }
     public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
         global $IP, $wgScriptPath, $wgLogo, $wgFavicon, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
         if ($user->isAllowed('editinterface')){
@@ -116,7 +126,10 @@ Class BootstrapMediawikiHooks {
                     // .'<span class="mw-editsection-bracket">]</span>'
                     ;
             $text = preg_replace( $pattern, $replacement, $text ); 
-        }             
+        }     
+        if ($wgUser->isAllowed('reupload')){ 
+            $text = str_replace('http://cdn.huijiwiki.com/', 'http://cdn.huiji.wiki/', $text);
+        }        
         return true;
     }
 }
