@@ -28,7 +28,7 @@
                         "text" => "搬运",
                     );
             }
-            if ( $this->data['isarticle'] && $this->getUser()->isAllowed('quickpurge') ){
+            if ( $this->data['isarticle'] && $wgUser->isAllowed('quickpurge') ){
                 $this->data['content_actions']['purge'] = array(
                         "key" => "purge",
                         "href" => "#",

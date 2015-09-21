@@ -281,7 +281,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '讨论': $icon = 'comment'; break;
                 case '编辑': $icon = 'pencil'; break;
                 case '编辑源代码': $icon = 'code';
-                    unset($link['id']);
+                    // unset($link['id']);
                     break;
                 case '历史': $icon = 'clock-o'; break;
                 case '删除': $icon = 'remove'; break;
