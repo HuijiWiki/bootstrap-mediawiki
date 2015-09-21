@@ -123,3 +123,5 @@ $wgHooks['EditPage::showEditForm:initial'][] = 'BootstrapMediawikiHooks::addEdit
 // new permission
 $wgAvailableRights[] = 'quickpurge';
 $wgGroupPermissions['sysop']['quickpurge'] = true;
+$wgAvailableRights[] = 'quickdebug';
+$wgGroupPermissions['sysop']['quickpurge'] = true;

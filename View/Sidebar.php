@@ -36,7 +36,7 @@
                         "text" => "清除缓存",
                     );
             }
-            if ( $this->data['isarticle'] && $wgUser->isAllowed('quickdebug') ){
+            if ( $wgUser->isAllowed('quickdebug') ){
                 $this->data['content_actions']['debug'] = array(
                         "key" => "debug",
                         "href" => "",
