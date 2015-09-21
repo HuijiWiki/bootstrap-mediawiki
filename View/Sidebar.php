@@ -23,7 +23,7 @@
             if ( $this->data['isarticle'] ){
                 $this->data['content_actions']['fork'] = array(
                         "key" => "fork",
-                        "href" => "#",
+                        "href" => "",
                         "class" => "wiki-copy ",
                         "text" => "搬运",
                     );
@@ -31,9 +31,17 @@
             if ( $this->data['isarticle'] && $wgUser->isAllowed('quickpurge') ){
                 $this->data['content_actions']['purge'] = array(
                         "key" => "purge",
-                        "href" => "#",
+                        "href" => "",
                         "class" => "purge ",
                         "text" => "清除缓存",
+                    );
+            }
+            if ( $this->data['isarticle'] && $wgUser->isAllowed('quickdebug') ){
+                $this->data['content_actions']['debug'] = array(
+                        "key" => "debug",
+                        "href" => "",
+                        "class" => "debug ",
+                        "text" => "调试",
                     );
             }
             $subnav_links = $this->listAdapter( $this->data['content_actions']);
