@@ -216,6 +216,11 @@ $(document).ready(function(){
             return uri + separator + key + "=" + value;
         }
     }
+
+    $('#ca-purge').click(function(event){
+        location.href = updateQueryStringParameter(location.href, 'action', 'purge');
+    });
+
     function wiki_auth(login, pass, ref){
         $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',function(data){
             if(data.login.result == 'NeedToken'){

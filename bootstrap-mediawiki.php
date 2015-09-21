@@ -120,3 +120,6 @@ $wgHooks['MediaWikiPerformAction'][] = 'BootstrapMediawikiHooks::onMediaWikiPerf
 $wgHooks['GetDefaultSortkey'][] = 'BootstrapMediawikiHooks::onGetDefaultSortkey';
 $wgHooks['EditPage::showEditForm:initial'][] = 'BootstrapMediawikiHooks::addEditModule';
 
+// new permission
+$wgAvailableRights[] = 'quickpurge';
+$wgGroupPermissions['sysop']['quickpurge'] = true;

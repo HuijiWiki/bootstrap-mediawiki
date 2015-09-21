@@ -28,6 +28,14 @@
                         "text" => "搬运",
                     );
             }
+            if ( $this->data['isarticle'] && $this->getUser()->isAllowed('quickpurge') ){
+                $this->data['content_actions']['purge'] = array(
+                        "key" => "purge",
+                        "href" => "#",
+                        "class" => "purge ",
+                        "text" => "清除缓存",
+                    );
+            }
             $subnav_links = $this->listAdapter( $this->data['content_actions']);
             if( $NS !== NS_USER && $NS !== NS_USER_TALK){
                 echo $this->nav( $subnav_links );
