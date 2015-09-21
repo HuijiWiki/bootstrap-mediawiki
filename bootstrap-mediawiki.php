@@ -116,6 +116,8 @@ if ( isset( $wgSiteCSS ) ) {
 // update page's cache
 $wgHooks['NewRevisionFromEditComplete'][] = 'BootstrapMediawikiHooks::onNewRevisionFromEditComplete';
 $wgHooks['OutputPageBeforeHTML'][]  = 'BootstrapMediawikiHooks::wfEditSectionLinkTransform'; 
+$wgHooks['OutputPageBeforeDisplay'][]  = 'BootstrapMediawikiHooks::onBeforePageDisplay'; 
 $wgHooks['MediaWikiPerformAction'][] = 'BootstrapMediawikiHooks::onMediaWikiPerformAction';
 $wgHooks['GetDefaultSortkey'][] = 'BootstrapMediawikiHooks::onGetDefaultSortkey';
 $wgHooks['EditPage::showEditForm:initial'][] = 'BootstrapMediawikiHooks::addEditModule';
+
