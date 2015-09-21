@@ -24,11 +24,11 @@ Class BootstrapMediawikiHooks {
 
     public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) { 
         global $wgUser;
-        if ($wgUser->isAllowed('reupload')){
-            // $wgUploadPath       = "{$wgScriptPath}/uploads";
-            // #$wgUploadDirectory  = "{$IP}/uploads";            
-            $out = str_replace('http://cdn.huijiwiki.com/', 'http://cdn.huiji.wiki/', $out);
-        }
+        // if ($wgUser->isAllowed('reupload')){
+        //     // $wgUploadPath       = "{$wgScriptPath}/uploads";
+        //     // #$wgUploadDirectory  = "{$IP}/uploads";            
+        //     $out = str_replace('http://cdn.huijiwiki.com/', 'http://cdn.huiji.wiki/', $out);
+        // }
         return true;
 
     }
@@ -128,9 +128,9 @@ Class BootstrapMediawikiHooks {
                     ;
             $text = preg_replace( $pattern, $replacement, $text ); 
         }     
-        // if ($wgUser->isAllowed('reupload')){ 
-        //     $text = str_replace('http://cdn.huijiwiki.com/', 'http://cdn.huiji.wiki/', $text);
-        // }        
+        if ($wgUser->isAllowed('reupload')){ 
+            $text = str_replace('http://cdn.huijiwiki.com/', 'http://cdn.huiji.wiki/', $text);
+        }        
         return true;
     }
 }
