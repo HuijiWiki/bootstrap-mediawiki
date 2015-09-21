@@ -174,7 +174,7 @@ copyWiki.prototype ={
     _importWiki: function(token){
         var $btn = $('.copy-warn .btn').button('loading');
         $.ajax({
-            url: this.ajaxurl+'?orgin = http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
+            url: this.ajaxurl+'?origin = http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
             data: {
                 action: 'import',
                 interwikisource: mw.config.get('wgHuijiPrefix'),
@@ -200,6 +200,7 @@ copyWiki.prototype ={
                     alertp.text('搬运成功');
                     $('.copy-modal').modal('hide');
                     this._addSource(token);
+
                 }else if(error.code == 'cantimport'){
                     alertime();
                     alertp.text('您在目标维基没有管理员权限');
@@ -218,17 +219,21 @@ copyWiki.prototype ={
     },
     _addSource: function(token){
         $.ajax({
-            url: this.ajaxurl+'?orgin = http://'+mw.config.get('wgTitle')+'.huiji.wiki',
+            url: this.ajaxurl+'?origin = http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
             data:{
                 action: "edit",
                 title: mw.config.get('wgTitle'),
                 summary: "注明出处",
+                format:"json",
                 appendtext: "{{raw:templatemanager:CreditFork|time="+getFormattedDate()+"|source_page=[["+mw.config.get('wgHuijiPrefix')+":"+mw.config.get('wgTitle')+"]]"+"|carrier=[[User:"+mw.config.get('wgUserName')+"]]}}",
                 token: token
             },
             type: 'post',
             xhrFields: {
                 withCredentials: true
+            },
+            success: function(data){
+                window.location=""
             }
         });
     }
