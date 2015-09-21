@@ -73,8 +73,10 @@ copyWiki.prototype ={
     _wikiSelect: function(e){
         e.stopPropagation();
         var ajaxurl = 'http://'+$(e.target).data('src')+'.huiji.wiki/api.php';
+        var redirectUrl = 'http://'+$(e.target).data('src')+'.huiji.wiki/wiki/'+mw.config.get('wgPageName');
         $(e.target).append('<i class="fa fa-spinner fa-pulse"></i>');
         this.ajaxurl = ajaxurl;
+        this.redirectUrl = redirectUrl;
         this._getToken();
     },
     _getToken: function(){
@@ -233,7 +235,7 @@ copyWiki.prototype ={
                 withCredentials: true
             },
             success: function(data){
-                window.location=""
+                //window.location = this.redirectUrl;
             }
         });
     }
