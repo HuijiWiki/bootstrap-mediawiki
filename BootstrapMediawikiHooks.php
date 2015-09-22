@@ -36,6 +36,9 @@ Class BootstrapMediawikiHooks {
         // }
         return true;
     }
+    public static function onGalleryGetModes( array &$modeArray ) {
+        $modeArray['traditional'] = 'PackedImageGallery';
+    }
 
     public static function onGetDefaultSortkey( $title, &$sortkey ) { 
         $sortkey = strtoupper(CUtf8_PY::encode($title->getText(),'all'));
