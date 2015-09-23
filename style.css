@@ -1075,15 +1075,6 @@ sup.reference {
     border-radius: 50%;
     border: 1px solid #fff;
 }
-.top-fan-row{
-    padding: 5px;
-}
-.top-fan i{
-    float: right;
-    margin-top: 5px;
-    margin-right: 60px;
-    font-weight: 100;
-}
 .relationship-wrapper{
     margin: 20px auto;
     width: 600px;
