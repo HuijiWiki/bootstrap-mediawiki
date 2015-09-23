@@ -1074,6 +1074,7 @@ sup.reference {
 .headimg{
     border-radius: 50%;
     border: 1px solid #fff;
+    max-width: 100px;
 }
 .relationship-wrapper{
     margin: 20px auto;
