@@ -531,7 +531,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki>'.$site_name[$i].'</a></li>';
                             }
                             if($count > 3){
-                                $output .='<li><a href="/index.php?title=Special:FollowSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">我关注的全部维基</a></li>';
+                                $output .='<li><a href="/index.php?title=Special:ShowFollowedSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">我关注的全部维基</a></li>';
                             }
                         }else{
                             $output.='<li><a>暂无</a></li>';
