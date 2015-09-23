@@ -237,7 +237,7 @@ $(document).ready(function(){
                             alertp.text('登录成功');
                             //document.location.reload();
                             if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
-                                location.href = updateQueryStringParameter(document.referrer, 'loggingIn', '1');
+                                location.href = updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
                             }else {                                
                                 location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
                             }
