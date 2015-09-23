@@ -268,6 +268,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     </div>
                 </div><!-- container -->
             </div>
+            <?php include ('View/Modal.php'); ?>
             <div class="bottom">
                 <div class="container">
                     <?php self::includePage('Bootstrap:Footer'); ?>
@@ -300,7 +301,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             <?php
         }//end if
         ?>
-        <?php include ('View/Modal.php'); ?>
         <script>window._bd_share_config={
             "common": {
                 "bdSnsKey": {},
