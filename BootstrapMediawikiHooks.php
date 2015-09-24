@@ -24,8 +24,8 @@ Class BootstrapMediawikiHooks {
     }
     public static function getHeading($input, $args, $parser ) {
         $bg = isset( $args['bg'] ) ? $args['bg'] : 'http://cdn.huiji.wiki/shareduploads/uploads/d/d7/Huijibanner_default.png';
-        $title = isset( $args['title'] ) ? $args['title'] : $parser->recursiveTagParse('{{PAGENAME}}');
-        $subtitle = isset( $args['subtitle'] ) ? $args['subtitle'] : $parser->recursiveTagParse('{{SITENAME}}');
+        $title = isset( $args['title'] ) ? $args['title'] : $parser->recursiveTagParseFully('{{PAGENAME}}');
+        $subtitle = isset( $args['subtitle'] ) ? $args['subtitle'] : $parser->recursiveTagParseFully('{{SITENAME}}');
         $fontcolor = isset( $args['fontcolor'] ) ? $args['fontcolor'] : '#FFF';
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $output =  $templateParser->processTemplate(
@@ -54,8 +54,8 @@ Class BootstrapMediawikiHooks {
             $temp = explode('|', $line);
             $group['active'] = ($i == 0?'active':'');
             $group['id'] = hash('sha1', $temp[0].$i, false);
-            $group['title'] = $parser->recursiveTagParse($temp[0]);
-            $group['content'] = isset($temp[1])?$parser->recursiveTagParse($temp[1]):'';
+            $group['title'] = $parser->recursiveTagParseFully($temp[0]);
+            $group['content'] = isset($temp[1])?$parser->recursiveTagParseFully($temp[1]):'';
             $i++;
             $li[] = $group;
         }
@@ -89,7 +89,7 @@ Class BootstrapMediawikiHooks {
             }
             $group = array();
             $temp = explode('|', $line);
-            $group['a'] = $parser->recursiveTagParse('[['.$line.']]');
+            $group['a'] = $parser->recursiveTagParseFully('[['.$line.']]');
             $i++;
             $li[] = $group;
         }
@@ -124,8 +124,8 @@ Class BootstrapMediawikiHooks {
             $group = array();
             // $options = ParserOptions::newFromUser($wgUser);
             $temp = explode('|', $line);
-            $group['title'] = $parser->recursiveTagParse($temp[0]);
-            $group['body'] = isset($temp[1])?$parser->recursiveTagParse($temp[1]):'';
+            $group['title'] = $parser->recursiveTagParseFully($temp[0]);
+            $group['body'] = isset($temp[1])?$parser->recursiveTagParseFully($temp[1]):'';
             $group['hid'] = hash('sha1', $group['title'].$i, false);
             $group['id'] = hash('sha1', $group['body'].$i, false);
             $i++;
@@ -150,7 +150,7 @@ Class BootstrapMediawikiHooks {
         $title = isset( $args['title'] ) ? $args['title'] : '气泡标题';
         $content = isset( $args['content'] ) ? $args['content'] : '气泡内容';
         $trigger = isset( $args['trigger'] ) ? $args['trigger'] : 'focus';
-        $text = $parser->recursiveTagParse($input);
+        $text = $parser->recursiveTagParseFully($input);
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $output =  $templateParser->processTemplate(
             'popover',
@@ -167,7 +167,7 @@ Class BootstrapMediawikiHooks {
         // $parser->disableCache();
         $placement = isset( $args['placement'] ) ? $args['placement'] : 'top';
         $title = isset( $args['content'] ) ? $args['content'] : '提示消息';
-        $text = $parser->recursiveTagParse($input);
+        $text = $parser->recursiveTagParseFully($input);
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $output =  $templateParser->processTemplate(
             'tooltip',
@@ -182,7 +182,7 @@ Class BootstrapMediawikiHooks {
     public static function getAlert( $input, $args, $parser ){
         // $parser->disableCache();
         $class = isset( $args['class'] ) ? $args['class'] : 'danger';
-        $text = $parser->recursiveTagParse($input);
+        $text = $parser->recursiveTagParseFully($input);
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $output =  $templateParser->processTemplate(
             'alert',
@@ -196,7 +196,7 @@ Class BootstrapMediawikiHooks {
     public static function getCallout( $input, $args, $parser ){
         // $parser->disableCache();
         $class = isset( $args['class'] ) ? $args['class'] : 'default';
-        $text = $parser->recursiveTagParse($input);
+        $text = $parser->recursiveTagParseFully($input);
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $output =  $templateParser->processTemplate(
             'callout',
@@ -212,7 +212,7 @@ Class BootstrapMediawikiHooks {
         $class = isset( $args['class'] ) ? $args['class'] : 'default';
         $title = isset( $args['title'] ) ? $args['title'] : '剧透警告';
         $id = isset( $args['id'] ) ? $args['id']: hash('sha1', $title, false);
-        $text = $parser->recursiveTagParse($input);
+        $text = $parser->recursiveTagParseFully($input);
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $output =  $templateParser->processTemplate(
             'collapse',
@@ -244,16 +244,16 @@ Class BootstrapMediawikiHooks {
             $temp = explode('|', $line);
             // $options = ParserOptions::newFromUser($wgUser);
             $group['id'] = $id;
-            $group['image'] = $parser->recursiveTagParse('[['.$temp[0].']]');
-            $group['caption'] = isset($temp[1])?$parser->recursiveTagParse($temp[1]):'';
+            $group['image'] = $parser->recursiveTagParseFully('[['.$temp[0].']]');
+            $group['caption'] = isset($temp[1])?$parser->recursiveTagParseFully($temp[1]):'';
             $group['i'] = $i;
             if ($i == 0) {
                 $group['active'] = 'active';
             } else {
                 $group['active'] = '';
             }
-            // $group['caption'] = $parser->recursiveTagParse($temp[0]);
-            // $group['body'] = $parser->recursiveTagParse($temp[1]);
+            // $group['caption'] = $parser->recursiveTagParseFully($temp[0]);
+            // $group['body'] = $parser->recursiveTagParseFully($temp[1]);
             // $group['hid'] = hash('sha1', $group['title'].$i, false);
             // $group['id'] = hash('sha1', $group['body'].$i, false);
             $i++;
