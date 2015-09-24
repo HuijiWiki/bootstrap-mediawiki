@@ -113,7 +113,7 @@ $(document).ready(function(){
             self.popover(options);
     });
 
-    $('.ve-available:not(".ve-active") #wiki-outer-body').on('click','a[href^=#][role!=tab]',function(e){
+    $('.ve-available:not(".ve-active") #wiki-outer-body').on('click','a[href^=#][role!=tab][role!=button]',function(e){
         var self = $(this);
 	   e.preventDefault();
         // Let popover.js handle cite note
