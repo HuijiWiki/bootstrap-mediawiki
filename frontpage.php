@@ -404,7 +404,6 @@
                 </ul>
             </div>
         </div>
-        <?php include ('View/Modal.php'); ?>
         <div class="bottom">
             <div class="container">
                 <?php self::includePage('Bootstrap:Footer'); ?>
@@ -415,3 +414,4 @@
         </div><!-- bottom -->
     </div>
 </div>
+<?php include ('View/Modal.php'); ?>
