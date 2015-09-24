@@ -77,7 +77,7 @@ Class BootstrapMediawikiHooks {
         // global $wgUser;
         // $parser->disableCache();
         $class = isset( $args['class'] ) ? $args['class'] : 'default dropdown-toggle';
-        $button = isset( $args['button'] ) ? $args['button'] : '下拉菜单';
+        $button = isset( $args['title'] ) ? $args['title'] : '下拉菜单';
         $id = isset( $args['id'] ) ? $args['id']: hash('sha1', $button, false);
         $arr = explode(PHP_EOL, $input);
         $li = array();
