@@ -1317,3 +1317,6 @@ body.mediawiki{
     padding-left: 15px;
     padding-right: 15px;
 }
+ol.carousel-indicators{
+	margin:0;
+}
