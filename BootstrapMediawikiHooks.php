@@ -6,6 +6,7 @@ Class BootstrapMediawikiHooks {
      * @param $parser Parser
      * @return Boolean
      */
+    public static $nextId = 0;
     public static function registerParserHook( &$parser ) {
         $parser->setHook( 'tab', 'BootstrapMediawikiHooks::getNavs' );
         $parser->setHook( 'dropdown', 'BootstrapMediawikiHooks::getDropdown');
@@ -78,7 +79,7 @@ Class BootstrapMediawikiHooks {
         // $parser->disableCache();
         $class = isset( $args['class'] ) ? $args['class'] : 'default dropdown-toggle';
         $button = isset( $args['title'] ) ? $args['title'] : '下拉菜单';
-        $id = isset( $args['id'] ) ? $args['id']: hash('sha1', $button, false);
+        $id = isset( $args['id'] ) ? $args['id']: 'dropdown'.(self::$nextId++);
         $arr = explode(PHP_EOL, $input);
         $li = array();
         $i = 0;
@@ -211,7 +212,7 @@ Class BootstrapMediawikiHooks {
         // $parser->disableCache();
         $class = isset( $args['class'] ) ? $args['class'] : 'default';
         $title = isset( $args['title'] ) ? $args['title'] : '剧透警告';
-        $id = isset( $args['id'] ) ? $args['id']: hash('sha1', $title, false);
+        $id = isset( $args['id'] ) ? $args['id']: 'collapse'.(self::$nextId++);
         $text = $parser->recursiveTagParse($input);
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $output =  $templateParser->processTemplate(
@@ -228,7 +229,7 @@ Class BootstrapMediawikiHooks {
     public static function getCarousel($input, $args, $parser){
         // global $wgUser;
         // $parser->disableCache();
-        $id = isset( $args['id'] ) ? $args['id']:'carousel-generic';
+        $id = isset( $args['id'] ) ? $args['id']:'carousel-generic'.(self::$nextId++);
         $interval = isset( $args['interval'] ) ? $args['interval']:'5000';
         // $button = isset( $args['button'] ) ? $args['button'] : '下拉菜单';
         // $id = isset( $args['id'] ) ? $args['id']: hash('sha1', $button, false);
