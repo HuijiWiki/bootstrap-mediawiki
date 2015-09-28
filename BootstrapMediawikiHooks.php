@@ -29,7 +29,7 @@ Class BootstrapMediawikiHooks {
         $title = isset( $args['title'] ) ? $args['title'] : $parser->recursiveTagParse('{{PAGENAME}}');
         $subtitle = isset( $args['subtitle'] ) ? $args['subtitle'] : $parser->recursiveTagParse('{{SITENAME}}');
         $fontcolor = isset( $args['fontcolor'] ) ? $args['fontcolor'] : '#FFF';
-        if （isset($input)) {
+        if (isset($input)) {
             $title = $input;
         }
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
