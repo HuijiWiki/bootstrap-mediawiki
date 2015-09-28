@@ -114,7 +114,7 @@ $(document).ready(function(){
     });
 
     $('#wiki-outer-body').on('click','a[href^=#][role!=tab][role!=button]',function(e){
-        if ($(html).hasClass('ve-available')){
+        if ($('html').hasClass('ve-active')){
             return;
         }
         var self = $(this);
