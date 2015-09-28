@@ -1317,6 +1317,8 @@ body.mediawiki{
     padding-left: 15px;
     padding-right: 15px;
 }
-ol.carousel-indicators{
-	margin:0;
+@media screen
+.mw-content-ltr ol.carousel-indicators{
+	margin-left: -30%;
+	padding-left: 0;
 }
