@@ -24,15 +24,19 @@ Class BootstrapMediawikiHooks {
         return true;
     }
     public static function getHeading($input, $args, $parser ) {
-        $bg = isset( $args['bg'] ) ? $args['bg'] : 'http://cdn.huiji.wiki/shareduploads/uploads/d/d7/Huijibanner_default.png';
+        $m = array();
+        $bga = isset( $args['background'] ) ? $args['background'] : 'http://cdn.huiji.wiki/shareduploads/uploads/d/d7/Huijibanner_default.png';
         $title = isset( $args['title'] ) ? $args['title'] : $parser->recursiveTagParse('{{PAGENAME}}');
         $subtitle = isset( $args['subtitle'] ) ? $args['subtitle'] : $parser->recursiveTagParse('{{SITENAME}}');
         $fontcolor = isset( $args['fontcolor'] ) ? $args['fontcolor'] : '#FFF';
+        if （isset($input)) {
+            $title = $input;
+        }
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $output =  $templateParser->processTemplate(
             'heading',
             array(
-                'bg' => $class,
+                'bg' => $bga,
                 'title' => $title,
                 'subtitle' => $subtitle,
                 'fontcolor' => $fontcolor,
