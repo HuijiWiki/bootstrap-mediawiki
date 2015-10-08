@@ -224,10 +224,10 @@ copyWiki.prototype ={
             url: this.ajaxurl+'?origin=http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
             data:{
                 action: "edit",
-                title: mw.config.get('wgTitle'),
+                title: mw.config.get('wgPageName'),
                 summary: "注明出处",
                 format:"json",
-                appendtext: "{{raw:templatemanager:ForkCredit|time="+getFormattedDate()+"|source_page=[["+mw.config.get('wgHuijiPrefix')+":"+mw.config.get('wgTitle')+"]]"+"|carrier=[[User:"+mw.config.get('wgUserName')+"]]}}",
+                appendtext: "{{raw:templatemanager:ForkCredit|time="+getFormattedDate()+"|source_page=[["+mw.config.get('wgHuijiPrefix')+":"+mw.config.get('wgPageName')+"]]"+"|carrier=[[User:"+mw.config.get('wgUserName')+"]]}}",
                 token: token
             },
             type: 'post',
