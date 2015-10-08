@@ -9,7 +9,6 @@ function alertime(){
 $(document).ready(function(){
     
     $('#preftoc').addClass('nav nav-tabs');
-
     /* add missing icons caused by visual editor */
     $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
     // $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); 
@@ -223,11 +222,12 @@ $(document).ready(function(){
     // add functions for sidebar buttons
     $('#ca-purge').click(function(event){
         event.preventDefault();
-        location.href = updateQueryStringParameter(location.href, 'action', 'purge');
+        window.location.assign(updateQueryStringParameter(location.href, 'action', 'purge'));
     });
     $('#ca-debug').click(function(event){
         event.preventDefault();
-        location.href = updateQueryStringParameter(location.href, 'debug', '1');
+        window.location.assign(updateQueryStringParameter(location.href, 'debug', '1'));
+	
     });
 
     function wiki_auth(login, pass, ref){

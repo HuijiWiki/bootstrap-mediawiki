@@ -185,7 +185,7 @@ copyWiki.prototype ={
                 format:'json',
                 // fullhistory: true,
                 templates: true,
-                createonly: true
+                //createonly: true
             },
             type: 'post',
             xhrFields: {

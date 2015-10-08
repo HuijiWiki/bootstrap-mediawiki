@@ -96,7 +96,7 @@
                             <div class="input-group create-group">
                                 <input name="title" class="createboxInput form-control" placeholder="新页面名称" value="" dir="ltr" type="text">
                                 <span class="input-group-btn">
-                                    <button name="create" class="btn btn-default" type="submit">创建</button>
+                                    <input name="create" class="createboxButton btn btn-default" type="submit" value="创建">
                                 </span>
                             </div>
                         </form>
