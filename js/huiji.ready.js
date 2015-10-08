@@ -11,6 +11,11 @@ $(document).ready(function(){
     $('#preftoc').addClass('nav nav-tabs');
     /* add missing icons caused by visual editor */
     $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
+    $('.sidebar-create .createboxInput').keyup(function(){
+        console.log('keyup');
+        var $textbox = $( this );
+        $('.sidebar-create .createboxButton').prop('disabled', $textbox.val().length < 1 );
+    });
     // $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); 
 	// if (mw.cookie.get('Animation') == 'none'){
 	// 	$('#menu-toggle').css({
@@ -223,10 +228,12 @@ $(document).ready(function(){
     $('#ca-purge').click(function(event){
         event.preventDefault();
         window.location.assign(updateQueryStringParameter(location.href, 'action', 'purge'));
+        location.reload();
     });
     $('#ca-debug').click(function(event){
         event.preventDefault();
         window.location.assign(updateQueryStringParameter(location.href, 'debug', '1'));
+        location.reload();
 	
     });
 

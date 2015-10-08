@@ -20,7 +20,7 @@
         <li class="sidebar-behavior">
             <ul>
             <?php
-            if ( $this->data['isarticle'] ){
+            if ( $this->data['isarticle'] && $wgUser->isEmailConfirmed() ){
                 $this->data['content_actions']['fork'] = array(
                         "key" => "fork",
                         "href" => "#",
@@ -89,14 +89,14 @@
                 <li class="sidebar-create">
                     <div class="mw-inputbox-centered" style="">
                         <form name="createbox" class="createbox" action="/index.php" method="get">
-                            <input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden">
+                            <input name="veaction" value="edit" type="hidden"><input name="preload" value="" type="hidden">
                             <input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden">
                             <input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden">
                             <input name="minor" value="" type="hidden">
                             <div class="input-group create-group">
                                 <input name="title" class="createboxInput form-control" placeholder="新页面名称" value="" dir="ltr" type="text">
                                 <span class="input-group-btn">
-                                    <input name="create" class="createboxButton btn btn-default" type="submit" value="创建">
+                                    <input name="create" class="createboxButton btn btn-default" type="submit" value="创建" disabled>
                                 </span>
                             </div>
                         </form>
