@@ -228,13 +228,10 @@ $(document).ready(function(){
     $('#ca-purge').click(function(event){
         event.preventDefault();
         window.location.assign(updateQueryStringParameter(location.href, 'action', 'purge'));
-        location.reload();
     });
     $('#ca-debug').click(function(event){
         event.preventDefault();
         window.location.assign(updateQueryStringParameter(location.href, 'debug', '1'));
-        location.reload();
-	
     });
 
     function wiki_auth(login, pass, ref){
