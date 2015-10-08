@@ -137,7 +137,7 @@ copyWiki.prototype ={
             url:this.ajaxurl,
             data:{
                 action: 'query',
-                titles: mw.config.get('wgTitle'),
+                titles: mw.config.get('wgPageName'),
                 format: 'json',
                 origin:'http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki'
             },
@@ -180,12 +180,12 @@ copyWiki.prototype ={
             data: {
                 action: 'import',
                 interwikisource: mw.config.get('wgHuijiPrefix'),
-                interwikipage: mw.config.get('wgTitle'),
+                interwikipage: mw.config.get('wgPageName'),
                 token: token,
                 format:'json',
                 // fullhistory: true,
                 templates: true,
-                //createonly: true
+                createonly: true
             },
             type: 'post',
             xhrFields: {
