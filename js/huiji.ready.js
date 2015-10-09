@@ -1,11 +1,3 @@
-var alreturn = $('.alert-return');
-var alertp = $('.alert-return p');
-function alertime(){
-    alreturn.show();
-    setTimeout(function(){
-        alreturn.hide()
-    },1000);
-}
 $(document).ready(function(){
     
     $('#preftoc').addClass('nav nav-tabs');
@@ -235,13 +227,16 @@ $(document).ready(function(){
     });
 
     function wiki_auth(login, pass, ref){
+        var options = {
+            tag: 'login',
+            type: 'info'
+        }
         $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',function(data){
             if(data.login.result == 'NeedToken'){
                 $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass +'&lgtoken=' + data.login.token + '&format=json',function(data){
                    if(!data.error){
                         if(data.login.result == "Success"){
-                            alertime();
-                            alertp.text('登录成功');
+                            mw.notification.notify('登录成功', options);
                             //document.location.reload();
                             if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
                                 location.href = updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
@@ -249,37 +244,49 @@ $(document).ready(function(){
                                 location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
                             }
                         }else{
-                            alertime();
+                            options = {
+                                tag: 'login',
+                                type: 'error'
+                            }
                             if(data.login.result=='NotExists'){
-                                alertp.text('用户名不存在');
-                            }else if(data.login.result=='EmptyPass'){
-                                alertp.text('请输入密码');
+                                mw.notification.notify('用户名不存在', options);
                             }else if(data.login.result=='WrongPass') {
-                                alertp.text('密码错误');
+                                mw.notification.notify('密码错误', options);
                             }else if(data.login.result=='Throttled') {
-                                alertp.text('由于您多次输入密码错误，请先休息一会儿。');
+                                mw.notification.notify('由于您多次输入密码错误，请先休息一会儿。', options);
                             }else if(data.login.result=='NoName') {
-                                alertp.text('您必须键入用户名。');
+                                mw.notification.notify('您必须键入用户名。', options);
                             }else if(data.login.result=='Illegal') {
-                                alertp.text('您的用户名中含有非法字符');
+                                mw.notification.notify('您的用户名中含有非法字符', options);
                             }else if(data.login.result=='Blocked') {
-                                alertp.text('您暂时被封禁了');
+                                mw.notification.notify('您暂时被封禁了', options);
+                            }else if(data.login.result=='NeedToken') {
+                                mw.notification.notify('无法获取token', options);
                             }else{
-                                alertp.text('Result:' + data.login.result);
+                                mw.notification.notify('登录错误：'+ data.login.result, options);
                             }
                         }
                    }else{
-                       alertime();
-                       alertp.text('Error:' + data.error);
-                   }
+                        options = {
+                            tag: 'login',
+                            type: 'error'
+                        }
+                        mw.notification.notify('登录错误，请正确填写用户名。（'+ data.login.result+'）', options);
+                    }
                 });
             }else{
-                alertime();
-                alertp.text('请输入用户名');
+                options = {
+                    tag: 'login',
+                    type: 'error'
+                }
+                mw.notification.notify('登录错误：'+ data.error, options);
             }
             if(data.error){
-                alertime();
-                alertp.text('Error:' + data.error);
+                options = {
+                    tag: 'login',
+                    type: 'error'
+                }
+                mw.notification.notify('登录错误：'+ data.error, options);
             }
         });
     }
