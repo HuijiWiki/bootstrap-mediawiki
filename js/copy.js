@@ -227,7 +227,7 @@ copyWiki.prototype ={
                 title: mw.config.get('wgPageName'),
                 summary: "注明出处",
                 format:"json",
-                appendtext: "<noinclude>{{templatemanager:ForkCredit|time="+getFormattedDate()+"|source_page=[["+mw.config.get('wgHuijiPrefix')+":"+mw.config.get('wgPageName')+"]]"+"|carrier=[[User:"+mw.config.get('wgUserName')+"]]}}</noinclude>",
+                appendtext: "<noinclude>{{raw:templatemanager:ForkCredit|time="+getFormattedDate()+"|source_page=[["+mw.config.get('wgHuijiPrefix')+":"+mw.config.get('wgPageName')+"]]"+"|carrier=[[User:"+mw.config.get('wgUserName')+"]]}}</noinclude>",
                 token: token
             },
             type: 'post',
