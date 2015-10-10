@@ -72,9 +72,11 @@ copyWiki.prototype ={
     },
     _wikiSelect: function(e){
         e.stopPropagation();
+        var targetPrefix = $(e.target).data('src');
         var ajaxurl = 'http://'+$(e.target).data('src')+'.huiji.wiki/api.php';
         var redirectUrl = 'http://'+$(e.target).data('src')+'.huiji.wiki/wiki/'+mw.config.get('wgPageName');
         $(e.target).append('<i class="fa fa-spinner fa-pulse"></i>');
+        this.targetPrefix = targetPrefix;
         this.ajaxurl = ajaxurl;
         this.redirectUrl = redirectUrl;
         this._getToken();
@@ -202,7 +204,12 @@ copyWiki.prototype ={
                     alertp.text('搬运成功');
                     $('.copy-modal').modal('hide');
                     this._addSource(token);
-
+                    jQuery.post(
+                        mw.util.wikiScript(), {
+                        action: 'ajax',
+                        rs: 'wfAddForkCount',
+                        rsargs: [mw.config.get('wgArticleId')],
+                    });
                 }else if(error.code == 'cantimport'){
                     alertime();
                     alertp.text('您在目标维基没有管理员权限');
@@ -235,10 +242,19 @@ copyWiki.prototype ={
                 withCredentials: true
             },
             success: $.proxy(function(data){
+                jQuery.post(
+                    mw.util.wikiScript(), {
+                    action: 'ajax',
+                    rs: 'wfAddForkInfo',
+                    rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix'), this.targetPrefix],
+                });
                 window.location = this.redirectUrl;
-            },this)
+            },this),
+
         });
+        
     }
+
 };
 
 $(function(){
