@@ -491,7 +491,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://mahjong.huiji.wiki">麻将</a></li>
                                             <li><a href="http://arsenal.huiji.wiki">阿森纳</a></li>
                                             <li><a href="http://www.huiji.wiki/wiki/%E7%89%B9%E6%AE%8A:%E7%AB%99%E7%82%B9%E6%8E%92%E8%A1%8C">站点排行榜</a></li>
-                                            <a href="/wiki/Special:Randomwiki" class="wiki-random">
+                                            <a rel="nofollow" href="/wiki/Special:Randomwiki" class="wiki-random">
                                                 随机一下试试
                                             </a>
                                         </ul>
@@ -548,7 +548,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 //old login
                         $output .= '<ul class="nav navbar-nav navbar-right navbar-login">
                             <li id= "pt-login" data-toggle="modal" data-target=".user-login">
-                                <a class="login-in">登录</a>
+                                <a rel="nofollow" class="login-in">登录</a>
                             </li>
                             <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') ).'
                             </li>

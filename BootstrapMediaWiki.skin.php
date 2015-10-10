@@ -83,11 +83,12 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
     public function execute() {
         global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS;
         global $wgEnableUploads;
-        global $wgLogo, $wgHuijiPrefix;
+        global $wgLogo, $wgHuijiPrefix, $wgFavicon;
         global $wgTOCLocation;
         global $wgNavBarClasses;
         global $wgSubnavBarClasses;
         global $wgParser, $wgTitle, $wgEmailAuthentication;
+        $wgFavicon = (new wSiteAvatar($wgHuijiPrefix, 'l'))->getAvatarImage();
         $this->skin = $this->data['skin'];
         $action = $wgRequest->getText( 'action' );
         $url_prefix = str_replace( '$1', '', $wgArticlePath );
@@ -137,7 +138,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     <div class="container-fluid">
                         <ul class="nav nav-pills">
                             <li>
-                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgSiteLogo ) && $wgSiteLogo ? "<img src='{$wgSiteLogo}' alt='Logo'/> " : ''; echo $wgSitenameshort ?: $wgSitename; ?></a>
+                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo (new wSiteAvatar($wgHuijiPrefix, 'm'))->getAvatarHtml(array('style' => 'height : 0.9em;')); echo '&nbsp;'.($wgSitenameshort ?$wgSitenameshort: $wgSitename); ?></a>
                             </li>
                             <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
                             <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>

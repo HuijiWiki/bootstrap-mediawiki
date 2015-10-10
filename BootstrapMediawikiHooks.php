@@ -298,7 +298,7 @@ Class BootstrapMediawikiHooks {
         
     }
     public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
-        global $IP, $wgScriptPath, $wgLogo, $wgFavicon, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
+        global $IP, $wgScriptPath, $wgLogo, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
         if ($user->isAllowed('editinterface')){
             $wgCdnScriptPath = $wgScriptPath;
             $wgLoadScript = "{$wgCdnScriptPath}/load.php";

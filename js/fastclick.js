@@ -840,6 +840,9 @@
 	}
 }());
 $(document).ready(function(){
-	FastClick.attach(document.body);
+	try{
+		FastClick.attach(document.body);
+	}catch(e){}
+	
 })
 
