@@ -410,7 +410,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
             <header class="header navbar navbar-default navbar-fixed-top'.$wgNavBarClasses.'" role="navigation">
                 <div class="navbar-container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
+                        <a rel="nofollow" class="navbar-brand" href="#menu-toggle" id="menu-toggle">
                             <script>
                                 if($("#wrapper").hasClass("toggled")){
                                     $("#menu-toggle").addClass("menu-active");
@@ -465,12 +465,13 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                         <ul class="hub-selection movie-link">
                                             <li><a href="http://spn.huiji.wiki">邪恶力量</a></li>
                                             <li><a href="http://kaixinmahua.huiji.wiki">开心麻花</a></li>
-                                            <li><a href="http://wire.huiji.wiki">火线</a></li>
+                                            <li><a href="http://jinguang.huiji.wiki">金光布袋戏</a></li>
                                             <li><a href="http://downtonabbey.huiji.wiki">唐顿庄园</a></li>
                                             <li><a href="http://mcu.huiji.wiki">漫威电影宇宙</a></li>
-                                            <li><a href="http://htgawm.huiji.wiki/">逍遥法外</a></li>
+                                            <li><a href="http://htgawm.huiji.wiki">逍遥法外</a></li>
                                         </ul>
                                         <ul class="hub-selection anime-link">
+                                            <li><a href="http://cardcaptorsakura.huiji.wiki/">小樱的封印之书</a></li>
                                             <li><a href="http://kaiji.huiji.wiki">逆境无赖</a></li>
                                             <li><a href="http://gundam.huiji.wiki">高达</a></li>
                                         </ul>
@@ -479,13 +480,17 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://hearthstone.huiji.wiki">炉石传说</a></li>
                                             <li><a href="http://assassinscreed.huiji.wiki">刺客信条</a></li>
                                             <li><a href="http://3pz.huiji.wiki">三国志puzzle大战</a></li>
+                                            <li><a href="http://pvz.huiji.wiki">植物大战僵尸</a></li>
+                                            <li><a href="http://bravely.huiji.wiki">勇气默示录中文百科</a></li>
                                         </ul>
                                         <ul class="hub-selection star-link">
                                             <li><a href="http://tfboys.huiji.wiki">TFBOYS</a></li>
+                                            <li><a href="http://mfassbender.huiji.wiki">迈克尔·法斯宾德</a></li>
                                         </ul>
                                         <ul class="hub-selection more-link">
                                             <li><a href="http://mahjong.huiji.wiki">麻将</a></li>
-                                            <li><a href="http://epiccn.huiji.wiki">史诗图书</a></li>
+                                            <li><a href="http://arsenal.huiji.wiki">阿森纳</a></li>
+                                            <li><a href="http://www.huiji.wiki/wiki/%E7%89%B9%E6%AE%8A:%E7%AB%99%E7%82%B9%E6%8E%92%E8%A1%8C">站点排行榜</a></li>
                                             <a href="/wiki/Special:Randomwiki" class="wiki-random">
                                                 随机一下试试
                                             </a>
@@ -494,10 +499,10 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                   </ul>
                                 </li>
                                 <li>
-                                    <a href="http://www.huiji.wiki/wiki/创建新wiki">创建wiki</a>
+                                    <a rel="nofollow" href="http://www.huiji.wiki/wiki/创建新wiki">创建wiki</a>
                                 </li>
                                 <li class="hidden-xs hidden-sm">
-                                    <a href="http://www.huiji.wiki/wiki/%E5%B8%AE%E5%8A%A9:%E7%BC%96%E8%BE%91%E6%89%8B%E5%86%8C">帮助文档</a>
+                                    <a rel="nofollow" href="http://www.huiji.wiki/wiki/%E5%B8%AE%E5%8A%A9:%E7%BC%96%E8%BE%91%E6%89%8B%E5%86%8C">帮助文档</a>
                                 </li>
                         </ul>';
                     if ( $wgUser->isLoggedIn() ) {
@@ -531,7 +536,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki>'.$site_name[$i].'</a></li>';
                             }
                             if($count > 3){
-                                $output .='<li><a href="/index.php?title=Special:ShowFollowedSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">我关注的全部维基</a></li>';
+                                $output .='<li><a rel="nofollow" href="/index.php?title=Special:ShowFollowedSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">我关注的全部维基</a></li>';
                             }
                         }else{
                             $output.='<li><a>暂无</a></li>';
