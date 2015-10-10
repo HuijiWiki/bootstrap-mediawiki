@@ -33,6 +33,12 @@
 .icon-lv16,.icon-lv17,.icon-lv18{
     color: #fbb03b;
 }
+[class^="icon-lv1"], [class*=" icon-lv1"]{
+	padding-right: .5em;
+}
+.icon-lv1{
+	padding-right: 0;
+}
 
 .icon-lv18:before {
     content: "\e60e";

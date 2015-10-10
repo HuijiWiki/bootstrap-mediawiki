@@ -200,8 +200,11 @@ copyWiki.prototype ={
                 if(result.length>0) {
                     $btn.button('reset');
                     $('.copy-warn .close').trigger('click');
-                    alertime();
-                    alertp.text('搬运成功');
+                    var options = {
+                        tag: 'import',
+                        type: 'info'
+                    }
+                    mw.notification.notify('搬运成功', options);
                     $('.copy-modal').modal('hide');
                     this._addSource(token);
                     jQuery.post(
@@ -211,11 +214,17 @@ copyWiki.prototype ={
                         rsargs: [mw.config.get('wgArticleId')],
                     });
                 }else if(error.code == 'cantimport'){
-                    alertime();
-                    alertp.text('您在目标维基没有管理员权限');
+                    var options = {
+                        tag: 'import',
+                        type: 'error'
+                    }
+                    mw.notification.notify('您在目标维基没有管理员权限', options);
                 }else if(error.code == 'unknown_interwikisource'){
-                    alertime();
-                    alertp.text('您选择的维基不能为当前维基');
+                    var options = {
+                        tag: 'import',
+                        type: 'error'
+                    }
+                    mw.notification.notify('您选择的维基不能为当前维基', options);
                 }else{
                     console.log(data);
                 }
