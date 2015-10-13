@@ -160,6 +160,7 @@ Class BootstrapMediawikiHooks {
         $output =  $templateParser->processTemplate(
             'popover',
             array(
+                'class' => $class,
                 'placement' => $placement,
                 'title' => $title,
                 'content' => $content,
