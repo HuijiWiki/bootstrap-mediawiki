@@ -123,8 +123,10 @@ $(function() {
     if (jumboHeight > 0){
         $('#firstHeading > h1').hide();
         $('#firstHeading').css('border-bottom', 'none');
-        var bg_image = $('.heading-hero-image a').attr('href');
-        $('.parallax-bg').css('background', 'url(\"'+bg_image+'\") no-repeat center center');
+        if ($('.heading-hero-image a').length){
+            var bg_image = $('.heading-hero-image a').attr('href');
+            $('.parallax-bg').css('background', 'url(\"'+bg_image+'\") no-repeat center center');           
+        }
         parallax();
     }
     function parallax(){

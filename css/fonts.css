@@ -8,7 +8,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 [class^="icon-"], [class*=" icon-"] {
     font-family: 'icomoon';
     speak: none;
@@ -22,7 +21,79 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.icon-lv1,.icon-lv2,.icon-lv3,.icon-lv4,.icon-lv5,.icon-lv6{
+    color: #666;
+}
+.icon-lv7,.icon-lv8,.icon-lv9,.icon-lv10,.icon-lv11{
+    color: #0071bc;
+}
+.icon-lv12,.icon-lv13,.icon-lv14,.icon-lv15{
+    color: #9327bf;
+}
+.icon-lv16,.icon-lv17,.icon-lv18{
+    color: #fbb03b;
+}
+[class^="icon-lv1"], [class*=" icon-lv1"]{
+	padding-right: .5em;
+}
+.icon-lv1{
+	padding-right: 0;
+}
 
+.icon-lv18:before {
+    content: "\e60e";
+}
+.icon-lv17:before {
+    content: "\e60f";
+}
+.icon-lv16:before {
+    content: "\e610";
+}
+.icon-lv15:before {
+    content: "\e611";
+}
+.icon-lv14:before {
+    content: "\e612";
+}
+.icon-lv13:before {
+    content: "\e613";
+}
+.icon-lv12:before {
+    content: "\e614";
+}
+.icon-lv11:before {
+    content: "\e615";
+}
+.icon-lv10:before {
+    content: "\e616";
+}
+.icon-lv9:before {
+    content: "\e617";
+}
+.icon-lv8:before {
+    content: "\e618";
+}
+.icon-lv7:before {
+    content: "\e619";
+}
+.icon-lv6:before {
+    content: "\e61a";
+}
+.icon-lv5:before {
+    content: "\e61b";
+}
+.icon-lv4:before {
+    content: "\e61c";
+}
+.icon-lv3:before {
+    content: "\e61d";
+}
+.icon-lv2:before {
+    content: "\e61e";
+}
+.icon-lv1:before {
+    content: "\e61f";
+}
 .icon-more:before {
     content: "\e607";
 }

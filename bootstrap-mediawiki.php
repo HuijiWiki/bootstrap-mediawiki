@@ -27,6 +27,7 @@ $src = '/var/www/src';
 $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
+		$skinDir . '/css/ihover.min.css'                         => array( 'media' => 'all' ),
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
@@ -58,6 +59,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	),
 	'dependencies' => array(
 		'mediawiki.cookie',
+		'mediawiki.notification',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
@@ -119,3 +121,10 @@ $wgHooks['OutputPageBeforeHTML'][]  = 'BootstrapMediawikiHooks::wfEditSectionLin
 $wgHooks['MediaWikiPerformAction'][] = 'BootstrapMediawikiHooks::onMediaWikiPerformAction';
 $wgHooks['GetDefaultSortkey'][] = 'BootstrapMediawikiHooks::onGetDefaultSortkey';
 $wgHooks['EditPage::showEditForm:initial'][] = 'BootstrapMediawikiHooks::addEditModule';
+$wgHooks['GalleryGetModes'][] = 'BootstrapMediawikiHooks::onGalleryGetModes';
+$wgHooks['ParserFirstCallInit'][] = 'BootstrapMediawikiHooks::registerParserHook';
+// new permission
+$wgAvailableRights[] = 'quickpurge';
+$wgGroupPermissions['sysop']['quickpurge'] = true;
+$wgAvailableRights[] = 'quickdebug';
+$wgGroupPermissions['sysop']['quickdebug'] = true;

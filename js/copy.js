@@ -5,6 +5,12 @@ function copyWiki(){
     this.init();
 }
 
+function getFormattedDate() {
+    var date = new Date();
+    var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    return str;
+}
+
 copyWiki.prototype ={
     init: function(){
         this._addListener();
@@ -33,7 +39,7 @@ copyWiki.prototype ={
                     var content = '';
                     if (res.success == true) {
                         if (res.result.length == 0) {
-                            content = '<a>没有关注维基</a>';
+                            content = '<a>您要把这个页面搬运到哪里呢？不妨先关注那个维基吧</a>';
                             $('.copy-modal .modal-body').empty().append(content);
                         }
                         $.each(res.result,
@@ -53,7 +59,8 @@ copyWiki.prototype ={
             '<div class="modal-content">'+
                 '<div class="modal-header">'+
                     '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'+
-                    '<h4 class="modal-title" id="mySmallModalLabel">搬运维基目标</h4>'+
+                    '<h4 class="modal-title" id="mySmallModalLabel">把这个页面搬运到哪？</h4>'+
+                    '<p>根据页面历史长短和嵌套的模板数量，搬运会需要相应的等候时间。</p>'+
                 '</div>'+
                 '<div class="modal-body">'+
                 '<i class="fa fa-spinner fa-pulse"></i>'+
@@ -65,10 +72,13 @@ copyWiki.prototype ={
     },
     _wikiSelect: function(e){
         e.stopPropagation();
-        console.log('aaa');
+        var targetPrefix = $(e.target).data('src');
         var ajaxurl = 'http://'+$(e.target).data('src')+'.huiji.wiki/api.php';
+        var redirectUrl = 'http://'+$(e.target).data('src')+'.huiji.wiki/wiki/'+mw.config.get('wgPageName');
         $(e.target).append('<i class="fa fa-spinner fa-pulse"></i>');
+        this.targetPrefix = targetPrefix;
         this.ajaxurl = ajaxurl;
+        this.redirectUrl = redirectUrl;
         this._getToken();
     },
     _getToken: function(){
@@ -129,7 +139,7 @@ copyWiki.prototype ={
             url:this.ajaxurl,
             data:{
                 action: 'query',
-                titles: mw.config.get('wgTitle'),
+                titles: mw.config.get('wgPageName'),
                 format: 'json',
                 origin:'http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki'
             },
@@ -138,14 +148,17 @@ copyWiki.prototype ={
             },
             type: 'post',
             success: $.proxy(function(data){
+
+
                 for (var key in data.query.pages){
                     if (key < 0){
                         this._importWiki(token);
                     }else{
+
                         var warn = '<div class="alert alert-danger copy-warn alert-dismissible fade in" role="alert">' +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>' +
                             '<h4>页面已存在!</h4>' +
-                            '<p>点击覆盖，将覆盖您维基已有的本词条页面内容。否则请关闭</p>' +
+                            '<p>点击覆盖，将覆盖您维基已有的同名页面内容。否则请关闭。</p>' +
                             '<p><button type="button" class="btn btn-danger" data-loading-text="搬运中" autocomplete="off">覆盖</button></p>' +
                             '</div>';
                         $('body').append(warn).on('click', '.copy-warn .btn', $.proxy(this._importWiki, this, token));
@@ -153,6 +166,7 @@ copyWiki.prototype ={
                             $('.copy-modal').modal('hide');
                             $('.copy-warn').remove();
                         });
+
                     }
                 }
             },this),
@@ -164,14 +178,14 @@ copyWiki.prototype ={
     _importWiki: function(token){
         var $btn = $('.copy-warn .btn').button('loading');
         $.ajax({
-            url: this.ajaxurl+'?orgin = http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
+            url: this.ajaxurl+'?origin=http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
             data: {
                 action: 'import',
                 interwikisource: mw.config.get('wgHuijiPrefix'),
-                interwikipage: mw.config.get('wgTitle'),
+                interwikipage: mw.config.get('wgPageName'),
                 token: token,
                 format:'json',
-                fullhistory: true,
+                // fullhistory: true,
                 templates: true,
                 createonly: true
             },
@@ -186,16 +200,31 @@ copyWiki.prototype ={
                 if(result.length>0) {
                     $btn.button('reset');
                     $('.copy-warn .close').trigger('click');
-                    alertime();
-                    alertp.text('搬运成功');
+                    var options = {
+                        tag: 'import',
+                        type: 'info'
+                    }
+                    mw.notification.notify('搬运成功', options);
                     $('.copy-modal').modal('hide');
                     this._addSource(token);
+                    jQuery.post(
+                        mw.util.wikiScript(), {
+                        action: 'ajax',
+                        rs: 'wfAddForkCount',
+                        rsargs: [mw.config.get('wgArticleId')],
+                    });
                 }else if(error.code == 'cantimport'){
-                    alertime();
-                    alertp.text('您在目标维基没有管理员权限');
+                    var options = {
+                        tag: 'import',
+                        type: 'error'
+                    }
+                    mw.notification.notify('您在目标维基没有管理员权限', options);
                 }else if(error.code == 'unknown_interwikisource'){
-                    alertime();
-                    alertp.text('您的目标维基不能为当前维基');
+                    var options = {
+                        tag: 'import',
+                        type: 'error'
+                    }
+                    mw.notification.notify('您选择的维基不能为当前维基', options);
                 }else{
                     console.log(data);
                 }
@@ -208,21 +237,33 @@ copyWiki.prototype ={
     },
     _addSource: function(token){
         $.ajax({
-            url: this.ajaxurl+'?orgin = http://'+mw.config.get('wgTitle')+'.huiji.wiki',
+            url: this.ajaxurl+'?origin=http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
             data:{
                 action: "edit",
-                title: mw.config.get('wgTitle'),
-                section: "new",
-                summary: "出处",
-                text: "来自于"+mw.config.get('wgHuijiPrefix')+".test.huiji.wiki/wiki/"+mw.config.get('wgTitle'),
+                title: mw.config.get('wgPageName'),
+                summary: "注明出处",
+                format:"json",
+                appendtext: "<noinclude>{{raw:templatemanager:ForkCredit|time="+getFormattedDate()+"|source_page=[["+mw.config.get('wgHuijiPrefix')+":"+mw.config.get('wgPageName')+"]]"+"|carrier=[[User:"+mw.config.get('wgUserName')+"]]}}</noinclude>",
                 token: token
             },
             type: 'post',
             xhrFields: {
                 withCredentials: true
-            }
+            },
+            success: $.proxy(function(data){
+                jQuery.post(
+                    mw.util.wikiScript(), {
+                    action: 'ajax',
+                    rs: 'wfAddForkInfo',
+                    rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix'), this.targetPrefix],
+                });
+                window.location = this.redirectUrl;
+            },this),
+
         });
+        
     }
+
 };
 
 $(function(){

@@ -54,3 +54,6 @@ p.mw-edittools-section {
 	z-index: 9999;
 	background: url(/resources/assets/preloader.gif) center no-repeat #fff;
 }
+#upload-select {
+	z-index: 0 !important;
+}
