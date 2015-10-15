@@ -517,7 +517,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         $output .= '<li><a href="'.$userPageURL.'"><span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span><span class="hidden-xs">'.$wgUser->getName().'</span></a></li>';
                         $output .= $user_notify;
                         $output .= '<li class="dropdown collect"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-heart-o"></i></i></a><ul class="dropdown-menu collect-menu">';
-                        $sites = UserSiteFollow::getFullFollowedSites( $wgUser->getId(),$wgUser->getId() );
+                        $sites = UserSiteFollow::getFullFollowedSitesWithDetails( $wgUser->getId(),$wgUser->getId() );
                         $count = count($sites);
                         if( $count > 0){
                             $num = ($count > 8)?8:$count;
