@@ -59,7 +59,7 @@
                 <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes" rel="nofollow"><i class="fa fa-edit"></i> 最近更改</a></li>
                 <li><a href="<?php echo $url_prefix; ?>Special:Randompage" class="random-page" rel="nofollow"><i class="fa fa-random "></i> 随机页面</a></li>
                 <?php if ( $wgEnableUploads ) { ?>
-                    <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file" rel="nofollow"><i class="fa fa-upload"></i> 上传文件</a></li>
+                    <li><a href="<?php echo $url_prefix; ?>Special:UploadWizard" class="upload-a-file" rel="nofollow"><i class="fa fa-upload"></i> 上传文件</a></li>
                 <?php } ?>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -81,7 +81,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo $url_prefix; ?>特殊:AdminDashboard" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-tachometer"></i> 管理面板</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Bootstrap:Subnav" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-bars"></i> 修改站点导航</a></li>
-                        <li><a href="<?php echo $url_prefix; ?>Bootstrap:Footer" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-bars"></i> 修改站点页脚</a></li>
+                        <li><a href="<?php echo $url_prefix; ?>Bootstrap:Footer" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-hand-o-down"></i> 修改站点页脚</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.css" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-css3"></i> 修改站点CSS</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.js" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-code"></i> 修改站点js</a></li>
                     </ul>
