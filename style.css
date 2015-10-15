@@ -432,6 +432,14 @@ html .thumbcaption {
 	padding: 3px !important;
 	font-size: 94%;
 }
+.skin-bootstrap-mediawiki .mwe-upwiz-thumbnail {
+    border: 0px solid #cccccc;
+    text-align: center;
+    background: #ffffff;
+    width: 100px;
+    height: 100px;
+    padding: 0px;
+}
 div.magnify {
 	float: right;
 	border: none !important;
