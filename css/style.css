@@ -1170,6 +1170,7 @@ body{
     margin-right: 360px;
     padding: 30px;
     background: #fff;
+    min-height: 1000px;
 }
 .home-info .icon-huiji{
     color: #09c;
@@ -1178,7 +1179,7 @@ body{
     margin: 5px 10px 0 60px;
 }
 .home-info blockquote{
-    text-align: center;
+    text-align: right;
     font-family: -webkit-pictograph;
     font-style: italic;
     border-left: none;
@@ -1193,8 +1194,10 @@ body{
     margin-bottom: 0;
 }
 .info-tabs{
-    background-color: #428bca;
-    margin-right: -30px;
+    border-bottom: 1px solid #09c;
+}
+.info-tabs ul{
+    margin-bottom: 0;
 }
 .info-tabs ul:after {
     content: '';
@@ -1204,16 +1207,22 @@ body{
 .info-tabs li{
     float: left;
 }
-.info-tabs li>a{
-    padding: 2px 8px;
-    color: #fff;
+.info-tabs li>a {
+    padding: 5px 15px;
+    color: #999;
+    display: block;
+    font-size: 16px;
+    transition:none
 }
 .info-tabs ul>.active{
     background: #fff;
 }
-.info-tabs ul>.active>a{
-   background: #fff;
-   color: #428bca;
+.info-tabs ul>.active>a {
+    color: #428bca;
+    border-bottom: 3px solid #09c;
+}
+.user-home-item-owner-username{
+    display: none;
 }
 .home-aside{
     position: absolute;
@@ -1222,7 +1231,6 @@ body{
     background: rgba(238,238,238,0.4);
     padding: 15px;
     width: 330px;
-    height: 800px;
 }
 .aside-top img{
     height: 80px;
@@ -1238,6 +1246,7 @@ body{
 .resource-logo{
     float: right;
     margin-top: 10px;
+    color: #fff;
 }
 .b-logo{
     height: 24px;
@@ -1307,7 +1316,7 @@ body{
 .user-follow-msg li:nth-child(even){
     float: left;
     width: 1px;
-    background: #222;
+    background: #fff;
     height: 50px;
 }
 .user-follow-msg li:nth-child(odd){
@@ -1321,10 +1330,14 @@ body{
 .user-follow-msg a{
     font-size: 18px;
 }
+.user-msg{
+    margin: 0;
+}
 .user-name{
     margin-bottom: 0;
     font-size: 18px;
     font-weight: bold;
+    margin-right: 5px;
 }
 .svg-wrap{
     overflow: hidden;
@@ -1344,41 +1357,42 @@ body{
     text-align: right;
     margin: 0;
 }
-.contact{
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
-    padding: 10px 20px 10px 40px;
-    display: inline-block;
-    float: right;
-    margin-top: 10px;
-}
-/*.top .nav>li>a:hover, .top .nav>li>a:focus {*/
-    /*background: none;*/
-/*}*/
-/*.top .nav-pills>#home-rank-tab li.active>a,.top .nav-pills>li.active>a:hover,.top .nav-pills>li.active>a:focus {*/
-    /*color: #333;*/
-    /*background-color: #fff;*/
-/*}*/
 .top .nav-pills>li>a {
     border-radius: 0;
     padding: 4px 8px;
-}
-#home-rank-tab{
-    float: right;
 }
 #home-rank-content{
     clear: both;
 }
 #home-rank-content .tab-pane>li{
 }
+#home-rank-tab{
+    border-bottom: 1px solid #09c;
+}
+#home-rank-tab>li.active>a, #home-rank-tab>li.active>a:hover, #home-rank-tab>li.active>a:focus {
+    color: #09c;
+    cursor: default;
+    border-bottom: 3px solid #09c;
+}
+#home-rank-tab>li.active>a, #home-rank-tab>li.active>a:hover, #home-rank-tab>li.active>a:focus {
+    background: none;
+}
+#home-rank-tab>li>a {
+    margin: 0;
+    line-height: normal;
+    border: none;
+    border-radius: 0;
+    color: #999;
+    padding: 5px 15px;
+    transition:none;
+}
 .home-rank-point{
-    float: left;
+    float: right;
     font-size: 18px;
     line-height: 50px;
 }
 .home-rank-right {
-    margin-left: 50px;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #fff;
     padding: 5px;
     position: relative;
 }
@@ -1391,17 +1405,17 @@ body{
     color: #999;
 }
 .home-rank-list {
-    float: right;
-    line-height: 40px;
+    float: left;
+    line-height: 30px;
     font-size: 18px;
+    font-weight: bold;
+    margin: 0 10px;
 }
 .home-rank-msg{
-    float: right;
+    float: left;
     margin-right: 20px;
-    text-align: right;
 }
 .home-rank-msg a{
-    color: #fff;
     cursor: pointer;
 }
 .home-rank-msg ul{
@@ -1414,7 +1428,7 @@ body{
 .home-rank-msg li:nth-child(even){
     height: 15px;
     width: 1px;
-    background: #222;
+    background: #999;
     margin:0 5px;
     margin-top: 5px;
 }

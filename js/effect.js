@@ -224,17 +224,18 @@ $(document).ready(function(){
 
     var next = (function(){
         var config = {
-            filter: jQuery('.user-home-feed').data('filter'),
-            item_type: jQuery('.user-home-feed').data('item_type'),
-            limit: jQuery('.user-home-feed').data('limit')
+            filter: jQuery('.user-home-feed.active').data('filter'),
+            item_type: jQuery('.user-home-feed.active').data('item_type'),
+            limit: jQuery('.user-home-feed.active').data('limit')
         }
+        console.log(config.filter+'/'+config.item_type);
         var username = mw.config.get('wgUserName');
         var filter = config.filter;
         var item_type = config.item_type;
         var limit = config.limit;
         var continuation = null;
         var showPlaceholder = function(){
-            jQuery('.user-home-feed').append('<i class="placeholder fa fa-spinner fa-5x fa-spin"></i>');
+            jQuery('.user-home-feed.active').append('<i class="placeholder fa fa-spinner fa-5x fa-spin"></i>');
         }
         var removePlaceholder = function(){
             jQuery('.placeholder').remove();
@@ -253,7 +254,7 @@ $(document).ready(function(){
                     if (res.success){
                         console.log(res.earlierThan);
                         removePlaceholder();
-                        jQuery('.user-home-feed').append(res.output);
+                        jQuery('.user-home-feed.active').append(res.output);
                         continuation = res.continuation;
                     }
                 }
