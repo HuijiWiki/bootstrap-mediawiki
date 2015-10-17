@@ -9,14 +9,16 @@ $(function() {
     $('.subnav .nav .dropdown:first').addClass('phone-active');
     $('.subnav .nav .dropdown-menu:first').addClass('phone-active');
     // bell animation
-    if($('#pt-notifications span').text()!=0){
+    if( typeof $('#pt-notifications span').text() === 'number' && $('#pt-notifications span').text()!=0){
         $('#pt-notifications i').addClass('bell-animation');
         $('.mw-ui-quiet').click(function(){
             $('.badge').text('0').hide();
             $('#pt-notifications i').removeClass('bell-animation');
         });
-    }else if($('#pt-notifications span').text()==0){
+    }else if($('#pt-notifications span').text() === 0){
         $('.badge').hide();
+    } else {
+    	$('.badge').hide();
     }
 
     $('table.article-table')
