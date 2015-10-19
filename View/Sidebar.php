@@ -20,7 +20,7 @@
         <li class="sidebar-behavior">
             <ul>
             <?php
-            if ( $this->data['isarticle'] && $wgUser->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ){
+            if ( $this->data['isarticle'] && $wgUser->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE )){
                 $this->data['content_actions']['fork'] = array(
                         "key" => "fork",
                         "href" => "#",
