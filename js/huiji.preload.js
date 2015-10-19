@@ -157,16 +157,16 @@ $(function() {
 	   $(this).html('<i class="fa fa-arrows-alt"></i>');
     });
     
+    // fix uploader
+    $('.mwe-upwiz-details-fieldname.mwe-upwiz-required-field').prepend('<span class="mwe-upwiz-required-marker">*</span>');
+
+    // done for preload. Let's show the page.
+    $('#mw-content-text').show();
+    
     //table responsive 
     $('#mw-content-text table').each(function(){
     	if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
     		$(this).wrap('<div class="table-responsive"></div>');
     	}
     });
-    
-    // fix uploader
-    $('.mwe-upwiz-details-fieldname.mwe-upwiz-required-field').prepend('<span class="mwe-upwiz-required-marker">*</span>');
-
-    // done for preload. Let's show the page.
-    $('#mw-content-text').show();
 });
