@@ -162,5 +162,5 @@ $(function() {
     $('.mwe-upwiz-details-fieldname.mwe-upwiz-required-field').prepend('<span class="mwe-upwiz-required-marker">*</span>');
 
     // done for preload. Let's show the page.
-    $('body.mediawiki').show();
+    $('#mw-content-text').show();
 });
