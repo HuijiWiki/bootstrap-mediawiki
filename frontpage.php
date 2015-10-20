@@ -215,6 +215,7 @@ class FrontPage{
                 $recommendRes[] = $flres;
             }         
         }
+        $recommendRes = array_slice($recommendRes, 0, 5);
         //recommend site
         $usf = new UserSiteFollow();
         $recSite = array_slice($allSiteRank,0 ,10);
