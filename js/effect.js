@@ -256,6 +256,11 @@ $(document).ready(function(){
                         removePlaceholder();
                         jQuery('.user-home-feed.active .user-home-feed-content').append(res.output);
                         continuation = res.continuation;
+                        if(res.end==true) {
+                            $('.user-home-feed.active .user-activity-more').hide();
+                            alertime();
+                            alertp.text('没有更多了');
+                        }
                     }
                 }
             );
@@ -272,6 +277,7 @@ $(document).ready(function(){
             limit = $('.user-home-feed.active').data('limit');
             continuation = null;
             $('.user-home-feed-content').empty();
+            $('.user-activity-more').show();
             more();
         });
     })();

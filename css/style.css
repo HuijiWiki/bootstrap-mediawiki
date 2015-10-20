@@ -1530,6 +1530,33 @@ body{
 .time-ago{
     color: #999;
 }
+.entry-name {
+    color: #09c;
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 5px;
+}
+.entry-source {
+    color: #09c;
+    margin-left: 5px;
+}
+.recommend img {
+    width: 150px;
+}
+a.image {
+    float: left;
+}
+.recommend li {
+    clear: both;
+    padding-top: 30px;
+}
+.recommend .source {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.entry-description{
+    margin-left: 160px;
+}
 @media screen and (max-width: 768px) {
     .user-home-links-container{
         width: 100%;

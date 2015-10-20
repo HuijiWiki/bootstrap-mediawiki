@@ -68,14 +68,14 @@
                     </div>
                     {{/login}}
                     <div role="tabpanel" class="user-home-feed tab-pane fade {{inactive}}" id="all" aria-labelledby="all-tab" data-filter="all" data-limit="30" data-item_type="default">
-                    <ul>
+                    <ul class="recommend">
                         {{#recContent}}
                         <li>
-                            <p><span>{{title}}</span>来自<span>{{wikiname}}</span></p>
+                            <p class="source"><a class="entry-name" href="{{wikiurl}}">{{title}}</a>来自<a class="entry-source">{{wikiname}}</a></p>
                             <a href="{{wikiurl}}" class="image">
-                                <img alt="Wit by Botanica.jpg" src="{{backgroungimg}}" width="400px" height="400px">
+                                <img alt="Wit by Botanica.jpg" src="{{backgroungimg}}">
                             </a>
-                            {{desc}}
+                            <p class="entry-description">{{desc}}</p>
                         </li>
                         {{/recContent}}
                     </ul>
@@ -150,13 +150,13 @@
                                         <div class="home-rank-msg">
                                             <a href="{{site_url}}">{{site_prefix}}</a>
                                             <ul>
-                                                <li><span>{{totalEdits}}<span></li>
+                                                <li><span>{{totalEdits}}</span></li>
                                                 <li></li>
-                                                <li><span>{{totalArticles}}<span></li>
+                                                <li><span>{{totalArticles}}</span></li>
                                                 <li></li>
-                                                <li><span>{{totalPages}}<span></li>
+                                                <li><span>{{totalPages}}</span></li>
                                                 <li></li>
-                                                <li><span>{{totalUsers}}<span></li>
+                                                <li><span>{{totalUsers}}</span></li>
                                             </ul>
                                         </div>
                                     </div>
