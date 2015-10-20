@@ -34,7 +34,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
-        if (($wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
+        if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModules( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addHeadItem( 'canonical',
@@ -124,12 +124,13 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             menutoggle = localStorage.getItem("menu-toggle");
             $("#wrapper").attr("class",menutoggle);
         </script>
-
-        <?php if (($wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www') && ($this->getSkin()->getTitle()->isMainPage()) ){
-            include ('frontpage.php');
+        <?php echo $this->showHeader(); ?>
+        <?php if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www') && ($this->getSkin()->getTitle()->isMainPage()) ){
+            include 'View/Sidebar.php';
+            echo FrontPage::showPage();
+            include 'View/Modal.php';
         } else {?>
-            <?php echo $this->showHeader(); ?>
-
+            
             <?php include 'View/Sidebar.php';?>
 
             <div id="wiki-outer-body">
@@ -293,7 +294,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 </div><!-- container -->
             </div><!-- bottom -->
         </div><!-- /#wrapper -->
-        <?php }?> <!-- mainpage if -->
+        <?php }?> <!-- mainpage if end -->
         <?php
         $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
         $this->html('reporttime');
