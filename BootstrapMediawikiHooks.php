@@ -301,11 +301,11 @@ Class BootstrapMediawikiHooks {
     public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
         global $IP, $wgScriptPath, $wgLogo, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
         if ($user->isAllowed('editinterface')){
-            $wgCdnScriptPath = $wgScriptPath;
-            $wgLoadScript = "{$wgCdnScriptPath}/load.php";
-            $wgStylePath = "{$wgCdnScriptPath}/skins";
-            $wgExtensionAssetsPath = "{$wgCdnScriptPath}/extensions";
-            $wgResourceBasePath = $wgCdnScriptPath;     
+            $GLOBALS['wgCdnScriptPath'] = $wgScriptPath;
+            $GLOBALS['wgLoadScript'] = "{$wgCdnScriptPath}/load.php";
+            $GLOBALS['wgStylePath'] = "{$wgCdnScriptPath}/skins";
+            $GLOBALS['wgExtensionAssetsPath'] = "{$wgCdnScriptPath}/extensions";
+            $GLOBALS['wgResourceBasePath'] = $wgCdnScriptPath;     
         } 
         // if ($user->isAllowed('reupload')){
         //     $wgUploadPath       = "{$wgScriptPath}/uploads";
