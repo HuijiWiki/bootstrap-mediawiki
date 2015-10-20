@@ -162,11 +162,5 @@ $(function() {
 
     // done for preload. Let's show the page.
     $('#mw-content-text').show();
-    
-    //table responsive 
-    $('#mw-content-text table').each(function(){
-    	if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
-    		$(this).wrap('<div class="table-responsive"></div>');
-    	}
-    });
+
 });
