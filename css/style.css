@@ -1224,6 +1224,16 @@ body{
 .user-home-item-owner-username{
     display: none;
 }
+.user-activity-more{
+    text-align: center;
+    border-top: 1px solid #09c;
+    color: #09c;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.placeholder{
+    padding: 10px;
+}
 .home-aside{
     position: absolute;
     right: 0;
@@ -1275,7 +1285,7 @@ body{
     width: 33%;
     float: left;
     border-right: 1px solid #fff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding-right: 5px;
 }
 .home-statistics ul li:first-child{
@@ -1385,6 +1395,10 @@ body{
     color: #999;
     padding: 5px 15px;
     transition:none;
+}
+.top .top-fan-points {
+    float: right;
+    margin-top: 15px;
 }
 .home-rank-point{
     float: right;

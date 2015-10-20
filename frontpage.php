@@ -54,40 +54,40 @@ class FrontPage{
         $userEditInfo = $ueb->getUserEditInfo($usreId);
         $maxlen = $currentMaxlen = 0; //init variables.
         foreach ($userEditInfo as $value) {
-                if (is_object($value) && !empty($value->_id) && $value->value > 0) {
-                    $editBox[$value->_id] = $value->value;
-                    $editData[] = $value->_id;
-                }
-                
+            if (is_object($value) && !empty($value->_id) && $value->value > 0) {
+                $editBox[$value->_id] = $value->value;
+                $editData[] = $value->_id;
             }
-            $today = date("Y-m-d");
-            $yesterday = date("Y-m-d",strtotime("-1 day"));
-            $editBox[$today] = UserEditBox::getTodayEdit($usreId);
-            if (!empty($editBox[$today])) {
-                $editData[] = $today;
-            }
-            $totalEdit = count($editData);
-            if ($totalEdit > 0){
-                $resArr[] = strtotime($editData[0]);
-                $maxlen = 1;                
-            }
+            
+        }
+        $today = date("Y-m-d");
+        $yesterday = date("Y-m-d",strtotime("-1 day"));
+        $editBox[$today] = UserEditBox::getTodayEdit($usreId);
+        if (!empty($editBox[$today])) {
+            $editData[] = $today;
+        }
+        $totalEdit = count($editData);
+        if ($totalEdit > 0){
+            $resArr[] = strtotime($editData[0]);
+            $maxlen = 1;                
+        }
 
-            for($k=1;$k<count($editData);$k++){
-                if(in_array(strtotime($editData[$k])-86400, $resArr)){
-                    $resArr[] = strtotime($editData[$k]);
-                    if(count($resArr) > $maxlen){
-                        $maxlen = count($resArr);
-                    }
-                }else{
-                    $resArr = array();
-                    $resArr[] = strtotime($editData[$k]);
+        for($k=1;$k<count($editData);$k++){
+            if(in_array(strtotime($editData[$k])-86400, $resArr)){
+                $resArr[] = strtotime($editData[$k]);
+                if(count($resArr) > $maxlen){
+                    $maxlen = count($resArr);
                 }
-                if( $resArr[count($resArr)-1] == strtotime($today) || $resArr[count($resArr)-1] == strtotime($yesterday) ){
-                    $currentMaxlen = count($resArr);
-                }else{
-                    $currentMaxlen = 0;
-                }
+            }else{
+                $resArr = array();
+                $resArr[] = strtotime($editData[$k]);
             }
+            if( $resArr[count($resArr)-1] == strtotime($today) || $resArr[count($resArr)-1] == strtotime($yesterday) ){
+                $currentMaxlen = count($resArr);
+            }else{
+                $currentMaxlen = 0;
+            }
+        }
         $lange = '<svg width="725" height="110" class=" ">
                     <g transform="translate(20, 20)">';
         $n = 676/13;
@@ -159,7 +159,6 @@ class FrontPage{
             }
             $lange .= '<text x="'.$x.'" y="-5" class="'.$year.'">'.$mon.'月</text>';
         }
-
         $lange .= ' <text text-anchor="middle" class="wday" dx="-10" dy="9" style="display: none;">S</text>
                     <text text-anchor="middle" class="wday" dx="-10" dy="22">M</text>
                     <text text-anchor="middle" class="wday" dx="-10" dy="35" style="display: none;">T</text>
@@ -170,8 +169,78 @@ class FrontPage{
                   </g>
                 </svg>
                 <div class="edit-statistics"><p>连续编辑纪录<span>'.$maxlen.'</span></p><p>总编辑天数<span>'.$totalEdit.'</span></p><p>当前连续编辑<span>'.$currentMaxlen.'<span></p></div>';
+        //user login
+        if ( $wgUser->isLoggedIn() ) {
+            $login = true;
+        }else{
+            $login = false;
+            $register = Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') );
+            $active = 'active';
+            $inactive = 'in active';
+        }
 
-        
+        // follow
+        $followUserCount = UserUserFollow::getFollowingCount($wgUser);
+        if ( $followUserCount > 10 ) {
+            $userHidden = true;
+        }else{
+            $userHidden = false;
+        }
+        $followSiteCount = UserSiteFollow::getFollowingCount($wgUser);
+        if ( $followSiteCount > 5 ) {
+            $siteHidden = true;
+        }else{
+            $siteHidden = false;
+        }
+
+        //recommend $weekRank $monthRank  $totalRank
+        //checkUserUserFollow(usreId, )
+        $uuf = new UserUserFollow();
+        if ( count($weekRank) >=8 ) {
+            $recommend = $weekRank;
+        }elseif ( count($monthRank) >=8 ) {
+            $recommend = $monthRank;
+        }else{
+            $recommend = $totalRank;
+        }
+        $recommendRes = array();
+        $flres = array();
+        foreach ($recommend as $value) {
+            $tuser = User::newFromName($value['user_name']);
+            $isFollow = $uuf->checkUserUserFollow( $wgUser, $tuser );
+            if(!$isFollow && $value['user_name'] != $userName){
+                $flres['avatar'] = $value['avatarImage'];
+                $flres['username'] = $value['user_name'];
+                $flres['userurl'] = $value['user_url'];
+                $recommendRes[] = $flres;
+            }         
+        }
+        //recommend site
+        $usf = new UserSiteFollow();
+        $recSite = array_slice($allSiteRank,0 ,10);
+        $recommendSite = array();
+        foreach($recSite as $value){
+            $isFollowSite = $usf->checkUserSiteFollow( $wgUser, $value['site_prefix']);
+            if($isFollowSite == false ){
+                $fsres['s_name'] = HuijiPrefix::prefixToSiteName($value['site_prefix']);
+                $fsres['s_url'] = HuijiPrefix::prefixToUrl($value['site_prefix']);
+                $recommendSite[] = $fsres;
+            }
+        }
+        //recommend content
+        $recRes = new BootstrapMediaWikiTemplate();
+        $block = $recRes->getIndexBlock( '首页/Admin' );
+        $n = count($block);
+        $recContent = array();
+        for ($i=0; $i < $n; $i++) {
+            $contentRes['title'] = $block[$i]->title;
+            $contentRes['wikiname'] = $block[$i]->wikiname;
+            $contentRes['desc'] = $block[$i]->desc;
+            $contentRes['wikiurl'] = $block[$i]->wikiurl;
+            $contentRes['backgroungimg'] = $block[$i]->backgroungimg;
+            $recContent[] = $contentRes;
+        }
+
         $output .= $templateParser->processTemplate(
             'frontpage',
             array(
@@ -192,6 +261,17 @@ class FrontPage{
                 'monthRank' => $monthRank,
                 'totalRank' => $totalRank,
                 'lange' => $lange,
+                'login' => $login,
+                'register' => $register,
+                'userHidden' => $userHidden,
+                'siteHidden' => $siteHidden,
+                'active' => $active,
+                'inactive' => $inactive,
+                'recommendRes' => $recommendRes,
+                'recommendSite' => $recommendSite,
+                'recContent' => $recContent,
+                'followUserCount' => $followUserCount,
+                'followSiteCount' => $followSiteCount,
                 )
         );
         return $output;

@@ -9,14 +9,16 @@ $(function() {
     $('.subnav .nav .dropdown:first').addClass('phone-active');
     $('.subnav .nav .dropdown-menu:first').addClass('phone-active');
     // bell animation
-    if($('#pt-notifications span').text()!=0){
+    if( typeof $('#pt-notifications span').text() === 'number' && $('#pt-notifications span').text()!=0){
         $('#pt-notifications i').addClass('bell-animation');
         $('.mw-ui-quiet').click(function(){
             $('.badge').text('0').hide();
             $('#pt-notifications i').removeClass('bell-animation');
         });
-    }else if($('#pt-notifications span').text()==0){
+    }else if($('#pt-notifications span').text() === 0){
         $('.badge').hide();
+    } else {
+    	$('.badge').hide();
     }
 
     $('table.article-table')
@@ -147,7 +149,6 @@ $(function() {
         $('.parallax-jumbotron').css('height', '300px');
     }
 
-
     //fix thumbinner
     $('.thumbinner').each(function(){
         $(this).width($(this).width()+6);
@@ -160,5 +161,12 @@ $(function() {
     $('.mwe-upwiz-details-fieldname.mwe-upwiz-required-field').prepend('<span class="mwe-upwiz-required-marker">*</span>');
 
     // done for preload. Let's show the page.
-    $('body.mediawiki').show();
+    $('#mw-content-text').show();
+    
+    //table responsive 
+    $('#mw-content-text table').each(function(){
+    	if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
+    		$(this).wrap('<div class="table-responsive"></div>');
+    	}
+    });
 });

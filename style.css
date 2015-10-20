@@ -1324,7 +1324,7 @@ h3 .mw-editsection{
     padding: 5px;
     margin-right: 5px;
 }
-body.mediawiki{
+.client-js #mw-content-text {
 	display:none;
 }
 .page-nav-wrapper{

@@ -15,97 +15,70 @@
                 </div>
                 <nav class="info-tabs" id="home-feed-tabs">
                     <ul class="" role="tablist">
-                        <li role="presentation"  class="active"><a href="#following" id="following-tab" role="tab" data-toggle="tab" aria-controls="following">我关注的用户</a></li>
-                        <li role="presentation"><a href="#following_sites" id="following_sites-tab" role="tab" data-toggle="tab" aria-controls="following_sites">我关注的站点</a></li>
-                        <li role="presentation"><a  href="#all" id="all-tab" role="tab" data-toggle="tab" aria-controls="all">精彩推荐</a></li>
+                    {{#login}}
+                        <li role="presentation" class="active"><a href="#following" id="following-tab" role="tab" data-toggle="tab" aria-controls="following">我关注的用户{{followUserCount}}</a></li>
+                        <li role="presentation"><a href="#following_sites" id="following_sites-tab" role="tab" data-toggle="tab" aria-controls="following_sites">我关注的站点{{followSiteCount}}</a></li>
+                    {{/login}}    
+                        <li role="presentation" class="{{active}}"><a  href="#all" id="all-tab" role="tab" data-toggle="tab" aria-controls="all">精彩推荐</a></li>
                     </ul>
                 </nav>
                 <div id="home-feed-content" class="tab-content">
+                    {{#login}}
+                    
                     <div role="tabpanel" class="user-home-feed tab-pane fade" id="following_sites" aria-labelledby="following_sites-tab" data-filter="following_sites" data-limit="30" data-item_type="default">
+                        {{^siteHidden}}
                         <div class="info-user-list">
-                            <h5>您还没有关注的站点，也许你会对下面的内容感兴趣。</h5>
+                            <h5>您关注的站点较少，也许你会对下面的内容感兴趣。</h5>
                             <ul>
+                                {{#recommendSite}}
                                 <li>
                                     <img src="/uploads/avatars/my_wiki_15_l.png?r=1441075020" alt="avatar" border="0" class="headimg" data-name="Volvo">
                                     <div>
-                                        <b><a>Volvo</a></b>
+                                        <b><a href="{{s_url}}">{{s_name}}</a></b>
                                         <span>+关注</span>
                                     </div>
                                 </li>
-                                <li>
-                                    <img src="/uploads/avatars/my_wiki_15_l.png?r=1441075020" alt="avatar" border="0" class="headimg" data-name="Volvo">
-                                    <div>
-                                        <b><a>Volvo</a></b>
-                                        <span>+关注</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="/uploads/avatars/my_wiki_15_l.png?r=1441075020" alt="avatar" border="0" class="headimg" data-name="Volvo">
-                                    <div>
-                                        <b><a>Volvo</a></b>
-                                        <span>+关注</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="/uploads/avatars/my_wiki_15_l.png?r=1441075020" alt="avatar" border="0" class="headimg" data-name="Volvo">
-                                    <div>
-                                        <b><a>Volvo</a></b>
-                                        <span>+关注</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="/uploads/avatars/my_wiki_15_l.png?r=1441075020" alt="avatar" border="0" class="headimg" data-name="Volvo">
-                                    <div>
-                                        <b><a>Volvo</a></b>
-                                        <span>+关注</span>
-                                    </div>
-                                </li>
+                                {{/recommendSite}}
                             </ul>
                         </div>
+                        {{/siteHidden}}
+                        <div class="user-home-feed-content"></div>
+                        <div class="user-activity-more">加载更多<i class="icon-downward"></i></div>
                     </div>
-                    <div role="tabpanel" class="user-home-feed tab-pane fade in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="30" data-item_type="default">
+                    
+                    <div role="tabpanel" class="user-home-feed tab-pane fade  in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="10" data-item_type="default">
+                        {{^userHidden}}
                         <div class="info-user-list">
-                            <h5>您还没有关注的用户，也许你会对下面的内容感兴趣。</h5>
+                            <h5>您关注的用户较少，也许你会对下面的内容感兴趣。</h5>
                             <ul>
+                                {{#recommendRes}}
                                 <li>
-                                    <img src="/uploads/avatars/my_wiki_15_l.png?r=1441075020" alt="avatar" border="0" class="headimg" data-name="Volvo">
+                                    {{&avatar}}
                                     <div>
-                                        <b><a>Volvo</a></b>
+                                        <b><a href="{{userurl}}">{{username}}</a></b>
                                         <span>+关注</span>
                                     </div>
                                 </li>
-                                <li>
-                                    <img src="/uploads/avatars/my_wiki_15_l.png?r=1441075020" alt="avatar" border="0" class="headimg" data-name="Volvo">
-                                    <div>
-                                        <b><a>Volvo</a></b>
-                                        <span>+关注</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="/uploads/avatars/my_wiki_15_l.png?r=1441075020" alt="avatar" border="0" class="headimg" data-name="Volvo">
-                                    <div>
-                                        <b><a>Volvo</a></b>
-                                        <span>+关注</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="/uploads/avatars/my_wiki_15_l.png?r=1441075020" alt="avatar" border="0" class="headimg" data-name="Volvo">
-                                    <div>
-                                        <b><a>Volvo</a></b>
-                                        <span>+关注</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="/uploads/avatars/my_wiki_15_l.png?r=1441075020" alt="avatar" border="0" class="headimg" data-name="Volvo">
-                                    <div>
-                                        <b><a>Volvo</a></b>
-                                        <span>+关注</span>
-                                    </div>
-                                </li>
+                                {{/recommendRes}}
                             </ul>
                         </div>
+                         {{/userHidden}}
+                        <div class="user-home-feed-content"></div>
+                        <div class="user-activity-more">加载更多<i class="icon-downward"></i></div>
                     </div>
-                    <div role="tabpanel" class="user-home-feed tab-pane fade" id="all" aria-labelledby="all-tab" data-filter="all" data-limit="30" data-item_type="default">
+                    {{/login}}
+                    <div role="tabpanel" class="user-home-feed tab-pane fade {{inactive}}" id="all" aria-labelledby="all-tab" data-filter="all" data-limit="30" data-item_type="default">
+                    <ul>
+                        {{#recContent}}
+                        <li>
+                            <p><span>{{title}}</span>来自<span>{{wikiname}}</span></p>
+                            <a href="{{wikiurl}}" class="image">
+                                <img alt="Wit by Botanica.jpg" src="{{backgroungimg}}" width="400px" height="400px">
+                            </a>
+                            {{desc}}
+                        </li>
+                        {{/recContent}}
+                    </ul>
                     </div>
                 </div>
             </div>
@@ -129,6 +102,7 @@
                     <li><i class="icon-envelope"></i><a>support@huiji.wiki</a></li>
                 </ul>
                 <div class="user-info row">
+                    {{#login}}
                     <div class="user-login-stats">
                         <div class="user-avatar col-md-3">
                             {{&userAvatar}}
@@ -151,6 +125,15 @@
                             </div>
                         </div>
                     </div>
+                    {{/login}}
+                    {{^login}}
+                    <ul class="nav navbar-nav navbar-right navbar-login">
+                        <li id= "pt-login" data-toggle="modal" data-target=".user-login">
+                            <a rel="nofollow" class="login-in">登录</a>
+                        </li>
+                        <li>{{&register}}</li>
+                    </ul>
+                    {{/login}}
                     <div class="col-md-12">
                     <div class="top">
                         <ul id="home-rank-tab" class="nav nav-tabs" role="tablist">
@@ -186,7 +169,7 @@
                                     <li>
                                         <span class="top-fan-num">{{rank}}</span>
                                         <span class="top-fan">
-                                            {{&avatarImage}}{{user_name}}
+                                            <a href="{{user_url}}">{{&avatarImage}}{{user_name}}</a>
                                         </span>
                                         <span class="top-fan-points">
                                             <b>{{user_points}}</b> 公里
@@ -197,7 +180,7 @@
                                     <li>
                                         <span class="top-fan-num">{{rank}}</span>
                                         <span class="top-fan">
-                                            {{&avatarImage}}{{user_name}}
+                                            <a href="{{user_url}}">{{&avatarImage}}{{user_name}}</a>
                                         </span>
                                         <span class="top-fan-points">
                                             <b>{{user_points}}</b> 公里
@@ -208,7 +191,7 @@
                                     <li>
                                         <span class="top-fan-num">{{rank}}</span>
                                         <span class="top-fan">
-                                            {{&avatarImage}}{{user_name}}
+                                            <a href="{{user_url}}">{{&avatarImage}}{{user_name}}</a>
                                         </span>
                                         <span class="top-fan-points">
                                             <b>{{user_points}}</b> 公里
