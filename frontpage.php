@@ -18,7 +18,7 @@
                 </div>
                 <nav class="info-tabs" id="home-feed-tabs">
                     <ul class="" role="tablist">
-                        <li role="presentation"  class="active"><a href="#following" id="following-tab" role="tab" data-toggle="tab" aria-controls="following">我关注的用户</a></li>
+                        <li role="presentation" class="active"><a href="#following" id="following-tab" role="tab" data-toggle="tab" aria-controls="following">我关注的用户</a></li>
                         <li role="presentation"><a href="#following_sites" id="following_sites-tab" role="tab" data-toggle="tab" aria-controls="following_sites">我关注的站点</a></li>
                         <li role="presentation"><a  href="#all" id="all-tab" role="tab" data-toggle="tab" aria-controls="all">精彩推荐</a></li>
                     </ul>
@@ -65,8 +65,10 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="user-home-feed-content"></div>
+                        <div class="user-activity-more">加载更多<i class="icon-downward"></i></div>
                     </div>
-                    <div role="tabpanel" class="user-home-feed tab-pane fade in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="30" data-item_type="default">
+                    <div role="tabpanel" class="user-home-feed tab-pane fade  in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="10" data-item_type="default">
                         <div class="info-user-list">
                             <h5>您还没有关注的用户，也许你会对下面的内容感兴趣。</h5>
                             <ul>
@@ -107,8 +109,19 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="user-home-feed-content"></div>
+                        <div class="user-activity-more">加载更多<i class="icon-downward"></i></div>
                     </div>
                     <div role="tabpanel" class="user-home-feed tab-pane fade" id="all" aria-labelledby="all-tab" data-filter="all" data-limit="30" data-item_type="default">
+                    <ul>
+                        <li>
+                            <p><span>须空</span>来自<span>红铜智库中文维基</span></p>
+                            <a href="/wiki/%E6%96%87%E4%BB%B6:Wit_by_Botanica.jpg" class="image">
+                                <img alt="Wit by Botanica.jpg" src="http://cdn.huiji.wiki/coppermind/uploads/thumb/e/ef/Wit_by_Botanica.jpg/300px-Wit_by_Botanica.jpg" width="300" height="456" srcset="http://cdn.huiji.wiki/coppermind/uploads/thumb/e/ef/Wit_by_Botanica.jpg/450px-Wit_by_Botanica.jpg 1.5x, http://cdn.huiji.wiki/coppermind/uploads/thumb/e/ef/Wit_by_Botanica.jpg/600px-Wit_by_Botanica.jpg 2x" data-file-width="984" data-file-height="1496">
+                            </a>
+                            <p>须空（Hoid）是一位在三界宙中反复现身的幕后人物，几乎在所有三界宙小说中都露过脸，有时以“须空”之名出场，有时以伪装身份出场，戏份的多寡因书而异。官方已确认他始终是同一个人[2]，但他会在不同星球间跃界。须空亲历过上古时期发生的事件——早于已出版的三界宙小说的剧情——其行为和动机神秘莫测。</br>须空本是人类，但后来改变了很多。桑德森就书迷提问回答：“这其中相当复杂。”</br>须空既不是神瑛，也不是令使。</br>须空不是《秘典》的作者[6]，《飓光志》系列的封底记载也并非出自他手。</br>须空来自尤伦[9]，在三界宙某处有一座大本营[10]。他的故事将在《龙钢》系列中揭晓。</p>
+                        </li>
+                    </ul>
                     </div>
                 </div>
             </div>
@@ -273,7 +286,373 @@
                                 </li>
                             </ul>
                             <ul role="tabpanel" class="tab-pane fade" id="user" aria-labelledby="user-tab">
+                            <div class="tab-content user-rank-content">
+                                <div class="top-users weekly-rank">
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">1</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_9_ml.jpg?r=1433263151" alt="avatar" border="0" class="headimg" data-name="SerGawen"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:SerGawen">SerGawen</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>210</b> 公里
+                                        </span>
+                                        <div class="cleared">
 
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">2</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_374_ml.png?r=1433263151" alt="avatar" border="0" class="headimg" data-name="Yiyi"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Yiyi">Yiyi</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>144</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">3</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/default_ml.gif" alt="avatar" border="0" class="headimg" data-name="三只寒鸦"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E4%B8%89%E5%8F%AA%E5%AF%92%E9%B8%A6">三只寒鸦</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>90</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">4</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_343_ml.jpg?r=1433504349" alt="avatar" border="0" class="headimg" data-name="Guimuwen"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Guimuwen">Guimuwen</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>40</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">5</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/default_ml.gif" alt="avatar" border="0" class="headimg" data-name="MZZJX"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:MZZJX">MZZJX</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>20</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">6</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/default_ml.gif" alt="avatar" border="0" class="headimg" data-name="Park Li"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Park_Li">Park Li</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>10</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">7</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_131_ml.png?r=1444807614" alt="avatar" border="0" class="headimg" data-name="北落师门"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E5%8C%97%E8%90%BD%E5%B8%88%E9%97%A8">北落师门</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>10</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">8</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_127_ml.jpg?r=1433263151" alt="avatar" border="0" class="headimg" data-name="Dhpike"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Dhpike">Dhpike</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>4</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">9</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/default_ml.gif" alt="avatar" border="0" class="headimg" data-name="鹰眼油伦"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E9%B9%B0%E7%9C%BC%E6%B2%B9%E4%BC%A6">鹰眼油伦</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>0</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">10</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_203_ml.jpg?r=1439358466" alt="avatar" border="0" class="headimg" data-name="笑笑"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E7%AC%91%E7%AC%91">笑笑</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>0</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- monthly -->
+                                <div class="top-users monthly-rank hide">
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">1</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/default_ml.gif" alt="avatar" border="0" class="headimg" data-name="Aifeng"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Aifeng">Aifeng</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>9,521</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">2</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_9_ml.jpg?r=1433263151" alt="avatar" border="0" class="headimg" data-name="SerGawen"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:SerGawen">SerGawen</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>8,508</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">3</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_28_ml.jpg?r=1433263151" alt="avatar" border="0" class="headimg" data-name="卢斯 波顿"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E5%8D%A2%E6%96%AF_%E6%B3%A2%E9%A1%BF">卢斯 波顿</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>3,466</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">4</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_374_ml.png?r=1433263151" alt="avatar" border="0" class="headimg" data-name="Yiyi"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Yiyi">Yiyi</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>3,083</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">5</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_131_ml.png?r=1444807614" alt="avatar" border="0" class="headimg" data-name="北落师门"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E5%8C%97%E8%90%BD%E5%B8%88%E9%97%A8">北落师门</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>2,289</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">6</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_1722_ml.png?r=1444403050" alt="avatar" border="0" class="headimg" data-name="飞遥翼"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E9%A3%9E%E9%81%A5%E7%BF%BC">飞遥翼</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>1,840</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">7</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_649_ml.png?r=1441878069" alt="avatar" border="0" class="headimg" data-name="Botanica"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Botanica">Botanica</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>1,484</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">8</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_203_ml.jpg?r=1439358466" alt="avatar" border="0" class="headimg" data-name="笑笑"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E7%AC%91%E7%AC%91">笑笑</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>1,479</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">9</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_2027_ml.png?r=1443578470" alt="avatar" border="0" class="headimg" data-name="WhovianSea"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:WhovianSea">WhovianSea</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>1,457</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+                                                            <div class="top-fan-row">
+                                        <span class="top-fan-num">10</span>
+                                        <span class="top-fan">
+                                            <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_1719_ml.jpg?r=1440668182" alt="avatar" border="0" class="headimg" data-name="花灼羽翼"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E8%8A%B1%E7%81%BC%E7%BE%BD%E7%BF%BC">花灼羽翼</a>
+                                        </span>
+                                        <span class="top-fan-points">
+                                            <b>1,432</b> 公里
+                                        </span>
+                                        <div class="cleared">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- total -->
+                                <div class="top-users total-rank hide">
+                                                    <div class="top-fan-row">
+                                    <span class="top-fan-num">1</span>
+                                    <span class="top-fan">
+                                        <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_205_ml.jpg?r=1434269799" alt="avatar" border="0" class="headimg" data-name="AemonTargaryen"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:AemonTargaryen">AemonTargaryen</a>
+                                    </span>
+                                    <span class="top-fan-points">
+                                        <b>120,166</b> 公里
+                                    </span>
+                                    <div class="cleared">
+                                    </div>
+                                </div>
+                                                    <div class="top-fan-row">
+                                    <span class="top-fan-num">2</span>
+                                    <span class="top-fan">
+                                        <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_9_ml.jpg?r=1433263151" alt="avatar" border="0" class="headimg" data-name="SerGawen"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:SerGawen">SerGawen</a>
+                                    </span>
+                                    <span class="top-fan-points">
+                                        <b>108,482</b> 公里
+                                    </span>
+                                    <div class="cleared">
+                                    </div>
+                                </div>
+                                                    <div class="top-fan-row">
+                                    <span class="top-fan-num">3</span>
+                                    <span class="top-fan">
+                                        <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_28_ml.jpg?r=1433263151" alt="avatar" border="0" class="headimg" data-name="卢斯 波顿"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E5%8D%A2%E6%96%AF_%E6%B3%A2%E9%A1%BF">卢斯 波顿</a>
+                                    </span>
+                                    <span class="top-fan-points">
+                                        <b>49,363</b> 公里
+                                    </span>
+                                    <div class="cleared">
+                                    </div>
+                                </div>
+                                                    <div class="top-fan-row">
+                                    <span class="top-fan-num">4</span>
+                                    <span class="top-fan">
+                                        <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_697_ml.gif?r=1435385692" alt="avatar" border="0" class="headimg" data-name="疯王伊里斯"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E7%96%AF%E7%8E%8B%E4%BC%8A%E9%87%8C%E6%96%AF">疯王伊里斯</a>
+                                    </span>
+                                    <span class="top-fan-points">
+                                        <b>35,006</b> 公里
+                                    </span>
+                                    <div class="cleared">
+                                    </div>
+                                </div>
+                                                    <div class="top-fan-row">
+                                    <span class="top-fan-num">5</span>
+                                    <span class="top-fan">
+                                        <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_24_ml.jpg?r=1433263151" alt="avatar" border="0" class="headimg" data-name="Leopold Break"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Leopold_Break">Leopold Break</a>
+                                    </span>
+                                    <span class="top-fan-points">
+                                        <b>25,576</b> 公里
+                                    </span>
+                                    <div class="cleared">
+                                    </div>
+                                </div>
+                                                    <div class="top-fan-row">
+                                    <span class="top-fan-num">6</span>
+                                    <span class="top-fan">
+                                        <img src="http://cdn.huijiwiki.com/www/uploads/avatars/default_ml.gif" alt="avatar" border="0" class="headimg" data-name="Arya·Stark"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Arya%C2%B7Stark">Arya·Stark</a>
+                                    </span>
+                                    <span class="top-fan-points">
+                                        <b>25,436</b> 公里
+                                    </span>
+                                    <div class="cleared">
+                                    </div>
+                                </div>
+                                                    <div class="top-fan-row">
+                                    <span class="top-fan-num">7</span>
+                                    <span class="top-fan">
+                                        <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_26_ml.png?r=1442472364" alt="avatar" border="0" class="headimg" data-name="来自中世界"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:%E6%9D%A5%E8%87%AA%E4%B8%AD%E4%B8%96%E7%95%8C">来自中世界</a>
+                                    </span>
+                                    <span class="top-fan-points">
+                                        <b>25,022</b> 公里
+                                    </span>
+                                    <div class="cleared">
+                                    </div>
+                                </div>
+                                                    <div class="top-fan-row">
+                                    <span class="top-fan-num">8</span>
+                                    <span class="top-fan">
+                                        <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_374_ml.png?r=1433263151" alt="avatar" border="0" class="headimg" data-name="Yiyi"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Yiyi">Yiyi</a>
+                                    </span>
+                                    <span class="top-fan-points">
+                                        <b>24,523</b> 公里
+                                    </span>
+                                    <div class="cleared">
+                                    </div>
+                                </div>
+                                                    <div class="top-fan-row">
+                                    <span class="top-fan-num">9</span>
+                                    <span class="top-fan">
+                                        <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_161_ml.png?r=1440896054" alt="avatar" border="0" class="headimg" data-name="JOooker"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:JOooker">JOooker</a>
+                                    </span>
+                                    <span class="top-fan-points">
+                                        <b>21,731</b> 公里
+                                    </span>
+                                    <div class="cleared">
+                                    </div>
+                                </div>
+                                                    <div class="top-fan-row">
+                                    <span class="top-fan-num">10</span>
+                                    <span class="top-fan">
+                                        <img src="http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_649_ml.png?r=1441878069" alt="avatar" border="0" class="headimg" data-name="Botanica"> <a href="http://www.huiji.wiki/wiki/%E7%94%A8%E6%88%B7:Botanica">Botanica</a>
+                                    </span>
+                                    <span class="top-fan-points">
+                                        <b>21,441</b> 公里
+                                    </span>
+                                    <div class="cleared">
+                                    </div>
+                                </div>
+                                                    </div>
+                                </div>
+                                <ul class="nav-tab user-point-tabs">
+                                    <li class="active">周里程<span>/</span></li>
+                                    <li>月里程<span>/</span></li>
+                                    <li>总里程</li>
+                                </ul>
                             </ul>
                         </div>
                     </div>

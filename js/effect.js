@@ -207,10 +207,10 @@ $(document).ready(function(){
     },function(){
         $('.all-wiki').removeClass('act');
     });
-    $('.nav-tab li').click(function(){
+    $('.user-point-tabs li').click(function(){
        $(this).addClass('active').siblings().removeClass('active');
         var index = $(this).index();
-        $('.tab-content>div').eq(index).removeClass('hide').siblings().addClass('hide');
+        $('.user-rank-content>div').eq(index).removeClass('hide').siblings().addClass('hide');
     });
     if(document.body.clientWidth>1024) {
         $('.wikis li').hover(function () {
@@ -222,7 +222,7 @@ $(document).ready(function(){
     }
 
 
-    var next = (function(){
+    (function(){
         var config = {
             filter: jQuery('.user-home-feed.active').data('filter'),
             item_type: jQuery('.user-home-feed.active').data('item_type'),
@@ -235,12 +235,12 @@ $(document).ready(function(){
         var limit = config.limit;
         var continuation = null;
         var showPlaceholder = function(){
-            jQuery('.user-home-feed.active').append('<i class="placeholder fa fa-spinner fa-5x fa-spin"></i>');
-        }
+            jQuery('.user-home-feed.active .user-home-feed-content').append('<p class="text-center placeholder"><i class="fa fa-spinner fa-2x fa-spin"></i></p>');
+        };
         var removePlaceholder = function(){
             jQuery('.placeholder').remove();
-        }
-        return function(){
+        };
+        function more(){
             showPlaceholder();
             console.log( username + filter + item_type + limit + continuation);
             jQuery.post(
@@ -254,15 +254,25 @@ $(document).ready(function(){
                     if (res.success){
                         console.log(res.earlierThan);
                         removePlaceholder();
-                        jQuery('.user-home-feed.active').append(res.output);
+                        jQuery('.user-home-feed.active .user-home-feed-content').append(res.output);
                         continuation = res.continuation;
                     }
                 }
             );
-        };
+        }
+        more();
+        $('.user-activity-more').on('click',function(){
+           more();
+        });
+        $('#home-feed-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            console.log(e.target); // newly activated tab
+            console.log(e.relatedTarget); // previous active tab
+            filter = $('.user-home-feed.active').data('filter');
+            item_type = $('.user-home-feed.active').data('item_type');
+            limit = $('.user-home-feed.active').data('limit');
+            continuation = null;
+            $('.user-home-feed-content').empty();
+            more();
+        });
     })();
-    next();
-    jQuery( '#user-activity-more' ).on( 'click', function() {
-        next();
-    } );
 });
