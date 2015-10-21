@@ -45,7 +45,6 @@
                         <div class="user-home-feed-content"></div>
                         <div class="user-activity-more">加载更多<i class="icon-downward"></i></div>
                     </div>
-                    
                     <div role="tabpanel" class="user-home-feed tab-pane fade  in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="10" data-item_type="default">
                         {{^userHidden}}
                         <div class="info-user-list">
@@ -71,7 +70,7 @@
                     <ul class="recommend">
                         {{#recContent}}
                         <li>
-                            <p class="source"><a class="entry-name" href="{{wikiurl}}">{{title}}</a>来自<a class="entry-source">{{wikiname}}</a></p>
+                            <p class="source"><a class="entry-name" href="{{wikiurl}}">{{title}}</a>来自<a class="entry-source" href="{{siteurl}}">{{wikiname}}</a></p>
                             <a href="{{wikiurl}}" class="image">
                                 <img alt="Wit by Botanica.jpg" src="{{backgroungimg}}">
                             </a>
@@ -97,8 +96,8 @@
                     <li><b>{{pageCount}}</b><span>内容页面</span></li>
                 </ul>
                 <ul class="wiki-href">
-                    <li><i class="icon-book-open"></i><a>编辑手册</a></li>
-                    <li><i class="icon-plane"></i><a>灰机停机坪</a></li>
+                    <li><i class="icon-book-open"></i><a href="{{helpManual}}">编辑手册</a></li>
+                    <li><i class="icon-plane"></i><a href="{{tarmac}}">灰机停机坪</a></li>
                     <li><i class="icon-envelope"></i><a>support@huiji.wiki</a></li>
                 </ul>
                 <div class="user-info row">

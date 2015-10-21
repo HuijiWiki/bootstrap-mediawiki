@@ -193,7 +193,7 @@ class FrontPage{
             $siteHidden = false;
         }
 
-        //recommend $weekRank $monthRank  $totalRank
+        //recommend user $weekRank $monthRank  $totalRank
         //checkUserUserFollow(usreId, )
         $uuf = new UserUserFollow();
         if ( count($weekRank) >=8 ) {
@@ -216,6 +216,7 @@ class FrontPage{
             }         
         }
         $recommendRes = array_slice($recommendRes, 0, 5);
+        
         //recommend site
         $usf = new UserSiteFollow();
         $recSite = array_slice($allSiteRank,0 ,10);
@@ -238,9 +239,14 @@ class FrontPage{
             $contentRes['wikiname'] = $block[$i]->wikiname;
             $contentRes['desc'] = $block[$i]->desc;
             $contentRes['wikiurl'] = $block[$i]->wikiurl;
+            $contentRes['siteurl'] = $block[$i]->siteurl;
             $contentRes['backgroungimg'] = $block[$i]->backgroungimg;
             $recContent[] = $contentRes;
         }
+
+        //url helpManual huijitramac
+        $helpManual = 'http://www.huiji.wiki/wiki/%E5%B8%AE%E5%8A%A9:%E7%BC%96%E8%BE%91%E6%89%8B%E5%86%8C';
+        $tarmac = 'http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA';
 
         $output .= $templateParser->processTemplate(
             'frontpage',
@@ -273,6 +279,8 @@ class FrontPage{
                 'recContent' => $recContent,
                 'followUserCount' => $followUserCount,
                 'followSiteCount' => $followSiteCount,
+                'helpManual' => $helpManual,
+                'tarmac' => $tarmac,
                 )
         );
         return $output;
