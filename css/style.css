@@ -1367,6 +1367,9 @@ body{
     text-align: right;
     margin: 0;
 }
+.svg-wrap text {
+    display: none;
+}
 .top .nav-pills>li>a {
     border-radius: 0;
     padding: 4px 8px;
@@ -1444,7 +1447,7 @@ body{
     width: 1px;
     background: #999;
     margin:0 5px;
-    margin-top: 5px;
+    margin-top: 2px;
 }
 .info-user-list{
     border: 1px solid #eee;

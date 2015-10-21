@@ -281,4 +281,18 @@ $(document).ready(function(){
             more();
         });
     })();
+    $('.info-user-list').on('click','span ',function(){
+        var follower = mw.config.get('wgUserName');
+        var followee = $(this).siblings().find('a').text();
+        $.post(
+            mw.util.wikiScript(), {
+                action: 'ajax',
+                rs: 'wfUserFollowsRecommend',
+                rsargs: [follower, followee]
+            },
+            function(data){
+                console.log(data);
+            }
+        )
+    })
 });
