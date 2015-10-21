@@ -181,7 +181,7 @@ class FrontPage{
 
         // follow
         $followUserCount = UserUserFollow::getFollowingCount($wgUser);
-        if ( $followUserCount > 10 ) {
+        if ( $followUserCount > 5 ) {
             $userHidden = true;
         }else{
             $userHidden = false;

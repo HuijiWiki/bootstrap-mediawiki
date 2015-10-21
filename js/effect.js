@@ -284,6 +284,7 @@ $(document).ready(function(){
     $('.info-user-list').on('click','span ',function(){
         var follower = mw.config.get('wgUserName');
         var followee = $(this).siblings().find('a').text();
+        var that = $(this);
         $.post(
             mw.util.wikiScript(), {
                 action: 'ajax',
@@ -292,6 +293,22 @@ $(document).ready(function(){
             },
             function(data){
                 console.log(data);
+                var res = $.parseJSON(data);
+                if(res.result == null){
+                    that.parents('.info-user-list').remove();
+                }else {
+                    var parent = that.parents('.info-user-list ul');
+                    var img = res.result.avatar;
+                    var user = res.result.username;
+                    var url = res.result.userurl;
+                    var content = '';
+                    content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
+                    console.log(content);
+                    console.log(that.parents('.info-user-list ul'));
+                    console.log(that.parents());
+                    that.parents('.info-user-list li').remove();
+                    parent.append(content);
+                }
             }
         )
     })
