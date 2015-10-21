@@ -215,8 +215,8 @@ class FrontPage{
                 $recommendRes[] = $flres;
             }         
         }
-        $recommendRes = array_slice($recommendRes, 0, 5);
-        
+        // $recommendRes = array_slice($recommendRes, 0, 5);
+        print_r($recommendRes);
         //recommend site
         $usf = new UserSiteFollow();
         $recSite = array_slice($allSiteRank,0 ,10);
@@ -247,6 +247,7 @@ class FrontPage{
         //url helpManual huijitramac
         $helpManual = 'http://www.huiji.wiki/wiki/%E5%B8%AE%E5%8A%A9:%E7%BC%96%E8%BE%91%E6%89%8B%E5%86%8C';
         $tarmac = 'http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA';
+        $contact = 'http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC';
 
         $output .= $templateParser->processTemplate(
             'frontpage',
@@ -281,6 +282,7 @@ class FrontPage{
                 'followSiteCount' => $followSiteCount,
                 'helpManual' => $helpManual,
                 'tarmac' => $tarmac,
+                'contact' => $contact,
                 )
         );
         return $output;
