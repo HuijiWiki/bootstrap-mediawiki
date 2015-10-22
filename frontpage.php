@@ -230,6 +230,7 @@ class FrontPage{
             if($isFollowSite == false ){
                 $fsres['s_name'] = HuijiPrefix::prefixToSiteName($value['site_prefix']);
                 $fsres['s_url'] = HuijiPrefix::prefixToUrl($value['site_prefix']);
+                $fsres['s_prefix'] = $value['site_prefix'];
                 $recommendSite[] = $fsres;
             }
         }
