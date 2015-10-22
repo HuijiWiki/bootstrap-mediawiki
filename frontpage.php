@@ -181,13 +181,13 @@ class FrontPage{
 
         // follow
         $followUserCount = UserUserFollow::getFollowingCount($wgUser);
-        if ( $followUserCount > 5 ) {
+        if ( $followUserCount >= 5 ) {
             $userHidden = true;
         }else{
             $userHidden = false;
         }
         $followSiteCount = UserSiteFollow::getFollowingCount($wgUser);
-        if ( $followSiteCount > 5 ) {
+        if ( $followSiteCount >= 5 ) {
             $siteHidden = true;
         }else{
             $siteHidden = false;
@@ -195,13 +195,16 @@ class FrontPage{
 
         //recommend user $weekRank $monthRank  $totalRank
         //checkUserUserFollow(usreId, )
+        //UserStats::getUserRank(10,'week');
+        // UserStats::getUserRank(20,'month');
+        // UserStats::getUserRank(20,'total');
         $uuf = new UserUserFollow();
         if ( count($weekRank) >=8 ) {
-            $recommend = $weekRank;
+            $recommend = UserStats::getUserRank(10,'week');
         }elseif ( count($monthRank) >=8 ) {
-            $recommend = $monthRank;
+            $recommend = UserStats::getUserRank(20,'month');
         }else{
-            $recommend = $totalRank;
+            $recommend = UserStats::getUserRank(20,'total');
         }
         $recommendRes = array();
         $flres = array();
@@ -215,8 +218,9 @@ class FrontPage{
                 $recommendRes[] = $flres;
             }         
         }
-        // $recommendRes = array_slice($recommendRes, 0, 5);
-        print_r($recommendRes);
+        // print_r($recommendRes);
+        $recommendRes = array_slice($recommendRes, 0, 5);
+        // print_r($recommendRes);
         //recommend site
         $usf = new UserSiteFollow();
         $recSite = array_slice($allSiteRank,0 ,10);
@@ -229,6 +233,7 @@ class FrontPage{
                 $recommendSite[] = $fsres;
             }
         }
+        // print_r($recommendSite);
         //recommend content
         $recRes = new BootstrapMediaWikiTemplate();
         $block = $recRes->getIndexBlock( '首页/Admin' );
