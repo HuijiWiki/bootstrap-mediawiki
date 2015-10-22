@@ -1453,7 +1453,6 @@ body{
     border: 1px solid #eee;
     margin-top: 20px;
     padding: 10px;
-    margin-bottom: 50px;
 }
 .info-user-list ul:after{
     content: '';
@@ -1480,6 +1479,9 @@ body{
     margin-top: 5px;
     color: #428bca;
     cursor: pointer;
+}
+.user-home-feed-content{
+    margin-top: 50px;
 }
 .user-home-item-owner-avatar{
     float: left;

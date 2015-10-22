@@ -281,7 +281,7 @@ $(document).ready(function(){
             more();
         });
     })();
-    $('.info-user-list').on('click','span ',function(){
+    $('#following').on('click','.info-user-list span ',function(){
         var follower = mw.config.get('wgUserName');
         var followee = $(this).siblings().find('a').text();
         var that = $(this);
@@ -301,7 +301,38 @@ $(document).ready(function(){
                     var img = res.result.avatar;
                     var user = res.result.username;
                     var url = res.result.userurl;
-                    var content = '';
+                    var content;
+                    content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
+                    console.log(content);
+                    console.log(that.parents('.info-user-list ul'));
+                    console.log(that.parents());
+                    that.parents('.info-user-list li').remove();
+                    parent.append(content);
+                }
+            }
+        )
+    });
+    $('#following_sites').on('click','.info-user-list span ',function(){
+        var username = mw.config.get('wgUserName');
+        var severname = $(this).siblings().find('a').data('src');
+        var that = $(this);
+        $.post(
+            mw.util.wikiScript(), {
+                action: 'ajax',
+                rs: 'wfSiteFollowsRecommend',
+                rsargs: [username, severname]
+            },
+            function(data){
+                console.log(data);
+                var res = $.parseJSON(data);
+                if(res.result == null){
+                    that.parents('.info-user-list').remove();
+                }else {
+                    var parent = that.parents('.info-user-list ul');
+                    var img = res.result.avatar;
+                    var user = res.result.username;
+                    var url = res.result.userurl;
+                    var content;
                     content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
                     console.log(content);
                     console.log(that.parents('.info-user-list ul'));
