@@ -217,9 +217,9 @@ class FrontPage{
         $recommendRes = array_slice($recommendRes, 0, 5);
         //recommend site
         $usf = new UserSiteFollow();
-        $recSite = array_slice($allSiteRank,0 ,10);
+        // $recSite = array_slice($allSiteRank,0 ,5);
         $recommendSite = array();
-        foreach($recSite as $value){
+        foreach($allSiteRank as $value){
             $isFollowSite = $usf->checkUserSiteFollow( $wgUser, $value['site_prefix']);
             if($isFollowSite == false ){
                 $fsres['s_name'] = HuijiPrefix::prefixToSiteName($value['site_prefix']);
@@ -229,6 +229,7 @@ class FrontPage{
                 $recommendSite[] = $fsres;
             }
         }
+        $recommendSite = array_slice($recommendSite, 0, 5);
         //recommend content
         $recRes = new BootstrapMediaWikiTemplate();
         $block = $recRes->getIndexBlock( '首页/Admin' );
