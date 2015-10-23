@@ -88,7 +88,7 @@ class FrontPage{
                 $currentMaxlen = 0;
             }
         }
-        $lange = '<svg width="725" height="110" class=" ">
+        $lange = '<svg width="710" height="110" class=" ">
                     <g transform="translate(20, 20)">';
         $n = 676/13;
         $dateArr = array();
@@ -167,8 +167,7 @@ class FrontPage{
                     <text text-anchor="middle" class="wday" dx="-10" dy="74">F</text>
                     <text text-anchor="middle" class="wday" dx="-10" dy="87" style="display: none;">S</text>
                   </g>
-                </svg>
-                <div class="edit-statistics"><p>连续编辑纪录<span>'.$maxlen.'</span></p><p>总编辑天数<span>'.$totalEdit.'</span></p><p>当前连续编辑<span>'.$currentMaxlen.'<span></p></div>';
+                </svg>';
         //user login
         if ( $wgUser->isLoggedIn() ) {
             $login = true;

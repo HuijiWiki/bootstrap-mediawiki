@@ -1313,7 +1313,6 @@ body{
     clear: both;
 }
 .wiki-href li {
-    padding: 0 8px;
     color: #09c;
 }
 .wiki-href li:last-child{
@@ -1323,25 +1322,32 @@ body{
     cursor: pointer;
     margin-left: 5px;
 }
-.user-follow-msg li:nth-child(even){
-    float: left;
-    width: 1px;
-    background: #fff;
-    height: 50px;
-}
+/*.user-follow-msg li:nth-child(even){*/
+    /*float: left;*/
+    /*width: 1px;*/
+    /*background: #fff;*/
+    /*height: 50px;*/
+/*}*/
 .user-follow-msg li:nth-child(odd){
     float: left;
     width: 32%;
     padding-left: 10px;
 }
+.user-follow-msg li:nth-child(3){
+    text-align: center;
+}
+.user-follow-msg li:nth-child(5){
+    text-align: right;
+}
 .user-follow-msg h5{
     margin-bottom: 0;
 }
 .user-follow-msg a{
-    font-size: 18px;
+    font-size: 24px;
 }
 .user-msg{
     margin: 0;
+    margin-left: 10px;
 }
 .user-name{
     margin-bottom: 0;
@@ -1369,6 +1375,17 @@ body{
 }
 .svg-wrap text {
     display: none;
+}
+.edit-statistics{
+    float: right;
+
+}
+.edit-statistics p{
+    margin-bottom: 0;
+}
+.edit-statistics span{
+    color: #09c;
+    font-size: 20px;
 }
 .top .nav-pills>li>a {
     border-radius: 0;
@@ -1434,6 +1451,19 @@ body{
 }
 .home-rank-msg a{
     cursor: pointer;
+}
+.home-rank-msg li span{
+    display: inline-block;
+    max-width: 0;
+    transition: all .2s;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+}
+.home-rank-msg li:hover span{
+    opacity: 1;
+    max-width: 100px;
+    visibility: visible;
 }
 .home-rank-msg ul{
     margin-top: 5px;
@@ -1543,7 +1573,6 @@ body{
 }
 .entry-source {
     color: #09c;
-    margin-left: 5px;
 }
 .recommend>li:after{
     content: '';
@@ -1564,7 +1593,7 @@ a.image {
     padding-top: 20px;
 }
 .entry-description{
-    margin-left: 160px;
+    margin-left: 170px;
 }
 @media screen and (max-width: 768px) {
     .user-home-links-container{
