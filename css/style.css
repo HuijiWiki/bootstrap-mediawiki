@@ -1587,6 +1587,16 @@ a.image {
 }
 .recommend li {
     margin-top: 30px;
+    position: relative;
+}
+.recommend-edit{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #999;
+}
+.recommend-edit span {
+    font-size: 24px;
 }
 .recommend .source {
     border-top: 1px solid #eee;
