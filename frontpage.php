@@ -193,10 +193,6 @@ class FrontPage{
         }
 
         //recommend user $weekRank $monthRank  $totalRank
-        //checkUserUserFollow(usreId, )
-        //UserStats::getUserRank(10,'week');
-        // UserStats::getUserRank(20,'month');
-        // UserStats::getUserRank(20,'total');
         $uuf = new UserUserFollow();
         if ( count($weekRank) >=8 ) {
             $recommend = UserStats::getUserRank(10,'week');
@@ -217,9 +213,7 @@ class FrontPage{
                 $recommendRes[] = $flres;
             }         
         }
-        // print_r($recommendRes);
         $recommendRes = array_slice($recommendRes, 0, 5);
-        // print_r($recommendRes);
         //recommend site
         $usf = new UserSiteFollow();
         $recSite = array_slice($allSiteRank,0 ,10);
@@ -230,10 +224,10 @@ class FrontPage{
                 $fsres['s_name'] = HuijiPrefix::prefixToSiteName($value['site_prefix']);
                 $fsres['s_url'] = HuijiPrefix::prefixToUrl($value['site_prefix']);
                 $fsres['s_prefix'] = $value['site_prefix'];
+                $fsres['s_avatar'] = (new wSiteAvatar($value['site_prefix'], 'l'))->getAvatarHtml();
                 $recommendSite[] = $fsres;
             }
         }
-        // print_r($recommendSite);
         //recommend content
         $recRes = new BootstrapMediaWikiTemplate();
         $block = $recRes->getIndexBlock( '首页/Admin' );
