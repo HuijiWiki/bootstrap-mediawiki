@@ -318,7 +318,8 @@ Class BootstrapMediawikiHooks {
     }
 
     public static function onGetDefaultSortkey( $title, &$sortkey ) { 
-        $sortkey = strtoupper(CUtf8_PY::encode($title->getText(),'all'));
+        $sortkey = CUtf8_PY::encode($title->getText(),'all')."*"; 
+        //append * here to avoid cases where return an empty string.
     }
     public static function addEditModule(EditPage $editPage, OutputPage $output ) {
         $output->addModules( 'ext.wikieditor.huijiextra.top' );
