@@ -207,11 +207,6 @@ $(document).ready(function(){
     },function(){
         $('.all-wiki').removeClass('act');
     });
-    $('.user-point-tabs li').click(function(){
-       $(this).addClass('active').siblings().removeClass('active');
-        var index = $(this).index();
-        $('.user-rank-content>div').eq(index).removeClass('hide').siblings().addClass('hide');
-    });
     if(document.body.clientWidth>1024) {
         $('.wikis li').hover(function () {
             var height = $(this).height() - 25;
@@ -220,6 +215,11 @@ $(document).ready(function(){
             $(this).find('.wiki-info').css('height', '110px');
         });
     }
+    $('#user .nav-tab li').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+        var index = $(this).index();
+        $('.top-users').eq(index).removeClass('hide').siblings('.top-users').addClass('hide');
+    });
     (function(){
         var config = {
             filter: jQuery('.user-home-feed.active').data('filter'),
@@ -298,9 +298,6 @@ $(document).ready(function(){
                         var url = res.result.userurl;
                         var content;
                         content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
-                        console.log(content);
-                        console.log(that.parents('.info-user-list ul'));
-                        console.log(that.parents());
                         that.parents('.info-user-list li').remove();
                         parent.append(content);
                         refreshFeed();
@@ -331,9 +328,6 @@ $(document).ready(function(){
                         var url = res.result.userurl;
                         var content;
                         content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
-                        console.log(content);
-                        console.log(that.parents('.info-user-list ul'));
-                        console.log(that.parents());
                         that.parents('.info-user-list li').remove();
                         parent.append(content);
                         refreshFeed();

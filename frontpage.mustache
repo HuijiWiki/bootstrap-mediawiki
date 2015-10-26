@@ -16,8 +16,8 @@
                 <nav class="info-tabs" id="home-feed-tabs">
                     <ul class="" role="tablist">
                     {{#login}}
-                        <li role="presentation" class="active"><a href="#following" id="following-tab" role="tab" data-toggle="tab" aria-controls="following">我关注的用户{{followUserCount}}</a></li>
-                        <li role="presentation"><a href="#following_sites" id="following_sites-tab" role="tab" data-toggle="tab" aria-controls="following_sites">我关注的站点{{followSiteCount}}</a></li>
+                        <li role="presentation" class="active"><a href="#following" id="following-tab" role="tab" data-toggle="tab" aria-controls="following">我关注的用户</a></li>
+                        <li role="presentation"><a href="#following_sites" id="following_sites-tab" role="tab" data-toggle="tab" aria-controls="following_sites">我关注的站点</a></li>
                     {{/login}}    
                         <li role="presentation" class="{{active}}"><a  href="#all" id="all-tab" role="tab" data-toggle="tab" aria-controls="all">精彩推荐</a></li>
                     </ul>
@@ -45,7 +45,7 @@
                         <div class="user-home-feed-content"></div>
                         <div class="user-activity-more">加载更多<i class="icon-downward"></i></div>
                     </div>
-                    <div role="tabpanel" class="user-home-feed tab-pane fade  in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="10" data-item_type="default">
+                    <div role="tabpanel" class="user-home-feed tab-pane fade  in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="30" data-item_type="default">
                         {{^userHidden}}
                         <div class="info-user-list">
                             <h5>您关注的用户较少，也许你会对下面的内容感兴趣。</h5>
@@ -70,12 +70,13 @@
                     <ul class="recommend">
                         {{#recContent}}
                         <li>
-                            <p class="recommend-edit"><span>13</span>次编辑</p>
                             <p class="source"><a class="entry-name" href="{{wikiurl}}">{{title}}</a>来自<a class="entry-source" href="{{siteurl}}">{{wikiname}}</a></p>
-                            <a href="{{wikiurl}}" class="image">
-                                <img alt="Wit by Botanica.jpg" src="{{backgroungimg}}">
-                            </a>
-                            <p class="entry-description">{{desc}}</p>
+                            <div class="recommend-info">
+                                <a href="{{wikiurl}}" class="image">
+                                    <img alt="Wit by Botanica.jpg" src="{{backgroungimg}}">
+                                </a>
+                                <p class="entry-description">{{desc}}</p>
+                            </div>
                         </li>
                         {{/recContent}}
                     </ul>
@@ -163,10 +164,10 @@
                                 </li>
                             {{/siteRank}}    
                             </ul>
-                            <ul role="tabpanel" class="tab-pane fade" id="user" aria-labelledby="user-tab">
-                                <div class="top-fan-row">
+                            <div role="tabpanel" class="tab-pane fade" id="user" aria-labelledby="user-tab">
+                                <ul class="top-users weekly-rank">
                                     {{#weekRank}}
-                                    <li>
+                                    <li class="top-fan-row">
                                         <span class="top-fan-num">{{rank}}</span>
                                         <span class="top-fan">
                                             <a href="{{user_url}}">{{&avatarImage}}{{user_name}}</a>
@@ -176,8 +177,10 @@
                                         </span>
                                     </li>
                                     {{/weekRank}}
+                                </ul>
+                                <ul class="top-users monthly-rank hide">
                                     {{#monthRank}}
-                                    <li>
+                                    <li class="top-fan-row">
                                         <span class="top-fan-num">{{rank}}</span>
                                         <span class="top-fan">
                                             <a href="{{user_url}}">{{&avatarImage}}{{user_name}}</a>
@@ -187,8 +190,10 @@
                                         </span>
                                     </li>
                                     {{/monthRank}}
+                                </ul>
+                                <ul class="top-users total-rank hide">
                                     {{#totalRank}}
-                                    <li>
+                                    <li class="top-fan-row">
                                         <span class="top-fan-num">{{rank}}</span>
                                         <span class="top-fan">
                                             <a href="{{user_url}}">{{&avatarImage}}{{user_name}}</a>
@@ -198,8 +203,13 @@
                                         </span>
                                     </li>
                                     {{/totalRank}}
-                                </div>
-                            </ul>
+                                </ul>
+                                <ul class="nav-tab">
+                                    <li class="active">周里程<span>/</span></li>
+                                    <li>月里程<span>/</span></li>
+                                    <li>总里程</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     </div>

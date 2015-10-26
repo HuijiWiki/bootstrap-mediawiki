@@ -1471,12 +1471,13 @@ body{
 .home-rank-msg li{
     float: left;
     color: #999;
+    padding: 0 5px;
 }
 .home-rank-msg li:nth-child(even){
     height: 15px;
     width: 1px;
     background: #999;
-    margin:0 5px;
+    padding: 0;
     margin-top: 2px;
 }
 .info-user-list{
@@ -1605,6 +1606,25 @@ a.image {
 .entry-description{
     margin-left: 170px;
 }
+@media screen and (max-width: 1366px){
+    .home-main{
+        width: 90%;
+    }
+    .home-info{
+        padding: 30px 0;
+    }
+}
+@media screen and (max-width: 992px) {
+    .home-info{
+        margin-right: 0;
+    }
+    .home-aside{
+        display: none;
+    }
+    .home-main{
+        margin: 50px auto;
+    }
+}
 @media screen and (max-width: 768px) {
     .user-home-links-container{
         width: 100%;
@@ -1629,5 +1649,40 @@ a.image {
     }
     .user-home-feed .user-home-item-body{
         padding-right: 0;
+        width: auto;
+    }
+    .user-home-item-timestamp{
+        bottom: 10px;
+        top: inherit;
+    }
+    .home-huiji{
+        display: none;
+    }
+    .info-tabs li>a{
+        padding: 2px 4px;
+    }
+    .info-user-list li>div {
+        margin-left: 0;
+    }
+    .info-user-list li>div b {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 50%;
+        min-width: 53px;
+        overflow: hidden;
+        display: inline-block;
+    }
+    .recommend-info{
+        position: relative;
+    }
+    .recommend-info .image{
+        display: block;
+        float: none;
+    }
+    .entry-description {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        overflow: hidden;
     }
 }
