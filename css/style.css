@@ -1616,7 +1616,7 @@ a.image {
     margin-left: 170px;
 }
 .entry-description p{
-    margin-bottom: 0;
+    margin-bottom: 10px;
 }
 @media screen and (max-width: 1366px){
     .home-main{
