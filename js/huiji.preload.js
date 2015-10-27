@@ -15,11 +15,9 @@ $(function() {
             $('.badge').text('0').hide();
             $('#pt-notifications i').removeClass('bell-animation');
         });
-    }else if($('#pt-notifications span').text() === 0){
+    }else if($('#pt-notifications span').text() == 0){
         $('.badge').hide();
-    } else {
-    	$('.badge').hide();
-    }
+    } 
 
     $('table.article-table')
         .each(function() {
@@ -149,6 +147,7 @@ $(function() {
         $('.parallax-jumbotron').css('height', '300px');
     }
 
+
     //fix thumbinner
     $('.thumbinner').each(function(){
         $(this).width($(this).width()+6);
@@ -162,5 +161,4 @@ $(function() {
 
     // done for preload. Let's show the page.
     $('#mw-content-text').show();
-
 });

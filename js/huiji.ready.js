@@ -1,12 +1,10 @@
 $(document).ready(function(){
-    
     //table responsive 
     $('#mw-content-text table').each(function(){
-    	if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
-    		$(this).wrap('<div class="table-responsive"></div>');
-    	}
+       if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
+               $(this).wrap('<div class="table-responsive"></div>');
+       }
     });
-    
     $('#preftoc').addClass('nav nav-tabs');
     /* add missing icons caused by visual editor */
     $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
