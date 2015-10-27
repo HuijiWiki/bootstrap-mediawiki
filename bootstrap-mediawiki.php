@@ -19,6 +19,7 @@ $wgValidSkinNames['bootstrapmediawiki'] = 'BootstrapMediaWiki';
 $wgAutoloadClasses['SkinBootstrapMediaWiki'] = __DIR__ . '/BootstrapMediaWiki.skin.php';
 $wgAutoloadClasses['BootstrapMediawikiHooks'] = __DIR__ . '/BootstrapMediawikiHooks.php';
 $wgAutoloadClasses['HuijiSkinTemplate'] = __DIR__ . '/HuijiSkinTemplate.php';
+$wgAutoloadClasses['FrontPage'] = __DIR__ . '/frontpage.php';
 $wgAutoloadClasses['CUtf8_PY'] = __DIR__ . '/CUtf8_PY.php';
 $wgMessagesDirs['bootstrapmediawiki'] = __DIR__ . '/i18n';
 $skinDirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );

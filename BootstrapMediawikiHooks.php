@@ -301,11 +301,11 @@ Class BootstrapMediawikiHooks {
     public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
         global $IP, $wgScriptPath, $wgLogo, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
         if ($user->isAllowed('editinterface')){
-            $wgCdnScriptPath = $wgScriptPath;
-            $wgLoadScript = "{$wgCdnScriptPath}/load.php";
-            $wgStylePath = "{$wgCdnScriptPath}/skins";
-            $wgExtensionAssetsPath = "{$wgCdnScriptPath}/extensions";
-            $wgResourceBasePath = $wgCdnScriptPath;     
+            $GLOBALS['wgCdnScriptPath'] = $wgScriptPath;
+            $GLOBALS['wgLoadScript'] = "{$wgCdnScriptPath}/load.php";
+            $GLOBALS['wgStylePath'] = "{$wgCdnScriptPath}/skins";
+            $GLOBALS['wgExtensionAssetsPath'] = "{$wgCdnScriptPath}/extensions";
+            $GLOBALS['wgResourceBasePath'] = $wgCdnScriptPath;     
         } 
         // if ($user->isAllowed('reupload')){
         //     $wgUploadPath       = "{$wgScriptPath}/uploads";
@@ -318,7 +318,11 @@ Class BootstrapMediawikiHooks {
     }
 
     public static function onGetDefaultSortkey( $title, &$sortkey ) { 
-        $sortkey = strtoupper(CUtf8_PY::encode($title->getText(),'all'));
+        $sortkey = CUtf8_PY::encode($title->getText(),'all');
+        if (empty($sortkey)){
+        	//put * here to walk around cases where CUtf8_PY returns an empty string.
+        	$sortkey = "*";
+        }
     }
     public static function addEditModule(EditPage $editPage, OutputPage $output ) {
         $output->addModules( 'ext.wikieditor.huijiextra.top' );
