@@ -3,7 +3,7 @@
 class FrontPage{
         
     static function showPage() {
-        global $wgUser;
+        global $wgUser, $wgParser;
         $templateParser = new TemplateParser(  __DIR__  );
         $output = ''; // Prevent E_NOTICE
         //right data
@@ -232,12 +232,14 @@ class FrontPage{
         //recommend content
         $recRes = new BootstrapMediaWikiTemplate();
         $block = $recRes->getIndexBlock( '首页/Admin' );
+        $pageTitle = Title::newFromText( '首页/Admin' );
+        $wgParserOptions = new ParserOptions($wgUser);
         $n = count($block);
         $recContent = array();
         for ($i=0; $i < $n; $i++) {
             $contentRes['title'] = $block[$i]->title;
             $contentRes['wikiname'] = $block[$i]->wikiname;
-            $contentRes['desc'] = $block[$i]->desc;
+            $contentRes['desc'] = $wgParser->parse( $block[$i]->desc ,$pageTitle ,$wgParserOptions )->getText();
             $contentRes['wikiurl'] = $block[$i]->wikiurl;
             $contentRes['siteurl'] = $block[$i]->siteurl;
             $contentRes['backgroungimg'] = $block[$i]->backgroungimg;
