@@ -323,9 +323,9 @@ $(document).ready(function(){
                         refreshFeed();
                     }else {
                         var parent = that.parents('.info-user-list ul');
-                        var img = res.result.avatar;
-                        var user = res.result.username;
-                        var url = res.result.userurl;
+                        var img = res.result.s_avatar;
+                        var user = res.result.s_name;
+                        var url = res.result.s_url;
                         var content;
                         content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
                         that.parents('.info-user-list li').remove();
