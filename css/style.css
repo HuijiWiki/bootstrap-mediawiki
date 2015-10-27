@@ -1511,6 +1511,12 @@ body{
     color: #428bca;
     cursor: pointer;
 }
+.info-user-list li>div b {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
 .user-home-feed-content{
     margin-top: 50px;
 }
@@ -1527,7 +1533,7 @@ body{
 }
 .user-home-activity {
     border-bottom: 1px solid #eee;
-    padding: 15px 10px 25px 10px;
+    padding: 25px 10px;
     position: relative;
 }
 .user-home-activity .headimg{
@@ -1555,7 +1561,7 @@ body{
 .user-home-item-timestamp{
     position: absolute;
     right: 20px;
-    top: 10px;
+    top: 5px;
 }
 .user-home-item-description{
     display: inline-block;
@@ -1583,6 +1589,9 @@ body{
 .recommend img {
     width: 150px;
 }
+.user-login-stats .user-avatar img{
+    max-width: 75px;
+}
 a.image {
     float: left;
 }
@@ -1605,6 +1614,9 @@ a.image {
 }
 .entry-description{
     margin-left: 170px;
+}
+.entry-description p{
+    margin-bottom: 0;
 }
 @media screen and (max-width: 1366px){
     .home-main{
