@@ -1143,9 +1143,9 @@ body{
 @font-face
 {
     font-family: huiji;
-    src: url('../fonts/huiji029.otf');
+    src: url('../fonts/huiji029.TTF');
 }
-body{
+.home-aside,.time-ago{
     font-family: huiji,"Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
     color: #58666e;
 }
@@ -1267,6 +1267,7 @@ body{
     font-size: 18px;
     text-align: center;
     line-height: 24px;
+    color: #fff;
 }
 .m-logo img{
     vertical-align: top;
@@ -1296,7 +1297,7 @@ body{
     text-align: right;
 }
 .home-statistics li b {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 100;
     line-height: normal;
 }
@@ -1343,7 +1344,7 @@ body{
     margin-bottom: 0;
 }
 .user-follow-msg a{
-    font-size: 24px;
+    font-size: 18px;
 }
 .user-msg{
     margin: 0;
@@ -1568,6 +1569,7 @@ body{
 }
 .user-home-item-body img{
     max-height: 100px;
+    margin-bottom: 10px;
 }
 .time-ago{
     color: #999;
@@ -1616,7 +1618,7 @@ a.image {
     margin-left: 170px;
 }
 .entry-description p{
-    margin-bottom: 0;
+    margin-bottom: 10px;
 }
 @media screen and (max-width: 1366px){
     .home-main{
