@@ -155,9 +155,6 @@ $(function() {
     $('.internal').each(function(){
 	   $(this).html('<i class="fa fa-arrows-alt"></i>');
     });
-    
-    // fix uploader
-    $('.mwe-upwiz-details-fieldname.mwe-upwiz-required-field').prepend('<span class="mwe-upwiz-required-marker">*</span>');
 
     // done for preload. Let's show the page.
     $('#mw-content-text').show();
