@@ -38,7 +38,8 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addModuleScripts( 'skins.frontpage' );
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addHeadItem( 'canonical',
-                '<link rel="canonical" href="http://www.huiji.wiki/" />' . "\n");     
+                '<link rel="canonical" href="http://www.huiji.wiki/" />' . "\n");    
+            $out->addHeadItem('meta','<meta property="qc:admins" content="676216323760512167131" />'); 
         } else {
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="' . htmlspecialchars( $out->getTitle()->getCanonicalURL()) . '" />' . "\n");            
