@@ -215,6 +215,11 @@ $(document).ready(function(){
             $(this).find('.wiki-info').css('height', '110px');
         });
     }
+
+    //new page
+    if(document.body.clientWidth>1024) {
+        $('.wrapper').prepend('<div class="home-bg"></div>');
+    }
     $('#user .nav-tab li').click(function(){
         $(this).addClass('active').siblings().removeClass('active');
         var index = $(this).index();
