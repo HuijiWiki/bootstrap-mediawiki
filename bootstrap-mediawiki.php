@@ -72,6 +72,7 @@ $wgResourceModules['skins.frontpage'] = array(
 		$skinDir . '/css/slicebox.css'                           => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
+	    $skinDir . '/js/three.min.js',
 		$skinDir . '/js/modernizr.custom.46884.js',
 		$skinDir . '/js/jquery.lazyload.min.js',
 		$skinDir . '/js/jquery.slicebox.js',
