@@ -35,7 +35,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
-            $out->addModules( 'skins.frontpage');
+            $out->addModuleScripts( 'skins.frontpage' );
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="http://www.huiji.wiki/" />' . "\n");     
@@ -58,6 +58,9 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
     public function setupSkinUserCss( OutputPage $out ) {
         global $wgSiteCSS, $wgHuijiPrefix;
         parent::setupSkinUserCss( $out );
+        if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
+            $out->addModuleStyles( 'skins.frontpage' );  
+        }
         $out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
         // we need to include this here so the file pathing is right
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css' );
