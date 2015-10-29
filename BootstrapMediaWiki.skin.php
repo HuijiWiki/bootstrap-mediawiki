@@ -35,10 +35,11 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
-            $out->addModules( 'skins.frontpage');
+            $out->addModuleScripts( 'skins.frontpage' );
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addHeadItem( 'canonical',
-                '<link rel="canonical" href="http://www.huiji.wiki/" />' . "\n");     
+                '<link rel="canonical" href="http://www.huiji.wiki/" />' . "\n");    
+            $out->addHeadItem('meta','<meta property="qc:admins" content="676216323760512167131" />'); 
         } else {
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="' . htmlspecialchars( $out->getTitle()->getCanonicalURL()) . '" />' . "\n");            
@@ -58,6 +59,9 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
     public function setupSkinUserCss( OutputPage $out ) {
         global $wgSiteCSS, $wgHuijiPrefix;
         parent::setupSkinUserCss( $out );
+        if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
+            $out->addModuleStyles( 'skins.frontpage' );  
+        }
         $out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
         // we need to include this here so the file pathing is right
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css' );
@@ -139,7 +143,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     <div class="container-fluid">
                         <ul class="nav nav-pills">
                             <li>
-                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo (new wSiteAvatar($wgHuijiPrefix, 'm'))->getAvatarHtml(array('style' => 'height : 0.9em;')); echo '&nbsp;'.($wgSitenameshort ?$wgSitenameshort: $wgSitename); ?></a>
+                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo (new wSiteAvatar($wgHuijiPrefix, 'm'))->getAvatarHtml(array('style' => 'height : 1em; padding-bottom:0.2em;')); echo '&nbsp;'.($wgSitenameshort ?$wgSitenameshort: $wgSitename); ?></a>
                             </li>
                             <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
                             <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
