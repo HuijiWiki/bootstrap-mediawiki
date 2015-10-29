@@ -72,7 +72,7 @@ $wgResourceModules['skins.frontpage'] = array(
 	),
 	'scripts' => array(
 		$skinDir . '/js/modernizr.custom.46884.js',
-		$skinDir . '/js/jquery.lazyload.min.js',
+		//$skinDir . '/js/jquery.lazyload.min.js',
 		$skinDir . '/js/effect.js',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
