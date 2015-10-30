@@ -232,7 +232,7 @@ class FrontPage{
         //recommend content
         $recRes = new BootstrapMediaWikiTemplate();
         $block = $recRes->getIndexBlock( '首页/Admin' );
-        $infoHeader = $recRes->getPageRawText( '首页/Header' );
+        $infoHeader = $recRes->includePage( '首页/Header' );
         $pageTitle = Title::newFromText( '首页/Admin' );
         $wgParserOptions = new ParserOptions($wgUser);
         $n = count($block);
