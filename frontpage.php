@@ -7,7 +7,7 @@ class FrontPage{
         $templateParser = new TemplateParser(  __DIR__  );
         $output = ''; // Prevent E_NOTICE
         //body text
-        $bodyText = $this->html( 'bodytext' );
+        $bodyText = $skin->html( 'bodytext' );
         //right data
         $fileCount = AllSitesInfo::getAllUploadFileCount();
         $siteCount = AllSitesInfo::getSiteCountNum();
