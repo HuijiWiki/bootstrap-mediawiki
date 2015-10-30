@@ -3,7 +3,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
 	/**
 	 * Reserved Page parts
 	 */
-	private static $pageParts = array('首页/Admin','Bootstrap:TitleBar','Bootstrap:Footer','Bootstrap:Subnav');
+	private static $pageParts = array('首页/Admin','首页/Header','Bootstrap:TitleBar','Bootstrap:Footer','Bootstrap:Subnav');
 	private static $sharedPageParts = array('Mediawiki:Sitenotice');
 	public static function getPageParts(){
 		return self::$pageParts;
