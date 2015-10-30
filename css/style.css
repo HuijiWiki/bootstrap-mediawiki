@@ -1523,11 +1523,11 @@ body{
 .user-home-feed-content{
     margin-top: 50px;
 }
-.user-home-item-owner-avatar{
+#home-feed-content .user-home-item-owner-avatar{
     float: left;
     width: auto;
 }
-.user-home-item-body{
+#home-feed-content .user-home-item-body{
     margin-left: 65px;
     float: none;
     margin-right: 120px;
