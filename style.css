@@ -2,14 +2,6 @@
     outline: none;
 }
 
-body.page-Main_Page .page-header,
-body.page-Category_Oracle .page-header,
-body.page-Category_JavaScript .page-header,
-body.page-Category_HTML .page-header,
-body.page-Category_PHP .page-header,
-body.page-Category_PL_SQL .page-header,
-body.page-Category_CSS .page-header { display: none; }
-
 textarea {
 	width: 95%;
     color: #333;
