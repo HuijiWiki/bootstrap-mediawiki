@@ -6,8 +6,6 @@ class FrontPage{
         global $wgUser, $wgParser;
         $templateParser = new TemplateParser(  __DIR__  );
         $output = ''; // Prevent E_NOTICE
-        //body text
-        $bodyText = $skin->html( 'bodytext' );
         //right data
         $fileCount = AllSitesInfo::getAllUploadFileCount();
         $siteCount = AllSitesInfo::getSiteCountNum();
