@@ -131,7 +131,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         <?php echo $this->showHeader(); ?>
         <?php if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www') && ($this->getSkin()->getTitle()->isMainPage()) ){
             include 'View/Sidebar.php';
-            echo FrontPage::showPage($this);
+            echo FrontPage::showPage();
             include 'View/Modal.php';
         } else {?>
             
