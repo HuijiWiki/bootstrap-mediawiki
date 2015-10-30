@@ -1644,6 +1644,10 @@ a.image {
     }
 }
 @media screen and (max-width: 768px) {
+    .home-info {
+        background: #fff;
+        box-shadow: none;
+    }
     .user-home-links-container{
         width: 100%;
         float: none;
@@ -1665,7 +1669,7 @@ a.image {
     .user-home-item-owner-avatar img{
         width: 100%;
     }
-    .user-home-feed .user-home-item-body{
+    #home-feed-content .user-home-item-body{
         padding-right: 0;
         margin-right: 0;
     }
