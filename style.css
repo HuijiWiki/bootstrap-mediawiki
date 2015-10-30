@@ -1337,4 +1337,5 @@ h3 .mw-editsection{
 ol.carousel-indicators{
 	margin-left: -30% !important;
 	padding-left: 0 !important;
+	bottom: 10px !important;
 }
