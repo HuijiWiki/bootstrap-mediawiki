@@ -2,10 +2,12 @@
 
 class FrontPage{
         
-    static function showPage() {
+    static function showPage($skin) {
         global $wgUser, $wgParser;
         $templateParser = new TemplateParser(  __DIR__  );
         $output = ''; // Prevent E_NOTICE
+        //body text
+        $bodyText = $this->html( 'bodytext' );
         //right data
         $fileCount = AllSitesInfo::getAllUploadFileCount();
         $siteCount = AllSitesInfo::getSiteCountNum();
@@ -254,6 +256,7 @@ class FrontPage{
         $output .= $templateParser->processTemplate(
             'frontpage',
             array(
+                'bodyText' => $bodyText,
                 'fileCount' => $fileCount,
                 'siteCount' => $siteCount,
                 'userCount' => $userCount,
