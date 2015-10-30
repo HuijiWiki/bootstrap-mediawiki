@@ -75,6 +75,9 @@
                                                 <input name="wpRemember" type="checkbox" value="1" id="wpRemember" tabindex="4" style="margin-right: 5px;"><label for="wpRemember">
                                                     记住我的登录状态</label>
                                             </div>
+                                            <div>
+                                                <span id="qqLoginBtn"></span>
+                                            </div>
                                         </div>
 
                                         <div class="mw-ui-vform-field">
