@@ -1168,9 +1168,9 @@ body{
 .home-info{
     margin-right: 360px;
     padding: 30px;
-    background: rgba(241,242,245,.9);
+    background: rgba(232, 238, 243,0.9);
     min-height: 1000px;
-    box-shadow: 0 0 2px 5px rgba(0,0,0,.05);
+    box-shadow:inset 100px -100px 100px #EDF3F5,inset 0px 120px 100px #E7EEF7,inset -50px 100px 100px #EBEDEF,inset 50px -100px 100px #C1D2D9,inset 0 -200px 100px #EEF6FA,0 0 2px 5px rgba(0,0,0,0.05);
 }
 .home-info .icon-huiji{
     color: #09c;
@@ -1215,7 +1215,7 @@ body{
     transition:none
 }
 .info-tabs ul>.active{
-    background: #fff;
+    background:none;
 }
 .info-tabs ul>.active>a {
     color: #428bca;
