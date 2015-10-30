@@ -1,11 +1,48 @@
 /**
  * Created by huiji001 on 2015/5/6.
  */
+
 $(document).ready(function(){
     //new page
-    if(!!window.ActiveXObject || "ActiveXObject" in window) {
-        $('.wrapper').prepend('<div class="home-bg"></div>');
+    var Detector = {
+
+        canvas : !! window.CanvasRenderingContext2D,
+        webgl : ( function () { try { return !! window.WebGLRenderingContext && !! document.createElement( 'canvas' ).getContext( 'experimental-webgl' ); } catch( e ) { return false; } } )(),
+        workers : !! window.Worker,
+        fileapi : window.File && window.FileReader && window.FileList && window.Blob,
+
+        Showimg : function () {
+
+            var domElement = document.createElement( 'div' );
+
+
+            if ( ! this.webgl ) {
+
+                domElement = window.WebGLRenderingContext ? [
+                    '你的显卡不支持webgl'
+                ].join( '\n' ) : [
+                    '你的浏览器不支持webgl',
+                    '请使用',
+                    '<a href="http://www.google.com/chrome">Chrome 10</a>, ',
+                    '<a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 4</a> or',
+                    '<a href="http://nightly.webkit.org/">Safari 6</a>'
+                ].join( '\n' );
+
+                $('.wrapper').prepend('<div class="home-bg"></div>');
+            }
+
+            console.log(domElement);
+
+        }
+
+    };
+    if ( ! Detector.webgl ) {
+        Detector.Showimg();
     }
+    else if(window.innerWidth>1200){
+        mw.loader.using('skins.three');
+    }
+
     $('#user .nav-tab li').click(function(){
         $(this).addClass('active').siblings().removeClass('active');
         var index = $(this).index();

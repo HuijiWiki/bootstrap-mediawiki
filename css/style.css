@@ -1168,8 +1168,9 @@ body{
 .home-info{
     margin-right: 360px;
     padding: 30px;
-    background: #fff;
+    background: rgba(241,242,245,.9);
     min-height: 1000px;
+    box-shadow: 0 0 2px 5px rgba(0,0,0,.05);
 }
 .home-info .icon-huiji{
     color: #09c;
@@ -1240,6 +1241,7 @@ body{
     background: rgba(238,238,238,0.4);
     padding: 15px;
     width: 330px;
+    box-shadow: 0 0 2px 2px rgba(0,0,0,.05);
 }
 .aside-top img{
     height: 80px;
@@ -1482,7 +1484,7 @@ body{
     margin-top: 2px;
 }
 .info-user-list{
-    border: 1px solid #eee;
+    border: 1px solid #fff;
     margin-top: 20px;
     padding: 10px;
 }
@@ -1535,7 +1537,7 @@ body{
     margin-bottom: 5px;
 }
 .user-home-activity {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
     padding: 15px 10px 25px 10px;
     position: relative;
 }
