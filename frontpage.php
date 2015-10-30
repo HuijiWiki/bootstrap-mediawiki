@@ -232,9 +232,8 @@ class FrontPage{
         //recommend content
         $recRes = new BootstrapMediaWikiTemplate();
         $block = $recRes->getIndexBlock( '首页/Admin' );
-        $infoHeader = $recRes->getIndexBlock( '首页/Header' );
+        $infoHeader = $recRes->getPageRawText( '首页/Header' );
         $pageTitle = Title::newFromText( '首页/Admin' );
-        $pageTitle2 = Title::newFromText( '首页/Header' );
         $wgParserOptions = new ParserOptions($wgUser);
         $n = count($block);
         $recContent = array();
@@ -247,7 +246,6 @@ class FrontPage{
             $contentRes['backgroungimg'] = $block[$i]->backgroungimg;
             $recContent[] = $contentRes;
         }
-        $infoHeader = $wgParser->parse( $infoHeader ,$pageTitle2 ,$wgParserOptions )->getText();
         //url helpManual huijitramac
         $helpManual = 'http://www.huiji.wiki/wiki/%E5%B8%AE%E5%8A%A9:%E7%BC%96%E8%BE%91%E6%89%8B%E5%86%8C';
         $tarmac = 'http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA';
