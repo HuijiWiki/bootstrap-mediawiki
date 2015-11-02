@@ -19,9 +19,9 @@ $(document).ready(function(){
             if ( ! this.webgl ) {
 
                 domElement = window.WebGLRenderingContext ? [
-                    '你的显卡不支持webgl'
+                    '您的显卡不支持webgl'
                 ].join( '\n' ) : [
-                    '你的浏览器不支持webgl',
+                    '您的浏览器不支持webgl',
                     '请使用',
                     '<a href="http://www.google.com/chrome">Chrome 10</a>, ',
                     '<a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 4</a> or',

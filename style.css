@@ -1319,9 +1319,6 @@ h3 .mw-editsection{
     padding: 5px;
     margin-right: 5px;
 }
-.client-js #mw-content-text {
-	display:none;
-}
 .page-nav-wrapper{
     text-align: center;
 }
@@ -1333,4 +1330,7 @@ ol.carousel-indicators{
 	margin-left: -30% !important;
 	padding-left: 0 !important;
 	bottom: 10px !important;
+}
+.client-js #wiki-outer-body {
+	display:none;
 }

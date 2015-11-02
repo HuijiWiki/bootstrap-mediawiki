@@ -157,5 +157,5 @@ $(function() {
     });
 
     // done for preload. Let's show the page.
-    $('#mw-content-text').show();
+    $('#wiki-outer-body').show();
 });
