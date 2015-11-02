@@ -299,8 +299,8 @@ Class BootstrapMediawikiHooks {
         
     }
     public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
-        global $IP, $wgScriptPath, $wgLogo, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
-        if ($user->isAllowed('editinterface')){
+        global $wgMobile, $IP, $wgScriptPath, $wgLogo, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
+        if ($user->isAllowed('editinterface') && !$wgMobile){
             $GLOBALS['wgCdnScriptPath'] = $wgScriptPath;
             $GLOBALS['wgLoadScript'] = "{$wgCdnScriptPath}/load.php";
             $GLOBALS['wgStylePath'] = "{$wgCdnScriptPath}/skins";
@@ -351,7 +351,7 @@ Class BootstrapMediawikiHooks {
 
     public static function wfEditSectionLinkTransform( &$parser, &$text )
     {
-        global $wgUser;
+        global $wgUser, $wgMobile;
         $isVisualEditorEnabled = $wgUser->getOption('visualeditor-enable','1');
         if ($isVisualEditorEnabled != 1){
             /* when disable visual editor */
@@ -401,7 +401,7 @@ Class BootstrapMediawikiHooks {
                     ;
             $text = preg_replace( $pattern, $replacement, $text ); 
         }     
-        if ($wgUser->isAllowed('reupload')){ 
+        if ($wgUser->isAllowed('reupload') && !$wgMobile){ 
             $text = str_replace('http://cdn.huijiwiki.com/', 'http://cdn.huiji.wiki/', $text);
         }        
         return true;
