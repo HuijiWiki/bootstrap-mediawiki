@@ -29,9 +29,10 @@ $(document).ready(function(){
                 ].join( '\n' );
 
                 $('.wrapper').prepend('<div class="home-bg"></div>');
+                console.log(domElement);
             }
 
-            console.log(domElement);
+
 
         }
 
@@ -54,7 +55,6 @@ $(document).ready(function(){
             item_type: jQuery('.user-home-feed.active').data('item_type'),
             limit: jQuery('.user-home-feed.active').data('limit')
         }
-        console.log(config.filter+'/'+config.item_type);
         var username = mw.config.get('wgUserName');
         var filter = config.filter;
         var item_type = config.item_type;
@@ -68,7 +68,6 @@ $(document).ready(function(){
         };
         function more(){
             showPlaceholder();
-            console.log( username + filter + item_type + limit + continuation);
             jQuery.post(
                 mw.util.wikiScript(), {
                     action: 'ajax',
@@ -113,7 +112,6 @@ $(document).ready(function(){
                     rsargs: [follower, followee]
                 },
                 function(data){
-                    console.log(data);
                     var res = $.parseJSON(data);
                     if(res.result == null){
                         that.parents('.info-user-list').remove();
@@ -143,7 +141,6 @@ $(document).ready(function(){
                     rsargs: [username, severname]
                 },
                 function(data){
-                    console.log(data);
                     var res = $.parseJSON(data);
                     if(res.result == null){
                         that.parents('.info-user-list').remove();

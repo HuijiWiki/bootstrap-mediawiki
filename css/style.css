@@ -1521,7 +1521,7 @@ body{
     display: block;
 }
 .user-home-feed-content{
-    margin-top: 50px;
+    margin-top: 10px;
 }
 #home-feed-content .user-home-item-owner-avatar{
     float: left;
@@ -1604,6 +1604,12 @@ a.image {
 .recommend li {
     margin-top: 30px;
     position: relative;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+.recommend li:first-child{
+    margin-top: 0;
+    border-top: none;
 }
 .recommend-edit{
     position: absolute;
@@ -1615,8 +1621,7 @@ a.image {
     font-size: 24px;
 }
 .recommend .source {
-    border-top: 1px solid #eee;
-    padding-top: 20px;
+
 }
 .entry-description{
     margin-left: 170px;
