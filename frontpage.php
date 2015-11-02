@@ -2,12 +2,10 @@
 
 class FrontPage{
         
-    static function showPage($skin) {
+    static function showPage() {
         global $wgUser, $wgParser;
         $templateParser = new TemplateParser(  __DIR__  );
         $output = ''; // Prevent E_NOTICE
-        //body text
-        $bodyText = $skin->html( 'bodytext' );
         //right data
         $fileCount = AllSitesInfo::getAllUploadFileCount();
         $siteCount = AllSitesInfo::getSiteCountNum();
@@ -234,6 +232,11 @@ class FrontPage{
         //recommend content
         $recRes = new BootstrapMediaWikiTemplate();
         $block = $recRes->getIndexBlock( '首页/Admin' );
+        if ($wgUser->isLoggedIn()){
+                $infoHeader = wfMessage('info-header-user')->parseAsBlock();   
+        } else {
+                $infoHeader = wfMessage('info-header-anon')->parseAsBlock();
+        }
         $pageTitle = Title::newFromText( '首页/Admin' );
         $wgParserOptions = new ParserOptions($wgUser);
         $n = count($block);
@@ -247,7 +250,6 @@ class FrontPage{
             $contentRes['backgroungimg'] = $block[$i]->backgroungimg;
             $recContent[] = $contentRes;
         }
-
         //url helpManual huijitramac
         $helpManual = 'http://www.huiji.wiki/wiki/%E5%B8%AE%E5%8A%A9:%E7%BC%96%E8%BE%91%E6%89%8B%E5%86%8C';
         $tarmac = 'http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA';
@@ -256,7 +258,7 @@ class FrontPage{
         $output .= $templateParser->processTemplate(
             'frontpage',
             array(
-                'bodyText' => $bodyText,
+                'infoHeader' => $infoHeader,
                 'fileCount' => $fileCount,
                 'siteCount' => $siteCount,
                 'userCount' => $userCount,

@@ -1168,8 +1168,9 @@ body{
 .home-info{
     margin-right: 360px;
     padding: 30px;
-    background: #fff;
+    background: rgba(232, 238, 243,0.9);
     min-height: 1000px;
+    box-shadow:inset 100px -100px 100px #EDF3F5,inset 0px 120px 100px #E7EEF7,inset -50px 100px 100px #EBEDEF,inset 50px -100px 100px #C1D2D9,inset 0 -200px 100px #EEF6FA,0 0 2px 5px rgba(0,0,0,0.05);
 }
 .home-info .icon-huiji{
     color: #09c;
@@ -1214,7 +1215,7 @@ body{
     transition:none
 }
 .info-tabs ul>.active{
-    background: #fff;
+    background:none;
 }
 .info-tabs ul>.active>a {
     color: #428bca;
@@ -1240,6 +1241,7 @@ body{
     background: rgba(238,238,238,0.4);
     padding: 15px;
     width: 330px;
+    box-shadow: 0 0 2px 2px rgba(0,0,0,.05);
 }
 .aside-top img{
     height: 80px;
@@ -1482,7 +1484,7 @@ body{
     margin-top: 2px;
 }
 .info-user-list{
-    border: 1px solid #eee;
+    border: 1px solid #fff;
     margin-top: 20px;
     padding: 10px;
 }
@@ -1521,11 +1523,11 @@ body{
 .user-home-feed-content{
     margin-top: 50px;
 }
-.user-home-item-owner-avatar{
+#home-feed-content .user-home-item-owner-avatar{
     float: left;
     width: auto;
 }
-.user-home-item-body{
+#home-feed-content .user-home-item-body{
     margin-left: 65px;
     float: none;
     margin-right: 120px;
@@ -1535,7 +1537,7 @@ body{
     margin-bottom: 5px;
 }
 .user-home-activity {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
     padding: 15px 10px 25px 10px;
     position: relative;
 }
@@ -1642,6 +1644,10 @@ a.image {
     }
 }
 @media screen and (max-width: 768px) {
+    .home-info {
+        background: #fff;
+        box-shadow: none;
+    }
     .user-home-links-container{
         width: 100%;
         float: none;
@@ -1663,7 +1669,7 @@ a.image {
     .user-home-item-owner-avatar img{
         width: 100%;
     }
-    .user-home-feed .user-home-item-body{
+    #home-feed-content .user-home-item-body{
         padding-right: 0;
         margin-right: 0;
     }

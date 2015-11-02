@@ -218,5 +218,13 @@
 <charinsert> א אַ אָ ב בֿ ג ד ה ו וּ װ ױ ז זש ח ט י יִ ײ ײַ כ ך כּ ל ל+ מ ם נ ן ס ע ע+ פ פּ פֿ ף צ ץ ק ר ש שׂ תּ ת ׳ ״ ־ </charinsert>
 </p>
 </div>
-	"
+	",
+	"info-header-user":"'''灰机wiki'''是一个自由、开放的免费维基平台，基于最新版本的MediaWiki构建，并进行了多方面的优化设计。
+您可以在这里创建维基站点，与同道好友一起建设你所擅长领域的最全资料站！
+
+{{Quote|Omnium rerum principia parva sunt|Cicero}}",
+	"info-header-anon":"'''灰机wiki'''是一个自由、开放的免费维基平台，基于最新版本的MediaWiki构建，并进行了多方面的优化设计。
+您可以在这里创建维基站点，与同道好友一起建设你所擅长领域的最全资料站！
+
+{{Quote|Omnium rerum principia parva sunt|Cicero}}"
 }

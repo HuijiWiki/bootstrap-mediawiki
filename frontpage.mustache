@@ -4,20 +4,20 @@
         <div class="home-info-wrapper">
             <div class="home-info">
                 <div class="info-header">
-                    {{{bodyText}}}
+                    {{{infoHeader}}}
                 </div>
                 <nav class="info-tabs" id="home-feed-tabs">
                     <ul class="" role="tablist">
                     {{#login}}
                         <li role="presentation" class="active"><a href="#following" id="following-tab" role="tab" data-toggle="tab" aria-controls="following">我关注的用户</a></li>
                         <li role="presentation"><a href="#following_sites" id="following_sites-tab" role="tab" data-toggle="tab" aria-controls="following_sites">我关注的站点</a></li>
-                    {{/login}}    
+                    {{/login}}
                         <li role="presentation" class="{{active}}"><a  href="#all" id="all-tab" role="tab" data-toggle="tab" aria-controls="all">精彩推荐</a></li>
                     </ul>
                 </nav>
                 <div id="home-feed-content" class="tab-content">
                     {{#login}}
-                    
+
                     <div role="tabpanel" class="user-home-feed tab-pane fade" id="following_sites" aria-labelledby="following_sites-tab" data-filter="following_sites" data-limit="30" data-item_type="default">
                         {{^siteHidden}}
                         <div class="info-user-list">
@@ -111,7 +111,7 @@
                                 <li><h5>粉丝</h5>{{&followee}}</li>
                             </ul>
                             <div class="cleared"></div>
-                            
+
                         </div>
                         <div class="col-md-12">
                             <div class="svg-wrap">
@@ -155,7 +155,7 @@
                                         </div>
                                     </div>
                                 </li>
-                            {{/siteRank}}    
+                            {{/siteRank}}
                             </ul>
                             <div role="tabpanel" class="tab-pane fade" id="user" aria-labelledby="user-tab">
                                 <ul class="top-users weekly-rank">

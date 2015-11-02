@@ -71,13 +71,20 @@ $wgResourceModules['skins.frontpage'] = array(
 		$skinDir . '/css/style.css'         			=> array( 'media' => 'all' ),
 	),
 	'scripts' => array(
-		$skinDir . '/js/modernizr.custom.46884.js',
-		$skinDir . '/js/jquery.lazyload.min.js',
 		$skinDir . '/js/effect.js',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
+);
+$wgResourceModules['skins.three'] = array(
+	'scripts' => array(
+		$skinDir . '/js/three.min.js',
+		$skinDir. '/js/cloud.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'bottom',
 );
 /* Resource for wiki editor */
 $wgResourceModules['ext.wikieditor.huijiextra.top'] = array(
