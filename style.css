@@ -2,14 +2,6 @@
     outline: none;
 }
 
-body.page-Main_Page .page-header,
-body.page-Category_Oracle .page-header,
-body.page-Category_JavaScript .page-header,
-body.page-Category_HTML .page-header,
-body.page-Category_PHP .page-header,
-body.page-Category_PL_SQL .page-header,
-body.page-Category_CSS .page-header { display: none; }
-
 textarea {
 	width: 95%;
     color: #333;
@@ -1293,6 +1285,9 @@ sup.reference {
 #huiji-h1-edit-button .tooltip{
     white-space: nowrap;
 }
+#content > .ve-init-target > div.row {
+    display:none;
+}
 h2 .mw-editsection{
     bottom:8px;
 }
@@ -1324,9 +1319,6 @@ h3 .mw-editsection{
     padding: 5px;
     margin-right: 5px;
 }
-.client-js #mw-content-text {
-	display:none;
-}
 .page-nav-wrapper{
     text-align: center;
 }
@@ -1338,4 +1330,7 @@ ol.carousel-indicators{
 	margin-left: -30% !important;
 	padding-left: 0 !important;
 	bottom: 10px !important;
+}
+.client-js #wiki-outer-body {
+	display:none;
 }
