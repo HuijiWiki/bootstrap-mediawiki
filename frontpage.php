@@ -4,7 +4,7 @@ class FrontPage{
         
     static function showPage() {
         global $wgUser, $wgParser;
-        $templateParser = new TemplateParser(  __DIR__  );
+        $templateParser = new TemplateParser(  __DIR__.'/View'  );
         $output = ''; // Prevent E_NOTICE
         //right data
         $fileCount = AllSitesInfo::getAllUploadFileCount();
@@ -173,7 +173,7 @@ class FrontPage{
             $login = true;
         }else{
             $login = false;
-            $register = Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') );
+            $register = Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount', 'class' => 'mw-ui-button mw-ui-constructive' ),array('type' => 'signup') );
             $active = 'active';
             $inactive = 'in active';
         }
