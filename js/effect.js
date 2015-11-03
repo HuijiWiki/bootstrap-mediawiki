@@ -43,7 +43,7 @@ $(document).ready(function(){
     else if(window.innerWidth>1200){
         mw.loader.using('skins.three');
     }
-
+    $('svg .day').tooltip({title:"tooltip - title", container:"body"});
     $('#user .nav-tab li').click(function(){
         $(this).addClass('active').siblings().removeClass('active');
         var index = $(this).index();

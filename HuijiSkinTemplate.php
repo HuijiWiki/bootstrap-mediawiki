@@ -426,7 +426,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         <a class="visible-xs-inline-block search-toggle">
                             <span class="fa fa-search navbar-search"></span>
                         </a>
-                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand hidden-xs"><img alt="Logo" src="'.$wgLogo.'"> </a>
+                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand"><img alt="Logo" src="'.$wgLogo.'"> </a>
                         <a class="visible-sm-block wiki-toggle">
                             <i class="fa fa-chevron-down"></i>
                         </a>
