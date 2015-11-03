@@ -58,34 +58,35 @@ $(function() {
     if ( 0 === $('#toc').length ) {
         $('.toc-sidebar').remove();
 
-    } 
-    if ( !is_mobile_device() ) {
-
-        $('.wiki-body-section').removeClass('col-md-12').addClass('col-md-10');
-        $('.toc-sidebar').removeClass('hidden-md').addClass('col-md-2');
-        // $('.toc-sidebar').append('<h3>摘要</h3>');
-        $('#toc').each(function() {
-            $(this).find('ul:first').appendTo( '.toc-sidebar' );
-            $(this).remove();
-        });
-        $('nav.toc-sidebar > ul').append('<li><a href="#firstHeading">回到顶部</a></li>');
-        $('nav.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix');
-        $('nav.toc-sidebar > ul').affix({
-          offset: {
-            top: 0,
-            bottom: function () {
-              return (this.bottom = $('.bottom').outerHeight(true))
-            }
-          }
-        });
-        $('nav.toc-sidebar ul').addClass('nav nav-list');
-        $('.toc-sidebar').attr('id', 'toc');
-        $('body').scrollspy({target: '#toc', offset:230});
-
     } else {
-        // TODO do something to add a floating navigation bar.
-        $('.toc-sidebar').remove();
-    }//end if
+	    if ( !is_mobile_device() ) {
+	
+	        $('.wiki-body-section').removeClass('col-md-12').addClass('col-md-10');
+	        $('.toc-sidebar').removeClass('hidden-md').addClass('col-md-2');
+	        // $('.toc-sidebar').append('<h3>摘要</h3>');
+	        $('#toc').each(function() {
+	            $(this).find('ul:first').appendTo( '.toc-sidebar' );
+	            $(this).remove();
+	        });
+	        $('nav.toc-sidebar > ul').append('<li><a href="#firstHeading">回到顶部</a></li>');
+	        $('nav.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix');
+	        $('nav.toc-sidebar > ul').affix({
+	          offset: {
+	            top: 0,
+	            bottom: function () {
+	              return (this.bottom = $('.bottom').outerHeight(true))
+	            }
+	          }
+	        });
+	        $('nav.toc-sidebar ul').addClass('nav nav-list');
+	        $('.toc-sidebar').attr('id', 'toc');
+	        $('body').scrollspy({target: '#toc', offset:230});
+	
+	    } else {
+	        // TODO do something to add a floating navigation bar.
+	
+	    }//end if
+    }
 
     // prettyPrint();
 
