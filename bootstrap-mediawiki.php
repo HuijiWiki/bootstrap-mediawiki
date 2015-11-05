@@ -28,7 +28,6 @@ $src = '/var/www/src';
 $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
-		$skinDir . '/css/ihover.min.css'                         => array( 'media' => 'all' ),
 		$skinDir . '/css/hover-min.css'                          => array( 'media' => 'all' ),
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
