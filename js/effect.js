@@ -76,31 +76,33 @@ $(document).ready(function(){
                 },
                 function( data ) {
                     var res = jQuery.parseJSON(data);
+                    console.log(res);
                     if (res.success){
                         removePlaceholder();
                         jQuery('.user-home-feed.active .user-home-feed-content').append(res.output);
                         continuation = res.continuation;
                         if(res.end==true) {
                             $('.user-home-feed.active .user-activity-more').hide();
-                            alertime();
-                            alertp.text('没有更多了');
                         }
                     }
                 }
             );
         };
-        function refreshFeed(){
+        function refreshFeed( nowtime ){
             filter = $('.user-home-feed.active').data('filter');
             item_type = $('.user-home-feed.active').data('item_type');
             limit = $('.user-home-feed.active').data('limit');
-            continuation = null;
+            continuation = nowtime;
+            console.log(continuation);
             $('.user-home-feed-content').empty();
             $('.user-activity-more').show();
             more();
         }
         more();
         $('.user-activity-more').on('click',more);
-        $('#home-feed-tabs a[data-toggle="tab"]').on('shown.bs.tab', refreshFeed);
+        $('#home-feed-tabs a[data-toggle="tab"]').on('shown.bs.tab',function(){
+            refreshFeed( null );
+        });
         $('#following').on('click','.info-user-list span ',function(){
             var follower = mw.config.get('wgUserName');
             var followee = $(this).siblings().find('a').text();
@@ -125,7 +127,8 @@ $(document).ready(function(){
                         content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
                         that.parents('.info-user-list li').remove();
                         parent.append(content);
-                        refreshFeed();
+                        var nowtime = Date.parse(new Date());
+                        refreshFeed( nowtime );
                     }
                 }
             )
@@ -154,7 +157,8 @@ $(document).ready(function(){
                         content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
                         that.parents('.info-user-list li').remove();
                         parent.append(content);
-                        refreshFeed();
+                        var nowtime = Date.parse(new Date());
+                        refreshFeed( nowtime );
                     }
                 }
             )
