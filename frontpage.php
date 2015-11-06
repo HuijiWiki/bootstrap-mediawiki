@@ -239,6 +239,13 @@ class FrontPage{
                 }
             }
             $recommendSite = array_slice($recommendSite, 0, 5);
+            if ($login && !$mobile){
+            $infoHeader = wfMessage('info-header-user')->parseAsBlock();
+            } elseif (!$login) {
+            $infoHeader = wfMessage('info-header-anon')->parseAsBlock();
+            } else {
+            $infoHeader = '';
+            }
 
         }
 
