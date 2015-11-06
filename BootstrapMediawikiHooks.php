@@ -236,6 +236,7 @@ Class BootstrapMediawikiHooks {
         // $parser->disableCache();
         $id = isset( $args['id'] ) ? $args['id']:'carousel-generic'.(self::$nextId++);
         $interval = isset( $args['interval'] ) ? $args['interval']:'5000';
+        $width = isset( $args['width'] ) ? $args['width']:null;
         // $button = isset( $args['button'] ) ? $args['button'] : '下拉菜单';
         // $id = isset( $args['id'] ) ? $args['id']: hash('sha1', $button, false);
         $arr = explode(PHP_EOL, $input);
@@ -250,7 +251,7 @@ Class BootstrapMediawikiHooks {
             $temp = explode('|', $line);
             // $options = ParserOptions::newFromUser($wgUser);
             $group['id'] = $id;
-            $group['image'] = $parser->recursiveTagParse('[['.$temp[0].']]');
+            $group['image'] = $parser->recursiveTagParse('[['.$temp[0].($width!=null?"|$width":"").']]');
             $group['caption'] = isset($temp[1])?$parser->recursiveTagParse($temp[1]):'';
             $group['i'] = $i;
             if ($i == 0) {
