@@ -1639,9 +1639,6 @@ body>.tooltip.top .tooltip-arrow{
     .home-main{
         width: 90%;
     }
-    .home-info{
-        padding: 30px;
-    }
 }
 @media screen and (max-width: 992px) {
     .home-info{
@@ -1658,6 +1655,7 @@ body>.tooltip.top .tooltip-arrow{
     .home-info {
         background: #fff;
         box-shadow: none;
+        padding: 30px 0;
     }
     .user-home-links-container{
         width: 100%;

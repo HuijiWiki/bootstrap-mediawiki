@@ -164,5 +164,29 @@ $(document).ready(function(){
             )
         })
     })();
+    function getSite(){
+        $.post(
+            mw.util.wikiScript(), {
+                action: 'ajax',
+                rs: 'wfGetRecommendContent'
+            },
+            function(data){
+                var res = $.parseJSON(data);
+                var content='';
+                $.each(res.result,function(i,item){
+                    content += '<li><p class="source"><a class="entry-name" href="'+item.wikiurl+'">'+item.title+'</a>来自<a class="entry-source" href="'+item.siteurl+'">'+item.wikiname+
+                        '</a></p><div class="recommend-info"><a href="'+item.wikiurl+'" class="image"><img alt="Wit by Botanica.jpg" src="'+item.backgroungimg+'"></a><div class="entry-description">'+item.desc+'</div></div></li>';
+                });
+                $('.recommend').append(content);
+            }
+        );
+    }
+    if($('#all').hasClass('active')){
+        getSite();
+    }
+    $('#all-tab').on('click',function(){
+        $('.recommend').empty();
+        getSite();
+    })
 
 });
