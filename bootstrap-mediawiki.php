@@ -25,10 +25,28 @@ $wgMessagesDirs['bootstrapmediawiki'] = __DIR__ . '/i18n';
 $skinDirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );
 $skinDir = array_pop( $skinDirParts );
 $src = '/var/www/src';
+$wgResourceModules['skins.bootstrapmediawiki.hover'] = array(
+	'styles' => array(
+		$skinDir . '/css/hover-min.css'                          => array( 'media' => 'all' ),
+	'dependencies' => array(
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'top',
+);
+$wgResourceModules['skins.bootstrapmediawiki.ihover'] = array(
+	'styles' => array(
+		$skinDir . '/css/ihover.min.css'                          => array( 'media' => 'all' ),
+	),
+	'dependencies' => array(
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'top',
+);
 $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
-		$skinDir . '/css/hover-min.css'                          => array( 'media' => 'all' ),
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),

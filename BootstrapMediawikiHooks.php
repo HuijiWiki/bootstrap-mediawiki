@@ -18,10 +18,20 @@ Class BootstrapMediawikiHooks {
         $parser->setHook( 'carousel', 'BootstrapMediawikiHooks::getCarousel');
         $parser->setHook( 'callout', 'BootstrapMediawikiHooks::getCallout');
         $parser->setHook( 'heading', 'BootstrapMediawikiHooks::getHeading');
+        $parser->setHook( 'hover.css', 'BootstrapMediawikiHooks::getHoverCss');
+        $parser->setHook( 'ihover.css', 'BootstrapMediawikiHooks::getIHoverCss');
 
         // $parser->setHook( 'siteactivity', 'getSiteActivity' );
         // $parser->setHook( 'siteactivity', 'getSiteActivity' );
         return true;
+    }
+    public static function getIHoverCss( $input, $args, $parser ){
+        $output = '<script type="text/javascript">mw.loader.load("skins.bootstrapmediawiki.ihover","text/css");</script>';
+        return $output;
+    }
+    public static function getHoverCss( $input, $args, $parser ){
+        $output = '<script type="text/javascript">mw.loader.load("skins.bootstrapmediawiki.hover","text/css");</script>';
+        return $output;
     }
     public static function getHeading($input, $args, $parser ) {
         $m = array();
