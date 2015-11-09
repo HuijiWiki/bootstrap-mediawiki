@@ -28,6 +28,7 @@ $src = '/var/www/src';
 $wgResourceModules['skins.bootstrapmediawiki.hover'] = array(
 	'styles' => array(
 		$skinDir . '/css/hover-min.css'                          => array( 'media' => 'all' ),
+	),
 	'dependencies' => array(
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
