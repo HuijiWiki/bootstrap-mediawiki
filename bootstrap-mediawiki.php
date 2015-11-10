@@ -54,6 +54,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/huiji.collectPageViewRecord.js',
 		$skinDir . '/js/huiji.ready.js',
 		$skinDir . '/js/copy.js',
+		$skinDir . '/js/qqLogin.js',
 	),
 	'styles' => array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
@@ -68,7 +69,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 );
 $wgResourceModules['skins.frontpage'] = array(
 	'styles' => array(
-		$skinDir . '/css/style.css'         			=> array( 'media' => 'all' ),
+		$skinDir . '/css/style.css'         					 => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
 		$skinDir . '/js/modernizr.custom.46884.js',

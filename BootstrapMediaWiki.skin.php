@@ -118,6 +118,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             ga('create', 'UA-10190882-3', 'auto');
             ga('send', 'pageview');
         </script>
+        <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101264508" charset="utf-8"></script>
 
         <div id="wrapper" class="toggled">
         <script>
