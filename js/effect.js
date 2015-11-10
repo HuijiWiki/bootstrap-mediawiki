@@ -83,6 +83,7 @@ $(document).ready(function(){
                         continuation = res.continuation;
                         if(res.end==true) {
                             $('.user-home-feed.active .user-activity-more').hide();
+                            mw.notification.notify('没有更多了');
                         }
                     }
                 }
