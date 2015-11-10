@@ -10,7 +10,6 @@ function updateQueryStringParameter(uri, key, value) {
 }
 $(document).ready(function(){
     //table responsive 
-    
     $('#mw-content-text table').each(function(){
        if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
                $(this).wrap('<div class="table-responsive"></div>');
@@ -24,16 +23,16 @@ $(document).ready(function(){
         var $textbox = $( this );
         $('.sidebar-create .createboxButton').prop('disabled', $textbox.val().length < 1 );
     });
-    // $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } ); 
+    // $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } );
 	// if (mw.cookie.get('Animation') == 'none'){
 	// 	$('#menu-toggle').css({
- //            'animation':'none',
- //            '-webkit-animation':'none',
- //            '-moz-animation':'none',
- //            '-o-animation':'none'
- //        });
+//            'animation':'none',
+//            '-webkit-animation':'none',
+//            '-moz-animation':'none',
+//            '-o-animation':'none'
+//        });
 	// }
-	var fromSource    = document.referrer; 
+	var fromSource    = document.referrer;
 	var navigatorInfo = navigator.userAgent.toLowerCase();
 	var userId    = mw.config.get("wgUserId");
 	var userName  = mw.config.get("wgUserName");
@@ -175,10 +174,10 @@ $(document).ready(function(){
                                 var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
                                 $('#mw-content-text').after(html);
                             }
-                        }               
+                        }
                     }
 
-                });        
+                });
     } else if (mw.config.get('wgIsArticle') && sessionStorage['flowcache_'+talkpage]){
         renderFlowAbstract(sessionStorage['flowcache_'+talkpage]);
     }
@@ -197,7 +196,7 @@ $(document).ready(function(){
                     var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
                     $('#mw-content-text').after(html);
                 }
-            }               
+            }
         }
     }
 
@@ -245,7 +244,7 @@ $(document).ready(function(){
                             //document.location.reload();
                             if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
                                 location.href = updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
-                            }else {                                
+                            }else {
                                 location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
                             }
                         }else{
@@ -582,5 +581,6 @@ $(document).ready(function(){
     });
 
     $('[data-toggle="tooltip"]').tooltip();
+
 
 });

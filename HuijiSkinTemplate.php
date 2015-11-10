@@ -426,7 +426,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         <a class="visible-xs-inline-block search-toggle">
                             <span class="fa fa-search navbar-search"></span>
                         </a>
-                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand hidden-xs"><img alt="Logo" src="'.$wgLogo.'"> </a>
+                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand"><img alt="Logo" src="'.$wgLogo.'"> </a>
                         <a class="visible-sm-block wiki-toggle">
                             <i class="fa fa-chevron-down"></i>
                         </a>
@@ -457,18 +457,18 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                         <ul class="hub-selection letter-link active">
                                             <li><a href="http://lotr.huiji.wiki">魔戒</a></li>
                                             <li><a href="http://asoiaf.huiji.wiki">冰与火之歌</a></li>
-                                            <li><a href="http://allglory.huiji.wiki">荣耀百科全书</a></li>
+                                            <li><a href="http://zhoutian.huiji.wiki">周天世界</a></li>
                                             <li><a href="http://witcher.huiji.wiki">猎魔人</a></li>
                                             <li><a href="http://coppermind.huiji.wiki/wiki">红铜智库</a></li>
                                             <li><a href="http://jiuzhou.huiji.wiki">九州</a></li>
                                         </ul>
                                         <ul class="hub-selection movie-link">
                                             <li><a href="http://spn.huiji.wiki">邪恶力量</a></li>
-                                            <li><a href="http://kaixinmahua.huiji.wiki">开心麻花</a></li>
                                             <li><a href="http://jinguang.huiji.wiki">金光布袋戏</a></li>
                                             <li><a href="http://downtonabbey.huiji.wiki">唐顿庄园</a></li>
                                             <li><a href="http://mcu.huiji.wiki">漫威电影宇宙</a></li>
                                             <li><a href="http://htgawm.huiji.wiki">逍遥法外</a></li>
+                                            <li><a href="http://doctorwho.huiji.wiki/">神秘博士</a></li>
                                         </ul>
                                         <ul class="hub-selection anime-link">
                                             <li><a href="http://cardcaptorsakura.huiji.wiki/">小樱的封印之书</a></li>
@@ -488,6 +488,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://mfassbender.huiji.wiki">迈克尔·法斯宾德</a></li>
                                         </ul>
                                         <ul class="hub-selection more-link">
+                                            <li><a href="http://kaixinmahua.huiji.wiki">开心麻花</a></li>
                                             <li><a href="http://mahjong.huiji.wiki">麻将</a></li>
                                             <li><a href="http://arsenal.huiji.wiki">阿森纳</a></li>
                                             <li><a href="http://www.huiji.wiki/wiki/%E7%89%B9%E6%AE%8A:%E7%AB%99%E7%82%B9%E6%8E%92%E8%A1%8C">站点排行榜</a></li>

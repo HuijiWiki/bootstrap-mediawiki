@@ -3,7 +3,7 @@
 
     <ul class="sidebar-nav" id="sidebar-content">
         <li class="sidebar-header">
-            <a href="<?php echo $this->getSkin()->getTitle()->getFullUrl(); ?>"><?php echo $this->getSkin()->getTitle()->getPrefixedText(); ?></a>
+            <a href="<?php echo $this->getSkin()->getTitle()->getFullUrl(array('action'=>'info')); ?>"><?php echo $this->getSkin()->getTitle()->getPrefixedText(); ?></a>
             <?php
                 if ( isset( $this->data['content_actions']['watch'])){
                     echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['watchlist']['id'].'">
@@ -53,7 +53,7 @@
         </li>
         <li class="sidebar-brand left-tool">
             <a href="#">
-                全站工具
+                站点工具
             </a>
             <ul>
                 <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes" rel="nofollow"><i class="fa fa-edit"></i> 最近更改</a></li>
@@ -69,7 +69,6 @@
                         <li><a href="<?php echo $url_prefix; ?>Special:EditRank" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-list-ol"></i> 本站编辑排行</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Special:TopUsers" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-th-list"></i> 等级积分排行</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Special:统计信息" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-line-chart"></i> 统计信息</a></li>
-                        <li><a href="<?php echo $url_prefix; ?>Special:所有页面" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-folder-open"></i> 所有页面</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages" rel="nofollow"><i class="fa fa-star-o"></i> 特殊页面</a></li>
                     </ul>
                 </li>
@@ -90,7 +89,7 @@
                 <li class="sidebar-create">
                     <div class="mw-inputbox-centered" style="">
                         <form name="createbox" class="createbox" action="/index.php" method="get">
-                            <input name="veaction" value="edit" type="hidden"><input name="preload" value="" type="hidden">
+                            <input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden">
                             <input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden">
                             <input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden">
                             <input name="minor" value="" type="hidden">

@@ -25,10 +25,29 @@ $wgMessagesDirs['bootstrapmediawiki'] = __DIR__ . '/i18n';
 $skinDirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );
 $skinDir = array_pop( $skinDirParts );
 $src = '/var/www/src';
+$wgResourceModules['skins.bootstrapmediawiki.hover'] = array(
+	'styles' => array(
+		$skinDir . '/css/hover-min.css'                          => array( 'media' => 'all' ),
+	),
+	'dependencies' => array(
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'top',
+);
+$wgResourceModules['skins.bootstrapmediawiki.ihover'] = array(
+	'styles' => array(
+		$skinDir . '/css/ihover.min.css'                          => array( 'media' => 'all' ),
+	),
+	'dependencies' => array(
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'top',
+);
 $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
-		$skinDir . '/css/ihover.min.css'                         => array( 'media' => 'all' ),
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
@@ -72,13 +91,21 @@ $wgResourceModules['skins.frontpage'] = array(
 		$skinDir . '/css/style.css'         					 => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
-		$skinDir . '/js/modernizr.custom.46884.js',
-		$skinDir . '/js/jquery.lazyload.min.js',
 		$skinDir . '/js/effect.js',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
+);
+$wgResourceModules['skins.three'] = array(
+	'scripts' => array(
+		$skinDir . '/js/three.min.js',
+		$skinDir . '/js/stats.min.js',
+		$skinDir. '/js/cloud.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'bottom',
 );
 /* Resource for wiki editor */
 $wgResourceModules['ext.wikieditor.huijiextra.top'] = array(

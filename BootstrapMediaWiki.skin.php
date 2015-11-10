@@ -34,7 +34,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
-        if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
+        if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModules( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addHeadItem( 'canonical',
@@ -60,6 +60,9 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
     public function setupSkinUserCss( OutputPage $out ) {
         global $wgSiteCSS, $wgHuijiPrefix;
         parent::setupSkinUserCss( $out );
+        if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
+            $out->addModuleStyles( 'skins.frontpage' );  
+        }
         $out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
         // we need to include this here so the file pathing is right
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css' );
@@ -128,7 +131,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             $("#wrapper").attr("class",menutoggle);
         </script>
         <?php echo $this->showHeader(); ?>
-        <?php if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www') && ($this->getSkin()->getTitle()->isMainPage()) ){
+        <?php if (($wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www') && ($this->getSkin()->getTitle()->isMainPage()) ){
             include 'View/Sidebar.php';
             echo FrontPage::showPage();
             include 'View/Modal.php';
@@ -158,15 +161,11 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 
                 <div id="wiki-body" class="container">
                     <div id="content">
-                        <?php
-                            if ( 'sidebar' == $wgTOCLocation ) {
-                                ?>
-                                <div class="row">
-                                    <nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
-                                    <section class="col-md-12 wiki-body-section" role="main">
-                                <?php
-                            }//end if
-                        ?>
+                        <div class="row">
+                            <nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
+                            <section class="col-md-12 wiki-body-section" role="main">
+
+
 
                         <div id="firstHeading" class="pagetitle page-header">
                             <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
@@ -309,6 +308,14 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             <?php
         }//end if
         ?>
+        <script>
+        (function(){
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+        </script>
         <script>window._bd_share_config={
             "common": {
                 "bdSnsKey": {},

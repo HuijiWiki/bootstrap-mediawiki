@@ -9,19 +9,19 @@
                 <nav class="info-tabs" id="home-feed-tabs">
                     <ul class="" role="tablist">
                     {{#login}}
-                        <li role="presentation" class="active"><a href="#following" id="following-tab" role="tab" data-toggle="tab" aria-controls="following">我关注的用户</a></li>
-                        <li role="presentation"><a href="#following_sites" id="following_sites-tab" role="tab" data-toggle="tab" aria-controls="following_sites">我关注的站点</a></li>
-                    {{/login}}    
+                        <li role="presentation" class="active"><a href="#following" id="following-tab" role="tab" data-toggle="tab" aria-controls="following">用户动态</a></li>
+                        <li role="presentation"><a href="#following_sites" id="following_sites-tab" role="tab" data-toggle="tab" aria-controls="following_sites">站点动态</a></li>
+                    {{/login}}
                         <li role="presentation" class="{{active}}"><a  href="#all" id="all-tab" role="tab" data-toggle="tab" aria-controls="all">精彩推荐</a></li>
                     </ul>
                 </nav>
                 <div id="home-feed-content" class="tab-content">
                     {{#login}}
-                    
+
                     <div role="tabpanel" class="user-home-feed tab-pane fade" id="following_sites" aria-labelledby="following_sites-tab" data-filter="following_sites" data-limit="30" data-item_type="default">
                         {{^siteHidden}}
                         <div class="info-user-list">
-                            <h5>您关注的站点较少，也许你会对下面的内容感兴趣。</h5>
+                            <h5>您关注的站点较少，也许您会对下面的内容感兴趣。</h5>
                             <ul>
                                 {{#recommendSite}}
                                 <li>
@@ -41,7 +41,7 @@
                     <div role="tabpanel" class="user-home-feed tab-pane fade  in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="30" data-item_type="default">
                         {{^userHidden}}
                         <div class="info-user-list">
-                            <h5>您关注的用户较少，也许你会对下面的内容感兴趣。</h5>
+                            <h5>您关注的用户较少，也许您会对下面的内容感兴趣。</h5>
                             <ul>
                                 {{#recommendRes}}
                                 <li>
@@ -61,22 +61,12 @@
                     {{/login}}
                     <div role="tabpanel" class="user-home-feed tab-pane fade {{inactive}}" id="all" aria-labelledby="all-tab" data-filter="all" data-limit="30" data-item_type="default">
                     <ul class="recommend">
-                        {{#recContent}}
-                        <li>
-                            <p class="source"><a class="entry-name" href="{{wikiurl}}">{{title}}</a>来自<a class="entry-source" href="{{siteurl}}">{{wikiname}}</a></p>
-                            <div class="recommend-info">
-                                <a href="{{wikiurl}}" class="image">
-                                    <img alt="Wit by Botanica.jpg" src="{{backgroungimg}}">
-                                </a>
-                                <div class="entry-description">{{&desc}}</div>
-                            </div>
-                        </li>
-                        {{/recContent}}
                     </ul>
                     </div>
                 </div>
             </div>
         </div>
+        {{^mobileUser}}
         <aside class="home-aside">
             <div class="aside-top">
                 <img src="/resources/feed/huijilargelogo.png">
@@ -111,7 +101,7 @@
                                 <li><h5>粉丝</h5>{{&followee}}</li>
                             </ul>
                             <div class="cleared"></div>
-                            
+
                         </div>
                         <div class="col-md-12">
                             <div class="svg-wrap">
@@ -156,7 +146,7 @@
                                         </div>
                                     </div>
                                 </li>
-                            {{/siteRank}}    
+                            {{/siteRank}}
                             </ul>
                             <div role="tabpanel" class="tab-pane fade" id="user" aria-labelledby="user-tab">
                                 <ul class="top-users weekly-rank">
@@ -216,6 +206,7 @@
                 </span></a>
             </div>
         </aside>
+        {{/mobileUser}}
         <img src="/resources/feed/whole-huiji.png" class="home-huiji">
     </article>
     <div class="bottom">

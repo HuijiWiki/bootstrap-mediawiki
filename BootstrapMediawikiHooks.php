@@ -18,10 +18,20 @@ Class BootstrapMediawikiHooks {
         $parser->setHook( 'carousel', 'BootstrapMediawikiHooks::getCarousel');
         $parser->setHook( 'callout', 'BootstrapMediawikiHooks::getCallout');
         $parser->setHook( 'heading', 'BootstrapMediawikiHooks::getHeading');
+        $parser->setHook( 'hover.css', 'BootstrapMediawikiHooks::getHoverCss');
+        $parser->setHook( 'ihover.css', 'BootstrapMediawikiHooks::getIHoverCss');
 
         // $parser->setHook( 'siteactivity', 'getSiteActivity' );
         // $parser->setHook( 'siteactivity', 'getSiteActivity' );
         return true;
+    }
+    public static function getIHoverCss( $input, $args, $parser ){
+        $output = '<script type="text/javascript">mw.loader.load("skins.bootstrapmediawiki.ihover","text/css");</script>';
+        return $output;
+    }
+    public static function getHoverCss( $input, $args, $parser ){
+        $output = '<script type="text/javascript">mw.loader.load("skins.bootstrapmediawiki.hover","text/css");</script>';
+        return $output;
     }
     public static function getHeading($input, $args, $parser ) {
         $m = array();
@@ -236,6 +246,7 @@ Class BootstrapMediawikiHooks {
         // $parser->disableCache();
         $id = isset( $args['id'] ) ? $args['id']:'carousel-generic'.(self::$nextId++);
         $interval = isset( $args['interval'] ) ? $args['interval']:'5000';
+        $width = isset( $args['width'] ) ? $args['width']:null;
         // $button = isset( $args['button'] ) ? $args['button'] : '下拉菜单';
         // $id = isset( $args['id'] ) ? $args['id']: hash('sha1', $button, false);
         $arr = explode(PHP_EOL, $input);
@@ -250,7 +261,7 @@ Class BootstrapMediawikiHooks {
             $temp = explode('|', $line);
             // $options = ParserOptions::newFromUser($wgUser);
             $group['id'] = $id;
-            $group['image'] = $parser->recursiveTagParse('[['.$temp[0].']]');
+            $group['image'] = $parser->recursiveTagParse('[['.$temp[0].($width!=null?"|$width":"").']]');
             $group['caption'] = isset($temp[1])?$parser->recursiveTagParse($temp[1]):'';
             $group['i'] = $i;
             if ($i == 0) {
@@ -299,8 +310,8 @@ Class BootstrapMediawikiHooks {
         
     }
     public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
-        global $IP, $wgScriptPath, $wgLogo, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
-        if ($user->isAllowed('editinterface')){
+        global $wgMobile, $IP, $wgScriptPath, $wgLogo, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
+        if ($user->isAllowed('editinterface') && !$wgMobile){
             $GLOBALS['wgCdnScriptPath'] = $wgScriptPath;
             $GLOBALS['wgLoadScript'] = "{$wgCdnScriptPath}/load.php";
             $GLOBALS['wgStylePath'] = "{$wgCdnScriptPath}/skins";
@@ -351,7 +362,7 @@ Class BootstrapMediawikiHooks {
 
     public static function wfEditSectionLinkTransform( &$parser, &$text )
     {
-        global $wgUser;
+        global $wgUser, $wgMobile;
         $isVisualEditorEnabled = $wgUser->getOption('visualeditor-enable','1');
         if ($isVisualEditorEnabled != 1){
             /* when disable visual editor */
@@ -401,7 +412,7 @@ Class BootstrapMediawikiHooks {
                     ;
             $text = preg_replace( $pattern, $replacement, $text ); 
         }     
-        if ($wgUser->isAllowed('reupload')){ 
+        if ($wgUser->isAllowed('reupload') && !$wgMobile){ 
             $text = str_replace('http://cdn.huijiwiki.com/', 'http://cdn.huiji.wiki/', $text);
         }        
         return true;

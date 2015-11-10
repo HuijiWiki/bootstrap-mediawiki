@@ -1168,8 +1168,9 @@ body{
 .home-info{
     margin-right: 360px;
     padding: 30px;
-    background: #fff;
+    background: rgba(232, 238, 243,0.9);
     min-height: 1000px;
+    box-shadow:inset 100px -100px 100px #EDF3F5,inset 0px 120px 100px #E7EEF7,inset -50px 100px 100px #EBEDEF,inset 50px -100px 100px #C1D2D9,inset 0 -200px 100px #EEF6FA,0 0 2px 5px rgba(0,0,0,0.05);
 }
 .home-info .icon-huiji{
     color: #09c;
@@ -1214,7 +1215,7 @@ body{
     transition:none
 }
 .info-tabs ul>.active{
-    background: #fff;
+    background:none;
 }
 .info-tabs ul>.active>a {
     color: #428bca;
@@ -1240,6 +1241,7 @@ body{
     background: rgba(238,238,238,0.4);
     padding: 15px;
     width: 330px;
+    box-shadow: inset 100px -100px 100px rgba(236, 236, 236, 0.1),inset 0px 156px 100px rgba(233, 237, 245, 0.01),inset -50px 100px 100px rgba(235, 237, 239, 0.02),inset 50px -100px 100px rgba(14, 90, 121, 0.03),inset 0 -424px 323px rgba(223, 232, 236, 0.79),0 0 2px 5px rgba(0,0,0,0.05);
 }
 .aside-top img{
     height: 80px;
@@ -1482,7 +1484,7 @@ body{
     margin-top: 2px;
 }
 .info-user-list{
-    border: 1px solid #eee;
+    border: 1px solid #fff;
     margin-top: 20px;
     padding: 10px;
 }
@@ -1519,13 +1521,13 @@ body{
     display: block;
 }
 .user-home-feed-content{
-    margin-top: 50px;
+    margin-top: 10px;
 }
-.user-home-item-owner-avatar{
+#home-feed-content .user-home-item-owner-avatar{
     float: left;
     width: auto;
 }
-.user-home-item-body{
+#home-feed-content .user-home-item-body{
     margin-left: 65px;
     float: none;
     margin-right: 120px;
@@ -1535,7 +1537,7 @@ body{
     margin-bottom: 5px;
 }
 .user-home-activity {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
     padding: 15px 10px 25px 10px;
     position: relative;
 }
@@ -1602,6 +1604,12 @@ a.image {
 .recommend li {
     margin-top: 30px;
     position: relative;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+.recommend li:first-child{
+    margin-top: 0;
+    border-top: none;
 }
 .recommend-edit{
     position: absolute;
@@ -1613,8 +1621,7 @@ a.image {
     font-size: 24px;
 }
 .recommend .source {
-    border-top: 1px solid #eee;
-    padding-top: 20px;
+
 }
 .entry-description{
     margin-left: 170px;
@@ -1622,12 +1629,15 @@ a.image {
 .entry-description p{
     margin-bottom: 10px;
 }
+svg .day{
+    cursor: pointer;
+}
+body>.tooltip.top .tooltip-arrow{
+    margin-left: 0;
+}
 @media screen and (max-width: 1366px){
     .home-main{
         width: 90%;
-    }
-    .home-info{
-        padding: 30px 0;
     }
 }
 @media screen and (max-width: 992px) {
@@ -1642,9 +1652,18 @@ a.image {
     }
 }
 @media screen and (max-width: 768px) {
+    .home-info {
+        background: #fff;
+        box-shadow: none;
+        padding: 30px 0;
+    }
     .user-home-links-container{
         width: 100%;
         float: none;
+    }
+    .info-tabs li{
+        width: 33%;
+        text-align: center;
     }
     .user-home-links-container h2{
         padding-top: 0;
@@ -1663,7 +1682,7 @@ a.image {
     .user-home-item-owner-avatar img{
         width: 100%;
     }
-    .user-home-feed .user-home-item-body{
+    #home-feed-content .user-home-item-body{
         padding-right: 0;
         margin-right: 0;
     }
