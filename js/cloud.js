@@ -36,6 +36,7 @@ $('body').prepend(xuanran);
 var container;
 var camera, scene, renderer;
 var mesh, geometry, material;
+var stats;
 
 var mouseX = 0, mouseY = 0;
 var start_time = Date.now();
@@ -132,6 +133,12 @@ function init() {
     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
     window.addEventListener( 'resize', onWindowResize, false );
 
+    stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    stats.domElement.style.zIndex = '10000';
+    document.body.appendChild(stats.domElement);
 }
 
 function onDocumentMouseMove( event ) {
@@ -161,5 +168,6 @@ function animate() {
     camera.position.z = - position + 8000;
 
     renderer.render( scene, camera );
+    stats.update();
 
 }
