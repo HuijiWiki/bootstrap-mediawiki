@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    if (QC.Login.check()==true && mw.config.get('wgUserId') == null) {
+        $('.qqlogin').modal({backdrop: 'static', keyboard: false});
+    };
 	$('.set-menu>li:last-child').on('click','a',function(e){
         QC.Login.signOut();
    });
@@ -40,9 +43,11 @@ $(document).ready(function(){
                     if (res.success == true) {
                         if (res.result == null){
                         	var content = '';
-                        	content = '<form><input type="text" id="qqloginusername" value="'+c.data.nickname+'"><input type="email" id="qqloginemail" placeholder="邮箱">'+
-                        	'<input type="password" id="qqloginpassword" placeholder="密码"><div id="qqConfirm">提交</div></form>';
-                        	$('.userloginForm').append(content);
+                        	content = '<form><label for="qqloginname">用户名</label><input type="text" id="qqloginusername" class="form-control" value="'+c.data.nickname+'" name="qqloginname">'+
+                            '<label for="qqloginemail">邮箱</label><input type="email" class="form-control" id="qqloginemail" placeholder="请输入邮箱" name="qqloginemail">'+
+                        	'<label for="qqloginpass">密码</label><input type="password" id="qqloginpassword" class="form-control" placeholder="请输入密码" name="qqloginpass"><div class="mw-ui-button  mw-ui-block mw-ui-constructive" id="qqConfirm">提交</div></form>';
+                            $('.qqlogin').modal({backdrop: 'static', keyboard: false});
+                        	$('.qqlogin .modal-body').append(content);
                         }else{
                         	// var t = 'aaaaaa';
                         	// $.post('/api.php?action=login&lgname='+c.data.nickname+'&lgpassword='+t+'&format=json',function(data){
@@ -109,55 +114,55 @@ $(document).ready(function(){
     function wiki_signup(type,login,email,pass){
         $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+ '&format=json',function(data){
             if(login==''){
-                alert('您的用户名不能为空');
+                mw.notification.notify('您的用户名不能为空');
             }
             else if(email==''){
-                alert('您的邮箱必须填写');
+                mw.notification.notify('您的邮箱必须填写');
             }
             else if(data.createaccount.result=='NeedToken'){
                 $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+'&token='+data.createaccount.token+ '&format=json',function(data){
                     if(!data.error){
                         if(data.createaccount.result=="Success"){
-                            alert('注册成功');
+                            mw.notification.notify('注册成功');
                             addOauth(type,openid,data.createaccount.userid);
                         }
                         else{
-                            alert(data.createaccount.result);
+                            mw.notification.notify(data.createaccount.result);
                         }
                     }
                     else{
                         if(data.error.code=='userexists'){
-                            alert('用户名已存在');
+                            mw.notification.notify('用户名已存在');
                         }else if(data.error.code=='passwordtooshort'){
-                            alert('密码太短');
+                            mw.notification.notify('密码太短');
                         }else if(data.error.code=='password-name-match'){
-                            alert('您的密码不能与用户名相同');
+                            mw.notification.notify('您的密码不能与用户名相同');
                         }else if(data.error.code=='invalidemailaddress'){
-                            alert('请您输入正确的邮箱');
+                            mw.notification.notify('请您输入正确的邮箱');
                         }else if(data.error.code=='createaccount-hook-aborted'){
-                            alert('您的用户名不合法');
+                            mw.notification.notify('您的用户名不合法');
                         }else if(data.error.code=='wrongpassword'){
-                            alert('错误的密码进入，请重试');
+                            mw.notification.notify('错误的密码进入，请重试');
                         }else if(data.error.code=='mustbeposted'){
-                            alert('需要一个post请求');
+                            mw.notification.notify('需要一个post请求');
                         }else if(data.error.code=='externaldberror'){
-                            alert('有一个身份验证数据库错误或您不允许更新您的外部帐户');
+                            mw.notification.notify('有一个身份验证数据库错误或您不允许更新您的外部帐户');
                         }else if(data.error.code=='password-login-forbidden'){
-                            alert('使用这个用户名或密码被禁止');
+                            mw.notification.notify('使用这个用户名或密码被禁止');
                         }else if(data.error.code=='sorbs_create_account_reason'){
-                            alert('你的IP地址被列为DNSBL代理');
+                            mw.notification.notify('你的IP地址被列为DNSBL代理');
                         }else if(data.error.code=='nocookiesfornew'){
-                            alert('没有创建用户账户，请确保启用cookie刷新重试');
+                            mw.notification.notify('没有创建用户账户，请确保启用cookie刷新重试');
                         }
                         else {
-                            alert('error' + data.error.code);
+                            mw.notification.notify('error' + data.error.code);
                             console.log(data.error.code);
                         }
                     }
                 });
             }
             else{
-                alert('error' + data.error.code);
+                mw.notification.notify('error' + data.error.code);
             }
         });
     }
@@ -174,6 +179,7 @@ $(document).ready(function(){
                 var res = $.parseJSON(data);
                 if (res.success == true) {
                 	console.log(res.data);
+                    $('.qqlogin').modal('hide');
                     window.location.reload(true);
                 } 
             }

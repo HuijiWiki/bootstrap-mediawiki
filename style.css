@@ -289,7 +289,7 @@ option.unclickable {
 	opacity: 0.3;
 }
 .page-header{
-    margin-top: 60px;
+    margin: 0;
 }
 .nav-collapse.in {
 	height: auto !important;
@@ -885,6 +885,14 @@ body .mw-echo-overlay::before{
         width: 300px;
         margin: 30px auto;
     }
+    .user-login{
+        margin-top: 200px;
+    }
+}
+@media (min-width: 769px) {
+    .page-header{
+        margin: 40px 0 20px 0;
+    }
 }
 #mw-notification-area{
     position: fixed;
@@ -920,11 +928,6 @@ body .mw-echo-overlay::before{
 }
 .login-in{
     cursor: pointer;
-}
-@media screen and (min-width: 768px){
-    .user-login{
-        margin-top: 200px;
-    }
 }
 .login-wrap{
     width: 180px;
@@ -1350,4 +1353,14 @@ ol.carousel-indicators{
 }
 .client-js #wiki-outer-body {
 	display:none;
+}
+.qqlogin form{
+    width: 180px;
+    margin: 10px auto;
+    padding-bottom: 30px;
+}
+#qqConfirm{
+    position: absolute;
+    right: 50px;
+    width: auto;
 }

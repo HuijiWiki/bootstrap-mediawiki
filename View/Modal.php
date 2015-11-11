@@ -16,13 +16,6 @@
                 </div>
               </div>
             </div>
-            <div class="modal alert-return">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <p></p>
-                    </div>
-                </div>
-            </div>
         <!-- followed list -->
             <div class="modal fade follow-msg" tabindex="-1" role="dialog" aria-labelledby="mySmModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-md">
@@ -34,6 +27,19 @@
                         <div class="modal-body">
                            <ul class="follow-modal">
                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- qqlogin -->
+            <div class="modal fade qqlogin tabindex="-1" role="dialog" aria-labelledby="mySmModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                            <h4 class="modal-title" id="gridSystemModalLabel">您需要完善资料</h4>
+                        </div>
+                        <div class="modal-body">
                         </div>
                     </div>
                 </div>
