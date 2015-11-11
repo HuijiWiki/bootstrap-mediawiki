@@ -880,7 +880,7 @@ body .mw-echo-overlay::before{
     max-width: 300px;
     margin: 0 auto;
 }
-@media (min-width: 768px){
+@media (min-width: 769px){
     #mw-notification-area .mw-notification {
         width: 300px;
         margin: 30px auto;
@@ -888,8 +888,6 @@ body .mw-echo-overlay::before{
     .user-login{
         margin-top: 200px;
     }
-}
-@media (min-width: 769px) {
     .page-header{
         margin: 40px 0 20px 0;
     }
