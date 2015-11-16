@@ -2,6 +2,23 @@ $(document).ready(function(){
     if (QC.Login.check()==true && mw.config.get('wgUserId') == null) {
         $('.qqlogin').modal({backdrop: 'static', keyboard: false});
     };
+    var u_gender;
+    var u_avatar;
+    u_gender = mw.cookie.get( 'user_gender' );
+    u_avatar = mw.cookie.get( 'user_avatar' );
+    //gender & del gender cookie
+    if( u_gender !=  null && mw.config.get( 'wgUserId' ) != null ){
+    	// var api = new mw.Api();
+    	new mw.Api().saveOption( 'gender',u_gender );
+    	mw.cookie.set( 'user_gender' , null);
+    }
+    //user avatar & del avatar cookie
+    if( u_avatar != null && mw.config.get( 'wgUserId' ) != null ){
+    	///api.php?action=avatarsubmit&avatar_src=http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_131_ml.png&format=json
+    	$.post('/api.php?action=avatarsubmit&avatar_src='+u_avatar+ '&format=json',function(data){
+    		mw.cookie.set( 'user_avatar' , null);
+    	});
+    }
 	$('.set-menu>li:last-child').on('click','a',function(e){
         QC.Login.signOut();
    });
@@ -27,7 +44,17 @@ $(document).ready(function(){
 	// 	alert("获取用户信息失败！");
 	// })
 	.complete(function(c){//完成请求回调
-		// alert("获取用户信息完成！"+c.data.nickname);
+		// alert("获取用户信息完成！"+c.data.gender);figureurl_qq_1
+		// console.log("获取用户信息完成！"+c.data.figureurl_qq_1);
+		if (c.data.gender == '男'){
+            gender = 'male';
+        }else if(c.data.gender == '女'){
+            gender = 'female';
+        }else{
+            gender = 'unknown';
+        }
+        mw.cookie.set( 'user_gender', gender );
+        mw.cookie.set( 'user_avatar', c.data.figureurl_qq_1 );
 		QC.Login.getMe(function(openId, accessToken){
 			// alert(openId);
 			openid = openId;
@@ -69,11 +96,9 @@ $(document).ready(function(){
 			                function (data) {
 			                	var res = $.parseJSON(data);
                     			if (res.success == true) {
-                    				if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
-		                                location.href = updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
-		                            }else {                                
-		                                location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
-		                            }
+                    				                               
+		                            location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
+		                            
 		                            // location.href = updateQueryStringParameter(location.href, 'debug', '1');
 			                		// console.log(userId);
 			                		// console.log(1111111111111111);
@@ -121,8 +146,9 @@ $(document).ready(function(){
             }
             else if(data.createaccount.result=='NeedToken'){
                 $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+'&token='+data.createaccount.token+ '&format=json',function(data){
+                    // console.log(data);
                     if(!data.error){
-                        if(data.createaccount.result=="Success"){
+                        if(data.createaccount.result=="Success" ){
                             mw.notification.notify('注册成功');
                             addOauth(type,openid,data.createaccount.userid);
                         }
@@ -153,6 +179,8 @@ $(document).ready(function(){
                             mw.notification.notify('你的IP地址被列为DNSBL代理');
                         }else if(data.error.code=='nocookiesfornew'){
                             mw.notification.notify('没有创建用户账户，请确保启用cookie刷新重试');
+                        }else if(data.error.code=='pear-mail-error'){
+                            mw.notification.notify('eeeeeeeeeeeeeeeeeeeee');
                         }
                         else {
                             mw.notification.notify('error' + data.error.code);
@@ -178,7 +206,6 @@ $(document).ready(function(){
             function (data) {
                 var res = $.parseJSON(data);
                 if (res.success == true) {
-                	console.log(res.data);
                     $('.qqlogin').modal('hide');
                     window.location.reload(true);
                 } 
@@ -186,4 +213,20 @@ $(document).ready(function(){
         );
     }
 
+});
+
+WB2.anyWhere(function (W) {
+    W.widget.connectButton({
+        id: "wb_connect_btn",
+        type: '3,2',
+        callback: {
+            login: function (o) { //登录后的回调函数
+                // alert("login: " + o.screen_name)
+                console.log(o);
+            },
+            logout: function () { //退出后的回调函数
+                alert('logout');
+            }
+        }
+    });
 });
