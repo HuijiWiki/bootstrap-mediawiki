@@ -83,6 +83,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	    'skins.editable',
 		'mediawiki.cookie',
 		'mediawiki.notification',
+		'mediawiki.api.options'
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
