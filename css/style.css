@@ -987,6 +987,9 @@ body{
 #qqLoginBtn img{
     margin-top: 13px;
 }
+#qqConfirm:hover{
+    color: #fff;
+}
 @media screen and (min-width: 1000px) and (max-width: 1400px) {
     .wiki-top {
         height: 405px;

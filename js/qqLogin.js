@@ -72,7 +72,8 @@ $(document).ready(function(){
                                 var content = '';
                                 content = '<form><label for="qqloginname">用户名</label><input type="text" id="qqloginusername" class="form-control" value="'+c.data.nickname+'" name="qqloginname">'+
                                     '<label for="qqloginemail">邮箱</label><input type="email" class="form-control" id="qqloginemail" placeholder="请输入邮箱" name="qqloginemail">'+
-                                    '<label for="qqloginpass">密码</label><input type="password" id="qqloginpassword" class="form-control" placeholder="请输入密码" name="qqloginpass"><div class="mw-ui-button  mw-ui-block mw-ui-constructive" id="qqConfirm">提交</div></form>';
+                                    '<label for="qqloginpass">密码</label><input type="password" id="qqloginpassword" class="form-control" placeholder="请输入密码" name="qqloginpass">'+
+                                    '<div class="mw-ui-button btn mw-ui-block mw-ui-constructive" data-loading-text="提交中..." id="qqConfirm">提交</div></form>';
                                 $('.qqlogin').modal({backdrop: 'static', keyboard: false});
                                 $('.qqlogin .modal-body').append(content);
                             }else{
@@ -123,8 +124,9 @@ $(document).ready(function(){
         var username = $("#qqloginusername").val();
         var email = $("#qqloginemail").val();
         var pass = $("#qqloginpassword").val();
+        $(this).button('loading');
         wiki_signup("qq",username,email,pass);
-    })
+    });
 
     // if(QC.Login.check()){//如果已登录
     // QC.Login.getMe(function(openId, accessToken){
@@ -139,9 +141,11 @@ $(document).ready(function(){
     function wiki_signup(type,login,email,pass){
         $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+ '&format=json',function(data){
             if(login==''){
+                $('#qqConfirm').button('reset');
                 mw.notification.notify('您的用户名不能为空');
             }
             else if(email==''){
+                $('#qqConfirm').button('reset');
                 mw.notification.notify('您的邮箱必须填写');
             }
             else if(data.createaccount.result=='NeedToken'){
@@ -149,14 +153,16 @@ $(document).ready(function(){
                     // console.log(data);
                     if(!data.error){
                         if(data.createaccount.result=="Success" ){
-                            mw.notification.notify('注册成功');
+                            mw.notification.notify('注册成功，请稍候');
                             addOauth(type,openid,data.createaccount.userid);
                         }
                         else{
+                            $('#qqConfirm').button('reset');
                             mw.notification.notify(data.createaccount.result);
                         }
                     }
                     else{
+                        $('#qqConfirm').button('reset');
                         if(data.error.code=='userexists'){
                             mw.notification.notify('用户名已存在');
                         }else if(data.error.code=='passwordtooshort'){
@@ -190,6 +196,7 @@ $(document).ready(function(){
                 });
             }
             else{
+                $('#qqConfirm').button('reset');
                 mw.notification.notify('error' + data.error.code);
             }
         });

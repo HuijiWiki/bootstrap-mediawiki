@@ -111,7 +111,7 @@ $wgResourceModules['skins.frontpage'] = array(
 $wgResourceModules['skins.three'] = array(
 	'scripts' => array(
 		$skinDir . '/js/three.min.js',
-		$skinDir . '/js/stats.min.js',
+//		$skinDir . '/js/stats.min.js',
 		$skinDir . '/js/cloud.js',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
