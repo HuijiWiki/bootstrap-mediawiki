@@ -160,7 +160,7 @@
                     if(!data.error){
                         if(data.createaccount.result=="Success" ){
                             mw.notification.notify('注册成功，请稍候');
-                            addOauth(type,openid,data.createaccount.userid);
+                            addOauth(type,outhId,data.createaccount.userid);
                         }
                         else{
                             $('#qqConfirm').button('reset');
