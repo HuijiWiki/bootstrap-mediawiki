@@ -1,5 +1,11 @@
-$(document).ready(function(){
-    if (QC.Login.check()==true && mw.config.get('wgUserId') == null) {
+﻿$(document).ready(function(){
+	//check qq login
+	// console.log(qc);
+ //    if (QC.Login.check()==true && mw.config.get('wgUserId') == null) {
+ //        $('.qqlogin').modal({backdrop: 'static', keyboard: false});
+ //    };
+    // check weibo login WB2.checkLogin()
+    if (WB2.checkLogin()==true && mw.config.get('wgUserId') == null) {
         $('.qqlogin').modal({backdrop: 'static', keyboard: false});
     };
     var u_gender;
@@ -14,28 +20,35 @@ $(document).ready(function(){
     }
     //user avatar & del avatar cookie
     if( u_avatar != null && mw.config.get( 'wgUserId' ) != null ){
-    	///api.php?action=avatarsubmit&avatar_src=http://cdn.huijiwiki.com/www/uploads/avatars/my_wiki_131_ml.png&format=json
-    	$.post('/api.php?action=avatarsubmit&avatar_src='+u_avatar+ '&format=json',function(data){
-    		mw.cookie.set( 'user_avatar' , null);
-    	});
+    	var api = new mw.Api();
+    	api.postWithToken('edit', { 'action': 'avatarsubmit', 'format': 'json', 'avatar_src': u_avatar })
+			.done(function( response ) {
+				mw.cookie.set( 'user_avatar' , null);
+			} );
     }
 	$('.set-menu>li:last-child').on('click','a',function(e){
-        QC.Login.signOut();
+		// alert(22);
+		// if( WB2.checkLogin()==true ){
+			WB2.logout();
+		// }else{
+		// 	QC.Login.signOut();
+		// }
    });
 	if(mw.config.get('wgUserId') != null){
 		return '';
 	}
-	QC.Login({
-		//插入按钮的节点id
-        btnId:"qqLoginBtn",	
-        //按钮尺寸，可用值[A_XL| A_L| A_M| A_S|  B_M| B_S| C_S]，可选，默认B_S
-		 size: "A_M"
-	});
+	// QC.Login({
+	// 	//插入按钮的节点id
+ //        btnId:"qqLoginBtn",	
+ //        //可用值[A_XL| A_L| A_M| A_S|  B_M| B_S| C_S]，可选，默认B_S
+	// 	 size: "A_M"
+	// });
 
 	var paras = {};
-	var openid;
+	// var qqOpenid;
+	var wbOpenId;
 
-	QC.api("get_user_info", paras)
+	// QC.api("get_user_info", paras)
 	// .success(function(s){//成功回调
 	// 	alert("获取用户信息成功！当前用户昵称为："+s.data.nickname);
 
@@ -43,88 +56,73 @@ $(document).ready(function(){
 	// .error(function(f){//失败回调
 	// 	alert("获取用户信息失败！");
 	// })
-	.complete(function(c){//完成请求回调
-		// alert("获取用户信息完成！"+c.data.gender);figureurl_qq_1
-		// console.log("获取用户信息完成！"+c.data.figureurl_qq_1);
-		if (c.data.gender == '男'){
-            gender = 'male';
-        }else if(c.data.gender == '女'){
-            gender = 'female';
-        }else{
-            gender = 'unknown';
-        }
-        mw.cookie.set( 'user_gender', gender );
-        mw.cookie.set( 'user_avatar', c.data.figureurl_qq_1 );
-		QC.Login.getMe(function(openId, accessToken){
-			// alert(openId);
-			openid = openId;
-			var OauthType = 'qq';
-			$.post(
-                mw.util.wikiScript(), {
-                    action: 'ajax',
-                    rs: 'wfCheckOauth',
-                    rsargs: [openId, OauthType]
-                },
-                function (data) {
-                    var res = $.parseJSON(data);
-                    if (res.success == true) {
-                        if (res.result == null){
-                        	var content = '';
-                        	content = '<form><label for="qqloginname">用户名</label><input type="text" id="qqloginusername" class="form-control" value="'+c.data.nickname+'" name="qqloginname">'+
-                            '<label for="qqloginemail">邮箱</label><input type="email" class="form-control" id="qqloginemail" placeholder="请输入邮箱" name="qqloginemail">'+
-                        	'<label for="qqloginpass">密码</label><input type="password" id="qqloginpassword" class="form-control" placeholder="请输入密码" name="qqloginpass"><div class="mw-ui-button  mw-ui-block mw-ui-constructive" id="qqConfirm">提交</div></form>';
-                            $('.qqlogin').modal({backdrop: 'static', keyboard: false});
-                        	$('.qqlogin .modal-body').append(content);
-                        }else{
-                        	// var t = 'aaaaaa';
-                        	// $.post('/api.php?action=login&lgname='+c.data.nickname+'&lgpassword='+t+'&format=json',function(data){
-                        	// 	if(data.login.result == 'NeedToken'){
-                        	// 		$.post('/api.php?action=login&lgname='+c.data.nickname+'&lgpassword='+t+'&lgtoken='+data.login.token+'&format=json',function(data){
-                        	// 			console.log('aaa'+data.login.result);
-                        	// 		});
-                        	// 	}	
-                        	// 	// console.log(data.login.result);
-                        	// 	});
-                        	var userId = res.result;
-                        	// alert(res.result);
-                        	$.post(
-                        		mw.util.wikiScript(), {
-			                    action: 'ajax',
-			                    rs: 'wfAddUserOauthCookie',
-			                    rsargs: [ userId ]
-			                },
-			                function (data) {
-			                	var res = $.parseJSON(data);
-                    			if (res.success == true) {
-                    				                               
-		                            location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
-		                            
-		                            // location.href = updateQueryStringParameter(location.href, 'debug', '1');
-			                		// console.log(userId);
-			                		// console.log(1111111111111111);
-			                		// window.location.reload(true);
-			                	}
-			                });
+	// .complete(function(c){//完成请求回调
+	// 	// alert("获取用户信息完成！"+c.data.gender);figureurl_qq_1
+	// 	// console.log("获取用户信息完成！"+c.data.figureurl_qq_1);
+	// 	if (c.data.gender == '男'){
+ //            gender = 'male';
+ //        }else if(c.data.gender == '女'){
+ //            gender = 'female';
+ //        }else{
+ //            gender = 'unknown';
+ //        }
+ //        mw.cookie.set( 'user_gender', gender );
+ //        mw.cookie.set( 'user_avatar', c.data.figureurl_qq_1 );
+	// 	QC.Login.getMe(function(openId, accessToken){
+	// 		// alert(openId);
+	// 		qqOpenid = openId;
+	// 		var OauthType = 'qq';
+	// 		$.post(
+ //                mw.util.wikiScript(), {
+ //                    action: 'ajax',
+ //                    rs: 'wfCheckOauth',
+ //                    rsargs: [openId, OauthType]
+ //                },
+ //                function (data) {
+ //                    var res = $.parseJSON(data);
+ //                    if (res.success == true) {
+ //                        if (res.result == null){
+ //                        	var content = '';
+ //                        	content = '<form><label for="qqloginname">用户名</label><input type="text" id="qqloginusername" class="form-control" value="'+c.data.nickname+'" name="qqloginname">'+
+ //                            '<label for="qqloginemail">邮箱</label><input type="email" class="form-control" id="qqloginemail" placeholder="请输入邮箱" name="qqloginemail">'+
+ //                        	'<label for="qqloginpass">密码</label><input type="password" id="qqloginpassword" class="form-control" placeholder="请输入密码" name="qqloginpass"><div class="mw-ui-button  mw-ui-block mw-ui-constructive" id="qqConfirm">提交</div></form>';
+ //                            $('.qqlogin').modal({backdrop: 'static', keyboard: false});
+ //                        	$('.qqlogin .modal-body').append(content);
+ //                        }else{
+ //                        	var userId = res.result;
+ //                        	// alert(res.result);
+ //                        	$.post(
+ //                        		mw.util.wikiScript(), {
+	// 		                    action: 'ajax',
+	// 		                    rs: 'wfAddUserOauthCookie',
+	// 		                    rsargs: [ userId ]
+	// 		                },
+	// 		                function (data) {
+	// 		                	var res = $.parseJSON(data);
+ //                    			if (res.success == true) {                   				                               
+	// 	                            location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
+	// 		                	}
+	// 		                });
 			               
-                        }
-                    } 
-                }
-            );
-		});
-		// ajax
-		/**
-		 * check Oauth
-		 * if success (refresh page)
-		 * else (alert Registere to registere, then validated nick&email&password, then add info to DB)
-		 * set cookie
-		 */
-	});
-	$("body").on("click","#qqConfirm",function(){
-		var username = $("#qqloginusername").val();
-		var email = $("#qqloginemail").val();
-		var pass = $("#qqloginpassword").val();
-		wiki_signup("qq",username,email,pass);
-	})
+ //                        }
+ //                    } 
+ //                }
+ //            );
+	// 	});
+	// 	// ajax
+	// 	/**
+	// 	 * check Oauth
+	// 	 * if success (refresh page)
+	// 	 * else (alert Registere to registere, then validated nick&email&password, then add info to DB)
+	// 	 * set cookie
+	// 	 */
+	// });
+	// $("body").on("click","#qqConfirm",function(){
+	// 	var username = $("#qqloginusername").val();
+	// 	var email = $("#qqloginemail").val();
+	// 	var pass = $("#qqloginpassword").val();
+	// 	wiki_signup("qq",username,email,pass,qqOpenid);
+	// })
 
 	// if(QC.Login.check()){//如果已登录
 	// QC.Login.getMe(function(openId, accessToken){
@@ -134,9 +132,19 @@ $(document).ready(function(){
 	//...
 	// }
 
-
+	$('#qqConfirm').click(function(){
+		var username = $("#qqloginusername").val();
+		var email = $("#qqloginemail").val();
+		var pass = $("#qqloginpassword").val();
+		var qqOpenId = $('#qqOpenId').val();
+		var userGender = $('#userGender').val();
+		var userAvatar = $('#userAvatar').val();
+		mw.cookie.set( 'user_gender', userGender );
+		mw.cookie.set( 'user_avatar', userAvatar );
+		wiki_signup("qq",username,email,pass,qqOpenId);
+	})
 	var loginerror = $('.login-error');
-    function wiki_signup(type,login,email,pass){
+    function wiki_signup(type,login,email,pass,outhId){
         $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+ '&format=json',function(data){
             if(login==''){
                 mw.notification.notify('您的用户名不能为空');
@@ -150,7 +158,7 @@ $(document).ready(function(){
                     if(!data.error){
                         if(data.createaccount.result=="Success" ){
                             mw.notification.notify('注册成功');
-                            addOauth(type,openid,data.createaccount.userid);
+                            addOauth(type,outhId,data.createaccount.userid);
                         }
                         else{
                             mw.notification.notify(data.createaccount.result);
@@ -179,10 +187,7 @@ $(document).ready(function(){
                             mw.notification.notify('你的IP地址被列为DNSBL代理');
                         }else if(data.error.code=='nocookiesfornew'){
                             mw.notification.notify('没有创建用户账户，请确保启用cookie刷新重试');
-                        }else if(data.error.code=='pear-mail-error'){
-                            mw.notification.notify('eeeeeeeeeeeeeeeeeeeee');
-                        }
-                        else {
+                        }else {
                             mw.notification.notify('error' + data.error.code);
                             console.log(data.error.code);
                         }
@@ -206,27 +211,85 @@ $(document).ready(function(){
             function (data) {
                 var res = $.parseJSON(data);
                 if (res.success == true) {
-                    $('.qqlogin').modal('hide');
-                    window.location.reload(true);
+                	if(type=='weibo'){
+	                    $('.qqlogin').modal('hide');
+	                    window.location.reload(true);
+                	}else if(type=='qq'){
+                		window.location.href = 'http://slx.test.huiji.wiki';
+                	}
                 } 
             }
         );
     }
-
+    WB2.anyWhere(function (W) {
+	    W.widget.connectButton({
+	        id: "wb_connect_btn",
+	        type: '3,2',
+	        callback: {
+	            login: function (o) { //登录后的回调函数
+	                // alert("login: " + o.screen_name)
+	                console.log(o);
+	                // var wbId = o.id; o.avatar_large gender: "m"
+	                if (o.gender == 'm'){
+			            gender = 'male';
+			        }else if(o.gender == 'f'){
+			            gender = 'female';
+			        }else{
+			            gender = 'unknown';
+			        }
+			        mw.cookie.set( 'user_gender', gender );
+			        mw.cookie.set( 'user_avatar', o.avatar_large );
+	                wbOpenId = o.id;
+	                $.post(
+		                mw.util.wikiScript(), {
+		                    action: 'ajax',
+		                    rs: 'wfCheckOauth',
+		                    rsargs: [wbOpenId, 'weibo']
+		                },
+		                function (data) {
+		                    var res = $.parseJSON(data);
+		                    if (res.success == true) {
+		                        if (res.result == null){
+		                        	var content = '';
+		                        	content = '<form><label for="wbloginname">用户名</label><input type="text" id="wbloginusername" class="form-control" value="'+o.name+'" name="wbloginname">'+
+		                            '<label for="wbloginemail">邮箱</label><input type="email" class="form-control" id="wbloginemail" placeholder="请输入邮箱" name="wbloginemail">'+
+		                        	'<label for="wbloginpass">密码</label><input type="password" id="wbloginpassword" class="form-control" placeholder="请输入密码" name="qqloginpass"><div class="mw-ui-button  mw-ui-block mw-ui-constructive" id="wbConfirm">提交</div></form>';
+		                            $('.qqlogin').modal({backdrop: 'static', keyboard: false});
+		                        	$('.qqlogin .modal-body').append(content);
+		                        }else{
+		                        	var userId = res.result;
+		                        	// alert(res.result);
+		                        	$.post(
+		                        		mw.util.wikiScript(), {
+					                    action: 'ajax',
+					                    rs: 'wfAddUserOauthCookie',
+					                    rsargs: [ userId ]
+					                },
+					                function (data) {
+					                	var res = $.parseJSON(data);
+		                    			if (res.success == true) {                   				                               
+				                            location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
+					                	}
+					                });
+					               
+		                        }
+		                    } 
+		                }
+		            );
+	            },
+	            logout: function () { //退出后的回调函数
+	                alert('logout');
+	            }
+	        }
+	    });
+	});
+	$("body").on("click","#wbConfirm",function(){
+		var username = $("#wbloginusername").val();
+		var email = $("#wbloginemail").val();
+		var pass = $("#wbloginpassword").val();
+		wiki_signup("weibo",username,email,pass,wbOpenId);
+	})
 });
 
-WB2.anyWhere(function (W) {
-    W.widget.connectButton({
-        id: "wb_connect_btn",
-        type: '3,2',
-        callback: {
-            login: function (o) { //登录后的回调函数
-                // alert("login: " + o.screen_name)
-                console.log(o);
-            },
-            logout: function () { //退出后的回调函数
-                alert('logout');
-            }
-        }
-    });
-});
+
+// WB2.checkLogin()   true or false
