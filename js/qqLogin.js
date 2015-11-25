@@ -14,9 +14,9 @@
     u_avatar = mw.cookie.get( 'user_avatar' );
     //gender & del gender cookie
     if( u_gender !=  null && mw.config.get( 'wgUserId' ) != null ){
-    	// var api = new mw.Api();
-    	new mw.Api().saveOption( 'gender',u_gender );
-    	mw.cookie.set( 'user_gender' , null);
+        // var api = new mw.Api();
+        new mw.Api().saveOption( 'gender',u_gender );
+        mw.cookie.set( 'user_gender' , null);
     }
     //user avatar & del avatar cookie
     if( u_avatar != null && mw.config.get( 'wgUserId' ) != null ){
@@ -124,13 +124,13 @@
 	// 	wiki_signup("qq",username,email,pass,qqOpenid);
 	// })
 
-	// if(QC.Login.check()){//如果已登录
-	// QC.Login.getMe(function(openId, accessToken){
-	// 	alert(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n"));
-	// });
-	//这里可以调用自己的保存接口
-	//...
-	// }
+    // if(QC.Login.check()){//如果已登录
+    // QC.Login.getMe(function(openId, accessToken){
+    // 	alert(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n"));
+    // });
+    //这里可以调用自己的保存接口
+    //...
+    // }
 
 	$('#qqConfirm').click(function(){
 		var username = $("#qqloginusername").val();
@@ -147,9 +147,11 @@
     function wiki_signup(type,login,email,pass,outhId){
         $.post('/api.php?action=createaccount&name='+login+'&email='+email+'&password='+pass+ '&format=json',function(data){
             if(login==''){
+                $('#qqConfirm').button('reset');
                 mw.notification.notify('您的用户名不能为空');
             }
             else if(email==''){
+                $('#qqConfirm').button('reset');
                 mw.notification.notify('您的邮箱必须填写');
             }
             else if(data.createaccount.result=='NeedToken'){
@@ -157,14 +159,16 @@
                     // console.log(data);
                     if(!data.error){
                         if(data.createaccount.result=="Success" ){
-                            mw.notification.notify('注册成功');
-                            addOauth(type,outhId,data.createaccount.userid);
+                            mw.notification.notify('注册成功，请稍候');
+                            addOauth(type,openid,data.createaccount.userid);
                         }
                         else{
+                            $('#qqConfirm').button('reset');
                             mw.notification.notify(data.createaccount.result);
                         }
                     }
                     else{
+                        $('#qqConfirm').button('reset');
                         if(data.error.code=='userexists'){
                             mw.notification.notify('用户名已存在');
                         }else if(data.error.code=='passwordtooshort'){
@@ -195,14 +199,15 @@
                 });
             }
             else{
+                $('#qqConfirm').button('reset');
                 mw.notification.notify('error' + data.error.code);
             }
         });
     }
 
     function addOauth(type,openid,userid){
-    	
-    	$.post(
+
+        $.post(
             mw.util.wikiScript(), {
                 action: 'ajax',
                 rs: 'wfAddInfoToOauth',

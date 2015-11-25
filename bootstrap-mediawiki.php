@@ -48,6 +48,7 @@ $wgResourceModules['skins.bootstrapmediawiki.ihover'] = array(
 $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
+		$skinDir . '/css/bootstrap-editable.css'                 => array( 'media' => 'all' ),
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
@@ -79,6 +80,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
 	),
 	'dependencies' => array(
+	    'skins.editable',
 		'mediawiki.cookie',
 		'mediawiki.notification',
 		'mediawiki.api.options'
@@ -86,6 +88,14 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'bottom',	
+);
+$wgResourceModules['skins.editable'] = array(
+	'scripts' => array(
+		$skinDir . '/js/bootstrap-editable.min.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'bottom',
 );
 $wgResourceModules['skins.frontpage'] = array(
 	'styles' => array(
@@ -101,8 +111,8 @@ $wgResourceModules['skins.frontpage'] = array(
 $wgResourceModules['skins.three'] = array(
 	'scripts' => array(
 		$skinDir . '/js/three.min.js',
-		$skinDir . '/js/stats.min.js',
-		$skinDir. '/js/cloud.js',
+//		$skinDir . '/js/stats.min.js',
+		$skinDir . '/js/cloud.js',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
