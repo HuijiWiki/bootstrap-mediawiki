@@ -220,7 +220,7 @@
 	                    $('.qqlogin').modal('hide');
 	                    window.location.reload(true);
                 	}else if(type=='qq'){
-                		window.location.href = 'http://slx.test.huiji.wiki';
+                		window.location.href = 'http://test.huiji.wiki';
                 	}
                 } 
             }
