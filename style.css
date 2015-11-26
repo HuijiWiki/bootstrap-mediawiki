@@ -883,7 +883,9 @@ body .mw-echo-overlay::before{
 @media (min-width: 769px){
     #mw-notification-area .mw-notification {
         width: 300px;
-        margin: 30px auto;
+        margin: 30px -150px;
+        position: absolute;
+        left: 50%!important;
     }
     .user-login{
         margin-top: 200px;
@@ -893,10 +895,7 @@ body .mw-echo-overlay::before{
     }
 }
 #mw-notification-area{
-    position: fixed;
-    top: 0;
     right: 0;
-    bottom: 0;
     left: 0;
     padding: 0;
     width: inherit;
@@ -907,6 +906,7 @@ body .mw-echo-overlay::before{
     opacity: 0.9;
     padding: 0;
     border: none;
+    background: none;
 }
 .mw-notification{
     margin: 10px;

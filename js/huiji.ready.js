@@ -9,7 +9,7 @@ function updateQueryStringParameter(uri, key, value) {
     }
 }
 $(document).ready(function(){
-    //table responsive 
+    //table responsive
     $('#mw-content-text table').each(function(){
        if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
                $(this).wrap('<div class="table-responsive"></div>');
@@ -388,7 +388,7 @@ $(document).ready(function(){
                         follow = '关注';
                     }
                     var msg = "<div class='user-card-top'>"+res.result.url+"<div class='user-card-info'><span><a href='/wiki/User:"+res.result.username+"'>"+res.result.username+"</a></span><span>"+res.result.gender+"</span>" +
-                        "<span>"+res.result.level+"</span><p>"+res.result.status+"</p></div></div><div class='user-card-mid'><div class='user-card-msg'><ul><li>关注：<span>"+res.result.usercounts+"</span></li>" +
+                        "<span>"+res.result.level+"</span><p>"+mw.html.escape(res.result.status)+"</p></div></div><div class='user-card-mid'><div class='user-card-msg'><ul><li>关注：<span>"+res.result.usercounts+"</span></li>" +
                         "<li class='cut'>被关注：<span>"+res.result.usercounted+"</span></li><li>编辑：<span>"+res.result.editcount+"</span></li></ul><button class='user-card-follow "+isfollow+" user-user-follow' data-username = '"+res.result.username+"'>"+follow+"</button>" +
                         "<a href='/index.php?title=%E7%89%B9%E6%AE%8A:GiveGift&amp;user="+res.result.username+"'  class='user-card-gift' title='特殊:GiveGift'><i class='fa fa-gift'></i>礼物</a></div></div>" +
                         "<div class='user-card-bottom'><p class='follow-him'>我关注的人也关注了"+sex+"("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
