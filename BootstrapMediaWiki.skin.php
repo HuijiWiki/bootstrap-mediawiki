@@ -40,6 +40,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="http://www.huiji.wiki/" />' . "\n");    
             $out->addHeadItem('meta','<meta property="qc:admins" content="6762163113460512167131" />'); 
+            $out->addHeadItem('meta','<meta property="wb:webmaster" content="913ad381cb9b4ad7" />'); 
 
         } else {
             $out->addHeadItem( 'canonical',
@@ -122,7 +123,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             ga('send', 'pageview');
         </script>
        <!-- <script type="text/javascript" src="/resources/qc/qc_loader.js" data-appid="101264508" charset="utf-8"></script>-->
-        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3067402232&debug=true" type="text/javascript" charset="utf-8"></script>
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=2445834038" type="text/javascript" charset="utf-8"></script>
         <div id="wrapper" class="toggled">
         <script>
             var menutoggle;
