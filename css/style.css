@@ -1641,6 +1641,18 @@ svg .day{
 body>.tooltip.top .tooltip-arrow{
     margin-left: 0;
 }
+
+/*frontpage login*/
+#fr-login-user-name,#fr-login-user-password {
+    border: none;
+    border-bottom: 1px solid #999;
+    width: 100%;
+    margin-bottom: 3px;
+}
+#frLoginAttempt{
+    width: 100%;
+    padding: .3em;
+}
 @media screen and (max-width: 1366px){
     .home-main{
         width: 90%;

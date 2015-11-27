@@ -924,12 +924,10 @@ body .mw-echo-overlay::before{
 .mw-notification-content p{
     margin: 0;
 }
+
+/*login modal*/
 .login-in{
     cursor: pointer;
-}
-.login-wrap{
-    width: 180px;
-    margin: 10px auto;
 }
 .userloginForm .mw-ui-button.mw-ui-block{
     width: auto;
@@ -937,13 +935,45 @@ body .mw-echo-overlay::before{
 .user-login #mw-createaccount-cta{
     margin-left: -200px;
 }
+.user-login .modal-dialog{
+    width: 360px;
+}
+.user-login .modal-content{
+    border-radius: 3px;
+}
+.user-login .modal-header{
+    text-align: center;
+    border-bottom: none;
+    font-weight: bolder;
+}
+#login-user-name,#login-user-password {
+    border: none;
+    border-bottom: 1px solid #999;
+    width: 100%;
+    margin-bottom: 3px;
+}
 .user-login #wpLoginAttempt{
-    position: absolute;
-    right:50px;
+    width: 100%;
+    padding: .3em;
 }
-.user-name{
-    margin-bottom: 10px;
+.user-login #wpRemember{
+    margin-right: 5px;
 }
+.mw-ui-vform-field{
+    margin-bottom: 20px;
+}
+.mw-ui-vform-field:nth-child(3){
+    margin-bottom: 5px;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+.api-login a{
+    margin-left: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
 /*.h100{*/
     /*height:100%;*/
 /*}*/

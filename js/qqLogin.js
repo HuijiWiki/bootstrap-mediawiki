@@ -194,7 +194,7 @@
 		var email = $("#wbloginemail").val();
 		var pass = $("#wbloginpassword").val();
 		wiki_signup("weibo",username,email,pass,wbOpenId);
-	})
+	});
 });
 
 
