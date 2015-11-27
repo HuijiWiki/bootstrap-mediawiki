@@ -1117,7 +1117,6 @@ sup.reference {
 }
 .headimg{
     border-radius: 50%;
-<<<<<<< HEAD
     box-shadow: 0 0 1px rgba(0,0,0,.2);
 }
 .top-fan-row{
@@ -1128,10 +1127,8 @@ sup.reference {
     margin-top: 5px;
     margin-right: 60px;
     font-weight: 100;
-=======
     border: 1px solid #fff;
     max-width: 100px;
->>>>>>> c935f77b70c503d0e1daf46fbcb9258ee53a991a
 }
 .relationship-wrapper{
     margin: 20px auto;
@@ -1391,4 +1388,7 @@ ol.carousel-indicators{
     position: absolute;
     right: 50px;
     width: auto;
+}
+#wb_connect_btn img{
+	display: none;
 }
