@@ -134,7 +134,7 @@
 	        callback: {
 	            login: function (o) { //登录后的回调函数
 	                // alert("login: " + o.screen_name)
-	                console.log(o);
+	                // console.log("o"+o);
 	                // var wbId = o.id; o.avatar_large gender: "m"
 	                if (o.gender == 'm'){
 			            gender = 'male';
