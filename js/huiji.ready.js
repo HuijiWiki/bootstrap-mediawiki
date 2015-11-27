@@ -310,6 +310,15 @@ $(document).ready(function(){
            }
        })
     });
+    $('#frLoginAttempt').click(function(){
+        $("#fr-login-user-name").each(function(){
+            login = $(this).val();
+        });
+        $("#fr-login-user-password").each(function(){
+            pass = $(this).val();
+        });
+        wiki_auth(login,pass,'/');
+    });
 
 //    var ahover = false;      //是否在a标签上
 //    var areaon = false;        //是否进入应该出现nav的这个区域并且不包括a标签

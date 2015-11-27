@@ -48,10 +48,10 @@ a{
       border-right: 1px solid #666;
       padding-top: 15px;
       margin-right: 10px;
-//      animation:buzz-out 4s infinite linear 5s;
-//      -webkit-animation:buzz-out 4s infinite linear 5s;
-//      -moz-animation:buzz-out 4s infinite linear 5s;
-//      -o-animation:buzz-out 4s infinite linear 5s;
+      //      animation:buzz-out 4s infinite linear 5s;
+      //      -webkit-animation:buzz-out 4s infinite linear 5s;
+      //      -moz-animation:buzz-out 4s infinite linear 5s;
+      //      -o-animation:buzz-out 4s infinite linear 5s;
       .transition(0.9s);
       &:hover{
         opacity: 0.7;
@@ -185,7 +185,7 @@ a{
     }
   }
   .navbar-user{
-//    border-left: 1px solid extract(@header-color,3);
+    //    border-left: 1px solid extract(@header-color,3);
     .set{
       padding-right: 20px;
       .set-menu{
@@ -501,17 +501,21 @@ body{
     color: extract(@a-color,1);
   }
   .left-nav>ul>li:hover,.left-tool>ul>li:hover{
-    //@leftbar-hover;
+    //    @leftbar-hover;
+    background-color:#fff;
+    a{
+      color: #333;
+    }
     .dropdown-menu a{
       color:#333;
     }
   }
 }
 .subnav{
-@hover{
-  background-color: extract(@sub-hover-color,1);
-  color:extract(@sub-hover-color,2);
-}
+  //@hover{
+  //  background-color: extract(@sub-hover-color,1);
+  //  color:extract(@sub-hover-color,2);
+  //}
   .box-shadow();
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   background-color: extract(@background-color,3);
@@ -576,10 +580,14 @@ body{
     padding-top: 15px;
     border-radius: 0;
     &:hover,&:focus,&:active{
-    //@hover;
+      //    @hover;
+      background-color: extract(@sub-hover-color,1);
+      color:extract(@sub-hover-color,2);
     }
     &.active{
-    //@hover;
+      //    @hover;
+      background-color: extract(@sub-hover-color,1);
+      color:extract(@sub-hover-color,2);
     }
   }
 }
@@ -598,9 +606,9 @@ body{
   .wiki-body-section  {
     a:not(.image) {
       color: extract(@content-acolor, 1);
-//      border-bottom: 1px solid extract(@content-acolor, 3);
+      //      border-bottom: 1px solid extract(@content-acolor, 3);
       &:hover {
-//        border-bottom-color: extract(@content-acolor, 1);
+        //        border-bottom-color: extract(@content-acolor, 1);
         color: extract(@a-hover-color, 1);
         text-decoration: none;
       }
@@ -609,7 +617,7 @@ body{
         &:hover {
           color: extract(@a-hover-color, 2);
 
-//          border-bottom-color: extract(@content-acolor, 2);
+          //          border-bottom-color: extract(@content-acolor, 2);
         }
       }
     }
@@ -894,10 +902,10 @@ body{
           background: extract(@background-color, 3);
           width: 150px;
           height: inherit;
-//          &:hover{
-//            background-color: extract(@background-color, 3);
-//            color:extract(@sub-hover-color,2);
-//          }
+          //          &:hover{
+          //            background-color: extract(@background-color, 3);
+          //            color:extract(@sub-hover-color,2);
+          //          }
         }
         &.phone-active > a {
           background: extract(@header-color, 2);
