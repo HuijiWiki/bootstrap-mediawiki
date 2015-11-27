@@ -1643,15 +1643,31 @@ body>.tooltip.top .tooltip-arrow{
 }
 
 /*frontpage login*/
+.front-login{
+    padding: 0 15px 20px 15px;
+}
 #fr-login-user-name,#fr-login-user-password {
     border: none;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #09c;
     width: 100%;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
+    background: none;
 }
 #frLoginAttempt{
     width: 100%;
     padding: .3em;
+    margin-bottom: 5px;
+}
+.unite-login{
+    float: right;
+}
+.unite-login span{
+    color: #428bca;
+}
+.unite-login a{
+    margin-left: 10px;
+    font-size: 18px;
+    cursor: pointer;
 }
 @media screen and (max-width: 1366px){
     .home-main{
