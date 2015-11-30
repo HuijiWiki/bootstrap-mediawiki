@@ -411,11 +411,6 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 <div class="navbar-container">
                     <div class="navbar-header">
                         <a rel="nofollow" class="navbar-brand" href="#menu-toggle" id="menu-toggle">
-                            <script>
-                                if($("#wrapper").hasClass("toggled")){
-                                    $("#menu-toggle").addClass("menu-active");
-                                }
-                            </script>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>

@@ -129,9 +129,23 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             var menutoggle;
             document.domain = "huiji.wiki";
             menutoggle = localStorage.getItem("menu-toggle");
-            $("#wrapper").attr("class",menutoggle);
+            document.getElementById('wrapper').className = menutoggle;
         </script>
         <?php echo $this->showHeader(); ?>
+        <script>
+            var classlst;
+            var x = 0;
+            classlst = document.getElementById('wrapper').className.split(/\s+/);
+            for(x in classlst) {
+                if(classlst[x] == 'toggled') {
+                    var list = document.getElementById('menu-toggle').className;
+                    var blank,added;
+                    blank = (list!='')?' ':'';
+                    added = list + blank + 'menu-active';
+                    document.getElementById('menu-toggle').className = added;
+                }
+            }
+        </script>
         <?php if (($wgHuijiPrefix === 'slx.test' ||$wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www') && ($this->getSkin()->getTitle()->isMainPage()) ){
             include 'View/Sidebar.php';
             echo FrontPage::showPage();
