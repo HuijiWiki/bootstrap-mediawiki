@@ -200,7 +200,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
     /* notification adapter */
     protected function notificationAdapter($array){
         $nav = array();
-        $item = next($array);
+        $item = $array['notifications-alert'];
         $key = key($array);
         $link = array(
             'id' => Sanitizer::escapeId( $key ),
@@ -513,7 +513,9 @@ Class HuijiSkinTemplate extends BaseTemplate {
                             $user_icon = '<i class="fa fa-cog"></i>';
                             $name =  $wgUser->getName() ;
                             $personal_urls = $this->data['personal_urls'];
-                            unset($personal_urls['notifications']);
+                            unset($personal_urls['uls']);
+                            unset($personal_urls['notifications-alert']);
+                            unset($personal_urls['notifications-message']);
                             unset($personal_urls['userpage']);
                             $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon, 'user' );
                             $user_notify = $this->nav_notification($this->notificationAdapter($this->data['personal_urls']));
