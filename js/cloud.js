@@ -66,6 +66,7 @@ function init() {
     context.fillStyle = gradient;
     context.fillRect(0, 0, canvas.width, canvas.height);
 
+    container.className = 'wg-cloud';
     container.style.background = 'url(' + canvas.toDataURL('image/png') + ')';
     container.style.backgroundSize = '32px 100%';
     container.style.position = 'fixed';
