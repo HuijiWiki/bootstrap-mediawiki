@@ -40,9 +40,10 @@
 		var qqOpenId = $('#qqOpenId').val();
 		var userGender = $('#userGender').val();
 		var userAvatar = $('#userAvatar').val();
+		var userType = $('#userType').val();
 		mw.cookie.set( 'user_gender', userGender );
 		mw.cookie.set( 'user_avatar', userAvatar );
-		wiki_signup("qq",username,email,pass,qqOpenId);
+		wiki_signup(userType,username,email,pass,qqOpenId);
 	})
 	var loginerror = $('.login-error');
     function wiki_signup(type,login,email,pass,outhId){
@@ -117,12 +118,7 @@
             function (data) {
                 var res = $.parseJSON(data);
                 if (res.success == true) {
-                	if(type=='weibo'){
-	                    $('.qqlogin').modal('hide');
-	                    window.location.reload(true);
-                	}else if(type=='qq'){
-                		window.location.href = 'http://www.huiji.wiki';
-                	}
+                	window.location.href = 'http://huiji.wiki';
                 } 
             }
         );

@@ -1,8 +1,9 @@
 <?php
 
 class FrontPage{
-        
+ 
     static function showPage() {
+        require_once('/var/www/html/Confidential.php');
         global $wgUser, $wgParser;
         $templateParser = new TemplateParser(  __DIR__.'/View'  );
         $output = ''; // Prevent E_NOTICE
@@ -248,8 +249,9 @@ class FrontPage{
             }
 
         }
-
-
+        $o = new SaeTOAuthV2( Confidential::$weibo_app_id , Confidential::$weibo_app_secret );
+        $weiboUrl = $o->getAuthorizeURL( Confidential::$weibo_callback_url );
+        $qqUrl = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&redirect_uri=http://www.huiji.wiki/wiki/special:callbackqq";
         $output .= $templateParser->processTemplate(
             'frontpage',
             array(
@@ -285,6 +287,8 @@ class FrontPage{
                 'helpManual' => $helpManual,
                 'tarmac' => $tarmac,
                 'contact' => $contact,
+                'weiboUrl' => $weiboUrl,
+                'qqUrl' => $qqUrl,
                 )
         );
         return $output;
