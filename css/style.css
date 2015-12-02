@@ -1657,6 +1657,7 @@ body>.tooltip.top .tooltip-arrow{
     width: 100%;
     padding: .3em;
     margin-bottom: 5px;
+    color: #fff!important;
 }
 .unite-login{
     float: right;

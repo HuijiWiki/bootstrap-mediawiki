@@ -955,6 +955,7 @@ body .mw-echo-overlay::before{
 .user-login #wpLoginAttempt{
     width: 100%;
     padding: .3em;
+    color: #fff!important;
 }
 .user-login #wpRemember{
     margin-right: 5px;
