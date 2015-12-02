@@ -68,7 +68,7 @@
                                                 <input name="wpRemember" type="checkbox" value="1" id="wpRemember" tabindex="4" ><label for="wpRemember">记住我</label>
                                         </div>
                                         <div class="mw-ui-vform-field">
-                                            <input id="wpLoginAttempt" tabindex="6" class="mw-ui-button  mw-ui-block mw-ui-constructive" type="button" value="登 录" name="wpLoginAttempt">
+                                            <input id="wpLoginAttempt" tabindex="6" class="mw-ui-button btn mw-ui-block mw-ui-constructive" data-loading-text="登录中..." type="button" value="登 录" name="wpLoginAttempt">
                                         </div>
                                         <div class="mw-ui-vform-field api-login">
                                             <span>联合登录</span>

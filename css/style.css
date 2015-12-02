@@ -1674,6 +1674,11 @@ body>.tooltip.top .tooltip-arrow{
     font-size: 18px;
     cursor: pointer;
 }
+#wg-toggle{
+    position: fixed;
+    top: 60px;
+    right: 10px;
+}
 @media screen and (max-width: 1366px){
     .home-main{
         width: 90%;

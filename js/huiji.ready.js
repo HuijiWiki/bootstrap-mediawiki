@@ -239,6 +239,7 @@ $(document).ready(function(){
             if(data.login.result == 'NeedToken'){
                 $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass +'&lgtoken=' + data.login.token + '&format=json',function(data){
                    if(!data.error){
+                       $('#wpLoginAttempt,#frLoginAttempt').button('reset');
                         if(data.login.result == "Success"){
                             mw.notification.notify('登录成功', options);
                             //document.location.reload();
@@ -301,6 +302,7 @@ $(document).ready(function(){
         $("#login-user-password").each(function(){
            pass = $(this).val();
         });
+        $(this).button('loading');
         wiki_auth(login,pass,'/');
     })
     $('.login-in').click(function(){
@@ -317,6 +319,7 @@ $(document).ready(function(){
         $("#fr-login-user-password").each(function(){
             pass = $(this).val();
         });
+        $(this).button('loading');
         wiki_auth(login,pass,'/');
     });
 

@@ -37,6 +37,8 @@ $(document).ready(function(){
         }
 
     };
+    $('#wg-toggle').click(function(){
+    });
     if ( ! Detector.webgl ) {
         Detector.Showimg();
     }
