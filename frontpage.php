@@ -281,6 +281,7 @@ class FrontPage{
                 'active' => $active,
                 'inactive' => $inactive,
                 'recommendSite' => $recommendSite,
+                'recommendRes'=>$recommendRes,
                 'recContent' => $recContent,
                 'followUserCount' => $followUserCount,
                 'followSiteCount' => $followSiteCount,
