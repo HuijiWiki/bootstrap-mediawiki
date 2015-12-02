@@ -80,7 +80,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
 	),
 	'dependencies' => array(
-	     'skins.editable',
+	    'skins.editable',
 		'mediawiki.cookie',
 		'mediawiki.notification',
 		'mediawiki.api.options'
@@ -92,11 +92,11 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 $wgResourceModules['skins.editable'] = array(
 	'scripts' => array(
 		$skinDir . '/js/bootstrap-editable.min.js',
- 	),
+	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
- 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
- 	'position' => 'bottom',
- );
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'bottom',
+);
 $wgResourceModules['skins.frontpage'] = array(
 	'styles' => array(
 		$skinDir . '/css/style.css'         					 => array( 'media' => 'all' ),
