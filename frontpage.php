@@ -240,14 +240,13 @@ class FrontPage{
                 }
             }
             $recommendSite = array_slice($recommendSite, 0, 5);
-            if ($login && !$mobile){
+        }
+        if ($login && !$mobile){
             $infoHeader = wfMessage('info-header-user')->parseAsBlock();
-            } elseif (!$login) {
+        } elseif (!$login) {
             $infoHeader = wfMessage('info-header-anon')->parseAsBlock();
-            } else {
+        } else {
             $infoHeader = '';
-            }
-
         }
         $o = new SaeTOAuthV2( Confidential::$weibo_app_id , Confidential::$weibo_app_secret );
         $weiboUrl = $o->getAuthorizeURL( Confidential::$weibo_callback_url );
