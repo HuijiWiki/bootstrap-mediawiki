@@ -114,7 +114,7 @@
             function (data) {
                 var res = $.parseJSON(data);
                 if (res.success == true) {
-                	window.location.href = 'http://huiji.wiki';
+                	location.href = document.referrer;
                 } 
             }
         );
