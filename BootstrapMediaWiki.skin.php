@@ -122,8 +122,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             ga('create', 'UA-10190882-3', 'auto');
             ga('send', 'pageview');
         </script>
-       <!-- <script type="text/javascript" src="/resources/qc/qc_loader.js" data-appid="101264508" charset="utf-8"></script>-->
-        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=2445834038" type="text/javascript" charset="utf-8"></script>
         <div id="wrapper" class="toggled">
         <script>
             var menutoggle;
