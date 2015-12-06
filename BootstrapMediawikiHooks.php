@@ -340,7 +340,7 @@ Class BootstrapMediawikiHooks {
         $output->addModules( 'ext.wikieditor.huijiextra.bottom' );
         $output->addHeadItem('loader',
                 '<script language="JavaScript">' . "\n" . 
-                    '$(window).load(function() {' . "\n" . 
+                    'window.onload = function() {' . "\n" . 
                     '// Animate loader off screen' . "\n" . 
                         '$(".se-pre-con").fadeOut("slow");' . "\n" . 
                         'var editFormSisyphus = $( "#editform" ).sisyphus( {' . "\n" . 
@@ -355,7 +355,7 @@ Class BootstrapMediawikiHooks {
                                 'return false;' . "\n" . 
                             '}' . "\n" . 
                         '} ); ' . "\n" . 
-                    '});' . "\n" . 
+                    '}' . "\n" . 
                 '</script>');  
         $output->prependHTML('<div class="se-pre-con"></div>');
     }
