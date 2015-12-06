@@ -26,11 +26,11 @@ Class BootstrapMediawikiHooks {
         return true;
     }
     public static function getIHoverCss( $input, $args, $parser ){
-        $output = '<script type="text/javascript">mw.loader.load("skins.bootstrapmediawiki.ihover","text/css");</script>';
+        $output = '<script type="text/javascript">window.onload = function(){mw.loader.load("skins.bootstrapmediawiki.ihover","text/css");}</script>';
         return $output;
     }
     public static function getHoverCss( $input, $args, $parser ){
-        $output = '<script type="text/javascript">mw.loader.load("skins.bootstrapmediawiki.hover","text/css");</script>';
+        $output = '<script type="text/javascript">window.onload = function(){mw.loader.load("skins.bootstrapmediawiki.hover","text/css");}</script>';
         return $output;
     }
     public static function getHeading($input, $args, $parser ) {
