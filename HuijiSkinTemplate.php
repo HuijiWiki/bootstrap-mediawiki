@@ -273,7 +273,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 'link' => htmlspecialchars( $item['href'] ),
                 'key' => $item['key'],
                 'class' => htmlspecialchars( $item['class'] ),
-                'title' => $item['text'],
+                'title' => htmlspecialchars( $item['text'] ),
             );
             switch( $link['title'] ) {
                 case '页面': $icon = 'file'; break;
@@ -302,9 +302,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '调试': $icon = 'plug'; break;
                 default: $icon = 'clone'; break;
             }
-            if ( strcmp($link['title'],htmlspecialchars($link['title'])) == 0 ){
-            	$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
-            }
+            $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
             $nav[] = $link;
         }//end foreach
         return $nav ;
