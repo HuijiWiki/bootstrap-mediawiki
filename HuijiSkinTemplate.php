@@ -207,7 +207,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
             'attributes' => $item['attributes'],
             'link' => htmlspecialchars( $item['href'] ),
             'key' => $item['key'],
-            'class' => htmlspecialchars( 'mw-echo-notifications-badge' ),
+            'class' => htmlspecialchars( 'oo-ui-widget oo-ui-widget-enabled oo-ui-labelElement oo-ui-labelElement-label oo-ui-buttonElement oo-ui-buttonElement-framed oo-ui-buttonElement-button oo-ui-iconElement-icon oo-ui-flaggedElement-primary oo-ui-icon-bell oo-ui-iconElement oo-ui-image-invert' ),
             'title' => htmlspecialchars( $item['text'] ),
         );
         $link['title'] = '<i class="fa fa-envelope-o"></i> <span class="badge">' . $link['title'] .'</span>';
