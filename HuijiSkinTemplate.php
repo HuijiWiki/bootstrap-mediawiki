@@ -302,7 +302,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '调试': $icon = 'plug'; break;
                 default: $icon = 'clone'; break;
             }
-            if ( $link['title'] == htmlspecialchars($link['title']) ){
+            if ( strcmp($link['title'],htmlspecialchars($link['title'])) == 0 ){
             	$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
             }
             $nav[] = $link;
