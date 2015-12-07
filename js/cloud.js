@@ -51,6 +51,7 @@ init();
 function init() {
 
     container = document.createElement( 'div' );
+    document.body.appendChild( container );
 
     // Bg gradient
 
@@ -73,24 +74,24 @@ function init() {
     container.style.position = 'fixed';
     container.style.zIndex = '0';
     container.style.top = '0';
-    if(localStorage.getItem('wg-toggle')!='off'){
-        $('#wg-toggle').addClass('icon-close on');
-        document.body.appendChild( container );
-    }else{
-        $('#wg-toggle').addClass('icon-close off');
-    }
+//    if(localStorage.getItem('wg-toggle')!='off'){
+//        $('#wg-toggle').addClass('icon-close on');
+//        document.body.appendChild( container );
+//    }else{
+//        $('#wg-toggle').addClass('icon-close off');
+//    }
     document.domain = "huiji.wiki";
-    $('#wg-toggle').click(function(){
-        if($(this).hasClass('off')){
-            $(this).removeClass('off').addClass('on');
-            localStorage.setItem('wg-toggle','on');
-            document.body.appendChild( container );
-        }else{
-            $(this).removeClass('on').addClass('off');
-            localStorage.setItem('wg-toggle','off');
-            container.remove();
-        }
-    });
+//    $('#wg-toggle').click(function(){
+//        if($(this).hasClass('off')){
+//            $(this).removeClass('off').addClass('on');
+//            localStorage.setItem('wg-toggle','on');
+//            document.body.appendChild( container );
+//        }else{
+//            $(this).removeClass('on').addClass('off');
+//            localStorage.setItem('wg-toggle','off');
+//            container.remove();
+//        }
+//    });
     //
 
     camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 3000 );
