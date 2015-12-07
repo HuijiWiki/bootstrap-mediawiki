@@ -31,20 +31,17 @@
 <charinsert>·</charinsert>  &nbsp;
 <charinsert>{{PAGENAME}}</charinsert>  &nbsp;
 <charinsert>[[Category:+]]</charinsert> &nbsp;
-<charinsert>[[:File:+]]</charinsert> &nbsp;
-<charinsert>[[Special:MyLanguage/+]]</charinsert> &nbsp;
 <charinsert><code>+</code></charinsert> &nbsp;
 <charinsert><syntaxhighlight>+</syntaxhighlight></charinsert> &nbsp;
 <charinsert><includeonly>+</includeonly></charinsert> &nbsp;
 <charinsert><noinclude>+</noinclude></charinsert> &nbsp;
 <charinsert>#REDIRECT[[+]]</charinsert> &nbsp;
-<charinsert>&lt;translate>+&lt;/translate></charinsert> &nbsp;
-<charinsert><languages/></charinsert> &nbsp;
-<charinsert>&#123;&#123;#translation:&#125;&#125;</charinsert> &nbsp;
 <charinsert>&#123;&#123;DEFAULTSORT:+&#125;&#125;</charinsert> &nbsp;
 <charinsert><s>+</s></charinsert>
 <charinsert><center>+</center></charinsert>
 <charinsert>----</charinsert>
+<charinsert>{{需要校对}} {{需要翻译}} {{需要帮助}} {{需要扩展}} {{请求来源}} {{正在施工}} {{消歧义}}</charinsert>
+<charinsert>{{Quote}} {{Heading}} {{Columns}} {{En}} {{See also}}</charinsert>
 </p>
 
 <p class=\"mw-edittools-section\" data-section-title=\"Latin\" style=\"display: none;\">
