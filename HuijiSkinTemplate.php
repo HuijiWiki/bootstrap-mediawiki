@@ -84,7 +84,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
         foreach ( $nav as $topItem ) {
             $pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
 
-            $output .= '<li id="pt-notifications-alert" ><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
+            $output .= '<li id="pt-notifications-alert" class="fa fa-envelope-o"><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
             
         }//end foreach
         return $output;

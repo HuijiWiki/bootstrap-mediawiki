@@ -1390,7 +1390,6 @@ ol.carousel-indicators{
 #wb_connect_btn img{
 	display: none;
 }
-<<<<<<< HEAD
 
 /*complete user info*/
 /*div.mw-createacct-benefits-container {*/
@@ -1460,5 +1459,8 @@ ol.carousel-indicators{
     position: static;
     float: right;
 }
-=======
->>>>>>> 19704c9ee3200b2e9863f89fc5a959d12a7a3d51
+
+#pt-notifications-alert{
+    font-size: 18px;
+
+}
