@@ -291,7 +291,9 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '监视': $icon = 'eye'; break;
                 case '取消监视': $icon = 'eye-slash'; break;
                 case '创建': $icon = 'plus'; break;
-                case '创建源代码': $icon = 'plus'; break;
+                case '创建源代码': $icon = 'plus'; 
+                	$link['id'] = 'ca-huiji-create';
+                	break;
                 case '查看源代码': $icon = 'file-code-o'; break;
                 case '分类': $icon = 'files-o'; break;
                 case '模板': $icon = 'puzzle-piece'; break;
