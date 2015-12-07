@@ -165,8 +165,8 @@ function init() {
             start = 'stop';
             localStorage.setItem('wg-status','stop');
         }else{
-            animate();
             start = 'state';
+            animate();
             localStorage.setItem('wg-status','state');
         }
     });
@@ -191,7 +191,7 @@ function onWindowResize( event ) {
 function animate() {
 
 
-    if(start != 'stop'){
+
         id = requestAnimationFrame( animate );
 
         var position = ( ( Date.now() - start_time ) * 0.03 ) % 8000;
@@ -200,6 +200,9 @@ function animate() {
         camera.position.y += ( - mouseY - camera.position.y ) * 0.01;
         camera.position.z = - position + 8000;
         renderer.render( scene, camera );
+    if(start == 'stop'){
+        window.cancelAnimationFrame(id);
+        console.log(id);
     }
 //    stats.update();
 
