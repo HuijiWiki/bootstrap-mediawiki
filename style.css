@@ -1331,9 +1331,6 @@ sup.reference {
 #huiji-h1-edit-button .tooltip{
     white-space: nowrap;
 }
-#content > .ve-init-target > div.row {
-    display:none;
-}
 h2 .mw-editsection{
     bottom:8px;
 }
@@ -1393,6 +1390,7 @@ ol.carousel-indicators{
 #wb_connect_btn img{
 	display: none;
 }
+<<<<<<< HEAD
 
 /*complete user info*/
 /*div.mw-createacct-benefits-container {*/
@@ -1462,3 +1460,5 @@ ol.carousel-indicators{
     position: static;
     float: right;
 }
+=======
+>>>>>>> 19704c9ee3200b2e9863f89fc5a959d12a7a3d51

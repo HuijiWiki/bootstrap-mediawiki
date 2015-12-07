@@ -72,7 +72,7 @@
                                         </div>
                                         <div class="mw-ui-vform-field api-login">
                                             <span>联合登录</span>
-                                            <a class="icon-weibo-share"></a>
+                                            <a href="https://api.weibo.com/oauth2/authorize?client_id=2445834038&redirect_uri=http%3A%2F%2Fhuijiwiki.com%2Fwiki%2Fspecial%3Acallbackweibo&response_type=code" class="icon-weibo-share"></a>
                                             <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&redirect_uri=http://www.huiji.wiki/wiki/special:callbackqq" class="icon-qq-share"></a>
                                         </div>
                                     </form>

@@ -26,11 +26,11 @@ Class BootstrapMediawikiHooks {
         return true;
     }
     public static function getIHoverCss( $input, $args, $parser ){
-        $output = '<script type="text/javascript">mw.loader.load("skins.bootstrapmediawiki.ihover","text/css");</script>';
+        $output = '<script type="text/javascript">window.onload = function(){mw.loader.load("skins.bootstrapmediawiki.ihover","text/css");}</script>';
         return $output;
     }
     public static function getHoverCss( $input, $args, $parser ){
-        $output = '<script type="text/javascript">mw.loader.load("skins.bootstrapmediawiki.hover","text/css");</script>';
+        $output = '<script type="text/javascript">window.onload = function(){mw.loader.load("skins.bootstrapmediawiki.hover","text/css");}</script>';
         return $output;
     }
     public static function getHeading($input, $args, $parser ) {
@@ -340,7 +340,7 @@ Class BootstrapMediawikiHooks {
         $output->addModules( 'ext.wikieditor.huijiextra.bottom' );
         $output->addHeadItem('loader',
                 '<script language="JavaScript">' . "\n" . 
-                    '$(window).load(function() {' . "\n" . 
+                    'window.onload = function() {' . "\n" . 
                     '// Animate loader off screen' . "\n" . 
                         '$(".se-pre-con").fadeOut("slow");' . "\n" . 
                         'var editFormSisyphus = $( "#editform" ).sisyphus( {' . "\n" . 
@@ -355,7 +355,7 @@ Class BootstrapMediawikiHooks {
                                 'return false;' . "\n" . 
                             '}' . "\n" . 
                         '} ); ' . "\n" . 
-                    '});' . "\n" . 
+                    '}' . "\n" . 
                 '</script>');  
         $output->prependHTML('<div class="se-pre-con"></div>');
     }

@@ -48,7 +48,6 @@ $wgResourceModules['skins.bootstrapmediawiki.ihover'] = array(
 $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
-		$skinDir . '/css/bootstrap-editable.css'                 => array( 'media' => 'all' ),
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
@@ -80,7 +79,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
 	),
 	'dependencies' => array(
-	    'skins.editable',
+//	    'skins.editable',
 		'mediawiki.cookie',
 		'mediawiki.notification',
 		'mediawiki.api.options'
@@ -90,6 +89,9 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'position' => 'bottom',	
 );
 $wgResourceModules['skins.editable'] = array(
+	'sytles' => array(
+		$skinDir . '/css/bootstrap-editable.css'                 => array( 'media' => 'all' ),
+	),
 	'scripts' => array(
 		$skinDir . '/js/bootstrap-editable.min.js',
 	),

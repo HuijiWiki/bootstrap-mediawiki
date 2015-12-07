@@ -64,8 +64,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleStyles( 'skins.frontpage' );  
         }
-        $out->addModuleStyles( 'skins.bootstrapmediawiki.top' );
-        $out->addModuleStyles('mediawiki.ui.button');
+        $out->addModuleStyles( array('skins.bootstrapmediawiki.top','mediawiki.ui.button') );
         // we need to include this here so the file pathing is right
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css' );
     }//end setupSkinUserCss
@@ -123,8 +122,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             ga('create', 'UA-10190882-3', 'auto');
             ga('send', 'pageview');
         </script>
-       <!-- <script type="text/javascript" src="/resources/qc/qc_loader.js" data-appid="101264508" charset="utf-8"></script>-->
-        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=2445834038" type="text/javascript" charset="utf-8"></script>
         <div id="wrapper" class="toggled">
         <script>
             var menutoggle;

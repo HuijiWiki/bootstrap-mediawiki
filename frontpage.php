@@ -1,8 +1,9 @@
 <?php
 
 class FrontPage{
-        
+ 
     static function showPage() {
+        require_once('/var/www/html/Confidential.php');
         global $wgUser, $wgParser;
         $templateParser = new TemplateParser(  __DIR__.'/View'  );
         $output = ''; // Prevent E_NOTICE
@@ -239,17 +240,17 @@ class FrontPage{
                 }
             }
             $recommendSite = array_slice($recommendSite, 0, 5);
-            if ($login && !$mobile){
-            $infoHeader = wfMessage('info-header-user')->parseAsBlock();
-            } elseif (!$login) {
-            $infoHeader = wfMessage('info-header-anon')->parseAsBlock();
-            } else {
-            $infoHeader = '';
-            }
-
         }
-
-
+        if ($login && !$mobile){
+            $infoHeader = wfMessage('info-header-user')->parseAsBlock();
+        } elseif (!$login) {
+            $infoHeader = wfMessage('info-header-anon')->parseAsBlock();
+        } else {
+            $infoHeader = '';
+        }
+        $o = new SaeTOAuthV2( Confidential::$weibo_app_id , Confidential::$weibo_app_secret );
+        $weiboUrl = $o->getAuthorizeURL( Confidential::$weibo_callback_url );
+        $qqUrl = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&redirect_uri=http://www.huiji.wiki/wiki/special:callbackqq";
         $output .= $templateParser->processTemplate(
             'frontpage',
             array(
@@ -279,12 +280,15 @@ class FrontPage{
                 'active' => $active,
                 'inactive' => $inactive,
                 'recommendSite' => $recommendSite,
+                'recommendRes'=>$recommendRes,
                 'recContent' => $recContent,
                 'followUserCount' => $followUserCount,
                 'followSiteCount' => $followSiteCount,
                 'helpManual' => $helpManual,
                 'tarmac' => $tarmac,
                 'contact' => $contact,
+                'weiboUrl' => $weiboUrl,
+                'qqUrl' => $qqUrl,
                 )
         );
         return $output;

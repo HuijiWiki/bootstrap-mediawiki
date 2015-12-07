@@ -158,10 +158,7 @@ function init() {
 //    stats.domElement.style.top = '0px';
 //    stats.domElement.style.zIndex = '10000';
 //    document.body.appendChild(stats.domElement);
-    if(start == 'stop'){
-        window.cancelAnimationFrame(id);
-        console.log(id);
-    }
+
     $('body').on('click','.wg-cloud',function(){
         if(start == 'state') {
             window.cancelAnimationFrame(id);
@@ -193,14 +190,17 @@ function onWindowResize( event ) {
 
 function animate() {
 
-    id = requestAnimationFrame( animate );
 
-    var position = ( ( Date.now() - start_time ) * 0.03 ) % 8000;
+    if(start != 'stop'){
+        id = requestAnimationFrame( animate );
 
-    camera.position.x += ( mouseX - camera.position.x ) * 0.01;
-    camera.position.y += ( - mouseY - camera.position.y ) * 0.01;
-    camera.position.z = - position + 8000;
-    renderer.render( scene, camera );
+        var position = ( ( Date.now() - start_time ) * 0.03 ) % 8000;
+
+        camera.position.x += ( mouseX - camera.position.x ) * 0.01;
+        camera.position.y += ( - mouseY - camera.position.y ) * 0.01;
+        camera.position.z = - position + 8000;
+        renderer.render( scene, camera );
+    }
 //    stats.update();
 
 }
