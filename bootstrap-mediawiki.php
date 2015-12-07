@@ -80,6 +80,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	),
 	'dependencies' => array(
 //	    'skins.editable',
+		'skins.bootstrapmediawiki.top',
 		'mediawiki.cookie',
 		'mediawiki.notification',
 		'mediawiki.api.options'
