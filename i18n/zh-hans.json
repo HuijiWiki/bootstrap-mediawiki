@@ -226,5 +226,9 @@
 	"info-header-anon":"'''灰机wiki'''是一个自由、开放的免费维基平台，基于最新版本的MediaWiki构建，并进行了多方面的优化设计。
 您可以在这里创建维基站点，与同道好友一起建设你所擅长领域的最全资料站！
 
-{{Quote|Omnium rerum principia parva sunt|Cicero}}"
+{{Quote|Omnium rerum principia parva sunt|Cicero}}",
+	"visualeditor-ca-ve-huiji-edit":"<span class='icon-pencil'></span> 编辑",
+	"visualeditor-ca-ve-huiji-editsource":"<span class='icon-edit-code'></span> 代码编辑",
+	"visualeditor-ca-ve-huiji-create":"<span class='icon-pencil'></span> 创建",
+	"visualeditor-ca-ve-huiji-createsource":"<span class='icon-pencil'></span> 代码创建"
 }
