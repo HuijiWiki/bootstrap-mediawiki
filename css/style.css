@@ -1167,6 +1167,7 @@ body{
     width: 1200px;
     margin: 90px auto;
     position: relative;
+    z-index: 1;
 }
 .home-info-wrapper{
     width: 100%;
@@ -1679,6 +1680,15 @@ body>.tooltip.top .tooltip-arrow{
     position: fixed;
     top: 60px;
     right: 10px;
+}
+.icon-close.off{
+    background: #09c;
+    color: #09c;
+    border-radius: 50%;
+}
+.bottom{
+    position: relative;
+    z-index: 1;
 }
 @media screen and (max-width: 1366px){
     .home-main{

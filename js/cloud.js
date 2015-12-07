@@ -43,13 +43,14 @@ var start_time = Date.now();
 
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
+var id;
+var start = localStorage.getItem('wg-status');
 
 init();
 
 function init() {
 
     container = document.createElement( 'div' );
-    document.body.appendChild( container );
 
     // Bg gradient
 
@@ -70,9 +71,26 @@ function init() {
     container.style.background = 'url(' + canvas.toDataURL('image/png') + ')';
     container.style.backgroundSize = '32px 100%';
     container.style.position = 'fixed';
-    container.style.zIndex = '-2';
+    container.style.zIndex = '0';
     container.style.top = '0';
-
+    if(localStorage.getItem('wg-toggle')!='off'){
+        $('#wg-toggle').addClass('icon-close on');
+        document.body.appendChild( container );
+    }else{
+        $('#wg-toggle').addClass('icon-close off');
+    }
+    document.domain = "huiji.wiki";
+    $('#wg-toggle').click(function(){
+        if($(this).hasClass('off')){
+            $(this).removeClass('off').addClass('on');
+            localStorage.setItem('wg-toggle','on');
+            document.body.appendChild( container );
+        }else{
+            $(this).removeClass('on').addClass('off');
+            localStorage.setItem('wg-toggle','off');
+            container.remove();
+        }
+    });
     //
 
     camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 3000 );
@@ -140,6 +158,21 @@ function init() {
 //    stats.domElement.style.top = '0px';
 //    stats.domElement.style.zIndex = '10000';
 //    document.body.appendChild(stats.domElement);
+    if(start == 'stop'){
+        window.cancelAnimationFrame(id);
+        console.log(id);
+    }
+    $('body').on('click','.wg-cloud',function(){
+        if(start == 'state') {
+            window.cancelAnimationFrame(id);
+            start = 'stop';
+            localStorage.setItem('wg-status','stop');
+        }else{
+            animate();
+            start = 'state';
+            localStorage.setItem('wg-status','state');
+        }
+    });
 }
 
 function onDocumentMouseMove( event ) {
@@ -160,14 +193,13 @@ function onWindowResize( event ) {
 
 function animate() {
 
-    requestAnimationFrame( animate );
+    id = requestAnimationFrame( animate );
 
     var position = ( ( Date.now() - start_time ) * 0.03 ) % 8000;
 
     camera.position.x += ( mouseX - camera.position.x ) * 0.01;
     camera.position.y += ( - mouseY - camera.position.y ) * 0.01;
     camera.position.z = - position + 8000;
-
     renderer.render( scene, camera );
 //    stats.update();
 

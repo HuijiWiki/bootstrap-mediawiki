@@ -40,7 +40,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="http://www.huiji.wiki/" />' . "\n");    
             $out->addHeadItem('meta','<meta property="qc:admins" content="6762163113460512167131" />'); 
-            $out->addHeadItem('meta','<meta property="wb:webmaster" content="913ad381cb9b4ad7" />'); 
+            $out->addHeadItem('meta','<meta property="wb:webmaster" content="913ad381cb9b4ad7" />');
 
         } else {
             $out->addHeadItem( 'canonical',
@@ -64,7 +64,8 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleStyles( 'skins.frontpage' );  
         }
-        $out->addModuleStyles( 'skins.bootstrapmediawiki.top' ); 
+        $out->addModuleStyles( 'skins.bootstrapmediawiki.top' );
+        $out->addModuleStyles('mediawiki.ui.button');
         // we need to include this here so the file pathing is right
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css' );
     }//end setupSkinUserCss

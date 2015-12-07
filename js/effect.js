@@ -37,13 +37,17 @@ $(document).ready(function(){
         }
 
     };
-    $('#wg-toggle').click(function(){
-    });
+
     if ( ! Detector.webgl ) {
         Detector.Showimg();
     }
-    else if(window.innerWidth>1200){
-        mw.loader.using('skins.three');
+    else if(window.innerWidth){
+//        if(localStorage.getItem('wg-toggle')!='off') {
+            mw.loader.using('skins.three');
+//            $('#wg-toggle').addClass('icon-close on');
+//        }else{
+//            $('#wg-toggle').addClass('icon-close off');
+//        }
     }
     $('svg .day').tooltip({title:"tooltip - title", container:"body"});
     $('#user .nav-tab li').click(function(){
