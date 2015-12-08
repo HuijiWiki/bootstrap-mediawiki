@@ -1450,14 +1450,22 @@ ol.carousel-indicators{
 /*}*/
 .complete-user-info{
     max-width: 400px;
-    margin: auto;
+    float: left;
+    margin-right: 50px;
+}
+#wiki-body .unite-container h2{
+    padding-top: 0;
 }
 .complete-user-info input{
-    margin-bottom: 5px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #999;
+    width: 80%;
 }
 .complete-user-info #qqConfirm{
     position: static;
-    float: right;
+    width: 80%;
+    padding: .3em .1em;
 }
 
 #pt-notifications-alert{
