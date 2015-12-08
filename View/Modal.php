@@ -58,22 +58,24 @@
                                     <form name="userlogin" method="post">
                                         <div class="mw-ui-vform-field">
                                             <input id="login-user-name" class="loginText" type="text" placeholder="请输入你的用户名">
-                                            <?php echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册账户', array('id' => 'pt-createaccount' ),array('type' => 'signup') ); ?>
                                         </div>
                                         <div class="mw-ui-vform-field">
                                             <input id="login-user-password" class="loginPassword"  placeholder="请输入你的密码" type="password" name="wpPassword">
-                                            <a href="/wiki/%E7%89%B9%E6%AE%8A:%E9%87%8D%E8%AE%BE%E5%AF%86%E7%A0%81" title="特殊:重设密码" class="mw-ui-flush-right">忘记密码？</a>
                                         </div>
                                         <div class="mw-ui-vform-field">
                                                 <input name="wpRemember" type="checkbox" value="1" id="wpRemember" tabindex="4" ><label for="wpRemember">记住我</label>
+                                                <a href="/wiki/%E7%89%B9%E6%AE%8A:%E9%87%8D%E8%AE%BE%E5%AF%86%E7%A0%81" title="特殊:重设密码" class="mw-ui-flush-right">忘记密码？</a>
                                         </div>
                                         <div class="mw-ui-vform-field">
                                             <input id="wpLoginAttempt" tabindex="6" class="mw-ui-button btn mw-ui-block mw-ui-constructive" data-loading-text="登录中..." type="button" value="登 录" name="wpLoginAttempt">
                                         </div>
                                         <div class="mw-ui-vform-field api-login">
+                                            <?php echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册账户', array('id' => 'pt-createaccount' ),array('type' => 'signup') ); ?>
+                                            <div>
                                             <span>联合登录</span>
                                             <a href="https://api.weibo.com/oauth2/authorize?client_id=2445834038&redirect_uri=http%3A%2F%2Fhuijiwiki.com%2Fwiki%2Fspecial%3Acallbackweibo&response_type=code" class="icon-weibo-share"></a>
                                             <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&redirect_uri=http://www.huiji.wiki/wiki/special:callbackqq" class="icon-qq-share"></a>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>

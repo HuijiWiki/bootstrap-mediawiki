@@ -1472,3 +1472,13 @@ ol.carousel-indicators{
     font-size: 18px;
 
 }
+.mw-ui-flush-right{
+    float: right;
+}
+.api-login div{
+    float: right;
+    display: inline-block;
+}
+#pt-createaccount{
+    font-size: 14px;
+}
