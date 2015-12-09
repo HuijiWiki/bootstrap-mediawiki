@@ -114,7 +114,7 @@
             function (data) {
                 var res = $.parseJSON(data);
                 if (res.success == true) {
-                	location.href = document.referrer;
+                       location.href = document.referrer;
                 } 
             }
         );
