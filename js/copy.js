@@ -73,8 +73,8 @@ copyWiki.prototype ={
     _wikiSelect: function(e){
         e.stopPropagation();
         var targetPrefix = $(e.target).data('src');
-        var ajaxurl = 'http://'+$(e.target).data('src')+'.huiji.wiki/api.php';
-        var redirectUrl = 'http://'+$(e.target).data('src')+'.huiji.wiki/wiki/'+mw.config.get('wgPageName');
+        var ajaxurl = 'http://'+$(e.target).data('src')+mw.config.get('wgHuijiSuffix')+'/api.php';
+        var redirectUrl = 'http://'+$(e.target).data('src')+mw.config.get('wgHuijiSuffix')+'/wiki/'+mw.config.get('wgPageName');
         $(e.target).append('<i class="fa fa-spinner fa-pulse"></i>');
         this.targetPrefix = targetPrefix;
         this.ajaxurl = ajaxurl;
@@ -88,7 +88,7 @@ copyWiki.prototype ={
                 action: 'query',
                 meta: 'tokens',
                 format: 'json',
-                origin:'http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki'
+                origin:'http://'+mw.config.get('wgHuijiPrefix')+mw.config.get('wgHuijiSuffix')
             },
             xhrFields: {
                 withCredentials: true
@@ -141,7 +141,7 @@ copyWiki.prototype ={
                 action: 'query',
                 titles: mw.config.get('wgPageName'),
                 format: 'json',
-                origin:'http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki'
+                origin:'http://'+mw.config.get('wgHuijiPrefix')+mw.config.get('wgHuijiSuffix')
             },
             xhrFields: {
                 withCredentials: true
@@ -178,7 +178,7 @@ copyWiki.prototype ={
     _importWiki: function(token){
         var $btn = $('.copy-warn .btn').button('loading');
         $.ajax({
-            url: this.ajaxurl+'?origin=http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
+            url: this.ajaxurl+'?origin=http://'+mw.config.get('wgHuijiPrefix')+mw.config.get('wgHuijiSuffix'),
             data: {
                 action: 'import',
                 interwikisource: mw.config.get('wgHuijiPrefix'),
@@ -237,7 +237,7 @@ copyWiki.prototype ={
     },
     _addSource: function(token){
         $.ajax({
-            url: this.ajaxurl+'?origin=http://'+mw.config.get('wgHuijiPrefix')+'.huiji.wiki',
+            url: this.ajaxurl+'?origin=http://'+mw.config.get('wgHuijiPrefix')+mw.config.get('wgHuijiSuffix'),
             data:{
                 action: "edit",
                 title: mw.config.get('wgPageName'),
