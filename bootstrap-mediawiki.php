@@ -90,7 +90,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'position' => 'bottom',	
 );
 $wgResourceModules['skins.editable'] = array(
-	'sytles' => array(
+	'styles' => array(
 		$skinDir . '/css/bootstrap-editable.css'                 => array( 'media' => 'all' ),
 	),
 	'scripts' => array(

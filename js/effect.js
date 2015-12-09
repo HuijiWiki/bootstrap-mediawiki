@@ -41,7 +41,7 @@ $(document).ready(function(){
     if ( ! Detector.webgl ) {
         Detector.Showimg();
     }
-    else if(window.innerWidth){
+    else if(window.innerWidth>=1200){
 //        if(localStorage.getItem('wg-toggle')!='off') {
             mw.loader.using('skins.three');
 //            $('#wg-toggle').addClass('icon-close on');
