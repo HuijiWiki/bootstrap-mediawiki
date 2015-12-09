@@ -30,7 +30,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
      * initialize the page
      */
     public function initPage( OutputPage $out ) {
-        global $wgSiteJS, $wgHuijiPrefix, $wgSiteNotice;
+        global $wgSiteJS, $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer;
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
@@ -38,7 +38,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addModules( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addHeadItem( 'canonical',
-                '<link rel="canonical" href="http://www.huiji.wiki/" />' . "\n");    
+                '<link rel="canonical" href="'.$wgCentralServer.'" />' . "\n");    
             $out->addHeadItem('meta','<meta property="qc:admins" content="6762163113460512167131" />'); 
             $out->addHeadItem('meta','<meta property="wb:webmaster" content="913ad381cb9b4ad7" />');
 
@@ -125,7 +125,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         <div id="wrapper" class="toggled">
         <script>
             var menutoggle;
-            document.domain = "huiji.wiki";
+            document.domain = mw.config.get('wgHuijiSuffix').substring(1);
             menutoggle = localStorage.getItem("menu-toggle");
             document.getElementById('wrapper').className = menutoggle;
         </script>

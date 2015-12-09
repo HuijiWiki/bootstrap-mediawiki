@@ -34,8 +34,9 @@ Class BootstrapMediawikiHooks {
         return $output;
     }
     public static function getHeading($input, $args, $parser ) {
+        global $wgHuijiSuffix;
         $m = array();
-        $bga = isset( $args['background'] ) ? $args['background'] : 'http://cdn.huiji.wiki/shareduploads/uploads/d/d7/Huijibanner_default.png';
+        $bga = isset( $args['background'] ) ? $args['background'] : 'http://cdn'.$wgHuijiSuffix.'/shareduploads/uploads/d/d7/Huijibanner_default.png';
         $title = isset( $args['title'] ) ? $args['title'] : $parser->recursiveTagParse('{{PAGENAME}}');
         $subtitle = isset( $args['subtitle'] ) ? $args['subtitle'] : $parser->recursiveTagParse('{{SITENAME}}');
         $fontcolor = isset( $args['fontcolor'] ) ? $args['fontcolor'] : '#FFF';
@@ -362,7 +363,7 @@ Class BootstrapMediawikiHooks {
 
     public static function wfEditSectionLinkTransform( &$parser, &$text )
     {
-        global $wgUser, $wgMobile;
+        global $wgUser, $wgMobile, $wgHuijiSuffix;
         $isVisualEditorEnabled = $wgUser->getOption('visualeditor-enable','1');
         if ($isVisualEditorEnabled != 1){
             /* when disable visual editor */
@@ -413,7 +414,7 @@ Class BootstrapMediawikiHooks {
             $text = preg_replace( $pattern, $replacement, $text ); 
         }     
         if ($wgUser->isAllowed('reupload') && !$wgMobile){ 
-            $text = str_replace('http://cdn.huijiwiki.com/', 'http://cdn.huiji.wiki/', $text);
+            $text = str_replace('http://cdn.huijiwiki.com/', 'http://cdn'.$wgHuijiSuffix.'/', $text);
         }        
         return true;
     }
