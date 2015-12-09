@@ -18,8 +18,8 @@ $(function() {
 //    }else if($('#pt-notifications span').text() == 0){
 //        $('.badge').hide();
 //    }
-    if($('#pt-notifications-alert .badge').text()==0){
-        $('.badge').hide();
+    if($('#pt-notifications-alert .badge').text()!=0){
+        $('.badge').show();
     }
 
     $('table.article-table')

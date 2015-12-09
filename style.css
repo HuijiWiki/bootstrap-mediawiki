@@ -1462,8 +1462,6 @@ ol.carousel-indicators{
 #pt-notifications-alert{
     font-size: 18px;
     position: relative;
-    height: 50px;
-    line-height: 50px;
 }
 #pt-notifications-alert .mw-echo-notifications-badge{
     opacity: 0;
@@ -1485,4 +1483,18 @@ ol.carousel-indicators{
 }
 #pt-notifications-alert .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon{
     top: 1em;
+}
+@media screen and (max-width: 767px) {
+    #pt-notifications-alert {
+        line-height: 40px;
+        color: #fff;
+        padding: 0 5px;
+    }
+    .oo-ui-popupWidget-popup {
+        width: 300px!important;
+        margin-left: -230px!important;
+    }
+    .oo-ui-popupWidget-body {
+        width: 100%!important;
+    }
 }
