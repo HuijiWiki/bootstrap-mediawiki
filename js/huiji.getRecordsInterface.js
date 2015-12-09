@@ -10,7 +10,7 @@
 // console.log('566566');
 huiji = {
 	getViewRecordsFromUserIdGroupByWikiSite: function(userId,fromTime,toTime,callback){
-		var url = 'http://test.huiji.wiki:50007/getViewRecordsFromUserIdGroupByWikiSite/';
+		var url = 'http://huijidata.com:50007/getViewRecordsFromUserIdGroupByWikiSite/';
 		jQuery.post(
 			url,
 			{
@@ -38,7 +38,7 @@ huiji = {
 	},
 
 	getEditRecordsFromUserIdGroupByWikiSite: function(userId,fromTime,toTime,callback){
-		var url = 'http://test.huiji.wiki:50007/getEditRecordsFromUserIdGroupByWikiSite/';
+		var url = 'http://huijidata.com:50007/getEditRecordsFromUserIdGroupByWikiSite/';
 		jQuery.post(
 			url,
 			{
@@ -66,7 +66,7 @@ huiji = {
 	},
 
 	getEditorCountGroupByWikiSite: function(fromTime,toTime,callback){
-		var url = 'http://test.huiji.wiki:50007/getEditorCountGroupByWikiSite/';
+		var url = 'http://huijidata.com:50007/getEditorCountGroupByWikiSite/';
 		jQuery.post(
 			url,
 			{
@@ -94,7 +94,7 @@ huiji = {
 
 	getEditRecordsOnWikiSiteFromUserIdGroupByDay: function(userId,wikiSite,fromTime,toTime,callback)
 	{
-		var url = 'http://test.huiji.wiki:50007/getEditRecordsOnWikiSiteFromUserIdGroupByDay/';
+		var url = 'http://huijidata.com:50007/getEditRecordsOnWikiSiteFromUserIdGroupByDay/';
 		jQuery.post(
 			url,
 			{
@@ -127,7 +127,7 @@ huiji = {
 
 	getViewRecordsOnWikiSiteFromUserIdGroupByDay: function(userId,wikiSite,fromTime,toTime,callback)
 	{
-		var url = 'http://test.huiji.wiki:50007/getViewRecordsOnWikiSiteFromUserIdGroupByDay/';
+		var url = 'http://huijidata.com:50007/getViewRecordsOnWikiSiteFromUserIdGroupByDay/';
 		jQuery.post(
 			url,
 			{

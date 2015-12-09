@@ -40,7 +40,7 @@ $(document).ready(function(){
 	var siteName  = mw.config.get("wgSiteName");
 	var titleName = mw.config.get("wgPageName");
 	var articleId = mw.config.get("wgArticleId");
-	var url = 'http://test.huiji.wiki:50007/insertViewRecord/';
+	var url = 'http://huijidata.com:50007/insertViewRecord/';
 	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
 
     $('#menu-toggle').click(function(e) {
