@@ -281,7 +281,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '讨论': $icon = 'comment'; break;
                 case '编辑': $icon = 'pencil'; break;
                 case '编辑源代码': $icon = 'code';
-                    $link['id'] = 'ca-huiji-edit';
+                    $link['id'] = 'huiji-edit';
                     break;
                 case '历史': $icon = 'clock-o'; break;
                 case '删除': $icon = 'remove'; break;
@@ -292,7 +292,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '取消监视': $icon = 'eye-slash'; break;
                 case '创建': $icon = 'plus'; break;
                 case '创建源代码': $icon = 'plus'; 
-                	$link['id'] = 'ca-huiji-create';
+                	$link['id'] = 'huiji-create';
                 	break;
                 case '查看源代码': $icon = 'file-code-o'; break;
                 case '分类': $icon = 'files-o'; break;
