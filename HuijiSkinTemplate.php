@@ -84,7 +84,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
         foreach ( $nav as $topItem ) {
             $pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
 
-            $output .= '<li id="pt-notifications-alert" class="fa fa-envelope-o"><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
+            $output .= '<li id="pt-notifications-alert"><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a>'. $topItem['title'] .'</li>';
             
         }//end foreach
         return $output;
@@ -210,7 +210,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
             'class' => htmlspecialchars( $item['class'][0] ),
             'title' => htmlspecialchars( $item['text'] ),
         );
-        $link['title'] = '<i class="fa fa-envelope-o"></i> <span class="badge">' . $link['title'] .'</span>';
+        $link['title'] = '<span class="badge">' . $link['title'] .'</span>';
         $nav[] = $link;
         return $nav;        
     }
@@ -281,7 +281,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '讨论': $icon = 'comment'; break;
                 case '编辑': $icon = 'pencil'; break;
                 case '编辑源代码': $icon = 'code';
-                    $link['id'] = 'ca-huiji-edit';
+                    $link['id'] = 'huiji-edit';
                     break;
                 case '历史': $icon = 'clock-o'; break;
                 case '删除': $icon = 'remove'; break;
@@ -292,7 +292,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '取消监视': $icon = 'eye-slash'; break;
                 case '创建': $icon = 'plus'; break;
                 case '创建源代码': $icon = 'plus'; 
-                	$link['id'] = 'ca-huiji-create';
+                	$link['id'] = 'huiji-create';
                 	break;
                 case '查看源代码': $icon = 'file-code-o'; break;
                 case '分类': $icon = 'files-o'; break;

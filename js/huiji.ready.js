@@ -40,7 +40,7 @@ $(document).ready(function(){
 	var siteName  = mw.config.get("wgSiteName");
 	var titleName = mw.config.get("wgPageName");
 	var articleId = mw.config.get("wgArticleId");
-	var url = 'http://test.huiji.wiki:50007/insertViewRecord/';
+	var url = 'http://huijidata.com:50007/insertViewRecord/';
 	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
 
     $('#menu-toggle').click(function(e) {
@@ -68,7 +68,7 @@ $(document).ready(function(){
                 $('.phone-wrapper').remove();
             }
         }
-        document.domain = "huiji.wiki";
+        document.domain = mw.config.get('wgHuijiSuffix').substring(1);
         if($('#wrapper').hasClass('toggled')){
             localStorage.setItem('menu-toggle','toggled');
         }else{
@@ -436,7 +436,7 @@ $(document).ready(function(){
     var own = false;
     var x, y,posX,posY,thisposX,thisposY;
     var card;
-    $('#wiki-body a[href*="huiji.wiki/wiki/%E7%94%A8%E6%88%B7:"] .headimg, #wiki-body a[href*="huiji.wiki/wiki/User:"] .headimg, #wiki-body a[href*="huiji.wiki/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"), #wiki-body a[href*="huiji.wiki/wiki/User:"]:not(":has(img)")').hover(function(e){
+    $('#wiki-body a[href*="'+mw.config.get('wgHuijiSuffix')+'/wiki/%E7%94%A8%E6%88%B7:"] .headimg, #wiki-body a[href*="'+mw.config.get('wgHuijiSuffix')+'/wiki/User:"] .headimg, #wiki-body a[href*="'+mw.config.get('wgHuijiSuffix')+'/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"), #wiki-body a[href*="'+mw.config.get('wgHuijiSuffix')+'/wiki/User:"]:not(":has(img)")').hover(function(e){
         if(document.body.clientWidth<=1024){
             e.preventDefault();
         }else {

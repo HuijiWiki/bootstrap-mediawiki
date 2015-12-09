@@ -8,7 +8,7 @@
 	font-weight: normal;
 	font-style: normal;
 }
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"], [class*=" icon-"]{
     font-family: 'icomoon';
     speak: none;
     font-style: normal;
@@ -20,6 +20,21 @@
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+#pt-notifications-alert {
+     font-family: 'icomoon';
+     speak: none;
+     font-style: normal;
+     font-weight: normal;
+     font-variant: normal;
+     text-transform: none;
+
+     /* Better Font Rendering =========== */
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+ }
+#pt-notifications-alert:before {
+    content: "\e086";
 }
 .icon-lv1,.icon-lv2,.icon-lv3,.icon-lv4,.icon-lv5,.icon-lv6{
     color: #666;
