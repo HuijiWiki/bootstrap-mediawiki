@@ -125,9 +125,13 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         <div id="wrapper" class="toggled">
         <script>
             var menutoggle;
-            document.domain = window.location.host.substring(4);
+            document.domain = getDomainName(window.location.host);
             menutoggle = localStorage.getItem("menu-toggle");
             document.getElementById('wrapper').className = menutoggle;
+            function getDomainName(hostName)
+            {
+                return hostName.substring(hostName.lastIndexOf(".", hostName.lastIndexOf(".") - 1) + 1);
+            }
         </script>
         <?php echo $this->showHeader(); ?>
         <script>
