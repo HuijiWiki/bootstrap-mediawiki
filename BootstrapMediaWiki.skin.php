@@ -125,7 +125,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         <div id="wrapper" class="toggled">
         <script>
             var menutoggle;
-            document.domain = mw.config.get('wgHuijiSuffix').substring(1);
+            document.domain = window.location.host.substring(4);
             menutoggle = localStorage.getItem("menu-toggle");
             document.getElementById('wrapper').className = menutoggle;
         </script>
