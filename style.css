@@ -899,7 +899,7 @@ body .mw-echo-overlay::before{
     left: 0;
     padding: 0;
     width: inherit;
-    line-height: 0;
+    line-height: inherit;
 }
 #mw-notification-area .mw-notification{
     margin-top: 200px;
@@ -912,7 +912,7 @@ body .mw-echo-overlay::before{
     margin: 10px;
 }
 .mw-notification-content{
-    padding: 20px;
+    padding: 10px;
     background-color: #000;
     color: #fff;
     text-align: center;
