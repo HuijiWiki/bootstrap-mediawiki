@@ -471,6 +471,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://cardcaptorsakura.huiji.wiki/">小樱的封印之书</a></li>
                                             <li><a href="http://kaiji.huiji.wiki">逆境无赖</a></li>
                                             <li><a href="http://gundam.huiji.wiki">高达</a></li>
+                                            <li><a href="http://saintseiya.huiji.wiki">圣斗士星矢</a></li>
                                         </ul>
                                         <ul class="hub-selection game-link">
                                             <li><a href="http://gjqt.huiji.wiki">古剑奇谭</a></li>

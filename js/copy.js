@@ -255,10 +255,10 @@ copyWiki.prototype ={
                     mw.util.wikiScript(), {
                     action: 'ajax',
                     rs: 'wfAddForkInfo',
-                    rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix'), this.targetPrefix],
+                    rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix'), this.targetPrefix]
                 });
                 window.location = this.redirectUrl;
-            },this),
+            },this)
 
         });
         
@@ -267,5 +267,31 @@ copyWiki.prototype ={
 };
 
 $(function(){
-   return new copyWiki();
+
+    $('#menu-toggle').click(function(){
+        var api = new mw.Api();
+        var summary = "abc";
+        var content = "aaa";
+        addNewSection();
+        function addNewSection( summary, content ) {
+            api.postWithToken( "edit", {
+                action: "edit",
+                title: mw.config.get( "wgPageName" ),
+                section: "new",
+                text: "[[Category:gasdsadfs]]"
+            } ).done( function( result, jqXHR ) {
+                console.log( "Saved successfully" );
+                location.reload();
+            } ).fail( function( code, result ) {
+                if ( code === "http" ) {
+                    console.log( "HTTP error: " + result.textStatus ); // result.xhr contains the jqXHR object
+                } else if ( code === "ok-but-empty" ) {
+                    mw.log( "Got an empty response from the server" );
+                } else {
+                    mw.log( "API error: " + code );
+                }
+            } );
+        }
+    });
+    return new copyWiki();
 });
