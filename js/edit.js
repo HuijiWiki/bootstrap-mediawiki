@@ -6,9 +6,8 @@ function addCategory(category){
     api.postWithToken( "edit", {
         action: "edit",
         title: mw.config.get( "wgPageName" ),
-        section: "new",
         summary: "快速添加分类",
-        text: category
+        appendtext: category
     } ).done( function( result, jqXHR ) {
         var a ='';
         var b = category.split(']][[Category:');
