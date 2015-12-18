@@ -1557,3 +1557,10 @@ ol.carousel-indicators{
     margin-top: 10px;
     float: right;
 }
+.edit-tutorial {
+	display: inline-block;
+    font-size: 12px;
+    color: #ccc;
+    padding-top: 12px;
+}
+}
