@@ -65,6 +65,7 @@ $(function(){
         '</ul>'+
         '</div>'+
         '<div class="edit-buttons">' +
+        '<p class='edit-tutorial'>可输入多个，在每个分类后轻敲回车。</p>'+
         '<button class="btn btn-primary edit-submit"><i class="glyphicon glyphicon-ok"></i></button>&nbsp;' +
         '<button type="button" class="btn edit-cancel"><i class="glyphicon glyphicon-remove"></i></button>' +
         '</div>' +
