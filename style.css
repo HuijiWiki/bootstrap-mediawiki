@@ -1548,7 +1548,7 @@ ol.carousel-indicators{
 .edit-span{
     border: 1px solid #999!important;
 }
-.edit:after {
+.popover-content .edit:after {
     content: '';
     clear: both;
     display: block;
@@ -1562,5 +1562,4 @@ ol.carousel-indicators{
     font-size: 12px;
     color: #ccc;
     padding-top: 12px;
-}
 }
