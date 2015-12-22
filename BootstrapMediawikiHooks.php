@@ -370,7 +370,7 @@ Class BootstrapMediawikiHooks {
             $pattern = ''
                     .'|'
                     .'<span class="mw-editsection-bracket">\[<\/span>'
-                    .'<a href="(.+)" title="(.+)">'.wfMsg('editsection').'<\/a>'
+                    .'<a href="(.+?)" title="(.+?)">'.wfMsg('editsection').'<\/a>'
                     .'<span class="mw-editsection-bracket">\]<\/span>'
                     .'|ui'
                     ;
@@ -385,6 +385,12 @@ Class BootstrapMediawikiHooks {
             // $replacement = '';
             // $pattern = '#<span class="mw-editsection-divider">'.wfMsg('pipe-separator').'<\/span>#Ui';
             // $text = preg_replace( $pattern, $replacement, $text );
+            $pattern = '<span class="mw-editsection-bracket">\[<\/span>';
+            $replacement = '';
+            $text = str_replace( $pattern, $replacement, $text );  
+            $pattern = '<span class="mw-editsection-bracket">\]<\/span>';
+            $replacement = '';
+            $text = str_replace( $pattern, $replacement, $text );              
             $pattern = ''
                     .'|'
                     .'<a href="(.+?)" title="(.+?)">'.wfMsg('editsection').'<\/a>'
