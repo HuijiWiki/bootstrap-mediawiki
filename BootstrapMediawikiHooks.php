@@ -387,9 +387,7 @@ Class BootstrapMediawikiHooks {
             // $text = preg_replace( $pattern, $replacement, $text );
             $pattern = ''
                     .'|'
-                    .'<span class="mw-editsection-bracket">\[<\/span>'
-                    .'<a href="(.+)" title="(.+)">'.wfMsg('editsection').'<\/a>'
-
+                    .'<a href="(.+?)" title="(.+?)">'.wfMsg('editsection').'<\/a>'
                     .'|ui'
                     ;
             $replacement = ''
@@ -401,8 +399,7 @@ Class BootstrapMediawikiHooks {
             $text = preg_replace( $pattern, $replacement, $text );
             $pattern = ''
                     .'|'
-                    .'<a href="(.+)" title="(.+)">'.wfMsg('visualeditor-ca-editsource-section').'<\/a>'
-                    .'<span class="mw-editsection-bracket">\]<\/span>'
+                    .'<a href="(.+?)" title="(.+?)">'.wfMsg('visualeditor-ca-editsource-section').'<\/a>'
                     .'|ui'
                     ;    
             $replacement = ''
