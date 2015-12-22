@@ -265,3 +265,6 @@ copyWiki.prototype ={
     }
 
 };
+$(function() {
+    return new copyWiki();
+});

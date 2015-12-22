@@ -1509,6 +1509,10 @@ ol.carousel-indicators{
 #wiki-body .last .popover-title {
     padding: 8px 14px;
 }
+#catlinks .last .top{
+    bottom: 200px;
+    top: inherit!important;
+}
 .edit-input{
     border: 1px solid #aaa;
     min-height: 30px;
