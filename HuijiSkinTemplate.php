@@ -413,7 +413,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
         }else{
             $key = 'search';
             $specialPage = 'Special:Search';
-            $searchFormId = 'searchInput'
+            $searchFormId = 'searchInput';
         }
         // $output = '';
         $output ='
