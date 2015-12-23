@@ -255,17 +255,16 @@ copyWiki.prototype ={
                     mw.util.wikiScript(), {
                     action: 'ajax',
                     rs: 'wfAddForkInfo',
-                    rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix'), this.targetPrefix],
+                    rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix'), this.targetPrefix]
                 });
                 window.location = this.redirectUrl;
-            },this),
+            },this)
 
         });
         
     }
 
 };
-
-$(function(){
-   return new copyWiki();
+$(function() {
+    return new copyWiki();
 });

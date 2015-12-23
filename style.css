@@ -374,11 +374,11 @@ ul.affix-bottom{
 	color: #999;
 }
 
-#catlinks li {
+#catlinks #mw-normal-catlinks>ul>li {
 	border-left: 1px solid #ddd;
 }
 
-#catlinks li:first-child {
+#catlinks #mw-normal-catlinks>ul>li:first-child {
 	border-left: none;
 }
 
@@ -899,7 +899,7 @@ body .mw-echo-overlay::before{
     left: 0;
     padding: 0;
     width: inherit;
-    line-height: 0;
+    line-height: inherit;
 }
 #mw-notification-area .mw-notification{
     margin-top: 200px;
@@ -912,7 +912,7 @@ body .mw-echo-overlay::before{
     margin: 10px;
 }
 .mw-notification-content{
-    padding: 20px;
+    padding: 10px;
     background-color: #000;
     color: #fff;
     text-align: center;
@@ -1497,4 +1497,73 @@ ol.carousel-indicators{
     .oo-ui-popupWidget-body {
         width: 100%!important;
     }
+}
+
+/*edit style*/
+#add-category-btn{
+    padding: 3px 5px;
+    border: 1px solid #aaaaaa;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#wiki-body .last .popover-title {
+    padding: 8px 14px;
+}
+#catlinks .last .top{
+    bottom: 200px;
+    top: inherit!important;
+}
+.edit-input{
+    border: 1px solid #aaa;
+    min-height: 30px;
+    height: auto;
+    padding:3px 5px;
+    cursor: text;
+}
+.edit-field input{
+    border: none;
+    width: 10px;
+    display: inline-block;
+    cursor: text;
+}
+.edit-field input:focus{
+    width: 60px;
+}
+.edit-input li{
+    margin: 0;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-bottom: 5px!important;
+    line-height: 1.2!important;
+    cursor: default;
+}
+.edit-input li i{
+    font-size: 12px;
+    cursor: pointer;
+}
+.edit-input .edit-field{
+    border: none;
+}
+.popover.bottom  {
+    background: #fff;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.edit-span{
+    border: 1px solid #999!important;
+}
+.popover-content .edit:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+.edit-buttons {
+    margin-top: 10px;
+    float: right;
+}
+.edit-tutorial {
+	display: inline-block;
+    font-size: 12px;
+    color: #ccc;
+    padding-top: 12px;
 }

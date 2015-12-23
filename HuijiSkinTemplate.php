@@ -477,13 +477,14 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://cardcaptorsakura.huiji.wiki/">小樱的封印之书</a></li>
                                             <li><a href="http://kaiji.huiji.wiki">逆境无赖</a></li>
                                             <li><a href="http://gundam.huiji.wiki">高达</a></li>
+                                            <li><a href="http://saintseiya.huiji.wiki">圣斗士星矢</a></li>
                                         </ul>
                                         <ul class="hub-selection game-link">
                                             <li><a href="http://gjqt.huiji.wiki">古剑奇谭</a></li>
                                             <li><a href="http://hearthstone.huiji.wiki">炉石传说</a></li>
                                             <li><a href="http://assassinscreed.huiji.wiki">刺客信条</a></li>
                                             <li><a href="http://3pz.huiji.wiki">三国志puzzle大战</a></li>
-                                            <li><a href="http://pvz.huiji.wiki">植物大战僵尸</a></li>
+                                            <li><a href="http://warframe.huiji.wiki">warframe</a></li>
                                             <li><a href="http://bravely.huiji.wiki">勇气默示录中文百科</a></li>
                                         </ul>
                                         <ul class="hub-selection star-link">

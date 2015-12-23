@@ -39,8 +39,8 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="'.$wgCentralServer.'" />' . "\n");    
-            $out->addHeadItem('meta','<meta property="qc:admins" content="6762163113460512167131" />'); 
-            $out->addHeadItem('meta','<meta property="wb:webmaster" content="913ad381cb9b4ad7" />');
+            //$out->addHeadItem('meta','<meta property="qc:admins" content="6762163113460512167131" />'); 
+            //$out->addHeadItem('meta','<meta property="wb:webmaster" content="913ad381cb9b4ad7" />');
 
         } else {
             $out->addHeadItem( 'canonical',
@@ -125,9 +125,13 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         <div id="wrapper" class="toggled">
         <script>
             var menutoggle;
-            document.domain = mw.config.get('wgHuijiSuffix').substring(1);
+            document.domain = getDomainName(window.location.host);
             menutoggle = localStorage.getItem("menu-toggle");
             document.getElementById('wrapper').className = menutoggle;
+            function getDomainName(hostName)
+            {
+                return hostName.substring(hostName.lastIndexOf(".", hostName.lastIndexOf(".") - 1) + 1);
+            }
         </script>
         <?php echo $this->showHeader(); ?>
         <script>
