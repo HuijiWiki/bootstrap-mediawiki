@@ -404,9 +404,15 @@ Class HuijiSkinTemplate extends BaseTemplate {
 
     //show header
     function showHeader(){
-        global $wgUser, $wgSitename;
+        global $wgUser, $wgSitename, $wgHuijiPreix;
         global $wgNavBarClasses, $wgLogo;
-        
+        if ( $wgHuijiPreix == 'www') {
+            $key = 'key';
+            $specialPage = 'Special:GlobalSearch';
+        }else{
+            $key = 'search';
+            $specialPage = 'Special:Search';
+        }
         // $output = '';
         $output ='
             <header class="header navbar navbar-default navbar-fixed-top'.$wgNavBarClasses.'" role="navigation">
@@ -429,8 +435,8 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         </a>
                         <form class="navbar-search navbar-form" action="/index.php" id="searchformphone" role="search">
                             <div>
-                                <input class="form-control" type="search" name="search" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInputPhone" autocomplete="off">
-                                <input type="hidden" name="title" value="Special:Search">
+                                <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInputPhone" autocomplete="off">
+                                <input type="hidden" name="title" value="'.$specialPage.'">
                             </div>
                         </form>
                     </div>
@@ -557,8 +563,8 @@ Class HuijiSkinTemplate extends BaseTemplate {
                     $output .= '<form class="navbar-search navbar-form table-cell hidden-xs" action="/index.php" id="searchform" role="search">
                         <div>
                             <span class="fa fa-search navbar-search"></span>
-                            <input class="form-control" type="search" name="search" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
-                            <input type="hidden" name="title" value="Special:Search">
+                            <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
+                            <input type="hidden" name="title" value="'.$specialPage.'">
                         </div>
                     </form>
                     </div>
