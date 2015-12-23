@@ -409,11 +409,11 @@ Class HuijiSkinTemplate extends BaseTemplate {
         if ( $wgHuijiPreix == 'www') {
             $key = 'key';
             $specialPage = 'Special:GlobalSearch';
-            $searchFormId = 'GlobalSearchInput';
+            $searchFormId = 'globalSearchInput';
         }else{
             $key = 'search';
             $specialPage = 'Special:Search';
-            $searchFormId = 'SearchInput'
+            $searchFormId = 'searchInput'
         }
         // $output = '';
         $output ='
