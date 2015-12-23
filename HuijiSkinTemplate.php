@@ -404,7 +404,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
 
     //show header
     function showHeader(){
-        global $wgUser, $wgSitename, $wgHuijiPreix;
+        global $wgUser, $wgSitename, $wgHuijiPrefix;
         global $wgNavBarClasses, $wgLogo;
         if ( $wgHuijiPrefix == 'www') {
             $key = 'key';
