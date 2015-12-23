@@ -409,9 +409,11 @@ Class HuijiSkinTemplate extends BaseTemplate {
         if ( $wgHuijiPreix == 'www') {
             $key = 'key';
             $specialPage = 'Special:GlobalSearch';
+            $searchFormId = 'GlobalSearchInput';
         }else{
             $key = 'search';
             $specialPage = 'Special:Search';
+            $searchFormId = 'SearchInput'
         }
         // $output = '';
         $output ='
@@ -564,7 +566,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                     $output .= '<form class="navbar-search navbar-form table-cell hidden-xs" action="/index.php" id="searchform" role="search">
                         <div>
                             <span class="fa fa-search navbar-search"></span>
-                            <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInput" autocomplete="off">
+                            <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="'.$searchFormId.'" autocomplete="off">
                             <input type="hidden" name="title" value="'.$specialPage.'">
                         </div>
                     </form>
