@@ -406,7 +406,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
     function showHeader(){
         global $wgUser, $wgSitename, $wgHuijiPreix;
         global $wgNavBarClasses, $wgLogo;
-        if ( $wgHuijiPreix == 'www') {
+        if ( $wgHuijiPrefix == 'www') {
             $key = 'key';
             $specialPage = 'Special:GlobalSearch';
             $searchFormId = 'globalSearchInput';
@@ -437,7 +437,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         </a>
                         <form class="navbar-search navbar-form" action="/index.php" id="searchformphone" role="search">
                             <div>
-                                <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInputPhone" autocomplete="off">
+                                <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="搜索'.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInputPhone" autocomplete="off">
                                 <input type="hidden" name="title" value="'.$specialPage.'">
                             </div>
                         </form>
@@ -566,7 +566,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                     $output .= '<form class="navbar-search navbar-form table-cell hidden-xs" action="/index.php" id="searchform" role="search">
                         <div>
                             <span class="fa fa-search navbar-search"></span>
-                            <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="Search '.$wgSitename.' [ctrl-option-f]" accesskey="f" id="'.$searchFormId.'" autocomplete="off">
+                            <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="搜索'.$wgSitename.' [ctrl-option-f]" accesskey="f" id="'.$searchFormId.'" autocomplete="off">
                             <input type="hidden" name="title" value="'.$specialPage.'">
                         </div>
                     </form>
