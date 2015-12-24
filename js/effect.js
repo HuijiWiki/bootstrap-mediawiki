@@ -42,7 +42,7 @@ $(document).ready(function(){
         Detector.Showimg();
     }
     else if(window.innerWidth>=1200){
-        $.getScript( "//cdn.bootcss.com/three.js/r55/three.min.js" );
+        $.getScript( "//cdn.bootcss.com/three.js/r55/three.min.js" )
           .done(function( script, textStatus ) {
             mw.loader.load('skins.bootstrapmediawiki.frontpage.cloud');
           })
