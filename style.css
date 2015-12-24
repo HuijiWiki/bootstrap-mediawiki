@@ -1561,27 +1561,6 @@ ol.carousel-indicators{
     margin-top: 10px;
     float: right;
 }
-#search-result{
-    position: absolute;
-    background: #fff;
-    list-style-type: none;
-    padding-left: 0;
-    border: 1px solid #aaa;
-}
-#search-result li{
-    padding: 8px 10px;
-}
-#search-result a {
-    transition: none;
-    display: block;
-    color: #333;
-}
-#search-result li:hover {
-    background: #09c;
-}
-#search-result li:hover a{
-    color: #fff;
-}
 .edit-tutorial {
 	display: inline-block;
     font-size: 12px;

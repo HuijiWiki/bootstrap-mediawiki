@@ -74,7 +74,6 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/huiji.ready.js',
 		$skinDir . '/js/copy.js',
 		$skinDir . '/js/qqLogin.js',
-		$skinDir . '/js/edit.js',
 	),
 	'styles' => array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
@@ -89,6 +88,17 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'bottom',	
+);
+$wgResourceModules['skins.bootstrapmediawiki.editcategory'] = array(
+	'styles' => array(
+		$skinDir . '/css/editcategory.css'                 => array( 'media' => 'all' ),
+	),
+	'scripts' => array(
+		$skinDir . '/js/editcategory.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'bottom',
 );
 $wgResourceModules['skins.editable'] = array(
 	'styles' => array(
@@ -143,9 +153,20 @@ $wgResourceModules['ext.wikieditor.huijiextra.bottom'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
 	'position' => 'bottom',
 );
-$wgResourceModules['skin.bootstrapmediawiki.huiji.getrecordsinterface.js'] = array(
+$wgResourceModules['skins.bootstrapmediawiki.huiji.getrecordsinterface.js'] = array(
 	'scripts' => array(
 		$skinDir . '/js/huiji.getRecordsInterface.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'bottom',	
+);
+$wgResourceModules['skins.bootstrapmediawiki.huiji.globalsearch'] = array(
+	'scripts' => array(
+		$skinDir . '/js/huiji.globalsearch.js',
+	),
+	'styles' => array(
+		$skinDir . '/css/huiji.globalsearch.css'         					 => array( 'media' => 'all' ),
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
@@ -165,6 +186,7 @@ $wgHooks['GetDefaultSortkey'][] = 'BootstrapMediawikiHooks::onGetDefaultSortkey'
 $wgHooks['EditPage::showEditForm:initial'][] = 'BootstrapMediawikiHooks::addEditModule';
 $wgHooks['GalleryGetModes'][] = 'BootstrapMediawikiHooks::onGalleryGetModes';
 $wgHooks['ParserFirstCallInit'][] = 'BootstrapMediawikiHooks::registerParserHook';
+$wgHooks['OutputPageMakeCategoryLinks'][] = 'BootstrapMediawikiHooks::onOutputPageMakeCategoryLinks';
 // new permission
 $wgAvailableRights[] = 'quickpurge';
 $wgGroupPermissions['sysop']['quickpurge'] = true;

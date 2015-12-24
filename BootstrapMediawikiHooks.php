@@ -421,5 +421,8 @@ Class BootstrapMediawikiHooks {
         }        
         return true;
     }
+    public static function onOutputPageMakeCategoryLinks( &$out, $categories, &$links ) { 
+        $out->addModules('skins.bootstrapmediawiki.editcategory');
+    }
 }
 ?>

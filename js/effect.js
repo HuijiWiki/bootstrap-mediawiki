@@ -82,7 +82,6 @@ $(document).ready(function(){
                 },
                 function( data ) {
                     var res = jQuery.parseJSON(data);
-                    console.log(res);
                     if (res.success){
                         removePlaceholder();
                         jQuery('.user-home-feed.active .user-home-feed-content').append(res.output);

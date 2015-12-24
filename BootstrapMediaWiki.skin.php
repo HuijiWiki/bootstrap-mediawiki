@@ -50,8 +50,10 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             array('skins.bootstrapmediawiki.bottom')
         ); # add js and messages  
         $out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
-        if ($wgHuijiPrefix !== 'www'){
+        if ($wgHuijiPrefix !== 'www' && $wgHuijiPrefix !== 'test'){
             $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
+        } else {
+            $out->addModules( 'skins.bootstrapmediawiki.huiji.globalsearch');
         }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
     }//end initPage
