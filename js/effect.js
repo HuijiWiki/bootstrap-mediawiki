@@ -43,7 +43,8 @@ $(document).ready(function(){
     }
     else if(window.innerWidth>=1200){
 //        if(localStorage.getItem('wg-toggle')!='off') {
-            mw.loader.using('skins.three');
+            mw.loader.load('//cdn.bootcss.com/three.js/r55/three.min.js');
+            mw.loader.using('skins.bootstrapmediawiki.frontpage.cloud');
 //            $('#wg-toggle').addClass('icon-close on');
 //        }else{
 //            $('#wg-toggle').addClass('icon-close off');
