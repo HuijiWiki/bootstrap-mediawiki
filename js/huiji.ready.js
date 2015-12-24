@@ -75,6 +75,28 @@ $(document).ready(function(){
             localStorage.setItem('menu-toggle','');
         }
     });
+
+    //    search autocomplete
+    if(mw.config.get('wgServer') == "http://test.huiji.wiki") {
+        $('.suggestions').css('display','none!important');
+        setTimeout(init(),2000);
+        function init() {
+            $('#searchform').unbind();
+            $('#searchInput').keyup(function (e) {
+                e.stopPropagation();
+                var searchname = $(this).val();
+                $.get('http://test.huiji.wiki:8080/queryService/webapi/page/suggest/' + searchname, function (data) {
+                    var content = '';
+                    $('#searchform #search-result').remove();
+                    data.forEach(function (item) {
+                        content += '<li><a href="http://' + item.address + '">' + item.title + '</a></li>';
+                    });
+                    $('#searchform').append('<ul id="search-result">' + content + '</ul>');
+                });
+            });
+        }
+    }
+
     $('body').on('touchstart','.phone-wrapper',function(){
         $('#menu-toggle').trigger('click');
     });

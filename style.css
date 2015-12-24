@@ -1557,3 +1557,10 @@ ol.carousel-indicators{
     margin-top: 10px;
     float: right;
 }
+#search-result{
+    position: absolute;
+    width: 400px;
+    background: #f9f9f9;
+    list-style-type: none;
+    padding-left: 0;
+}
