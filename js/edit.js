@@ -6,9 +6,8 @@ function addCategory(category){
     api.postWithToken( "edit", {
         action: "edit",
         title: mw.config.get( "wgPageName" ),
-        section: "new",
         summary: "快速添加分类",
-        text: category
+        appendtext: category
     } ).done( function( result, jqXHR ) {
         var a ='';
         var b = category.split(']][[Category:');
@@ -55,15 +54,19 @@ function getData(){
     return data;
 }
 $(function(){
-    var addbtn = '<li class="last"><a id="add-category-btn" data-placement="bottom">添加分类</a></li>';
+    if (mw.config.get('wgUserName')==''){
+        return;
+    }
+    var addbtn = '<li class="last"><a id="add-category-btn" data-placement="top">添加分类</a></li>';
     var content = '<div class="edit">' +
         '<div class="edit-input">'+
         '<ul class="edit-choices">'+
         '<li class="edit-field"><input type="text"></li>'+
         '</ul>'+
         '</div>'+
+        '<p class="edit-tutorial">可输入多个，在每个分类后轻敲回车。</p>'+
         '<div class="edit-buttons">' +
-        '<button class="btn btn-primary edit-submit"><i class="glyphicon glyphicon-ok"></i></button>' +
+        '<button class="btn btn-primary edit-submit"><i class="glyphicon glyphicon-ok"></i></button>&nbsp;' +
         '<button type="button" class="btn edit-cancel"><i class="glyphicon glyphicon-remove"></i></button>' +
         '</div>' +
         '</div>';
