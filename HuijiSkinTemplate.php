@@ -406,7 +406,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
     function showHeader(){
         global $wgUser, $wgSitename, $wgHuijiPrefix;
         global $wgNavBarClasses, $wgLogo;
-        if ( $wgHuijiPrefix == 'www') {
+        if ( $wgHuijiPrefix == 'test') {
             $key = 'key';
             $specialPage = 'Special:GlobalSearch';
             $searchFormId = 'globalSearchInput';

@@ -1563,10 +1563,24 @@ ol.carousel-indicators{
 }
 #search-result{
     position: absolute;
-    width: 400px;
-    background: #f9f9f9;
+    background: #fff;
     list-style-type: none;
     padding-left: 0;
+    border: 1px solid #aaa;
+}
+#search-result li{
+    padding: 8px 10px;
+}
+#search-result a {
+    transition: none;
+    display: block;
+    color: #333;
+}
+#search-result li:hover {
+    background: #09c;
+}
+#search-result li:hover a{
+    color: #fff;
 }
 .edit-tutorial {
 	display: inline-block;

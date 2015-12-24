@@ -77,25 +77,26 @@ $(document).ready(function(){
     });
 
     //    search autocomplete
-    if(mw.config.get('wgServer') == "http://test.huiji.wiki") {
-        $('.suggestions').css('display','none!important');
-        setTimeout(init(),2000);
-        function init() {
-            $('#searchform').unbind();
-            $('#searchInput').keyup(function (e) {
-                e.stopPropagation();
-                var searchname = $(this).val();
-                $.get('http://test.huiji.wiki:8080/queryService/webapi/page/suggest/' + searchname, function (data) {
-                    var content = '';
-                    $('#searchform #search-result').remove();
-                    data.forEach(function (item) {
-                        content += '<li><a href="http://' + item.address + '">' + item.title + '</a></li>';
-                    });
-                    $('#searchform').append('<ul id="search-result">' + content + '</ul>');
-                });
+    $('#globalSearchInput').keyup(function (e) {
+        e.stopPropagation();
+        var length = $(this).width()+'px';
+        var searchname = $(this).val();
+        $.get('http://test.huiji.wiki:8080/queryService/webapi/page/suggest/' + searchname, function (data) {
+            var content = '';
+            $('#searchform #search-result').remove();
+            if (data=='')
+            return;
+            data.forEach(function (item) {
+                content += '<li><a href="http://' + item.address + '">' + item.title + '</a></li>';
             });
-        }
-    }
+            $('#searchform').append('<ul id="search-result">' + content + '</ul>');
+            $('#search-result').css('width',length);
+        });
+    }).focus(function(){
+        $('#search-result').show();
+    }).blur(function(){
+        setTimeout("$('#search-result').hide();",100);  //计时器用来防止链接点击时不执行跳转
+    });
 
     $('body').on('touchstart','.phone-wrapper',function(){
         $('#menu-toggle').trigger('click');
