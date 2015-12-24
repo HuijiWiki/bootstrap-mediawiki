@@ -81,7 +81,7 @@ $(document).ready(function(){
         e.stopPropagation();
         var length = $(this).width()+'px';
         var searchname = $(this).val();
-        $.get('http://test.huiji.wiki:8080/queryService/webapi/page/suggest/' + searchname, function (data) {
+        $.get('http://huijidata.com:8080/queryService/webapi/page/suggest/' + searchname, function (data) {
             var content = '';
             $('#searchform #search-result').remove();
             if (data=='')
