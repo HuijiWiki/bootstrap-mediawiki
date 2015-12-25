@@ -213,7 +213,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     <small>
                                     <?php $this->html('subtitle') ?>
                                     <?php
-                                        if ($this->data['isarticle'] &&  !($this->skin->getTitle()->isMainPage()) && $this->skin->getTitle()->exists()){
+                                        if ($this->data['isarticle'] &&  !($this->skin->getTitle()->isMainPage()) && $this->skin->getTitle()->exists() && $action == 'view'){
                                             $rev = Revision::newFromTitle($this->skin->getTitle());
                                             $revId = $rev->getId();
                                             $editorId = $rev->getUser();
