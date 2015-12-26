@@ -100,6 +100,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         $wgFavicon = (new wSiteAvatar($wgHuijiPrefix, 'l'))->getAvatarImage();
         $this->skin = $this->data['skin'];
         $action = $wgRequest->getText( 'action' );
+        echo '<!-- '.$action.'-->';
         $url_prefix = str_replace( '$1', '', $wgArticlePath );
         $NS = $wgTitle->getNamespace();
         // Suppress warnings to prevent notices about missing indexes in $this->data
@@ -213,6 +214,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     <small>
                                     <?php $this->html('subtitle') ?>
                                     <?php
+                                    echo '<!-- '.$action.'-->';
                                         if ($this->data['isarticle'] &&  !($this->skin->getTitle()->isMainPage()) && $this->skin->getTitle()->exists() && $action == 'view'){
                                             $rev = Revision::newFromTitle($this->skin->getTitle());
                                             $revId = $rev->getId();
