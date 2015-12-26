@@ -100,7 +100,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         $wgFavicon = (new wSiteAvatar($wgHuijiPrefix, 'l'))->getAvatarImage();
         $this->skin = $this->data['skin'];
         $action = $wgRequest->getText( 'action' );
-        echo '<!-- '.$action.'-->';
         $url_prefix = str_replace( '$1', '', $wgArticlePath );
         $NS = $wgTitle->getNamespace();
         // Suppress warnings to prevent notices about missing indexes in $this->data
@@ -214,8 +213,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     <small>
                                     <?php $this->html('subtitle') ?>
                                     <?php
-                                    echo '<!-- '.$action.'-->';
-                                        if ($this->data['isarticle'] &&  !($this->skin->getTitle()->isMainPage()) && $this->skin->getTitle()->exists() && $action == 'view'){
+                                        if ($this->data['isarticle'] &&  !($this->skin->getTitle()->isMainPage()) && $this->skin->getTitle()->exists() && $action == ''){
                                             $rev = Revision::newFromTitle($this->skin->getTitle());
                                             $revId = $rev->getId();
                                             $editorId = $rev->getUser();
@@ -236,7 +234,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             // $userPageURL = htmlspecialchars( $userPage->getFullURL() );
                                             // $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
                                             // $edittime = HuijiMiddleware::getTimeAgo( $bjtime );
-                                            
                                             echo '<div class="bdsharebuttonbox pull-right hidden-sm hidden-xs" data-tag="share_2"><a href="#" class="icon-weixin-share" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-qqspace-share" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="icon-tieba-share" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="icon-douban-share" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
                                         }
                                     ?>
@@ -286,7 +283,9 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <!-- /catlinks -->
                         </div>
                         <?php endif; ?>
+                        <?php if($this->data['isarticle'] && $action==''): ?>
                         <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-qqspace-share" data-tag="share_1" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="icon-tieba-share" data-tag="share_1" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="icon-douban-share" data-tag="share_1" data-cmd="douban" title="分享到豆瓣网"></a></div>
+                        <?php endif; ?>
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
                             $commentHtml = '<div class="clearfix"></div>';
