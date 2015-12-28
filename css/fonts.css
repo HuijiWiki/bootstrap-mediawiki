@@ -28,7 +28,7 @@
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 50px;
+    line-height: 47px;
  }
 #pt-notifications-alert:before {
     content: "\f0a2";
