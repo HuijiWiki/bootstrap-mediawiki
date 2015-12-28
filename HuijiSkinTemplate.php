@@ -82,10 +82,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
     protected function nav_notification( $nav ) {
         $output = '';
         foreach ( $nav as $topItem ) {
-            $pageTitle = Title::newFromText( $topItem['link'] ?: $topItem['title'] );
-
-            $output .= '<li id="pt-notifications-alert"><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a>'. $topItem['title'] .'</li>';
-            
+            $output .= '<li id="pt-'.$topItem['id'].'"><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a>'. $topItem['title'] .'</li>';
         }//end foreach
         return $output;
     }//end nav
@@ -198,10 +195,10 @@ Class HuijiSkinTemplate extends BaseTemplate {
     }//end get_page_links
 
     /* notification adapter */
-    protected function notificationAdapter($array){
+    protected function alertAdapter($array){
         $nav = array();
         $item = $array['notifications-alert'];
-        $key = key($array);
+        $key = 'notifications-alert';
         $link = array(
             'id' => Sanitizer::escapeId( $key ),
             'attributes' => $item['attributes'],
@@ -214,7 +211,27 @@ Class HuijiSkinTemplate extends BaseTemplate {
         $nav[] = $link;
         return $nav;        
     }
+    /* notification adapter */
+    protected function messageAdapter($array){
+        if (!empty($array['notifications-message'])){
+            $nav = array();
+            $item = $array['notifications-message'];
+            $key = 'notifications-message';
+            $link = array(
+                'id' => Sanitizer::escapeId( $key ),
+                'attributes' => $item['attributes'],
+                'link' => htmlspecialchars( $item['href'] ),
+                'key' => $item['key'],
+                'class' => htmlspecialchars( $item['class'][0] ),
+                'title' => htmlspecialchars( $item['text'] ),
+            );
+            $link['title'] = '<span class="badge">' . $link['title'] .'</span>';
+            $nav[] = $link;
+            return $nav;                   
+        } 
+        return '';
 
+    }
     /* dropdown button adapter (useful for personal tools) */
     protected function dropdownAdapter( $array, $title, $which ) {
         $nav = array();
@@ -505,7 +522,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                     </li>
                                   </ul>
                                 </li>
-                                <li>
+                                <li class="hidden-xs hidden-sm">
                                     <a rel="nofollow" href="http://www.huiji.wiki/wiki/创建新wiki">创建wiki</a>
                                 </li>
                                 <li class="hidden-xs hidden-sm">
@@ -524,14 +541,16 @@ Class HuijiSkinTemplate extends BaseTemplate {
                             unset($personal_urls['notifications-message']);
                             unset($personal_urls['userpage']);
                             $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon, 'user' );
-                            $user_notify = $this->nav_notification($this->notificationAdapter($this->data['personal_urls']));
+                            $user_alert = $this->nav_notification($this->alertAdapter($this->data['personal_urls']));
+                            $user_message = $this->nav_notification($this->messageAdapter($this->data['personal_urls']));
                         }
                         $userPage = Title::makeTitle( NS_USER, $wgUser->getName() );
                         $userPageURL = htmlspecialchars( $userPage->getFullURL() );
                         /*$avatar = new wAvatar( $wgUser->getID(), 'l' );*/
                         $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right navbar-user">';
                         $output .= '<li><a href="'.$userPageURL.'"><span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span><span class="hidden-xs">'.$wgUser->getName().'</span></a></li>';
-                        $output .= $user_notify;
+                        $output .= $user_alert;
+                        $output .= $user_message;
                         $output .= '<li class="dropdown collect"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-heart-o"></i></i></a><ul class="dropdown-menu collect-menu">';
                         $sites = UserSiteFollow::getFullFollowedSitesWithDetails( $wgUser->getId(),$wgUser->getId() );
                         $count = count($sites);

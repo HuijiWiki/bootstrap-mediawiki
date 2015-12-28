@@ -18,7 +18,7 @@ var flowAdapter = {
 						'<div class="media-body"><h4 class="media-heading">'+
 							'<a href="'+items['titleLink']+'" class="talk-thread-title">'+
 								items['title']+
-							'</a>'+
+							'</a>'+ '（' + $items['lastUpdated'] + '）' + 
 						'</h4>'+
 						'<div class="talk-total-replies">'+items['postNum']+'条信息</div>'+
 						'<ul class="media-list talk-replies">';
@@ -30,7 +30,7 @@ var flowAdapter = {
 							'<li class="media talk-reply">'+
 								'<div class="pull-left"><a href="#"><i class="media-object fa fa-comment fa-2x"></i></a></div>'+
 								'<div class="media-body"><div class="media-heading talk-user-name">'+
-									'<a href="'+items.posts[l]['userLink']+'">'+items.posts[l]['userName']+'</a>'+' ('+items.posts[l]['date']+')'+
+									'<a href="'+items.posts[l]['userLink']+'">'+items.posts[l]['userName']+'</a>'+
 								'</div>'+
 								'<div class="talk-message-body">'+
 									items.posts[l]['content']+
@@ -93,6 +93,7 @@ var flowAdapter = {
 		var topic = {};
 		topic.postNum = self.data.flow["view-topiclist"].result.topiclist.revisions[rev].reply_count;
 		topic.title = self.data.flow["view-topiclist"].result.topiclist.revisions[rev].content.content;
+		topic.lastUpdated = topic.postNum = self.data.flow["view-topiclist"].result.topiclist.revisions[rev].last_updated_readable;
 		topic.titleLink = '/wiki/Topic:'+self.data.flow["view-topiclist"].result.topiclist.revisions[rev].workflowId;
 		topic.posts = [];
 		for (var k = 0; k < self.data.flow["view-topiclist"].result.topiclist.revisions[rev].replies.length; k++){
