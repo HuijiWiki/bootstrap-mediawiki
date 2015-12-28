@@ -1459,7 +1459,7 @@ ol.carousel-indicators{
     font-size: 14px;
 }
 /*hack notification*/
-#pt-notifications-alert, #pt-notications-message{
+#pt-notifications-alert, #pt-notifications-message{
     font-size: 18px;
     position: relative;
 }
