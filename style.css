@@ -1463,7 +1463,7 @@ ol.carousel-indicators{
     font-size: 18px;
     position: relative;
 }
-#pt-notifications-alert .mw-echo-notifications-badge, #pt-notications-message .mw-echo-notifications-badge{
+#pt-notifications-alert .mw-echo-notifications-badge, #pt-notifications-message .mw-echo-notifications-badge{
     opacity: 0;
     position: absolute!important;
     left: 0;
