@@ -52,13 +52,13 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         }//end else
 
                         $slug = strtolower( str_replace(' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', trim( strip_tags( $subLink['title'] ) ) ) ) );
-                        $output .= "<li {$subLink['attributes']}><a href='{$href}' class='{$subLink['class']} {$slug}'>{$subLink['title']}</a>";
+                        $output .= "<li {$subLink['attributes']} id='pt-{$subLink['id']}'><a href='{$href}' class='{$subLink['class']} {$slug}'>{$subLink['title']}</a>";
                     }//end else
                 }
                 $output .= '</ul>';
                 $output .= '</li>';
             } else {
-		$requestUrl = $this->getSkin()->getRequest()->getRequestURL();
+                $requestUrl = $this->getSkin()->getRequest()->getRequestURL();
                 $myLink = $topItem['link'];
                 $query = explode('&', $requestUrl);
                 if (count($query) > 1 && strpos( $requestUrl ,'action' )!== false){
@@ -215,7 +215,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
         return $nav;        
     }
 
-    /* dropdown button adapter */
+    /* dropdown button adapter (useful for personal tools) */
     protected function dropdownAdapter( $array, $title, $which ) {
         $nav = array();
         $nav[] = array('title' => $title );
