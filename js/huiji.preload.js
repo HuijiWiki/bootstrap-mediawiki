@@ -10,10 +10,10 @@ $(function() {
     $('.subnav .nav .dropdown-menu:first').addClass('phone-active');
     // bell animation
     if($('#pt-notifications-alert .mw-echo-notifications-badge').text()!=0){
-        $(this).css({'color':'#fff','background':'rgba(220, 0, 0, 1)'});
+        $('#pt-notifications-alert .mw-echo-notifications-badge').css({'color':'#fff','background':'rgba(220, 0, 0, 1)'});
     }
     if($('#pt-notifications-message .mw-echo-notifications-badge').text()!=0){
-        $(this).css({'color':'#fff','background':'rgba(248,172,5,1)'});
+        $('#pt-notifications-message .mw-echo-notifications-badge').css({'color':'#fff','background':'rgba(248,172,5,1)'});
     }
     $('.navbar-user').on('click','.mw-echo-notifications-badge',function(){
         if(window.innerWidth>=768){
