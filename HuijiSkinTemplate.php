@@ -82,7 +82,10 @@ Class HuijiSkinTemplate extends BaseTemplate {
     protected function nav_notification( $nav ) {
         $output = '';
         foreach ( $nav as $topItem ) {
-            $output .= '<li id="pt-'.$topItem['id'].'"><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a>'. $topItem['title'] .'</li>';
+            if ($topItem == ''){
+                continue;
+            }
+            $output .= '<li id="pt-'.$topItem['id'].'"><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a>'.'</li>';
         }//end foreach
         return $output;
     }//end nav
@@ -206,8 +209,8 @@ Class HuijiSkinTemplate extends BaseTemplate {
             'key' => $item['key'],
             'class' => htmlspecialchars( $item['class'][0] ),
             'title' => htmlspecialchars( $item['text'] ),
+            'icon' => '<i class="fa fa-bell-o"></i>',
         );
-        $link['title'] = '<span class="badge">' . $link['title'] .'</span>';
         $nav[] = $link;
         return $nav;        
     }
@@ -224,8 +227,8 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 'key' => $item['key'],
                 'class' => htmlspecialchars( $item['class'][0] ),
                 'title' => htmlspecialchars( $item['text'] ),
+                'icon' => '<i class="fa fa-envelope-o"></i>',
             );
-            $link['title'] = '<span class="badge">' . $link['title'] .'</span>';
             $nav[] = $link;
             return $nav;                   
         } 
