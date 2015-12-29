@@ -194,6 +194,7 @@ copyWiki.prototype ={
                 withCredentials: true
             },
             success: $.proxy(function(data){
+
                 var result = data.import||[];
                 var error = data.error||'';
                 $('.copy .fa-spinner').remove();
@@ -204,7 +205,6 @@ copyWiki.prototype ={
                         tag: 'import',
                         type: 'info'
                     }
-                    mw.notification.notify('搬运成功', options);
                     $('.copy-modal').modal('hide');
                     this._addSource(token);
                     jQuery.post(
@@ -212,6 +212,8 @@ copyWiki.prototype ={
                         action: 'ajax',
                         rs: 'wfAddForkCount',
                         rsargs: [mw.config.get('wgArticleId')],
+                    },function(){
+                        mw.notification.notify('搬运成功', options);
                     });
                 }else if(error.code == 'cantimport'){
                     var options = {
@@ -251,13 +253,15 @@ copyWiki.prototype ={
                 withCredentials: true
             },
             success: $.proxy(function(data){
+                var that = this;
                 jQuery.post(
                     mw.util.wikiScript(), {
                     action: 'ajax',
                     rs: 'wfAddForkInfo',
-                    rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix'), this.targetPrefix]
+                    rsargs: [mw.config.get('wgArticleId'), wgNamespaceNumber, mw.config.get('wgPageName'), mw.config.get('wgHuijiPrefix'), this.targetPrefix]
+                },function(){
+                    window.location = that.redirectUrl;
                 });
-                window.location = this.redirectUrl;
             },this)
 
         });
@@ -266,5 +270,18 @@ copyWiki.prototype ={
 
 };
 $(function() {
+    jQuery.post(
+        mw.util.wikiScript(), {
+            action: 'ajax',
+            rs: 'wfGetForkInfoByPageId',
+            rsargs: [ mw.config.get('wgArticleId') ]
+        },
+        function( data ) {
+            var res = jQuery.parseJSON(data);
+            if (res.success){
+                console.log(res);
+            }
+        }
+    );
     return new copyWiki();
 });
