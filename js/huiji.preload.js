@@ -9,22 +9,19 @@ $(function() {
     $('.subnav .nav .dropdown:first').addClass('phone-active');
     $('.subnav .nav .dropdown-menu:first').addClass('phone-active');
     // bell animation
-//    if( typeof $('#pt-notifications span').text() === 'number' && $('#pt-notifications span').text()!=0){
-//        $('#pt-notifications i').addClass('bell-animation');
-//        $('.mw-ui-quiet').click(function(){
-//            $('.badge').text('0').hide();
-//            $('#pt-notifications i').removeClass('bell-animation');
-//        });
-//    }else if($('#pt-notifications span').text() == 0){
-//        $('.badge').hide();
-//    }
-    // if($('#pt-notifications-alert .badge').text()!=0){
-    //     $('#pt-notifications-alert .badge').show();
-    // }
-    // if($('#pt-notifications-message .badge').text()!=0){
-    //     $('#pt-notifications-message .badge').show();
-    // }
-
+    if($('#pt-notifications-alert .mw-echo-notifications-badge').text()!=0){
+        $(this).css({'color':'#fff','background':'rgba(220, 0, 0, 1)'});
+    }
+    if($('#pt-notifications-message .mw-echo-notifications-badge').text()!=0){
+        $(this).css({'color':'#fff','background':'rgba(248,172,5,1)'});
+    }
+    $('.navbar-user').on('click','.mw-echo-notifications-badge',function(){
+        if(window.innerWidth>=768){
+            $(this).css({'color':'#fff','background':'#fff'});
+        }else{
+            $(this).css({'color':'#333','background':'#333'});
+        }
+    });
     $('table.article-table')
         .each(function() {
             var $el = $(this);

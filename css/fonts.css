@@ -30,12 +30,12 @@
     -moz-osx-font-smoothing: grayscale;
     line-height: 47px;
  }
-#pt-notifications-alert .mw-echo-notifications-badge:before {
-    content: "\f0a2";
-}
-#pt-notifications-message:before {
-    content: "\f003";
-}
+/*#pt-notifications-alert .mw-echo-notifications-badge:before {*/
+    /*content: "\f0a2";*/
+/*}*/
+/*#pt-notifications-message:before {*/
+    /*content: "\f003";*/
+/*}*/
 .icon-lv1,.icon-lv2,.icon-lv3,.icon-lv4,.icon-lv5,.icon-lv6{
     color: #666;
 }
