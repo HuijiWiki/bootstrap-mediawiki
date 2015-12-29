@@ -1485,6 +1485,10 @@ ol.carousel-indicators{
 #pt-notifications-message .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon{
     top: 1em;
 }
+.skin-bootstrap-mediawiki .mw-echo-ui-notificationBadgeButtonPopupWidget .oo-ui-popupWidget {
+    font-size: 1.16666667em;
+    left: 16px;
+}
 @media screen and (max-width: 767px) {
     #pt-notifications-alert,  #pt-notifications-message{
         line-height: 40px;

@@ -19,7 +19,10 @@ $(function() {
 //        $('.badge').hide();
 //    }
     if($('#pt-notifications-alert .badge').text()!=0){
-        $('.badge').show();
+        $('#pt-notifications-alert .badge').show();
+    }
+    if($('#pt-notifications-message .badge').text()!=0){
+        $('#pt-notifications-message .badge').show();
     }
 
     $('table.article-table')
