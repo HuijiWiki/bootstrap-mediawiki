@@ -85,7 +85,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
             if ($topItem == ''){
                 continue;
             }
-            $output .= '<li id="pt-'.$topItem['id'].'"><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['icon'] . '</a>'. $topItem['title'] .'</li>';
+            $output .= '<li id="pt-'.$topItem['id'].'"><a class="'.$topItem['class'].'" href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a>'.'</li>';
         }//end foreach
         return $output;
     }//end nav
@@ -211,7 +211,6 @@ Class HuijiSkinTemplate extends BaseTemplate {
             'title' => htmlspecialchars( $item['text'] ),
             'icon' => '<i class="fa fa-bell-o"></i>',
         );
-        $link['title'] = '<span class="badge">' . $link['title'] .'</span>';
         $nav[] = $link;
         return $nav;        
     }
@@ -230,7 +229,6 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 'title' => htmlspecialchars( $item['text'] ),
                 'icon' => '<i class="fa fa-envelope-o"></i>',
             );
-            $link['title'] = '<span class="badge">' . $link['title'] .'</span>';
             $nav[] = $link;
             return $nav;                   
         } 

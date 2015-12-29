@@ -30,7 +30,7 @@
     -moz-osx-font-smoothing: grayscale;
     line-height: 47px;
  }
-#pt-notifications-alert:before {
+#pt-notifications-alert .mw-echo-notifications-badge:before {
     content: "\f0a2";
 }
 #pt-notifications-message:before {

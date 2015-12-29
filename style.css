@@ -1459,116 +1459,39 @@ ol.carousel-indicators{
     font-size: 14px;
 }
 /*hack notification*/
-#pt-notifications-alert, #pt-notifications-message{
-    font-size: 18px;
-    position: relative;
-}
-#pt-notifications-alert .mw-echo-notifications-badge, #pt-notifications-message .mw-echo-notifications-badge{
-    opacity: 0;
-    position: absolute!important;
-    left: 0;
-    right: 0;
-    top: 20px;
-    bottom: 0;
-}
-#pt-notifications-alert .oo-ui-popupWidget-popup, #pt-notifications-message .oo-ui-popupWidget-popup{
-    font-size: 14px;
-}
-#pt-notifications-alert .oo-ui-labelElement-label, #pt-notifications-message .oo-ui-labelElement-label{
-    margin: 0;
-    padding: 0;
-}
-#pt-notifications-alert .oo-ui-buttonGroupWidget, #pt-notifications-message .oo-ui-buttonGroupWidget {
-    display: block;
-}
-#pt-notifications-alert .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon,
-#pt-notifications-message .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon{
-    top: 1em;
-}
-.skin-bootstrap-mediawiki .mw-echo-ui-notificationBadgeButtonPopupWidget .oo-ui-popupWidget {
-    font-size: 1.16666667em;
-    left: 16px;
-}
-@media screen and (max-width: 767px) {
-    #pt-notifications-alert,  #pt-notifications-message{
-        line-height: 40px;
-        color: #fff;
-        padding: 0 5px;
-    }
-    .oo-ui-popupWidget-popup {
-        width: 300px!important;
-        margin-left: -230px!important;
-    }
-    .oo-ui-popupWidget-body {
-        width: 100%!important;
-    }
-}
-
-/*edit style*/
-#add-category-btn{
-    padding: 3px 5px;
-    border: 1px solid #aaaaaa;
-    border-radius: 3px;
-    cursor: pointer;
-}
-#wiki-body .last .popover-title {
-    padding: 8px 14px;
-}
-#catlinks .last .top{
-    bottom: 200px;
-    top: inherit!important;
-}
-.edit-input{
-    border: 1px solid #aaa;
-    min-height: 30px;
-    height: auto;
-    padding:3px 5px;
-    cursor: text;
-}
-.edit-field input{
-    border: none;
-    width: 10px;
-    display: inline-block;
-    cursor: text;
-}
-.edit-field input:focus{
-    width: 60px;
-}
-.edit-input li{
-    margin: 0;
-    border-radius: 3px;
-    margin-right: 5px;
-    margin-bottom: 5px!important;
-    line-height: 1.2!important;
-    cursor: default;
-}
-.edit-input li i{
-    font-size: 12px;
-    cursor: pointer;
-}
-.edit-input .edit-field{
-    border: none;
-}
-.popover.bottom  {
-    background: #fff;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-.edit-span{
-    border: 1px solid #999!important;
-}
-.popover-content .edit:after {
-    content: '';
-    clear: both;
-    display: block;
-}
-.edit-buttons {
-    margin-top: 10px;
-    float: right;
-}
-.edit-tutorial {
-	display: inline-block;
-    font-size: 12px;
-    color: #ccc;
-    padding-top: 12px;
-}
+/*#pt-notifications-alert, #pt-notifications-message{*/
+    /*font-size: 18px;*/
+    /*position: relative;*/
+/*}*/
+/*#pt-notifications-alert .oo-ui-popupWidget-popup, #pt-notifications-message .oo-ui-popupWidget-popup{*/
+    /*font-size: 14px;*/
+/*}*/
+/*#pt-notifications-alert .oo-ui-labelElement-label, #pt-notifications-message .oo-ui-labelElement-label{*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+/*}*/
+/*#pt-notifications-alert .oo-ui-buttonGroupWidget, #pt-notifications-message .oo-ui-buttonGroupWidget {*/
+    /*display: block;*/
+/*}*/
+/*#pt-notifications-alert .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon,*/
+/*#pt-notifications-message .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon{*/
+    /*top: 1em;*/
+/*}*/
+/*.skin-bootstrap-mediawiki .mw-echo-ui-notificationBadgeButtonPopupWidget .oo-ui-popupWidget {*/
+    /*font-size: 1.16666667em;*/
+    /*left: 16px;*/
+/*}*/
+/*@media screen and (max-width: 767px) {*/
+    /*#pt-notifications-alert,  #pt-notifications-message{*/
+        /*line-height: 40px;*/
+        /*color: #fff;*/
+        /*padding: 0 5px;*/
+    /*}*/
+    /*.oo-ui-popupWidget-popup {*/
+        /*width: 300px!important;*/
+        /*margin-left: -230px!important;*/
+    /*}*/
+    /*.oo-ui-popupWidget-body {*/
+        /*width: 100%!important;*/
+    /*}*/
+/*}*/
