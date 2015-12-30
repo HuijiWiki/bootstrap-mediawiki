@@ -123,7 +123,7 @@ $wgResourceModules['skins.frontpage'] = array(
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
-	'position' => 'bottom',
+	'position' => 'top',
 );
 $wgResourceModules['skins.bootstrapmediawiki.frontpage.cloud'] = array(
 	'scripts' => array(
