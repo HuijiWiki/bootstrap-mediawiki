@@ -42,12 +42,13 @@ $(document).ready(function(){
         Detector.Showimg();
     }
     else if(window.innerWidth>=1200){
-//        if(localStorage.getItem('wg-toggle')!='off') {
-            mw.loader.using('skins.three');
-//            $('#wg-toggle').addClass('icon-close on');
-//        }else{
-//            $('#wg-toggle').addClass('icon-close off');
-//        }
+        $.getScript( "//cdn.bootcss.com/three.js/r55/three.min.js" )
+          .done(function( script, textStatus ) {
+            mw.loader.load('skins.bootstrapmediawiki.frontpage.cloud');
+          })
+          .fail(function( jqxhr, settings, exception ) {
+            console.log('unable to download three.js');
+        });
     }
     $('svg .day').tooltip({title:"tooltip - title", container:"body"});
     $('#user .nav-tab li').click(function(){

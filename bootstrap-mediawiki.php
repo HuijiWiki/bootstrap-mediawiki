@@ -118,14 +118,17 @@ $wgResourceModules['skins.frontpage'] = array(
 	'scripts' => array(
 		$skinDir . '/js/effect.js',
 	),
+	'dependencies' => array(
+		'skins.bootstrapmediawiki.top',
+	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
 );
-$wgResourceModules['skins.three'] = array(
+$wgResourceModules['skins.bootstrapmediawiki.frontpage.cloud'] = array(
 	'scripts' => array(
-		$skinDir . '/js/three.min.js',
-//		$skinDir . '/js/stats.min.js',
+// 		$skinDir . '/js/three.min.js',
+// //		$skinDir . '/js/stats.min.js',
 		$skinDir . '/js/cloud.js',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],

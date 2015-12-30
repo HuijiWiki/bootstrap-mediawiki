@@ -155,22 +155,11 @@ $(document).ready(function(){
                 format:"json"})
                 .done(function(data){
                     sessionStorage.setItem('flowcache_'+talkpage, data);
-                    if (data.flow){
-                        var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
-                        if (talkCount > 0){
-                            $("#ca-talk a").append("<sup><span class='badge' style='display:inline'>"+talkCount+"</span></sup>");
-                            if (!mw.config.get('wgIsMainPage')){
-                                flowAdapter.init(data);
-                                var items = flowAdapter.convert(data);
-                                var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
-                                $('#mw-content-text').after(html);
-                            }
-                        }
-                    }
+                    renderFlowAbstract(data);
 
                 });
     } else if (mw.config.get('wgIsArticle') && sessionStorage['flowcache_'+talkpage]){
-        renderFlowAbstract(sessionStorage['flowcache_'+talkpage]);
+        renderFlowAbstract(sessionStorage.getItem('flowcache_'+talkpage));
     }
     /**
     * Render the flow abstract for article pages and display flow count bubble.
@@ -180,7 +169,7 @@ $(document).ready(function(){
         if (data.flow){
             var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
             if (talkCount > 0){
-                $("#ca-talk a").append("<sup>&nbsp;<span class='badge'>"+talkCount+"</span></sup>");
+                $("#ca-talk a").append("<sup><span class='badge' style='display:inline'>"+talkCount+"</span></sup>");
                 if (!mw.config.get('wgIsMainPage')){
                     flowAdapter.init(data);
                     var items = flowAdapter.convert(data);

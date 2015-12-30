@@ -21,21 +21,21 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-#pt-notifications-alert {
-     font-family: 'icomoon';
-     speak: none;
-     font-style: normal;
-     font-weight: normal;
-     font-variant: normal;
-     text-transform: none;
-
-     /* Better Font Rendering =========== */
-     -webkit-font-smoothing: antialiased;
-     -moz-osx-font-smoothing: grayscale;
+#pt-notifications-alert, #pt-notifications-message {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 47px;
  }
-#pt-notifications-alert:before {
-    content: "\e086";
-}
+/*#pt-notifications-alert .mw-echo-notifications-badge:before {*/
+    /*content: "\f0a2";*/
+/*}*/
+/*#pt-notifications-message:before {*/
+    /*content: "\f003";*/
+/*}*/
 .icon-lv1,.icon-lv2,.icon-lv3,.icon-lv4,.icon-lv5,.icon-lv6{
     color: #666;
 }

@@ -9,7 +9,7 @@ $('#globalSearchInput').keyup(function (e) {
         if (data=='')
         return;
         data.forEach(function (item) {
-            content += '<li><a href="http://' + item.address + '">' + item.title + '</a></li>';
+            content += '<li><a href="http://'+item.sitePrefix+'.huiji.wiki/index.php?curid='+item.id+'">' + item.title + '</a></li>';
         });
         $('#searchform').append('<ul id="search-result">' + content + '</ul>');
         $('#search-result').css('width',length);
@@ -17,5 +17,5 @@ $('#globalSearchInput').keyup(function (e) {
 }).focus(function(){
     $('#search-result').show();
 }).blur(function(){
-    setTimeout("$('#search-result').hide();",100);  //计时器用来防止链接点击时不执行跳转
+    setTimeout("$('#search-result').hide();",200);  //计时器用来防止链接点击时不执行跳转
 });
