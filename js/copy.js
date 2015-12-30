@@ -277,7 +277,10 @@ $(function() {
         rsargs: [mw.config.get('wgArticleId')]
     },
     function( data ) {
-        var content = '<span>来自<a href="'+data.fork_from+'.huiji.wiki"></span>';
+        var res = JSON.parse(data);
+        console.log(res);
+        console.log(typeof res);
+        var content = '<span>来自<a href="'+res.fork_from+'.huiji.wiki">'+res.fork_from+'.huiji.wiki</span>';
         $('#contentSub').append(content);
     });
     
