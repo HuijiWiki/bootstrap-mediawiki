@@ -193,14 +193,14 @@ function animate() {
 
 
 
-        id = requestAnimationFrame( animate );
+    id = requestAnimationFrame( animate );
 
-        var position = ( ( Date.now() - start_time ) * 0.03 ) % 8000;
+    var position = ( ( Date.now() - start_time ) * 0.03 ) % 8000;
 
-        camera.position.x += ( mouseX - camera.position.x ) * 0.01;
-        camera.position.y += ( - mouseY - camera.position.y ) * 0.01;
-        camera.position.z = - position + 8000;
-        renderer.render( scene, camera );
+    camera.position.x += ( mouseX - camera.position.x ) * 0.01;
+    camera.position.y += ( - mouseY - camera.position.y ) * 0.01;
+    camera.position.z = - position + 8000;
+    renderer.render( scene, camera );
     if(start == 'stop'){
         window.cancelAnimationFrame(id);
         console.log(id);

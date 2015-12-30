@@ -1390,64 +1390,6 @@ ol.carousel-indicators{
 #wb_connect_btn img{
 	display: none;
 }
-
-/*complete user info*/
-/*div.mw-createacct-benefits-container {*/
-    /*float: left;*/
-/*}*/
-/*#wiki-body h2, #DiscussionSnapshot {*/
-    /*border-bottom: none;*/
-    /*padding-bottom: 0.5em;*/
-    /*padding-top: 50px;*/
-    /*margin: 0;*/
-/*}*/
-/*.mw-ui-container h2 {*/
-    /*border: 0;*/
-    /*font-weight: bold;*/
-/*}*/
-/*.mw-number-text.icon-edits {*/
-    /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABLCAYAAADnAAD1AAAC00lEQ…FvH8CtoSn7goEChgHOuCcGBdQHMOoTLBVQATUFVEAFPPb9BfgD+K1G8e16AAAAAElFTkSuQmCC) no-repeat left center;*/
-    /*background: url(/resources/src/mediawiki.special/images/icon-edits.png?cf385) no-repeat left center!ie;*/
-/*}*/
-/*div.mw-number-text {*/
-    /*display: block;*/
-    /*font-size: 1.2em;*/
-    /*color: #444;*/
-    /*margin-top: 1em;*/
-    /*padding: 0 0 0 95px;*/
-    /*min-height: 75px;*/
-    /*text-align: center;*/
-/*}*/
-/*[class^="icon-"], [class*=" icon-"] {*/
-    /*font-family: 'icomoon';*/
-    /*speak: none;*/
-    /*font-style: normal;*/
-    /*font-weight: normal;*/
-    /*font-variant: normal;*/
-    /*text-transform: none;*/
-    /*line-height: 1;*/
-    /*-webkit-font-smoothing: antialiased;*/
-    /*-moz-osx-font-smoothing: grayscale;*/
-/*}*/
-/*#bodyContent div.mw-number-text h3 {*/
-    /*top: 0;*/
-    /*margin: 0;*/
-    /*padding: 0;*/
-    /*color: #252525;*/
-    /*font-family: "Linux Libertine", Georgia, Times, serif;*/
-    /*font-weight: normal;*/
-    /*font-size: 2.2em;*/
-    /*line-height: 1.2;*/
-    /*text-align: center;*/
-/*}*/
-/*.mw-number-text.icon-pages {*/
-    /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABLCAYAAADnAAD1AAAB10lEQ…1QOwISkIAEJKA5wBdUHaJqzgAOawQkIAEZnwAlIAEJyJT6BiMnuFx6r2hrAAAAAElFTkSuQmCC) no-repeat left center;*/
-    /*background: url(/resources/src/mediawiki.special/images/icon-pages.png?4f0fc) no-repeat left center!ie;*/
-/*}*/
-/*.mw-number-text.icon-contributors {*/
-    /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAtCAYAAAA5reyyAAAEWElEQ…XoTziZBVbdKtBfgWswC0lj1ckssAiDiGEyzcxgCmV+OvgXgnz5DEfjyeMAAAAASUVORK5CYII=) no-repeat left center;*/
-    /*background: url(/resources/src/mediawiki.special/images/icon-contributors.png?19bbb) no-repeat left center!ie;*/
-/*}*/
 .mw-ui-flush-right{
     float: right;
 }

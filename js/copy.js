@@ -271,17 +271,18 @@ copyWiki.prototype ={
 };
 $(function() {
     jQuery.post(
-        mw.util.wikiScript(), {
-            action: 'ajax',
-            rs: 'wfGetForkInfoByPageId',
-            rsargs: [ mw.config.get('wgArticleId') ]
-        },
-        function( data ) {
-            var res = jQuery.parseJSON(data);
-            if (res.success){
-                console.log(res);
-            }
-        }
-    );
+    mw.util.wikiScript(), {
+        action: 'ajax',
+        rs: 'wfGetForkInfoByPageId',
+        rsargs: [mw.config.get('wgArticleId')]
+    },
+    function( data ) {
+        var res = JSON.parse(data);
+        console.log(res);
+        console.log(typeof res);
+        var content = '<span>来自<a href="'+res.fork_from+'.huiji.wiki">'+res.fork_from+'.huiji.wiki</span>';
+        $('#contentSub').append(content);
+    });
+    
     return new copyWiki();
 });
