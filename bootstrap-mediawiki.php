@@ -96,6 +96,9 @@ $wgResourceModules['skins.bootstrapmediawiki.editcategory'] = array(
 	'scripts' => array(
 		$skinDir . '/js/editcategory.js',
 	),
+	'dependencies' => array(
+		'skins.bootstrapmediawiki.top',
+	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'bottom',
