@@ -278,12 +278,26 @@ $(function() {
                 rsargs: [mw.config.get('wgArticleId')]
             },
             function (data) {
-                var res = JSON.parse(data);
                 if (data != '[]') {
-                    var content = '<span>&nbsp&nbsp&nbsp搬运自<a href="' + res.fork_from + '.huiji.wiki">' + res.fork_sitename + '</span>';
+                    var res = JSON.parse(data);
+                    var content = '<span>&nbsp;&nbsp;&nbsp;搬运自<a href="' + res.fork_from + '.huiji.wiki">' + res.fork_sitename + '</span>';
                     $('#contentSub small').append(content);
                 }
-            });
+            }
+        );
+        jQuery.post(
+            mw.util.wikiScript(), {
+            action: 'ajax',
+            rs: 'wfGetForkCountByPageId',
+            rsargs: [mw.config.get('wgArticleId')]
+        },function(data){
+            if (data != '[]') {
+                var res = JSON.parse(data);
+                var content = '<span>&nbsp;&nbsp;&nbsp;已被搬运' + res.fork_count + '次</span>';
+                $('#contentSub small').append(content);
+            }
+            window.location = that.redirectUrl;
+        });
     }
     
     return new copyWiki();
