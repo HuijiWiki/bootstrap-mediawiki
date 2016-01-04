@@ -30,7 +30,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
      * initialize the page
      */
     public function initPage( OutputPage $out ) {
-        global $wgSiteJS, $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer, $wgUser;
+        global $wgSiteJS, $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer, $wgUser, $wgThanksConfirmationRequired;
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
@@ -59,6 +59,15 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         $NS = $out->getTitle()->getNamespace();
         if ( $out->getUser()->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $out->getTitle()->exists()){
             $out->addModules( array('skins.bootstrapmediawiki.fork') );
+        }
+        if ($this->getSkin()->getTitle()->hasSourceText() &&  !($this->getSkin()->getTitle()->isMainPage())
+            && $this->getSkin()->getTitle()->exists() && $this->getRequest()->getText('action') == ''
+            && class_exists( 'EchoNotifier' ) && $this->getSkin()->getUser()->isLoggedIn() 
+        ){
+            $out->addModules( array( 'ext.thanks.revthank' ) );
+            $out->addJsConfigVars( 'thanks-confirmation-required',
+                $wgThanksConfirmationRequired 
+            );
         }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
     }//end initPage
@@ -223,21 +232,27 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             $editorId = $rev->getUser();
                                             if ($editorId !== 0){
                                                 $linkAttr = array('class' => 'mw-ui-anchor mw-ui-progressive mw-ui-quiet');
+                                                $editorAttr = array('class' => 'mw-ui-anchor mw-ui-progressive mw-ui-quiet mw-userlink');
                                                 $editor = User::newFromId( $editorId );
                                                 $editorName = $editor->getName();
-                                                $editorLink = Linker::Link($editor->getUserPage(), $editorName, $linkAttr);
+                                                $editorLink = Linker::Link($editor->getUserPage(), $editorName, $editorAttr);
                                                 $bjtime = strtotime( $rev->getTimestamp() ) + 8*60*60;
                                                 $edittime = HuijiFunctions::getTimeAgo( $bjtime );
                                                 $diff = SpecialPage::getTitleFor('Diff',$revId);
                                                 $diffLink = Linker::LinkKnown($diff,'修改',$linkAttr);
-                                                echo $editorLink.'&nbsp于'.$edittime.'前'.$diffLink.'了此页面';
+                                                $thankLink = '';
+                                                if ( class_exists( 'EchoNotifier' )
+                                                    && $this->skin->getUser()->isLoggedIn() 
+                                                    && $this->skin->getUser()->getId() !== $editorId
+                                                ) {
+                                                    // Load the module for the thank links
+                                                    $thankLink .= '（<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet mw-thanks-thank-link" data-revision-id="'
+                                                        .$revId.'" href="javascript:void(0);">'.wfMessage('thanks-thank').'</a>）';
+                                                }
+                                                //Make it a td to reuse ext.thank.revthank   
+                                                echo $editorLink.'&nbsp于'.$edittime.'前'.$diffLink.'了此页面'.$thankLink;
                                             }
-                                            // $revPageId = $this->getSkin()->getTitle()->getArticleId();
-                                            // $editinfo = UserStats::getLastEditer($revPageId,$wgHuijiPrefix);
-                                            // $userPage = Title::makeTitle( NS_USER, $editinfo['rev_user_text'] );
-                                            // $userPageURL = htmlspecialchars( $userPage->getFullURL() );
-                                            // $bjtime = strtotime( $editinfo['rev_timestamp'] ) + 8*60*60;
-                                            // $edittime = HuijiMiddleware::getTimeAgo( $bjtime );
+
                                             echo '<div class="bdsharebuttonbox pull-right hidden-sm hidden-xs" data-tag="share_2"><a href="#" class="icon-weixin-share" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-qqspace-share" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="icon-tieba-share" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="icon-douban-share" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
                                         }
                                     ?>
