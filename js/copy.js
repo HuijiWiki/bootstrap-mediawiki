@@ -280,7 +280,7 @@ $(function() {
             function (data) {
                 var res = JSON.parse(data);
                 if (data != '[]') {
-                    var content = '<span>来自<a href="' + res.fork_from + '.huiji.wiki">' + res.fork_from + '.huiji.wiki</span>';
+                    var content = '<span>搬运自<a href="' + res.fork_from + '.huiji.wiki">' + res.fork_from + '.huiji.wiki</span>';
                     $('#contentSub small').append(content);
                 }
             });
