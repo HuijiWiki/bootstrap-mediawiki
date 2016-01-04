@@ -30,7 +30,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
      * initialize the page
      */
     public function initPage( OutputPage $out ) {
-        global $wgSiteJS, $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer;
+        global $wgSiteJS, $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer, $wgUser;
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
@@ -55,6 +55,10 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
         } else {
             $out->addModules( 'skins.bootstrapmediawiki.huiji.globalsearch');
+        }
+        $NS = $out->getTitle()->getNamespace();
+        if ( $out->getUser()->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $out->getTitle()->exists()){
+            $out->addModules( array('skins.bootstrapmediawiki.fork') );
         }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
     }//end initPage
