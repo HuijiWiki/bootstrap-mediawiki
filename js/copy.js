@@ -279,8 +279,7 @@ $(function() {
             },
             function (data) {
                 if (data != '[]') {
-                    var res = JSON.parse(data);
-                    var content = '<span>&nbsp;&nbsp;&nbsp;搬运自<a href="' + res.fork_from + '.huiji.wiki">' + res.fork_sitename + '</span>';
+                    var content = '<span>&nbsp;&nbsp;&nbsp;搬运自<a href="http://' + res.fork_from + '.huiji.wiki">' + res.fork_sitename + '</span>';
                     $('#contentSub small').append(content);
                 }
             }
