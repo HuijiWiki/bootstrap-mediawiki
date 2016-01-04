@@ -211,7 +211,7 @@ copyWiki.prototype ={
                         mw.util.wikiScript(), {
                         action: 'ajax',
                         rs: 'wfAddForkCount',
-                        rsargs: [mw.config.get('wgArticleId')],
+                        rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix')],
                     },function(){
                         mw.notification.notify('搬运成功', options);
                     });
@@ -275,10 +275,11 @@ $(function() {
             mw.util.wikiScript(), {
                 action: 'ajax',
                 rs: 'wfGetForkInfoByPageId',
-                rsargs: [mw.config.get('wgArticleId')]
+                rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix')]
             },
             function (data) {
                 if (data != '[]') {
+                    var res = JSON.parse(data);
                     var content = '<span>&nbsp;&nbsp;&nbsp;搬运自<a href="http://' + res.fork_from + '.huiji.wiki">' + res.fork_sitename + '</span>';
                     $('#contentSub small').append(content);
                 }
@@ -292,7 +293,7 @@ $(function() {
         },function(data){
             if (data != '[]') {
                 var res = JSON.parse(data);
-                var content = '<span>&nbsp;&nbsp;&nbsp;已被搬运' + res.fork_count + '次</span>';
+                var content = '<span>&nbsp;&nbsp;&nbsp;已被搬运' + res + '次</span>';
                 $('#contentSub small').append(content);
             }
             window.location = that.redirectUrl;
