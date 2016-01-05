@@ -289,7 +289,7 @@ $(function() {
             mw.util.wikiScript(), {
             action: 'ajax',
             rs: 'wfGetForkCountByPageId',
-            rsargs: [mw.config.get('wgArticleId')]
+            rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix')]
         },function(data){
             if (data != '[]') {
                 var res = JSON.parse(data);
