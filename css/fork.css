@@ -1,0 +1,24 @@
+.copy-warn{
+    position: fixed;
+    top: 300px;
+    left: 50%;
+    margin-left: -215px;
+    z-index:1051;
+}
+.copy-warn .btn{
+    float: right;
+    margin-top: 10px;
+}
+.copy-modal .modal-dialog{
+    margin-top: 200px;
+}
+.copy-modal .modal-body{
+    max-height: 300px;
+    overflow-y: auto;
+}
+.copy-modal p{
+    margin-bottom: 5px;
+}
+.copy-modal .copy{
+    cursor: pointer;
+}
