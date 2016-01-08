@@ -363,7 +363,7 @@ Class BootstrapMediawikiHooks {
                     '.no-js #loader { display: none;  }' . "\n" . 
                     '.js #loader { display: block; position: absolute; left: 100px; top: 0; }' . "\n" . 
                     '.se-pre-con {' . "\n" . 
-                        'position: fixed;' . "\n" . 
+                        //'position: fixed;' . "\n" . 
                         'left: 0px;' . "\n" . 
                         'top: 0px;' . "\n" . 
                         'width: 100%;' . "\n" . 
