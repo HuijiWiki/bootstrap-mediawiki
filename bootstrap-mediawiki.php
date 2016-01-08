@@ -90,8 +90,11 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 );
 $wgResourceModules['skins.bootstrapmediawiki.fork'] = array(
 	'scripts' => array(
-		$skinDir . '/js/copy.js',
+		$skinDir . '/js/fork.js',
 	),	
+	'styles' => array(
+		$skinDir . '/css/fork.css'                 => array( 'media' => 'all' ),
+	),
 	'dependencies' => array(
 //	    'skins.editable',
 		'skins.bootstrapmediawiki.top',
