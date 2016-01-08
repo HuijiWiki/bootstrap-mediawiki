@@ -245,7 +245,7 @@ copyWiki.prototype ={
                 title: mw.config.get('wgPageName'),
                 summary: "注明出处",
                 format:"json",
-                appendtext: "<noinclude>{{raw:templatemanager:ForkCredit|time="+getFormattedDate()+"|source_page=[["+mw.config.get('wgHuijiPrefix')+":"+mw.config.get('wgPageName')+"]]"+"|carrier=[[User:"+mw.config.get('wgUserName')+"]]}}</noinclude>",
+                //appendtext: "<noinclude>{{raw:templatemanager:ForkCredit|time="+getFormattedDate()+"|source_page=[["+mw.config.get('wgHuijiPrefix')+":"+mw.config.get('wgPageName')+"]]"+"|carrier=[[User:"+mw.config.get('wgUserName')+"]]}}</noinclude>",
                 token: token
             },
             type: 'post',
@@ -271,7 +271,6 @@ copyWiki.prototype ={
 };
 $(function() {
     if(wgNamespaceNumber==10||wgNamespaceNumber==828) {
-        var that = this;
         jQuery.post(
             mw.util.wikiScript(), {
                 action: 'ajax',
@@ -284,7 +283,7 @@ $(function() {
                     var content = '<span>&nbsp;&nbsp;&nbsp;搬运自<a href="http://' + res.fork_from + '.huiji.wiki">' + res.fork_sitename + '</span>';
                     $('#contentSub small').append(content);
                 }
-                window.location = that.redirectUrl;
+                //window.location = that.redirectUrl;
             }
         );
         
