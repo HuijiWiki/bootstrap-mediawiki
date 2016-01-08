@@ -251,6 +251,11 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                                 }
                                                 //Make it a td to reuse ext.thank.revthank   
                                                 echo $editorLink.'&nbsp于'.$edittime.'前'.$diffLink.'了此页面'.$thankLink;
+                                                $pageId = $this->skin->getTitle()->mArticleID;
+                                                $forkCount = TemplateFork::getForkCountByPageId( $pageId, $wgHuijiPrefix );
+                                                if ( $forkCount > 0 ) {
+                                                    echo '&nbsp&nbsp&nbsp已被搬运'.$forkCount.'次';
+                                                }
                                             }
 
                                             echo '<div class="bdsharebuttonbox pull-right hidden-sm hidden-xs" data-tag="share_2"><a href="#" class="icon-weixin-share" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-qqspace-share" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="icon-tieba-share" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="icon-douban-share" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
