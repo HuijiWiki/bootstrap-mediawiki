@@ -271,6 +271,7 @@ copyWiki.prototype ={
 };
 $(function() {
     if(wgNamespaceNumber==10||wgNamespaceNumber==828) {
+        var that = this;
         jQuery.post(
             mw.util.wikiScript(), {
                 action: 'ajax',
