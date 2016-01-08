@@ -90,7 +90,7 @@ p {
 .mw-content-ltr ul, .mw-content-ltr ol {
 	margin-bottom: 9px;;
 }
-.mw-ui-button{
+.sidebar-nav .mw-ui-button{
     min-width:80px;
 }
 ol.references {
