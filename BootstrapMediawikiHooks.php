@@ -341,7 +341,7 @@ Class BootstrapMediawikiHooks {
         $output->addModules( 'ext.wikieditor.huijiextra.bottom' );
         $output->addHeadItem('loader',
                 '<script language="JavaScript">' . "\n" . 
-                    'window.onload = function() {' . "\n" . 
+                    'var showEditor = function() {' . "\n" . 
                     '// Animate loader off screen' . "\n" . 
                         '$(".se-pre-con").fadeOut("slow");' . "\n" . 
                         'var editFormSisyphus = $( "#editform" ).sisyphus( {' . "\n" . 
@@ -356,14 +356,19 @@ Class BootstrapMediawikiHooks {
                                 'return false;' . "\n" . 
                             '}' . "\n" . 
                         '} ); ' . "\n" . 
-                    '}' . "\n" . 
+                    '}' . "\n" .
+                    'if(window.addEventListener){' . "\n" . 
+                        'window.addEventListener("load", showEditor)' . "\n" . 
+                    '}else{' . "\n" . 
+                        'window.attachEvent("onload", showEditor)' . "\n" . 
+                    '}' . "\n" .  
                 '</script>');  
-        $output->addHeadItem('loader',
+        $output->addHeadItem('loadercss',
                 '<style>' . "\n" . 
                     '.no-js #loader { display: none;  }' . "\n" . 
                     '.js #loader { display: block; position: absolute; left: 100px; top: 0; }' . "\n" . 
                     '.se-pre-con {' . "\n" . 
-                        //'position: fixed;' . "\n" . 
+                        'position: fixed;' . "\n" . 
                         'left: 0px;' . "\n" . 
                         'top: 0px;' . "\n" . 
                         'width: 100%;' . "\n" . 
