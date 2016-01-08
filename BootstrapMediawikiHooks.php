@@ -358,6 +358,20 @@ Class BootstrapMediawikiHooks {
                         '} ); ' . "\n" . 
                     '}' . "\n" . 
                 '</script>');  
+        $output->addHeadItem('loader',
+                '<style>' . "\n" . 
+                    '.no-js #loader { display: none;  }' . "\n" . 
+                    '.js #loader { display: block; position: absolute; left: 100px; top: 0; }' . "\n" . 
+                    '.se-pre-con {' . "\n" . 
+                        'position: fixed;' . "\n" . 
+                        'left: 0px;' . "\n" . 
+                        'top: 0px;' . "\n" . 
+                        'width: 100%;' . "\n" . 
+                        'height: 100%;' . "\n" . 
+                        'z-index: 9999;' . "\n" . 
+                        'background: url(/resources/assets/preloader.gif) center no-repeat #fff;' . "\n" . 
+                    '}' . "\n" . 
+                '</style>');  
         $output->prependHTML('<div class="se-pre-con"></div>');
     }
 
