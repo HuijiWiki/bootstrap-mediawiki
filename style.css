@@ -1503,11 +1503,8 @@ ol.carousel-indicators{
         right: 90px;
         left: initial;
     }
-    .ca-help-text{
-    	display:inline;
-    	margin-left:1em;
-    }
-    #ca-talk{
-    	display:inline;
-    }
+}
+.ca-help-text{
+	display:inline;
+	margin-left:1em;
 }

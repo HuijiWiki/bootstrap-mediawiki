@@ -169,7 +169,7 @@ $(document).ready(function(){
         if (data.flow){
             var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
             if (talkCount > 0){
-                $("#ca-talk a").after("<small><span class='help-block ca-help-text'>"+talkCount+"</span></small>");
+                $("#ca-talk a").append("<small><span class='help-block ca-help-text'>"+talkCount+"</span></small>");
                 if (!mw.config.get('wgIsMainPage')){
                     flowAdapter.init(data);
                     var items = flowAdapter.convert(data);
