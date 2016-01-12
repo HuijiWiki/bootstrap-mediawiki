@@ -59,7 +59,7 @@
                 <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes" rel="nofollow"><i class="fa fa-edit"></i> 最近更改</a></li>
                 <li><a href="<?php echo $url_prefix; ?>Special:Randompage" class="random-page" rel="nofollow"><i class="fa fa-random "></i> 随机页面</a></li>
                 <?php if ( $wgEnableUploads ) { ?>
-                    <li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file" rel="nofollow"><i class="fa fa-upload"></i> 上传文件</a></li>
+                    <li><a href="<?php echo $url_prefix; ?>Special:文件上传" class="upload-a-file" rel="nofollow"><i class="fa fa-upload"></i> 上传文件</a></li>
                 <?php } ?>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
