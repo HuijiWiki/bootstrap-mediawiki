@@ -5,11 +5,17 @@
     padding-left: 0;
     border: 1px solid #aaa;
 }
+#search-result li {
+    padding: 8px 10px;
+    clear: both;
+}
 #search-result a {
     transition: none;
-    display: block;
     color: #333;
-    padding: 8px 10px;
+}
+#search-result a:last-child {
+    float: right;
+    color: #428bca;
 }
 #search-result li:hover {
     background: #09c;

@@ -3,13 +3,13 @@ $('#globalSearchInput').keyup(function (e) {
     e.stopPropagation();
     var length = $(this).width()+'px';
     var searchname = $(this).val();
-    $.get('http://huijidata.com:8080/queryService/webapi/page/suggest/' + searchname, function (data) {
+    $.get('http://121.42.179.100:8080/queryService/webapi/page/suggest/' + searchname, function (data) {
         var content = '';
         $('#searchform #search-result').remove();
         if (data=='')
-        return;
+            return;
         data.forEach(function (item) {
-            content += '<li><a href="http://'+item.sitePrefix+'.huiji.wiki/index.php?curid='+item.id+'">' + item.title + '</a></li>';
+            content += '<li><a href="'+item.address+'">' + item.title + '</a><a href="http://'+item.sitePrefix+'.huiji.wiki">'+item.siteName+'</a></li>';
         });
         $('#searchform').append('<ul id="search-result">' + content + '</ul>');
         $('#search-result').css('width',length);
