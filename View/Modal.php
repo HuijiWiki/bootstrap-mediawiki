@@ -65,7 +65,7 @@
                                         <div class="mw-ui-vform-field">
                                                 <input name="wpRemember" type="checkbox" value="1" id="wpRemember" tabindex="4" ><label for="wpRemember">记住我</label>
                                                 <a href="/wiki/%E7%89%B9%E6%AE%8A:%E9%87%8D%E8%AE%BE%E5%AF%86%E7%A0%81" title="特殊:重设密码" class="mw-ui-flush-right">&nbsp;&nbsp;忘记密码？</a>
-                                                <a href="/wiki/%E7%89%B9%E6%AE%8A:%E9%87%8D%E8%AE%BE%E5%AF%86%E7%A0%81" title="特殊:用户登录" class="mw-ui-flush-right">临时密码登录</a>
+                                                <a href="/wiki/Special:Login" title="特殊:用户登录" class="mw-ui-flush-right">临时密码登录</a>
                                         </div>
                                         <div class="mw-ui-vform-field">
                                             <input id="wpLoginAttempt" tabindex="6" class="mw-ui-button btn mw-ui-block mw-ui-constructive" data-loading-text="登录中..." type="button" value="登 录" name="wpLoginAttempt">
