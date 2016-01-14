@@ -3,6 +3,9 @@ $('#globalSearchInput').keyup(function (e) {
     e.stopPropagation();
     var length = $(this).width()+'px';
     var searchname = $(this).val();
+    searchname = searchname.replace(/\s+/g, ' ');
+    if (searchname == ''||searchname == ' ')
+    return;
     $.get('http://121.42.179.100:8080/queryService/webapi/page/suggest/' + searchname, function (data) {
         var content = '';
         $('#searchform #search-result').remove();
