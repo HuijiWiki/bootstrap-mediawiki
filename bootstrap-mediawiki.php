@@ -208,6 +208,7 @@ $wgHooks['EditPage::showEditForm:initial'][] = 'BootstrapMediawikiHooks::addEdit
 $wgHooks['GalleryGetModes'][] = 'BootstrapMediawikiHooks::onGalleryGetModes';
 $wgHooks['ParserFirstCallInit'][] = 'BootstrapMediawikiHooks::registerParserHook';
 $wgHooks['OutputPageMakeCategoryLinks'][] = 'BootstrapMediawikiHooks::onOutputPageMakeCategoryLinks';
+$wgHooks['LinkBegin'][] = 'BootstrapMediawikiHooks::UserLinkBegin';
 // new permission
 $wgAvailableRights[] = 'quickpurge';
 $wgGroupPermissions['sysop']['quickpurge'] = true;

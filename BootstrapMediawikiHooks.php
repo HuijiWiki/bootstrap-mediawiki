@@ -443,5 +443,13 @@ Class BootstrapMediawikiHooks {
     public static function onOutputPageMakeCategoryLinks( &$out, $categories, &$links ) { 
         $out->addModules('skins.bootstrapmediawiki.editcategory');
     }
+    public static function UserLinkBegin( $dummy, $target, &$html, &$customAttribs, &$query,
+        &$options, &$ret ) {
+        if ($target->getNamespace() == NS_USER || $target->getNamespace() == NS_USER_TALK){
+            $customAttribs['class'] = 'mw-userlink';
+        }
+        return true;
+    }
+    
 }
 ?>
