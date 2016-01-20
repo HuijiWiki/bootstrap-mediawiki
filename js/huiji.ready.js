@@ -416,7 +416,7 @@ $(document).ready(function(){
     var own = false;
     var x, y,posX,posY,thisposX,thisposY;
     var card;
-    $('#wiki-body a[href*="'+mw.config.get('wgHuijiSuffix')+'/wiki/%E7%94%A8%E6%88%B7:"] .headimg, #wiki-body a[href*="'+mw.config.get('wgHuijiSuffix')+'/wiki/User:"] .headimg, #wiki-body a[href*="'+mw.config.get('wgHuijiSuffix')+'/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"), #wiki-body a[href*="'+mw.config.get('wgHuijiSuffix')+'/wiki/User:"]:not(":has(img)")').hover(function(e){
+    $('#wiki-body a[href*="/wiki/%E7%94%A8%E6%88%B7:"] .headimg,#wiki-body a[href*="/wiki/User:"] .headimg, #wiki-body a[href*="/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"), #wiki-body a[href*="/wiki/User:"]:not(":has(img)")').hover(function(e){
         if(document.body.clientWidth<=1024){
             e.preventDefault();
         }else {
@@ -445,6 +445,39 @@ $(document).ready(function(){
     }, function() {
         enter = false;
         removeCard();
+    });
+    $('#home-feed-content').on('mouseenter mouseleave','.headimg,a[href*="/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"),a[href*="/wiki/User:"]:not(":has(img)")',function(e){
+        console.log('aaa');
+        if(e.type == "mouseenter"){
+            if(document.body.clientWidth<=1024){
+                e.preventDefault();
+            }else {
+                card = "<div class='user-card'><i class='fa fa-spinner fa-spin'></i></div>";
+                x = 200 - (e.currentTarget.offsetWidth / 2);
+                y = e.currentTarget.offsetHeight;
+                posX = getPos(e.currentTarget).x;
+                posY = getPos(e.currentTarget).y;
+                var carduser;
+                if ($(this).parents().hasClass('back-links')) {
+                    return;
+                }
+                if ($(this).hasClass('headimg')) {
+                    carduser = $(this).attr('data-name');
+                } else {
+                    carduser = $(this).text();
+                }
+                enter = true;
+                if (thisposX == posX && thisposY == posY) {
+                    own = true;
+                } else {
+                    own = false;
+                }
+                appendCard(carduser);
+            }
+        }else if(e.type == "mouseleave") {
+            enter = false;
+            removeCard();
+        }
     });
     function appendCard(carduser){
         if((enter&&!exist)||(enter&&!own)){
