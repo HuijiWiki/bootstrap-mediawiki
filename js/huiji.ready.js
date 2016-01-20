@@ -447,7 +447,6 @@ $(document).ready(function(){
         removeCard();
     });
     $('#home-feed-content').on('mouseenter mouseleave','.headimg,a[href*="/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"),a[href*="/wiki/User:"]:not(":has(img)")',function(e){
-        console.log('aaa');
         if(e.type == "mouseenter"){
             if(document.body.clientWidth<=1024){
                 e.preventDefault();
