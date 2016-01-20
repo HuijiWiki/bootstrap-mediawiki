@@ -38,7 +38,7 @@ function addSpan(){
         $('.edit-field input').val('');
         return;
     }
-    $('#mw-normal-catlinks>ul>li:not(.last)>a,.edit-span').each(function(){
+     $('#mw-normal-catlinks>ul>li:not(.last)>a,.edit-span').each(function(){
         if($(this).text()==val){
             mw.notification.notify('分类不能重复，请重新输入');
             $('.edit-field input').val('');

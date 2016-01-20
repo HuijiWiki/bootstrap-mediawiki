@@ -514,6 +514,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://mfassbender.huiji.wiki">迈克尔·法斯宾德</a></li>
                                         </ul>
                                         <ul class="hub-selection more-link">
+                                            <li><a href="http://hsr.huiji.wiki/">高速铁路百科</a></li>
                                             <li><a href="http://kaixinmahua.huiji.wiki">开心麻花</a></li>
                                             <li><a href="http://mahjong.huiji.wiki">麻将</a></li>
                                             <li><a href="http://arsenal.huiji.wiki">阿森纳</a></li>
