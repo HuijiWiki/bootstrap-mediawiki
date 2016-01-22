@@ -32,7 +32,7 @@
                 </div>
             </div>
         <!-- qqlogin -->
-            <div class="modal fade qqlogin tabindex="-1" role="dialog" aria-labelledby="mySmModalLabel" aria-hidden="true">
+            <div class="modal fade qqlogin" tabindex="-1" role="dialog" aria-labelledby="mySmModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">

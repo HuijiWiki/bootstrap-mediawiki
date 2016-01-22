@@ -605,6 +605,12 @@ $(document).ready(function(){
     });
 
     $('[data-toggle="tooltip"]').tooltip();
+    $('.bdsharebuttonbox .icon-share-alt').click(function(){
+        copyToClipboard(window._bd_share_config.common.bdUrl);
+    });
+    function copyToClipboard(text) {
+        window.prompt("请按下 Ctrl+C 复制链接到剪贴板：", text);
+    }
 
 
 });
