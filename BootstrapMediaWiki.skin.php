@@ -104,7 +104,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
     public function execute() {
         global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS;
         global $wgEnableUploads;
-        global $wgLogo, $wgHuijiPrefix, $wgFavicon;
+        global $wgLogo, $wgHuijiPrefix, $wgFavicon, $wgCdnHuijiSuffix;
         global $wgTOCLocation;
         global $wgNavBarClasses;
         global $wgSubnavBarClasses;
@@ -259,7 +259,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                                     echo '&nbsp;&nbsp;&nbsp;已被搬运'.$forkCount.'次';
                                                 }
                                             }
-                                            echo '<div class="bdsharebuttonbox pull-right hidden-sm hidden-xs" data-tag="share_2"><a href="#" class="icon-weixin-share" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-qqspace-share" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="icon-tieba-share" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="icon-douban-share" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
+                                            // echo '<div class="bdsharebuttonbox pull-right hidden-sm hidden-xs" data-tag="share_2"><a href="#" class="icon-weixin-share" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-qqspace-share" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="icon-tieba-share" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="icon-douban-share" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
                                         }
                                     ?>
                                     </small>
@@ -309,7 +309,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         </div>
                         <?php endif; ?>
                         <?php if($this->data['isarticle'] && $action==''): ?>
-                        <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-qqspace-share" data-tag="share_1" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="icon-tieba-share" data-tag="share_1" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="icon-douban-share" data-tag="share_1" data-cmd="douban" title="分享到豆瓣网"></a></div>
+                        <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
                         <?php endif; ?>
                         <?php 
                         if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
@@ -376,7 +376,29 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             s.parentNode.insertBefore(bp, s);
         })();
         </script>
-        <script>with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>        
+        <script>window._bd_share_config={
+            common: {
+                bdSnsKey: {},
+                bdText: "",
+                bdMini: "2",
+                bdMiniList: false,
+                bdPic: "",
+                bdStyle: "2",
+                bdUrl:"http://<?php echo $wgHuijiPrefix.$wgCdnHuijiSuffix; ?>/index.php?curid=<?php echo $this->skin->getTitle()->getArticleId(); ?>",
+            },
+            share: [
+                {
+                    tag: "share_1",
+                    bdSize: 16,
+                    bdCustomStyle:""
+                },
+                {
+                    tag: "share_2",
+                    bdSize: 16,
+                    bdCustomStyle:""
+                }
+            ]
+        };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>        
         </body>
         </html>
         <?php

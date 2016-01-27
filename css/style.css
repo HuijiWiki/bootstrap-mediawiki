@@ -1776,3 +1776,6 @@ body>.tooltip.top .tooltip-arrow{
         overflow: hidden;
     }
 }
+.flow-author a {
+    color: #428bca ;
+}

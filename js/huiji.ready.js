@@ -447,7 +447,6 @@ $(document).ready(function(){
         removeCard();
     });
     $('#home-feed-content').on('mouseenter mouseleave','.headimg,a[href*="/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"),a[href*="/wiki/User:"]:not(":has(img)")',function(e){
-        console.log('aaa');
         if(e.type == "mouseenter"){
             if(document.body.clientWidth<=1024){
                 e.preventDefault();
@@ -606,6 +605,12 @@ $(document).ready(function(){
     });
 
     $('[data-toggle="tooltip"]').tooltip();
+    $('.bdsharebuttonbox .icon-share-alt').click(function(){
+        copyToClipboard(window._bd_share_config.common.bdUrl);
+    });
+    function copyToClipboard(text) {
+        window.prompt("请按下 Ctrl+C 复制链接到剪贴板：", text);
+    }
 
 
 });

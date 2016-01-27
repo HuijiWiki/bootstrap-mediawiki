@@ -1482,6 +1482,26 @@ ol.carousel-indicators{
 	display:inline;
 	margin-left:1em;
 }
-.popover{
+.popover {
     color: #333;
+}
+.recommend li{
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+}
+.recommend-title{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: rgba(0,0,0,.3);
+}
+.recommend li a{
+    display: block;
+}
+.re-opacity{
+    opacity: 0;
 }
