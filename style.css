@@ -1482,3 +1482,6 @@ ol.carousel-indicators{
 	display:inline;
 	margin-left:1em;
 }
+.popover{
+    color: #333;
+}

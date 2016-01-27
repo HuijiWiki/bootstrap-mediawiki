@@ -416,7 +416,7 @@ $(document).ready(function(){
     var own = false;
     var x, y,posX,posY,thisposX,thisposY;
     var card;
-    $('#wiki-body a[href*="/wiki/%E7%94%A8%E6%88%B7:"] .headimg,#wiki-body a[href*="/wiki/User:"] .headimg, #wiki-body a[href*="/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"), #wiki-body a[href*="/wiki/User:"]:not(":has(img)")').hover(function(e){
+    $('#wiki-body a[href*="/wiki/%E7%94%A8%E6%88%B7:"] .headimg,#wiki-body a[href*="/wiki/User:"] .headimg, #wiki-body .mw-userlink, #wiki-body .mw-userlink').hover(function(e){
         if(document.body.clientWidth<=1024){
             e.preventDefault();
         }else {
