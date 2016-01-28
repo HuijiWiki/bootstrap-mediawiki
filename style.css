@@ -1505,3 +1505,9 @@ ol.carousel-indicators{
 .re-opacity{
     opacity: 0;
 }
+.oo-ui-buttonElement-framed > .oo-ui-buttonElement-button{
+    padding: .1em!important;
+}
+.oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
+    position: static!important;
+}
