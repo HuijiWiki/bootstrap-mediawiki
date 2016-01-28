@@ -1594,12 +1594,12 @@ body{
 .entry-source {
     color: #09c;
 }
-.recommend>li:after{
+.page-recommend>li:after{
     content: '';
     display: block;
     clear: both;
 }
-.recommend img {
+.page-recommend img {
     width: 150px;
 }
 .user-login-stats .user-avatar img{
@@ -1608,26 +1608,26 @@ body{
 a.image {
     float: left;
 }
-.recommend li {
+.page-recommend li {
     margin-top: 30px;
     position: relative;
     border-top: 1px solid #ddd;
     padding-top: 20px;
 }
-.recommend li:first-child{
+.page-recommend li:first-child{
     margin-top: 0;
     border-top: none;
 }
-.recommend-edit{
+.page-recommend-edit{
     position: absolute;
     right: 10px;
     top: 10px;
     color: #999;
 }
-.recommend-edit span {
+.page-recommend-edit span {
     font-size: 24px;
 }
-.recommend .source {
+.page-recommend .source {
 
 }
 .entry-description{

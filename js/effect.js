@@ -184,7 +184,7 @@ $(document).ready(function(){
                     content += '<li><p class="source"><a class="entry-name" href="'+item.wikiurl+'">'+item.title+'</a>来自<a class="entry-source" href="'+item.siteurl+'">'+item.wikiname+
                         '</a></p><div class="recommend-info"><a href="'+item.wikiurl+'" class="image"><img alt="Wit by Botanica.jpg" src="'+item.backgroungimg+'"></a><div class="entry-description">'+item.desc+'</div></div></li>';
                 });
-                $('.recommend').append(content);
+                $('.page-recommend').append(content);
             }
         );
     }
@@ -192,7 +192,7 @@ $(document).ready(function(){
         getSite();
     }
     $('#all-tab').on('click',function(){
-        $('.recommend').empty();
+        $('.page-recommend').empty();
         getSite();
     })
 
