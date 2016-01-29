@@ -2,7 +2,6 @@
  * Created by huiji-001 on 2016/1/22.
  */
 function getImg(title,id,sitePrefix){
-    console.log(title+id)
     $.ajax({
         url:'http://'+sitePrefix+'.huiji.wiki/api.php?action=query&prop=pageimages&format=json&pithumbsize=250&titles='+title,
         type: 'get',
