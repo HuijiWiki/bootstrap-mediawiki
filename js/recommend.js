@@ -48,7 +48,6 @@ $(function(){
                     var id = item.id;
                     if (id == myid) return;
                     var sitePrefix = item.sitePrefix;
-                    console.log(item);
                     searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
                     content += '<li id="' + id + '" class="re-opacity"><div class="recommend-title"><a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></li>';
                     getImg(searchtitle, id, sitePrefix);
