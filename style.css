@@ -1511,7 +1511,6 @@ ol.carousel-indicators{
     overflow: hidden;
 }
 .recommend img{
-    height: 200px;
     position: absolute;
 }
 .recommend-title em {

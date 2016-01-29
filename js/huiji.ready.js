@@ -605,12 +605,24 @@ $(document).ready(function(){
     });
 
     $('[data-toggle="tooltip"]').tooltip();
-    $('.bdsharebuttonbox .icon-share-alt').click(function(){
-        copyToClipboard(window._bd_share_config.common.bdUrl);
-    });
-    function copyToClipboard(text) {
-        window.prompt("请按下 Ctrl+C 复制链接到剪贴板：", text);
-    }
+    if ( $('.bdsharebuttonbox .icon-share-alt').length > 0 ){
+	  	$.getScript( "//cdn.bootcss.com/clipboard.js/1.5.5/clipboard.min.js" )
+	      .done(function( script, textStatus ) {
+		    var clipboard = new Clipboard('.bdsharebuttonbox .icon-share-alt', {
+		    	text: function(trigger) {
+		        	return document.title+" "+window._bd_share_config.common.bdUrl;
+		    	}
+			});
+		    clipboard.on('success', function(e) {
+			    mw.notification.notify('已复制本页链接到剪贴板，分享给小伙伴吧:)');
+			});
 
-
+			clipboard.on('error', function(e) {
+				window.prompt("请按下 Ctrl+C 复制链接到剪贴板：", document.title+" "+window._bd_share_config.common.bdUrl);
+			});
+	      })
+	      .fail(function( jqxhr, settings, exception ) {
+	        console.log('unable to download clipboard.min.js');
+	    });
+	}
 });
