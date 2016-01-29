@@ -35,7 +35,7 @@ $(function(){
     if($('body').hasClass('ns-0')){
         var searchname = mw.config.get('wgPageName');
         var myid = mw.config.get('wgArticleId');
-        if( searchname == ''|| searchname == null|| searchname == '首页') return;
+        if( searchname == ''|| searchname == null|| mw.config.get('wgIsMainPage') == true) return;
         $.ajax({
             url:'http://121.42.179.100:8080/queryService/webapi/page/recommend/',
             data:{content:searchname},
