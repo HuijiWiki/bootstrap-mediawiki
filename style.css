@@ -1513,6 +1513,9 @@ ol.carousel-indicators{
 .recommend img{
     position: absolute;
 }
+.recommend-header{
+    clear: both;
+}
 .recommend-title em {
     font-style: inherit;
 }
