@@ -46,19 +46,8 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="' . htmlspecialchars( $out->getTitle()->getCanonicalURL()) . '" />' . "\n");            
         } 
-        $out->addModules( 
-            array('skins.bootstrapmediawiki.bottom')
-        ); # add js and messages  
+         # add js and messages  
         $out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
-        if ($wgHuijiPrefix !== 'www' && $wgHuijiPrefix !== 'test'){
-            $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
-        } else {
-            $out->addModules( 'skins.bootstrapmediawiki.huiji.globalsearch');
-        }
-        $NS = $out->getTitle()->getNamespace();
-        if ( $out->getUser()->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $out->getTitle()->exists()){
-            $out->addModules( array('skins.bootstrapmediawiki.fork') );
-        }
         if ($this->getSkin()->getTitle()->hasSourceText() &&  !($this->getSkin()->getTitle()->isMainPage())
             && $this->getSkin()->getTitle()->exists() && $this->getRequest()->getText('action') == ''
             && class_exists( 'EchoNotifier' ) && $this->getSkin()->getUser()->isLoggedIn() 

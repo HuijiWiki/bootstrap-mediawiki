@@ -450,6 +450,21 @@ Class BootstrapMediawikiHooks {
         }
         return true;
     }
+    public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+        global $wgHuijiPrefix;
+        $out->addModules( 
+            array('skins.bootstrapmediawiki.bottom')
+        );
+        if ($wgHuijiPrefix !== 'www' && $wgHuijiPrefix !== 'test'){
+            $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
+        } else {
+            $out->addModules( 'skins.bootstrapmediawiki.huiji.globalsearch');
+        }
+        $NS = $out->getTitle()->getNamespace();
+        if ( $out->getUser()->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $out->getTitle()->exists()){
+            $out->addModules( array('skins.bootstrapmediawiki.fork') );
+        }
+    }
     
 }
 ?>

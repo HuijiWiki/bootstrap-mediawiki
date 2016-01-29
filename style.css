@@ -1489,6 +1489,8 @@ ol.carousel-indicators{
     display: inline-block;
     position: relative;
     margin-right: 20px;
+    width: 140px;
+    height: 200px;
 }
 .recommend-title{
     position: absolute;
@@ -1503,9 +1505,14 @@ ol.carousel-indicators{
     display: block;
     color: #fff!important;
     font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 140px;
+    overflow: hidden;
 }
 .recommend img{
     height: 200px;
+    position: absolute;
 }
 .recommend-title em {
     font-style: inherit;
