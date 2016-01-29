@@ -1501,6 +1501,11 @@ ol.carousel-indicators{
 }
 .recommend li a{
     display: block;
+    color: #fff!important;
+    font-size: 14px;
+}
+.recommend img{
+    height: 200px;
 }
 .re-opacity{
     opacity: 0;

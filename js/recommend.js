@@ -23,7 +23,7 @@ $(function(){
         var myid = mw.config.get('wgArticleId');
         if( searchname == ''|| searchname == null|| searchname == '首页') return;
         $.post('http://121.42.179.100:8080/queryService/webapi/page/search/',{content:searchname,size:4,offset:0}, function (data) {
-        var content = '<h3 class="recommend-header"></h3><ul class="recommend">';
+        var content = '<h3 class="recommend-header">更多推荐</h3><ul class="recommend">';
         var res = data.sites;
         res.forEach(function (item) {
             var searchtitle = item.title;
@@ -35,7 +35,7 @@ $(function(){
             getImg(searchtitle,id,sitePrefix);
         });
             content +='</ul>';
-            $('.comments-body').before(content);
+            $('#bodyContent').append(content);
         });
     }
 });
