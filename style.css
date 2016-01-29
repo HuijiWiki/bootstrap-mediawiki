@@ -1507,6 +1507,9 @@ ol.carousel-indicators{
 .recommend img{
     height: 200px;
 }
+.recommend-title em {
+    font-style: inherit;
+}
 .re-opacity{
     opacity: 0;
 }
