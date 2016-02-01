@@ -39,9 +39,15 @@ $(function(){
         var searchname = mw.config.get('wgPageName');
         var myid = mw.config.get('wgArticleId');
         if( searchname == ''|| searchname == null|| mw.config.get('wgIsMainPage') == true) return;
+        var category='';
+        if($('#mw-normal-catlinks').length!=0) {
+            $('#mw-normal-catlinks li:not(.last)').each(function () {
+                category += $(this).text() + ' ';
+            });
+        }
         $.ajax({
             url:'http://121.42.179.100:8080/queryService/webapi/page/recommend/',
-            data:{content:searchname},
+            data:{content:searchname,category:category,sitePrefix:mw.config.get('wgHuijiPrefix')},
             success: function (data) {
                 var content = '<ul class="recommend">';
                 if (data.length == 0) return;
