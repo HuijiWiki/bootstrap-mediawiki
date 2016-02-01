@@ -19,9 +19,14 @@ $(document).ready(function(){
     ///* add missing icons caused by visual editor */
     //$('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
     $('.sidebar-create .createboxInput').keyup(function(){
-        console.log('keyup');
-        var $textbox = $( this );
-        $('.sidebar-create .createboxButton').prop('disabled', $textbox.val().length < 1 );
+        if($(this).val().length>0) {
+            $('.sidebar-create .btn-primary').removeClass('disabled');
+        }else{
+            $('.sidebar-create .btn-primary').addClass('disabled');
+        }
+    });
+    $('#mw-input-preload').change(function(){
+        $('.createbox').submit();
     });
     // $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } );
 	// if (mw.cookie.get('Animation') == 'none'){

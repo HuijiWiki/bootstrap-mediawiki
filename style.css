@@ -1348,9 +1348,6 @@ ol.carousel-indicators{
 	padding-left: 0 !important;
 	bottom: 10px !important;
 }
-.client-js #wiki-outer-body {
-	display:none;
-}
 .qqlogin form{
     width: 180px;
     margin: 10px auto;
