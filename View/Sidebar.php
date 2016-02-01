@@ -94,15 +94,13 @@
                             <input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden">
                             <input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden">
                             <input name="minor" value="" type="hidden">
-                            <div class="input-group create-group">
+                            <div class="input-group create-group btn-group">
+                                <input name="title" class="createboxInput form-control" placeholder="新页面名称" value="" dir="ltr" type="text">
+                                <button name="create" class="btn btn-primary" type="submit" >创建</button>
                                 <?php
-                                    $pre = new Preloads(array("class"=>"form-control", "name"=>"preload"));
+                                    $pre = new Preloads(array("class"=>"form-control btn btn-primary", "name"=>"preload"));
                                     echo $pre->getInputHtml('');
                                 ?>
-                                <input name="title" class="createboxInput form-control" placeholder="新页面名称" value="" dir="ltr" type="text">
-                                <span class="input-group-btn">
-                                    <input name="create" class="createboxButton btn btn-default" type="submit" value="创建" disabled>
-                                </span>
                             </div>
                         </form>
                     </div>

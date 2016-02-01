@@ -22,6 +22,9 @@ function getImg(title,id,sitePrefix){
                     wid2 = 1/percent*70+100;
                     $('#'+id).find('img').css({'clip':'rect('+wid+'px,140px,'+wid2+'px,0)','top':'-'+wid+'px','width':'140px'});
                 }
+                else{
+                    $('#'+id).find('img').css('height','200px');
+                }
                 if($('.recommend-header').length==0){
                     $('.recommend').before('<h3 class="recommend-header">更多推荐</h3>');
                 }
@@ -53,7 +56,7 @@ $(function(){
                     getImg(searchtitle, id, sitePrefix);
                 }
                 content += '</ul>';
-                $('#bodyContent').append(content);
+                $('.comments-body').before(content);
             },
             type: 'post'
         });
