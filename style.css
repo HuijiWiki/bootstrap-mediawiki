@@ -1470,7 +1470,13 @@ ol.carousel-indicators{
 .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
     position: static!important;
 }
+.ve-init-mw-desktopArticleTarget-toolbar {
+    z-index: 100!important;
+}
 @media screen and (max-width: 767px) {
+    .user-login .modal-dialog{
+        width: 300px;
+    }
     #pt-notifications-alert,  #pt-notifications-message{
         line-height: 40px;
         color: #fff;
