@@ -966,7 +966,7 @@ input:-webkit-autofill {
     .infobox{
         width:100%!important;
     }
-    div.thumb,.thumbinner,.ns-0 #content img{
+    div.thumb,.thumbinner,.ns-0 #bodyContent img, .ns-0 .comments-body img {
         max-width: 100%!important;
         height: auto;
     }
