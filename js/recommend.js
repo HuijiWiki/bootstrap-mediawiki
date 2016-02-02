@@ -10,6 +10,7 @@ function getImg(title,id,sitePrefix){
                 var img = '<img src="' + data.query.pages[id].thumbnail.source + '">';
                 $('#' + id).prepend(img);
                 $('#'+id).removeClass('re-opacity');
+
             }else{
                 $('#'+id).remove();
             }
