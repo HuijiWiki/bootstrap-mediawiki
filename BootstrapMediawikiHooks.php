@@ -497,7 +497,7 @@ Class BootstrapMediawikiHooks {
         $titles = $out->getTitle();
         $result = PageProps::getInstance()->getProperty($titles, 'norec');
         if (count($result) > 0){
-            $out->addJsConfigVars('wgNorec', true);
+            $out->addJsConfigVars('wgNoRec', true);
         } 
         $result = PageProps::getInstance()->getProperty($titles, 'rec');
         if (count($result) > 0){
