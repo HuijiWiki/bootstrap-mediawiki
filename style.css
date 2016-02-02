@@ -1348,9 +1348,6 @@ ol.carousel-indicators{
 	padding-left: 0 !important;
 	bottom: 10px !important;
 }
-.client-js #wiki-outer-body {
-	display:none;
-}
 .qqlogin form{
     width: 180px;
     margin: 10px auto;
@@ -1423,6 +1420,56 @@ ol.carousel-indicators{
 .header .navbar-user > li > a.mw-echo-notifications-badge:hover {
     color: #fff;
 }
+.ca-help-text{
+	display:inline;
+	margin-left:1em;
+}
+.popover {
+    color: #333;
+}
+.recommend li{
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+    width: 140px;
+    height: 200px;
+}
+.recommend-title{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: rgba(0,0,0,.3);
+}
+.recommend li a{
+    display: block;
+    color: #fff!important;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 140px;
+    overflow: hidden;
+}
+.recommend img{
+    position: absolute;
+}
+.recommend-header{
+    clear: both;
+}
+.recommend-title em {
+    font-style: inherit;
+}
+.re-opacity{
+    opacity: 0;
+}
+.oo-ui-buttonElement-framed > .oo-ui-buttonElement-button{
+    padding: .1em!important;
+}
+.oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
+    position: static!important;
+}
 @media screen and (max-width: 767px) {
     #pt-notifications-alert,  #pt-notifications-message{
         line-height: 40px;
@@ -1443,12 +1490,12 @@ ol.carousel-indicators{
         color: #fff;
     }
     /*#pt-notifications-message .oo-ui-popupWidget-popup {*/
-        /*width: 300px!important;*/
-        /*margin-left: -220px!important;*/
+    /*width: 300px!important;*/
+    /*margin-left: -220px!important;*/
     /*}*/
     /*#pt-notifications-alert .oo-ui-popupWidget-popup {*/
-        /*width: 300px!important;*/
-        /*margin-left: -190px!important;*/
+    /*width: 300px!important;*/
+    /*margin-left: -190px!important;*/
     /*}*/
     .oo-ui-popupWidget-popup {
         width: 100%!important;
@@ -1477,45 +1524,10 @@ ol.carousel-indicators{
         right: 90px;
         left: initial;
     }
-}
-.ca-help-text{
-	display:inline;
-	margin-left:1em;
-}
-.popover {
-    color: #333;
-}
-.recommend li{
-    display: inline-block;
-    position: relative;
-    margin-right: 20px;
-}
-.recommend-title{
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: rgba(0,0,0,.3);
-}
-.recommend li a{
-    display: block;
-    color: #fff!important;
-    font-size: 14px;
-}
-.recommend img{
-    height: 200px;
-}
-.recommend-title em {
-    font-style: inherit;
-}
-.re-opacity{
-    opacity: 0;
-}
-.oo-ui-buttonElement-framed > .oo-ui-buttonElement-button{
-    padding: .1em!important;
-}
-.oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
-    position: static!important;
+    .recommend{
+        padding-left: 0;
+    }
+    .recommend li{
+        margin-right: 5px;
+    }
 }

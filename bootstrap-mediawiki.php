@@ -18,6 +18,7 @@ $wgExtensionCredits['skin'][] = array(
 $wgValidSkinNames['bootstrapmediawiki'] = 'BootstrapMediaWiki';
 $wgAutoloadClasses['SkinBootstrapMediaWiki'] = __DIR__ . '/BootstrapMediaWiki.skin.php';
 $wgAutoloadClasses['BootstrapMediawikiHooks'] = __DIR__ . '/BootstrapMediawikiHooks.php';
+$wgAutoloadClasses['Preloads'] = __DIR__ . '/Preload.php';
 $wgAutoloadClasses['HuijiSkinTemplate'] = __DIR__ . '/HuijiSkinTemplate.php';
 $wgAutoloadClasses['FrontPage'] = __DIR__ . '/frontpage.php';
 $wgAutoloadClasses['CUtf8_PY'] = __DIR__ . '/CUtf8_PY.php';
@@ -210,6 +211,7 @@ $wgHooks['GalleryGetModes'][] = 'BootstrapMediawikiHooks::onGalleryGetModes';
 $wgHooks['ParserFirstCallInit'][] = 'BootstrapMediawikiHooks::registerParserHook';
 $wgHooks['OutputPageMakeCategoryLinks'][] = 'BootstrapMediawikiHooks::onOutputPageMakeCategoryLinks';
 $wgHooks['LinkBegin'][] = 'BootstrapMediawikiHooks::UserLinkBegin';
+$wgHooks['BeforePageDisplay'][] = 'BootstrapMediawikiHooks::onBeforePageDisplay';
 // new permission
 $wgAvailableRights[] = 'quickpurge';
 $wgGroupPermissions['sysop']['quickpurge'] = true;

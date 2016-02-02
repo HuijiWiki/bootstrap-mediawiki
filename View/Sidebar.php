@@ -81,6 +81,8 @@
                         <li><a href="<?php echo $url_prefix; ?>特殊:AdminDashboard" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-tachometer"></i> 管理面板</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Bootstrap:Subnav" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-bars"></i> 修改站点导航</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Bootstrap:Footer" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-hand-o-down"></i> 修改站点页脚</a></li>
+                        <li><a href="<?php echo $url_prefix; ?>Mediawiki:Preloads" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-quote-right"></i> 修改新页面预设</a></li>
+                        <li><a href="<?php echo $url_prefix; ?>Mediawiki:Edittools" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-code"></i> 修改快速插入项</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.css" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-css3"></i> 修改站点CSS</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.js" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-code"></i> 修改站点js</a></li>
                     </ul>
@@ -89,15 +91,17 @@
                 <li class="sidebar-create">
                     <div class="mw-inputbox-centered" style="">
                         <form name="createbox" class="createbox" action="/index.php" method="get">
-                            <input name="action" value="edit" type="hidden"><input name="preload" value="" type="hidden">
+                            <input name="action" value="edit" type="hidden">
                             <input name="editintro" value="" type="hidden"><input name="summary" value="" type="hidden">
                             <input name="nosummary" value="" type="hidden"><input name="prefix" value="" type="hidden">
                             <input name="minor" value="" type="hidden">
-                            <div class="input-group create-group">
+                            <div class="input-group create-group btn-group">
                                 <input name="title" class="createboxInput form-control" placeholder="新页面名称" value="" dir="ltr" type="text">
-                                <span class="input-group-btn">
-                                    <input name="create" class="createboxButton btn btn-default" type="submit" value="创建" disabled>
-                                </span>
+                                <button name="create" id="createbtn" class="btn btn-primary disabled" type="submit" >创建</button>
+                                <?php
+                                    $pre = new Preloads(array("class"=>"form-control btn btn-primary disabled", "name"=>"preload"));
+                                    echo $pre->getInputHtml('');
+                                ?>
                             </div>
                         </form>
                     </div>

@@ -134,6 +134,6 @@ $(function() {
 	   $(this).html('<i class="fa fa-arrows-alt"></i>');
     });
 
-    // done for preload. Let's show the page.
-    $('#wiki-outer-body').show();
+    // // done for preload. Let's show the page.
+    // $('#wiki-outer-body').show();
 });

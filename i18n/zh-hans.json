@@ -13,6 +13,8 @@
 	},
 	"tucao-text":"吐槽",
 	"bootstrap-mediawiki-view-edit":"编辑",
+	"nopreload":"空白页面",
+	"preloads":"* 模板:infobox_character/preload|人物\n* 模板:infobox_location/preload|地点\n* 模板:infobox_book/preload|书籍\n* 模板:infobox_battle/preload|战争\n",
 	"edittools":"
 <!-- 这里的文字将显示在编辑和上传表格下面。 -->
 <!-- Text here will be shown below edit and upload forms. -->

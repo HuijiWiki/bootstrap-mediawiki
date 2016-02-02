@@ -18,6 +18,7 @@ Class BootstrapMediawikiHooks {
         $parser->setHook( 'carousel', 'BootstrapMediawikiHooks::getCarousel');
         $parser->setHook( 'callout', 'BootstrapMediawikiHooks::getCallout');
         $parser->setHook( 'heading', 'BootstrapMediawikiHooks::getHeading');
+        $parser->setHook( 'rec', 'BootstrapMediawikiHooks::getRec');
         $parser->setHook( 'hover.css', 'BootstrapMediawikiHooks::getHoverCss');
         $parser->setHook( 'ihover.css', 'BootstrapMediawikiHooks::getIHoverCss');
 
@@ -31,6 +32,43 @@ Class BootstrapMediawikiHooks {
     }
     public static function getHoverCss( $input, $args, $parser ){
         $output = '<script type="text/javascript">window.onload = function(){mw.loader.load("skins.bootstrapmediawiki.hover","text/css");}</script>';
+        return $output;
+    }
+    public static function getRec( $input, $args, $parser ){
+        global $wgHuijiPrefix;
+        $arr = explode(PHP_EOL, $input);
+        $li = array();
+        $i = 0;
+        foreach ($arr as $line){
+            if (trim($line) == ''){
+                // $i++;
+                continue;
+            }
+            $t = Title::newFromText(trim($line));
+            if (!($t instanceof Title)){
+                continue;
+            }
+            $group = array();
+            if ($t->isExternal()){
+                $group['site'] = $t->getInterwiki();
+            } else {
+                $group['site'] = $wgHuijiPrefix;
+            }
+            if ($t->getNamespace() != 0){
+                $group['title'] = $t->getNsText().":".$t->getText();
+            } else {
+                $group['title'] = $t->getText();
+            }
+            $i++;
+            $li[] = $group;
+        }
+        $templateParser = new TemplateParser(  __DIR__ . '/View' );
+        $output =  $templateParser->processTemplate(
+            'rec',
+            array(
+                'li' => $li,
+            )
+        );
         return $output;
     }
     public static function getHeading($input, $args, $parser ) {
@@ -449,6 +487,34 @@ Class BootstrapMediawikiHooks {
             $customAttribs['class'] = 'mw-userlink';
         }
         return true;
+    }
+    public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+        global $wgHuijiPrefix;
+        /* add norec and rec config vars */
+        $titles = $out->getTitle();
+        $result = PageProps::getInstance()->getProperty($titles, 'norec');
+        if (count($result) > 0){
+            $out->addJsConfigVars('wgNorec', true);
+        } 
+        $result = PageProps::getInstance()->getProperty($titles, 'rec');
+        if (count($result) > 0){
+            $out->addJsConfigVars('wgRec', true);
+        }
+        $out->addModules( 
+            array('skins.bootstrapmediawiki.bottom')
+        );
+        if ($wgHuijiPrefix !== 'www' && $wgHuijiPrefix !== 'test'){
+            $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
+        } else {
+            $out->addModules( 'skins.bootstrapmediawiki.huiji.globalsearch');
+        }
+        $NS = $out->getTitle()->getNamespace();
+        if ( $out->getUser()->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $out->getTitle()->exists()){
+            $out->addModules( array('skins.bootstrapmediawiki.fork') );
+        }
+
+        return true;
+
     }
     
 }
