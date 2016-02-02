@@ -59,6 +59,8 @@ Class BootstrapMediawikiHooks {
             } else {
                 $group['title'] = $t->getText();
             }
+            $group['id'] = $t->getArticleID();
+            $group['siteName'] = HuijiPrefix::prefixToSiteName($group['site']);
             $i++;
             $li[] = $group;
         }
