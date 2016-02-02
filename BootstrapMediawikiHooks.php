@@ -35,7 +35,7 @@ Class BootstrapMediawikiHooks {
         return $output;
     }
     public static function getRec( $input, $args, $parser ){
-        global $wgHuijiPrefix;
+        global $wgHuijiPrefix, $wgOut;
         $arr = explode(PHP_EOL, $input);
         $li = array();
         $i = 0;
@@ -62,14 +62,17 @@ Class BootstrapMediawikiHooks {
             $i++;
             $li[] = $group;
         }
-        $templateParser = new TemplateParser(  __DIR__ . '/View' );
-        $output =  $templateParser->processTemplate(
-            'rec',
-            array(
-                'li' => $li,
-            )
-        );
-        return $output;
+        $parser->getOutput()->setProperty('recbyuser', json_encode($li));
+        // $wgOut->addJsConfigVars('wgRecByUser', '');
+        // $templateParser = new TemplateParser(  __DIR__ . '/View' );
+        // $output =  $templateParser->processTemplate(
+        //     'rec',
+        //     array(
+        //         'li' => $li,
+        //     )
+        // );
+        // return $output;
+        return '';
     }
     public static function getHeading($input, $args, $parser ) {
         global $wgHuijiSuffix;
@@ -500,6 +503,12 @@ Class BootstrapMediawikiHooks {
         if (count($result) > 0){
             $out->addJsConfigVars('wgRec', true);
         }
+        $result = PageProps::getInstance()->getProperty($titles, 'recbyuser');
+        if (count($result) > 0){
+            foreach ($result as $key => $value) {
+                $out->addJsConfigVars('wgRecByUser', json_decode($value)); 
+            }
+        }       
         $out->addModules( 
             array('skins.bootstrapmediawiki.bottom')
         );
