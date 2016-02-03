@@ -1473,7 +1473,28 @@ ol.carousel-indicators{
 .ve-init-mw-desktopArticleTarget-toolbar {
     z-index: 100!important;
 }
+
+/*feed img show more*/
+.mp-activity{
+    position: relative;
+}
+.user-home-item-img-wrap a:nth-child(n+5){
+    display: none;
+}
+.show a:nth-child(n+5){
+    display: inline-block;
+}
+.show-btn,.hide-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: #428bca;
+    cursor: pointer;
+}
 @media screen and (max-width: 767px) {
+    .show-btn,.hide-btn{
+        bottom: 50px;
+    }
     .user-login .modal-dialog{
         width: 300px;
     }

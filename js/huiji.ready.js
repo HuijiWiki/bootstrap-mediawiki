@@ -630,4 +630,15 @@ $(document).ready(function(){
 	        console.log('unable to download clipboard.min.js');
 	    });
 	}
+
+    //feed img show more
+    $('#home-feed-content,#bodyContent').on('click','.show-btn',function(){
+        $(this).parents('.user-home-item-img-wrap').addClass('show');
+        $(this).hide();
+        $(this).parents('.user-home-item-img-wrap').append('<span class="hide-btn">收起</span>')
+    }).on('click','.hide-btn',function(){
+        $(this).parents('.user-home-item-img-wrap').removeClass('show');
+        $(this).siblings('.show-btn').show();
+        $(this).remove();
+    });
 });
