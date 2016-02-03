@@ -1491,6 +1491,9 @@ ol.carousel-indicators{
     color: #428bca;
     cursor: pointer;
 }
+.mp-activity .show-btn,.hide-btn {
+    bottom: 5px;
+}
 @media screen and (max-width: 767px) {
     .show-btn,.hide-btn{
         bottom: 50px;
