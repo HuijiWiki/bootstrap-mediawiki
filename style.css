@@ -1484,6 +1484,9 @@ ol.carousel-indicators{
 .show a:nth-child(n+5){
     display: inline-block;
 }
+.user-home-item-img-wrap{
+    padding-bottom: 30px;
+}
 .show-btn,.hide-btn {
     position: absolute;
     right: 20px;
@@ -1496,7 +1499,7 @@ ol.carousel-indicators{
 }
 @media screen and (max-width: 767px) {
     .show-btn,.hide-btn{
-        bottom: 50px;
+        bottom: 40px;
     }
     .user-login .modal-dialog{
         width: 300px;
