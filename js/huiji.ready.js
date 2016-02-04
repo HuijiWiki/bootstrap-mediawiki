@@ -224,7 +224,7 @@ $(document).ready(function(){
             if(data.login.result == 'NeedToken'){
             	//fix cookie issue for huijiwiki.com
             	if ('.'+document.domain != mw.config.get('wgHuijiSuffix')){
-            		mw.cookie.set('session', data.login.sessionid, {domain:'.'+document.domain});
+            		mw.cookie.set('_session', data.login.sessionid, {domain:'.'+document.domain});
             	}
                 $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass +'&lgtoken=' + data.login.token + '&format=json',function(data){
                    if(!data.error){
