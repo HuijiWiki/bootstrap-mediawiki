@@ -220,9 +220,10 @@ $(document).ready(function(){
             tag: 'login',
             type: 'info'
         }
-        $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',function(data){
+        var root = mw.config.get('wgCentralServer');
+        $.post(root+'/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',function(data){
             if(data.login.result == 'NeedToken'){
-                $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass +'&lgtoken=' + data.login.token + '&format=json',function(data){
+                $.post(root+'/api.php?action=login&lgname=' + login + '&lgpassword=' + pass +'&lgtoken=' + data.login.token + '&format=json',function(data){
                    if(!data.error){
                        $('#wpLoginAttempt,#frLoginAttempt').button('reset');
                         if(data.login.result == "Success"){
