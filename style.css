@@ -1276,7 +1276,7 @@ sup.reference {
 	width: auto;
 	max-width: 540px;
 }
-.ve-activated .comments-body {
+.ve-activated .comments-body,.ve-activated .recommend-header,.ve-activated .recommend {
 	display:none;
 }
 .huiji-h1-edit-button{
