@@ -491,7 +491,7 @@ Class BootstrapMediawikiHooks {
         return true;
     }
     public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-        global $wgHuijiPrefix, $wgUser, $wgMobile;
+        global $wgHuijiPrefix, $wgUser, $wgMobile, $wgHuijiSuffix;
         /* add norec and rec config vars */
         $titles = $out->getTitle();
         $result = PageProps::getInstance()->getProperty($titles, 'norec');
@@ -521,8 +521,8 @@ Class BootstrapMediawikiHooks {
             $out->addModules( array('skins.bootstrapmediawiki.fork') );
         }
         /* bypass CDN for admins */
-        if ($wgUser->isAllowed('reupload') && !$wgMobile){ 
-            $out->mBodyText = str_replace('http://cdn.huijiwiki.com/', 'http://cdn'.$wgHuijiSuffix.'/', $out->mBodyText);
+        if ($out->getUser()->isAllowed('reupload') && !$wgMobile){ 
+            $out->mBodytext = str_replace('http://cdn.huijiwiki.com/', 'http://cdn'.$wgHuijiSuffix.'/', $out->mBodytext);
         }        
 
         return true;
