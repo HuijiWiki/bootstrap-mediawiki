@@ -478,9 +478,6 @@ Class BootstrapMediawikiHooks {
                     ;
             $text = preg_replace( $pattern, $replacement, $text ); 
         }     
-        if ($wgUser->isAllowed('reupload') && !$wgMobile){ 
-            $text = str_replace('http://cdn.huijiwiki.com/', 'http://cdn'.$wgHuijiSuffix.'/', $text);
-        }        
         return true;
     }
     public static function onOutputPageMakeCategoryLinks( &$out, $categories, &$links ) { 
@@ -494,7 +491,7 @@ Class BootstrapMediawikiHooks {
         return true;
     }
     public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-        global $wgHuijiPrefix;
+        global $wgHuijiPrefix, $wgUser, $wgMobile;
         /* add norec and rec config vars */
         $titles = $out->getTitle();
         $result = PageProps::getInstance()->getProperty($titles, 'norec');
@@ -523,6 +520,10 @@ Class BootstrapMediawikiHooks {
         if ( $out->getUser()->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $out->getTitle()->exists()){
             $out->addModules( array('skins.bootstrapmediawiki.fork') );
         }
+        /* bypass CDN for admins */
+        if ($wgUser->isAllowed('reupload') && !$wgMobile){ 
+            $out->mBodyText = str_replace('http://cdn.huijiwiki.com/', 'http://cdn'.$wgHuijiSuffix.'/', $out->mBodyText);
+        }        
 
         return true;
 
