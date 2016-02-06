@@ -20,14 +20,6 @@ Class HuijiSkinTemplate extends BaseTemplate {
      * @access private
      */
     public function execute() {}
-
-    protected function bypassCdn($text){
-        global $wgUser, $wgMobile
-        if ($wgUser->isAllowed('reupload') && !$wgMobile){ 
-            $text = str_replace('/cdn.huijiwiki.com/', '/cdn'.$wgHuijiSuffix.'/', $text);
-        }        
-        return $text;
-    }
     /**
      * Render one or more navigations elements by name, automatically reveresed
      * when UI is in RTL mode
