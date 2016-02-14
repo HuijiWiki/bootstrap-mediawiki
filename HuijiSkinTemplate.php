@@ -22,7 +22,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
     public function execute() {}
 
     protected function bypassCdn($text){
-        global $wgUser, $wgMobile
+        global $wgUser, $wgMobile;
         if ($wgUser->isAllowed('reupload') && !$wgMobile){ 
             $text = str_replace('/cdn.huijiwiki.com/', '/cdn'.$wgHuijiSuffix.'/', $text);
         }        

@@ -14,7 +14,7 @@ function getImg(title,id,sitePrefix){
                     var wid2;
                     var percent = data.query.pages[x].thumbnail.width / data.query.pages[x].thumbnail.height;
 
-                    $('#' + id).prepend(img);
+                    $('#' + id + '>a').prepend(img);
                     $('#' + id).removeClass('re-opacity');
 
                     //更宽裁剪两边
@@ -65,10 +65,10 @@ $(function(){
         rec.forEach(function(item,i){
             if(i<4) {
                 var content = '';
-                content += '<li id="' + i + '" class="re-opacity"><div class="recommend-title"><a href="http://' + item.site + '.huiji.wiki/wiki/' + item.title + '" >' +
+                content += '<li id="' + i + '" class="re-opacity"><a href="http://' + item.site + '.huiji.wiki/wiki/' + item.title + '" ></a>' +
+                    '<div class="recommend-title"><a href="http://' + item.site + '.huiji.wiki/wiki/' + item.title + '" >' +
                     item.title + '</a><a href="http://' + item.site + '.huiji.wiki">' + item.siteName + '</a></div></li>';
                 arr.push(item.title+item.siteName);
-                arr2
                 getImg(item.title, i, item.site);
                 $('.recommend').append(content);
             }
@@ -104,7 +104,7 @@ $(function(){
                         //去em标签
                         searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
 
-                        content += '<li id="' + i + '" class="re-opacity"><div class="recommend-title"><a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></li>';
+                        content += '<li id="' + i + '" class="re-opacity"><a href="' + item.address + '" ></a><div class="recommend-title"><a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></li>';
                         getImg(searchtitle, i, sitePrefix);
                     }
                 }
