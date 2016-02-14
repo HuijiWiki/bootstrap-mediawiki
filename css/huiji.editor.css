@@ -24,11 +24,11 @@
     padding-right: 1px;
     margin-left: 1px;
 }
-button, html input[type=button], input[type=reset], input[type=submit] {
-    -webkit-appearance: push-button; 
-    -moz-appearance: -moz-win-borderless-glass;
-	-moz-appearance: -moz-mac-unified-toolbar;
-}
+/*button, html input[type=button], input[type=reset], input[type=submit] {*/
+    /*-webkit-appearance: push-button; */
+    /*-moz-appearance: -moz-win-borderless-glass;*/
+	/*-moz-appearance: -moz-mac-unified-toolbar;*/
+/*}*/
 p.mw-edittools-section {
 	display:inline;
 }
