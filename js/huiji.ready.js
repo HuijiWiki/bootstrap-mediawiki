@@ -9,6 +9,9 @@ function updateQueryStringParameter(uri, key, value) {
     }
 }
 $(document).ready(function(){
+
+    mw.notification.autoHideSeconds = 3;
+
     //table responsive
     $('#mw-content-text table').each(function(){
        if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
@@ -220,69 +223,88 @@ $(document).ready(function(){
             tag: 'login',
             type: 'info'
         }
-        $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',function(data){
-            if(data.login.result == 'NeedToken'){
-            	//fix cookie issue for huijiwiki.com
-            	if ('.'+document.domain != mw.config.get('wgHuijiSuffix')){
-            		mw.cookie.set('_session', data.login.sessionid, {domain:'.'+document.domain});
-            	}
-                $.post('/api.php?action=login&lgname=' + login + '&lgpassword=' + pass +'&lgtoken=' + data.login.token + '&format=json',function(data){
-                   if(!data.error){
-                       $('#wpLoginAttempt,#frLoginAttempt').button('reset');
-                        if(data.login.result == "Success"){
-                            mw.notification.notify('登录成功', options);
-                            //document.location.reload();
-                            if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
-                                location.href = updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
-                            }else {
-                                location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
-                            }
-                        }else{
-                            options = {
-                                tag: 'login',
-                                type: 'error'
-                            }
-                            if(data.login.result=='NotExists'){
-                                mw.notification.notify('用户名不存在', options);
-                            }else if(data.login.result=='WrongPass') {
-                                mw.notification.notify('密码错误', options);
-                            }else if(data.login.result=='Throttled') {
-                                mw.notification.notify('由于您多次输入密码错误，请先休息一会儿。', options);
-                            }else if(data.login.result=='NoName') {
-                                mw.notification.notify('您必须键入用户名。', options);
-                            }else if(data.login.result=='Illegal') {
-                                mw.notification.notify('您的用户名中含有非法字符', options);
-                            }else if(data.login.result=='Blocked') {
-                                mw.notification.notify('您暂时被封禁了', options);
-                            }else if(data.login.result=='NeedToken') {
-                                mw.notification.notify('无法获取token', options);
-                            }else{
-                                mw.notification.notify('登录错误：'+ data.login.result, options);
-                            }
-                        }
-                   }else{
-                        options = {
-                            tag: 'login',
-                            type: 'error'
-                        }
-                        mw.notification.notify('登录错误，请正确填写用户名。（'+ data.login.result+'）', options);
+        $.ajax({
+            url: '/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',
+            type: 'post',
+            timeout: 10000,
+            success: function(data){
+                if(data.login.result == 'NeedToken'){
+                    //fix cookie issue for huijiwiki.com
+                    if ('.'+document.domain != mw.config.get('wgHuijiSuffix')){
+                        mw.cookie.set('_session', data.login.sessionid, {domain:'.'+document.domain});
                     }
-                });
-            }else{
-                options = {
-                    tag: 'login',
-                    type: 'error'
+                    $.ajax({
+                        url: '/api.php?action=login&lgname=' + login + '&lgpassword=' + pass +'&lgtoken=' + data.login.token + '&format=json',
+                        type: 'post',
+                        timeout: 10000,
+                        success: function (data) {
+                            $('#wpLoginAttempt,#frLoginAttempt').button('reset');
+                            if(!data.error){
+                                if(data.login.result == "Success"){
+                                    mw.notification.notify('登录成功', options);
+                                    //document.location.reload();
+                                    if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
+                                        location.href = updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
+                                    }else {
+                                        location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
+                                    }
+                                }else{
+                                    options = {
+                                        tag: 'login',
+                                        type: 'error'
+                                    }
+                                    if(data.login.result=='NotExists'){
+                                        mw.notification.notify('用户名不存在', options);
+                                    }else if(data.login.result=='WrongPass') {
+                                        mw.notification.notify('密码错误', options);
+                                    }else if(data.login.result=='Throttled') {
+                                        mw.notification.notify('由于您多次输入密码错误，请先休息一会儿。', options);
+                                    }else if(data.login.result=='NoName') {
+                                        mw.notification.notify('您必须键入用户名。', options);
+                                    }else if(data.login.result=='Illegal') {
+                                        mw.notification.notify('您的用户名中含有非法字符', options);
+                                    }else if(data.login.result=='Blocked') {
+                                        mw.notification.notify('您暂时被封禁了', options);
+                                    }else if(data.login.result=='NeedToken') {
+                                        mw.notification.notify('无法获取token', options);
+                                    }else{
+                                        mw.notification.notify('登录错误：'+ data.login.result, options);
+                                    }
+                                }
+                            }else{
+                                options = {
+                                    tag: 'login',
+                                    type: 'error'
+                                }
+                                mw.notification.notify('登录错误，请正确填写用户名。（'+ data.login.result+'）', options);
+                            }
+                        },
+                        error:function(){
+                            $('#wpLoginAttempt,#frLoginAttempt').button('reset');
+                            mw.notification.notify('网络错误');
+                        }
+                    });
+                }else{
+                    options = {
+                        tag: 'login',
+                        type: 'error'
+                    }
+                    mw.notification.notify('登录错误：'+ data.error, options);
                 }
-                mw.notification.notify('登录错误：'+ data.error, options);
-            }
-            if(data.error){
-                options = {
-                    tag: 'login',
-                    type: 'error'
+                if(data.error){
+                    options = {
+                        tag: 'login',
+                        type: 'error'
+                    }
+                    mw.notification.notify('登录错误：'+ data.error, options);
                 }
-                mw.notification.notify('登录错误：'+ data.error, options);
+            },
+            error: function(){
+                $('#wpLoginAttempt,#frLoginAttempt').button('reset');
+                mw.notification.notify('网络错误');
             }
         });
+
     }
     $('#wpLoginAttempt').click(function(){
         $("#login-user-name").each(function(){
