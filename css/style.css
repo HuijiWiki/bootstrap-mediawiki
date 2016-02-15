@@ -1690,6 +1690,8 @@ body>.tooltip.top .tooltip-arrow{
     position: relative;
     z-index: 1;
 }
+
+
 @media screen and (max-width: 1366px){
     .home-main{
         width: 90%;
