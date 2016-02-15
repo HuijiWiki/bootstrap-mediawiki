@@ -92,7 +92,7 @@ $(function(){
                 if (data.length == 0) return;
 
                 //除去指定推荐，剩下的进行遍历
-                for(var i=len;i<4-len;i++){
+                for(var i=len;i<=4-len;i++){
                     var item = data[i];
                     var searchtitle = item.title;
                     var id = item.id;
