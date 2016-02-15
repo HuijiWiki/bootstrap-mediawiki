@@ -48,22 +48,12 @@ a{
       border-right: 1px solid #666;
       padding-top: 15px;
       margin-right: 10px;
-      //      animation:buzz-out 4s infinite linear 5s;
-      //      -webkit-animation:buzz-out 4s infinite linear 5s;
-      //      -moz-animation:buzz-out 4s infinite linear 5s;
-      //      -o-animation:buzz-out 4s infinite linear 5s;
       .transition(0.9s);
       &:hover{
         opacity: 0.7;
       }
-      &.menu-active{
+      .menu-active {
         color: #fff;
-        .icon-bar:nth-child(2){
-          margin-left: 5px;
-        }
-        .icon-bar:last-child{
-          margin-left: 10px;
-        }
       }
       .icon-bar{
         display: block;
@@ -672,26 +662,27 @@ body{
     color: @footer-color;
   }
 }
-@media screen and (max-width: 1365px) {
-  #menu-toggle{
-    &.menu-active{
-      .icon-bar:nth-child(2){
-        margin-left: 0;
-      }
-      .icon-bar:last-child{
-        margin-left: 0;
-      }
+@media screen and (min-width: 1366px){
+  .menu-active{
+    .icon-bar:nth-child(2){
+      margin-left: 5px;
     }
-    &.smenu-active{
-      .icon-bar:nth-child(3){
-        margin-left: 5px;
-      }
-      .icon-bar:last-child{
-        margin-left: 10px;
-      }
+    .icon-bar:last-child{
+      margin-left: 10px;
     }
   }
-}@media screen and (min-width: 1200px) {
+}
+@media screen and (max-width: 1365px) {
+  .smenu-active {
+    .icon-bar:nth-child(2) {
+      margin-left: 5px;
+    }
+    .icon-bar:last-child {
+      margin-left: 10px;
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
   #scrollDiv {
     width: 10px;
     position: absolute;
