@@ -62,6 +62,7 @@
                 <?php if ( $wgEnableUploads ) { ?>
                     <li><a href="<?php echo $url_prefix; ?>Special:文件上传" class="upload-a-file" rel="nofollow"><i class="fa fa-upload"></i> 上传文件</a></li>
                 <?php } ?>
+                <li><a href="<?php echo $url_prefix; ?>帮助讨论:用户手册" class="upload-a-file" rel="nofollow"><i class="fa fa-question-circle"></i> 求助提问</a></li>
                 <?php if ( $wgHuijiPrefix !== 'www' && $this->data['isarticle'] ) { ?>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
