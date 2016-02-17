@@ -19,13 +19,7 @@
         </li>
         <li class="sidebar-behavior">
             <ul>
-            <?php
-                $this->data['content_actions']['whatlinkshere'] = array(
-                        "key" => "whatlinkshere",
-                        "href" => "/wiki/Special:whatlinkshere/".$this->getSkin()->getTitle()->getPrefixedText(),
-                        "class" => "whatlinkshere ",
-                        "text" => "链入页面",
-                    );            
+            <?php         
             
             if ( $this->data['isarticle'] && $wgUser->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $this->skin->getTitle()->exists()){
                 $this->data['content_actions']['fork'] = array(
@@ -68,6 +62,18 @@
                 <?php if ( $wgEnableUploads ) { ?>
                     <li><a href="<?php echo $url_prefix; ?>Special:文件上传" class="upload-a-file" rel="nofollow"><i class="fa fa-upload"></i> 上传文件</a></li>
                 <?php } ?>
+                <?php if ( $wgHuijiPrefix !== 'www' && $this->data['isarticle'] ) { ?>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-flask"></i> 特殊页面 <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo $url_prefix.'Special:whatlinkshere/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="what-links-here" rel="nofollow"><i class="fa fa-link "></i> 链入页面</a></li>
+                        <li><a href="<?php echo $url_prefix.'Special:链出更改/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="what-links-here" rel="nofollow"><i class="fa fa-venus-mars "></i> 相关更改</a></li>
+                        <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages" rel="nofollow"><i class="fa fa-star-o"></i> 全部特殊页面</a></li>
+                    </ul>
+                </li>
+                <?php } ?>
                 <?php if ( $wgHuijiPrefix !== 'www' ) { ?>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -76,8 +82,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo $url_prefix; ?>Special:EditRank" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-list-ol"></i> 本站编辑排行</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Special:TopUsers" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-th-list"></i> 等级积分排行</a></li>
-                        <li><a href="<?php echo $url_prefix; ?>Special:统计信息" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-line-chart"></i> 统计信息</a></li>
-                        <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages" rel="nofollow"><i class="fa fa-star-o"></i> 特殊页面</a></li>
+                        <li><a href="<?php echo $url_prefix; ?>Special:统计信息" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-line-chart"></i> 本站统计信息</a></li>
                     </ul>
                 </li>
                 <?php } ?>
