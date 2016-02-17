@@ -20,7 +20,6 @@ Class HuijiSkinTemplate extends BaseTemplate {
      * @access private
      */
     public function execute() {}
-
     /**
      * Render one or more navigations elements by name, automatically reveresed
      * when UI is in RTL mode

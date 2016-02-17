@@ -203,7 +203,6 @@ function animate() {
     renderer.render( scene, camera );
     if(start == 'stop'){
         window.cancelAnimationFrame(id);
-        console.log(id);
     }
 //    stats.update();
 
