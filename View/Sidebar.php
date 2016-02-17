@@ -61,6 +61,7 @@
                 <?php if ( $wgEnableUploads ) { ?>
                     <li><a href="<?php echo $url_prefix; ?>Special:文件上传" class="upload-a-file" rel="nofollow"><i class="fa fa-upload"></i> 上传文件</a></li>
                 <?php } ?>
+                <?php if ( $wgHuijiPrefix !== 'www' ) { ?>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bar-chart"></i> 数据统计 <b class="caret"></b>
@@ -72,6 +73,7 @@
                         <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages" rel="nofollow"><i class="fa fa-star-o"></i> 特殊页面</a></li>
                     </ul>
                 </li>
+                <?php } ?>
                 <?php if ( $wgUser->isLoggedIn() && $wgUser->isAllowed('editinterface')){ ?>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
