@@ -20,6 +20,13 @@
         <li class="sidebar-behavior">
             <ul>
             <?php
+                $this->data['content_actions']['whatlinkshere'] = array(
+                        "key" => "whatlinkshere",
+                        "href" => "/wiki/Special:whatlinkshere/".$this->getSkin()->getTitle()->getPrefixedText(),
+                        "class" => "whatlinkshere ",
+                        "text" => "链入页面",
+                    );            
+            
             if ( $this->data['isarticle'] && $wgUser->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $this->skin->getTitle()->exists()){
                 $this->data['content_actions']['fork'] = array(
                         "key" => "fork",
@@ -31,7 +38,7 @@
             if ( $this->data['isarticle'] && $wgUser->isAllowed('quickpurge') ){
                 $this->data['content_actions']['purge'] = array(
                         "key" => "purge",
-                        "href" => "?action=purge",
+                        "href" => "javascript:void(0)",
                         "class" => "purge ",
                         "text" => "清除缓存",
                     );
@@ -39,7 +46,7 @@
             if ( $wgUser->isAllowed('quickdebug') ){
                 $this->data['content_actions']['debug'] = array(
                         "key" => "debug",
-                        "href" => "?debug=1",
+                        "href" => "javascript:void(0)",
                         "class" => "debug ",
                         "text" => "调试",
                     );

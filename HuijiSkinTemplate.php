@@ -318,6 +318,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '模板': $icon = 'puzzle-piece'; break;
                 case '模块': $icon = 'cube'; break;
                 case '特殊页面': $icon = 'flask'; break;
+                case '链入页面': $icon = 'link'; break;
                 case '搬运': $icon = 'code-fork'; break;
                 case '清除缓存': $icon = 'eraser'; break;
                 case '调试': $icon = 'plug'; break;
@@ -529,7 +530,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                     <a rel="nofollow" href="http://www.huiji.wiki/wiki/创建新wiki">创建wiki</a>
                                 </li>
                                 <li class="hidden-xs hidden-sm">
-                                    <a rel="nofollow" href="http://www.huiji.wiki/wiki/%E5%B8%AE%E5%8A%A9:%E7%BC%96%E8%BE%91%E6%89%8B%E5%86%8C">帮助文档</a>
+                                    <a rel="nofollow" href="http://www.huiji.wiki/wiki/帮助:用户手册">帮助文档</a>
                                 </li>
                         </ul>';
                     if ( $wgUser->isLoggedIn() ) {
