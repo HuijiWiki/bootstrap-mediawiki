@@ -1,0 +1,27 @@
+/*mention*/
+.mention-popover{
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    border: 1px solid rgba(0,0,0,.2);
+    max-width: 150px;
+    overflow: hidden;
+}
+.mention-edit{
+    padding: 3px 10px;
+}
+.mention-list{
+    list-style-type: none;
+    padding-left: 25px;
+    margin-bottom: 0;
+}
+.mention-input{
+    width: 100%;
+    border: none;
+    box-shadow: none;
+}
+.mention-title{
+    background-color: #f7f7f7;
+    padding: 5px;
+    margin-bottom: 0;
+    text-align: center;
+}

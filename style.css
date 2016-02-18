@@ -1497,6 +1497,18 @@ ol.carousel-indicators{
 .mp-activity .show-btn,.hide-btn {
     bottom: 5px;
 }
+
+.text-area{
+    box-shadow: 0 1px 3px rgba(0,0,0,.1) inset;
+    border: 1px solid #ddd;
+    resize: none;
+    border-radius: 2px;
+    padding: 2px 5px;
+    margin-top: 20px;
+    height: 100px;
+    overflow-y: auto;
+}
+
 @media screen and (max-width: 767px) {
     .show-btn,.hide-btn{
         bottom: 40px;

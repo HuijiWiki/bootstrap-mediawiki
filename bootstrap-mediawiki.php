@@ -75,9 +75,11 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/huiji.ready.js',
 		$skinDir . '/js/qqLogin.js',
 		$skinDir . '/js/recommend.js',
+		$skinDir . '/js/mention.js',
 	),
 	'styles' => array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
+		$skinDir . '/css/mention.css'                                  => array( 'media' => 'all' ),
 	),
 	'dependencies' => array(
 //	    'skins.editable',
