@@ -30,7 +30,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
      * initialize the page
      */
     public function initPage( OutputPage $out ) {
-        global $wgSiteJS, $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer, $wgUser, $wgThanksConfirmationRequired;
+        global $wgSiteJS, $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer, $wgUser, $wgThanksConfirmationRequired, $wgHasComments;
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
@@ -57,6 +57,11 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
                 $wgThanksConfirmationRequired 
             );
         }
+        if ($this->getSkin()->getTitle()->hasSourceText() &&  !($this->getSkin()->getTitle()->isMainPage()) 
+            && $this->getSkin()->getTitle()->exists() && $this->getRequest()->getText('action') == '' 
+        ){
+            $wgHasComments = true;
+        }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
     }//end initPage
     /**
@@ -68,6 +73,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleStyles( 'skins.frontpage' );  
         }
+
         $out->addModuleStyles( array('skins.bootstrapmediawiki.top','mediawiki.ui.button') );
         // we need to include this here so the file pathing is right
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css' );
@@ -94,7 +100,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS;
         global $wgEnableUploads;
         global $wgLogo, $wgHuijiPrefix, $wgFavicon, $wgCdnHuijiSuffix;
-        global $wgTOCLocation;
+        global $wgTOCLocation, $wgHasComments;
         global $wgNavBarClasses;
         global $wgSubnavBarClasses;
         global $wgParser, $wgTitle, $wgEmailAuthentication;
@@ -205,7 +211,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             </div>
                                         <?php } else { ?>
                                             <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
-                                                <a id="ca-edit" href="<?php echo $editHref ?>" class="icon-edit-code" title="<?php echo wfMsg('bootstrap-mediawiki-view-edit'); ?>"></a>
+                                                <a id="ca-edit" href="<?php echo $editHref ?>" class="icon-edit-code" title="<?php echo wfMessage('bootstrap-mediawiki-view-edit')->plain(); ?>"></a>
                                             </div>                                   
                                         <?php }
                                     } ?>
@@ -214,42 +220,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     <small>
                                     <?php $this->html('subtitle') ?>
                                     <?php
-                                        if ($this->data['isarticle'] &&  !($this->skin->getTitle()->isMainPage()) && $this->skin->getTitle()->exists() && $action == ''){
-                                            $rev = Revision::newFromTitle($this->skin->getTitle());
-                                            $revId = $rev->getId();
-                                            $editorId = $rev->getUser();
-                                            if ($editorId !== 0){
-                                                $linkAttr = array('class' => 'mw-ui-anchor mw-ui-progressive mw-ui-quiet');
-                                                $editorAttr = array('class' => 'mw-ui-anchor mw-ui-progressive mw-ui-quiet mw-userlink');
-                                                $editor = User::newFromId( $editorId );
-                                                $editorName = $editor->getName();
-                                                $editorLink = Linker::Link($editor->getUserPage(), $editorName, $editorAttr);
-                                                $bjtime = strtotime( $rev->getTimestamp() ) + 8*60*60;
-                                                $edittime = HuijiFunctions::getTimeAgo( $bjtime );
-                                                $diff = SpecialPage::getTitleFor('Diff',$revId);
-                                                $diffLink = Linker::LinkKnown($diff,'修改',$linkAttr);
-                                                $thankLink = '';
-                                                if ( class_exists( 'EchoNotifier' )
-                                                    && $this->skin->getUser()->isLoggedIn() 
-                                                    && $this->skin->getUser()->getId() !== $editorId
-                                                ) {
-                                                    // Load the module for the thank links
-                                                    $thankLink .= '（<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet mw-thanks-thank-link" data-revision-id="'
-                                                        .$revId.'" href="javascript:void(0);">'.wfMessage('thanks-thank').'</a>）';
-                                                }
-                                                //Make it a td to reuse ext.thank.revthank   
-                                                echo $editorLink.'&nbsp于'.$edittime.'前'.$diffLink.'了此页面'.$thankLink;
-
-                                            }
-                                            if ($NS == NS_TEMPLATE || $NS == NS_MODULE ){
-                                                $pageId = $this->skin->getTitle()->mArticleID;
-                                                $forkCount = TemplateFork::getForkCountByPageId( $pageId, $wgHuijiPrefix );
-                                                if ( $forkCount > 0 ) {
-                                                    echo '&nbsp;&nbsp;&nbsp;已被搬运'.$forkCount.'次';
-                                                }
-                                            }
-                                            // echo '<div class="bdsharebuttonbox pull-right hidden-sm hidden-xs" data-tag="share_2"><a href="#" class="icon-weixin-share" data-tag="share_2" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_2" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-qqspace-share" data-tag="share_2" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="icon-tieba-share" data-tag="share_2" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="icon-douban-share" data-tag="share_2" data-cmd="douban" title="分享到豆瓣网"></a></div>';
-                                        }
+                                        echo $this->getSub($NS);
                                     ?>
                                     </small>
                                 </div>
@@ -259,7 +230,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
                         <!-- ConfirmEmail -->
                         <?php
-                            if ( $wgUser->isLoggedIn()&&!$wgUser->isEmailConfirmed() && !($this->getSkin()->getTitle()->isMainPage()) ) {
+                            if ( $wgUser->isLoggedIn()&& !$wgUser->isEmailConfirmed() && $this->isPrimaryContent() ) {
                         ?>
                         <div class="alert alert-danger" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -297,11 +268,12 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <!-- /catlinks -->
                         </div>
                         <?php endif; ?>
-                        <?php if($this->data['isarticle'] && $action==''): ?>
+                        <?php if( $this->isPrimaryContent() ): ?>
                         <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
                         <?php endif; ?>
                         <?php 
-                        if ($this->data['isarticle'] &&  !($this->getSkin()->getTitle()->isMainPage()) && $this->getSkin()->getTitle()->exists()){
+                        if ( $wgHasComments )
+                        {
                             $commentHtml = '<div class="clearfix"></div>';
                             $wgParser->setTitle($this->getSkin()->getTitle());
                             $commentHtml .= CommentsHooks::displayComments( '', array(), $wgParser); 

@@ -1,18 +1,36 @@
 /*mention*/
+.mention-area{
+    margin-top: 0;
+    background: #fff;
+    font-size: 14px;
+}
 .mention-popover{
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
     border: 1px solid rgba(0,0,0,.2);
     max-width: 150px;
     overflow: hidden;
+    background: #fff;
+    position: absolute;
+    font-size: 14px;
+    top: 36px;
+    left: 70px;
+    z-index:10000;
 }
 .mention-edit{
     padding: 3px 10px;
 }
 .mention-list{
     list-style-type: none;
-    padding-left: 25px;
+    padding-left: 0;
     margin-bottom: 0;
+}
+.mention-list li{
+    padding-left: 25px;
+}
+.mention-list li:hover{
+    background: #09c;
+    color: #fff;
 }
 .mention-input{
     width: 100%;
@@ -24,4 +42,13 @@
     padding: 5px;
     margin-bottom: 0;
     text-align: center;
+}
+.emoji-menu-tabs .icon-bell:before{
+    content: '';
+}
+.emoji-menu-tabs .icon-grid:before{
+    content: '';
+}
+.emoji-menu-tab{
+    cursor: pointer;
 }

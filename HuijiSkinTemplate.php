@@ -21,6 +21,55 @@ Class HuijiSkinTemplate extends BaseTemplate {
      */
     public function execute() {}
     /**
+     * detect if the current page is “primary page”
+     */
+    protected function isPrimaryContent(){
+        return !($this->getSkin()->getTitle()->isMainPage()) && $this->data['isarticle'] && $action=='' && $this->getSkin()->getTitle()->exists();
+    }
+    /**
+     * Generate subtitles based on title implications
+     */
+    protected function getSub($NS){
+        $res = '';
+        if ($this->isPrimaryContent() ){
+            $rev = Revision::newFromTitle($this->skin->getTitle());
+            $revId = $rev->getId();
+            $editorId = $rev->getUser();
+            if ($editorId !== 0){
+                $linkAttr = array('class' => 'mw-ui-anchor mw-ui-progressive mw-ui-quiet');
+                $editorAttr = array('class' => 'mw-ui-anchor mw-ui-progressive mw-ui-quiet mw-userlink');
+                $editor = User::newFromId( $editorId );
+                $editorName = $editor->getName();
+                $editorLink = Linker::Link($editor->getUserPage(), $editorName, $editorAttr);
+                $bjtime = strtotime( $rev->getTimestamp() ) + 8*60*60;
+                $edittime = HuijiFunctions::getTimeAgo( $bjtime );
+                $diff = SpecialPage::getTitleFor('Diff',$revId);
+                $diffLink = Linker::LinkKnown($diff,'修改',$linkAttr);
+                $thankLink = '';
+                if ( class_exists( 'EchoNotifier' )
+                    && $this->skin->getUser()->isLoggedIn() 
+                    && $this->skin->getUser()->getId() !== $editorId
+                ) {
+                    // Load the module for the thank links
+                    $thankLink .= '（<a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet mw-thanks-thank-link" data-revision-id="'
+                        .$revId.'" href="javascript:void(0);">'.wfMessage('thanks-thank').'</a>）';
+                }
+                //Make it a td to reuse ext.thank.revthank   
+                $res.= $editorLink.'&nbsp于'.$edittime.'前'.$diffLink.'了此页面'.$thankLink;
+
+            }
+            if ($NS == NS_TEMPLATE || $NS == NS_MODULE ){
+                $pageId = $this->skin->getTitle()->mArticleID;
+                $forkCount = TemplateFork::getForkCountByPageId( $pageId, $wgHuijiPrefix );
+                $text = '本'.(($NS == NS_TEMPLATE)?'模板':'模块').'已被搬运'.$forkCount.'次';
+                if ( $forkCount > 0 ) {
+                    $res.= '&nbsp;&nbsp;&nbsp;<span class="label label-info" data-toggle="tooltip" data-placement="top" title="'.$text.'">'.$forkCount.'次搬运</span>';
+                }
+            }
+        }
+        return $res;
+    }
+    /**
      * Render one or more navigations elements by name, automatically reveresed
      * when UI is in RTL mode
      */

@@ -54,6 +54,7 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
 		$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.ext.css'                          => array( 'media' => 'all' ),
+		$skinDir . '/css/video.css'                          => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.js',		
@@ -76,6 +77,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/qqLogin.js',
 		$skinDir . '/js/recommend.js',
 		$skinDir . '/js/mention.js',
+		$skinDir . '/js/video.js',
 	),
 	'styles' => array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
@@ -157,6 +159,25 @@ $wgResourceModules['skins.bootstrapmediawiki.frontpage.cloud'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'bottom',
 );
+
+$wgResourceModules['skins.bootstrapmediawiki.emoji'] = array(
+    'styles' => array(
+		$skinDir . '/emoji-picker/lib/css/nanoscroller.css'         					 => array( 'media' => 'all' ),
+		$skinDir . '/emoji-picker/lib/css/emoji.css'         					        => array( 'media' => 'all' ),
+	),
+	'scripts' => array(
+		$skinDir . '/emoji-picker/lib/js/nanoscroller.min.js',
+		$skinDir . '/emoji-picker/lib/js/tether.min.js',
+		$skinDir . '/emoji-picker/lib/js/config.js',
+		$skinDir . '/emoji-picker/lib/js/util.js',
+		$skinDir . '/emoji-picker/lib/js/jquery.emojiarea.js',
+		$skinDir . '/emoji-picker/lib/js/emoji-picker.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'bottom',
+);
+
 /* Resource for wiki editor */
 $wgResourceModules['ext.wikieditor.huijiextra.top'] = array(
 	'styles' => array(

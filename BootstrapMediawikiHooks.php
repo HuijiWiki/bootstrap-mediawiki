@@ -432,7 +432,7 @@ Class BootstrapMediawikiHooks {
             $pattern = ''
                     .'|'
                     .'<span class="mw-editsection-bracket">\[<\/span>'
-                    .'<a href="(.+?)" title="(.+?)">'.wfMsg('editsection').'<\/a>'
+                    .'<a href="(.+?)" title="(.+?)">'.wfMessage('editsection')->plain().'<\/a>'
                     .'<span class="mw-editsection-bracket">\]<\/span>'
                     .'|ui'
                     ;
@@ -445,7 +445,7 @@ Class BootstrapMediawikiHooks {
         } else {
             /* when enable visual editor */
             // $replacement = '';
-            // $pattern = '#<span class="mw-editsection-divider">'.wfMsg('pipe-separator').'<\/span>#Ui';
+            // $pattern = '#<span class="mw-editsection-divider">'.wfMessage('pipe-separator')->plain().'<\/span>#Ui';
             // $text = preg_replace( $pattern, $replacement, $text );
             $pattern = '<span class="mw-editsection-bracket">[</span>';
             $replacement = '';
@@ -455,7 +455,7 @@ Class BootstrapMediawikiHooks {
             $text = str_replace( $pattern, $replacement, $text );              
             $pattern = ''
                     .'|'
-                    .'<a href="(.+?)" title="(.+?)">'.wfMsg('editsection').'<\/a>'
+                    .'<a href="(.+?)" title="(.+?)">'.wfMessage('editsection')->plain().'<\/a>'
                     .'|ui'
                     ;
             $replacement = ''
@@ -467,7 +467,7 @@ Class BootstrapMediawikiHooks {
             $text = preg_replace( $pattern, $replacement, $text );
             $pattern = ''
                     .'|'
-                    .'<a href="(.+?)" title="(.+?)">'.wfMsg('visualeditor-ca-editsource-section').'<\/a>'
+                    .'<a href="(.+?)" title="(.+?)">'.wfMessage('visualeditor-ca-editsource-section')->plain().'<\/a>'
                     .'|ui'
                     ;    
             $replacement = ''
