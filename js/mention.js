@@ -144,7 +144,9 @@ var mention = {
 //        console.log(selection);
 //        var rangeIndex = getRangeIndex(selection);
 //        console.log(rangeIndex);
-        if (e.shiftKey && e.keyCode == 50) {
+        var caret = $('.emoji-wysiwyg-editor').caret();
+        var content = $('.emoji-wysiwyg-editor').text().substring(caret-1,caret);
+        if (content == '@') {
             this.addTag();
             this.getPos();
             this.addPopover(this.follow);
