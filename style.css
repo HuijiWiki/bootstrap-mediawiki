@@ -1509,6 +1509,16 @@ ol.carousel-indicators{
     overflow-y: auto;
 }
 
+.video-play-wrap{
+    position: relative;
+    display: inline-block;
+}
+.video-circle{
+    position: absolute;
+    font-size: 100px;
+    color: #fff;
+}
+
 @media screen and (max-width: 767px) {
     .show-btn,.hide-btn{
         bottom: 40px;

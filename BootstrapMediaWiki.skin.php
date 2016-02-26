@@ -187,6 +187,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 </div>
 
                 <div id="wiki-body" class="container">
+                    <span id="video-upload">上传视频</span>
                     <div id="content">
                         <div class="row">
                             <nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>

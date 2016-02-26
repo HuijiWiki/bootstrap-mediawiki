@@ -485,7 +485,7 @@ Class BootstrapMediawikiHooks {
     }
     public static function UserLinkBegin( $dummy, $target, &$html, &$customAttribs, &$query,
         &$options, &$ret ) {
-        if ($target->getNamespace() == NS_USER || $target->getNamespace() == NS_USER_TALK){
+        if ($target->getNamespace() == NS_USER){
             $customAttribs['class'] = 'mw-userlink';
         }
         return true;

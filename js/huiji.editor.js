@@ -1,21 +1,38 @@
 
 
 
-var customizeToolbar = function() {
+window.customizeToolbar = function() {
 	/* Your code goes here */
 
+    $( '#wpTextbox1' ).on( 'wikiEditor-toolbar-doneInitialSections', function () {
+        jQuery(".mw-editTools").detach().appendTo('#wikiEditor-section-quick-insert > div.pages');
+        jQuery("#wikiEditor-section-quick-insert > div.index").remove();
+    } );
 	$( '#wpTextbox1' ).wikiEditor( 'addToToolbar', {
 		'sections': {
 			'quick-insert': {
 				'type': 'booklet',
 				'label': '快速插入'
 			}
+		},
+		'section': 'advanced',
+		'group': 'insert',
+		'tools': {
+			'addVideo': {
+				label: 'addVideo',
+				type: 'button',
+				icon: 'http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/addVideo.png',
+				action: {
+					type: 'callback',
+					execute: function(){
+                        window.caret = $('#wpTextbox1').caret();
+                        $('.video-upload-modal').modal('show');
+					}
+				}
+			}
 		}
 	} );
-	$( '#wpTextbox1' ).on( 'wikiEditor-toolbar-doneInitialSections', function () {
-    	jQuery(".mw-editTools").detach().appendTo('#wikiEditor-section-quick-insert > div.pages');
-    	jQuery("#wikiEditor-section-quick-insert > div.index").remove();
-	} );
+
 
 };
 

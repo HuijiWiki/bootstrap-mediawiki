@@ -89,4 +89,28 @@
                 </div>
             </div>
 
+
+            <div class="modal fade video-upload-modal" tabindex="-1" role="dialog" aria-labelledby="mySmModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                            <h4 class="modal-title" id="video-upload-modal-title">您需要完善资料</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                               <label for="video-upload-modal-url" class="control-label">视频连接:</label>
+                               <textarea class="form-control" id="video-upload-modal-url"></textarea>
+                               <label for="video-upload-modal-name" class="control-label">视频名称</label>
+                               <input class="form-control" type="text" id="video-upload-modal-name">
+                           </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary video-upload-modal-btn">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
        
