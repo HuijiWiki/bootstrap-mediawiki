@@ -1509,14 +1509,8 @@ ol.carousel-indicators{
     overflow-y: auto;
 }
 
-.video-play-wrap{
-    position: relative;
-    display: inline-block;
-}
-.video-circle{
-    position: absolute;
-    font-size: 100px;
-    color: #fff;
+.mention-area{
+    height: auto!important;
 }
 
 @media screen and (max-width: 767px) {

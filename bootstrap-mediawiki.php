@@ -77,7 +77,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/qqLogin.js',
 		$skinDir . '/js/recommend.js',
 		$skinDir . '/js/mention.js',
-		$skinDir . '/js/video.js',
+
 	),
 	'styles' => array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
@@ -191,6 +191,8 @@ $wgResourceModules['ext.wikieditor.huijiextra.bottom'] = array(
 	'scripts' => array(
 		$skinDir . '/sisyphus/sisyphus.js',
 		$skinDir . '/js/huiji.editor.js',
+		$skinDir . '/js/video.js',
+
 	), 
 	'messages' => array( 
 		'edittools'
