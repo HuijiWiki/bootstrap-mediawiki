@@ -8,75 +8,44 @@ function updateQueryStringParameter(uri, key, value) {
         return uri + separator + key + "=" + value;
     }
 }
-
-window.videoInitialize = function(){
-    function imgLoadCall(that){
-        var src = that.data('video');
-        var wid = that.width();
-        var hig = that.height();
-        var time = that.data('video-duration');
-        if(document.body.clientWidth>768) {
-            if (wid >= 500 && hig >= 250) {
-                that.after('<iframe src="' + src + '" width="' + wid + '" height="' + hig + '" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" allowTransparency="true" frameborder="0" type="application/x-shockwave-flash"></iframe>')
-                that.remove();
-            } else if(wid >=200&&wid<500) {
-                that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
-            }else{
-                that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
-            }
+window.imgLoadCall = function( that ){
+    var src = that.data('video');
+    var wid = that.width();
+    var hig = that.height();
+    var time = that.data('video-duration');
+    if(document.body.clientWidth>768) {
+        if (wid >= 500 && hig >= 250) {
+            that.after('<iframe src="' + src + '" width="' + wid + '" height="' + hig + '" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" allowTransparency="true" frameborder="0" type="application/x-shockwave-flash"></iframe>')
+            that.remove();
+        } else if(wid >=200&&wid<500) {
+            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
         }else{
-            if(wid>= 200) {
-                that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
-            }else{
-                that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
-            }
+            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
         }
-        that.removeClass('video-player-asyn');
-
+    }else{
+        if(wid>= 200) {
+            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
+        }else{
+            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
+        }
     }
+}
+window.videoInitialize = function(){
     for(var i=0; i<$('.video-player-asyn').length; i++){
         var that = $('.video-player-asyn').get(i);
         console.log(that.complete);
         if (that.complete){
             imgLoadCall($(that));
         }else{
-            that.onload = imgLoadCall;
+            that.onload = imgLoadCall($(that));
         }
     }
-//    $('.video-player-asyn').each(function(){
-//        console.log($(this).complete);
-//        var that = $(this);
-//        if (that.complete){
-//            imgLoadCall(that)
-//        }else{
-//            that.onload = imgLoadCall();
-//        }
-//    });
+    $('.video-player-asyn').removeClass('video-player-asyn');
+
 }
 $(document).ready(function(){
 
     mw.notification.autoHideSeconds = 3;
-    $('img').load(function(){
-        console.log('bb');
-    })
-    //Initialize Video
-    videoInitialize();
-
-    //video play
-    $('body').on('click','.video-player,.video-circle',function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        var src = $(this).parents('.video-play-wrap').find('.video-player').data('video');
-        var title = $(this).parents('.video-play-wrap').find('.video-player').data('video-title');
-        var from = $(this).parents('.video-play-wrap').find('.video-player').data('video-from');
-        if(document.body.clientWidth>768) {
-            $('body').append('<div class="video-wrapper"><span class="icon-close video-close"></span><h3>'+title+'</h4><span class="video-from">来自 '+from+'</span><iframe src="' + src + '" frameborder="0" allowfullscreen="true"></iframe></div>');
-        }else{
-            window.open(src);
-        }
-    }).on('click','.video-close',function(){
-        $('.video-wrapper').remove();
-    })
 
     //table responsive
     $('#mw-content-text table').each(function(){
@@ -734,7 +703,25 @@ $(document).ready(function(){
         $(this).remove();
     });
 
+    //Initialize Video
+    videoInitialize();
 
+    //video play
+    $('body').on('click','.video-player,.video-circle',function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var src = $(this).parents('.video-play-wrap').find('.video-player').data('video');
+        var title = $(this).parents('.video-play-wrap').find('.video-player').data('video-title');
+        var from = $(this).parents('.video-play-wrap').find('.video-player').data('video-from');
+        var link = $(this).parents('.video-play-wrap').find('.video-player').data('video-link');
+        if(document.body.clientWidth>768) {
+            $('body').append('<div class="video-wrapper"><span class="icon-close video-close"></span><h3>'+title+'</h4><span class="video-from">来自 '+from+'</span><iframe src="' + src + '" frameborder="0" allowfullscreen="true"></iframe></div>');
+        }else{
+            window.open(link);
+        }
+    }).on('click','.video-close',function(){
+        $('.video-wrapper').remove();
+    })
 
 
 });

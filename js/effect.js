@@ -97,7 +97,7 @@ $(document).ready(function(){
                                 $(this).append('<span class="show-btn">显示全部</span>')
                             }
                         });
-                        setTimeout('videoInitialize()',500);
+                        videoInitialize();
                     }
                 }
             );
