@@ -38,6 +38,7 @@ window.videoInitialize = function(){
             imgLoadCall($(that));
         }else{
             that.onload = imgLoadCall($(that));
+            console.log($(that));
         }
     }
     $('.video-player-asyn').removeClass('video-player-asyn');

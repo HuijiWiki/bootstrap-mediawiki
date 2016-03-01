@@ -104,9 +104,11 @@ var mention = {
             },
             function( data ) {
                 var res=JSON.parse(data);
-                res.result.forEach(function(item){
-                    mention.follow.push(item.user_name);
-                });
+                if(res.result) {
+                    res.result.forEach(function (item) {
+                        mention.follow.push(item.user_name);
+                    });
+                }
             }
         );
     },

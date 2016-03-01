@@ -52,10 +52,10 @@
 .emoji-menu-tab{
     cursor: pointer;
 }
-* {
-    -webkit-user-select: none;
-    user-select: none;
-}
+/** {*/
+    /*-webkit-user-select: none;*/
+    /*user-select: none;*/
+/*}*/
 
 /*input,*/
 /*textarea,*/
