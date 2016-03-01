@@ -575,7 +575,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                     </li>
                                   </ul>
                                 </li>
-                                <li class="hidden-xs hidden-sm">
+                                <li class="hidden-xs">
                                     <a rel="nofollow" href="http://www.huiji.wiki/wiki/创建新wiki">创建wiki</a>
                                 </li>
                                 <li class="hidden-xs hidden-sm">

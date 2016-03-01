@@ -8,7 +8,60 @@ function updateQueryStringParameter(uri, key, value) {
         return uri + separator + key + "=" + value;
     }
 }
+
 window.videoInitialize = function(){
+    function imgLoadCall(that){
+        var src = that.data('video');
+        var wid = that.width();
+        var hig = that.height();
+        var time = that.data('video-duration');
+        if(document.body.clientWidth>768) {
+            if (wid >= 500 && hig >= 250) {
+                that.after('<iframe src="' + src + '" width="' + wid + '" height="' + hig + '" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" allowTransparency="true" frameborder="0" type="application/x-shockwave-flash"></iframe>')
+                that.remove();
+            } else if(wid >=200&&wid<500) {
+                that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
+            }else{
+                that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
+            }
+        }else{
+            if(wid>= 200) {
+                that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
+            }else{
+                that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
+            }
+        }
+        that.removeClass('video-player-asyn');
+
+    }
+    for(var i=0; i<$('.video-player-asyn').length; i++){
+        var that = $('.video-player-asyn').get(i);
+        console.log(that.complete);
+        if (that.complete){
+            imgLoadCall($(that));
+        }else{
+            that.onload = imgLoadCall;
+        }
+    }
+//    $('.video-player-asyn').each(function(){
+//        console.log($(this).complete);
+//        var that = $(this);
+//        if (that.complete){
+//            imgLoadCall(that)
+//        }else{
+//            that.onload = imgLoadCall();
+//        }
+//    });
+}
+$(document).ready(function(){
+
+    mw.notification.autoHideSeconds = 3;
+    $('img').load(function(){
+        console.log('bb');
+    })
+    //Initialize Video
+    videoInitialize();
+
     //video play
     $('body').on('click','.video-player,.video-circle',function(e){
         e.preventDefault();
@@ -24,33 +77,6 @@ window.videoInitialize = function(){
     }).on('click','.video-close',function(){
         $('.video-wrapper').remove();
     })
-    $('.video-player').each(function(){
-        var src = $(this).data('video');
-        var wid = $(this).width();
-        var hig = $(this).height();
-        var time = $(this).data('video-duration');
-        if(document.body.clientWidth>768) {
-            if (wid >= 500 && hig >= 250) {
-                $(this).after('<iframe src="' + src + '" width="' + wid + '" height="' + hig + '" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" allowTransparency="true" frameborder="0" type="application/x-shockwave-flash"></iframe>')
-                $(this).remove();
-            } else if(wid >=200&&wid<500) {
-                $(this).parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
-            }else{
-                $(this).parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
-            }
-        }else{
-            if(wid>= 200) {
-                $(this).parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
-            }else{
-                $(this).parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
-            }
-        }
-
-    })
-}
-$(document).ready(function(){
-
-    mw.notification.autoHideSeconds = 3;
 
     //table responsive
     $('#mw-content-text table').each(function(){
@@ -708,8 +734,7 @@ $(document).ready(function(){
         $(this).remove();
     });
 
-    //Initialize Video
-    videoInitialize();
+
 
 
 });
