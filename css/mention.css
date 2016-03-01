@@ -52,3 +52,19 @@
 .emoji-menu-tab{
     cursor: pointer;
 }
+* {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/*input,*/
+/*textarea,*/
+/*[contenteditable] {*/
+    /*-webkit-user-select: text;*/
+    /*user-select: text;*/
+/*}*/
+/*@media screen and (max-width: 767px) {*/
+    /*.emoji-menu{*/
+        /*left:-180px!important;*/
+    /*}*/
+/*}*/

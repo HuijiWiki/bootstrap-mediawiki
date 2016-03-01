@@ -22,18 +22,20 @@ function checkName(title,url,token,video_from, video_id, video_player_url, video
                         ignorewarnings: true,
                         format: 'json'
                     },function(data){
+                        var filename = data.upload.filename;
                         $.post(
                             mw.util.wikiScript(), {
                                 action: 'ajax',
                                 rs: 'wfinsertVideoInfo',
-                                rsargs: [video_from, title + n + '.video', video_id, title + n, video_player_url, video_tags, video_duration]
+                                rsargs: [video_from, filename, video_id, title + n, video_player_url, video_tags, video_duration]
                             },
                             function (data) {
                                 var res = jQuery.parseJSON(data);
                                 if (res.success) {
+                                    empty();
                                     if ($('#wpTextbox1').val()) {
                                         var caret = window.caret || 0;
-                                        var content = $('#wpTextbox1').val().substring(0, caret) + "[[File:" + title + n + ".video]]" + $('#wpTextbox1').val().substring(caret);
+                                        var content = $('#wpTextbox1').val().substring(0, caret) + "[[File:" + filename + "]]" + $('#wpTextbox1').val().substring(caret);
                                         $('#wpTextbox1').val(content);
                                         $('.video-upload-modal').modal('hide');
                                         mw.notification.notify('上传成功');
@@ -43,6 +45,7 @@ function checkName(title,url,token,video_from, video_id, video_player_url, video
                                 } else {
                                     mw.notification.notify('上传失败');
                                 }
+                                $('.video-upload-modal-btn').removeAttr("disabled");
                             }
                         );
                     });
@@ -53,11 +56,12 @@ function checkName(title,url,token,video_from, video_id, video_player_url, video
                  * api.php  upload file bigThumbnail as image
                  * named as video_title
                  */
+                var filename = data.upload.filename;
                  $.post(
                         mw.util.wikiScript(), {
                             action: 'ajax',
                             rs: 'wfinsertVideoInfo',
-                            rsargs: [video_from, title + n + '.video', video_id, title + n, video_player_url, video_tags, video_duration]
+                            rsargs: [video_from, filename, video_id, title + n, video_player_url, video_tags, video_duration]
                         },
                         function (data) {
                             var res = jQuery.parseJSON(data);
@@ -71,26 +75,33 @@ function checkName(title,url,token,video_from, video_id, video_player_url, video
                                 } else {
                                     mw.notification.notify('上传成功');
                                 }
+                                empty();
                             } else {
                                 mw.notification.notify('上传失败');
                             }
+                            $('.video-upload-modal-btn').removeAttr("disabled");
                         }
                  );
             }
         }else if(data.error){
             mw.notification.notify(data.error.code);
+            $('.video-upload-modal-btn').removeAttr("disabled");
         }
     });
 }
+function empty(){
+    $('#video-upload-modal-url').val('');
+    $('#video-upload-modal-name').val('');
+}
 $(function(){
     $('body').on('click','.video-upload-modal-btn',function(){
-        console.log('aaaaaaaa');
 //        $('#wpTextbox1').focus();
         var url = $('#video-upload-modal-url').val();
         //check url & get video_id
         var regex = /\.(\w+)\.com/;
         var match = url.match(regex);
         var video_id,video_from,video_title;
+        $(this).attr('disabled','');
         switch(match[1]){
             case 'youku':
                 var regex2 = /id_([\w]+?)(?:==|\.html)/;

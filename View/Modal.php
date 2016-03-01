@@ -95,7 +95,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                            <h4 class="modal-title" id="video-upload-modal-title">您需要完善资料</h4>
+                            <h4 class="modal-title" id="video-upload-modal-title">上传视频</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
@@ -106,7 +106,7 @@
                            </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary video-upload-modal-btn">保存</button>
+                            <button type="button" class="btn btn-primary video-upload-modal-btn" data-loading-text="上传中...">上传</button>
                         </div>
                     </div>
                 </div>
