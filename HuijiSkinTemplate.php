@@ -24,7 +24,8 @@ Class HuijiSkinTemplate extends BaseTemplate {
      * detect if the current page is “primary page”
      */
     protected function isPrimaryContent(){
-        return !($this->getSkin()->getTitle()->isMainPage()) && $this->data['isarticle'] && $action=='' && $this->getSkin()->getTitle()->exists();
+        global $wgRequest;
+        return !($this->getSkin()->getTitle()->isMainPage()) && $this->data['isarticle'] && $wgRequest->getText( 'action' )=='' && $this->getSkin()->getTitle()->exists();
     }
     /**
      * Generate subtitles based on title implications

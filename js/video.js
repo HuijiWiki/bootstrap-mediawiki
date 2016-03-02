@@ -94,14 +94,27 @@ function empty(){
     $('#video-upload-modal-name').val('');
 }
 $(function(){
+    $('#video-upload-modal-url').keyup(function() {
+        if($(this).val() != '') {
+           $('.video-upload-modal-btn').removeAttr("disabled");
+        }
+    });
     $('body').on('click','.video-upload-modal-btn',function(){
 //        $('#wpTextbox1').focus();
         var url = $('#video-upload-modal-url').val();
+        if ($('#uploadvideos').val() == ''){
+            mw.notification.notify('请输入视频URL');
+            return;
+        }
         //check url & get video_id
         var regex = /\.(\w+)\.com/;
         var match = url.match(regex);
         var video_id,video_from,video_title;
         $(this).attr('disabled','');
+        if(!match){
+            mw.notification.notify('暂不支持该视频URL');
+            return;
+        }
         switch(match[1]){
             case 'youku':
                 var regex2 = /id_([\w]+?)(?:==|\.html)/;
@@ -110,7 +123,8 @@ $(function(){
                     video_id = id[1];
                     video_from = 'youku';
                 }else{
-                    alert('failed');
+                    mw.notification.notify('无法找到优酷视频id');
+                    return;
                 }
             // case 'qq':
             // default:
@@ -120,15 +134,26 @@ $(function(){
             'client_id':'adc1f452c0653f53',
             'video_id':video_id
         },function(data){
-            var title_str = $('#video-upload-modal-name').val().replace('.video','');
-            video_title = title_str.replace(/\s/g, '_');
+            var video_orig_title = data.title;
+            var video_full_name;
+            var video_name = $('#video-upload-modal-name').val();
+            if (video_name == ''){
+                video_name = video_orig_title;
+            }
+            if (video_name.indexOf('.video') < 0){
+                video_full_name = video_name + '.video';
+            } else {
+                video_full_name = video_name;
+                video_name = video_full_name.substr(0, video_full_name.lastIndexOf('.'));
+            }
+
             // alert(video_title);
             var video_player_url = data.player;
             var video_tags = data.tags;
             var video_thum = data.bigThumbnail;
             var video_duration = data.duration;
             var token = mw.user.tokens.get('editToken');
-            checkName(video_title,video_thum,token,video_from, video_id, video_player_url, video_tags, video_duration,'');
+            checkName(video_name,video_thum,token,video_from, video_id, video_player_url, video_tags, video_duration,'');
             //ajax insert video's info
         });
 

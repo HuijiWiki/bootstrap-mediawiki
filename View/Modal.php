@@ -1,3 +1,6 @@
+<?php 
+    if ($wgRequest->getText( 'action' ) == 'edit'){
+?>
             <!-- Autosave Modal -->
             <div class="modal fade auto-restore" id="autoRestoreModal" tabindex="-1" role="dialog" aria-labelledby="autoRestoreModalLabel">
               <div class="modal-dialog" role="document">
@@ -16,6 +19,32 @@
                 </div>
               </div>
             </div>
+            <!-- upload -->
+            <div class="modal fade video-upload-modal" tabindex="-1" role="dialog" aria-labelledby="mySmModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                            <h4 class="modal-title" id="video-upload-modal-title">添加视频&nbsp;<small>仅支持youku</small></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                               <label for="video-upload-modal-url" class="control-label">视频连接</label>
+                               <textarea class="form-control" id="video-upload-modal-url"></textarea>
+                               <label for="video-upload-modal-name" class="control-label">视频名称</label>
+                               <input class="form-control" type="text" id="video-upload-modal-name">
+                           </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary video-upload-modal-btn" data-loading-text="上传中..." disabled>添加</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<?php 
+    }
+?>
+
         <!-- followed list -->
             <div class="modal fade follow-msg" tabindex="-1" role="dialog" aria-labelledby="mySmModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-md">
@@ -90,27 +119,7 @@
             </div>
 
 
-            <div class="modal fade video-upload-modal" tabindex="-1" role="dialog" aria-labelledby="mySmModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                            <h4 class="modal-title" id="video-upload-modal-title">上传视频</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                               <label for="video-upload-modal-url" class="control-label">视频连接:</label>
-                               <textarea class="form-control" id="video-upload-modal-url"></textarea>
-                               <label for="video-upload-modal-name" class="control-label">视频名称</label>
-                               <input class="form-control" type="text" id="video-upload-modal-name">
-                           </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary video-upload-modal-btn" data-loading-text="上传中...">上传</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
 
        
