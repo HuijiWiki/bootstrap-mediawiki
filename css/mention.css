@@ -3,6 +3,8 @@
     margin-top: 0;
     background: #fff;
     font-size: 14px;
+    height: auto!important;
+    min-height: 60px!important;
 }
 .mention-popover{
     border-radius: 5px;

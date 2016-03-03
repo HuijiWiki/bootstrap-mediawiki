@@ -1509,9 +1509,6 @@ ol.carousel-indicators{
     overflow-y: auto;
 }
 
-.mention-area{
-    height: auto!important;
-}
 
 @media screen and (max-width: 767px) {
     .show-btn,.hide-btn{
