@@ -3,35 +3,39 @@
 
 window.customizeToolbar = function() {
 	/* Your code goes here */
+	//console.log('addToolbar'+$( '#wpTextbox1' ).length+'addToToolBar'+$( '#wpTextbox1' ).wikiEditor);
 
     $( '#wpTextbox1' ).on( 'wikiEditor-toolbar-doneInitialSections', function () {
-        jQuery(".mw-editTools").detach().appendTo('#wikiEditor-section-quick-insert > div.pages');
-        jQuery("#wikiEditor-section-quick-insert > div.index").remove();
-    } );
-	$( '#wpTextbox1' ).wikiEditor( 'addToToolbar', {
-		'sections': {
-			'quick-insert': {
-				'type': 'booklet',
-				'label': '快速插入'
-			}
-		},
-		'section': 'advanced',
-		'group': 'insert',
-		'tools': {
-			'addVideo': {
-				label: 'addVideo',
-				type: 'button',
-				icon: 'http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/addVideo.png',
-				action: {
-					type: 'callback',
-					execute: function(){
-                        window.caret = $('#wpTextbox1').caret();
-                        $('.video-upload-modal').modal('show');
+    	//console.log('calling addToToolbar');
+    	$( '#wpTextbox1' ).wikiEditor( 'addToToolbar', {
+			'sections': {
+				'quick-insert': {
+					'type': 'booklet',
+					'label': '快速插入'
+				}
+			},
+			'section': 'advanced',
+			'group': 'insert',
+			'tools': {
+				'addVideo': {
+					label: 'addVideo',
+					type: 'button',
+					icon: 'http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/addVideo.png',
+					action: {
+						type: 'callback',
+						execute: function(){
+	                        window.caret = $('#wpTextbox1').caret();
+	                        $('.video-upload-modal').modal('show');
+						}
 					}
 				}
 			}
-		}
-	} );
+		} );
+    	//console.log('appending quick-insert');
+        jQuery(".mw-editTools").detach().appendTo('#wikiEditor-section-quick-insert > div.pages');
+        jQuery("#wikiEditor-section-quick-insert > div.index").remove();
+    } );
+	
 
 
 };
@@ -55,6 +59,7 @@ window.customizeToolbar = function() {
 		/* Check if view is in edit mode and that the required modules are available. Then, customize the toolbar … */
 	if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
 		mw.loader.using( 'user.options', function () {
+			//console.log('loaded user option');
 			// This can be the string "0" if the user disabled the preference ([[phab:T54542#555387]])
 			if ( mw.user.options.get( 'usebetatoolbar' ) == 1 ) {
 				$.when(

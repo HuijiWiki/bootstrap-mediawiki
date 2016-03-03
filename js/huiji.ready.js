@@ -33,12 +33,12 @@ window.imgLoadCall = function( that ){
 window.videoInitialize = function(){
     for(var i=0; i<$('.video-player-asyn').length; i++){
         var that = $('.video-player-asyn').get(i);
-        console.log(that.complete);
         if (that.complete){
             imgLoadCall($(that));
         }else{
-            that.onload = imgLoadCall($(that));
-            console.log($(that));
+            that.onload = function(e){
+                imgLoadCall($(e.target));
+            }
         }
     }
     $('.video-player-asyn').removeClass('video-player-asyn');
@@ -68,24 +68,24 @@ $(document).ready(function(){
         $('.createbox').submit();
     });
     // $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } );
-	// if (mw.cookie.get('Animation') == 'none'){
-	// 	$('#menu-toggle').css({
+    // if (mw.cookie.get('Animation') == 'none'){
+    //  $('#menu-toggle').css({
 //            'animation':'none',
 //            '-webkit-animation':'none',
 //            '-moz-animation':'none',
 //            '-o-animation':'none'
 //        });
-	// }
-	var fromSource    = document.referrer;
-	var navigatorInfo = navigator.userAgent.toLowerCase();
-	var userId    = mw.config.get("wgUserId");
-	var userName  = mw.config.get("wgUserName");
-	var wikiSite  = mw.config.get("wgHuijiPrefix");
-	var siteName  = mw.config.get("wgSiteName");
-	var titleName = mw.config.get("wgPageName");
-	var articleId = mw.config.get("wgArticleId");
-	var url = 'http://huijidata.com:50007/insertViewRecord/';
-	insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
+    // }
+    var fromSource    = document.referrer;
+    var navigatorInfo = navigator.userAgent.toLowerCase();
+    var userId    = mw.config.get("wgUserId");
+    var userName  = mw.config.get("wgUserName");
+    var wikiSite  = mw.config.get("wgHuijiPrefix");
+    var siteName  = mw.config.get("wgSiteName");
+    var titleName = mw.config.get("wgPageName");
+    var articleId = mw.config.get("wgArticleId");
+    var url = 'http://huijidata.com:50007/insertViewRecord/';
+    insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
 
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
@@ -148,7 +148,7 @@ $(document).ready(function(){
     });
 
     $('a[href^=#cite_note]').each(function(){
-	    var self = $(this);
+        var self = $(this);
             var options = {};
             var ref = $.escape(self.attr('href'));
             var innerHtml = $(ref+' .reference-text').html();
@@ -164,7 +164,7 @@ $(document).ready(function(){
             return;
         }
         var self = $(this);
-	    e.preventDefault();
+        e.preventDefault();
         // Let popover.js handle cite note
         if (self.attr('href').match(/^\#cite_note/g)){
             if (document.activeElement != this){
@@ -183,7 +183,7 @@ $(document).ready(function(){
         window.location = $(this).val();
     });
 
-	// show the total number of active talks
+    // show the total number of active talks
     var pagename = mw.config.get('wgTitle').replace(' ', '_');
     var namespace = mw.config.get('wgCanonicalNamespace').replace(' ', '_');
     if (namespace != ''){
@@ -673,25 +673,25 @@ $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip();
     if ( $('.bdsharebuttonbox .icon-share-alt').length > 0 ){
-	  	$.getScript( "//cdn.bootcss.com/clipboard.js/1.5.5/clipboard.min.js" )
-	      .done(function( script, textStatus ) {
-		    var clipboard = new Clipboard('.bdsharebuttonbox .icon-share-alt', {
-		    	text: function(trigger) {
-		        	return document.title+" "+window._bd_share_config.common.bdUrl;
-		    	}
-			});
-		    clipboard.on('success', function(e) {
-			    mw.notification.notify('已复制本页链接到剪贴板，分享给小伙伴吧:)');
-			});
+        $.getScript( "//cdn.bootcss.com/clipboard.js/1.5.5/clipboard.min.js" )
+          .done(function( script, textStatus ) {
+            var clipboard = new Clipboard('.bdsharebuttonbox .icon-share-alt', {
+                text: function(trigger) {
+                    return document.title+" "+window._bd_share_config.common.bdUrl;
+                }
+            });
+            clipboard.on('success', function(e) {
+                mw.notification.notify('已复制本页链接到剪贴板，分享给小伙伴吧:)');
+            });
 
-			clipboard.on('error', function(e) {
-				window.prompt("请按下 Ctrl+C 复制链接到剪贴板：", document.title+" "+window._bd_share_config.common.bdUrl);
-			});
-	      })
-	      .fail(function( jqxhr, settings, exception ) {
-	        console.log('unable to download clipboard.min.js');
-	    });
-	}
+            clipboard.on('error', function(e) {
+                window.prompt("请按下 Ctrl+C 复制链接到剪贴板：", document.title+" "+window._bd_share_config.common.bdUrl);
+            });
+          })
+          .fail(function( jqxhr, settings, exception ) {
+            console.log('unable to download clipboard.min.js');
+        });
+    }
 
     //feed img show more
     $('#home-feed-content,#bodyContent').on('click','.show-btn',function(){

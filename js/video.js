@@ -115,6 +115,15 @@ $(function(){
             mw.notification.notify('暂不支持该视频URL');
             return;
         }
+        var video_from, video_id;
+        var video_orig_title;
+        var video_full_name;
+        var video_name;
+        var video_player_url;
+        var video_tags;
+        var video_thum;
+        var video_duration;
+        var token;
         switch(match[1]){
             case 'youku':
                 var regex2 = /id_([\w]+?)(?:==|\.html)/;
@@ -126,36 +135,98 @@ $(function(){
                     mw.notification.notify('无法找到优酷视频id');
                     return;
                 }
+                //get video info from youkuapi
+                $.get("https://openapi.youku.com/v2/videos/show.json",{
+                    'client_id':'adc1f452c0653f53',
+                    'video_id':video_id
+                },function(data){
+                    video_orig_title = data.title;
+                    video_full_name;
+                    video_name = $('#video-upload-modal-name').val();
+                    if (video_name == ''){
+                        video_name = video_orig_title;
+                    }
+                    if (video_name.indexOf('.video') < 0){
+                        video_full_name = video_name + '.video';
+                    } else {
+                        video_full_name = video_name;
+                        video_name = video_full_name.substr(0, video_full_name.lastIndexOf('.'));
+                    }
+
+                    // alert(video_title);
+                    video_player_url = data.player;
+                    video_tags = data.tags;
+                    video_thum = data.bigThumbnail;
+                    video_duration = data.duration;
+                    token = mw.user.tokens.get('editToken');
+                    checkName(video_name,video_thum,token,video_from, video_id, video_player_url, video_tags, video_duration,'');
+                    //ajax insert video's info
+                });
+            break;
+            case 'bilibili':
+                var regex2 = /av([\d]+?)\//;
+                var regex3 = /index_([\d]+?).html/;
+                var id = url.match(regex2);
+                if (id != null && id[1] != null){
+                    video_id = id[1];
+                    video_from = 'bilibili';
+                    var page = url.match(regex3);
+                    var pageNum = 1;
+                    var suffix = '';
+                    if (page != null && page[1] != null){
+                        pageNum = page[1];
+                        suffix = page[1];
+
+                    }
+                }else{
+                    mw.notification.notify('上传失败（URL不支持）');
+                    return;
+                }
+                //bili ajax
+                $.post(
+                    mw.util.wikiScript(), {
+                        action: 'ajax',
+                        rs: 'wfGetBiliVideoInfo',
+                        rsargs: [video_id, pageNum]
+                    },
+                    function (data) {
+                        console.log(data);
+                        var data = jQuery.parseJSON(data);
+                        if (data.title) {
+                            // var title_str = data.title.replace('.video','');
+                            video_orig_title = data.title;
+                            video_full_name;
+                            video_name = $('#video-upload-modal-name').val();
+                            if (video_name == ''){
+                                video_name = video_orig_title;
+                            }
+                            if (video_name.indexOf('.video') < 0){
+                                video_full_name = video_name + '.video';
+                            } else {
+                                video_full_name = video_name;
+                                video_name = video_full_name.substr(0, video_full_name.lastIndexOf('.'));
+                            }
+
+                            // alert(video_title);
+                            // http://bilibili.cloudmoe.com/?api=h5_hd&page=1&id=2637306
+                            video_player_url = 'http://bilibili.cloudmoe.com/?api=h5_hd&page='+data.pages+'&id='+video_id;
+                            var video_page_id = video_id+'-'+pageNum;
+                            video_tags = data.tag;
+                            video_thum = data.pic;
+                            video_duration = '';
+                            token = mw.user.tokens.get('editToken');
+                            checkName(video_name,video_thum,token,video_from, video_page_id, video_player_url, video_tags, video_duration, '');
+                        } else {
+                            mw.notification.notify('上传失败（bilibili返回错误）');
+                            return;
+                        }
+                    }
+                );
+                break;
             // case 'qq':
             // default:
         }
-        //get video info from youkuapi
-        $.get("https://openapi.youku.com/v2/videos/show.json",{
-            'client_id':'adc1f452c0653f53',
-            'video_id':video_id
-        },function(data){
-            var video_orig_title = data.title;
-            var video_full_name;
-            var video_name = $('#video-upload-modal-name').val();
-            if (video_name == ''){
-                video_name = video_orig_title;
-            }
-            if (video_name.indexOf('.video') < 0){
-                video_full_name = video_name + '.video';
-            } else {
-                video_full_name = video_name;
-                video_name = video_full_name.substr(0, video_full_name.lastIndexOf('.'));
-            }
 
-            // alert(video_title);
-            var video_player_url = data.player;
-            var video_tags = data.tags;
-            var video_thum = data.bigThumbnail;
-            var video_duration = data.duration;
-            var token = mw.user.tokens.get('editToken');
-            checkName(video_name,video_thum,token,video_from, video_id, video_player_url, video_tags, video_duration,'');
-            //ajax insert video's info
-        });
 
     });
 

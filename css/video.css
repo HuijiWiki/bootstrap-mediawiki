@@ -29,6 +29,10 @@
     position: relative;
     display: inline-block;
 }
+.video-play-wrap img{
+    margin: 0;
+    padding: 0;
+}
 .video-circle{
     position: absolute;
     font-size: 100px;

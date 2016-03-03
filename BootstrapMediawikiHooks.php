@@ -380,6 +380,7 @@ Class BootstrapMediawikiHooks {
         }
     }
     public static function addEditModule(EditPage $editPage, OutputPage $output ) {
+        $output->addModules( 'skins.bootstrapmediawiki.videohandler');
         $output->addModules( 'ext.wikieditor.huijiextra.top' );
         $output->addModules( 'ext.wikieditor.huijiextra.bottom' );
         $output->addHeadItem('loader',

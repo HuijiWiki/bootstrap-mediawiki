@@ -177,6 +177,15 @@ $wgResourceModules['skins.bootstrapmediawiki.emoji'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'bottom',
 );
+$wgResourceModules['skins.bootstrapmediawiki.videohandler'] = array(
+	'scripts' => array(
+		$skinDir . '/js/huiji.videoHandler.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'bottom',
+);
+
 
 /* Resource for wiki editor */
 $wgResourceModules['ext.wikieditor.huijiextra.top'] = array(
@@ -196,6 +205,9 @@ $wgResourceModules['ext.wikieditor.huijiextra.bottom'] = array(
 	), 
 	'messages' => array( 
 		'edittools'
+	),
+	'dependencies' => array(
+		'skins.bootstrapmediawiki.videohandler',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
