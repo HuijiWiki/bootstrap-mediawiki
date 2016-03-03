@@ -25,7 +25,8 @@ Class HuijiSkinTemplate extends BaseTemplate {
      */
     protected function isPrimaryContent(){
         global $wgRequest;
-        return !($this->getSkin()->getTitle()->isMainPage()) && $this->data['isarticle'] && $wgRequest->getText( 'action' )=='' && $this->getSkin()->getTitle()->exists();
+        $title = $this->getSkin()->getTitle();
+        return !($title->isMainPage()) && $this->getOutput()->isArticle() && $wgRequest->getText( 'action' )=='' && $title->exists();
     }
     /**
      * Generate subtitles based on title implications
