@@ -13,20 +13,24 @@ window.imgLoadCall = function( that ){
     var wid = that.width();
     var hig = that.height();
     var time = that.data('video-duration');
+    var timespan = '';
+    if (time!="00:00:00"){
+        timespan = '<span class="video-time">'+time+'</span>';
+    }
     if(document.body.clientWidth>768) {
         if (wid >= 500 && hig >= 250) {
             that.after('<iframe src="' + src + '" width="' + wid + '" height="' + hig + '" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" allowTransparency="true" frameborder="0" type="application/x-shockwave-flash"></iframe>')
             that.remove();
         } else if(wid >=200&&wid<500) {
-            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
+            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append(timespan+'<span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
         }else{
-            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
+            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append(timespan+'<span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
         }
     }else{
         if(wid>= 200) {
-            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
+            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append(timespan+'<span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
         }else{
-            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append('<span class="video-time">'+time+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
+            that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append(timespan+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
         }
     }
 }
