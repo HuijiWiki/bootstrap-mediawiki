@@ -25,7 +25,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                            <h4 class="modal-title" id="video-upload-modal-title">添加视频&nbsp;<small>仅支持youku</small></h4>
+                            <h4 class="modal-title" id="video-upload-modal-title">添加视频&nbsp;<small>支持youku、bilibili</small></h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
