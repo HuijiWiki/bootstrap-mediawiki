@@ -58,7 +58,8 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             );
         }
         if ($this->getSkin()->getTitle()->hasSourceText() &&  !($this->getSkin()->getTitle()->isMainPage()) 
-            && $this->getSkin()->getTitle()->exists() && $this->getRequest()->getText('action') == '' 
+            && $this->getSkin()->getOutput()->isArticle() && $this->getSkin()->getTitle()->exists() 
+            && $this->getRequest()->getText('action') == '' 
         ){
             $wgHasComments = true;
         }
