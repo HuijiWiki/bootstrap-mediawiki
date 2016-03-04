@@ -57,11 +57,6 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
                 $wgThanksConfirmationRequired 
             );
         }
-        if ($this->getSkin()->getTitle()->hasSourceText() &&  !($this->getSkin()->getTitle()->isMainPage()) 
-            && $this->getSkin()->getTitle()->exists() && $this->getRequest()->getText('action') == '' 
-        ){
-            $wgHasComments = true;
-        }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
     }//end initPage
     /**
@@ -272,7 +267,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
                         <?php endif; ?>
                         <?php 
-                        if ( $wgHasComments )
+                        if ( $this->isPrimaryContent() )
                         {
                             $commentHtml = '<div class="clearfix"></div>';
                             $wgParser->setTitle($this->getSkin()->getTitle());
