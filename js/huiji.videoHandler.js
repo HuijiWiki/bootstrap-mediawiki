@@ -206,7 +206,7 @@ mw.VideoHandler = {
                         video_full_name = video_name;
                         video_name = video_full_name.substr(0, video_full_name.lastIndexOf('.'));
                     }
-                    video_player_url = 'http://bilibili.cloudmoe.com/?api=h5_hd&page='+data.pages+'&id='+video_id;
+                    video_player_url = 'http://bilibili.cloudmoe.com/?api=h5_hd&page='+pageNum+'&id='+video_id;
                     video_tags = data.tag;
                     video_thum = data.pic;
                     video_duration = '';
