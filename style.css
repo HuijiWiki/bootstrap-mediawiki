@@ -6,9 +6,6 @@ textarea {
 	width: 95%;
     color: #333;
 }
-.wikiEditor-ui{
-    color: #333;
-}
 .modal-dialog{
     color: #333;
 }
@@ -25,7 +22,7 @@ p {
 	margin-bottom: 15px;
 }
 
-.hub-menu::before{
+/*.hub-menu::before{
     content: '';
     background-image: url(./images/angle.png);
     background-repeat: no-repeat;
@@ -57,7 +54,7 @@ p {
     z-index: 101;
     top: -11px;
     right: 15px;
-}
+}*/
 #mw-content-text>p{
     text-align: justify;
 }
@@ -214,15 +211,6 @@ option.unclickable {
 	color: #ccc;
 }
 
-
-
-#wiki-body h2, #DiscussionSnapshot {
-	border-bottom: none;
-	padding-bottom: 0.5em;
-	padding-top: 50px;
-    margin:0;
-}
-
 #wiki-body h3 {
 	border-bottom: none;
     padding-bottom: 0.5em;
@@ -328,10 +316,6 @@ option.unclickable {
 ul.affix {
 	width: 160px;
 	position: fixed !important;
-}
-
-.ve-activated .wiki-body-section{
-	width: 100%;
 }
 
 ul.affix-bottom{
@@ -982,24 +966,6 @@ input:-webkit-autofill {
 .page-首页 #firstHeading h1{
     display: none;
 }
-.skin-bootstrap-mediawiki .ve-ui-toolbar-floating > .oo-ui-toolbar-bar {
-    position: fixed;
-    top: 60px;
-    z-index: 100;
-    border-top: medium none;
-}
-.skin-bootstrap-mediawiki .ve-init-mw-viewPageTarget-toolbar > .oo-ui-toolbar-bar {
-    z-index: 100;
-}
-
-.oo-ui-windowManager-modal  .oo-ui-dialog  .oo-ui-window-frame {
-    top: 170px!important;
-    bottom: auto!important;
-}
-
-.ve-activated #content-actions{
-	display:none;
-}
 .parallax-bg {
   position: fixed;
   width: 100%;
@@ -1276,9 +1242,6 @@ sup.reference {
 	width: auto;
 	max-width: 540px;
 }
-.ve-activated .comments-body,.ve-activated .recommend-header,.ve-activated .recommend {
-	display:none;
-}
 .huiji-h1-edit-button{
     display: inline-block;
     font-size: 0.5em;
@@ -1310,9 +1273,6 @@ h2 .mw-editsection{
 }
 h3 .mw-editsection{
     bottom:5px;
-}
-.ve-active .bdsharebuttonbox{
-	display:none;
 }
 .mw-editsection.edit-active{
     left: 0;
@@ -1427,7 +1387,7 @@ ol.carousel-indicators{
 .popover {
     color: #333;
 }
-.recommend li{
+.recommend .recommend-item{
     display: inline-block;
     position: relative;
     margin-right: 20px;
@@ -1443,7 +1403,7 @@ ol.carousel-indicators{
     text-align: center;
     background: rgba(0,0,0,.3);
 }
-.recommend li a{
+.recommend .recommend-item a{
     display: block;
     color: #fff!important;
     font-size: 14px;
@@ -1463,15 +1423,6 @@ ol.carousel-indicators{
 }
 .re-opacity{
     opacity: 0;
-}
-.oo-ui-buttonElement-framed > .oo-ui-buttonElement-button{
-    padding: .1em!important;
-}
-.oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
-    position: static!important;
-}
-.ve-init-mw-desktopArticleTarget-toolbar {
-    z-index: 100!important;
 }
 
 /*feed img show more*/
@@ -1573,7 +1524,7 @@ ol.carousel-indicators{
     .recommend{
         padding-left: 0;
     }
-    .recommend li{
+    .recommend .recommend-item{
         margin-right: 5px;
     }
 }

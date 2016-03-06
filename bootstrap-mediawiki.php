@@ -54,7 +54,8 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
 		$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.ext.css'                          => array( 'media' => 'all' ),
-		$skinDir . '/css/video.css'                          => array( 'media' => 'all' ),
+		$skinDir . '/css/video.css'                              => array( 'media' => 'all' ),
+		$skinDir . '/css/owl.carousel.css'                       => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.js',		
@@ -77,6 +78,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/qqLogin.js',
 		$skinDir . '/js/recommend.js',
 		$skinDir . '/js/mention.js',
+		$skinDir . '/js/owl.carousel.min.js',
 
 	),
 	'styles' => array(
@@ -232,6 +234,17 @@ $wgResourceModules['skins.bootstrapmediawiki.huiji.globalsearch'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'bottom',	
 );
+$wgResourceModules['skins.bootstrapmediawiki.huiji.ve'] = array(
+	'scripts' => array(
+		$skinDir . '/js/huiji.ve.js',
+	),
+	'styles' => array(
+		$skinDir . '/css/huiji.ve.css'         					 => array( 'media' => 'all' ),
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'bottom',	
+);
 if ( isset( $wgSiteJS ) ) {
 	$wgResourceModules['skins.bootstrapmediawiki']['scripts'][] = $skinDir . '/' . $wgSiteJS;
 }//end if
@@ -254,3 +267,6 @@ $wgAvailableRights[] = 'quickpurge';
 $wgGroupPermissions['sysop']['quickpurge'] = true;
 $wgAvailableRights[] = 'quickdebug';
 $wgGroupPermissions['sysop']['quickdebug'] = true;
+
+//Register modules in VE
+$wgVisualEditorPluginModule[]='skins.bootstrapmediawiki.huiji.ve';
