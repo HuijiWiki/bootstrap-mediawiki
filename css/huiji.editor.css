@@ -1,6 +1,9 @@
 /*.wikiEditor-ui-controls, .wikiEditor-ui-tabs, .wikiEditor-ui-buttons {
 	background: transparent!important;
 }*/
+.wikiEditor-ui{
+    color: #333;
+}
 .skin-bootstrap-mediawiki form#edit-form,.skin-bootstrap-mediawiki .wikiEditor-ui,.skin-bootstrap-mediawiki .editOptions{
     font-size: 14px;
 }
