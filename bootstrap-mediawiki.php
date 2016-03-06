@@ -55,7 +55,7 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.ext.css'                          => array( 'media' => 'all' ),
 		$skinDir . '/css/video.css'                              => array( 'media' => 'all' ),
-		$skinDir . '/css/owl.carousel.css'                       => array( 'media' => 'all' ),
+		//$skinDir . '/css/owl.carousel.css'                       => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.js',		
@@ -78,7 +78,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/qqLogin.js',
 		$skinDir . '/js/recommend.js',
 		$skinDir . '/js/mention.js',
-		$skinDir . '/js/owl.carousel.min.js',
+		// $skinDir . '/js/owl.carousel.min.js',
 
 	),
 	'styles' => array(
