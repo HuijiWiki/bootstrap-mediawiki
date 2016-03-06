@@ -269,4 +269,4 @@ $wgAvailableRights[] = 'quickdebug';
 $wgGroupPermissions['sysop']['quickdebug'] = true;
 
 //Register modules in VE
-$wgVisualEditorPluginModule[]='skins.bootstrapmediawiki.huiji.ve';
+$wgVisualEditorPluginModules[]='skins.bootstrapmediawiki.huiji.ve';
