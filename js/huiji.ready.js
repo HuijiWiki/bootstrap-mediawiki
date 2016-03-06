@@ -216,15 +216,15 @@ $(document).ready(function(){
     function renderFlowAbstract(data){
         if (data.flow){
             var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
-            if (talkCount > 0){
-                $("#ca-talk a").append("<small><span class='help-block ca-help-text'>"+talkCount+"</span></small>");
-                if (!mw.config.get('wgIsMainPage')){
-                    flowAdapter.init(data);
-                    var items = flowAdapter.convert(data);
-                    var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
-                    $('#mw-content-text').after(html);
-                }
-            }
+            // if (talkCount > 0){
+            //     $("#ca-talk a").append("<small><span class='help-block ca-help-text'>"+talkCount+"</span></small>");
+            //     if (!mw.config.get('wgIsMainPage')){
+            //         flowAdapter.init(data);
+            //         var items = flowAdapter.convert(data);
+            //         var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
+            //         $('#mw-content-text').after(html);
+            //     }
+            // }
         }
     }
 
