@@ -5,7 +5,7 @@ function empty(){
 function onUploadSuccess(filename){
     if ($('#wpTextbox1').val()) {
         var caret = window.caret || 0;
-        var content = $('#wpTextbox1').val().substring(0, caret) + "[[File:" + filename + "]]" + $('#wpTextbox1').val().substring(caret);
+        var content = $('#wpTextbox1').val().substring(0, caret) + "[[File:" + filename + "|thumb|300px]]" + $('#wpTextbox1').val().substring(caret);
         $('#wpTextbox1').val(content);
         $('.video-upload-modal').modal('hide');
     } else {

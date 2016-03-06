@@ -131,7 +131,7 @@ $(function() {
         $(this).width($(this).width()+6);
     });
     $('.internal').each(function(){
-	   $(this).html('<i class="fa fa-arrows-alt"></i>');
+	   $(this).html('<i class="fa fa-file-image-o"></i>');
     });
 
     // // done for preload. Let's show the page.
