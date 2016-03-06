@@ -70,7 +70,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo $url_prefix.'Special:whatlinkshere/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="what-links-here" rel="nofollow"><i class="fa fa-link "></i> 链入页面</a></li>
-                        <li><a href="<?php echo $url_prefix.'Special:链出更改/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="what-links-here" rel="nofollow"><i class="fa fa-venus-mars "></i> 相关更改</a></li>
+                        <li><a href="<?php echo $url_prefix.'Special:最近链出更改/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="related-changes" rel="nofollow"><i class="fa fa-paperclip "></i> 相关更改</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages" rel="nofollow"><i class="fa fa-star-o"></i> 全部特殊页面</a></li>
                     </ul>
                 </li>
