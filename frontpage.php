@@ -47,6 +47,9 @@ class FrontPage{
             //siterank
             $yesterday = date('Y-m-d',strtotime('-1 days'));
             $allSiteRank = AllSitesInfo::getAllSitesRankData( '', $yesterday );
+            if (empty($allSiteRank)) {
+              $allSiteRank = AllSitesInfo::getAllSitesRankData( '', date('Y-m-d',strtotime('-2 days')) );
+            }
             $siteRank = array_slice($allSiteRank,0 ,10);
             $siteInfo = array();
             foreach ($siteRank as $key=>$value) {
