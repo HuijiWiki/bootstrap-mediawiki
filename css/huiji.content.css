@@ -35,8 +35,9 @@
     clear: both;
 }
 .recommend-load{
+    width: 140px;
     min-height: 150px;
-    background: url(../img/loading.gif) no-repeat center center
+    background: url(/resources/assets/preloader.gif) no-repeat center center
 }
 .recommend-title em {
     font-style: inherit;
