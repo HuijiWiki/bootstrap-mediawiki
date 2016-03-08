@@ -177,7 +177,7 @@ var recommend = {
                                     if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
                                         setTimeout(function(){
                                             for(var i=n; i<n+2; i++){
-                                                var img = '<div id="'+id+'" class="recommend-item"><a href="'+address+'"><img class="" src="/skins/bootstrap-mediawiki/img/found.jpg"></a><div class="recommend-title">' +
+                                                var img = '<div id="'+id+'" class="recommend-item"><a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72"><img class="" src="/skins/bootstrap-mediawiki/img/found.jpg"></a><div class="recommend-title">' +
                                                     '<a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72" class="recommend-found-a">U FOUND ME</a><p class="recommend-found-p">cool cool cool!</p></div>';
                                                 $('#recommend').data('owlCarousel').addItem(img);
                                                 $('#recommend').data('owlCarousel').jumpTo(n);
