@@ -16,7 +16,7 @@ var recommend = {
         this.pageRec.forEach(function(item,i){
             if(i<4) {
                 var content = '';
-                content += '<div id="' + i + '" class="recommend-item">' +
+                content += '<div id="' + i + '" class="re-opacity recommend-item">' +
                     '<div class="recommend-title"><a href="http://' + item.site + '.huiji.wiki/wiki/' + item.title + '" >' +
                     item.title + '</a><a href="http://' + item.site + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                 self.arr.push(item.title+item.siteName);
@@ -60,7 +60,7 @@ var recommend = {
                         //去em标签
                         searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
 
-                        content += '<div id="' + i + '" class="recommend-item"><div class="recommend-title"><a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
+                        content += '<div id="' + i + '" class="re-opacity recommend-item"><div class="recommend-title"><a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                         self.funGetImg(searchtitle, i, sitePrefix, item.address, false);
                     }
                     self.item = i;
@@ -77,7 +77,7 @@ var recommend = {
                         //去em标签
                         searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
 
-                        content += '<div id="' + i + '" class="recommend-item"><div class="recommend-title"><a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
+                        content += '<div id="' + i + '" class="re-opacity recommend-item"><div class="recommend-title"><a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                         self.funGetImg(searchtitle, i, sitePrefix, false);
                     }
                     self.item = i;
@@ -124,6 +124,7 @@ var recommend = {
                         }
 
                     } else {
+                        $('#' + id).removeClass('re-opacity');
                         $('#' + id).prepend('<a href="'+address+'"><img class="lazyOwl" src="/skins/bootstrap-mediawiki/img/recommend.png"></a>');
                     }
                 }
