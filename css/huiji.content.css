@@ -36,8 +36,31 @@
 }
 .recommend-load{
     width: 140px;
-    min-height: 150px;
-    background: url(/resources/assets/preloader.gif) no-repeat center center
+    margin-top: 50px;
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    animation-name: fa-spin;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: initial;
+    animation-iteration-count: infinite;
+    animation-direction: initial;
+    animation-fill-mode: initial;
+    animation-play-state: initial;
+    font: normal normal normal 14px/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    /*background: url(/resources/assets/preloader.gif) no-repeat center center*/
+}
+.recommend-load:before{
+    content: "\f110";
+    width: 100%;
+    height: 100%;
+    font-size: 5.0em;
+    text-align: center;
+    display: block;
+    line-height: 100px;
+
 }
 .recommend-title em {
     font-style: inherit;
