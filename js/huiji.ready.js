@@ -42,7 +42,7 @@ window.imgLoadCall = function( that ){
 window.videoInitialize = function(){
     for(var i=0; i<$('.video-player-asyn').length; i++){
         var that = $('.video-player-asyn').get(i);
-        if (that.complete || that.data('video-from') == '163' ){
+        if (that.complete || $(that).data('video-from') == '163' ){
             imgLoadCall($(that));
         }else{
             that.onload = function(e){
