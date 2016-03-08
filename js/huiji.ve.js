@@ -1,4 +1,4 @@
 mw.hook( 've.activationComplete' ).add( function() {
-	alert('asdf');
+	$('#recommend').hide();
 	// SOME CODE TO RUN WHEN EDITOR IS READY
 } );
