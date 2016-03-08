@@ -177,7 +177,7 @@ var recommend = {
                                         setTimeout(function(){
                                             for(var i=n; i<n+2; i++){
                                                 var img = '<div id="'+id+'" class="recommend-item"><a href="'+address+'"><img class="" src="/skins/bootstrap-mediawiki/img/found.jpg"></a><div class="recommend-title">' +
-                                                    '<a href="http://www.huiji.wiki/wiki/U_found_me" class="recommend-found-a">U FOUND ME</a><p class="recommend-found-p">cool cool cool!</p></div>';
+                                                    '<a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72" class="recommend-found-a">U FOUND ME</a><p class="recommend-found-p">cool cool cool!</p></div>';
                                                 $('#recommend').data('owlCarousel').addItem(img);
                                                 $('#recommend').data('owlCarousel').jumpTo(n);
                                                 self.item++;
@@ -231,7 +231,7 @@ var recommend = {
                         }
 
                     } else {
-                        img = '<div id="' + id + '" class="re-opacity recommend-item"><a href="'+address+'"><img class="lazyOwl" src="/skins/bootstrap-mediawiki/img/recommend.png"></a><div class="recommend-title">' +
+                        img = '<div id="' + id + '" class="recommend-item"><a href="'+address+'"><img class="lazyOwl" src="/skins/bootstrap-mediawiki/img/recommend.png"></a><div class="recommend-title">' +
                             '<a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                     }
                     if(sitePrefix!=mw.config.get('wgHuijiPrefix')){

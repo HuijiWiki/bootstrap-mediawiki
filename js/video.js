@@ -5,11 +5,15 @@ function empty(){
 function onUploadSuccess(filename){
     $('.video-upload-modal').modal('hide');
     var options = {};
-    options.pre = "[[File:" + filename + "|thumb|300px|";
+    if (string.indexOf('.audio') > -1){
+        options.pre = "[[File:" + filename;
+    } else {
+        options.pre = "[[File:" + filename + "|thumb|300px|";
+    }
     options.post = "]]";
     options.ownline = true;
     $( '#wpTextbox1' ).textSelection('encapsulateSelection', options);
-    mw.toolbar.insertTags("[[File:" + filename + "|thumb|300px|",']]','');
+    //mw.toolbar.insertTags("[[File:" + filename + "|thumb|300px|",']]','');
     // if ($('#wpTextbox1').val()) {
     //     var caret = window.caret || 0;
     //     var content = $('#wpTextbox1').val().substring(0, caret) + "[[File:" + filename + "|thumb|300px]]" + $('#wpTextbox1').val().substring(caret);
