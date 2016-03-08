@@ -16,7 +16,7 @@ var recommend = {
         this.pageRec.forEach(function(item,i){
             if(i<4) {
                 var content = '';
-                content += '<div id="' + i + '" class="re-opacity recommend-item">' +
+                content += '<div id="' + i + '" class="recommend-item">' +
                     '<div class="recommend-title"><a href="http://' + item.site + '.huiji.wiki/wiki/' + item.title + '" >' +
                     item.title + '</a><a href="http://' + item.site + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                 self.arr.push(item.title+item.siteName);
