@@ -188,7 +188,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     <div id="content">
                         <div class="row">
                             <nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
-                            <section class="col-md-12 wiki-body-section" role="main">                       
+                            <section class="col-md-12 wiki-body-section" role="main">
 
                         <div id="firstHeading" class="pagetitle page-header">
                             <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>

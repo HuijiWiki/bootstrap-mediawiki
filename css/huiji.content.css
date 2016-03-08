@@ -29,14 +29,14 @@
 .recommend img{
     position: absolute;
     transition: all .2s ease;
-    top: 0;
+    transform: translate3d(0px, 0px, 0px);
 }
 .recommend-header{
     clear: both;
 }
 .recommend-load{
     min-height: 150px;
-    background: url(./img/loading.gif) no-repeat center center
+    background: url(../img/loading.gif) no-repeat center center
 }
 .recommend-title em {
     font-style: inherit;
@@ -60,7 +60,7 @@
 }
 
 .recommend-item:hover img{
-    top: -10px;
+    transform: translate3d(0px, -10px, 0px);
 }
 .recommend-item:hover .recommend-title{
     bottom: 0;
