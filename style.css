@@ -1387,43 +1387,7 @@ ol.carousel-indicators{
 .popover {
     color: #333;
 }
-.recommend .recommend-item{
-    display: inline-block;
-    position: relative;
-    margin-right: 20px;
-    width: 140px;
-    height: 200px;
-}
-.recommend-title{
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: rgba(0,0,0,.3);
-}
-.recommend .recommend-item a{
-    display: block;
-    color: #fff!important;
-    font-size: 14px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 140px;
-    overflow: hidden;
-}
-.recommend img{
-    position: absolute;
-}
-.recommend-header{
-    clear: both;
-}
-.recommend-title em {
-    font-style: inherit;
-}
-.re-opacity{
-    opacity: 0;
-}
+
 
 /*feed img show more*/
 .mp-activity{
@@ -1521,10 +1485,5 @@ ol.carousel-indicators{
         right: 90px;
         left: initial;
     }
-    .recommend{
-        padding-left: 0;
-    }
-    .recommend .recommend-item{
-        margin-right: 5px;
-    }
+
 }

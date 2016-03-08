@@ -17,10 +17,15 @@ window.imgLoadCall = function( that ){
     if (time!="00:00:00"){
         timespan = '<span class="video-time">'+time+'</span>';
     }
+    if (that.data('video-from') == '163'){
+        that.after('<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="'+src+'"></iframe>');
+        that.hide();
+        return;
+    }
     if(document.body.clientWidth>768) {
         if (wid >= 500 && hig >= 250) {
             that.after('<iframe src="' + src + '" width="' + wid + '" height="' + hig + '" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" allowTransparency="true" frameborder="0" type="application/x-shockwave-flash"></iframe>')
-            that.remove();
+            that.hide();
         } else if(wid >=200&&wid<500) {
             that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append(timespan+'<span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 50) + 'px;left:' + (wid / 2 - 50) + 'px"></span>');
         }else{
@@ -37,7 +42,7 @@ window.imgLoadCall = function( that ){
 window.videoInitialize = function(){
     for(var i=0; i<$('.video-player-asyn').length; i++){
         var that = $('.video-player-asyn').get(i);
-        if (that.complete){
+        if (that.complete || that.data('video-from') == '163' ){
             imgLoadCall($(that));
         }else{
             that.onload = function(e){

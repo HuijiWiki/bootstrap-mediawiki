@@ -25,13 +25,13 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                            <h4 class="modal-title" id="video-upload-modal-title">添加视频&nbsp;<small>支持youku、bilibili</small></h4>
+                            <h4 class="modal-title" id="video-upload-modal-title">添加媒体文件&nbsp;<small>支持youku、bilibili、网易云音乐</small></h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                               <label for="video-upload-modal-url" class="control-label">视频连接</label>
+                               <label for="video-upload-modal-url" class="control-label">媒体文件连接</label>
                                <textarea class="form-control" id="video-upload-modal-url"></textarea>
-                               <label for="video-upload-modal-name" class="control-label">视频名称</label>
+                               <label for="video-upload-modal-name" class="control-label">媒体文件名称</label>
                                <input class="form-control" type="text" id="video-upload-modal-name">
                            </div>
                         </div>
@@ -104,7 +104,7 @@
                                             <div>
                                             <span>联合登录</span>
                                             <a href="https://api.weibo.com/oauth2/authorize?client_id=2445834038&redirect_uri=http%3A%2F%2Fhuijiwiki.com%2Fwiki%2Fspecial%3Acallbackweibo&response_type=code" class="icon-weibo-share"></a>
-                                            <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&redirect_uri=http://www.huiji.wiki/wiki/special:callbackqq" class="icon-qq-share"></a>
+                                            <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&state=huijistate&redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq" class="icon-qq-share"></a>
                                             </div>
                                         </div>
                                     </form>

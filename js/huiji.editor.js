@@ -35,11 +35,14 @@ window.customizeToolbar = function() {
         jQuery(".mw-editTools").detach().appendTo('#wikiEditor-section-quick-insert > div.pages');
         jQuery("#wikiEditor-section-quick-insert > div.index").remove();
     } );
-	
-
-
 };
-
+// function insertTags(pre,post,sample){
+// 	var options = {};
+//     options.pre = pre;
+//     options.post = post;
+//     options.selectPeri = sample;
+// 	$( '#wpTextbox1' ).textSelection('encapsulateSelection', options);
+// }
 
 
 /**

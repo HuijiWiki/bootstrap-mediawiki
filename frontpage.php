@@ -253,7 +253,7 @@ class FrontPage{
         }
         $o = new SaeTOAuthV2( Confidential::$weibo_app_id , Confidential::$weibo_app_secret );
         $weiboUrl = $o->getAuthorizeURL( Confidential::$weibo_callback_url );
-        $qqUrl = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&redirect_uri=http://www.huiji.wiki/wiki/special:callbackqq";
+        $qqUrl = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&state=huijistate&redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq";
         $output .= $templateParser->processTemplate(
             'frontpage',
             array(

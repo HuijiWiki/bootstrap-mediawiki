@@ -2,9 +2,14 @@ mw.VideoHandler = {
 	doUpload: function( video_name,video_thum,token,video_from, video_id, video_player_url, video_tags, video_duration, n, success, error, is_new_revision ){
 
 	    if ( is_new_revision > 0 ) {
+	    	if ( video_from == '163' ) {
+	    		var ext = '.audio';
+	    	}else{
+	    		var ext = '.video';
+	    	}
 	        $.post('/api.php',{
 	            action:'upload',
-	            filename: video_name+'.video', 
+	            filename: video_name+ext, 
 	            // filename: 'video-test7',
 	            url: video_thum, 
 	            token: token, 
@@ -47,9 +52,14 @@ mw.VideoHandler = {
 	    }
 	},
 	checkName: function( title,url,token,video_from, video_id, video_player_url, video_tags, video_duration, n, success, error ){
+		if ( video_from == '163' ) {
+    		var ext = '.audio';
+    	}else{
+    		var ext = '.video';
+    	}
 		$.post('/api.php',{
 	        action:'upload',
-	        filename: title+n+'.video',
+	        filename: title+n+ext,
 	        url: url,
 	        token: token,
 	        format: 'json'
@@ -64,7 +74,7 @@ mw.VideoHandler = {
 	                }else{
 	                    $.post('/api.php',{
 	                        action:'upload',
-	                        filename: title+n+'.video',
+	                        filename: title+n+ext,
 	                        url: url,
 	                        token: token,
 	                        ignorewarnings: true,
@@ -219,5 +229,87 @@ mw.VideoHandler = {
                 }
             }
         );
+	},
+	query163: function( url, music_names, success, error, is_new_revision ){
+		var success = success;
+		var error = error;
+		var music_name = music_names;
+		/**
+		 * [regex2 ]
+		 * http://music.163.com/#/album?id=3154175
+		 * album type:1
+		 * song type:2
+		 * playlist type:0
+		 */
+		var regex2 = /\#\/([\w]+?)\?id/;
+        var regex3 = /\?id=([\d]+?)$/;
+        var type, music_id, music_from, music_orig_title, music_full_name, music_player_url, music_tags, music_thum, music_duration,token;
+        var id = url.match(regex3);
+        if (id != null && id[1] != null){
+            music_id = id[1];
+            music_from = '163';
+            var music_type = url.match(regex2);
+            if ( music_type[1] == 'song' ) {
+            	type = 2;
+            }else if( music_type[1] == 'album' ){
+            	type = 1;
+            }else if( music_type[1] == 'playlist' ){
+            	type = 0;
+            }
+        }else{
+            mw.notification.notify('上传失败（URL不支持）');
+            error();
+            return;
+        }
+        //163 ajax
+        $.post(
+            mw.util.wikiScript(), {
+                action: 'ajax',
+                rs: 'wfGet163MusicInfo',
+                rsargs: [music_id, type]
+            },
+            function (data) {
+                var data = jQuery.parseJSON(data);
+                if (data.code == 200) {
+                	//song album playlist
+                	if ( type == 2 ) {
+		            	music_orig_title = data.songs[0].name;
+		            	music_thum = data.songs[0].album.picUrl;
+		            	music_tags = data.songs[0].album.tags;
+		            	music_duration = data.songs[0].duration;
+		            }else if( type == 1 ){
+		            	music_orig_title = data.album.name;	
+		            	music_thum = data.album.picUrl;
+		            	music_tags = '';
+		            	music_duration = '';
+		            }else if( type == 0 ){
+ 		            	music_orig_title = data.result.name;
+		            	music_thum = data.result.coverImgUrl;
+		            	music_tags = '';
+		            	music_duration = '';
+		            }
+
+		            if (music_name == ''){
+                    	music_name = music_orig_title;
+                    }
+                    if (music_name.indexOf('.audio') < 0){
+                        music_full_name = music_name + '.audio';
+                    } else {
+                        music_full_name = music_name;
+                        music_name = music_full_name.substr(0, music_full_name.lastIndexOf('.'));
+                    }
+		            music_player_url = 'http://music.163.com/outchain/player?type='+type+'&id='+music_id+'&auto=0&height=66';
+                    token = mw.user.tokens.get('editToken');
+                    mw.VideoHandler.doUpload( music_name,music_thum,token,music_from, music_id, music_player_url, music_tags, music_duration, '', success, error, is_new_revision );
+                } else {
+                    mw.notification.notify('上传失败（music.163.com返回错误）');
+                    error();
+                    return;
+                }
+            }
+        );
+        
+
 	}
+
 }
