@@ -188,51 +188,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     <div id="content">
                         <div class="row">
                             <nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
-                            <section class="col-md-12 wiki-body-section" role="main">
-
-
-                        <div id="owl-example" class="owl-carousel">
-                                  <div class="item darkCyan"> <img src="http://cdn.huiji.wiki/hearthstone/thumb.php?f=%E7%94%9F%E8%80%8C%E5%B9%B3%E7%AD%89.png&width=300" alt="Touch">
-                                    <h3>Touch</h3>
-                                    <h4>Can touch this</h4>
-                                  </div>
-                                  <div class="item forestGreen"> <img src="http://cdn.huiji.wiki/hearthstone/thumb.php?f=%E7%94%9F%E8%80%8C%E5%B9%B3%E7%AD%89.png&width=300" alt="Grab">
-                                    <h3>Grab</h3>
-                                    <h4>Can grab this</h4>
-                                  </div>
-                                  <div class="item orange"> <img src="http://cdn.huiji.wiki/hearthstone/thumb.php?f=%E7%94%9F%E8%80%8C%E5%B9%B3%E7%AD%89.png&width=300" alt="Responsive">
-                                    <h3>Responsive</h3>
-                                    <h4>Fully responsive!</h4>
-                                  </div>
-                                  <div class="item yellow"> <img src="http://cdn.huiji.wiki/hearthstone/thumb.php?f=%E7%94%9F%E8%80%8C%E5%B9%B3%E7%AD%89.png&width=300" alt="CSS3">
-                                    <h3>CSS3</h3>
-                                    <h4>3D Acceleration.</h4>
-                                  </div>
-                                  <div class="item dodgerBlue"> <img src="http://cdn.huiji.wiki/hearthstone/thumb.php?f=%E7%94%9F%E8%80%8C%E5%B9%B3%E7%AD%89.png&width=300" alt="Multi">
-                                    <h3>Multiply</h3>
-                                    <h4>Owls on page.</h4>
-                                  </div>
-                                  <div class="item skyBlue"> <img src="http://cdn.huiji.wiki/hearthstone/thumb.php?f=%E7%94%9F%E8%80%8C%E5%B9%B3%E7%AD%89.png&width=300" alt="Modern Browsers">
-                                    <h3>Modern</h3>
-                                    <h4>Browsers Compatibility</h4>
-                                  </div>
-                                  <div class="item zombieGreen"> <img src="http://cdn.huiji.wiki/hearthstone/thumb.php?f=%E7%94%9F%E8%80%8C%E5%B9%B3%E7%AD%89.png&width=300" alt="Zombie Browsers - old ones">
-                                    <h3>Zombie</h3>
-                                    <h4>Browsers Compatibility</h4>
-                                  </div>
-                                  <div class="item violet"> <img src="http://cdn.huiji.wiki/hearthstone/thumb.php?f=%E7%94%9F%E8%80%8C%E5%B9%B3%E7%AD%89.png&width=300" alt="Take Control">
-                                    <h3>Take Control</h3>
-                                    <h4>The way you like</h4>
-                                  </div>
-                                  <div class="item yellowLight"> <img src="http://cdn.huiji.wiki/hearthstone/thumb.php?f=%E7%94%9F%E8%80%8C%E5%B9%B3%E7%AD%89.png&width=300" alt="Light">
-                                    <h3>Light</h3>
-                                    <h4>As a feather</h4>
-                                  </div>
-                                  <div class="item steelGray"> <img src="http://cdn.huiji.wiki/hearthstone/thumb.php?f=%E7%94%9F%E8%80%8C%E5%B9%B3%E7%AD%89.png&width=300" alt="Tons of Opotions">
-                                    <h3>Tons</h3>
-                                    <h4>of options</h4>
-                                  </div>
-                                </div>
+                            <section class="col-md-12 wiki-body-section" role="main">                       
 
                         <div id="firstHeading" class="pagetitle page-header">
                             <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
