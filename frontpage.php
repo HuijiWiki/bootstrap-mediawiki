@@ -53,13 +53,14 @@ class FrontPage{
             $siteRank = array_slice($allSiteRank,0 ,10);
             $siteInfo = array();
             foreach ($siteRank as $key=>$value) {
-             $siteRank[$key]['site_prefix'] = HuijiPrefix::prefixToSiteName($value['site_prefix']);
-             $siteRank[$key]['site_url'] = HuijiPrefix::prefixToUrl($value['site_prefix']);
-             $siteInfo = AllSitesInfo::getPageInfoByPrefix($value['site_prefix']);
-             $siteRank[$key]['totalEdits'] = $siteInfo['totalEdits'];
-             $siteRank[$key]['totalArticles'] = $siteInfo['totalArticles'];
-             $siteRank[$key]['totalPages'] = $siteInfo['totalPages'];
-             $siteRank[$key]['totalUsers'] = $siteInfo['totalUsers'];
+                $site = new WikiSite($value['site_prefix']);
+                $siteRank[$key]['site_prefix'] = $site->getSiteName();
+                $siteRank[$key]['site_url'] = $site->getUrl();
+                $stats = $site->getSiteStats();
+                $siteRank[$key]['totalEdits'] = $stats['edits'];
+                $siteRank[$key]['totalArticles'] = $stats['articles'];
+                $siteRank[$key]['totalPages'] = $stats['pages'];
+                $siteRank[$key]['totalUsers'] = $stats['users'];
             }
             //userrank
             $weekRank = UserStats::getUserRank(10,'week');

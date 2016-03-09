@@ -60,7 +60,7 @@ var recommend = {
                         //去em标签
                         searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
 
-                        content += '<div id="' + i + '" class="re-opacity recommend-item"><div class="recommend-title"><a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
+                        content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading"><div class="recommend-title"><a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                         self.funGetImg(searchtitle, i, sitePrefix, item.address, false);
                     }
                     self.item = i;
@@ -77,7 +77,7 @@ var recommend = {
                         //去em标签
                         searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
 
-                        content += '<div id="' + i + '" class="re-opacity recommend-item"><div class="recommend-title"><a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
+                        content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading"><div class="recommend-title"><a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                         self.funGetImg(searchtitle, i, sitePrefix, false);
                     }
                     self.item = i;
@@ -98,7 +98,7 @@ var recommend = {
                 var x;
                 for( x in data.query.pages) {
                     if (data.query.pages[x].thumbnail) {
-                        var img = '<a href="'+address+'"><img class="lazyOwl" src="' + data.query.pages[x].thumbnail.source + '"></a>';
+                        var img = '<a href="'+address+'"><img data-src="' + data.query.pages[x].thumbnail.source + '"></a>';
                         var wid;
                         var wid2;
                         var percent = data.query.pages[x].thumbnail.width / data.query.pages[x].thumbnail.height;
@@ -125,11 +125,8 @@ var recommend = {
 
                     } else {
                         $('#' + id).removeClass('re-opacity');
-                        $('#' + id).prepend('<a href="'+address+'"><img class="lazyOwl" src="/skins/bootstrap-mediawiki/img/recommend.png"></a>');
+                        $('#' + id).prepend('<a href="'+address+'"><img  src="/skins/bootstrap-mediawiki/img/recommend.png"></a>');
                     }
-                }
-                if(sitePrefix!=mw.config.get('wgHuijiPrefix')){
-                    $('#'+id+' .recommend-title>a:last-child').show();
                 }
                 if(ajax == false) {
                     if ($('.recommend-header').length == 0) {
@@ -139,6 +136,10 @@ var recommend = {
                     //最后一次取图判断是否去掉推荐内容
                     if (id == self.item-1) {
                         if ($('.recommend .recommend-item').length == 0) $('.recommend').remove();
+                        setTimeout(function(){
+                            lazyLoad.autocheck();
+                        },100);
+
                         $("#recommend").owlCarousel({
                             items: 5,
 //                            lazyLoad: true,
@@ -204,7 +205,7 @@ var recommend = {
                 var img;
                 for (x in data.query.pages) {
                     if (data.query.pages[x].thumbnail) {
-                        img = '<div id="' + id + '" class="recommend-item"><a href="'+address+'"><img class="lazyOwl" src="' + data.query.pages[x].thumbnail.source + '"></a><div class="recommend-title">' +
+                        img = '<div id="' + id + '" class="recommend-item"><a href="'+address+'"><img src="' + data.query.pages[x].thumbnail.source + '"></a><div class="recommend-title">' +
                             '<a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                         var wid;
                         var wid2;
@@ -213,7 +214,6 @@ var recommend = {
                             $('#recommend').data('owlCarousel').removeItem();
                         }
                         $('#recommend').data('owlCarousel').addItem(img);
-//                        $('.owl-wrapper-outer').css('transform','translate3d(-'+(n-5)*$('.owl-item').width()+'px, 0px, 0px);');
                         $('#recommend').data('owlCarousel').jumpTo(n);
                         //更宽裁剪两边
                         if (percent > 0.7) {
@@ -232,11 +232,13 @@ var recommend = {
                         }
 
                     } else {
-                        img = '<div id="' + id + '" class="recommend-item"><a href="'+address+'"><img class="lazyOwl" src="/skins/bootstrap-mediawiki/img/recommend.png"></a><div class="recommend-title">' +
+                        img = '<div id="' + id + '" class="recommend-item"><a href="'+address+'"><img src="/skins/bootstrap-mediawiki/img/recommend.png"></a><div class="recommend-title">' +
                             '<a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
-                    }
-                    if(sitePrefix!=mw.config.get('wgHuijiPrefix')){
-                        $('#'+id+' .recommend-title>a:last-child').show();
+                        if($('.recommend-load').length>0){
+                            $('#recommend').data('owlCarousel').removeItem();
+                        }
+                        $('#recommend').data('owlCarousel').addItem(img);
+                        $('#recommend').data('owlCarousel').jumpTo(n);
                     }
                 }
             }
@@ -254,6 +256,9 @@ var recommend = {
 }
 
 var lazyLoad = {
+    area1: $('#recommend').get(0),
+    //懒加载子域集合
+    arr:[$('#recommend').get(0)],
 
 
     getClient:function (){
@@ -287,10 +292,11 @@ var lazyLoad = {
     },
     detection: function (arr, prec1, callback){
         var prec2;
+        var self = this;
         for (var i = arr.length - 1; i >= 0; i--) {
             if (arr[i]) {
-                prec2 = getSubClient(arr[i]);
-                if (intens(prec1, prec2)) {
+                prec2 = self.getSubClient(arr[i]);
+                if (self.intens(prec1, prec2)) {
                     callback(arr[i]);
     // 加载资源后，删除监测
                     delete arr[i];
@@ -299,22 +305,19 @@ var lazyLoad = {
         }
     },
     autocheck: function (){
-        var prec1 = getClient();
-        jiance(arr, prec1, function(obj){
-    // 加载资源...
-            alert(obj.innerHTML);
+        var prec1 = this.getClient();
+        var arr = [$('#recommend').get(0)];
+        this.detection(arr, prec1, function(obj){
+            $('.lazy-loading img').each(function(){
+                this.src = $(this).data('src');
+                $(this).removeAttr('data-src');
+            })
         })
     },
 
     init: function(){
-        // 子区域一
-        var d1 = document.getElementById("d1");
-        // 子区域二
-        var d2 = document.getElementById("d2");
-        
         var self = this;
-        // 需要按需加载区域集合
-        var arr = [d1, d2];
+        self.autocheck();
         window.onscroll = function(){
             self.autocheck()
         };
@@ -328,4 +331,5 @@ $(function(){
 
     recommend.init();
 
+    lazyLoad.init();
 });
