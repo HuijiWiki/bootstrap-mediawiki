@@ -12,8 +12,8 @@ function onUploadSuccess(filename){
     }
     options.post = "]]";
     options.ownline = true;
-    //$( '#wpTextbox1' ).textSelection('encapsulateSelection', options);
-    mw.toolbar.insertTags("[[File:" + filename + "|thumb|300px|",']]','');
+    $( '#wpTextbox1' ).textSelection('encapsulateSelection', options);
+    //mw.toolbar.insertTags("[[File:" + filename + "|thumb|300px|",']]','');
     // if ($('#wpTextbox1').val()) {
     //     var caret = window.caret || 0;
     //     var content = $('#wpTextbox1').val().substring(0, caret) + "[[File:" + filename + "|thumb|300px]]" + $('#wpTextbox1').val().substring(caret);
