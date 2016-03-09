@@ -278,7 +278,8 @@ $(function() {
                 rsargs: [mw.config.get('wgArticleId'), mw.config.get('wgHuijiPrefix')]
             },
             function (data) {
-                if (data != '[]') {
+                var res = JSON.parse(data);
+                if (res && res.length > 0) {
                     var res = JSON.parse(data);
                     var content = '<span>&nbsp;&nbsp;&nbsp;搬运自<a href="http://' + res.fork_from + '.huiji.wiki">' + res.fork_sitename + '</span>';
                     $('#contentSub small').append(content);

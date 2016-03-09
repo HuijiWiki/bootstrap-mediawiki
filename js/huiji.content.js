@@ -17,7 +17,7 @@ var recommend = {
             if(i<4) {
                 var content = '';
                 content += '<div id="' + i + '" class="re-opacity recommend-item">' +
-                    '<div class="recommend-title"><a href="http://' + item.site + '.huiji.wiki/wiki/' + item.title + '" >' +
+                    '<div class="recommend-title"><a href="http://' + item.site + '.huiji.wiki/wiki/' + item.title + '" title="'+item.title+'" >' +
                     item.title + '</a><a href="http://' + item.site + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                 self.arr.push(item.title+item.siteName);
                 self.funGetImg(item.title, i, item.site);
@@ -60,7 +60,7 @@ var recommend = {
                         //去em标签
                         searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
 
-                        content += '<div id="' + i + '" class="re-opacity recommend-item"><div class="recommend-title"><a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
+                        content += '<div id="' + i + '" class="re-opacity recommend-item"><div class="recommend-title"><a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                         self.funGetImg(searchtitle, i, sitePrefix, item.address, false);
                     }
                     self.item = i;
@@ -77,7 +77,7 @@ var recommend = {
                         //去em标签
                         searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
 
-                        content += '<div id="' + i + '" class="re-opacity recommend-item"><div class="recommend-title"><a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
+                        content += '<div id="' + i + '" class="re-opacity recommend-item"><div class="recommend-title"><a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                         self.funGetImg(searchtitle, i, sitePrefix, false);
                     }
                     self.item = i;
@@ -233,7 +233,7 @@ var recommend = {
 
                     } else {
                         img = '<div id="' + id + '" class="recommend-item"><a href="'+address+'"><img class="lazyOwl" src="/skins/bootstrap-mediawiki/img/recommend.png"></a><div class="recommend-title">' +
-                            '<a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
+                            '<a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                     }
                     if(sitePrefix!=mw.config.get('wgHuijiPrefix')){
                         $('#'+id+' .recommend-title>a:last-child').show();
@@ -251,6 +251,78 @@ var recommend = {
             this.funGetNetRec();
         }
     }
+}
+
+var lazyLoad = {
+
+
+    getClient:function (){
+    var l, t, w, h;
+        l = document.documentElement.scrollLeft || document.body.scrollLeft;
+        t = document.documentElement.scrollTop || document.body.scrollTop;
+        w = document.documentElement.clientWidth;
+        h = document.documentElement.clientHeight;
+        return { left: l, top: t, width: w, height: h };
+    },
+    getSubClient:function (p){
+        var l = 0, t = 0, w, h;
+        w = p.offsetWidth;
+        h = p.offsetHeight;
+        while(p.offsetParent){
+            l += p.offsetLeft;
+            t += p.offsetTop;
+            p = p.offsetParent;
+        }
+        return { left: l, top: t, width: w, height: h };
+    },
+    intens:function (rec1, rec2){
+        var lc1, lc2, tc1, tc2, w1, h1;
+        lc1 = rec1.left + rec1.width / 2;
+        lc2 = rec2.left + rec2.width / 2;
+        tc1 = rec1.top + rec1.height / 2 ;
+        tc2 = rec2.top + rec2.height / 2 ;
+        w1 = (rec1.width + rec2.width) / 2 ;
+        h1 = (rec1.height + rec2.height) / 2;
+        return Math.abs(lc1 - lc2) < w1 && Math.abs(tc1 - tc2) < h1 ;
+    },
+    detection: function (arr, prec1, callback){
+        var prec2;
+        for (var i = arr.length - 1; i >= 0; i--) {
+            if (arr[i]) {
+                prec2 = getSubClient(arr[i]);
+                if (intens(prec1, prec2)) {
+                    callback(arr[i]);
+    // 加载资源后，删除监测
+                    delete arr[i];
+                }
+            }
+        }
+    },
+    autocheck: function (){
+        var prec1 = getClient();
+        jiance(arr, prec1, function(obj){
+    // 加载资源...
+            alert(obj.innerHTML);
+        })
+    },
+
+    init: function(){
+        // 子区域一
+        var d1 = document.getElementById("d1");
+        // 子区域二
+        var d2 = document.getElementById("d2");
+        
+        var self = this;
+        // 需要按需加载区域集合
+        var arr = [d1, d2];
+        window.onscroll = function(){
+            self.autocheck()
+        };
+        window.onresize = function(){
+            self.autocheck()
+        }
+    }
+
 }
 $(function(){
 
