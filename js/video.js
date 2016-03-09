@@ -5,7 +5,7 @@ function empty(){
 function onUploadSuccess(filename){
     $('.video-upload-modal').modal('hide');
     var options = {};
-    if (string.indexOf('.audio') > -1){
+    if (filename.indexOf('.audio') > -1){
         options.pre = "[[File:" + filename;
     } else {
         options.pre = "[[File:" + filename + "|thumb|300px|";
