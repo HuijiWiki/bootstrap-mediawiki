@@ -22,11 +22,12 @@ class FrontPage{
         $mobileUser = $mobile && $login;
         if (!$mobileUser)
         {    //right data
-            $fileCount = AllSitesInfo::getAllUploadFileCount();
-            $siteCount = AllSitesInfo::getSiteCountNum();
-            $userCount = AllSitesInfo::getUsreCountNum();
-            $editCount = AllSitesInfo::getAllSiteEditCount();
-            $pageCount = AllSitesInfo::getAllPageCount();
+            $counter = Huiji::getInstance()->getStats();
+            $fileCount = $counter['files'];
+            $siteCount = $counter['sites'];
+            $userCount = $counter['users'];
+            $editCount = $counter['edits'];
+            $pageCount = $counter['pages'];
             $userName = $wgUser->getName();
             $usreId = $wgUser->getId();
             $avatar = new wAvatar( $usreId, 'l' );
@@ -46,10 +47,7 @@ class FrontPage{
             $followee = Linker::link( $notice, UserUserFollow::getFollowerCount($wgUser), array( 'id' => 'user-follower-count' ), array( 'user' => $userName,'rel_type' => 2 ) );
             //siterank
             $yesterday = date('Y-m-d',strtotime('-1 days'));
-            $allSiteRank = AllSitesInfo::getAllSitesRankData( '', $yesterday );
-            if (empty($allSiteRank)) {
-              $allSiteRank = AllSitesInfo::getAllSitesRankData( '', date('Y-m-d',strtotime('-2 days')) );
-            }
+            $allSiteRank = Huiji::getInstance()->getRankings();
             $siteRank = array_slice($allSiteRank,0 ,10);
             $siteInfo = array();
             foreach ($siteRank as $key=>$value) {
