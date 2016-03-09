@@ -11,7 +11,7 @@
 	display:none;
 }
 .ve-activated .comments-body,.ve-activated .recommend-header,.ve-activated .recommend {
-	display:none;
+	display:none !important;
 }
 .ve-activated .wiki-body-section{
 	width: 100%;
