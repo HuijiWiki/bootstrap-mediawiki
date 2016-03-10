@@ -115,7 +115,7 @@ var recommend = {
 
                     } else {
                         $('#' + id).removeClass('re-opacity');
-                        $('#' + id).prepend('<a href="'+address+'"><img  src="/skins/bootstrap-mediawiki/img/recommend.png"></a>');
+                        $('#' + id).prepend('<a href="'+address+'"><img data-src="/skins/bootstrap-mediawiki/img/recommend.png"></a>');
                     }
                 }
                 if(ajax == false) {
