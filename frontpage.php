@@ -51,10 +51,10 @@ class FrontPage{
             $siteRank = array_slice($allSiteRank,0 ,10);
             $siteInfo = array();
             foreach ($siteRank as $key=>$value) {
-                $site = new WikiSite($value['site_prefix']);
-                $siteRank[$key]['site_prefix'] = $site->getSiteName();
+                $site = WikiSite::newFromPrefix($value['site_prefix']);
+                $siteRank[$key]['site_prefix'] = $site->getName();
                 $siteRank[$key]['site_url'] = $site->getUrl();
-                $stats = $site->getSiteStats();
+                $stats = $site->getStats();
                 $siteRank[$key]['totalEdits'] = $stats['edits'];
                 $siteRank[$key]['totalArticles'] = $stats['articles'];
                 $siteRank[$key]['totalPages'] = $stats['pages'];
@@ -232,12 +232,14 @@ class FrontPage{
             // $recSite = array_slice($allSiteRank,0 ,5);
             $recommendSite = array();
             foreach($allSiteRank as $value){
-                $isFollowSite = $usf->checkUserSiteFollow( $wgUser, $value['site_prefix']);
+                $site = WikiSite::newFromPrefix($value['site_prefix']);
+                $isFollowSite = $site->isFollowedBy($wgUser);
+                //$isFollowSite = $usf->checkUserSiteFollow( $wgUser, $value['site_prefix']);
                 if($isFollowSite == false ){
-                    $fsres['s_name'] = HuijiPrefix::prefixToSiteName($value['site_prefix']);
-                    $fsres['s_url'] = HuijiPrefix::prefixToUrl($value['site_prefix']);
-                    $fsres['s_prefix'] = $value['site_prefix'];
-                    $fsres['s_avatar'] = (new wSiteAvatar($value['site_prefix'], 'l'))->getAvatarHtml();
+                    $fsres['s_name'] = $site->getName();
+                    $fsres['s_url'] = $site->getUrl();
+                    $fsres['s_prefix'] = $site->getPrefix();
+                    $fsres['s_avatar'] = $site->getAvatar('l')->getAvatarHtml();//(new wSiteAvatar($value['site_prefix'], 'l'))->getAvatarHtml();
                     $recommendSite[] = $fsres;
                 }
             }

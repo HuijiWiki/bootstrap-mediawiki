@@ -57,7 +57,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
                 $wgThanksConfirmationRequired 
             );
         }
-        if ($this->getSkin()->getTitle()->exists() && $this->getSkin()->getTitle()->isContentPage() && $this->getRequest()->getText('action') == ''){
+        if ($this->getSkin()->getTitle()->exists() && $this->getSkin()->getTitle()->isContentPage() && $this->getRequest()->getText('action') == '' && !($this->getSkin()->getTitle()->isMainPage())){
             $out->addModules( array( 'skins.bootstrapmediawiki.content' ) );
         }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
@@ -95,7 +95,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
      * @access private
      */
     public function execute() {
-        global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS;
+        global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS, $wgLang;
         global $wgEnableUploads;
         global $wgLogo, $wgHuijiPrefix, $wgFavicon, $wgCdnHuijiSuffix;
         global $wgTOCLocation, $wgHasComments;
@@ -110,9 +110,10 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         // Suppress warnings to prevent notices about missing indexes in $this->data
         wfSuppressWarnings();
         $this->html('headelement');
-        if ($wgUser->isLoggedIn()){
-            $usf = new UserSiteFollow();
-            $followed = ($usf->checkUserSiteFollow($wgUser, $wgHuijiPrefix) !== false);         
+        $site = WikiSite::newFromPrefix($wgHuijiPrefix);
+        $stats = $site->getStats();
+        if ($wgUser->isLoggedIn()){         
+            $followed = $site->isFollowedBy($wgUser);        
         }else{
             $followed = false;
         }
@@ -162,7 +163,8 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             include 'View/Modal.php';
         } else {?>
             
-            <?php include 'View/Sidebar.php';?>
+            <?php include 'View/Sidebar.php';
+            ?>
 
             <div id="wiki-outer-body">
 
@@ -170,7 +172,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     <div class="container-fluid">
                         <ul class="nav nav-pills">
                             <li>
-                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo (new wSiteAvatar($wgHuijiPrefix, 'm'))->getAvatarHtml(array('style' => 'height : 1em; padding-bottom:0.2em;')); echo '&nbsp;'.($wgSitenameshort ?$wgSitenameshort: $wgSitename); ?></a>
+                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo $site->getAvatar('m')->getAvatarHtml(array('style' => 'height : 1em; padding-bottom:0.2em;')); echo '&nbsp;'.$wgLang->truncate( $site->getName(), 25); ?></a>
                             </li>
                             <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
                             <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
@@ -178,7 +180,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 $result = self::format_nice_number(SiteStats::articles());
                                 $result2 = self::format_nice_number(SiteStats::edits());
                                 echo $result;
-                            ?></a>页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo self::format_nice_number(UserSiteFollow::getFollowerCount($wgHuijiPrefix)) ?></a>关注</p></li>
+                            ?></a>页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo $stats['followers'] ?></a>关注</p></li>
                             <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
                         </ul>
                     </div>

@@ -129,29 +129,30 @@
             <?php
                 $fanbox_link = SpecialPage::getTitleFor( 'UserList' );
                 $group = 'sysop';
-                $ums = self::getSiteManager( $wgHuijiPrefix,$group );
-                foreach ($ums as $value) {
-                    $uname = User::newFromId( $value );
-                    $user_group = $uname->getEffectiveGroups();
-                    if ( !in_array('bot', $user_group) && !in_array('bot-global',$user_group) ) {
-                        $usersys['user_name'] = $uname->getName();
-                        $usersys['count'] = UserStats::getSiteEditsCount( $uname, $wgHuijiPrefix );
-                        $userPage = Title::makeTitle( NS_USER, $uname->getName() );
-                        $usersys['url'] = htmlspecialchars( $userPage->getFullURL() );
-                        $avatar = new wAvatar( $value, 'm' );
-                        $usersys['avatar'] = $avatar->getAvatarURL();
-                        $sysop[] = $usersys;
-                    }
-                }
-                foreach ($sysop as $key => $value) {
-                    $count[$key] = $value['count'];
-                }
-                array_multisort($count, SORT_DESC, $sysop);
-                $nums = ( count($ums) > 5 )?5:count($ums);
+                // $ums = self::getSiteManager( $wgHuijiPrefix,$group );
+                // foreach ($ums as $value) {
+                //     $uname = User::newFromId( $value );
+                //     $user_group = $uname->getEffectiveGroups();
+                //     if ( !in_array('bot', $user_group) && !in_array('bot-global',$user_group) ) {
+                //         $usersys['user_name'] = $uname->getName();
+                //         $usersys['count'] = UserStats::getSiteEditsCount( $uname, $wgHuijiPrefix );
+                //         $userPage = Title::makeTitle( NS_USER, $uname->getName() );
+                //         $usersys['url'] = htmlspecialchars( $userPage->getFullURL() );
+                //         $avatar = new wAvatar( $value, 'm' );
+                //         $usersys['avatar'] = $avatar->getAvatarURL();
+                //         $sysop[] = $usersys;
+                //     }
+                // }
+                // foreach ($sysop as $key => $value) {
+                //     $count[$key] = $value['count'];
+                // }
+                // array_multisort($count, SORT_DESC, $sysop);
+                $sysop = $site->getUsersFromGroup($group);
+                $nums = ( count($sysop) > 5 )?5:count($sysop);
                 for ($j=0; $j < $nums; $j++) {
                     echo '<a href="'.$sysop[$j]['url'].'"  title="'.$sysop[$j]['user_name'].'">'.$sysop[$j]['avatar'].'</a>';
                 }
-                if ( count($ums) > 5 ) {
+                if ( count($sysop) > 5 ) {
                     echo Linker::link( $fanbox_link, '>>', array('class'=> 'more'), array( 'group' => $group,'limit' => 50 ) );
                 }
                 ?>

@@ -650,52 +650,5 @@ Class HuijiSkinTemplate extends BaseTemplate {
             
             return $output;
     }
-        /**
-         * the site's sysop/staff
-         * @return array user's avater
-         */
-        static function getSiteManager( $prefix,$group ){
-            $data = self::getSiteManagerCache( $prefix,$group );
-            if ( $data != '' ) {
-                wfDebug( "Got sitemanagers from cache\n" );
-                return $data;
-            } else {
-                return self::getSiteManagerDB( $prefix,$group );
-            }
-        }
-
-        static function getSiteManagerCache( $prefix,$group ){
-            global $wgMemc;
-            $key = wfForeignMemcKey('huiji','', 'user_group', 'sitemanager', $prefix,$group );
-            $data = $wgMemc->get( $key );
-            if ( $data != '' ) {
-                return $data;
-            }
-        }
-
-        static function getSiteManagerDB( $prefix,$group ){
-            global $wgMemc;
-            $key = wfForeignMemcKey('huiji','', 'user_group', 'sitemanager', $prefix,$group );
-            $dbr = wfGetDB( DB_SLAVE );
-            $data = array();
-            $res = $dbr->select(
-                'user_groups',
-                array(
-                    'ug_user'
-                ),
-                array(
-                    'ug_group' => $group
-                ),
-                __METHOD__
-            );
-            if($res){
-                foreach ($res as $value) {
-                    $data[] = $value->ug_user;
-                }
-                $wgMemc->set( $key, $data, 60*60*24 );
-                return $data;
-            }
-
-        }
 }
 ?>
