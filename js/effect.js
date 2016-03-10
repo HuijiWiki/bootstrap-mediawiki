@@ -77,7 +77,6 @@ $(document).ready(function(){
         function more(){
 
             showPlaceholder();
-            console.log(response);
             if(response) response.abort();
             response = jQuery.post(
                 mw.util.wikiScript(), {
@@ -102,7 +101,6 @@ $(document).ready(function(){
                             }
                         });
                         videoInitialize();
-                        console.log('aaa');
                     }
                     response = null;
                 }
