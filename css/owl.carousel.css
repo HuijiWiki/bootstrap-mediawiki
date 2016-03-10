@@ -80,7 +80,7 @@
 /* preloading images */
 .owl-item.loading{
     min-height: 150px;
-    background: url(../img/loading.gif) no-repeat center center
+/*    background: url(../img/loading.gif) no-repeat center center*/
 }
 
 /* clearfix */

@@ -30,12 +30,12 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
      * initialize the page
      */
     public function initPage( OutputPage $out ) {
-        global $wgSiteJS, $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer, $wgUser, $wgThanksConfirmationRequired, $wgHasComments;
+        global $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer, $wgUser, $wgThanksConfirmationRequired, $wgHasComments;
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
         parent::initPage( $out );
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
-            $out->addModules( 'skins.frontpage');
+            $out->addModuleScripts( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="'.$wgCentralServer.'" />' . "\n");    
@@ -57,7 +57,11 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
                 $wgThanksConfirmationRequired 
             );
         }
-        if ($this->getSkin()->getTitle()->exists() && $this->getSkin()->getTitle()->isContentPage() && $this->getRequest()->getText('action') == '' && !($this->getSkin()->getTitle()->isMainPage())){
+        if ($this->getSkin()->getTitle()->exists() 
+            && $this->getSkin()->getTitle()->isContentPage() 
+            && $this->getRequest()->getText('action') == '' 
+            && !($this->getSkin()->getTitle()->isMainPage())
+        ){
             $out->addModules( array( 'skins.bootstrapmediawiki.content' ) );
         }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
@@ -66,7 +70,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
      * prepares the skin's CSS
      */
     public function setupSkinUserCss( OutputPage $out ) {
-        global $wgSiteCSS, $wgHuijiPrefix;
+        global $wgHuijiPrefix;
         parent::setupSkinUserCss( $out );
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleStyles( 'skins.frontpage' );  

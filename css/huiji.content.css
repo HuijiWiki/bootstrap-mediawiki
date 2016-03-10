@@ -64,7 +64,7 @@
 }
 .lazy-loading{
     min-height: 150px;
-    background: url(../img/loading.gif) no-repeat center center
+/*    background: url(../img/loading.gif) no-repeat center center*/
 }
 .recommend-title em {
     font-style: inherit;

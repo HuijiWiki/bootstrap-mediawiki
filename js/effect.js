@@ -73,9 +73,13 @@ $(document).ready(function(){
         var removePlaceholder = function(){
             jQuery('.placeholder').remove();
         };
+        var response
         function more(){
+
             showPlaceholder();
-            jQuery.post(
+            console.log(response);
+            if(response) response.abort();
+            response = jQuery.post(
                 mw.util.wikiScript(), {
                     action: 'ajax',
                     rs: 'wfUserActivityResponse',
@@ -98,7 +102,9 @@ $(document).ready(function(){
                             }
                         });
                         videoInitialize();
+                        console.log('aaa');
                     }
+                    response = null;
                 }
             );
         };
@@ -107,7 +113,6 @@ $(document).ready(function(){
             item_type = $('.user-home-feed.active').data('item_type');
             limit = $('.user-home-feed.active').data('limit');
             continuation = nowtime;
-            console.log(continuation);
             $('.user-home-feed-content').empty();
             $('.user-activity-more').show();
             more();

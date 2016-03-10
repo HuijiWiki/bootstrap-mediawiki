@@ -1431,7 +1431,8 @@ body{
     margin-top: 15px;
 }
 .home-rank-point{
-    float: right;
+    position: absolute;
+    right: 20px;
     font-size: 18px;
     line-height: 50px;
 }
@@ -1457,7 +1458,7 @@ body{
 }
 .home-rank-msg{
     float: left;
-    margin-right: 20px;
+    margin-right: 0;
 }
 .home-rank-msg a{
     cursor: pointer;
@@ -1465,7 +1466,7 @@ body{
 .home-rank-msg li span{
     display: inline-block;
     max-width: 0;
-    transition: all .2s;
+    transition: all .2s linear;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
