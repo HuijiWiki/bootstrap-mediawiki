@@ -47,7 +47,11 @@ var recommend = {
                 if (data.length == 0) return;
 
                 //除去指定推荐，剩下的进行遍历
-                if(document.body.clientWidth>768) {
+                document.body.clientWidth>768?pcTraverse():mobilTraverse();
+                $('.recommend').append(content);
+
+
+                function pcTraverse(){
                     for (var i = len; i < 10; i++) {
                         var item = data[i - len];
                         var searchtitle = item.title;
@@ -60,11 +64,13 @@ var recommend = {
                         //去em标签
                         searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
 
-                        content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading"><div class="recommend-title"><a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
+                        content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading"><div class="recommend-title">' +
+                            '<a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                         self.funGetImg(searchtitle, i, sitePrefix, item.address, false);
                     }
                     self.item = i;
-                }else{
+                }
+                function mobilTraverse(){
                     for (var i = len; i < 4; i++) {
                         var item = data[i - len];
                         var searchtitle = item.title;
@@ -77,13 +83,14 @@ var recommend = {
                         //去em标签
                         searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
 
-                        content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading"><div class="recommend-title"><a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
-                        self.funGetImg(searchtitle, i, sitePrefix, false);
+                        content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading"><div class="recommend-title">' +
+                            '<a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
+                        self.funGetImg(searchtitle, i, sitePrefix, item.address, false);
                     }
                     self.item = i;
                 }
 //                }
-                $('.recommend').append(content);
+
             },
             type: 'post'
         });
@@ -99,29 +106,12 @@ var recommend = {
                 for( x in data.query.pages) {
                     if (data.query.pages[x].thumbnail) {
                         var img = '<a href="'+address+'"><img data-src="' + data.query.pages[x].thumbnail.source + '"></a>';
-                        var wid;
-                        var wid2;
                         var percent = data.query.pages[x].thumbnail.width / data.query.pages[x].thumbnail.height;
 
                         $('#' + id ).prepend(img);
                         $('#' + id).removeClass('re-opacity');
 
-                        //更宽裁剪两边
-                        if (percent > 0.7) {
-                            wid = percent * 100 - 70;
-                            wid2 = percent * 100 + 70;
-                            $('#' + id).find('img').css({'clip': 'rect(0,' + wid2 + 'px,200px,' + wid + 'px)', 'left': '-' + wid + 'px', 'height': '200px'});
-                        }
-                        //更高裁剪上下
-                        else if (percent < 0.7) {
-                            wid = 1 / percent * 70 - 100;
-                            wid2 = 1 / percent * 70 + 100;
-                            $('#' + id).find('img').css({'clip': 'rect(' + wid + 'px,140px,' + wid2 + 'px,0)', 'top': '-' + wid + 'px', 'width': '140px'});
-                        }
-                        else {
-                            $('#' + id).find('img').css('height', '200px');
-                            $('#' + id).removeClass('re-opacity');
-                        }
+                        self.funClipImg(percent,id);
 
                     } else {
                         $('#' + id).removeClass('re-opacity');
@@ -133,68 +123,95 @@ var recommend = {
                         $('.recommend').before('<h2 class="recommend-header">更多推荐</h2>');
                     }
 
-                    //最后一次取图判断是否去掉推荐内容
+                    //最后一次取图
                     if (id == self.item-1) {
-                        if ($('.recommend .recommend-item').length == 0) $('.recommend').remove();
-                        setTimeout(function(){
-                            lazyLoad.autocheck();
-                        },100);
+                        doOwl();
+                    }
+                }
 
-                        $("#recommend").owlCarousel({
-                            items: 5,
-//                            lazyLoad: true,
-                            beforeMove: function () {
-                                var sp = $('.owl-wrapper').css('transform').split(',');
-                                var len = self.pageRec.length;
-                                var data = self.netData;
-                                var n = self.item;
-                                sp = Math.abs(parseInt(sp[4]));
+                function doOwl(){
+                    if ($('.recommend .recommend-item').length == 0) $('.recommend').remove();
+                    setTimeout(function(){
+                        lazyLoad.autocheck();
+                    },100);
+
+                    $("#recommend").owlCarousel({
+                        items: 5,
+                        beforeMove: function () {
+                            var sp = $('.owl-wrapper').css('transform').split(',');
+                            var len = self.pageRec.length;
+                            var data = self.netData;
+                            var n = self.item;
+                            sp = Math.abs(parseInt(sp[4]));
 
 
-                                if(n<30&&document.body.clientWidth>768) {
-                                    if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
-                                        setTimeout(function(){
-                                            var load = '<div class="recommend-load"></div>';
-                                            $('#recommend').data('owlCarousel').addItem(load);
-                                            $('#recommend').data('owlCarousel').jumpTo(n);
-                                        },100);
-                                        for (var i = n; i < n + 2; i++) {
-                                            var item = data[i - len];
-                                            var searchtitle = item.title;
-                                            var id = item.id;
-                                            //排除本词条和重复词条
+                            if(n<30&&document.body.clientWidth>768) {
+                                if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
+                                    setTimeout(function(){
+                                        var load = '<div class="recommend-load"></div>';
+                                        self.funAddItem(load,n);
+                                    },100);
+                                    for (var i = n; i < n + 2; i++) {
+                                        var item = data[i - len];
+                                        var searchtitle = item.title;
+                                        var id = item.id;
+                                        //排除本词条和重复词条
 //                                        if (id != self.myId && self.arr.indexOf(searchtitle+item.siteName)<0) {
-                                            var sitePrefix = item.sitePrefix;
+                                        var sitePrefix = item.sitePrefix;
 
-                                            //去em标签
-                                            searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
+                                        //去em标签
+                                        searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
 
-                                            self.funGetImg2(searchtitle, i, sitePrefix, address, item, n, true);
+                                        self.funGetImg2(searchtitle, i, sitePrefix, address, item, n, true);
 //                                        }
-                                            self.item++;
-                                        }
-                                    }
-                                }else if(n>=30&&document.body.clientWidth>768){
-                                    if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
-                                        setTimeout(function(){
-                                            for(var i=n; i<n+2; i++){
-                                                var img = '<div id="'+id+'" class="recommend-item"><a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72"><img class="" src="/skins/bootstrap-mediawiki/img/found.jpg"></a><div class="recommend-title">' +
-                                                    '<a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72" class="recommend-found-a">U FOUND ME</a><p class="recommend-found-p">cool cool cool!</p></div>';
-                                                $('#recommend').data('owlCarousel').addItem(img);
-                                                $('#recommend').data('owlCarousel').jumpTo(n);
-                                                self.item++;
-                                            }
-                                        },100);
-
+                                        self.item++;
                                     }
                                 }
+                            }else if(n>=30&&document.body.clientWidth>768){
+                                if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
+                                    setTimeout(function(){
+                                        for(var i=n; i<n+2; i++){
+                                            var img = '<div id="'+id+'" class="recommend-item"><a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72"><img class="" src="/skins/bootstrap-mediawiki/img/found.jpg"></a><div class="recommend-title">' +
+                                                '<a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72" class="recommend-found-a">U FOUND ME</a><p class="recommend-found-p">cool cool cool!</p></div>';
+                                            self.funAddItem(img,n);
+                                            self.item++;
+                                        }
+                                    },100);
+
+                                }
                             }
-                        });
-                    }
+                        }
+                    });
                 }
             }
         });
     },
+
+    funClipImg: function(percent,id){
+        var wid,wid2;
+        //更宽裁剪两边
+        if (percent > 0.7) {
+            wid = percent * 100 - 70;
+            wid2 = percent * 100 + 70;
+            $('#' + id).find('img').css({'clip': 'rect(0,' + wid2 + 'px,200px,' + wid + 'px)', 'left': '-' + wid + 'px', 'height': '200px'});
+        }
+        //更高裁剪上下
+        else if (percent < 0.7) {
+            wid = 1 / percent * 70 - 100;
+            wid2 = 1 / percent * 70 + 100;
+            $('#' + id).find('img').css({'clip': 'rect(' + wid + 'px,140px,' + wid2 + 'px,0)', 'top': '-' + wid + 'px', 'width': '140px'});
+        }
+        else {
+            $('#' + id).find('img').css('height', '200px');
+            $('#' + id).removeClass('re-opacity');
+        }
+    },
+
+    funAddItem: function(img,n){
+        $('#recommend').data('owlCarousel').addItem(img);
+        $('#recommend').data('owlCarousel').jumpTo(n);
+    },
+
     funGetImg2: function(title,id,sitePrefix, address, item, n, ajax){
         var self = this;
         $.ajax({
@@ -207,29 +224,12 @@ var recommend = {
                     if (data.query.pages[x].thumbnail) {
                         img = '<div id="' + id + '" class="recommend-item"><a href="'+address+'"><img src="' + data.query.pages[x].thumbnail.source + '"></a><div class="recommend-title">' +
                             '<a href="' + item.address + '" >' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
-                        var wid;
-                        var wid2;
                         var percent = data.query.pages[x].thumbnail.width / data.query.pages[x].thumbnail.height;
                         if($('.recommend-load').length>0){
                             $('#recommend').data('owlCarousel').removeItem();
                         }
-                        $('#recommend').data('owlCarousel').addItem(img);
-                        $('#recommend').data('owlCarousel').jumpTo(n);
-                        //更宽裁剪两边
-                        if (percent > 0.7) {
-                            wid = percent * 100 - 70;
-                            wid2 = percent * 100 + 70;
-                            $('#' + id).find('img').css({'clip': 'rect(0,' + wid2 + 'px,200px,' + wid + 'px)', 'left': '-' + wid + 'px', 'height': '200px'});
-                        }
-                        //更高裁剪上下
-                        else if (percent < 0.7) {
-                            wid = 1 / percent * 70 - 100;
-                            wid2 = 1 / percent * 70 + 100;
-                            $('#' + id).find('img').css({'clip': 'rect(' + wid + 'px,140px,' + wid2 + 'px,0)', 'top': '-' + wid + 'px', 'width': '140px'});
-                        }
-                        else {
-                            $('#' + id).find('img').css('height', '200px');
-                        }
+                        self.funAddItem(img,n);
+                        self.funClipImg(percent,id);
 
                     } else {
                         img = '<div id="' + id + '" class="recommend-item"><a href="'+address+'"><img src="/skins/bootstrap-mediawiki/img/recommend.png"></a><div class="recommend-title">' +
@@ -237,8 +237,7 @@ var recommend = {
                         if($('.recommend-load').length>0){
                             $('#recommend').data('owlCarousel').removeItem();
                         }
-                        $('#recommend').data('owlCarousel').addItem(img);
-                        $('#recommend').data('owlCarousel').jumpTo(n);
+                        self.funAddItem(img,n);
                     }
                 }
             }
@@ -258,7 +257,7 @@ var recommend = {
 var lazyLoad = {
     area1: $('#recommend').get(0),
     //懒加载子域集合
-    arr:[$('#recommend').get(0)],
+    arr:[this.area1],
 
 
     getClient:function (){
