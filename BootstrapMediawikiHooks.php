@@ -39,7 +39,7 @@ Class BootstrapMediawikiHooks {
         }
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $content = $site->getDescription();
-        $footer = '创始人：'.$site->getFounder()->getName().' 建立时间：'.$site->getDate().' 类型：'.$site->getType();
+        $footer = '创始人：'.$site->getFounder()->getName().' 类型：'.$site->getType();
         $output =  $templateParser->processTemplate(
             'siteinfo',
             array(
