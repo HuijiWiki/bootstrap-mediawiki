@@ -21,10 +21,33 @@ Class BootstrapMediawikiHooks {
         $parser->setHook( 'rec', 'BootstrapMediawikiHooks::getRec');
         $parser->setHook( 'hover.css', 'BootstrapMediawikiHooks::getHoverCss');
         $parser->setHook( 'ihover.css', 'BootstrapMediawikiHooks::getIHoverCss');
+        $parser->setHook( 'siteinfo', 'BootstrapMediawikiHooks::getSiteInfo');
 
         // $parser->setHook( 'siteactivity', 'getSiteActivity' );
         // $parser->setHook( 'siteactivity', 'getSiteActivity' );
         return true;
+    }
+    public static function getSiteInfo( $input, $args, $parser ){
+        global $wgHuijiPrefix;
+        if ($args['site']!=''){
+            $site = WikiSite::newFromPrefix($args['site']);
+            if (!$site->exists()){
+                return "site {$args['site']} does not exist";
+            }
+        } else {
+            $site = WikiSite::newFromPrefix($wgHuijiPrefix);
+        }
+        $templateParser = new TemplateParser(  __DIR__ . '/View' );
+        $content = $site->getDescription();
+        $footer = '创始人：'.$site->getFounder()->getName().' 建立时间：'.$site->getDate().' 类型：'.$site->getType();
+        $output =  $templateParser->processTemplate(
+            'siteinfo',
+            array(
+                'content' => $content,
+                'footer' => $footer,
+            )
+        );
+        return $output;
     }
     public static function getIHoverCss( $input, $args, $parser ){
         $output = '<script type="text/javascript">window.onload = function(){mw.loader.load("skins.bootstrapmediawiki.ihover","text/css");}</script>';
