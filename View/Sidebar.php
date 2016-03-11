@@ -62,7 +62,7 @@
                 <?php if ( $wgEnableUploads ) { ?>
                     <li><a href="<?php echo $url_prefix; ?>Special:文件上传" class="upload-a-file" rel="nofollow"><i class="fa fa-upload"></i> 上传文件</a></li>
                 <?php } ?>
-                <li><a href="<?php echo $url_prefix; ?>Special:CreatePoll" class="poll-page" rel="nofollow"><i class="icon-pie-chart "></i> 创建投票</a></li>
+                <!-- <li><a href="<?php echo $url_prefix; ?>Special:CreatePoll" class="poll-page" rel="nofollow"><i class="icon-pie-chart "></i> 创建投票</a></li> -->
                 <li><a target="_blank" href="http://www.huiji.wiki/wiki/帮助讨论:用户手册" class="upload-a-file" rel="nofollow"><i class="fa fa-question-circle"></i> 求助提问</a></li>
                 <?php if ( $wgHuijiPrefix !== 'www' && $this->data['isarticle'] ) { ?>
                 <li class="dropdown">
