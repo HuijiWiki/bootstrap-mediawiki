@@ -93,11 +93,14 @@
 .recommend-item:hover .recommend-title{
     bottom: 0;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .recommend{
         padding-left: 0;
     }
     .recommend .recommend-item{
         margin-right: 5px;
+    }
+    .owl-carousel{
+        display: block;
     }
 }

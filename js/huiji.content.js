@@ -125,16 +125,16 @@ var recommend = {
 
                     //最后一次取图
                     if (id == self.item-1) {
+                        if ($('.recommend .recommend-item').length == 0) $('.recommend').remove();
+                        setTimeout(function(){
+                            lazyLoad.autocheck();
+                        },100);
+                        if(document.body.clientWidth>768)
                         doOwl();
                     }
                 }
 
                 function doOwl(){
-                    if ($('.recommend .recommend-item').length == 0) $('.recommend').remove();
-                    setTimeout(function(){
-                        lazyLoad.autocheck();
-                    },100);
-
                     $("#recommend").owlCarousel({
                         items: 5,
                         beforeMove: function () {
@@ -145,7 +145,7 @@ var recommend = {
                             sp = Math.abs(parseInt(sp[4]));
 
 
-                            if(n<30&&document.body.clientWidth>768) {
+                            if(n<30) {
                                 if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
                                     setTimeout(function(){
                                         var load = '<div class="recommend-load"></div>';
@@ -167,7 +167,7 @@ var recommend = {
                                         self.item++;
                                     }
                                 }
-                            }else if(n>=30&&document.body.clientWidth>768){
+                            }else{
                                 if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
                                     setTimeout(function(){
                                         for(var i=n; i<n+2; i++){

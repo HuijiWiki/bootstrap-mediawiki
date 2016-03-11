@@ -420,6 +420,7 @@ $(document).ready(function(){
             function(data){
                 var res = jQuery.parseJSON(data);
                 var sex;
+                if(!res.result) return;
                 if(res.result.gender == "female"){
                     res.result.gender = "♀";
                     sex = "她";
@@ -492,7 +493,7 @@ $(document).ready(function(){
     var own = false;
     var x, y,posX,posY,thisposX,thisposY;
     var card;
-    $('#wiki-body a[href~="/wiki/%E7%94%A8%E6%88%B7:"] .headimg,#wiki-body a[href~="/wiki/User:"] .headimg, #wiki-body .mw-userlink, #wiki-body .mw-userlink').hover(function(e){
+    $('#wiki-body a[href*="/wiki/%E7%94%A8%E6%88%B7:"] .headimg,#wiki-body a[href*="/wiki/User:"] .headimg, #wiki-body .mw-userlink, #wiki-body .mw-userlink').hover(function(e){
         if(document.body.clientWidth<=1024){
             e.preventDefault();
         }else {
@@ -508,7 +509,8 @@ $(document).ready(function(){
             if ($(this).hasClass('headimg')) {
                 carduser = $(this).attr('data-name');
             } else {
-                carduser = $(this).text();
+                carduser = $(this).attr('title');
+                carduser = carduser.replace('用户:','');
             }
             enter = true;
             if (thisposX == posX && thisposY == posY) {
