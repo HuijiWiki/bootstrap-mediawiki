@@ -86,7 +86,7 @@ $(document).ready(function(){
 //        });
     // }
     var fromSource    = document.referrer;
-    var navigatorInfo = navigator.userAgent.toLowerCase();
+    var navigatorInfo = navigator.userAgent;
     var userId    = mw.config.get("wgUserId");
     var userName  = mw.config.get("wgUserName");
     var wikiSite  = mw.config.get("wgHuijiPrefix");
