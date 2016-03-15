@@ -3,7 +3,7 @@ function insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSit
                 url,
                 {
                         navigatorInfo:navigatorInfo,
-                        fromSource:clearSourceUrl(fromSource),
+                        fromSource:fromSource,
                         userId:userId,
                         userName:userName,
                         articleId:articleId,
