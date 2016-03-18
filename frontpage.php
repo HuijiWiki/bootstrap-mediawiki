@@ -43,8 +43,9 @@ class FrontPage{
             $notice = SpecialPage::getTitleFor('ViewFollows');
             $contributions = SpecialPage::getTitleFor('Contributions');
             $userEdit = Linker::link( $contributions, $stats_data['edits'], array(), array( 'target' => $userName,'contribs' => 'user' ) );
-            $follower = Linker::link( $notice, UserUserFollow::getFollowingCount($wgUser), array( 'id' => 'user-following-count' ), array( 'user' => $userName,'rel_type'=>1 ) );
-            $followee = Linker::link( $notice, UserUserFollow::getFollowerCount($wgUser), array( 'id' => 'user-follower-count' ), array( 'user' => $userName,'rel_type' => 2 ) );
+            $huijiUser = HuijiUser::newFromUser($wgUser);
+            $follower = Linker::link( $notice, $huijiUser->getFollowingUsersCount(), array( 'id' => 'user-following-count' ), array( 'user' => $userName,'rel_type'=>1 ) );
+            $followee = Linker::link( $notice, $huijiUser->getFollowerCount(), array( 'id' => 'user-follower-count' ), array( 'user' => $userName,'rel_type' => 2 ) );
             //siterank
             $yesterday = date('Y-m-d',strtotime('-1 days'));
             $allSiteRank = Huiji::getInstance()->getRankings();
@@ -192,13 +193,14 @@ class FrontPage{
         }
         if ($login){
             // follow
-            $followUserCount = UserUserFollow::getFollowingCount($wgUser);
+            $huijiUser = HuijiUser::newFromUser($wgUser);
+            $followUserCount = $huijiUser->getFollowingUsersCount();
             if ( $followUserCount >= 5 ) {
                 $userHidden = true;
             }else{
                 $userHidden = false;
             }
-            $followSiteCount = UserSiteFollow::getFollowingCount($wgUser);
+            $followSiteCount = $huijiUser->getFollowingSitesCount();
             if ( $followSiteCount >= 5 ) {
                 $siteHidden = true;
             }else{
@@ -206,7 +208,6 @@ class FrontPage{
             }
 
             //recommend user $weekRank $monthRank  $totalRank
-            $uuf = new UserUserFollow();
             if ( count($weekRank) >=8 ) {
                 $recommend = UserStats::getUserRank(10,'week');
             }elseif ( count($monthRank) >=8 ) {
@@ -218,7 +219,7 @@ class FrontPage{
             $flres = array();
             foreach ($recommend as $value) {
                 $tuser = User::newFromName($value['user_name']);
-                $isFollow = $uuf->checkUserUserFollow( $wgUser, $tuser );
+                $isFollow = $huijiUser->isFollowing($tuser);
                 if(!$isFollow && $value['user_name'] != $userName){
                     $flres['avatar'] = $value['avatarImage'];
                     $flres['username'] = $value['user_name'];
@@ -228,7 +229,6 @@ class FrontPage{
             }
             $recommendRes = array_slice($recommendRes, 0, 5);
             //recommend site
-            $usf = new UserSiteFollow();
             // $recSite = array_slice($allSiteRank,0 ,5);
             $recommendSite = array();
             foreach($allSiteRank as $value){

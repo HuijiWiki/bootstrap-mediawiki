@@ -63,6 +63,7 @@
                     <li><a href="<?php echo $url_prefix; ?>Special:文件上传" class="upload-a-file" rel="nofollow"><i class="fa fa-upload"></i> 上传文件</a></li>
                 <?php } ?>
                 <!-- <li><a href="<?php echo $url_prefix; ?>Special:CreatePoll" class="poll-page" rel="nofollow"><i class="icon-pie-chart "></i> 创建投票</a></li> -->
+                <?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );?>
                 <li><a target="_blank" href="http://www.huiji.wiki/wiki/帮助讨论:用户手册" class="upload-a-file" rel="nofollow"><i class="fa fa-question-circle"></i> 求助提问</a></li>
                 <?php if ( $wgHuijiPrefix !== 'www' && $this->data['isarticle'] ) { ?>
                 <li class="dropdown">
@@ -151,28 +152,31 @@
                 $sysop = $site->getUsersFromGroup($group);
                 $nums = ( count($sysop) > 5 )?5:count($sysop);
                 for ($j=0; $j < $nums; $j++) {
-                    echo '<a href="'.$sysop[$j]['url'].'"  title="'.$sysop[$j]['user_name'].'">'.$sysop[$j]['avatar'].'</a>';
+                    echo Linker::linkKnown(User::newFromName($sysop[$j]['user_name'])->getUserPage(), $sysop[$j]['avatar']);
+                    //echo '<a href="'.$sysop[$j]['url'].'"  title="'.$sysop[$j]['user_name'].'">'.$sysop[$j]['avatar'].'</a>';
                 }
                 if ( count($sysop) > 5 ) {
-                    echo Linker::link( $fanbox_link, '>>', array('class'=> 'more'), array( 'group' => $group,'limit' => 50 ) );
+                    echo Linker::linkKnown( $fanbox_link, '>>', array('class'=> 'more'), array( 'group' => $group,'limit' => 50 ) );
                 }
                 ?>
             </div>
         </li>
-        <?php if (($NS==0 or $NS==1) and ($action != 'edit')) { ?>
+        <?php if ($this->isPrimaryContent() ) { ?>
         <li class="sidebar-brand left-author">
             <a href="#">
                 主要编辑者
             </a>
             <?php
-            $contrib = '{{#contributors:{{FULLPAGENAME}}}}';
-            $wgParserOptions = new ParserOptions($wgUser);
-            $parserOutput = $wgParser->parse($contrib, $this->getSkin()->getTitle(), $wgParserOptions);
-            echo $parserOutput->getText();
-            }
+                $options = array();
+                $contributors = new Contributors( $this->getSkin()->getTitle(), $options );
+                echo $contributors->getNormalList( $wgLang );
+            // $contrib = '{{#contributors:{{FULLPAGENAME}}}}';
+            // $wgParserOptions = new ParserOptions($wgUser);
+            // $parserOutput = $wgParser->parse($contrib, $this->getSkin()->getTitle(), $wgParserOptions);
+            // echo $parserOutput->getText();
             ?>
         </li>
-
+        <?php } ?>
         <?php if($this->data['language_urls']){ ?>
         <li class="sidebar-brand left-lang">
             <a href="#">

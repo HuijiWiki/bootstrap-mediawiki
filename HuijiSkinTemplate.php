@@ -533,7 +533,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                         <ul class="hub-selection letter-link active">
                                             <li><a href="http://lotr.huiji.wiki">魔戒</a></li>
                                             <li><a href="http://asoiaf.huiji.wiki">冰与火之歌</a></li>
-                                            <li><a href="http://zhoutian.huiji.wiki">周天世界</a></li>
+                                            <li><a href="http://lgqm.huiji.wiki">临高启明</a></li>
                                             <li><a href="http://witcher.huiji.wiki">猎魔人</a></li>
                                             <li><a href="http://coppermind.huiji.wiki/wiki">红铜智库</a></li>
                                             <li><a href="http://jiuzhou.huiji.wiki">九州</a></li>
@@ -553,10 +553,10 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://saintseiya.huiji.wiki">圣斗士星矢</a></li>
                                         </ul>
                                         <ul class="hub-selection game-link">
-                                            <li><a href="http://gjqt.huiji.wiki">古剑奇谭</a></li>
+                                            <li><a href="http://warcraft.huiji.wiki">魔兽世界</a></li>
                                             <li><a href="http://hearthstone.huiji.wiki">炉石传说</a></li>
                                             <li><a href="http://assassinscreed.huiji.wiki">刺客信条</a></li>
-                                            <li><a href="http://3pz.huiji.wiki">三国志puzzle大战</a></li>
+                                            <li><a href="http://gw2.huiji.wiki">激战2</a></li>
                                             <li><a href="http://warframe.huiji.wiki">warframe</a></li>
                                             <li><a href="http://bravely.huiji.wiki">勇气默示录中文百科</a></li>
                                         </ul>
@@ -567,7 +567,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                         <ul class="hub-selection more-link">
                                             <li><a href="http://hsr.huiji.wiki/">高速铁路百科</a></li>
                                             <li><a href="http://kaixinmahua.huiji.wiki">开心麻花</a></li>
-                                            <li><a href="http://mahjong.huiji.wiki">麻将</a></li>
+                                            <li><a href="http://bilibili.huiji.wiki">哔哩哔哩维基</a></li>
                                             <li><a href="http://arsenal.huiji.wiki">阿森纳</a></li>
                                             <li><a href="http://www.huiji.wiki/wiki/%E7%89%B9%E6%AE%8A:%E7%AB%99%E7%82%B9%E6%8E%92%E8%A1%8C">站点排行榜</a></li>
                                             <a rel="nofollow" href="/wiki/Special:Randomwiki" class="wiki-random">
@@ -607,7 +607,9 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         $output .= $user_alert;
                         $output .= $user_message;
                         $output .= '<li class="dropdown collect"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-heart-o"></i></i></a><ul class="dropdown-menu collect-menu">';
-                        $sites = UserSiteFollow::getFullFollowedSitesWithDetails( $wgUser->getId(),$wgUser->getId() );
+                        $huijiUser = HuijiUser::newFromUser($wgUser);
+                        $sites = $huijiUser->getFollowingSites(true, $wgUser);
+                        // $sites = UserSiteFollow::getFullFollowedSitesWithDetails( $wgUser->getId(),$wgUser->getId() );
                         $count = count($sites);
                         if( $count > 0){
                             $num = ($count > 8)?8:$count;
