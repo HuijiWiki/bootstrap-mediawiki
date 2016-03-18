@@ -37,12 +37,20 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleScripts( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
+            $out->addMeta( 'keywords', '维基, 百科, wiki');
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="'.$wgCentralServer.'" />' . "\n");    
             //$out->addHeadItem('meta','<meta property="qc:admins" content="6762163113460512167131" />'); 
             //$out->addHeadItem('meta','<meta property="wb:webmaster" content="913ad381cb9b4ad7" />');
 
         } else {
+            $site = WikiSite::newFromPrefix($wgHuijiPrefix);
+            if ($this->getSkin()->getTitle()->isMainPage()){
+                $out->addMeta( 'description', $site->getDescription());
+                $out->addMeta( 'keywords', $site->getName().', 维基, 百科, wiki');
+            } else {
+               $out->addMeta( 'keywords', $site->getName().', '.$this->getSkin()->getTitle()->getText().', 维基, 百科, wiki'); 
+            }
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="' . htmlspecialchars( $out->getTitle()->getCanonicalURL()) . '" />' . "\n");            
         } 
@@ -176,7 +184,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     <div class="container-fluid">
                         <ul class="nav nav-pills">
                             <li>
-                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo $site->getAvatar('m')->getAvatarHtml(array('style' => 'height : 1em; padding-bottom:0.2em;')); echo '&nbsp;'.$wgLang->truncate( $site->getName(), 25); ?></a>
+                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo $site->getAvatar('m')->getAvatarHtml(array('style' => 'height : 1em; padding-bottom:0.2em;')); echo '&nbsp;'.$wgLang->truncate( $site->getName(), 35); ?></a>
                             </li>
                             <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
                             <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
@@ -184,6 +192,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 $result = self::format_nice_number(SiteStats::articles());
                                 $result2 = self::format_nice_number(SiteStats::edits());
                                 echo $result;
+                                //echo $site->getRating();
                             ?></a>页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo $stats['followers'] ?></a>关注</p></li>
                             <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
                         </ul>
@@ -271,6 +280,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         </div>
                         <?php endif; ?>
                         <?php if( $this->isPrimaryContent() ): ?>
+                        <?php wfRunHooks( 'SkinRatingData', array(&$this) );?>
                         <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
                         <?php endif; ?>
                         <?php 
