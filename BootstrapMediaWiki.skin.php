@@ -235,7 +235,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     </div>
                                         
                                 </header>
-                                <?php endif;?>
+                                <?php endif;?><!-- end header -->
                                 <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
                                 <!-- ConfirmEmail -->
                                 <?php

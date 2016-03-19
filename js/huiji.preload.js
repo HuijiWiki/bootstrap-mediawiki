@@ -99,7 +99,7 @@ $(function() {
     //parallax Jumbotron
     var jumboHeight = $('.parallax-jumbotron').outerHeight();
     if (jumboHeight > 0){
-        $('#firstHeading > h1').hide();
+        $('#firstHeading').hide();
         $('#firstHeading').css('border-bottom', 'none');
         if ($('.heading-hero-image a').length){
             var bg_image = $('.heading-hero-image a').attr('href');
