@@ -204,7 +204,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <div class="row">
                             <aside class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></aside>
                             <article class="col-md-12 wiki-body-section" role="main">
-
+                                <?php if ($NS != 2 || !($this->getSkin()->getTitle()->isMainPage()) ):?>
                                 <header id="firstHeading" class="pagetitle page-header">
                                     <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
                                     <h1><?php $this->html( 'title' ) ?></h1>
@@ -235,6 +235,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     </div>
                                         
                                 </header>
+                                <?php endif;?>
                                 <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
                                 <!-- ConfirmEmail -->
                                 <?php
