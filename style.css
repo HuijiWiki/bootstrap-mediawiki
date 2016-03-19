@@ -971,11 +971,7 @@ input:-webkit-autofill {
         float: none;
     }
 }
-
 .page-首页 #firstHeading{
-    border-bottom: none;
-}
-.page-首页 #firstHeading h1{
     display: none;
 }
 .parallax-bg {
