@@ -974,6 +974,9 @@ input:-webkit-autofill {
 .page-首页 #firstHeading{
     display: none;
 }
+.ns-2 #firstHeading{
+    display: none;
+}
 .parallax-bg {
   position: fixed;
   width: 100%;
