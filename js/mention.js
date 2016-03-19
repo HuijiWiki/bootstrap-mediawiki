@@ -96,6 +96,9 @@ var mention = {
 
     //get user follow list
     getFollow: function(){
+        if (mw.config.get('wgUserName') == ''){
+            return false;
+        }
         $.post(
             mw.util.wikiScript(), {
                 action: 'ajax',

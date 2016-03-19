@@ -18,9 +18,9 @@ h4 .mw-headline { font-size: 20px; }
 h5 .mw-headline { font-size: 18px; }
 h6 .mw-headline { font-size: 17px; }
 
-p {
+/*p {
 	margin-bottom: 15px;
-}
+}*/
 
 /*.hub-menu::before{
     content: '';
@@ -824,10 +824,15 @@ body .mw-echo-overlay::before{
 }
 #content h1{
     font-size:3.8em;
+    display: inline;
 }
 #content p{
     line-height: 1.8;
-    /*letter-spacing: 0.5px;*/
+    margin-bottom: 15px;
+}
+#contentSub{
+    font-size: 1em;
+    color:#777;
 }
 .alert-wrap{
     position: fixed;
@@ -990,10 +995,6 @@ input:-webkit-autofill {
 }
 .heading-hero-image {
 	display:none;
-}
-
-#contentSub{
-    font-size: 24px;
 }
 .familyTreeWrapper{
     overflow-x: auto;
@@ -1249,13 +1250,6 @@ sup.reference {
 	width: auto;
 	max-width: 540px;
 }
-.huiji-h1-edit-button{
-    display: inline-block;
-    font-size: 0.5em;
-    padding-left: 1em;
-    position: relative;
-    bottom: 10px;
-}
 .mw-editsection{
     opacity: 0;
     left: -10px;
@@ -1265,6 +1259,13 @@ sup.reference {
     -ms-transition: all .2s;
     -o-transition: all .2s;
     transition: all .2s;
+}
+.huiji-h1-edit-button{
+    display: inline-block;
+    font-size: 1.9em;
+    padding-left: 1em;
+    position: relative;
+    bottom: 10px;
 }
 #huiji-h1-edit-button .mw-editsection-divider{
     width: 1px;

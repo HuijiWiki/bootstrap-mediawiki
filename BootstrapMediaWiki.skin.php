@@ -180,7 +180,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 
             <div id="wiki-outer-body">
 
-                <div id="content-actions" class="subnav subnav-fixed">
+                <nav id="content-actions" class="subnav subnav-fixed">
                     <div class="container-fluid">
                         <ul class="nav nav-pills">
                             <li>
@@ -197,115 +197,109 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
                         </ul>
                     </div>
-                </div>
+                </nav>
 
                 <div id="wiki-body" class="container">
-                    <div id="content">
+                    <main id="content">
                         <div class="row">
-                            <nav class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></nav>
-                            <section class="col-md-12 wiki-body-section" role="main">
+                            <aside class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></aside>
+                            <article class="col-md-12 wiki-body-section" role="main">
 
-                        <div id="firstHeading" class="pagetitle page-header">
-                            <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
-                            <h1><?php $this->html( 'title' ) ?> 
-                                <?php 
-                                    if (isset( $this->data['content_actions']['edit']) ){
-                                        $isVisualEditorEnabled = $wgUser->getOption('visualeditor-enable','1');
-                                        $editHref = $this->data['content_actions']['edit']['href'];
-                                        $veHref = $this->data['content_actions']['ve-edit']['href'];
-                                        if ($isVisualEditorEnabled == 1 && isset($this->data['content_actions']['ve-edit'])){ ?>
-                                            <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
+                                <header id="firstHeading" class="pagetitle page-header">
+                                    <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
+                                    <h1><?php $this->html( 'title' ) ?></h1>
+                                        <?php 
+                                            if (isset( $this->data['content_actions']['edit']) ){
+                                                $isVisualEditorEnabled = $wgUser->getOption('visualeditor-enable','1');
+                                                $editHref = $this->data['content_actions']['edit']['href'];
+                                                $veHref = $this->data['content_actions']['ve-edit']['href'];
+                                                if ($isVisualEditorEnabled == 1 && isset($this->data['content_actions']['ve-edit'])){ ?>
+                                                    <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
 
-                                                <a id="ca-ve-edit" href="<?php echo $veHref; ?>" class="icon-pencil" data-toggle="tooltip" data-placement="top" title="使用可视化编辑器"></a>
-                                                <span class="mw-editsection-divider"></span>
-                                                <a id="ca-edit" href="<?php echo $editHref ?>" class="icon-edit-code " data-toggle="tooltip" data-placement="top" title="使用源代码编辑器"></a>
-                                            </div>
-                                        <?php } else { ?>
-                                            <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
-                                                <a id="ca-edit" href="<?php echo $editHref ?>" class="icon-edit-code" title="<?php echo wfMessage('bootstrap-mediawiki-view-edit')->plain(); ?>"></a>
-                                            </div>                                   
-                                        <?php }
-                                    } ?>
-                               
-                                <div id="contentSub">
-                                    <small>
-                                    <?php $this->html('subtitle') ?>
-                                    <?php
-                                        echo $this->getSub($NS);
-                                    ?>
-                                    </small>
-                                </div>
-                                
-                            </h1>
-                        </div>
-                        <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
-                        <!-- ConfirmEmail -->
-                        <?php
-                            if ( $wgUser->isLoggedIn()&& !$wgUser->isEmailConfirmed() && $this->isPrimaryContent() ) {
-                        ?>
-                        <div class="alert alert-danger" role="alert">
-                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                            <span class="sr-only">Error:</span>
-                            只有确认邮件后才能对页面进行编辑&nbsp:)
-                            <a href="/wiki/%E7%89%B9%E6%AE%8A:%E7%A1%AE%E8%AE%A4%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6">点此确认</a>&nbsp|&nbsp
-                            <a href="/wiki/特殊:修改邮箱地址">修改邮箱地址</a>
-                        </div> 
-                        <?php
-                            }
-                        ?>  
-                        <!-- /ConfirmEmail -->
-                        <?php if ( $this->data['undelete'] ): ?>
-                        <!-- undelete -->
-                        <div id="contentSub2" class="alert alert-warning alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <?php $this->html( 'undelete' ) ?>
-                        </div>
-                        <!-- /undelete -->
-                        <?php endif; ?>
-                        <?php if($this->data['newtalk'] ): ?>
-                        <!-- newtalk -->
-                        <div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
-                        <!-- /newtalk -->
-                        <?php endif; ?>
-                        <div id="bodyContent" class="body">                     
-                        <?php $this->html( 'bodytext' ) ?>
-                        </div>
-                        <?php if ( $this->data['catlinks'] ): ?>
-                        <div class="category-links">
-                        <!-- catlinks -->
-                        <?php $this->html( 'catlinks' ); ?>
-                        <!-- /catlinks -->
-                        </div>
-                        <?php endif; ?>
-                        <?php if( $this->isPrimaryContent() ): ?>
-                        <?php wfRunHooks( 'SkinRatingData', array(&$this) );?>
-                        <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
-                        <?php endif; ?>
-                        <?php 
-                        if ( $this->isPrimaryContent() )
-                        {
-                            $commentHtml = '<div class="clearfix"></div>';
-                            $wgParser->setTitle($this->getSkin()->getTitle());
-                            $commentHtml .= CommentsHooks::displayComments( '', array(), $wgParser); 
-                            echo $commentHtml;
-                        }?>
-                        <?php if ( $this->data['dataAfterContent'] ): ?>
-                        <div class="data-after-content">
-                        <!-- dataAfterContent -->
-                        <?php $this->html( 'dataAfterContent' ); ?>                    
-                        <!-- /dataAfterContent -->
-                        </div>
-                        <?php endif; ?>
-                        <?php
-                            if ( 'sidebar' == $wgTOCLocation ) {
-                                ?>
-                                </section></section>
+                                                        <a id="ca-ve-edit" href="<?php echo $veHref; ?>" class="icon-pencil" data-toggle="tooltip" data-placement="top" title="使用可视化编辑器"></a>
+                                                        <span class="mw-editsection-divider"></span>
+                                                        <a id="ca-edit" href="<?php echo $editHref ?>" class="icon-edit-code " data-toggle="tooltip" data-placement="top" title="使用源代码编辑器"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
+                                                        <a id="ca-edit" href="<?php echo $editHref ?>" class="icon-edit-code" title="<?php echo wfMessage('bootstrap-mediawiki-view-edit')->plain(); ?>"></a>
+                                                    </div>                                   
+                                                <?php }
+                                            } ?>
+                                                
+                                    <div id="contentSub">
+                                        <?php $this->html('subtitle') ?>
+                                        <?php
+                                            echo $this->getSub($NS);
+                                        ?>
+                                    </div>
+                                        
+                                </header>
+                                <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
+                                <!-- ConfirmEmail -->
                                 <?php
-                            }//end if
-                        ?>
-                    </div>
+                                    if ( $wgUser->isLoggedIn()&& !$wgUser->isEmailConfirmed() && $this->isPrimaryContent() ) {
+                                ?>
+                                <section class="alert alert-danger" role="alert">
+                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                    <span class="sr-only">Error:</span>
+                                    只有确认邮件后才能对页面进行编辑&nbsp:)
+                                    <a href="/wiki/%E7%89%B9%E6%AE%8A:%E7%A1%AE%E8%AE%A4%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6">点此确认</a>&nbsp|&nbsp
+                                    <a href="/wiki/特殊:修改邮箱地址">修改邮箱地址</a>
+                                </section> 
+                                <?php
+                                    }
+                                ?>  
+                                <!-- /ConfirmEmail -->
+                                <?php if ( $this->data['undelete'] ): ?>
+                                <!-- undelete -->
+                                <section id="contentSub2" class="alert alert-warning alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <?php $this->html( 'undelete' ) ?>
+                                </section>
+                                <!-- /undelete -->
+                                <?php endif; ?>
+                                <?php if($this->data['newtalk'] ): ?>
+                                <!-- newtalk -->
+                                <section class="usermessage"><?php $this->html( 'newtalk' )  ?></section>
+                                <!-- /newtalk -->
+                                <?php endif; ?>
+                                <section id="bodyContent" class="body">                     
+                                <?php $this->html( 'bodytext' ) ?>
+                                </section>
+                                <?php if ( $this->data['catlinks'] ): ?>
+                                <section class="category-links">
+                                <!-- catlinks -->
+                                <?php $this->html( 'catlinks' ); ?>
+                                <!-- /catlinks -->
+                                </section>
+                                <?php endif; ?>
+                                <?php if( $this->isPrimaryContent() ): ?>
+                                <?php wfRunHooks( 'SkinRatingData', array(&$this) );?>
+                                <div class="bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
+                                <?php endif; ?>
+                                <?php 
+                                if ( $this->isPrimaryContent() )
+                                {
+                                    $commentHtml = '<div class="clearfix"></div>';
+                                    $wgParser->setTitle($this->getSkin()->getTitle());
+                                    $commentHtml .= CommentsHooks::displayComments( '', array(), $wgParser); 
+                                    echo $commentHtml;
+                                }?>
+                                <?php if ( $this->data['dataAfterContent'] ): ?>
+                                <section class="data-after-content">
+                                <!-- dataAfterContent -->
+                                <?php $this->html( 'dataAfterContent' ); ?>                    
+                                <!-- /dataAfterContent -->
+                                </section>
+                                <?php endif; ?>
+
+                            </article>
+                        </div>
+      
+                    </main>
                 </div><!-- container -->
             </div>
             <?php include ('View/Modal.php'); ?>
@@ -321,10 +315,10 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         <p class="text-center">
                             <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> |
                             <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> |
-                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a> |
-                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E4%BD%BF%E7%94%A8%E6%9D%A1%E6%AC%BE%E5%92%8C%E5%86%85%E5%AE%B9%E5%A3%B0%E6%98%8E">使用条款和声明</a> |
-                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E7%94%A8%E6%88%B7%E7%BC%96%E8%BE%91%E6%9D%A1%E6%AC%BE">编辑条款</a><br>Powered by
-                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p>
+                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a> |
+                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E4%BD%BF%E7%94%A8%E6%9D%A1%E6%AC%BE%E5%92%8C%E5%86%85%E5%AE%B9%E5%A3%B0%E6%98%8E">使用条款和声明</a> |
+                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E7%94%A8%E6%88%B7%E7%BC%96%E8%BE%91%E6%9D%A1%E6%AC%BE">编辑条款</a><br>Powered by
+                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p>
                     </footer>
                 </div><!-- container -->
             </div><!-- bottom -->

@@ -71,9 +71,9 @@ $(function() {
 	            $(this).find('ul:first').appendTo( '.toc-sidebar' );
 	            $(this).remove();
 	        });
-	        $('nav.toc-sidebar > ul').append('<li><a href="#firstHeading">回到顶部</a></li>');
-	        $('nav.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix');
-	        $('nav.toc-sidebar > ul').affix({
+	        $('aside.toc-sidebar > ul').append('<li><a href="#firstHeading">回到顶部</a></li>');
+	        $('aside.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix');
+	        $('aside.toc-sidebar > ul').affix({
 	          offset: {
 	            top: 0,
 	            bottom: function () {
@@ -81,7 +81,7 @@ $(function() {
 	            }
 	          }
 	        });
-	        $('nav.toc-sidebar ul').addClass('nav nav-list');
+	        $('aside.toc-sidebar ul').addClass('nav nav-list');
 	        $('.toc-sidebar').attr('id', 'toc');
 	        $('body').scrollspy({target: '#toc', offset:230});
 	
