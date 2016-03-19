@@ -514,7 +514,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         </form>
                     </div>
 
-                    <div class="collapse navbar-collapse">
+                    <nav class="collapse navbar-collapse">
                         <ul id="icon-section" class="nav navbar-nav">
                                 <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
@@ -640,13 +640,13 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         </ul>';
                     }
                     $output .= '<form class="navbar-search navbar-form table-cell hidden-xs" action="/index.php" id="searchform" role="search">
-                        <div>
-                            <span class="fa fa-search navbar-search"></span>
-                            <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="搜索'.$wgSitename.' [ctrl-option-f]" accesskey="f" id="'.$searchFormId.'" autocomplete="off">
-                            <input type="hidden" name="title" value="'.$specialPage.'">
-                        </div>
-                    </form>
-                    </div>
+                            <div>
+                                <span class="fa fa-search navbar-search"></span>
+                                <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="搜索'.$wgSitename.' [ctrl-option-f]" accesskey="f" id="'.$searchFormId.'" autocomplete="off">
+                                <input type="hidden" name="title" value="'.$specialPage.'">
+                            </div>
+                        </form>
+                    </nav>
                 </div>
             </header>';
             

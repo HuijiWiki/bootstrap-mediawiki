@@ -1,5 +1,5 @@
    <!-- Sidebar -->
-<div id="sidebar-wrapper">
+<aside id="sidebar-wrapper">
 
     <ul class="sidebar-nav" id="sidebar-content">
         <li class="sidebar-header">
@@ -191,5 +191,5 @@
         </li>
         <?php } ?>
     </ul>
-</div>
+</aside>
 <!-- /#sidebar-wrapper -->
