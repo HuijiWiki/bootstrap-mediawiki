@@ -188,12 +188,12 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             </li>
                             <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
                             <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
-                            <li class="site-count"><p><a id="site-article-count" href="<?php echo $url_prefix; ?>Special:AllPages"><?php
+                            <li class="site-count"><p><span class="article-count"><a href="<?php echo $url_prefix; ?>Special:AllPages"><?php
                                 $result = self::format_nice_number(SiteStats::articles());
                                 $result2 = self::format_nice_number(SiteStats::edits());
                                 echo $result;
                                 //echo $site->getRating();
-                            ?></a>页面<a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑<a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo $stats['followers'] ?></a>关注</p></li>
+                            ?></a>页面</span><span class="edit-count"></span><a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑</span><span><a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo $stats['followers'] ?></a>关注</p></span></li>
                             <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
                         </ul>
                     </div>
