@@ -100,27 +100,35 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         } else {
                             $href = $subLink['link'];
                         }//end else
-
+                        if ( array_key_exists('id', $subLink)){
+                            $id = "id = "."pt-{$subLink['id']} ";
+                        }
+                        if (array_key_exists('rel', $subLink)){
+                            $rel = "rel = "$subLink['rel']." ";
+                        }
                         $slug = strtolower( str_replace(' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', trim( strip_tags( $subLink['title'] ) ) ) ) );
-                        $output .= "<li {$subLink['attributes']} id='pt-{$subLink['id']}'><a href='{$href}' class='{$subLink['class']} {$slug}'>{$subLink['title']}</a>";
+                        $output .= "<li {$subLink['attributes']} $id><a href='{$href}' class='{$subLink['class']} {$slug} {$rel}'>{$subLink['title']}</a>";
                     }//end else
                 }
                 $output .= '</ul>';
                 $output .= '</li>';
             } else {
-                $requestUrl = $this->getSkin()->getRequest()->getRequestURL();
-                $myLink = $topItem['link'];
-                $query = explode('&', $requestUrl);
-                if (count($query) > 1 && strpos( $requestUrl ,'action' )!== false){
-                    $match = ($query[1] === explode('&amp;', $myLink)[1]) &&  ($query[0] === explode('&amp;', $myLink)[0]);
-                }else{
-                    if (strpos($requestUrl, 'index.php?title=') != false ){
-                        $requestUrl = str_replace("index.php?title=", "wiki/", $requestUrl);
-                    }
-                    $match = (strpos($requestUrl , $myLink) !==false);
+                // $requestUrl = $this->getSkin()->getRequest()->getRequestURL();
+                // $myLink = $topItem['link'];
+                // $query = explode('&', $requestUrl);
+                // if (count($query) > 1 && strpos( $requestUrl ,'action' )!== false){
+                //     $match = ($query[1] === explode('&amp;', $myLink)[1]) &&  ($query[0] === explode('&amp;', $myLink)[0]);
+                // }else{
+                //     if (strpos($requestUrl, 'index.php?title=') != false ){
+                //         $requestUrl = str_replace("index.php?title=", "wiki/", $requestUrl);
+                //     }
+                //     $match = (strpos($requestUrl , $myLink) !==false);
+                // }
+                if (array_key_exists('rel', $topItem)){
+                    $rel = "rel = \"".$subLink['rel']."\" ";
                 }
                 $hasId = $topItem['id']?' id="ca-'.$topItem['id'].'"':'';
-                $output .= '<li' . ( $match ? ' class="dropdown active"' : ' class="dropdown primary-nav"') .$hasId. '><a href="' . ( $topItem['link']  ) . '"  rel="nofollow">' . $topItem['title'] . '</a></li>';
+                $output .= '<li class="dropdown primary-nav"'.$hasId. '><a href="' . ( $topItem['link']  ) .'" '.$rel.'>' . $topItem['title'] . '</a></li>';
             }//end else
         }//end foreach
         return $output;
@@ -344,6 +352,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 'key' => $item['key'],
                 'class' => htmlspecialchars( $item['class'] ),
                 'title' => htmlspecialchars( $item['text'] ),
+                'rel' => 'nofollow',
             );
             switch( $link['title'] ) {
                 case '页面': $icon = 'file'; break;
