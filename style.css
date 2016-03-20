@@ -223,6 +223,9 @@ option.unclickable {
 .page-header{
     margin: 0;
 }
+.void.page-header {
+    border-bottom: 0px;
+}
 .nav-collapse.in {
 	height: auto !important;
 }
