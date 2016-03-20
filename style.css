@@ -857,6 +857,7 @@ input:-webkit-autofill {
   color: white;
   text-shadow: #444 0 1px 1px;
   background:transparent;
+  margin-top: 100px;
 }
 .heading-hero-image {
 	display:none;
