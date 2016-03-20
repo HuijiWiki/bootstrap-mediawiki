@@ -38,8 +38,8 @@ Class HuijiSkinTemplate extends BaseTemplate {
             $revId = $rev->getId();
             $editorId = $rev->getUser();
             if ($editorId !== 0){
-                $linkAttr = array('class' => 'mw-ui-anchor mw-ui-progressive mw-ui-quiet');
-                $editorAttr = array('class' => 'mw-ui-anchor mw-ui-progressive mw-ui-quiet mw-userlink');
+                $linkAttr = array('class' => 'mw-ui-anchor mw-ui-progressive mw-ui-quiet', 'rel'=>'nofollow');
+                $editorAttr = array('class' => 'mw-ui-anchor mw-ui-progressive mw-ui-quiet mw-userlink', 'rel'=>'nofollow');
                 $editor = User::newFromId( $editorId );
                 $editorName = $editor->getName();
                 $editorLink = Linker::Link($editor->getUserPage(), $editorName, $editorAttr);

@@ -511,6 +511,7 @@ Class BootstrapMediawikiHooks {
         &$options, &$ret ) {
         if ($target->getNamespace() == NS_USER){
             $customAttribs['class'] = 'mw-userlink';
+            $customAttribs['rel'] = 'nofollow';
         }
         return true;
     }
