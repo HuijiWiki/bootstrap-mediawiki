@@ -120,7 +120,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                     $match = (strpos($requestUrl , $myLink) !==false);
                 }
                 $hasId = $topItem['id']?' id="ca-'.$topItem['id'].'"':'';
-                $output .= '<li' . ( $match ? ' class="dropdown active"' : ' class="dropdown primary-nav"') .$hasId. '><a href="' . ( $topItem['link']  ) . '">' . $topItem['title'] . '</a></li>';
+                $output .= '<li' . ( $match ? ' class="dropdown active"' : ' class="dropdown primary-nav"') .$hasId. '><a href="' . ( $topItem['link']  ) . '"  rel="nofollow">' . $topItem['title'] . '</a></li>';
             }//end else
         }//end foreach
         return $output;
@@ -579,10 +579,10 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                   </ul>
                                 </li>
                                 <li class="hidden-xs">
-                                    <a rel="nofollow" href="http://www.huiji.wiki/wiki/创建新wiki">创建wiki</a>
+                                    <a href="http://www.huiji.wiki/wiki/创建新wiki">创建wiki</a>
                                 </li>
                                 <li class="hidden-xs hidden-sm">
-                                    <a rel="nofollow" href="http://www.huiji.wiki/wiki/帮助:用户手册">帮助文档</a>
+                                    <a href="http://www.huiji.wiki/wiki/帮助:用户手册">帮助文档</a>
                                 </li>
                         </ul>';
                     if ( $wgUser->isLoggedIn() ) {
@@ -636,7 +636,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                             <li id= "pt-login" data-toggle="modal" data-target=".user-login">
                                 <a rel="nofollow" class="login-in">登录</a>
                             </li>
-                            <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount' ),array('type' => 'signup') ).'
+                            <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount', 'rel' => 'nofollow'),array('type' => 'signup') ).'
                             </li>
                         </ul>';
                     }
