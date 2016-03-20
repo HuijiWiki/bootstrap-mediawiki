@@ -100,11 +100,11 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         } else {
                             $href = $subLink['link'];
                         }//end else
-                        if ( array_key_exists('id', $subLink)){
+                        if ( array_key_exists('id', $subLink) ){
                             $id = "id = "."pt-{$subLink['id']} ";
                         }
-                        if (array_key_exists('rel', $subLink)){
-                            $rel = "rel = "$subLink['rel']." ";
+                        if (array_key_exists('rel', $subLink) ){
+                            $rel = "rel = {$subLink['rel']} ";
                         }
                         $slug = strtolower( str_replace(' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', trim( strip_tags( $subLink['title'] ) ) ) ) );
                         $output .= "<li {$subLink['attributes']} $id><a href='{$href}' class='{$subLink['class']} {$slug} {$rel}'>{$subLink['title']}</a>";
