@@ -18,43 +18,6 @@ h4 .mw-headline { font-size: 20px; }
 h5 .mw-headline { font-size: 18px; }
 h6 .mw-headline { font-size: 17px; }
 
-/*p {
-	margin-bottom: 15px;
-}*/
-
-/*.hub-menu::before{
-    content: '';
-    background-image: url(./images/angle.png);
-    background-repeat: no-repeat;
-    width: 21px;
-    height: 11px;
-    position: absolute;
-    z-index: 101;
-    top: -11px;
-    left: 45px;
-}
-.set-menu::before{
-    content: '';
-    background-image: url(./images/angle.png);
-    background-repeat: no-repeat;
-    width: 21px;
-    height: 11px;
-    position: absolute;
-    z-index: 101;
-    top: -11px;
-    right: 15px;
-}
-.collect-menu::before{
-    content: '';
-    background-image: url(./images/angle.png);
-    background-repeat: no-repeat;
-    width: 21px;
-    height: 11px;
-    position: absolute;
-    z-index: 101;
-    top: -11px;
-    right: 15px;
-}*/
 #mw-content-text>p{
     text-align: justify;
 }
@@ -389,10 +352,6 @@ html .thumbcaption {
 	padding: 3px !important;
 	font-size: 94%;
 }
-.mwe-upwiz-thumbnail, .mwe-upwiz-file-preview {
-    border: 0px solid #cccccc !important;
-    padding: 0px !important;
-}
 div.magnify {
 	float: right;
 	border: none !important;
@@ -448,9 +407,9 @@ img.thumbborder {
         margin-left: 0;
     }
 }
-pre.linenums ol {
-	margin-bottom: 0;
-}
+/*pre.linenums ol {*/
+/*	margin-bottom: 0;*/
+/*}*/
 
 
 
@@ -490,97 +449,6 @@ pre.linenums ol {
 
 table.list th {
 	background: #eee;
-}
-
-.info-box {
-	clear: right;
-	color: #000;
-	background-color: #ccc;
-	border-spacing: 0;
-	border: 1px solid #999;
-	-webkit-border-top-left-radius: 4px;
-	   -moz-border-radius-topleft: 4px;
-	        border-top-left-radius: 4px;
-	-webkit-border-top-right-radius: 4px;
-	   -moz-border-radius-topright: 4px;
-	        border-top-right-radius: 4px;
-	box-shadow: 0 0 5px rgba( 0, 0, 0, 0.2 );
-	font-size: 14px;
-	margin-top: -1.4em;
-	margin: 0 0 1em 1em;
-	padding: 3px;
-	padding: 0;
-	position: relative;
-	width: 250px;
-	z-index: 100;
-}
-
-.info-box td {
-	line-height: normal;
-	padding: 5px;
-	vertical-align: middle;
-}
-
-.info-box td p {
-	display: table-cell;
-	vertical-align: middle;
-}
-
-.info-box .info-image {
-	background: #eee;
-	border-top: 1px solid #999;
-	border-right: 1px solid #999;
-	color: #000;
-	font-size: smaller;
-	text-align: center;
-}
-
-.info-box .info-name {
-	background-color: #eee;
-	border-top: 1px solid #999;
-	border-left: #999;
-	border-right: #999;
-	color: #000;
-	font-size: larger;
-	font-variant: small-caps;
-	text-align: center;
-}
-
-.info-box .info {
-	background-color: #ccc;
-	border-top: 1px solid #999;
-	color: #000;
-	font-size: 8pt;
-	text-align: center;
-}
-
-.info-box .info-label {
-	background: #eee;
-	padding-left: 6px;
-	padding-right: 6px;
-	border-top: 1px solid #999;
-	border-right: 1px solid #999;
-	color: #000;
-	font-size: smaller;
-	line-height: normal;
-}
-
-.info-box .info-value {
-	background: transparent;
-	padding-left: 6px;
-	padding-right: 6px;
-	border-top: 1px solid #999;
-	color: #000;
-	font-size: smaller;
-}
-
-.info-box.quest .info-name {
-	background-color: #CECF86;
-	border-color: #8A895F;
-}
-
-.info-box.weapon .info-name {
-	background-color: #e8c5c5;
 }
 
 .list {
