@@ -94,8 +94,8 @@ $(document).ready(function(){
     var titleName = mw.config.get("wgPageName");
     var articleId = mw.config.get("wgArticleId");
     var url = 'http://huijidata.com:50007/insertViewRecord/';
-    insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
-    insertIntoMongoDB('http://121.42.144.9:8080/statisticQuery/webapi/view/insertOnePageViewRecord',navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
+//    insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
+    insertIntoMongoDB('http://huijidata.com:8080/statisticQuery/webapi/view/insertOnePageViewRecord',navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
         $('#wrapper').toggleClass("toggled").toggleClass('smtoggled');
