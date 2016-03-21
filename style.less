@@ -720,9 +720,9 @@ body{
     }
   }  
 }
-@media  screen and (min-width: 992px) and (max-width: 1439px) {
+@media  screen and (min-width: 1201px) and (max-width: 1439px) {
   .subnav {
-    .nav > li:nth-child(n+11) {
+    .nav > li:nth-child(n+9) {
       display: none;
     }
     .nav > li.site-count {
@@ -730,7 +730,23 @@ body{
       .article-count{
         display:none;
       }
-      .edits-count{
+      .edit-count{
+        display:none;
+      }
+    }
+  }
+}
+@media  screen and (min-width: 992px) and (max-width: 1200px) {
+  .subnav {
+    .nav > li:nth-child(n+7) {
+      display: none;
+    }
+    .nav > li.site-count {
+      display: inline-block;
+      .article-count{
+        display:none;
+      }
+      .edit-count{
         display:none;
       }
     }
