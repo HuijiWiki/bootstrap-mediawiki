@@ -69,10 +69,13 @@ class FrontPage{
             //小蓝格
             $ueb = new UserEditBox();
             $editBox = $editData = array();
-            $editBox = $ueb->getUserEditInfo($usreId);
+            $userEditInfo = $ueb->getUserEditInfo($usreId);
             $maxlen = $currentMaxlen = 0; //init variables.
-            foreach ($editBox as $key=>$value) {
-                $editData[] = $key; 
+            foreach ($userEditInfo as $value) {
+                if (is_object($value) && !empty($value->_id) && $value->value > 0) {
+                    $editBox[$value->_id] = $value->value;
+                    $editData[] = $value->_id;
+                }
             }
             $today = date("Y-m-d");
             $yesterday = date("Y-m-d",strtotime("-1 day"));
