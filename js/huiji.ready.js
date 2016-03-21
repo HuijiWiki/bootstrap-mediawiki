@@ -61,6 +61,7 @@ $(document).ready(function(){
     $('#mw-content-text table').each(function(){
        if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
                $(this).wrap('<div class="table-responsive"></div>');
+               $(this).addClass('table');
        }
     });
     $('#preftoc').addClass('nav nav-tabs');
