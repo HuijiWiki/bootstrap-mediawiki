@@ -184,7 +184,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     <div class="container-fluid">
                         <ul class="nav nav-pills">
                             <li>
-                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo $site->getAvatar('m')->getAvatarHtml(array('style' => 'height : 1em; padding-bottom:0.2em;')); echo '&nbsp;'.$wgLang->truncate( $site->getName(), 35); ?></a>
+                                <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo $site->getAvatar('m')->getAvatarHtml(array('style' => 'height : 1em; padding-bottom:0.2em;')); echo '&nbsp;'.$wgLang->truncate( $site->getName(), 30); ?></a>
                             </li>
                             <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
                             <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
