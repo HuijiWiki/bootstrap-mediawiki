@@ -33,7 +33,7 @@ function insertIntoMongoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite
                  },
 		 success:
                  function(data){
-			console.log(data)
+//			console.log(data)
 		},
 		error:
 		function(data){
