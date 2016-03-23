@@ -736,5 +736,4 @@ $(document).ready(function(){
         $('.video-wrapper').remove();
     })
 
-
 });

@@ -284,7 +284,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <?php if( $this->isPrimaryContent() ): ?>
                                     <div class="row">
                                     <?php wfRunHooks( 'SkinRatingData', array(&$this) );?>
-                                    <div class="col-md-2 col-md-offset-7 bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
+                                    <div class="col-md-2 col-md-offset-6 bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
                                     </div>
                                 <?php endif; ?>
                                 <?php 
