@@ -67,10 +67,10 @@ function getData(){
     return data;
 }
 $(function(){
-    if (mw.config.get('wgUserName')==''){
+    if (!mw.config.get('wgUserName')){
         return;
     }
-    var addbtn = '<li class="last"><a id="add-category-btn" data-placement="bottom">添加分类</a></li>';
+    var addbtn = '<li class="last"><a id="add-category-btn" data-placement="bottom" class="need-login">添加分类</a></li>';
     var content = '<div class="edit">' +
         '<div class="edit-input">'+
         '<ul class="edit-choices">'+
