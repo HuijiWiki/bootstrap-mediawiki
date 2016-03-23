@@ -819,11 +819,6 @@ input:-webkit-autofill {
 /*.h100{*/
     /*height:100%;*/
 /*}*/
-@media screen and (max-width: 767px){
-    #mw-createaccount-cta{
-        margin-left: auto;
-    }
-}
 
 /*手机上图片不超过手机宽度*/
 @media screen and (min-width:320px ) and (max-width:414px ){
@@ -858,6 +853,14 @@ input:-webkit-autofill {
   text-shadow: #444 0 1px 1px;
   background:transparent;
   margin-top: 100px;
+}
+@media screen and (max-width: 767px){
+    #mw-createaccount-cta{
+        margin-left: auto;
+    }
+    .parallax-jumbotron {
+      margin-top: 0px;
+    }
 }
 .heading-hero-image {
 	display:none;

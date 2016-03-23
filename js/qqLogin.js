@@ -3,13 +3,12 @@
     var u_avatar;
     u_gender = mw.cookie.get( 'user_gender' );
     u_avatar = mw.cookie.get( 'user_avatar' );
-    console.log(u_avatar);
     //gender & del gender cookie
-    // if( u_gender !=  null && mw.config.get( 'wgUserId' ) != null ){
-    //     // var api = new mw.Api();
-    //     new mw.Api().saveOption( 'gender',u_gender );
-    //     mw.cookie.set( 'user_gender' , null);
-    // }
+    if( u_gender !=  null && mw.config.get( 'wgUserId' ) != null ){
+        // var api = new mw.Api();
+        new mw.Api().saveOption( 'gender',u_gender );
+        mw.cookie.set( 'user_gender' , null);
+    }
     //user avatar & del avatar cookie
     if( u_avatar != null && mw.config.get( 'wgUserId' ) != null ){
     	var api = new mw.Api();
@@ -114,8 +113,9 @@
             },
             function (data) {
                 var res = $.parseJSON(data);
+                var urlTo;
                 if (res.success == true) {
-                       location.href = document.referrer;
+                        location.href = 'http://www'+mw.config.get('wgHuijiSuffix');
                 } 
             }
         );

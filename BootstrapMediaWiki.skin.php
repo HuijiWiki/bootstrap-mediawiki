@@ -193,7 +193,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 $result2 = self::format_nice_number(SiteStats::edits());
                                 echo $result;
                                 //echo $site->getRating();
-                            ?></a>页面</span><span class="edit-count"></span><a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑</span><span><a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo $stats['followers'] ?></a>关注</p></span></li>
+                            ?></a>条目</span><span class="edit-count"></span><a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑</span><span><a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo $stats['followers'] ?></a>关注</p></span></li>
                             <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
                         </ul>
                     </div>
@@ -236,7 +236,9 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         
                                 </header>
                                 <?php else:?>
-                                <header id="firstHeading" class="void page-header"></header>
+                                <header id="firstHeading" class="void page-header">
+                                     <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
+                                </header>
                                 <?php endif;?><!-- end header -->
                                 <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
                                 <!-- ConfirmEmail -->
