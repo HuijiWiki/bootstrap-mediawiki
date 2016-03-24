@@ -176,9 +176,12 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         } else {?>
             
             <?php include 'View/Sidebar.php';
+            if ($this->isPrimaryContent()){
+            	$customClass = " class='huiji-css-hook'";
+            }
             ?>
 
-            <div id="wiki-outer-body">
+            <div id="wiki-outer-body"<?php echo $customClass?>>
 
                 <nav id="content-actions" class="subnav subnav-fixed">
                     <div class="container-fluid">
