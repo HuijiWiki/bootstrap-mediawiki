@@ -86,7 +86,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 
         $out->addModuleStyles( array('skins.bootstrapmediawiki.top','mediawiki.ui.button') );
         // we need to include this here so the file pathing is right
-        $out->addStyle( '//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css' );
+        $out->addStyle( '//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css' );
     }//end setupSkinUserCss
 }
 /**
