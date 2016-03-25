@@ -60,8 +60,7 @@ $(document).ready(function(){
     //table responsive
     $('#mw-content-text table').each(function(){
        if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
-               $(this).wrap('<div class="table-responsive"></div>');
-               $(this).addClass('table');
+           $(this).wrap('<div class="table-responsive"></div>');
        }
     });
     $('#preftoc').addClass('nav nav-tabs');
@@ -97,6 +96,7 @@ $(document).ready(function(){
     var url = 'http://huijidata.com:50007/insertViewRecord/';
 //    insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
     insertIntoMongoDB('http://huijidata.com:8080/statisticQuery/webapi/view/insertOnePageViewRecord',navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
+
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
         $('#wrapper').toggleClass("toggled").toggleClass('smtoggled');

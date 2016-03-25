@@ -134,14 +134,14 @@ $(function() {
 	   $(this).html('<i class="fa fa-file-image-o"></i>');
     });
 
-    //need login
-//    $('body').on('click','.need-login',function(e){
-//        if(!mw.config.get("wgUserName")){
-//            e.preventDefault();
-//            e.stopPropagation();
-//            $('.user-login').modal();
-//        }
-//    });
+//    need login
+    $('body').on('click','.need-login',function(e){
+        if(!mw.config.get("wgUserName")){
+            e.preventDefault();
+            e.stopPropagation();
+            $('.user-login').modal();
+        }
+    });
 
 
     // // done for preload. Let's show the page.
