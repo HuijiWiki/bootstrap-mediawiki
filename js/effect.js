@@ -164,7 +164,7 @@ $(document).ready(function(){
                     var res = $.parseJSON(data);
                     if(res.result == null){
                         that.parents('.info-user-list').remove();
-                        refreshFeed();
+                        refreshFeed( null );
                     }else {
                         var parent = that.parents('.info-user-list ul');
                         var img = res.result.s_avatar;
