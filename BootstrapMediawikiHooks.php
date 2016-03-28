@@ -513,7 +513,8 @@ Class BootstrapMediawikiHooks {
             $customAttribs['class'] = 'mw-userlink';
             $customAttribs['rel'] = 'nofollow';
         } elseif( $target->getNamespace()== NS_FILE || $target){
-            if (pathinfo($target->getFullText())['extension'] == 'ass'){
+            $path = pathinfo($target->getFullText());
+            if (array_key_exists('extension', $path) && pathinfo($target->getFullText())['extension'] == 'ass'){
                 $customAttribs['download'] = $target->getText();
             };
         }
