@@ -46,7 +46,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 $bjtime = strtotime( $rev->getTimestamp() ) + 8*60*60;
                 $edittime = HuijiFunctions::getTimeAgo( $bjtime );
                 $diff = SpecialPage::getTitleFor('Diff',$revId);
-                $diffLink = Linker::LinkKnown($diff,'修改',$linkAttr);
+                $diffLink = Linker::LinkKnown($diff,'修改了',$linkAttr);
                 $thankLink = '';
                 if ( class_exists( 'EchoNotifier' )
                     && $this->skin->getUser()->isLoggedIn() 
@@ -57,7 +57,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         .$revId.'" href="javascript:void(0);">'.wfMessage('thanks-thank').'</a>）';
                 }
                 //Make it a td to reuse ext.thank.revthank   
-                $res.= $editorLink.'&nbsp于'.$edittime.'前'.$diffLink.'了此页面'.$thankLink;
+                $res.= $editorLink.'&nbsp于'.$edittime.'前'.$diffLink.'此页面'.$thankLink;
 
             }
             if ($NS == NS_TEMPLATE || $NS == NS_MODULE ){
