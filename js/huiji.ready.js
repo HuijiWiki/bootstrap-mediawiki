@@ -118,6 +118,7 @@ $(document).ready(function(){
         }else{
             localStorage.setItem('menu-toggle','');
         }
+        ga('send', 'event', 'menu-toggle', 'click', 'skin', 1);
     });
 
     $('body').on('touchstart','.phone-wrapper',function(){
@@ -257,10 +258,12 @@ $(document).ready(function(){
     // add functions for sidebar buttons
     $('#ca-purge').click(function(event){
         event.preventDefault();
+        ga('send', 'event', 'sidebar', 'click', 'purge', 1);
         window.location.assign(updateQueryStringParameter(location.href, 'action', 'purge'));
     });
     $('#ca-debug').click(function(event){
         event.preventDefault();
+        ga('send', 'event', 'sidebar', 'click', 'debug', 1);
         window.location.assign(updateQueryStringParameter(location.href, 'debug', '1'));
     });
 
@@ -727,6 +730,7 @@ $(document).ready(function(){
         var title = $(this).parents('.video-play-wrap').find('.video-player').data('video-title');
         var from = $(this).parents('.video-play-wrap').find('.video-player').data('video-from');
         var link = $(this).parents('.video-play-wrap').find('.video-player').data('video-link');
+        ga('send', 'event', 'video', 'play', from, 1);
         if(document.body.clientWidth>768) {
             $('body').append('<div class="video-wrapper"><span class="icon-close video-close"></span><h3>'+title+'</h4><span class="video-from">来自 '+from+'</span><iframe src="' + src + '" frameborder="0" allowfullscreen="true"></iframe></div>');
         }else{

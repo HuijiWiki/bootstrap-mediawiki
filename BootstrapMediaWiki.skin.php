@@ -274,14 +274,10 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     <span class="sr-only">Warning:</span>
                                     花1分钟创建用户后就能进行编辑&nbsp:)
                                     <?php echo $login; ?>
-<!--                                     <a href="/wiki/%E7%89%B9%E6%AE%8A:%E7%A1%AE%E8%AE%A4%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6">点此确认</a>&nbsp|&nbsp
-                                    <a href="/wiki/特殊:修改邮箱地址">修改邮箱地址</a> -->
-<!--                                     <div class="mw-ui-button-group"> -->
                                     <span class="pull-right">
                                         联合登陆&nbsp;&nbsp;
                                         <a href="https://api.weibo.com/oauth2/authorize?client_id=2445834038&amp;redirect_uri=http%3A%2F%2Fhuijiwiki.com%2Fwiki%2Fspecial%3Acallbackweibo&amp;response_type=code" class="icon-weibo-share" style="line-height: 2;"></a>&nbsp;&nbsp;
                                         <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&amp;client_id=101264508&amp;state=huijistate&amp;redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq" class="icon-qq-share" style="line-height: 2;"></a>
-                          <!--           </div> -->
                                     </span>
                                 </section> 
                                 <?php
