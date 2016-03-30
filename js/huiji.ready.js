@@ -355,7 +355,8 @@ $(document).ready(function(){
         });
 
     }
-    $('#wpLoginAttempt').click(function(){
+    $('body:not(.mw-special-Userlogin) #wpLoginAttempt').click(function(){
+
         $("#login-user-name").each(function(){
             login = $(this).val();
         });
