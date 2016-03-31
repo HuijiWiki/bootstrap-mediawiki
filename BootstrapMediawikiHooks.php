@@ -22,10 +22,22 @@ Class BootstrapMediawikiHooks {
         $parser->setHook( 'hover.css', 'BootstrapMediawikiHooks::getHoverCss');
         $parser->setHook( 'ihover.css', 'BootstrapMediawikiHooks::getIHoverCss');
         $parser->setHook( 'siteinfo', 'BootstrapMediawikiHooks::getSiteInfo');
+        $parser->setHook( 'videoclip', 'BootstrapMediawikiHooks::getVideoClip');
 
         // $parser->setHook( 'siteactivity', 'getSiteActivity' );
         // $parser->setHook( 'siteactivity', 'getSiteActivity' );
         return true;
+    }
+    public static function getVideoClip( $input, $args, $parser ){
+        $output =  $templateParser->processTemplate(
+            'videoclip',
+            array(
+                'image' => $args['image'],
+                'mp4' => $args['mp4'],
+                'webm' => $args['webm'],
+            )
+        );
+        return $output;
     }
     public static function getSiteInfo( $input, $args, $parser ){
         global $wgHuijiPrefix;

@@ -235,9 +235,9 @@ var mention = {
                 }
             }
             setTimeout(checkBtn(),100);
-        }).on('mousedown','.emoji-picker-icon',function(){
+        }).on('mousedown touchstart','.emoji-picker-icon',function(){
             self.active = true;
-        }).on('mousedown','#custom_comment',function(e){
+        }).on('mousedown touchstart','#custom_comment',function(e){
             e.stopPropagation();
             self.active = true;
             $('.custom-face').show(200);
