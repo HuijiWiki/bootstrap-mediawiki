@@ -29,6 +29,7 @@ Class BootstrapMediawikiHooks {
         return true;
     }
     public static function getVideoClip( $input, $args, $parser ){
+        $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $output =  $templateParser->processTemplate(
             'videoclip',
             array(
