@@ -72,17 +72,17 @@ window.customizeToolbar = function() {
 		} );
 	}
 	var editFormSisyphus = $( "#editform" ).sisyphus( {
-		locationBased: true, 
+		locationBased: true,
 		timeout: 0,
 		autoRelease: true,
 		onBeforeRestore:function(){
 		    $('#autoRestoreModal').modal({
 		        keyboard: false,
 				backdrop: 'static'
-		    }); 
+		    });
 		    return false;
 		}
-	} ); 
+	} );
 	$( "#autoRestoreModal .btn-default, #autoRestoreModal .close, #mw-editform-cancel, #editform > div.wikiEditor-ui > div.wikiEditor-ui-controls > div.wikiEditor-ui-buttons > button:nth-child(2)").click(function(){
 	    editFormSisyphus.manuallyReleaseData();
 	});

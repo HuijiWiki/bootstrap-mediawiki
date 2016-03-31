@@ -434,7 +434,9 @@
 			}
 		}
 
-		this.trackingClick = true;
+        if(!(event.target.getAttribute('contenteditable')=='true')){
+            this.trackingClick = true;
+        }
 		this.trackingClickStart = event.timeStamp;
 		this.targetElement = targetElement;
 

@@ -103,8 +103,12 @@
                                             <?php echo Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册账户', array('id' => 'pt-createaccount' ),array('type' => 'signup') ); ?>
                                             <div>
                                             <span>联合登录</span>
-                                            <a href="https://api.weibo.com/oauth2/authorize?client_id=2445834038&redirect_uri=http%3A%2F%2Fhuijiwiki.com%2Fwiki%2Fspecial%3Acallbackweibo&response_type=code" class="icon-weibo-share"></a>
-                                            <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&state=huijistate&redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq" class="icon-qq-share"></a>
+                                            <a href="#" class="icon-weibo-share"></a>
+                                            <?php
+                                                global $wgHuijiPrefix;
+                                                echo '<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&state='.$wgHuijiPrefix.'&redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq" class="icon-qq-share"></a>';
+                                            ?>
+                                            <!-- <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&state=huijistate&redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq" class="icon-qq-share"></a> -->
                                             </div>
                                         </div>
                                     </form>

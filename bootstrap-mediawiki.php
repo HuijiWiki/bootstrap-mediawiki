@@ -58,7 +58,7 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/css/huiji.navbox.css'					     => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
-		$skinDir . '/bootstrap/js/bootstrap.js',		
+		$skinDir . '/bootstrap/js/bootstrap.js',
 		$skinDir . '/js/huiji.preload.js',
 	),
 	'dependencies' => array(
