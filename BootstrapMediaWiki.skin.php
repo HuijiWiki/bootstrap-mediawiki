@@ -142,6 +142,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
             ga('create', 'UA-10190882-3', 'auto');
             ga('send', 'pageview');
+            _gaq.push(['_setDomainName', 'huiji.wiki']);
         </script>
         <div id="wrapper" class="toggled">
         <script>
