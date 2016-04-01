@@ -693,11 +693,13 @@ $(document).ready(function(){
           .done(function( script, textStatus ) {
             var clipboard = new Clipboard('.bdsharebuttonbox .icon-share-alt', {
                 text: function(trigger) {
-                    return document.title+" "+window._bd_share_config.common.bdUrl;
+                    if ($('.icon-share-alt').data('share-link') == '')
+                        return document.title+" "+window._bd_share_config.common.bdUrl;
+                    return $('.icon-share-alt').data('share-link');
                 }
             });
             clipboard.on('success', function(e) {
-                mw.notification.notify('已复制本页链接到剪贴板，分享给小伙伴吧:)');
+                mw.notification.notify('已复制链接到剪贴板，分享给小伙伴吧:)');
             });
 
             clipboard.on('error', function(e) {
