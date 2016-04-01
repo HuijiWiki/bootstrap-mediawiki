@@ -140,9 +140,10 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-10190882-3', 'auto');
+            ga('create', 'UA-10190882-3', 'auto', {allowLinker: true});
+            ga('require', 'linker');
+            ga('linker:autoLink', ['huiji.wiki','huijiwiki.com']);
             ga('send', 'pageview');
-            _gaq.push(['_setDomainName', 'huiji.wiki']);
         </script>
         <div id="wrapper" class="toggled">
         <script>
