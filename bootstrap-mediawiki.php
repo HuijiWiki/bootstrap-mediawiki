@@ -191,7 +191,8 @@ $wgResourceModules['skins.bootstrapmediawiki.videohandler'] = array(
 $wgResourceModules['ext.wikieditor.huijiextra.top'] = array(
 	'styles' => array(
 		$skinDir . '/css/huiji.editor.css'         					 => array( 'media' => 'all' ),
-	),	
+	),
+	'dependencies' => 'jquery.wikiEditor.toolbar',
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
 	'position' => 'top',
