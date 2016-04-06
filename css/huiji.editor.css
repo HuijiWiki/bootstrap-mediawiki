@@ -7,6 +7,12 @@
 .skin-bootstrap-mediawiki form#edit-form,.skin-bootstrap-mediawiki .wikiEditor-ui,.skin-bootstrap-mediawiki .editOptions{
     font-size: 14px;
 }
+.wikiEditor-ui-toolbar,.wikiEditor-ui-toolbar .sections .section{
+    background: #eee!important;
+}
+#upload-drop{
+    height: auto!important;
+}
 .wikiEditor-ui-toolbar .page-characters div span{
     height: auto!important;
 }
@@ -40,12 +46,8 @@ p.mw-edittools-section {
 	border-right: 1px solid silver;*/
 	padding: 0px 10px;
 }
-#wikiEditor-section-main > div.group.group-format > a:nth-child(1){
-	background-position-y: -142px !important;
-}
-#wikiEditor-section-main > div.group.group-format > a:nth-child(2){
-	background-position-y: -862px !important;
-}
+
+
 #upload-select {
 	z-index: 0 !important;
 }
@@ -128,3 +130,67 @@ pre.cm-mw-tag-nowiki, .cm-mw-tag-nowiki {background-image: url(img/black4.png);}
 .cm-mw-table-delimiter {color: #e0e; font-weight: normal;}
 .cm-mw-table-definition {color: #e0e; font-weight: normal;}
 .cm-mw-table-caption {font-weight: normal;}
+
+#upload-div{
+    background: #000!important;
+}
+#wikiEditor-section-advanced > div.group> .label{
+    padding-top: 0!important;
+}
+#wikiEditor-section-characters{
+    font-size: 12px;
+}
+.wikiEditor-toolbar-spritedButton{
+    background: url("../img/editor-icon.png");
+}
+#wikiEditor-section-main > div.group.group-format > a:nth-child(1){
+    background-position:0 0px !important;
+}
+#wikiEditor-section-main > div.group.group-format > a:nth-child(2){
+    background-position:0 -44px !important;
+}
+#wikiEditor-section-main > div.group.group-insert > a:nth-child(1){
+    background-position:0 -88px !important;
+}
+#wikiEditor-section-main > div.group.group-insert > a:nth-child(2){
+    background-position:0 -132px !important;
+}
+#wikiEditor-section-main > div.group.group-insert > a:nth-child(3){
+    background-position:0 -176px !important;
+}
+#wikiEditor-section-advanced > div.group.group-format > a:nth-child(2){
+    background-position:0 -394px !important;
+}
+#wikiEditor-section-advanced > div.group.group-format > a:nth-child(3){
+    background-position:0 -440px !important;
+}
+#wikiEditor-section-advanced > div.group.group-format > a:nth-child(4){
+    background-position:0 -484px !important;
+}
+#wikiEditor-section-advanced > div.group.group-format > a:nth-child(5){
+    background-position:0 -528px !important;
+}
+#wikiEditor-section-advanced > div.group.group-size > a:nth-child(1){
+    background-position:0 -572px !important;
+}
+#wikiEditor-section-advanced > div.group.group-size > a:nth-child(2){
+    background-position:0 -616px !important;
+}
+#wikiEditor-section-advanced > div.group.group-size > a:nth-child(3){
+    background-position:0 -660px !important;
+}
+#wikiEditor-section-advanced > div.group.group-size > a:nth-child(4){
+    background-position:0 -704px !important;
+}
+#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(2){
+    background-position:0 -748px !important;
+}
+#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(3){
+    background-position:0 -792px !important;
+}
+#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(4){
+    background-position:0 -836px !important;
+}
+#wikiEditor-section-advanced > div.group.group-search > a:nth-child(1){
+    background-position:0 -924px !important;
+}
