@@ -194,6 +194,7 @@ $(document).ready(function(){
         window.location = $(this).val();
     });
 
+
     // show the total number of active talks
     var pagename = mw.config.get('wgTitle').replace(' ', '_');
     var namespace = mw.config.get('wgCanonicalNamespace').replace(' ', '_');
@@ -774,5 +775,12 @@ $(document).ready(function(){
         mw.cookie.set( 'redirect_url', redirect_url );
         window.location.href='https://api.weibo.com/oauth2/authorize?client_id=2445834038&redirect_uri=http%3A%2F%2Fhuijiwiki.com%2Fwiki%2Fspecial%3Acallbackweibo&response_type=code';
     });
+
+//    aside topic
+    if($('.toc-sidebar .toc-ul-wrap>ul').length>0) {
+        var maxheight = $(window).height() - $('.toc-sidebar').offset().top + 'px';
+        $('.toc-ul-wrap').css('height',maxheight);
+        $('.toc-sidebar .toc-ul-wrap>ul').css('max-height', maxheight);
+    }
 
 });

@@ -207,7 +207,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 <div id="wiki-body" class="container">
                     <main id="content">
                         <div class="row">
-                            <aside class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"></aside>
+                            <aside class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"><div class="toc-ul-wrap"></div></aside>
                             <article class="col-md-12 wiki-body-section" role="main">
                                 <?php if ($NS != 2 && !($this->getSkin()->getTitle()->isMainPage()) ):?>
                                 <header id="firstHeading" class="page-header">

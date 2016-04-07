@@ -68,12 +68,12 @@ $(function() {
 	        $('.toc-sidebar').removeClass('hidden-md').addClass('col-md-2');
 	        // $('.toc-sidebar').append('<h3>摘要</h3>');
 	        $('#toc').each(function() {
-	            $(this).find('ul:first').appendTo( '.toc-sidebar' );
+	            $(this).find('ul:first').appendTo( '.toc-sidebar .toc-ul-wrap' );
 	            $(this).remove();
 	        });
-	        $('aside.toc-sidebar > ul').append('<li><a href="#firstHeading">回到顶部</a></li>');
-	        $('aside.toc-sidebar > ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix');
-	        $('aside.toc-sidebar > ul').affix({
+	        $('aside.toc-sidebar .toc-ul-wrap> ul').append('<li><a href="#firstHeading">回到顶部</a></li>');
+	        $('aside.toc-sidebar .toc-ul-wrap> ul').addClass('hidden-sm hidden-xs hidden-print').attr('data-spy','affix');
+	        $('aside.toc-sidebar .toc-ul-wrap> ul').affix({
 	          offset: {
 	            top: 0,
 	            bottom: function () {
@@ -83,7 +83,7 @@ $(function() {
 	        });
 	        $('aside.toc-sidebar ul').addClass('nav nav-list');
 	        $('.toc-sidebar').attr('id', 'toc');
-	        $('body').scrollspy({target: '#toc', offset:230});
+	        $('body').scrollspy({target: '#toc .toc-ul-wrap', offset:230});
 	
 	    } else {
 	        // TODO do something to add a floating navigation bar.
