@@ -1300,7 +1300,9 @@ ol.carousel-indicators{
     height: 100px;
     overflow-y: auto;
 }
-
+.toc-sidebar>ul{
+    overflow-y: auto;
+}
 
 @media screen and (max-width: 767px) {
     .show-btn,.hide-btn{
