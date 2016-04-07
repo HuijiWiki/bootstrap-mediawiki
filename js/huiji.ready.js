@@ -777,9 +777,10 @@ $(document).ready(function(){
     });
 
 //    aside topic
-    if($('.toc-sidebar>ul').length>0) {
-        var maxheight = $(window).height() - $('.toc-sidebar>ul').offset().top + 'px';
-        $('.toc-sidebar>ul').css('max-height', maxheight);
+    if($('.toc-sidebar .toc-ul-wrap>ul').length>0) {
+        var maxheight = $(window).height() - $('.toc-sidebar').offset().top + 'px';
+        $('.toc-ul-wrap').css('height',maxheight);
+        $('.toc-sidebar .toc-ul-wrap>ul').css('max-height', maxheight);
     }
 
 });

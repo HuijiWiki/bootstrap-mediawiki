@@ -62,6 +62,7 @@ ol.references {
 	font-size:13px;
 	font-weight:500;
     border-left: 1px solid;
+    padding-right: 0;
 }
 
 .toc-sidebar .nav>li>a:focus,.toc-sidebar .nav>li>a:hover{
@@ -1300,8 +1301,18 @@ ol.carousel-indicators{
     height: 100px;
     overflow-y: auto;
 }
-.toc-sidebar>ul{
+
+/*hack tocsidebar scroll*/
+.toc-ul-wrap{
+    width: 140px;
+    overflow-x: hidden;
+    position: fixed;
+    height: 1000px;
+}
+.toc-sidebar .toc-ul-wrap>ul{
     overflow-y: auto;
+    width: 160px;
+    padding-right: 20px;
 }
 
 @media screen and (max-width: 767px) {
