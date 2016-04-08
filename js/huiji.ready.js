@@ -694,8 +694,8 @@ $(document).ready(function(){
           .done(function( script, textStatus ) {
             var clipboard = new Clipboard('.bdsharebuttonbox .icon-share-alt', {
                 text: function(trigger) {
-                    if ($('.icon-share-alt').data('share-link') == '')
-                        return document.title+" "+window._bd_share_config.common.bdUrl;
+                    if (!$('.icon-share-alt').data('share-link')){
+                        return document.title+" "+window._bd_share_config.common.bdUrl;}
                     return $('.icon-share-alt').data('share-link');
                 }
             });
