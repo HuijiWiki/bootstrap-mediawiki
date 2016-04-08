@@ -16,11 +16,12 @@ var recommend = {
         this.pageRec.forEach(function(item,i){
             if(i<4) {
                 var content = '';
-                content += '<div id="' + i + '" class="re-opacity recommend-item">' +
+                var address = 'http://' + item.site + '.huiji.wiki/wiki/' + item.title;
+                content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading">' +
                     '<div class="recommend-title"><a href="http://' + item.site + '.huiji.wiki/wiki/' + item.title + '" title="'+item.title+'" >' +
                     item.title + '</a><a href="http://' + item.site + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                 self.arr.push(item.title+item.siteName);
-                self.funGetImg(item.title, i, item.site);
+                self.funGetImg(item.title, i, item.site,address,false);
                 $('.recommend').append(content);
             }
         });
@@ -85,7 +86,7 @@ var recommend = {
 
                         content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading"><div class="recommend-title">' +
                             '<a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
-                        self.funGetImg(searchtitle, i, sitePrefix, item.address, false);
+                        self.funGetImg(searchtitle, i, sitePrefix, item.address, false );
                     }
                     self.item = i;
                 }
