@@ -170,25 +170,28 @@ $(document).ready(function(){
             self.popover(options);
     });
 
-    $('#wiki-outer-body').on('click','a[href^=#][role!=tab][role!=button]',function(e){
-        if ($('html').hasClass('ve-active')){
-            return;
-        }
-        var self = $(this);
+//    $('#wiki-outer-body').on('click','a[href^=#][role!=tab][role!=button]',function(e){
+//        if ($('html').hasClass('ve-active')){
+//            return;
+//        }
+//        var self = $(this);
+//        e.preventDefault();
+//        // Let popover.js handle cite note
+//        if (self.attr('href').match(/^\#cite_note/g)){
+//            if (document.activeElement != this){
+//                self.focus();
+//            }
+//            return;
+//        }
+////        var target = self.attr('href').replace(/\./g, '\\.');
+////        if (target != '#' && $( target ) != undefined){
+////            $('html, body').animate({
+////                scrollTop: $( target ).offset().top - ($(window).width()>=768?200:50)
+////            }, 250);
+////        }
+//    });
+    $('#wiki-outer-body').on('click','a[href^=#cite_note-]',function(e){
         e.preventDefault();
-        // Let popover.js handle cite note
-        if (self.attr('href').match(/^\#cite_note/g)){
-            if (document.activeElement != this){
-                self.focus();
-            }
-            return;
-        }
-        var target = self.attr('href').replace(/\./g, '\\.');
-        if (target != '#' && $( target ) != undefined){
-            $('html, body').animate({
-                scrollTop: $( target ).offset().top - ($(window).width()>=768?200:50)
-            }, 250);
-        }
     });
     $( document ).on('change', '#subnav-select', function() {
         window.location = $(this).val();
