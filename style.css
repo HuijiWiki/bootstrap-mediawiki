@@ -1110,6 +1110,8 @@ sup.reference {
     margin-top: -185px;
     height: 185px;
     visibility: hidden;
+    position: relative;
+    z-index: -1;
 }
 #searchText{
     display: inline-block;
