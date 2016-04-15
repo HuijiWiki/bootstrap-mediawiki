@@ -786,4 +786,68 @@ $(document).ready(function(){
         $('.toc-sidebar .toc-ul-wrap>ul').css('max-height', maxheight);
     }
 
+    var file;
+    var formData = new FormData();
+    $('#caption-file').on('change',function(e){
+         file = e.target.files[0];
+    });
+    $('.caption-submit').click(function(){
+        var self = $(this);
+        formData.append('action','srtsubmit');
+        formData.append('id',$('#caption-id').val());
+        formData.append('description',$('#caption-des').val());
+        formData.append('file',file);
+        formData.append('format','json');
+        self.attr('disabled','');
+        $.ajax({
+            url:'/api.php',
+            data: {
+                action:'query',
+                meta:'tokens',
+                type:'csrf',
+                format:'json'
+            },
+            success:function(data){
+                var token = data.query.tokens.csrftoken;
+                formData.append('token',token);
+                $.ajax({
+                    url: '/api.php',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function(data){
+                        console.log(data);
+                        self.removeAttr('disabled');
+                        if($('#caption-id').val()==''){
+                            mw.notification.notify("id不能为空");
+                            return;
+                        }else if(!file){
+                            mw.notification.notify("文件不可为空");
+                            return;
+                        }
+                        if(data.error){
+                            mw.notification.notify("上传失败");
+                            return;
+                        }
+                        if(data.srtsubmit.res.message == 'success'){
+                            var src = data.srtsubmit.res.result;
+                            window.location.href = src;
+                        }
+                        else{
+                            mw.notification.notify(data.srtsubmit.res.message);
+                        }
+                    }
+                })
+            }
+        })
+    });
+    $('.create-srt').click(function(e){
+        e.preventDefault();
+        $('.caption-wrap').addClass('wrap-show');
+    });
+    $('.close-caption-wrap').click(function(e){
+        $('.caption-wrap').removeClass('wrap-show');
+    });
+//    function show()
 });

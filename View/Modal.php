@@ -124,6 +124,21 @@
 
 
 
+    <!-- uploadfont -->
+    <div class="caption-wrap">
+        <div id="caption-upload" >
+            <span class="icon-close close-caption-wrap"></span>
+            <h3>创建翻译项目</h3>
+            <p style="color:#999">翻译项目可以包含多个可排序的文档（例如一篇文章的多个章节），还可以引用翻译组的公共资源。翻译完成后，您可以在TRANS发布翻译作品。</p>
+            <form class="caption-form">
+                <input type="text" id="caption-id" placeholder="请输入项目id，不可为中文">
+                <textarea id="caption-des" placeholder="请输入项目描述"></textarea>
+                <input type="file" id="caption-file">
+
+                <div class="btn btn-default caption-submit">创建翻译项目</div>
+            </form>
+        </div>
+    </div>
 
 
        
