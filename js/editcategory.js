@@ -2,7 +2,7 @@
  * Created by huiji-001 on 2015/12/15.
  */
 function addCategory(category){
-    var api = new mw.Api()
+    var api = new mw.Api();
     api.postWithToken( "edit", {
         action: "edit",
         title: mw.config.get( "wgPageName" ),
@@ -16,6 +16,7 @@ function addCategory(category){
         b.forEach(function(i){
             a += '<li><a href="/wiki/%E5%88%86%E7%B1%BB:'+i+'" title="分类:'+i+'">'+i+'</a></li>'
         });
+        $('.edit-submit').removeAttr('disabled');
         $('#catlinks .last').before(a);
         $('#add-category-btn').popover('hide');
     } ).fail( function( code, result ) {
@@ -96,8 +97,10 @@ $(function(){
     }).on('click','.edit-submit',function(e){
         e.stopPropagation();
         var data = getData();
+        $(this).attr('disabled','');
         if (data == undefined){
             mw.notification.notify('内容不可为空');
+            $(this).removeAttr('disabled');
             return;
         }
         addCategory(data);
