@@ -15,8 +15,9 @@ function insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSit
 }
 
 
-function insertIntoMongoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId) {
+function insertIntoMongoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId,page_ns) {
 
+	console.log(page_ns);
         jQuery.ajax({
                url: url,
 		type:'POST',
@@ -28,12 +29,13 @@ function insertIntoMongoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite
                         user_name:userName,
                         article_id:articleId,
                         article_title:titleName,
+			page_ns:page_ns,
                         site_name:siteName,
                         site_prefix:wikiSite,
                  },
 		 success:
                  function(data){
-//			console.log(data)
+			console.log(data)
 		},
 		error:
 		function(data){

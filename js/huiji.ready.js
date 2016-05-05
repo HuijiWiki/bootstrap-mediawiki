@@ -93,9 +93,10 @@ $(document).ready(function(){
     var siteName  = mw.config.get("wgSiteName");
     var titleName = mw.config.get("wgPageName");
     var articleId = mw.config.get("wgArticleId");
+    var pageNamespace   = mw.config.get("wgNamespaceNumber");
     var url = 'http://huijidata.com:50007/insertViewRecord/';
 //    insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
-    insertIntoMongoDB('http://huijidata.com:8080/statisticQuery/webapi/view/insertOnePageViewRecord',navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
+    insertIntoMongoDB('http://huijidata.com:8080/statisticQuery/webapi/view/insertOnePageViewRecord',navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId,pageNamespace);
 
     $('#menu-toggle').click(function(e) {
         e.preventDefault();
@@ -844,10 +845,10 @@ $(document).ready(function(){
     });
     $('.create-srt').click(function(e){
         e.preventDefault();
-        $('.caption-wrap').addClass('wrap-show');
+        $('#caption-wrap').addClass('wrap-show');
     });
-    $('.close-caption-wrap').click(function(e){
-        $('.caption-wrap').removeClass('wrap-show');
+    $('.trans-modal-close').click(function(e){
+        $(this).parents('.trans-modal-wrap').removeClass('wrap-show');
     });
 //    function show()
 });
