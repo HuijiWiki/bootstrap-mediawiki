@@ -31,6 +31,6 @@
     bottom: auto!important;
 }
 
-.ve-activated #content-actions{
+.ve-activated #content-actions, .ve-activated #rating_{
 	display:none;
 }
