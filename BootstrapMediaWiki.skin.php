@@ -257,11 +257,11 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
                                 <!-- ConfirmEmail -->
                                 <?php
-                                    if ( $wgUser->isLoggedIn() && !wgMobile  && !$wgUser->isEmailConfirmed() && $this->isPrimaryContent() ) {
+                                    if ( $wgUser->isLoggedIn() && !$wgUser->isEmailConfirmed() && $this->isPrimaryContent() ) {
                                 ?>
                                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                 <!-- top aids -->
-                                <ins class="adsbygoogle"
+                                <ins class="adsbygoogle hidden-xs hidden-sm"
                                      style="display:inline-block;width:728px;height:90px"
                                      data-ad-client="ca-pub-4790099329067811"
                                      data-ad-slot="4487503881"></ins>
@@ -281,7 +281,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <!-- Not Logged in notice -->
                                 <?php
 
-                                    if ( !$wgUser->isLoggedIn() && !wgMobile && $this->isPrimaryContent() ) {
+                                    if ( !$wgUser->isLoggedIn() && $this->isPrimaryContent() ) {
                                         $login = '
                                             <span data-toggle="modal" data-target=".user-login">
                                                 <a rel="nofollow" class="login-in btn btn-default">登录</a>
@@ -291,7 +291,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 ?>
 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                 <!-- top aids -->
-                                <ins class="adsbygoogle"
+                                <ins class="adsbygoogle hidden-xs hidden-sm"
                                      style="display:inline-block;width:728px;height:90px"
                                      data-ad-client="ca-pub-4790099329067811"
                                      data-ad-slot="4487503881"></ins>
