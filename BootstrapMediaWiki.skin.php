@@ -214,17 +214,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 </nav>
 
                 <div id="wiki-body" class="container">
-                    <?php if (!$wgUser->isLoggedIn()){ ?>
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- top aids -->
-                    <ins class="adsbygoogle"
-                         style="display:inline-block;width:728px;height:90px"
-                         data-ad-client="ca-pub-4790099329067811"
-                         data-ad-slot="4487503881"></ins>
-                    <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <?php } ?>
                     <main id="content">
                         <div class="row">
                             <aside class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"><div class="toc-ul-wrap"></div></aside>
@@ -270,6 +259,15 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <?php
                                     if ( $wgUser->isLoggedIn()&& !$wgUser->isEmailConfirmed() && $this->isPrimaryContent() ) {
                                 ?>
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- top aids -->
+                                <ins class="adsbygoogle"
+                                     style="display:inline-block;width:728px;height:90px"
+                                     data-ad-client="ca-pub-4790099329067811"
+                                     data-ad-slot="4487503881"></ins>
+                                <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
                                 <section class="alert alert-danger" role="alert">
                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                     <span class="sr-only">Error:</span>
