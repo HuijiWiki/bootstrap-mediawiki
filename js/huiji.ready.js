@@ -845,10 +845,10 @@ $(document).ready(function(){
     });
     $('.create-srt').click(function(e){
         e.preventDefault();
-        $('.caption-wrap').addClass('wrap-show');
+        $('#caption-wrap').addClass('wrap-show');
     });
-    $('.close-caption-wrap').click(function(e){  
-        $('.caption-wrap').removeClass('wrap-show');  
+    $('.trans-modal-close').click(function(e){
+        $(this).parents('.trans-modal-wrap').removeClass('wrap-show');
     });
 //    function show()
 });

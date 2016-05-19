@@ -46,22 +46,33 @@ $wgResourceModules['skins.bootstrapmediawiki.ihover'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
 );
+$wgResourceModules['skins.bootstrapmediawiki.sitecolor' ] = array(
+    'styles' => array(
+		 '/style/SiteColor.less'                 =>array( 'media' => 'all' ),
+	),
+	'remoteBasePath' => '',
+	'localBasePath' => $IP,
+	'position' => 'top',
+);
 $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
+
 		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
-		$skinDir . '/style.less'                                 => array( 'media' => 'all' ),
+		$skinDir . '/lock-style.less'                                 => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.ext.css'                          => array( 'media' => 'all' ),
 		$skinDir . '/css/video.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.navbox.css'					     => array( 'media' => 'all' ),
+		$skinDir . '/style.less'                                  => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.js',		
 		$skinDir . '/js/huiji.preload.js',
 	),
 	'dependencies' => array(
+	    'skins.bootstrapmediawiki.sitecolor'
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
@@ -75,12 +86,12 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/huiji.flow.js',
 		$skinDir . '/js/huiji.collectPageViewRecord.js',
 		$skinDir . '/js/huiji.ready.js',
-		$skinDir . '/js/recommend.js',
 		$skinDir . '/js/mention.js',
 	),
 	'styles' => array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/css/mention.css'                                  => array( 'media' => 'all' ),
+		
 	),
 	'dependencies' => array(
 //	    'skins.editable',
@@ -92,7 +103,7 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
-	'position' => 'bottom',	
+	'position' => 'bottom',
 );
 $wgResourceModules['skins.bootstrapmediawiki.fork'] = array(
 	'scripts' => array(
@@ -282,3 +293,5 @@ $wgGroupPermissions['sysop']['quickdebug'] = true;
 
 //Register modules in VE
 $wgVisualEditorPluginModules[]='skins.bootstrapmediawiki.huiji.ve';
+//Less Path
+$wgResourceLoaderLESSImportPaths[] ="$IP/style/";

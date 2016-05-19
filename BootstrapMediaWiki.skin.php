@@ -33,6 +33,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         global $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer, $wgUser, $wgThanksConfirmationRequired, $wgHasComments;
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
+
         parent::initPage( $out );
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleScripts( 'skins.frontpage');
@@ -55,6 +56,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
                 '<link rel="canonical" href="' . htmlspecialchars( $out->getTitle()->getCanonicalURL()) . '" />' . "\n");            
         } 
          # add js and messages  
+        
         $out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
         if ($this->getSkin()->getTitle()->hasSourceText() &&  !($this->getSkin()->getTitle()->isMainPage())
             && $this->getSkin()->getTitle()->exists() && $this->getRequest()->getText('action') == ''
@@ -84,8 +86,8 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addModuleStyles( 'skins.frontpage' );  
         }
 
-        $out->addModuleStyles( array('skins.bootstrapmediawiki.top','mediawiki.ui.button') );
-        // we need to include this here so the file pathing is right
+        $out->addModuleStyles( array('skins.bootstrapmediawiki.top', 'mediawiki.ui.button','skins.bootstrapmediawiki.sitecolor') );
+        // we need to include this here so the file pathing is right$out->addModules( array( 'skins.bootstrapmediawiki.color' ) );
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css' );
     }//end setupSkinUserCss
 }
@@ -178,7 +180,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         } else {?>
             
             <?php include 'View/Sidebar.php';
-            if ( $this->isPrimaryContent() || $this->getSkin()->getTitle()->isMainPage() ){
+            if ( $this->isPrimaryContent() || $this->getSkin()->getTitle()->isMainPage() || $this->getSkin()->getTitle()->getNamespace() == -1){
             	$customClass = " class='huiji-css-hook'";
             }
             ?>
@@ -343,27 +345,29 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
       
                     </main>
                 </div><!-- container -->
+
+                <div class="bottom">
+                    <div class="container">
+                        <?php self::includePage('Bootstrap:Footer'); ?>
+                        <?php if( $this->data['sitenotice'] ) { ?>
+                            <div id="siteNotice" class="site-notice">
+                                <?php $this->html('sitenotice') ?>
+                            </div>
+                        <?php } ?>
+                        <footer>
+                            <p class="text-center">
+                                <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> |
+                                <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> |
+                                <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a> |
+                                <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E4%BD%BF%E7%94%A8%E6%9D%A1%E6%AC%BE%E5%92%8C%E5%86%85%E5%AE%B9%E5%A3%B0%E6%98%8E">使用条款和声明</a> |
+                                <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E7%94%A8%E6%88%B7%E7%BC%96%E8%BE%91%E6%9D%A1%E6%AC%BE">编辑条款</a><br>Powered by
+                                <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p>
+                        </footer>
+                    </div><!-- container -->
+                </div><!-- bottom -->
             </div>
             <?php include ('View/Modal.php'); ?>
-            <div class="bottom">
-                <div class="container">
-                    <?php self::includePage('Bootstrap:Footer'); ?>
-                    <?php if( $this->data['sitenotice'] ) { ?>
-                        <div id="siteNotice" class="site-notice">
-                            <?php $this->html('sitenotice') ?>
-                        </div>
-                    <?php } ?>
-                    <footer>
-                        <p class="text-center">
-                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> |
-                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> |
-                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.huiji.wiki/wiki/%E5%AE%87%E5%AE%99%E5%B0%BD%E5%A4%B4%E7%9A%84%E7%81%B0%E6%9C%BAwiki">关于灰机wiki</a> |
-                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E4%BD%BF%E7%94%A8%E6%9D%A1%E6%AC%BE%E5%92%8C%E5%86%85%E5%AE%B9%E5%A3%B0%E6%98%8E">使用条款和声明</a> |
-                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BAwiki:%E7%94%A8%E6%88%B7%E7%BC%96%E8%BE%91%E6%9D%A1%E6%AC%BE">编辑条款</a><br>Powered by
-                            <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://mediawiki.org">MediaWiki</a> <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" rel="nofollow" href="http://www.miitbeian.gov.cn/">京ICP备15015138号</a></p>
-                    </footer>
-                </div><!-- container -->
-            </div><!-- bottom -->
+
         </div><!-- /#wrapper -->
         <?php }?> <!-- mainpage if end -->
         <?php
