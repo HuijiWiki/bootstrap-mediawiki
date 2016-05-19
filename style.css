@@ -269,12 +269,12 @@ ul.affix-bottom{
 	position:static;
 }
 
-.quote{
+blockquote.quote{
     font-family: "Times New Roman","STKaiti","Palatino Linotype","Lantinghei SC","Open Sans","Hiragino Sans GB"," 標楷體","楷体","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
     overflow: hidden;
     position: relative;
 }
-.quote:after{
+blockquote.quote:after{
     content: '”';
     font-size: 72px;
     position: absolute;
