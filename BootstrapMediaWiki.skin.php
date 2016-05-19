@@ -35,6 +35,15 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
 
         parent::initPage( $out );
+        if (! $wgUser->isLoggedIn() && $wgHuijiPrefix != 'lotr'){
+            $out->addHeadItem( 'ads', '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-4790099329067811",
+                enable_page_level_ads: true
+              });
+            </script>');
+        }
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleScripts( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
@@ -112,7 +121,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS, $wgLang;
         global $wgEnableUploads;
         global $wgLogo, $wgHuijiPrefix, $wgFavicon, $wgCdnHuijiSuffix;
-        global $wgTOCLocation, $wgHasComments;
+        global $wgTOCLocation, $wgHasComments, $wgMobile;
         global $wgNavBarClasses;
         global $wgSubnavBarClasses;
         global $wgParser, $wgTitle, $wgEmailAuthentication;
@@ -250,7 +259,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <?php if ( $this->data['isarticle'] ) { ?><div id="siteSub" class="alert alert-info visible-print-block" role="alert"><?php $this->msg( 'tagline' ); ?></div><?php } ?>
                                 <!-- ConfirmEmail -->
                                 <?php
-                                    if ( $wgUser->isLoggedIn()&& !$wgUser->isEmailConfirmed() && $this->isPrimaryContent() ) {
+                                    if ( $wgUser->isLoggedIn() && !$wgUser->isEmailConfirmed() && $this->isPrimaryContent() ) {
                                 ?>
                                 <section class="alert alert-danger" role="alert">
                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -273,7 +282,16 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             <span>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('rel' => 'nofollow', 'class'=>'btn btn-default'),array('type' => 'signup') ).'
                                             </span>';
                                 ?>
-                                <section class="alert alert-warning hidden-xs hidden-sm" role="alert">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- top aids -->
+                                <ins class="adsbygoogle hidden-xs hidden-sm"
+                                     style="display:inline-block;width:728px;height:90px"
+                                     data-ad-client="ca-pub-4790099329067811"
+                                     data-ad-slot="4487503881"></ins>
+                                <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                                <!--<section class="alert alert-warning hidden-xs hidden-sm" role="alert">
                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                     <span class="sr-only">Warning:</span>
                                     花1分钟创建用户后就能进行编辑&nbsp:)
@@ -285,9 +303,8 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             global $wgHuijiPrefix;
                                             echo '<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&amp;client_id=101264508&amp;state='.$wgHuijiPrefix.'&amp;redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq" class="icon-qq-share" style="line-height: 2;"></a>';
                                         ?>
-                                        <!-- <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&amp;client_id=101264508&amp;state=huijistate&amp;redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq" class="icon-qq-share" style="line-height: 2;"></a> -->
                                     </span>
-                                </section> 
+                                </section> -->
                                 <?php
                                     }
                                 ?>  
