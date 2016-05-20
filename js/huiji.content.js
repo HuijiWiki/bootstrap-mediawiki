@@ -83,7 +83,7 @@ var recommend = {
                                 if (data.query.pages[x].thumbnail) {
                                     var percent = data.query.pages[x].thumbnail.width / data.query.pages[x].thumbnail.height;
                                     var content = '';
-                                    content += '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="'+address+'"><img data-src="' + data.query.pages[x].thumbnail.source + '">' +
+                                    content += '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="'+address+'/wiki/'+data.query.pages[x].title+'"><img data-src="' + data.query.pages[x].thumbnail.source + '">' +
                                         '<div class="recommend-title">' +
                                         '<a href="http://'+i+'.huiji.wiki/wiki/'+data.query.pages[x].title+'" title="'+data.query.pages[x].title+'">' + data.query.pages[x].title + '</a>' +
                                         '<a href="'+address+'">' + obj[i].value + '</a></div></div>';
@@ -93,7 +93,7 @@ var recommend = {
 
                                 } else {
                                     $('#' + self.item).removeClass('re-opacity');
-                                    $('#' + self.item).prepend('<a href="'+address+'"><img data-src="/skins/bootstrap-mediawiki/img/recommend.png"></a>');
+                                    $('#' + self.item).prepend('<a href="'+address+'/wiki/'+data.query.pages[x].title+'"><img data-src="/skins/bootstrap-mediawiki/img/recommend.png"></a>');
                                 }
                                 self.item++;
                             }
