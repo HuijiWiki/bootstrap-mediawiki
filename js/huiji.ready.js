@@ -59,7 +59,7 @@ $(document).ready(function(){
 
     //table responsive
     $('#mw-content-text table').each(function(){
-       if ($(this).width() > $('#mw-content-text').width() && !$(this).parent('div.table-responsive').length){
+       if (!$(this).parent('div.table-responsive').length){
            $(this).wrap('<div class="table-responsive"></div>');
        }
     });
