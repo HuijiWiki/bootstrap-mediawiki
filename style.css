@@ -827,7 +827,7 @@ input:-webkit-autofill {
   height: 350px; /*same height as jumbotron */
   top:60px;
   left:0;
-  z-index: -1;
+  z-index: 1;
 }
 
 .parallax-jumbotron {
@@ -836,6 +836,8 @@ input:-webkit-autofill {
   text-shadow: #444 0 1px 1px;
   background:transparent;
   margin-top: 100px;
+  position:relative;
+  z-index: 2;
 }
 @media screen and (max-width: 767px){
     #mw-createaccount-cta{
