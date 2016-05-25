@@ -278,7 +278,7 @@ blockquote.quote:after{
     content: '”';
     font-size: 72px;
     position: absolute;
-    right: 10px;
+    right: 0;
     top: 0;
     display: block;
     z-index: 1;
@@ -1503,3 +1503,11 @@ ol.carousel-indicators{
         padding: 0;
     }
 }
+.sidebar-brand.left-donate a{
+  text-indent: 0px;
+  font-size: 1.2em;
+}
+.mw-editsection{
+  font-family: 'icomoon';
+}
+
