@@ -203,7 +203,15 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <a class="navbar-brand logo-wiki-user" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo $site->getAvatar('m')->getAvatarHtml(array('style' => 'height : 1em; padding-bottom:0.2em;')); echo '&nbsp;'.$wgLang->truncate( $site->getName(), 30); ?></a>
                             </li>
                             <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
-                            <?php echo $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) ); ?>
+                            <?php  
+                                $html = null;
+                                Hooks::run( 'SkinGetPageLink', array($this->getSkin()->getTitle(), &$html) );
+                                if ($html != null){
+                                    echo $html;
+                                }else{
+                                    echo  $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) );
+                                } 
+                            ?>
                             <li class="site-count"><p><span class="article-count"><a href="<?php echo $url_prefix; ?>Special:AllPages"><?php
                                 $result = self::format_nice_number(SiteStats::articles());
                                 $result2 = self::format_nice_number(SiteStats::edits());
@@ -282,12 +290,13 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             <span>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('rel' => 'nofollow', 'class'=>'btn btn-default'),array('type' => 'signup') ).'
                                             </span>';
                                 ?>
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                                <!-- top aids -->
-                                <ins class="adsbygoogle hidden-xs hidden-sm"
-                                     style="display:inline-block;width:728px;height:90px"
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- top ads 2.0 -->
+                                <ins class="adsbygoogle"
+                                     style="display:block"
                                      data-ad-client="ca-pub-4790099329067811"
-                                     data-ad-slot="4487503881"></ins>
+                                     data-ad-slot="4999731083"
+                                     data-ad-format="auto"></ins>
                                 <script>
                                 (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
@@ -365,6 +374,18 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 
                 <div class="bottom">
                     <div class="container">
+                        <?php if ( !$wgUser->isLoggedIn() ){ ?>
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- bottom aids -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-4790099329067811"
+                             data-ad-slot="3522997883"
+                             data-ad-format="auto"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                        <?php }?>
                         <?php self::includePage('Bootstrap:Footer'); ?>
                         <?php if( $this->data['sitenotice'] ) { ?>
                             <div id="siteNotice" class="site-notice">
