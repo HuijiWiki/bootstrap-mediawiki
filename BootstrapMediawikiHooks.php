@@ -484,24 +484,24 @@ Class BootstrapMediawikiHooks {
             // $replacement = '';
             // $pattern = '#<span class="mw-editsection-divider">'.wfMessage('pipe-separator')->plain().'<\/span>#Ui';
             // $text = preg_replace( $pattern, $replacement, $text );
-            $pattern = '<span class="mw-editsection-bracket">[</span>';
+            /*$pattern = '<span class="mw-editsection-bracket">[</span>';
             $replacement = '';
             $text = str_replace( $pattern, $replacement, $text );  
             $pattern = '<span class="mw-editsection-bracket">]</span>';
             $replacement = '';
-            $text = str_replace( $pattern, $replacement, $text );              
-            $pattern = ''
-                    .'|'
-                    .'<a href="(.+?)" title="(.+?)">'.wfMessage('editsection')->plain().'<\/a>'
-                    .'|ui'
-                    ;
-            $replacement = ''
-                    .'<a href="$1" title="$2">'
-                    .'<i class="icon-pencil"></i>'
-                    .'</a>'
-                    ;
+            $text = str_replace( $pattern, $replacement, $text );*/              
+            // $pattern = ''
+            //         .'|'
+            //         .'<a href="(.+?)" title="(.+?)">'.wfMessage('editsection')->plain().'<\/a>'
+            //         .'|ui'
+            //         ;
+            // $replacement = ''
+            //         .'<a href="$1" title="$2">'
+            //         .'<i class="icon-pencil"></i>'
+            //         .'</a>'
+            //         ;
 
-            $text = preg_replace( $pattern, $replacement, $text );
+            // $text = preg_replace( $pattern, $replacement, $text );
             // $pattern = ''
             //         .'|'
             //         .'<a href="(.+?)" title="(.+?)">'.wfMessage('visualeditor-ca-editsource-section')->plain().'<\/a>'

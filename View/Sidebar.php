@@ -124,6 +124,11 @@
                 </li>
             </ul>
         </li>
+        <li class="sidebar-brand left-donate">
+            <div>
+              <a href="/wiki/Special:Donate" class="button mw-ui-button mw-ui-progressive">捐赠</a>
+            </div>
+        </li>
         <li class="sidebar-brand left-manager">
             <a>管理员</a>
             <div>

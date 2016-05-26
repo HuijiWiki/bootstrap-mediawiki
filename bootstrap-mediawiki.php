@@ -60,12 +60,10 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 
-		$skinDir . '/default_theme.less'                         => array( 'media' => 'all' ),
-		$skinDir . '/lock-style.less'                                 => array( 'media' => 'all' ),
+		$skinDir . '/less/huiji.less'                                 => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.ext.css'                          => array( 'media' => 'all' ),
 		$skinDir . '/css/video.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.navbox.css'					     => array( 'media' => 'all' ),
-		$skinDir . '/style.less'                                  => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.js',		
