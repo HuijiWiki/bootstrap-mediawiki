@@ -1,0 +1,120 @@
+.infobox{
+  width: 300px;
+  background-color: @modal;
+  font-size: 13px;
+  float: right;
+  margin-left: 40px;
+  margin-bottom: 30px;
+  border-width: 1px;
+  border-style: solid;
+  border-collapse: separate;
+  border-spacing: 1px;
+  color:difference(@modal,#fff);
+  th,td{
+    border-bottom-color: difference(@modal, #111);
+  }
+  .infobox-img{
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 0;
+  }
+  .infobox-title{
+    padding: 5px 8px;
+    th{
+      font-size: 16px;
+      text-align: center;
+    }
+    //        &.large-title th{
+    //          text-align:center;
+    //          b {
+    //            font-size: 24px;
+    //          }
+    //        }
+    //        td{
+    //          text-align: right;
+    //          img{
+    //            display: inline-block;
+    //          }
+    //        }
+  }
+  .infobox-item-title th{
+    text-align: center;
+    padding: 4px;
+    background-color: difference(@modal, #111);
+  }
+  .infobox-item-label{
+    padding: 8px;
+    width: 70px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    //        border-bottom-color:
+    &.no-border{
+      border-bottom-color: transparent;
+    }
+  }
+  .infobox-item-detail{
+    padding: 8px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    &.no-border{
+      border-bottom-color: transparent;
+    }
+  }
+}
+
+.navbox{
+  background-color:@modal;
+  border-width: 1px;
+  border-style: solid;
+  width: 100%;
+  margin: auto;
+  clear: both;
+  font-size: 0.88em;
+  padding: 1px;
+  margin-top: 10px;
+  color: difference(@modal, #fff);
+  tr{
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color:  difference(@modal, #111);
+  }
+  td{
+    padding: 0;
+  }
+  .navbox-title{
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    background-color:  difference(@modal, #111);
+    a{
+      margin: 0 5px;
+    }
+  }
+  .mw-collapsible-toggle{
+    text-align: right;
+    cursor: pointer;
+    float: right;
+  }
+  .navbox-group{
+    width: 150px;
+    background-color: lighten(@modal, 10%);
+    white-space: nowrap;
+    text-align: center;
+    padding: 8px;
+  }
+  .navbox-list{
+    padding: 8px;
+    a{
+      margin: 0 5px;
+    }
+  }
+  .navbox-abovebelow{
+    padding: 8px;
+    text-align: center;
+    background-color:  difference(@modal, #111);
+    a{
+      margin: 0 5px;
+    }
+  }
+}

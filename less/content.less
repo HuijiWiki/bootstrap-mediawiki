@@ -1,0 +1,231 @@
+.table-cell{
+  display: table-cell;
+  vertical-align: middle;
+}
+a{
+  .transition(0.9s);
+}
+.clear:after{
+  content:'';
+  clear: both;
+  display: block;
+}
+
+//header
+//#wiki-body{
+//  border: 1px solid;
+//  border-color: @test-color;
+//}
+
+body{
+  background-color: extract(@background-color,1);
+  color: extract(@font-color,1);
+  font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  #wrapper{
+    .transition(0.2s);
+  }
+  ::selection {
+    background:extract(@selection-color,1);
+    color:extract(@selection-color,2);
+    text-shadow: none;
+  }
+  ::-moz-selection{
+    background:extract(@selection-color,1);
+    color:extract(@selection-color,2);
+    text-shadow: none;
+  }
+  @media screen and (max-width: 767px) {
+    .mw-echo-overlay{
+      top:90px;
+      width: 100%;
+      left: 0!important;
+      &::before{
+        left: auto!important;
+        right: 69px;
+      }
+    }
+  }
+}
+
+
+a{
+  color: extract(@a-color,3);
+}
+textarea {
+  width: 95%;
+  color: extract(@font-color,1);
+}
+.modal-dialog{
+  color: extract(@font-color,1);
+}
+.thumbinner{
+  background-color: #fff;
+}
+.popover {
+  color: #333;
+}
+.subnav{
+  //@hover{
+  //  background-color: extract(@sub-hover-color,1);
+  //  color:extract(@sub-hover-color,2);
+  //}
+  .box-shadow();
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  background-color: extract(@background-color,3);
+  font-size: 14px;
+  width: 100%;
+  position:fixed;
+  top:50px;
+  z-index: 100;
+  &.subnav-up {
+    top:-1000px;
+    display: none;
+  }
+  .nav>li:first-child a{
+    font-size: 26px;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  #subnav-select{
+    display: none;
+  }
+  #user-site-follow{
+    min-width: 40px;
+    padding: 0 5px;
+    margin-top: 10px;
+    span{
+      display:none;
+    }
+  }
+  .site-count{
+    float: right;
+    &>p {
+      margin-bottom: 0;
+      margin-top: 5px;
+      float: right;
+      a {
+        font-size: 24px;
+        color: @sub-site-count-color;
+        cursor: pointer;
+      }
+    }
+  }
+  #subnav-toggle{
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+  }
+  .dropdown-menu{
+    @media screen and (min-width: 769px) {
+      max-height: none!important;
+    }
+  }
+  .nav>li>a{
+    color:extract(@a-color,2);
+    border: none;
+    font-size: 16px;
+    height: 50px;
+    padding-top: 15px;
+    border-radius: 0;
+    &:hover,&:focus,&:active{
+      //    @hover;
+      background-color: extract(@sub-hover-color,1);
+      color:extract(@sub-hover-color,2);
+    }
+    &.active{
+      //    @hover;
+      background-color: extract(@sub-hover-color,1);
+      color:extract(@sub-hover-color,2);
+    }
+  }
+}
+
+//.bell-animation{
+//  color: red;
+//  animation:bell 5s infinite linear;
+//  -webkit-animation:bell 5s infinite linear;s
+//  -moz-animation:bell 5s infinite linear;
+//  -o-animation:bell 5s infinite linear;
+//  position:relative;
+//  left: 5px;
+//}
+.ns-0 #wiki-outer-body{
+  font-size: 16px;
+  .wiki-body-section  {
+    a:not(.image) {
+      &:hover {
+        text-decoration: none;
+      }
+      &.new {
+        color: extract(@content-acolor, 2);
+        &:hover {
+          color: extract(@a-hover-color, 2);
+        }
+      }
+    }
+  }
+  .caret,.arrow{
+    border-left-color: @transparent;
+    border-right-color: @transparent;
+  }
+}
+.ns-0 #wiki-outer-body .familyTree, .ns-0 #wiki-outer-body .reflist, .ns-0 #wiki-outer-body .infobox{
+  font-size: 14px;
+}
+#wiki-body{
+  @media (min-width: 769px){
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+}
+
+#wiki-outer-body {
+  padding-top: 100px;
+  .toc-sidebar li{
+    a{
+      border-color: extract(@toc-sidebar-color,3);
+      &:hover{
+        border-left: 1px solid;
+      }
+    }
+    &.active>a:hover{
+      border-left-width:2px;
+    }
+  }
+  .popover{
+    background: #fff;
+    border:1px solid rgba(0,0,0,.2);
+    .edit-input{
+      border:1px solid rgba(0,0,0,.2);
+    }
+  }
+}
+.bottom{
+  font-size: 14px;
+  background-color: extract(@background-color,4);
+  a{
+    color:extract(@a-color,3);
+  }
+  footer{
+    color: @footer-color;
+  }
+}
+
+#wiki-body ul.profile-interactive li{
+  line-height: 34px;
+}
+.dropping{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
+}
+@import "custom.less";

@@ -1,0 +1,230 @@
+.header{
+  background-color:extract(@header-color,2);
+  border-color:extract(@header-color,3);
+  margin-bottom: 0;
+  transition: top 0.2s ease-in-out;
+  border: none;
+  .navbar-container{
+    .box-shadow();
+  }
+  .navbar-nav>li>a{
+    color: extract(@header-color, 2);
+    &:hover{
+      color:extract(@header-color,2);
+    }
+    &:focus{
+      color: extract(@header-color,2);
+    }
+  }
+  .navbar-header {
+    background-color:extract(@header-color,1);
+    #menu-toggle{
+      z-index: 1200;
+      border-right: 1px solid #666;
+      padding-top: 15px;
+      margin-right: 10px;
+      .transition(0.9s);
+      &:hover{
+        opacity: 0.7;
+      }
+      .menu-active {
+        color: #fff;
+      }
+      .icon-bar{
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #fff;
+        .transition(0.2s);
+        &+.icon-bar{
+          margin-top: 6px;
+          width: 17px;
+        }
+        &:last-child{
+          width: 12px;
+        }
+      }
+    }
+    .search-toggle{
+      float: right;
+      line-height: 50px;
+      margin:0;
+      color: #fff;
+      font-size: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .navbar-toggle {
+      position: relative;
+      float: right;
+      font-size: 20px;
+      line-height: 50px;
+      margin: 0;
+      padding:0 10px;
+      background-color: transparent;
+      background-image: none;
+      border: none;
+      color: extract(@header-color,2);
+    }
+    .navbar-brand {
+      padding:10px;
+      img {
+        margin-right: 0.5em;
+        max-height: 30px;
+      }
+    }
+    .wiki-toggle{
+      float: left;
+      color: #fff;
+      height: 50px;
+      line-height: 50px;
+      padding-right: 20px;
+      cursor: pointer;
+    }
+    #searchformphone{
+      display: none;
+    }
+  }
+  #icon-section{
+    background-color:extract(@header-color,1);
+    .hub-menu{
+      padding: 0;
+      width: 250px;
+      background-color:extract(@header-color,5);
+      &>li{
+        float: left;
+        &>ul{
+          padding-left: 0;
+          &>li{
+            list-style-type: none;
+            padding: 5px 10px;
+            cursor: pointer;
+          }
+        }
+      }
+      .hub-list{
+        background: extract(@header-color,2);
+        color: #999;
+        .active{
+          background-color:extract(@header-color,5);
+          color: extract(@header-color,1);
+        }
+      }
+      .hub-selection{
+        display: none;
+        background-color:extract(@header-color,5);
+        .wiki-random{
+          position: absolute;
+          bottom: 5px;
+          right: 10px;
+          font-size: 12px;
+          color: extract(@header-color,4);
+        }
+        a{
+          color: extract(@header-color,1);
+          &:hover{
+            text-decoration: none;
+          }
+        }
+        &.active{
+          display: block;
+        }
+      }
+    }
+  }
+  .navbar-form{
+    width: 2000px;
+    padding-left: 30px;
+    .navbar-search{
+      font-size: 18px;
+      position: absolute;
+      left: 460px;
+      top: 15px;
+      color: #888;
+    }
+    .form-control{
+      width: 100%;
+      margin-top: 8px;
+      border: none;
+      box-shadow: none;
+    }
+  }
+  .navbar-user{
+    //    border-left: 1px solid extract(@header-color,3);
+    .set{
+      padding-right: 20px;
+      .set-menu{
+        min-width: 110px;
+      }
+    }
+    .mw-echo-notifications-badge{
+      color: #fff;
+      background: #fff;
+      border-radius: 50%;
+      font-size: 10px;
+      line-height: 15px;
+      text-align: center;
+      position: absolute;
+      top: 10px;
+      right: 5px;
+      padding: 0;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+    .collect-menu{
+      right: -10px;
+    }
+    &>li>a{
+      color: extract(@header-color, 1);
+      &:hover{
+        color:extract(@header-color,1);
+      }
+      &:focus{
+        color: extract(@header-color,1);
+      }
+    }
+    .dropdown-menu{
+      li {
+        padding: 0 2px;
+        a {
+          line-height: 30px;
+          padding-left: 10px;
+        }
+      }
+    }
+    li{
+      line-height: 50px;
+      padding: 0 8px;
+      &.open>a,&.open>a:hover,&.open>a:focus{
+        background: none;
+        .fa{
+          color: extract(@header-color,4);
+        }
+      }
+      &>a{
+        padding: 0;
+        line-height: 50px;
+      }
+      .fa{
+        font-size: 18px;
+        cursor: pointer;
+      }
+    }
+  }
+  .navbar .navbar-inner .btn {
+    margin-top: 0;
+  }
+  .user-icon {
+    display: inline-block;
+    margin-right: 0.5em;
+    img {
+      border:none;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .navbar-login>li>a{
+    color: extract(@header-color,1);
+  }
+}

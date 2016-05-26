@@ -1,0 +1,226 @@
+#sidebar-wrapper{
+  background-color: extract(@background-color,2);
+  z-index: 1000;
+  position: fixed;
+  width: 240px;
+  top: 50px;
+  bottom: 0;
+  left:-240px;
+  overflow-x: hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  .transition(0.2s);
+  .sidebar-nav {
+    padding-left: 0px;
+    &>li{
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    li{
+      height: auto;
+      display: block;
+      text-indent: 25px;
+    }
+    ul{
+      padding-left: 10px;
+      padding-right: 20px;
+      li{
+        text-indent: 15px;
+        line-height: 30px;
+        .transition(0.9s);
+        a {
+          display: block;
+          text-decoration: none;
+          &:hover,&:focus,&:active{
+            text-decoration: none;
+          }
+        }
+        a#site-article-count, span#site-follower-count{
+          display: inline;
+          text-decoration:underline;
+          color: #999;
+        }
+        a.left-author {
+          display:inline;
+        }
+      }
+    }
+    p{
+      color: extract(@font-color, 2);
+      display: block;
+      text-decoration: none;
+      padding-left: 0px;
+      padding-right: 10px;
+      line-height: 20px;
+      font-size: 12px;
+    }
+    i{
+      display: inline-block;
+      margin-right: 5px;
+      height: 14px;
+      width: 14px;
+      &:before{
+        position:relative;
+        right:14px;
+      }
+    }
+    ul>li>a:hover{
+      background: none;
+    }
+    .dropdown-menu a{
+      padding: 8px 0;
+      color:#333;
+      font-size: 12px;
+    }
+    .sidebar-header{
+      text-align: center;
+      text-indent: 0;
+      word-break: break-all;
+      &>a{
+        display: block;
+        font-size: 24px;
+      }
+      button{
+        display: block;
+        padding: 0;
+        margin: 5px auto;
+      }
+    }
+    .sidebar-behavior{
+      ul::after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+      &>ul>li{
+        width: 50%;
+        float: left;
+        a{
+          white-space:nowrap;
+        }
+      }
+      .copy i{
+        float: right;
+        margin-right: 10px;
+        ::before{
+          position: static!important;
+        }
+      }
+    }
+    .left-follow{
+      padding-top:15px;
+      .logo-wiki-user{
+        float: none;
+        margin-top: 5px;
+        cursor: pointer;
+        padding-left:0;
+        text-align: center;
+        text-indent: 0;
+        font-weight: bold;
+        font-size:14px
+      }
+      #user-site-follow{
+        padding: 0px;
+        margin: 0 auto 10px auto;
+        display: block;
+        text-align: center
+      }
+      #site-follower-count{
+        cursor: pointer;
+      }
+    }
+    .sidebar-brand {
+      border-top: 1px solid;
+      border-color:@sidebar-border-color;
+      font-size: 12px;
+      line-height: 34px;
+      .headimg{
+        border-color: extract(@background-color,2);
+      }
+      a{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 190px;
+        white-space: nowrap;
+      }
+      .dropdown-menu {
+        padding:0;
+        width: 200px;
+        li{
+          &:hover{
+            background: #ddd;
+          }
+        }
+      }
+    }
+    .left-author>ul {
+      li{
+        height: 30px;
+      }
+      img{
+        margin-right: 5px;
+        border: 1px solid rgba(0,0,0,0.5);
+        float: left;
+        margin-top: 5px;
+        margin-left: 15px;
+        vertical-align: inherit;
+      }
+      a {
+        float: left;
+        max-height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100px;
+        white-space: nowrap;
+      }
+      span {
+        float: right;
+        margin-right: 20px;
+        color:extract(@a-color,1);
+        text-indent: 0;
+      }
+    }
+    .sidebar-create {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      text-indent: 0;
+      .create-group{
+        margin: auto 15px;
+        #mw-input-preload{
+          width: 20px;
+          padding: 0;
+        }
+        .createboxInput {
+          height: 34px;
+          width: 100px;
+        }
+        .createboxButton{
+          min-width: 30px;
+        }
+        input{
+          height: 30px;
+          padding: 0 5px;
+        }
+      }
+      &:hover{
+        background-color: extract(@header-color,1);
+      }
+    }
+    .left-manager .more{
+      margin-left: 10px;
+    }
+  }
+  a{
+    color: extract(@a-color,1);
+  }
+  .left-nav>ul>li:hover,.left-tool>ul>li:hover{
+    //    @leftbar-hover;
+    background-color:#fff;
+    a{
+      color: #333;
+    }
+    .dropdown-menu a{
+      color:#333;
+    }
+  }
+}
