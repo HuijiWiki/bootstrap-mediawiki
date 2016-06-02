@@ -18,7 +18,7 @@ window.customizeToolbar = function() {
 			'group': 'insert',
 			'tools': {
 				'addVideo': {
-					label: 'addVideo',
+					label: '添加视频',
 					type: 'button',
 					icon: 'http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/addVideo.png',
 					action: {
@@ -26,6 +26,57 @@ window.customizeToolbar = function() {
 						execute: function(){
 	                        window.caret = $('#wpTextbox1').caret();
 	                        $('.video-upload-modal').modal('show');
+						}
+					}
+				},
+				'en-zh':{
+					label: '翻译链接',
+					type: 'button',
+					icon: 'http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/hanzi.png',
+					action: {
+						type: 'callback',
+						execute: function(){
+							var content = $('#wpTextbox1').val();
+							var re = /\[\[(.*?)(\||\]\])/gi; 
+							var m = [],matches = [];
+							while( matches = re.exec(content)){
+								console.log(matches[1]);
+								m.push(matches[1]);
+							}
+							if (m == null){
+								alert('没有发现可替换的链接');
+							} else {
+								jQuery.post(
+						            mw.util.wikiScript(), {
+						                action: 'ajax',
+						                rs: 'wfGetEntry',
+						                rsargs: [m.join('|'), 'en', mw.config.get('wgHuijiPrefix'), 0, 1]
+						            },
+						            function(json){
+						            	var data = JSON.parse(json);
+						            	var tran = [];
+						            	console.log(data);
+						            	for(i in data){
+						            		t = JSON.parse(data[i]);
+						            		if(t.status=='success' && t.result.hits>=1){
+						            			tran.push(t.result.objects[0].entry);
+						            		} else {
+						            			tran.push(null);
+						            		}
+						            	}
+						            	var i = 0;
+						            	var result = content.replace(re, function(match, p1, p2, offset, string){
+						            		console.log(match, p1, p2, offset, string, tran[i]);
+						            		if (tran[i++] == null){
+						            			return '[['+p1+p2;
+						            		}
+						            		return '[['+tran[i-1]+p2;
+						            	});
+						            	$('#wpTextbox1').val(result);
+						            }
+						        );		
+							}
+					
 						}
 					}
 				}

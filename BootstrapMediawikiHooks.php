@@ -40,6 +40,7 @@ Class BootstrapMediawikiHooks {
         );
         return $output;
     }
+
     public static function getSiteInfo( $input, $args, $parser ){
         global $wgHuijiPrefix;
         if ( isset($args['site']) && $args['site']!=''){
@@ -466,19 +467,17 @@ Class BootstrapMediawikiHooks {
         //$isVisualEditorEnabled = $wgUser->getOption('visualeditor-enable','1');
         // if ($isVisualEditorEnabled != 1){
         //     /* when disable visual editor */
-        //     $pattern = ''
-        //             .'|'
-        //             .'<span class="mw-editsection-bracket">\[<\/span>'
-        //             .'<a href="(.+?)" title="(.+?)">'.wfMessage('editsection')->plain().'<\/a>'
-        //             .'<span class="mw-editsection-bracket">\]<\/span>'
-        //             .'|ui'
-        //             ;
-        //     $replacement = ''
-        //             .'<a href="$1" title="$2" class="icon-edit-code">'
-        //             .'</a>'
-        //             ;
+            // $pattern = ''
+            //         .'|'
+            //         .'<a href="(.+?)" title="(.+?)">'.preg_quote(wfMessage('editsection')->plain(), '|').'<\/a>'
+            //         .'|ui'
+            //         ;
+            // $replacement = ''
+            //         .'<a href="$1" title="$2" class="icon-edit-code">'
+            //         .'</a>'
+            //         ;
 
-        //     $text = preg_replace( $pattern, $replacement, $text );            
+            // $text = preg_replace( $pattern, $replacement, $text );            
         // } else {
             /* when enable visual editor */
             // $replacement = '';
@@ -504,15 +503,16 @@ Class BootstrapMediawikiHooks {
             // $text = preg_replace( $pattern, $replacement, $text );
             // $pattern = ''
             //         .'|'
-            //         .'<a href="(.+?)" title="(.+?)">'.wfMessage('visualeditor-ca-editsource-section')->plain().'<\/a>'
+            //         .'<a href="(.+?)" title="(.+?)">'.preg_quote(wfMsg('visualeditor-ca-editsource-section'),'|').'<\/a>'
             //         .'|ui'
             //         ;    
             // $replacement = ''
             //         .'<a href="$1" title="$2">'
             //         .'<i class="icon-edit-code"></i>'
-            //         .'</a>'
-            //         // .'<span class="mw-editsection-bracket">]</span>'
-            //         ;
+            //         .'</a>';
+                    // .'<span class="mw-editsection-bracket">]</span>'
+                   //;
+                   //echo $patten."\n".$replacement;//die();
             // $text = preg_replace( $pattern, $replacement, $text ); 
         // }     
         return true;

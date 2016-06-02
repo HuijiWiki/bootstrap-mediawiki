@@ -58,7 +58,7 @@ $(document).ready(function(){
     mw.notification.autoHideSeconds = 3;
 
     //table responsive
-    $('#mw-content-text table').each(function(){
+    $('#mw-content-text table.wikitable').each(function(){
        if (!$(this).parent('div.table-responsive').length){
            $(this).wrap('<div class="table-responsive"></div>');
        }
