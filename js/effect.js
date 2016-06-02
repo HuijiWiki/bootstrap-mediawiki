@@ -190,6 +190,7 @@ $(document).ready(function(){
             function(data){
                 var res = $.parseJSON(data);
                 var content='';
+                console.log(data);
                 $.each(res.result,function(i,item){
                     content += '<li><p class="source"><a class="entry-name" href="'+item.wikiurl+'">'+item.title+'</a>来自<a class="entry-source" href="'+item.siteurl+'">'+item.wikiname+
                         '</a></p><div class="recommend-info"><a href="'+item.wikiurl+'" class="image"><img alt="Wit by Botanica.jpg" src="'+item.backgroungimg+'"></a><div class="entry-description">'+item.desc+'</div></div></li>';

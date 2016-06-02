@@ -29,6 +29,17 @@ window.customizeToolbar = function() {
 						}
 					}
 				},
+			}
+		} );
+		$( '#wpTextbox1' ).wikiEditor( 'addToToolbar', {
+			'section': 'advanced',
+			'groups': {
+				'translate': {
+					'label': '翻译',
+				}
+			},
+			'group':'translate',
+			'tools': {
 				'en-zh':{
 					label: '翻译链接',
 					type: 'button',
@@ -40,7 +51,6 @@ window.customizeToolbar = function() {
 							var re = /\[\[(.*?)(\||\]\])/gi; 
 							var m = [],matches = [];
 							while( matches = re.exec(content)){
-								console.log(matches[1]);
 								m.push(matches[1]);
 							}
 							if (m == null){
@@ -55,7 +65,6 @@ window.customizeToolbar = function() {
 						            function(json){
 						            	var data = JSON.parse(json);
 						            	var tran = [];
-						            	console.log(data);
 						            	for(i in data){
 						            		t = JSON.parse(data[i]);
 						            		if(t.status=='success' && t.result.hits>=1){
@@ -66,7 +75,6 @@ window.customizeToolbar = function() {
 						            	}
 						            	var i = 0;
 						            	var result = content.replace(re, function(match, p1, p2, offset, string){
-						            		console.log(match, p1, p2, offset, string, tran[i]);
 						            		if (tran[i++] == null){
 						            			return '[['+p1+p2;
 						            		}
@@ -81,7 +89,10 @@ window.customizeToolbar = function() {
 					}
 				}
 			}
-		} );
+
+		});
+					
+				
     	//console.log('appending quick-insert');
         jQuery(".mw-editTools").detach().appendTo('#wikiEditor-section-quick-insert > div.pages');
         jQuery("#wikiEditor-section-quick-insert > div.index").remove();
