@@ -126,7 +126,7 @@
         </li>
         <li class="sidebar-brand left-donate">
             <div>
-              <a href="/wiki/Special:Donate" class="button mw-ui-button mw-ui-progressive">捐赠</a>
+              <a href="/wiki/Special:Donate" class="button mw-ui-button mw-ui-progressive">加油</a>
             </div>
         </li>
         <li class="sidebar-brand left-manager">
