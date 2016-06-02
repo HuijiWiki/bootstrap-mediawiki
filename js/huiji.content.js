@@ -56,6 +56,7 @@ var recommend = {
             url:'http://121.42.179.100:8080/queryService/webapi/page/recommend/',
             data:{content:self.searchName,category:self.category,sitePrefix:mw.config.get('wgHuijiPrefix')},
             success: function (data) {
+                console.log(data);
                 var len = self.item;
                 self.netData = data;
                 if (data.length == 0) return;
@@ -69,26 +70,25 @@ var recommend = {
                         obj[data[n].sitePrefix].push(data[n].title)
 
                 }
-                console.log(obj);
                 for(var i in obj) {
                     var title = '';
-                    var address = 'http://' + i + '.huiji.wiki';
                     obj[i].forEach(function (item) {
                         title += item + '|';
                     });
                     title = title.substring(0, title.length - 1);
-                    console.log(obj[i]);
                     getImg(i);
 
                     function getImg(i) {
+                        var address = 'http://' + i + '.huiji.wiki';
                         $.ajax({
                             url: 'http://' + i + '.huiji.wiki/api.php?action=query&prop=pageimages&pilimit=max&format=json&pithumbsize=250&titles=' + title,
                             type: 'get',
                             success: function (data) {
+
                                 for (var x in data.query.pages) {
                                     if (data.query.pages[x].thumbnail) {
                                         var percent = data.query.pages[x].thumbnail.width / data.query.pages[x].thumbnail.height;
-                                        var content = '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="' + address + '/wiki/' + data.query.pages[x].title + '"><img data-src="' + data.query.pages[x].thumbnail.source + '">' +
+                                        var content = '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="' + address + '/wiki/' + data.query.pages[x].title + '"><img data-src="' + data.query.pages[x].thumbnail.source + '"></a>' +
                                             '<div class="recommend-title">' +
                                             '<a href="http://' + i + '.huiji.wiki/wiki/' + data.query.pages[x].title + '" title="' + data.query.pages[x].title + '">' + data.query.pages[x].title + '</a>' +
                                             '<a href="' + address + '">' + obj[i].value + '</a></div></div>';
@@ -97,7 +97,7 @@ var recommend = {
                                         self.funClipImg(percent, self.item);
 
                                     } else {
-                                        var content = '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="' + address + '/wiki/' + data.query.pages[x].title + '"><img data-src="/skins/bootstrap-mediawiki/img/recommend.png">' +
+                                        var content = '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="' + address + '/wiki/' + data.query.pages[x].title + '"><img data-src="/skins/bootstrap-mediawiki/img/recommend.png"></a>' +
                                             '<div class="recommend-title">' +
                                             '<a href="http://' + i + '.huiji.wiki/wiki/' + data.query.pages[x].title + '" title="' + data.query.pages[x].title + '">' + data.query.pages[x].title + '</a>' +
                                             '<a href="' + address + '">' + obj[i].value + '</a></div></div>';
@@ -108,7 +108,6 @@ var recommend = {
                                 setTimeout(function () {
                                     lazyLoad.autocheck();
                                 }, 100);
-                                console.log(self.item);
                                 if (document.body.clientWidth > 768&&self.item==10)
                                     doOwl();
                                 function doOwl() {
