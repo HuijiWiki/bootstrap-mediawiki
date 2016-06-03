@@ -565,10 +565,10 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                         <ul class="hub-selection game-link">
                                             <li><a href="http://warcraft.huiji.wiki">魔兽世界</a></li>
                                             <li><a href="http://hearthstone.huiji.wiki">炉石传说</a></li>
-                                            <li><a href="http://assassinscreed.huiji.wiki">刺客信条</a></li>
+                                            <li><a href="http://dota.huiji.wiki">dota</a></li>
                                             <li><a href="http://gw2.huiji.wiki">激战2</a></li>
                                             <li><a href="http://warframe.huiji.wiki">warframe</a></li>
-                                            <li><a href="http://bravely.huiji.wiki">勇气默示录中文百科</a></li>
+                                            <li><a href="http://isaac.huiji.wiki">以撒的结合</a></li>
                                         </ul>
                                         <ul class="hub-selection star-link">
                                             <li><a href="http://tfboys.huiji.wiki">TFBOYS</a></li>
