@@ -35,15 +35,15 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
 
         parent::initPage( $out );
-        if (! $wgUser->isLoggedIn() && $wgHuijiPrefix != 'lotr'){
-            $out->addHeadItem( 'ads', '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-4790099329067811",
-                enable_page_level_ads: true
-              });
-            </script>');
-        }
+        // if (! $wgUser->isLoggedIn() && $wgHuijiPrefix != 'lotr'){
+        //     $out->addHeadItem( 'ads', '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        //     <script>
+        //       (adsbygoogle = window.adsbygoogle || []).push({
+        //         google_ad_client: "ca-pub-4790099329067811",
+        //         enable_page_level_ads: true
+        //       });
+        //     </script>');
+        // }
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleScripts( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
@@ -290,16 +290,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             <span>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('rel' => 'nofollow', 'class'=>'btn btn-default'),array('type' => 'signup') ).'
                                             </span>';
                                 ?>
-                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                                <!-- top ads 2.0 -->
-                                <ins class="adsbygoogle"
-                                     style="display:block"
-                                     data-ad-client="ca-pub-4790099329067811"
-                                     data-ad-slot="4999731083"
-                                     data-ad-format="auto"></ins>
-                                <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                                </script>
                                 <!--<section class="alert alert-warning hidden-xs hidden-sm" role="alert">
                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                     <span class="sr-only">Warning:</span>
@@ -374,18 +364,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 
                 <div class="bottom">
                     <div class="container">
-                        <?php if ( !$wgUser->isLoggedIn() ){ ?>
-                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <!-- bottom aids -->
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-4790099329067811"
-                             data-ad-slot="3522997883"
-                             data-ad-format="auto"></ins>
-                        <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                        <?php }?>
                         <?php self::includePage('Bootstrap:Footer'); ?>
                         <?php if( $this->data['sitenotice'] ) { ?>
                             <div id="siteNotice" class="site-notice">
