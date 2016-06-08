@@ -222,6 +222,14 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         </ul>
                     </div>
                 </nav>
+                <?php if (!$wgUser->isLoggedIn() && $wgHuijiPrefix !== "lotr"){ ?>
+                    <div class="hidden-sm hidden-xs ads-left">
+                        <script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="511:6",jd_union_pid="COCprvjSKhDu5O3cAxoAIKSwucYBKgA=";var jd_width=160;var jd_height=600;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgyFF8tWBtMXUFkCWkySH17HQ5EW2NnRAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHVkVABUGXR1rFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script></div>
+                    <div class="hidden-sm hidden-xs ads-right">
+                        <script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="511:6",jd_union_pid="COCprvjSKhDu5O3cAxoAIKSwucYBKgA=";var jd_width=160;var jd_height=600;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgyFF8tWBtMXUFkCWkySH17HQ5EW2NnRAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHVkVABUGXR1rFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script>
+                    </div>
+                    <div class="hidden-md hidden-lg ads-fixed"><script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="508:6",jd_union_pid="CPnxgvnSKhDu5O3cAxoAIKGBtMYBKgA=";var jd_width=468;var jd_height=90;var jd_union_euid="";var p="BxIAVhpYFQsSNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgySFcrWDtFC0xlLRglUXhlZgpgRWh7cgtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHV4RARIDXR5rFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script></div>
+                <?php } ?>
 
                 <div id="wiki-body" class="container">
                     <main id="content">
@@ -269,6 +277,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <?php
                                     if ( $wgUser->isLoggedIn() && !$wgUser->isEmailConfirmed() && $this->isPrimaryContent() ) {
                                 ?>
+
                                 <section class="alert alert-danger" role="alert">
                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                     <span class="sr-only">Error:</span>
@@ -371,6 +380,11 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             </div>
                         <?php } ?>
                         <footer>
+                            <?php if ($this->isPrimaryContent() && !$wgUser->isLoggedIn() && $wgHuijiPrefix != "lotr"){ ?>
+                                <div class="row hidden-sm hidden-xs text-center">
+                                <script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="505:6",jd_union_pid="CMPLk/jSKhDu5O3cAxoAIPSlusYBKgA=";var jd_width=960;var jd_height=90;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgycQMoUwJCX2RnBXkFFVp5Ul1%2FKU5HVAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHVgSChsGURhrFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script>
+                                </div>
+                            <?} ?>
                             <p class="text-center">
                                 <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> |
                                 <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> |
