@@ -1,5 +1,63 @@
-/* 放置于这里的CSS将应用于所有皮肤 */
-/* Default style for navigation boxes */
+.navbox {                     /* Navbox container style */
+    border: 1px solid #aaa;
+    width: 100%;
+    margin: auto;
+    clear: both;
+    font-size: 88%;
+    padding: 1px;
+}
+.navbox-inner,
+.navbox-subgroup {
+    width: 100%;
+}
+.navbox-group,
+.navbox-title,
+.navbox-abovebelow {
+    padding: 0.25em 1em;      /* Title, group and above/below styles */
+    line-height: 1.5em;
+    text-align: center;
+}
+th.navbox-group {             /* Group style */
+    white-space: nowrap;
+    /* @noflip */
+    text-align: right;
+}
+.navbox,
+.navbox-subgroup {
+    /*background: rgba(170, 170, 242, 0.1);      *//* Background color */
+}
+.navbox-list {
+    line-height: 1.5em;
+    border-color: transparent;    /* Must match background color */
+}
+.navbox th,
+.navbox-title {
+    /*background: rgba(47, 103, 228, 0.18);      *//* Level 1 color */
+}
+.navbox-abovebelow,
+th.navbox-group,
+.navbox-subgroup .navbox-title {
+    /*background: rgba(196, 222, 255, 0.15);      *//* Level 2 color */
+}
+.navbox-subgroup .navbox-group,
+.navbox-subgroup .navbox-abovebelow {
+    /*background: rgba(220, 225, 227, 0.69);      *//* Level 3 color */
+}
+.navbox-even {
+    /*background: #f7f7f7;      *//* Even row striping */
+}
+.navbox-odd {
+    /*background: transparent;  *//* Odd row striping */
+}
+table.navbox {
+    margin-top: 1em;          /* Prevent preceding content from clinging to navboxes */
+}
+table.navbox table.navbox {
+    margin-top: 0;            /* No top margin for nested navboxes */
+}
+table.navbox + table.navbox {
+    margin-top: -1px;         /* Single pixel border between adjacent navboxes */
+}
 .navbox .hlist td dl,
 .navbox .hlist td ol,
 .navbox .hlist td ul,
@@ -26,10 +84,10 @@
     word-spacing: -0.125em;
 }
 .tnavbar.mini li abbr[title] {
-  font-variant: small-caps;
-  border-bottom: none;
-  text-decoration: none;
-  cursor: inherit;
+    font-variant: small-caps;
+    border-bottom: none;
+    text-decoration: none;
+    cursor: inherit;
 }
 /* Navbar styling when nested in infobox and navbox */
 .infobox .tnavbar {
