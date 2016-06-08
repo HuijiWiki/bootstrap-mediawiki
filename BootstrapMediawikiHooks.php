@@ -571,6 +571,82 @@ Class BootstrapMediawikiHooks {
         return true;
 
     }
+    public static function onResourceLoaderGetLessVars( &$lessVars ) {
+        global $wgHuijiPrefix;
+        // $lessVars['colorpath'] = "\"http://huiji-fs.oss-cn-qingdao-internal.aliyuncs.com/$wgHuijiPrefix/style/SiteColor.less\"";
+        // $lessVars['main-base'] = "#000";
+        // $lessVars['bg'] = "#000";
+        $cssCon_1 = CommonStyle::getCurrentCssStyle(1);
+        $lessCon = (array)json_decode( $cssCon_1['cssContent'] );
+        $default = array(
+                        "main-base" => "#333",
+                        "bg" => "#fff",
+                        "bg-inner" => "#fff",
+                        "a" => "#428bca",
+                        "sub-bg" => "#f6f8f8",
+                        "sub-a" => '#333',
+                        "modal" => "#222",
+                        "detail-bg" => "false",
+                        "detail-inner-bg" => "false",
+                        "detail-color" => "false",
+                        "detail-a" => "false",
+                        "detail-border" => "false",
+                        "detail-secondary" => "false",
+                        "detail-toc-a" => "false",
+                        "detail-toc-a-hover" => "false",
+                        "detail-sub-a" => "false",
+                        "detail-sub-bg" => "false",
+                        "detail-sub-a-hover-bg" => "false",
+                        "detail-sub-site-count" => "false",
+                        "detail-contentsub" => "false",
+                        "detail-bottom-bg" => "false",
+                        "detail-bottom-color" => "false",
+                        "detail-quote-bg" => "false",
+                        "detail-quote-bg" => "false",
+                        "detail-quote-color" => "false",
+                        "detail-quote-a" => "false",
+                        "detail-quote-border" => "false",
+                        "detail-wikitable-bg" => "false",
+                        "detail-wikitable-color" => "false",
+                        "detail-wikitable-a" => "false",
+                        "detail-wikitable-border" => "false",
+                        "detail-infobox-bg" => "false",
+                        "detail-infobox-color" => "false",
+                        "detail-infobox-a" => "false",
+                        "detail-infobox-border" => "false",
+                        "detail-infobox-title-bg" => "false",
+                        "detail-infobox-title-color" => "false",
+                        "detail-infobox-item-title-bg" => "false",
+                        "detail-infobox-item-title-color" => "false",
+                        "detail-infobox-item-label-bg" => "false",
+                        "detail-infobox-item-label-color" => "false",
+                        "detail-infobox-item-label-a" => "false",
+                        "detail-infobox-item-label-border" => "false",
+                        "detail-navbox-bg" => "false",
+                        "detail-navbox-color" => "false",
+                        "detail-navbox-a" => "false",
+                        "detail-navbox-border" => "false",
+                        "detail-navbox-title-bg" => "false",
+                        "detail-navbox-title-color" => "false",
+                        "detail-navbox-title-a" => "false",
+                        "detail-navbox-group-bg" => "false",
+                        "detail-navbox-group-color" => "false",
+                        "detail-navbox-group-a" => "false",
+                        "detail-navbox-abovebelow-bg" => "false",
+                        "detail-navbox-abovebelow-color" => "false",
+                        "detail-navbox-abovebelow-a" => "false"
+                    );
+        if ( $lessCon != null ) {
+            $result = array();
+            foreach ($lessCon as $key => $value) {
+                $newKey = substr($key, 1);
+                $result[$newKey] = $value;
+            }
+        }else{
+            $result = array();
+        }
+        $lessVars = array_merge($lessVars, $default, $result);
+
+    }
     
 }
-?>

@@ -283,6 +283,7 @@ $wgHooks['ParserFirstCallInit'][] = 'BootstrapMediawikiHooks::registerParserHook
 $wgHooks['OutputPageMakeCategoryLinks'][] = 'BootstrapMediawikiHooks::onOutputPageMakeCategoryLinks';
 $wgHooks['LinkBegin'][] = 'BootstrapMediawikiHooks::UserLinkBegin';
 $wgHooks['BeforePageDisplay'][] = 'BootstrapMediawikiHooks::onBeforePageDisplay';
+$wgHooks['ResourceLoaderGetLessVars'][] = 'BootstrapMediawikiHooks::onResourceLoaderGetLessVars';
 // new permission
 $wgAvailableRights[] = 'quickpurge';
 $wgGroupPermissions['sysop']['quickpurge'] = true;
