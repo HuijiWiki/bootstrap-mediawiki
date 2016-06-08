@@ -1515,6 +1515,16 @@ ol.carousel-indicators{
   font-family: 'icomoon';
 }
 /*ads*/
+@media screen and (max-width: 1520px){
+  .ads-left, .ads-right{
+    display:none;
+  }
+}
+@media screen and (min-width: 1521px){
+  .ads-center {
+    display:none;
+  }
+}
 .ads-fixed iframe {
     width: 100%!important;
 }
