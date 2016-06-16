@@ -69,7 +69,7 @@
         {{^mobileUser}}
         <aside class="home-aside">
             <div class="aside-top">
-                <img src="/resources/feed/huijilargelogo.png">
+                <img src="http://dl.huijiwiki.com/resources/assets/huijilargelogo.png">
             </div>
             <div class="aside-bottom">
                 <ul class="home-statistics clear">
@@ -132,7 +132,8 @@
                             <li role="presentation"><a href="#user" id="user-tab" role="tab" data-toggle="tab" aria-controls="user" aria-expanded="true">用户排名</a></li>
                         </ul>
                         <div id="home-rank-content" class="tab-content">
-                            <ul role="tabpanel" class="tab-pane fade in active" id="site" aria-labelledby="site-tab">
+                            <div role="tabpanel" class="tab-pane fade in active" id="site" aria-labelledby="site-tab">
+                            <ul class="top-sites">
                             {{#siteRank}}
                                 <li>
                                     <span class="home-rank-point">{{site_score}}</span>
@@ -154,6 +155,24 @@
                                 </li>
                             {{/siteRank}}
                             </ul>
+                            <ul class="top-sites most-donated hide">
+                                {{#allSiteDonateRank}}
+                                    <li>
+                                        <span class="home-rank-point">{{donate_number}}</span>
+                                        <div class="home-rank-right clear">
+                                            <span class="home-rank-list">{{site_rank}}</span>
+                                            <div class="home-rank-msg">
+                                                <a href="{{site_url}}">{{site_name}}</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {{/allSiteDonateRank}}
+                            </ul>
+                            <ul class="nav-tab">
+                                    <li class="active">总排行<span>/</span></li>
+                                    <li>加油排行</li>
+                                </ul>
+                            </div>
                             <div role="tabpanel" class="tab-pane fade" id="user" aria-labelledby="user-tab">
                                 <ul class="top-users weekly-rank">
                                     {{#weekRank}}
@@ -208,12 +227,12 @@
             <div class="resource-logo">
                 <a href="http://www.bootcss.com"><span class="b-logo">B</span></a>
                 <a href="http://www.mediawiki.org"><span class="m-logo">
-                    <img src="/resources/feed/mediawiki-logo.png">
+                    <img src="http://dl.huijiwiki.com/resources/assets/mediawiki-logo.png">
                 </span></a>
             </div>
         </aside>
         {{/mobileUser}}
-        <img src="/resources/feed/whole-huiji.png" class="home-huiji">
+        <img src="http://dl.huijiwiki.com/resources/assets/whole-huiji.png" class="home-huiji">
         <span id="wg-toggle"></span>
     </article>
     <div class="bottom">
