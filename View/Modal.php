@@ -116,7 +116,7 @@
 
 
 
-    <!-- uploadfont -->
+    <!-- uploadcaption -->
     <div class="trans-modal-wrap" id="caption-wrap">
         <div id="caption-upload" class="trans-modal">
             <span class="trans-modal-close">×</span>
