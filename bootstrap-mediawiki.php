@@ -293,4 +293,4 @@ $wgGroupPermissions['sysop']['quickdebug'] = true;
 //Register modules in VE
 $wgVisualEditorPluginModules[]='skins.bootstrapmediawiki.huiji.ve';
 //Less Path
-$wgResourceLoaderLESSImportPaths[] ="$IP/style/";
+$wgResourceLoaderLESSImportPaths = array($skinDir.'/less/',"$IP/resources/src/mediawiki.less/", );
