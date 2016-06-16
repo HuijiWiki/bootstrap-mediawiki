@@ -1,6 +1,6 @@
-@import "HuijiColor.less";
+//@import "HuijiColor.less";
 //@import "mixinscolor.less";
-@import "SiteColor.less";
+//@import "SiteColor.less";
 @brand-default:         #ffffff;
 @brand-primary:         #337ab7;
 @brand-success:         #5cb85c;
@@ -172,7 +172,7 @@
 .huiji-css-hook {
   background-color: @bg;
   .bg(@detail-bg);
-  input,textarea{
+  input,textarea,select,option{
     color: #333;
   }
   a {
@@ -224,6 +224,20 @@
         .color(@detail-sub-site-count);
       }
     }
+//    .nav .dropdown{
+      .dropdown-menu{
+        background-color: difference( @sub-bg , #111);
+        .bg(@detail-sub-a-hover-bg);
+        a{
+          color: @sub-a;
+          .color(@detail-sub-a);
+          &:hover{
+            background-color: @sub-bg;
+            .bg(@detail-sub-bg);
+          }
+        }
+      }
+//    }
     .nav .dropdown> a{
       @media (max-width: 767px){
         background-color: @sub-bg;
@@ -531,7 +545,7 @@
     .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
   }
 
-  table{
+  table.navbox-subgroup{
     border-collapse: separate;
     border-spacing: 2px;
   }

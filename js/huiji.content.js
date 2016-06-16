@@ -81,7 +81,7 @@ var recommend = {
                     function getImg(i) {
                         var address = 'http://' + i + '.huiji.wiki';
                         $.ajax({
-                            url: 'http://' + i + '.huiji.wiki/api.php?action=query&prop=pageimages&pilimit=max&format=json&pithumbsize=250&titles=' + title,
+                            url: 'http://' + i + '.huiji.wiki/api.php?action=query&prop=pageimages&pilimit=max&format=json&pithumbsize=250&maxage=2592000&smaxage=2592000&titles=' + title,
                             type: 'get',
                             success: function (data) {
 
@@ -222,7 +222,7 @@ var recommend = {
     funGetImg: function(title,id,sitePrefix,address,ajax){
         var self = this;
         $.ajax({
-            url:'http://'+sitePrefix+'.huiji.wiki/api.php?action=query&prop=pageimages&format=json&pithumbsize=250&titles='+title,
+            url:'http://'+sitePrefix+'.huiji.wiki/api.php?action=query&prop=pageimages&format=json&pithumbsize=250&maxage=2592000&smaxage=2592000&titles='+title,
             type: 'get',
             success: function(data){
                 var x;
@@ -283,7 +283,7 @@ var recommend = {
     funGetImg2: function(title,id,sitePrefix, address, item, n, ajax){
         var self = this;
         $.ajax({
-            url: 'http://' + sitePrefix + '.huiji.wiki/api.php?action=query&prop=pageimages&format=json&pithumbsize=250&titles=' + title,
+            url: 'http://' + sitePrefix + '.huiji.wiki/api.php?action=query&prop=pageimages&format=json&pithumbsize=250&maxage=2592000&smaxage=2592000&titles=' + title,
             type: 'get',
             success: function (data) {
                 var x;

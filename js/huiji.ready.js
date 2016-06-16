@@ -850,5 +850,13 @@ $(document).ready(function(){
     $('.trans-modal-close').click(function(e){
         $(this).parents('.trans-modal-wrap').removeClass('wrap-show');
     });
+    // convert text edit-section uf8
+    $(".mw-editsection a").each(function(){
+        $this = $(this);
+        if (($this).html().indexOf('&') > -1)
+        {        
+            $this.html($this.text());
+        }
+    });
 //    function show()
 });

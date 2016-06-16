@@ -56,6 +56,16 @@ $(document).ready(function(){
         var index = $(this).index();
         $('.top-users').eq(index).removeClass('hide').siblings('.top-users').addClass('hide');
     });
+    $('#site .nav-tab li').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+        var index = $(this).index();
+        $('.top-sites').eq(index).removeClass('hide').siblings('.top-sites').addClass('hide');
+    });
+    // $('#nav-rank-content .nav-rank li').click(function(){^M
+    //     $(this).addClass('active').siblings().removeClass('active');^M
+    //     var index = $(this).index();^M
+    //     $('.top-users-total-rank').eq(index).removeClass('hide').siblings('.top-users-total-rank').addClass('hide');^M
+    // });^M
     (function(){
         var config = {
             filter: jQuery('.user-home-feed.active').data('filter'),

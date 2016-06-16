@@ -44,124 +44,22 @@ a:hover,a:focus,a:active{
     background-image:url(about:blank);
     background-attachment:fixed;
 }
-.head{
-    background: url("/resources/frontpage/home-front-top.jpg");
-    background-size: 100%;
-    color: #fff;
-}
-.content-wrapper header{
-    height: 50px;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    z-index: 100;
-    background: none;
-    -webkit-transition: background 1s;
-    -moz-transition: background 1s;
-    -ms-transition: background 1s;
-    -o-transition: background 1s;
-    transition: background 1s;
-}
-.logo{
-    width: 150px;
-    position: absolute;
-    left: 40px;
-    top: 20px;
-    transition: width .2s;
-    -webkit-transition: width .2s;
-    -moz-transition: width .2s;
-    -ms-transition: width .2s;
-    -o-transition: width .2s;
-}
-.login{
-    position: absolute;
-    right: 150px;
-    top: 20px;
-}
-.login>div{
-    display: inline-block;
-    border: 1px solid #fff;
-    background: none;
-    padding: 5px 30px;
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
-    margin-right:50px;
-    font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
-    transition:all 0.2s;
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    -ms-transition: all .2s;
-    -o-transition: all .2s;
-}
-.login>div a{
-    color: #fff;
-    transition:all 0.2s;
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    -ms-transition: all .2s;
-    -o-transition: all .2s;
-}
-.login>div:hover{
-    background: #fff;
-    color: #333;
-}
-.login>div:hover a{
-    color: #333;
-}
-.intro-container{
-    height: 100%;
-    width: 50%;
-    margin: 0 auto;
-}
-.intro{
-    width: 800px;
-    margin: 0 auto;
-    position: relative;
-    top: 30%;
-    text-align: center;
-}
-.intro p>span{
-    font-size: 42px;
-}
-.intro p>span:first-child{
-    margin-right: 100px;
-}
-.intro>span{
-    display:block;
-    width: 560px;
-    height: 220px;
-    border-radius:20px;
-    line-height: 100px;
-    text-align: center;
-    font-size: 24px;
-    margin: 30px auto 0 auto;
-    cursor: pointer;
-    background: url("/resources/frontpage/huijilargelogo.png") no-repeat;
-    background-position: 50% 50%;
-    background-color: rgba(0,0,0,.8);
-    -webkit-transition : all .2s;
-    -moz-transition: all .2s;
-    -ms-transition: all .2s;
-    -o-transition: all .2s;
-    transition: all .2s;
-}
 /*.intro span:hover{*/
     /*background-color: #fff;*/
     /*color: #333;*/
 /*}*/
 
-.head-content{
+/*.head-content{
     height: 300px;
-}
-.head-content{
+}*/
+/*.head-content{
     text-align: center;
     color: #333;
     font-size: 48px;
     font-weight: 100;
     background: url("/resources/frontpage/home-front-firstline.gif") no-repeat;
     background-position: 50% 50%;
-}
+}*/
 /*.head-content p{*/
     /*margin-top: 80px;*/
 /*}*/
@@ -174,7 +72,7 @@ a:hover,a:focus,a:active{
     /*margin-top: 10px;*/
     /*color: #c20c0c;*/
 /*}*/
-.perspectivebg{
+/*.perspectivebg{
     width: 100%;
     height:600px;
     position: relative;
@@ -254,8 +152,8 @@ a:hover,a:focus,a:active{
     border-top: 100px solid transparent;
     border-bottom: 100px solid transparent;
     border-left: 50px solid rgba(0,0,0,.7);
-}
-.fmain-content{
+}*/
+/*.fmain-content{
     width: 100%;
     height: 500px;
     position: relative;
@@ -287,7 +185,7 @@ a:hover,a:focus,a:active{
 .content-bottom{
     width: 100%;
     height: 350px;
-    /*background: #40bbe1;*/
+    /*background: #40bbe1;
     text-align: center;
     position: relative;
 }
@@ -314,8 +212,8 @@ a:hover,a:focus,a:active{
 .bottom-intro p{
     font-size: 24px;
     margin-top: 20px;
-}
-.bottom-intro button{
+}*/
+/*.bottom-intro button{
     width: 200px;
     height: 100px;
     background: url("/resources/frontpage/qihuibutton.gif") no-repeat;
@@ -343,7 +241,7 @@ a:hover,a:focus,a:active{
 }
 .bottom-login input{
     width: 220px;
-    /*height: 20px;*/
+    height: 20px;
     border-radius: 5px;
     padding: 8px;
     border: 1px solid #999;
@@ -418,7 +316,7 @@ a:hover,a:focus,a:active{
     border-bottom: 2px solid #09c;
 }
 .wrapper{
-    /*position: absolute;*/
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -429,17 +327,11 @@ a:hover,a:focus,a:active{
     -moz-transition: all 1.5s;
     -ms-transition: all 1.5s;
     -o-transition: all 1.5s;
-    /*transform-style:preserve-3d;*/
-    /*-webkit-transform-style:preserve-3d;*/
-    /*-moz-transform-style:preserve-3d;*/
+    transform-style:preserve-3d;
+    -webkit-transform-style:preserve-3d;
+    -moz-transform-style:preserve-3d;
 }
-body{
-    /*-webkit-perspective:10000px;*/
-    /*-webkit-perspective-origin:top right;*/
-    /*background: url("/resources/frontpage/bg6.jpg");*/
-    background-size: 100%;
-
-}
+*/
 /*.home{*/
     /*transform:perspective(10000px) rotateY(180deg);*/
     /*-webkit-transform:perspective(10000px) rotateY(180deg);*/
@@ -474,7 +366,7 @@ body{
     /*-webkit-backface-visibility:hidden;*/
     /*-moz-backface-visibility:hidden;*/
     /*background: #f9f9f9;*/
-/*}*/
+/*}
 .first-view .content-wrapper{
     -webkit-transition: all 1.2s cubic-bezier(.7, 0, .3, 1);
     -moz-transition: all 1.2s cubic-bezier(.7, 0, .3, 1);
@@ -800,7 +692,7 @@ body{
 .wiki-content-header .avatar5{
     background: url("/resources/frontpage/cfwiki.jpg") no-repeat;
     background-size: 100%;
-}
+}*/
 
 .wikis-wrap{
     width: 1100px;
@@ -1157,7 +1049,7 @@ body{
 .home-bg{
     height: 580px;
     width: 100%;
-    background: url("/resources/feed/bg.png") bottom;
+    background: url("http://dl.huijiwiki.com/resources/assets/bg.png") bottom;
     position: absolute;
     top: 50px;
     z-index: -1;
@@ -1436,7 +1328,7 @@ body{
     line-height: 50px;
 }
 .home-rank-right {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid rgba(0,0,0,.075);
     padding: 5px;
     position: relative;
 }
@@ -1780,4 +1672,8 @@ body>.tooltip.top .tooltip-arrow{
 }
 .flow-author a {
     color: #428bca ;
+}
+.top-sites.most-donated a {
+    position: relative;
+    top: 0.3em;
 }

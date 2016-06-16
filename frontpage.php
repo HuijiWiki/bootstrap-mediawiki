@@ -251,6 +251,29 @@ class FrontPage{
         $o = new SaeTOAuthV2( Confidential::$weibo_app_id , Confidential::$weibo_app_secret );
         $weiboUrl = $o->getAuthorizeURL( Confidential::$weibo_callback_url );
         $qqUrl = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&state=".$wgHuijiPrefix."&redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq";
+        
+        //site month donate
+        // $month = date('Y-m', time());
+        $siteArr = UserDonation::getAllSiteDonationRank();
+        $firstFourSite = array_slice($siteArr, 0,11);
+        $k=1;
+        foreach ($firstFourSite as $key => $value) {
+            if ( $k <= 10 && $key !== null ) {
+                $donateSite = WikiSite::newFromPrefix($key);
+                $siteUrl = $donateSite->getUrl();
+                $siteName = $donateSite->getName();
+                $rankSiteAvatar = $donateSite->getAvatar()->getAvatarHtml();
+                $allSiteDonateRank[] = array(
+                                        'site_rank' => $k,
+                                        'site_prefix' => $key,
+                                        'site_name' => $siteName,
+                                        'site_url' => $siteUrl,
+                                        'donate_number' => $value,//donate number
+                                    );
+                $k++;
+            }
+        }
+
         $output .= $templateParser->processTemplate(
             'frontpage',
             array(
@@ -289,6 +312,7 @@ class FrontPage{
                 'contact' => $contact,
                 'weiboUrl' => $weiboUrl,
                 'qqUrl' => $qqUrl,
+                'allSiteDonateRank' => $allSiteDonateRank,
                 )
         );
         return $output;

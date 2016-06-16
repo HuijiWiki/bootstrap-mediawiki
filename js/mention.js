@@ -96,7 +96,7 @@ var mention = {
 
     //get user follow list
     getFollow: function(){
-        if (mw.config.get('wgUserName') == ''){
+        if (mw.config.get('wgUserName') == null){
             return false;
         }
         $.post(
