@@ -200,45 +200,45 @@ $(document).ready(function(){
 
 
     // show the total number of active talks
-    var pagename = mw.config.get('wgTitle').replace(' ', '_');
-    var namespace = mw.config.get('wgCanonicalNamespace').replace(' ', '_');
-    if (namespace != ''){
-        var talkpage = namespace+'_talk:'+pagename;
-    } else {
-        var talkpage = 'Talk:'+pagename;
-    }
-    if (mw.config.get('wgIsArticle') && !sessionStorage['flowcache_'+talkpage]){
-        $.get( "/api.php", {
-                action:"flow",
-                submodule:"view-topiclist",
-                page:talkpage,
-                format:"json"})
-                .done(function(data){
-                    sessionStorage.setItem('flowcache_'+talkpage, data);
-                    renderFlowAbstract(data);
+    // var pagename = mw.config.get('wgTitle').replace(' ', '_');
+    // var namespace = mw.config.get('wgCanonicalNamespace').replace(' ', '_');
+    // if (namespace != ''){
+    //     var talkpage = namespace+'_talk:'+pagename;
+    // } else {
+    //     var talkpage = 'Talk:'+pagename;
+    // }
+    // if (mw.config.get('wgIsArticle') && !sessionStorage['flowcache_'+talkpage]){
+    //     $.get( "/api.php", {
+    //             action:"flow",
+    //             submodule:"view-topiclist",
+    //             page:talkpage,
+    //             format:"json"})
+    //             .done(function(data){
+    //                 sessionStorage.setItem('flowcache_'+talkpage, data);
+    //                 renderFlowAbstract(data);
 
-                });
-    } else if (mw.config.get('wgIsArticle') && sessionStorage['flowcache_'+talkpage]){
-        renderFlowAbstract(sessionStorage.getItem('flowcache_'+talkpage));
-    }
-    /**
-    * Render the flow abstract for article pages and display flow count bubble.
-    * @param data obj from api
-    */
-    function renderFlowAbstract(data){
-        if (data.flow){
-            var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
-            // if (talkCount > 0){
-            //     $("#ca-talk a").append("<small><span class='help-block ca-help-text'>"+talkCount+"</span></small>");
-            //     if (!mw.config.get('wgIsMainPage')){
-            //         flowAdapter.init(data);
-            //         var items = flowAdapter.convert(data);
-            //         var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
-            //         $('#mw-content-text').after(html);
-            //     }
-            // }
-        }
-    }
+    //             });
+    // } else if (mw.config.get('wgIsArticle') && sessionStorage['flowcache_'+talkpage]){
+    //     renderFlowAbstract(sessionStorage.getItem('flowcache_'+talkpage));
+    // }
+    // *
+    // * Render the flow abstract for article pages and display flow count bubble.
+    // * @param data obj from api
+    
+    // function renderFlowAbstract(data){
+    //     if (data.flow){
+    //         var talkCount = data.flow["view-topiclist"].result.topiclist.roots.length;
+    //         // if (talkCount > 0){
+    //         //     $("#ca-talk a").append("<small><span class='help-block ca-help-text'>"+talkCount+"</span></small>");
+    //         //     if (!mw.config.get('wgIsMainPage')){
+    //         //         flowAdapter.init(data);
+    //         //         var items = flowAdapter.convert(data);
+    //         //         var html = flowAdapter.adapt(items, {postLimit:2, topicLimit:2});
+    //         //         $('#mw-content-text').after(html);
+    //         //     }
+    //         // }
+    //     }
+    // }
 
     // config for popup.
     mw.loader.using( [ 'ext.popups' ], function() { //wait for popups to be loaded
@@ -421,13 +421,76 @@ $(document).ready(function(){
 //    });
     //user card
     function userCard(username,carduser){
-        $.post(
+        $.ajax({
+            url:'/api.php',
+            data:{
+                action:'getuserfollowinfo',
+                username:carduser,
+                format: 'json'
+            },
+            type:'post',
+            success:function(data){
+                var res = data.getuserfollowinfo;
+                var sex;
+                if(!res.result) return;
+                if(res.result.gender == "female"){
+                    res.result.gender = "♀";
+                    sex = "她";
+                }else if(res.result.gender == "male"){
+                    res.result.gender = "♂";
+                    sex = "他";
+                }else{
+                    res.result.gender ='♂/♀';
+                    sex = "Ta";
+                }
+                var ps = '';
+                var com = '';
+                var follow = '';
+                var isfollow = '';
+                if(res.result.minefollowerhim.length == 0){
+                    ps = "暂无";
+                }else{
+                    $.each(res.result.minefollowerhim,function(i,item){
+                        ps += "<a href='/wiki/User:"+item+"'>"+item+"</a><i>、</i>";
+                    })
+                }
+                if(res.result.commonfollow.length == 0){
+                    com = "暂无";
+                }else{
+                    $.each(res.result.commonfollow,function(i,item){
+                        com += "<a href='/wiki/User:"+item+"'>"+item+"</a><i>、</i>";
+                    });
+                }
+                if(res.result.is_follow=='Y'){
+                    follow = '取关';
+                    isfollow = 'unfollow';
+                }else{
+                    follow = '关注';
+                }
+                var msg = "<div class='user-card-top'>"+res.result.url+"<div class='user-card-info'><span><a href='/wiki/User:"+res.result.username+"'>"+res.result.designation+"</a></span><span>"+res.result.gender+"</span>" +
+                    "<span>"+res.result.level+"</span><p>"+mw.html.escape(res.result.status)+"</p></div></div><div class='user-card-mid'><div class='user-card-msg'><ul><li>关注：<span>"+res.result.usercounts+"</span></li>" +
+                    "<li class='cut'>被关注：<span>"+res.result.usercounted+"</span></li><li>编辑：<span>"+res.result.editcount+"</span></li></ul><span class='user-card-follow "+isfollow+" user-user-follow' data-username = '"+res.result.username+"'>"+follow+"</span>" +
+                    "<a href='/index.php?title=%E7%89%B9%E6%AE%8A:GiveGift&amp;user="+res.result.username+"'  class='user-card-gift' title='特殊:GiveGift'><i class='fa fa-gift'></i>礼物</a></div></div>" +
+                    "<div class='user-card-bottom'><p class='follow-him'>我关注的人也关注了"+sex+"("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
+                $(".user-card").empty().append(msg);
+                $('.follow-him i:last,.common-follow i:last').remove();
+                if(username==null){
+                    $('.user-card-bottom').remove();
+                }else if(username == res.result.username){
+                    $('.user-card-follow,.user-card-gift').hide();
+                }
+                getDirection();
+                
+            }
+        })
+       /* $.post(
             mw.util.wikiScript(),{
                 action:'ajax',
                 rs:'wfUserFollowsInfoResponse',
                 rsargs:[carduser]
             },
             function(data){
+                console.log(data);
                 var res = jQuery.parseJSON(data);
                 var sex;
                 if(!res.result) return;
@@ -481,7 +544,7 @@ $(document).ready(function(){
                 }
                 getDirection();
             }
-        )
+        )*/
     }
     //获取元素相对于屏幕的位置
     function getPos(ele){
@@ -850,13 +913,133 @@ $(document).ready(function(){
     $('.trans-modal-close').click(function(e){
         $(this).parents('.trans-modal-wrap').removeClass('wrap-show');
     });
-    // convert text edit-section uf8
-    $(".mw-editsection a").each(function(){
-        $this = $(this);
-        if (($this).html().indexOf('&') > -1)
-        {        
-            $this.html($this.text());
-        }
+    $('#site-follower-count').click(function(e){
+        mw.loader.using('oojs-ui', function(){
+            // Example: Creating and opening a process dialog window. 
+
+            // Subclass ProcessDialog.
+            function ProcessDialog( config ) {
+              ProcessDialog.super.call( this, config );
+            }
+            OO.inheritClass( ProcessDialog, OO.ui.ProcessDialog );
+
+            // Specify a static title and actions.
+            ProcessDialog.static.title = '关注本维基的用户';
+            ProcessDialog.static.actions = [
+              { action: 'more', label: '更多', flags: 'primary', modes:'hasmore' },
+              { label: '关闭', flags: 'safe', modes:"nomore" },
+              { label: '关闭', flags: 'safe', modes:"hasmore" },
+            ];
+
+            // Use the initialize() method to add content to the dialog's $body, 
+            // to initialize widgets, and to set up event handlers. 
+            ProcessDialog.prototype.initialize = function () {
+              ProcessDialog.super.prototype.initialize.apply( this, arguments );
+
+              this.content = new OO.ui.PanelLayout( { $: this.$, padded: true, expanded: false } );
+              //this.content.$element.append( '<i class="fa fa-spinner fa-spin fa-5x"></i>' );
+              this.$body.append( this.content.$element ); 
+            };
+            // Add a 'broken' function to getSetupProcess() for purposes of this example.
+            ProcessDialog.prototype.getSetupProcess = function ( data ) {
+              return ProcessDialog.super.prototype.getSetupProcess.call( this, data )
+              .next( function () {
+                  var dfd = $.Deferred();
+                  var user = mw.config.get('wgUserName');
+                  var site_name = mw.config.get('wgHuijiPrefix');
+                  var dialog = this;
+                  $.post(
+                      mw.util.wikiScript(), {
+                        action: 'ajax',
+                        rs: 'wfUsersFollowingSiteResponse',
+                        rsargs: [user, site_name]
+                      },
+                      function( data ) {
+                        var res = jQuery.parseJSON(data);
+                        if(res.success){
+                          if(res.result.length==0){
+                            var sitename = mw.config.get('wgSiteName');
+                            dfd.rejected(new OO.ui.Error('暂时还没人关注'+sitename+' >-<'),  { recoverable: false } );
+                          }else{
+                            var msg = '<li class="row follower-popup"><span class="col-xs-8 col-md-8 col-sm-8">昵称</span><span class="hidden-xs col-md-2 col-sm-2">等级</span><span class="col-xs-4 col-md-2 col-sm-2">编辑</span></li>'
+                            dialog.content.$element.append(msg);
+                            if(res.result.length>4) {
+                                var i;
+                                for( i=0;i<4;i++ ){
+                                    var msg = '<li class="row follower-popup"><span class="col-xs-8 col-md-8 col-sm-8 follower-info"><a href="' + res.result[i].userUrl + '" class="follower-headimg">' + res.result[i].url + '</a><a href="' + res.result[i].userUrl + '" class="follower-username">' + res.result[i].user + '</a></span><span class="follower-level hidden-xs col-md-2 col-sm-2">' + res.result[i].level + '</span><span class="follower-editnum col-xs-4 col-md-2 col-sm-2">' + res.result[i].count + '</span></li>';
+                                    dialog.content.$element.append(msg);
+                                }
+                                dialog.actions.setMode('hasmore');
+                                dfd.resolve();
+                                //dialog.content.$element.append('<div class="follow-modal-more"><a href="/wiki/Special:EditRank">更多</a></div>');
+                            }
+                            else{
+                                $.each(res.result,
+                                    function (i, item) {
+                                        var msg = '<li class="row follower-popup"><span class="col-xs-8 col-md-8 col-sm-8 follower-info"><a href="' + item.userUrl + '" class="follower-headimg">' + item.url + '</a><a href="' + item.userUrl + '" class="follower-username">' + item.user + '</a></span><span class="follower-level hidden-xs col-md-2 col-sm-2">' + item.level + '</span><span class="follower-editnum col-xs-4 col-md-2 col-sm-2">' + item.count + '</span></li>';
+                                        dialog.content.$element.append(msg);
+                                    }
+
+                                );
+                                dialog.actions.setMode('nomore');
+                                dfd.resolve();
+                            }
+                        }
+                      }else{
+                        dfd.rejected(new OO.ui.Error('网络通讯错误'));
+                        //oops
+                      }
+                    }
+                  );
+                  return dfd.promise();
+              }, this );
+            };
+            // Use the getActionProcess() method to specify a process to handle the 
+            // actions (for the 'save' action, in this example).
+            ProcessDialog.prototype.getActionProcess = function ( action ) {
+              var dialog = this;
+              if ( action === 'more' ) {
+                return new OO.ui.Process( function () {
+                  dialog.close( { action: action } );
+                  window.open( "/wiki/特殊:编辑排行");
+                  // go to url
+                } );
+              } else {
+                return new OO.ui.Process( function () {
+                  dialog.close( { action: action } );
+                  // go to url
+                } );
+              }
+            // Fallback to parent handler.
+              return ProcessDialog.super.prototype.getActionProcess.call( this, action );
+            };
+
+            // Get dialog height.
+            ProcessDialog.prototype.getBodyHeight = function () {
+              //return this.content.$element.outerHeight( true );
+              return 300;
+            };
+
+            // Create and append the window manager.
+            var windowManager = new OO.ui.WindowManager();
+            $( 'body' ).append( windowManager.$element );
+
+            // Create a new dialog window.
+            var processDialog = new ProcessDialog({
+              size: 'medium'
+            });
+
+            // Add windows to window manager using the addWindows() method.
+            windowManager.addWindows( [ processDialog ] );
+
+            // Open the window.
+            windowManager.openWindow( processDialog );
+
+        });
     });
+    //change mobile notifications
+    if (window.is_mobile_device()){
+
+    }
 //    function show()
 });

@@ -613,30 +613,11 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         $userPageURL = htmlspecialchars( $userPage->getFullURL() );
                         /*$avatar = new wAvatar( $wgUser->getID(), 'l' );*/
                         $output .= '<ul'.$this->html('userlangattributes').' class="nav navbar-nav navbar-right navbar-user">';
-                        $output .= '<li><a href="'.$userPageURL.'"><span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span><span class="hidden-xs">'.$wgUser->getName().'</span></a></li>';
+                        $output .= '<li id="pt-user-icon"><a href="'.$userPageURL.'"><span class="user-icon" style="border: 0px;">'.$avatar->getAvatarURL().'</span><span class="hidden-xs">'.$wgUser->getName().'</span></a></li>';
                         $output .= $user_alert;
                         $output .= $user_message;
-                        $output .= '<li class="dropdown collect"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-heart-o"></i></i></a><ul class="dropdown-menu collect-menu">';
-                        $huijiUser = HuijiUser::newFromUser($wgUser);
-                        $sites = $huijiUser->getFollowingSites(true, $wgUser);
-                        // $sites = UserSiteFollow::getFullFollowedSitesWithDetails( $wgUser->getId(),$wgUser->getId() );
-                        $count = count($sites);
-                        if( $count > 0){
-                            $num = ($count > 8)?8:$count;
-                            foreach ( $sites as $user ) {
-                                $site_name[] = $user['val'];
-                                $domain_name[] = $user['key'];
-                            }
-                            for($i=0;$i<$num;$i++){
-                                $output .=  '<li><a href=http://'.$domain_name[$i].'.huiji.wiki>'.$site_name[$i].'</a></li>';
-                            }
-                            if($count > 3){
-                                $output .='<li><a rel="nofollow" href="/index.php?title=Special:ShowFollowedSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'">我关注的全部维基</a></li>';
-                            }
-                        }else{
-                            $output.='<li><a>暂无</a></li>';
-                        }
-                        $output .= '</ul></li>';
+                        $output .= '<li id="pt-following" class="mw-echo-ui-notificationBadgeButtonPopupWidget"><a title="我关注的站点" href="/index.php?title=Special:ShowFollowedSites&user_id='.$wgUser->getID().'&target_user_id='.$wgUser->getID().'"><i class="fa fa-heart-o"></i></a>';
+                        $output .= '</li>';
                         $output .= $user_nav;
                         $output .= '</ul>';
                     } else {  // else if is logged in

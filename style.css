@@ -129,6 +129,7 @@ ol.references {
 	opacity: 0.2;
 }
 
+
 .editOptions .checkbox input:first-child {
 	margin-left: -20px;
 }
@@ -319,19 +320,17 @@ blockquote.quote:after{
 .thumb {
 	margin-bottom: .5em;
 	width: auto;
-	background-color: transparent;
 }
 .thumbinner {
-	border: 1px solid;
 	padding: 3px !important;
 	font-size: 94%;
 	text-align: center;
 	overflow: hidden;
     border-radius: 4px;
 }
-.thumbimage {
-	border: 1px solid #ccc;
-}
+/*.thumbimage {*/
+	/*border: 1px solid #ccc;*/
+/*}*/
 html .thumbcaption {
 	border: none;
 	text-align: left;
@@ -611,14 +610,14 @@ img.thumbborder {
 	float: none !important; 
 	background: transparent !important;
 }
-.oo-ui-window-isolated {
-    font-family: inherit !important;
-    font-size: 1.2em !important;
-}
-.oo-ui-processDialog-title {
-    font-weight: bold;
-    line-height: 1.3em !important;
-}
+// .oo-ui-window-isolated {
+//     font-family: inherit !important;
+//     font-size: 1.2em !important;
+// }
+// .oo-ui-processDialog-title {
+//     font-weight: bold;
+//     line-height: 1.3em !important;
+// }
 
 body .mw-echo-overlay {
 	z-index: 1300;
@@ -872,46 +871,28 @@ sup.reference {
 	height:inherit;
 }
 
-.follow-modal{
+.follower-popup{
     padding:0;
     list-style-type: none;
 }
-.follow-modal li{
+.follower-popup{
     padding: 5px;
     line-height: 40px;
 }
-.follow-modal span{
-    text-align: center;
-}
-.follow-modal .modal-user-info{
+.follower-info{
     text-align: left;
-    padding-left: 60px;
 }
-.modal-user-info{
+.follower-info{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.follow-modal-headimg img{
+.follower-headimg img{
     border-radius: 50%;
     margin-right: 10px;
 }
-.follow-modal-more{
-    padding: 10px;
-    border-top: 1px solid #e0e0e0;
-}
-.follow-modal-more a{
-    float: right;
-    margin-right: 10px;
-}
-.follow-modal .fa-spinner{
-    margin: 20px auto;
-    width: 60px;
-    height: 60px;
-    display: block!important;
-}
 @media screen and (max-width: 566px) {
-    .follow-modal .modal-user-info{
+    .modal-user-info{
         padding-left:15px;
     }
     .form-horizontal .form-group {
@@ -1061,7 +1042,9 @@ sup.reference {
 .user-card-msg .user-card-follow,.user-card-msg .user-card-gift{
     background:#fff;
     padding: 5px 20px;
-    border: none;
+    border-width: 1px;
+    border-style: solid;
+    display: inline-block;
     box-shadow: 0 0 2px rgba(0,0,0,.1);
     margin: 10px;
     text-decoration: none;
@@ -1077,12 +1060,12 @@ sup.reference {
     text-overflow:ellipsis;
     white-space:nowrap;
 }
-.oo-ui-popupToolGroup-handle {
-    min-height: 3.1em;
-}
-.oo-ui-barToolGroup > .oo-ui-toolGroup-tools > .oo-ui-tool > .oo-ui-tool-link{
-    padding:  0 0.625em!important;
-}
+// .oo-ui-popupToolGroup-handle {
+//     min-height: 3.1em;
+// }
+// .oo-ui-barToolGroup > .oo-ui-toolGroup-tools > .oo-ui-tool > .oo-ui-tool-link{
+//     padding:  0 0.625em!important;
+// }
 .user-card>.fa-spinner{
     text-align: center;
     margin: 0 auto;
@@ -1228,8 +1211,6 @@ h3 .mw-editsection{
     background-image: none;
     cursor: pointer;
     margin:0;
-    color: #fff!important;
-    background-color: #09c;
     border-radius: 50%;
     padding: 5px;
     margin-right: 5px;
@@ -1266,39 +1247,49 @@ ol.carousel-indicators{
     float: right;
     display: inline-block;
 }
-#pt-createaccount{
-    font-size: 14px;
-}
+// #pt-createaccount{
+//     font-size: 1.2rem;
+// }
 /*hack notification*/
 #pt-notifications-alert, #pt-notifications-message{
-    font-size: 18px;
+    font-size: 1.2rem;
     position: relative;
-}
-#pt-notifications-alert .oo-ui-popupWidget-popup, #pt-notifications-message .oo-ui-popupWidget-popup{
-    font-size: 14px;
-}
-#pt-notifications-alert .oo-ui-labelElement-label, #pt-notifications-message .oo-ui-labelElement-label{
-    margin: 0;
-    padding: 0;
-}
-#pt-notifications-alert .oo-ui-buttonGroupWidget, #pt-notifications-message .oo-ui-buttonGroupWidget {
-    display: block;
-}
+// }
+// #pt-notifications-alert .oo-ui-popupWidget-popup, #pt-notifications-message .oo-ui-popupWidget-popup{
+//     font-size: 14px;
+// }
+// #pt-notifications-alert .oo-ui-labelElement-label, #pt-notifications-message .oo-ui-labelElement-label{
+//     margin: 0;
+//     padding: 0;
+// }
+// #pt-notifications-alert .oo-ui-buttonGroupWidget, #pt-notifications-message .oo-ui-buttonGroupWidget {
+//     display: block;
+// }
 #pt-notifications-alert .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon,
-#pt-notifications-message .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon{
-    top: 1em;
+#pt-notifications-message .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon,
+#pt-following .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon{
+    top: 1.5em;
 }
-.skin-bootstrap-mediawiki .mw-echo-ui-notificationBadgeButtonPopupWidget .oo-ui-popupWidget {
-    font-size: 1.16666667em;
-    left: 16px;
-}
+#pt-notifications-alert, #pt-notifications-message, #pt-following {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    //line-height: 47px;
+ }
+// .skin-bootstrap-mediawiki .mw-echo-ui-notificationBadgeButtonPopupWidget .oo-ui-popupWidget {
+//     font-size: 1.16666667em;
+//     left: 16px;
+// }
 #pt-notifications-alert .mw-echo-notifications-badge:before {
     content: "\f0a2";
     position: absolute;
     left: -10px;
     top: 8px;
     color: #333;
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 #pt-notifications-message .mw-echo-notifications-badge:before {
     content: "\f003";
@@ -1306,13 +1297,13 @@ ol.carousel-indicators{
     left: -10px;
     top: 8px;
     color: #000;
-    font-size: 18px;
+    font-size: 1.8rem;
 }
-#pt-notifications-alert,#pt-notifications-message {
+#pt-notifications-alert,#pt-notifications-message,#pt-following {
     width: 40px;
     height: 50px;
 }
-.oo-ui-popupWidget{
+#pt-notifications-message .oo-ui-popupWidget, #pt-notifications-alert .oo-ui-popupWidget, #pt-following .oo-ui-popupWidget{
     top: 40px;
 }
 .header .navbar-user > li > a.mw-echo-notifications-badge:hover {
@@ -1322,8 +1313,6 @@ ol.carousel-indicators{
 	display:inline;
 	margin-left:1em;
 }
-
-
 /*feed img show more*/
 .mp-activity{
     position: relative;
@@ -1380,17 +1369,21 @@ ol.carousel-indicators{
     .user-login .modal-dialog{
         width: 300px;
     }
-    #pt-notifications-alert,  #pt-notifications-message{
-        line-height: 40px;
-        color: #fff;
-        padding: 0 5px;
-        width: 30px;
-        height: 40px;
-        position: static;
+    #pt-user-icon {
+        margin-right: 20px;
     }
+    // #pt-notifications-alert,  #pt-notifications-message{
+    //     line-height: 40px;
+    //     // color: #fff;
+    //     padding: 0 5px;
+    //     width: 30px;
+    //     height: 40px;
+    //     position: static;
+    // }
     .header .navbar-collapse .navbar-user li > a.mw-echo-notifications-badge{
         line-height: 15px;
     }
+
     .mw-echo-notifications-badge {
         top: 5px!important;
         right: 0!important;
@@ -1398,14 +1391,22 @@ ol.carousel-indicators{
     #pt-notifications-alert .mw-echo-notifications-badge:before ,#pt-notifications-message .mw-echo-notifications-badge:before{
         color: #fff;
     }
-    /*#pt-notifications-message .oo-ui-popupWidget-popup {*/
-    /*width: 300px!important;*/
-    /*margin-left: -220px!important;*/
-    /*}*/
-    /*#pt-notifications-alert .oo-ui-popupWidget-popup {*/
-    /*width: 300px!important;*/
-    /*margin-left: -190px!important;*/
-    /*}*/
+
+    #pt-notifications-message .oo-ui-popupWidget-popup{
+      left: -178px !important;
+    }
+    #pt-notifications-alert .oo-ui-popupWidget-popup{
+      left: -140px !important;
+    }
+    #pt-following .oo-ui-popupWidget-popup{
+      top: 51px !important;
+      left: 10px !important;
+    }
+    #pt-notifications-message .oo-ui-popupWidget-popup,
+    #pt-notifications-alert .oo-ui-popupWidget-popup,
+    #pt-following .oo-ui-popupWidget-popup {
+      width: 300px!important;
+    }
     .oo-ui-popupWidget-popup {
         width: 100%!important;
         margin-left: 0!important;
@@ -1425,18 +1426,14 @@ ol.carousel-indicators{
         left: 0!important;
         width: 100%;
     }
-    #pt-notifications-alert .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor{
-        right: 120px;
-        left: initial;
-    }
-    #pt-notifications-message .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor{
-        right: 90px;
-        left: initial;
+    #pt-notifications-alert .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor,
+    #pt-notifications-message .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor,
+    #pt-following .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor{
+        // right: 120px;
+        display: none;
     }
 
 }
-
-
 /*caption*/
 .trans-modal-wrap{
     position: fixed;

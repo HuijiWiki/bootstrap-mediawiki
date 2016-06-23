@@ -24,6 +24,8 @@
     width: 10px;
     display: inline-block;
     cursor: text;
+    background: transparent;
+    color: inherit
 }
 .edit-field input:focus{
     width: 60px;
@@ -44,7 +46,6 @@
     border: none;
 }
 .popover.bottom  {
-    background: #fff;
     padding-top: 0;
     padding-bottom: 0;
 }

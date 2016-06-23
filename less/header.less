@@ -19,10 +19,10 @@
   .navbar-header {
     background-color:extract(@header-color,1);
     #menu-toggle{
-      z-index: 1200;
+      z-index: 100;
       border-right: 1px solid #666;
-      padding-top: 15px;
-      margin-right: 10px;
+      padding-top: .83em;
+      margin-right: .55em;
       .transition(0.9s);
       &:hover{
         opacity: 0.7;
@@ -32,53 +32,53 @@
       }
       .icon-bar{
         display: block;
-        width: 22px;
-        height: 2px;
+        width: 1.22em;
+        height: .11em;
         background: #fff;
         .transition(0.2s);
         &+.icon-bar{
-          margin-top: 6px;
-          width: 17px;
+          margin-top: .33em;
+          width: .94em;
         }
         &:last-child{
-          width: 12px;
+          width: .67em;
         }
       }
     }
     .search-toggle{
       float: right;
-      line-height: 50px;
+      line-height: 2.5em;
       margin:0;
       color: #fff;
-      font-size: 20px;
-      padding-left: 10px;
-      padding-right: 10px;
+      font-size: 1.43em; //20px
+      padding-left: .5em;
+      padding-right: .5em;
     }
     .navbar-toggle {
       position: relative;
       float: right;
-      font-size: 20px;
-      line-height: 50px;
+      font-size: 1.43em;
+      line-height: 2.5em;
       margin: 0;
-      padding:0 10px;
+      padding:0 .5em;
       background-color: transparent;
       background-image: none;
       border: none;
       color: extract(@header-color,2);
     }
     .navbar-brand {
-      padding:10px;
+      padding:.55em;
       img {
         margin-right: 0.5em;
-        max-height: 30px;
+        max-height: 1.67em;
       }
     }
     .wiki-toggle{
       float: left;
       color: #fff;
-      height: 50px;
-      line-height: 50px;
-      padding-right: 20px;
+      height: 3.57em;
+      line-height: 3.57em;
+      padding-right: 1.43em;
       cursor: pointer;
     }
     #searchformphone{
@@ -89,7 +89,7 @@
     background-color:extract(@header-color,1);
     .hub-menu{
       padding: 0;
-      width: 250px;
+      width: 17.86em;
       background-color:extract(@header-color,5);
       &>li{
         float: left;
@@ -97,7 +97,7 @@
           padding-left: 0;
           &>li{
             list-style-type: none;
-            padding: 5px 10px;
+            padding: .357em .714em;
             cursor: pointer;
           }
         }

@@ -1049,7 +1049,7 @@ a:hover,a:focus,a:active{
 .home-bg{
     height: 580px;
     width: 100%;
-    background: url("http://dl.huijiwiki.com/resources/assets/bg.png") bottom;
+    background: url("http://fs.huijiwiki.com/www/resources/assets/bg.png") bottom;
     position: absolute;
     top: 50px;
     z-index: -1;
@@ -1669,9 +1669,6 @@ body>.tooltip.top .tooltip-arrow{
         height: 100%;
         overflow: hidden;
     }
-}
-.flow-author a {
-    color: #428bca ;
 }
 .top-sites.most-donated a {
     position: relative;

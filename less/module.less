@@ -1,0 +1,176 @@
+.infobox{
+  width: 300px;
+  background-color: @modal;
+  .bg(@detail-infobox-bg);
+  font-size: 13px;
+  float: right;
+  margin-left: 40px;
+  margin-bottom: 30px;
+  border-width: 1px;
+  border-style: solid;
+  border-collapse: separate;
+  border-spacing: 1px;
+  color:difference(@modal,#fff);
+  .color(@detail-infobox-color);
+  a{
+    .color(@detail-infobox-a);
+  }
+  th,td{
+    border-bottom-color: difference(@modal, #111);
+    .border-color(@detail-infobox-border);
+  }
+  .infobox-img{
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 0;
+  }
+  .infobox-title{
+    padding: 5px 8px;
+    .bg(@detail-infobox-title-bg);
+    .color(@detail-infobox-title-color);
+    th{
+      font-size: 16px;
+      text-align: center;
+    }
+    //        &.large-title th{
+    //          text-align:center;
+    //          b {
+    //            font-size: 24px;
+    //          }
+    //        }
+    //        td{
+    //          text-align: right;
+    //          img{
+    //            display: inline-block;
+    //          }
+    //        }
+  }
+  .infobox-item-title th{
+    text-align: center;
+    padding: 4px;
+    background-color: difference(@modal, #111);
+    .bg(@detail-infobox-item-title-bg);
+    .color(@detail-infobox-item-title-color);
+  }
+  .infobox-item-label{
+    padding: 8px;
+    width: 70px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    .bg(@detail-infobox-item-label-bg);
+    .color(@detail-infobox-item-label-color);
+    .border-color(@detail-infobox-item-label-border);
+    //        border-bottom-color:
+    &.no-border{
+      border-bottom-color: transparent;
+    }
+  }
+  .infobox-item-detail{
+    padding: 8px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    .bg(@detail-infobox-item-detail-bg);
+    .color(@detail-infobox-item-detail-color);
+    a{
+      .color(@detail-infobox-item-detail-a);
+    }
+    .border-color(@detail-infobox-item-detail-border);
+    &.no-border{
+      border-bottom-color: transparent;
+    }
+  }
+}
+
+.navbox{
+  background-color:@modal;
+  .bg(@detail-navbox-bg);
+  border-collapse: separate;
+  //    border-width: 1px;
+  //    border-style: solid;
+  //    width: 100%;
+  //    margin: auto;
+  //    clear: both;
+  //    font-size: 0.88em;
+  //    padding: 1px;
+  //    margin-top: 10px;
+  color: difference(@modal, #fff);
+  .color(@detail-navbox-color);
+  a{
+    .link(@detail-navbox-a);
+  }
+  //    tr{
+  //      border-bottom-width: 1px;
+  //      border-bottom-style: solid;
+  //      border-bottom-color:  difference(@modal, #111);
+  //      .border-color(@detail-navbox-border);
+  //    }
+  //    td{
+  //      padding: 0;
+  //    }
+  .navbox-title{
+    //      padding: 8px;
+    //      font-size: 16px;
+    //      text-align: center;
+    background-color:  difference(@modal, #111);
+    .bg(@detail-navbox-title-bg);
+    .color(@detail-navbox-title-color);
+    a{
+      //        margin: 0 5px;
+      .link(@detail-navbox-title-a);
+    }
+  }
+  //    .mw-collapsible-toggle{
+  //      text-align: right;
+  //      cursor: pointer;
+  //      float: right;
+  //    }
+  .navbox-group{
+    //      width: 150px;
+    background-color: lighten(@modal, 10%);
+    .bg(@detail-navbox-group-bg);
+    .color(@detail-navbox-group-color);
+    //      white-space: nowrap;
+    //      text-align: center;
+    //      padding: 8px;
+    a{
+      .link(@detail-navbox-group-a);
+    }
+  }
+  .navbox-list{
+    .bg(@detail-navbox-list-bg);
+    .color(@detail-navbox-list-color);
+    a:not(.new){
+      .link(@detail-navbox-list-a);
+    }
+    .new{
+      .link(@detail-navbox-list-new);
+    }
+    &.navbox-even{
+      .bg(@detail-navbox-list-even-bg);
+    }
+    &.navbox-odd{
+      .bg(@detail-navbox-list-odd-bg);
+    }
+  }
+  //    .navbox-list{
+  //      padding: 8px;
+  //      a{
+  //        margin: 0 5px;
+  //      }
+  //    }
+  .navbox-abovebelow{
+    //      padding: 8px;
+    //      text-align: center;
+    background-color:  difference(@modal, #111);
+    .bg(@detail-navbox-abovebelow-bg);
+    .color(@detail-navbox-abovebelow-color);
+    a{
+      //        margin: 0 5px;
+      .link(@detail-navbox-abovebelow-a);
+    }
+  }
+  .navbox-border td{
+    background: rgba(0,0,0,.5);
+  }
+}

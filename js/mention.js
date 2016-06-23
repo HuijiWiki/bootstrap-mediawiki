@@ -99,21 +99,40 @@ var mention = {
         if (mw.config.get('wgUserName') == null){
             return false;
         }
-        $.post(
-            mw.util.wikiScript(), {
-                action: 'ajax',
-                rs: 'wfGetUserFollowing',
-                rsargs: [mw.config.get('wgUserName')]
+        // alert(222);
+        $.ajax({
+            url:'/api.php',
+            data:{
+                action:'getfollowinguser',
+                username:mw.config.get('wgUserName'),
+                format: 'json'
             },
-            function( data ) {
-                var res=JSON.parse(data);
+            type:'post',
+            success:function(data){
+                var res = data.getfollowinguser;
                 if(res.result) {
                     res.result.forEach(function (item) {
                         mention.follow.push(item.user_name);
                     });
                 }
             }
-        );
+        })
+        // $.post(
+        //     mw.util.wikiScript(), {
+        //         action: 'ajax',
+        //         rs: 'wfGetUserFollowing',
+        //         rsargs: [mw.config.get('wgUserName')]
+        //     },
+        //     function( data ) {
+        //         console.log(data);
+        //         var res=JSON.parse(data);
+        //         if(res.result) {
+        //             res.result.forEach(function (item) {
+        //                 mention.follow.push(item.user_name);
+        //             });
+        //         }
+        //     }
+        // );
     },
 
     addModal: function(){
@@ -206,9 +225,9 @@ var mention = {
 
         //使用mousedown防止和blur冲突
         $('body').on('mousedown','.mention-list li',function(e){
-            console.log($('.mention-area.emoji-wysiwyg-editor').val());
+            // console.log($('.mention-area.emoji-wysiwyg-editor').val());
             var content = $('.mention-area.emoji-wysiwyg-editor').val().replace('<b>@</b>','@'+$(this).text()+' ');
-            console.log(content)
+            // console.log(content)
             $('.mention-area.emoji-wysiwyg-editor').val(content).text(content);
         });
     },

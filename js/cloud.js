@@ -101,7 +101,7 @@ function init() {
 
     geometry = new THREE.Geometry();
 
-    var texture = THREE.ImageUtils.loadTexture( 'http://dl.huijiwiki.com/resources/assets/cloud10.png', null, animate );
+    var texture = THREE.ImageUtils.loadTexture( 'http://fs.huijiwiki.com/www/resources/assets/cloud10.png', null, animate );
     texture.magFilter = THREE.LinearMipMapLinearFilter;
     texture.minFilter = THREE.LinearMipMapLinearFilter;
 

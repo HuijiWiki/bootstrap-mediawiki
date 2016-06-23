@@ -25,7 +25,196 @@ window.customizeToolbar = function() {
 						type: 'callback',
 						execute: function(){
 	                        window.caret = $('#wpTextbox1').caret();
-	                        $('.video-upload-modal').modal('show');
+
+	                        // Example: Using getSetupProcess() to configure a window with data passed 
+							// at the time the window is opened. 
+
+								                        // Example: Using getSetupProcess() to configure a window with data passed 
+							// at the time the window is opened. 
+
+	                        // Example: Using getSetupProcess() to configure a window with data passed 
+							// at the time the window is opened. 
+
+							// Make a subclass of ProcessDialog 
+							function MyDialog( config ) {
+							  MyDialog.super.call( this, config );
+							}
+							OO.inheritClass( MyDialog, OO.ui.ProcessDialog );
+
+							// Specify the static configurations: title and action set
+							MyDialog.static.title = '添加媒体文件';
+							MyDialog.static.actions = [
+							  { flags: 'primary', label: '添加', action: 'save', modes:'init' },
+							  { flags: 'safe', label: '取消', modes:'init' },
+							  { flags: 'safe', label: '继续添加', modes:'done', action:'back'},
+							  { flags: 'primary', label: '好的', modes: 'done'},
+							];
+
+							// Customize the initialize() function to add content and layouts: 
+							MyDialog.prototype.initialize = function () {
+							  MyDialog.super.prototype.initialize.call( this );
+							  this.panel = new OO.ui.PanelLayout( { $: this.$, padded: true, expanded: false } );
+							  this.panel2 = new OO.ui.PanelLayout( { $: this.$, padded: true, expanded: false } );
+
+							  this.content = new OO.ui.FieldsetLayout( { $: this.$ } );
+							  this.content2 = new OO.ui.FieldsetLayout( { $: this.$ } );
+							  this.urlInput = new OO.ui.TextInputWidget( { $: this.$ , placeholder: '支持youku、bilibili、网易云音乐', indicator: 'required'} );
+							  this.label1 = new OO.ui.LabelWidget( {
+  								label: '媒体文件已录入，你可以复制文件链接，插入到条目中的适当位置。你还可以像处理图片一样为他添加属性和边框。'
+							  } );
+							  this.nameInput = new OO.ui.TextInputWidget( { $: this.$ } );
+							  this.finalInput = new OO.ui.TextInputWidget( { $: this.$ } );
+
+							  this.field = new OO.ui.FieldLayout( this.urlInput, { $: this.$, label: '媒体文件连接', align: 'top' } );
+							  this.field2 = new OO.ui.FieldLayout( this.nameInput, { $: this.$, label: '媒体文件名称', align: 'top' } );
+							  this.field3 = new OO.ui.FieldLayout( this.finalInput, { $: this.$, label: '文件链接', align: 'top' } );
+							  this.button = new OO.ui.ButtonWidget( {
+  								label: '插入文章中',
+  								flags:'constructive'
+								});
+
+							  this.content.addItems([ this.field, this.field2, this.field3 ]);
+							  this.content2.addItems( [this.field3, this.label1, this.button ] );
+							  this.panel.$element.append( this.content.$element );
+							  this.panel2.$element.append( this.content2.$element );
+							  this.stack = new OO.ui.StackLayout( {
+							  	items:[ this.panel, this.panel2 ]
+							  } );							  
+							  this.$body.append( this.stack.$element );
+
+							  this.urlInput.connect( this, { 'change': 'onUrlInputChange' } );
+							  this.button.connect( this, {'click': 'onButtonClick' });
+							};
+							MyDialog.prototype.onButtonClick = function (){
+								var options = {};
+								options.pre = this.finalInput.getValue();
+							    options.post = "";
+							    options.ownline = true;
+    							$( '#wpTextbox1' ).textSelection('encapsulateSelection', options);
+    							this.close();
+							}
+
+							// Specify any additional functionality required by the window (disable opening an empty URL, in this case)
+							MyDialog.prototype.onUrlInputChange = function ( value ) {
+								var regex = /\.(\w+)\.com/;
+							    this.actions.setAbilities( {
+							    	save: !!value.match(regex)
+							  	} );
+							};
+
+							// Specify the dialog height (or don't to use the automatically generated height).
+							MyDialog.prototype.getBodyHeight = function () {
+							  return this.panel.$element.outerHeight( true );
+							};
+
+							// Use getSetupProcess() to set up the window with data passed to it at the time 
+							// of opening (e.g., url: 'http://www.mediawiki.org', in this example). 
+							MyDialog.prototype.getSetupProcess = function ( data ) {
+							  data = data || {};
+							  return MyDialog.super.prototype.getSetupProcess.call( this, data )
+							  .next( function () {
+							    // Set up contents based on data
+							    this.urlInput.setValue( data.url );
+							    this.actions.setMode( 'init' );
+							    this.stack.setItem( this.panel );
+							  }, this );
+							};
+
+							// Specify processes to handle the actions.
+							MyDialog.prototype.getActionProcess = function ( action ) {
+								console.log('debug1');
+								return MyDialog.super.prototype.getActionProcess.call(this, action)
+								.next(function(){
+									if ( action === 'back' ){
+										this.actions.setMode( 'init' );
+										this.stack.setItem( this.panel );
+									}
+									if ( action === 'save' ) {
+										console.log('debug2');
+									  	if (!this.urlInput.getValue()){
+									  		return new OO.ui.Error('URL不能为空');
+									  	}
+									  	var regex = /\.(\w+)\.com/;
+		        						var match = this.urlInput.getValue().match(regex);
+		        						if (!match){
+		        							return new OO.ui.Error('暂不支持该URL');
+		        						}
+		        						var dialog = this;
+		        						
+	        							console.log('debug4');
+	        							var url = dialog.urlInput.getValue();
+		        						var video_name = dialog.nameInput.getValue();
+		        						var dfd = $.Deferred();
+		        						var uploadSuccess = function(filename){
+		        							console.log('debug5');
+		        							dialog.actions.setMode('done');
+		        							var link;
+		        							if (filename.indexOf('.audio') > -1){
+		        								link = "[[File:" + filename;
+		        								link += "]]";
+		        							}else{
+		        								link = "[[File:" + filename + "|thumb|300px|]]";
+		        							}
+
+		        							dialog.finalInput.setValue(link);
+		        							dialog.stack.setItem( dialog.panel2 );
+		        							dfd.resolve();
+		        						}
+		        						var error = function(){
+		        							console.log('debug6');
+		        							dfd.reject(new OO.ui.Error('添加媒体文件过程中出现了一个错误'));
+		        							//dialog.close();
+		        							//return new OO.ui.Error('暂不支持该URL');
+		        						}
+		        						switch(match[1]){
+								            case 'youku':
+								                mw.VideoHandler.queryYouku(url, video_name, uploadSuccess, error);
+								                break;
+								            case 'bilibili':
+								                mw.VideoHandler.queryBilibili(url, video_name, uploadSuccess, error);
+								                break;
+								            case '163':
+								                mw.VideoHandler.query163(url, video_name, uploadSuccess, error);
+								                break; 
+								            // case 'qq':
+								            // default:
+								        }
+								        return dfd.promise();
+
+									}
+								}, this)
+								.next(function(){
+									
+									//this.close();
+								}, this);
+				
+								
+							  	// Fallback to parent handler
+							  	return MyDialog.super.prototype.getActionProcess.call( this, action );
+							};
+
+							// Use the getTeardownProcess() method to perform actions whenever the dialog is closed. 
+							// This method provides access to data passed into the window's close() method 
+							// or the window manager's closeWindow() method.
+							MyDialog.prototype.getTeardownProcess = function ( data ) {
+							  return MyDialog.super.prototype.getTeardownProcess.call( this, data )
+							  .first( function () {
+							  // Perform any cleanup as needed
+							  }, this );
+							};
+
+							// Create and append a window manager.
+							var windowManager = new OO.ui.WindowManager();
+							$( 'body' ).append( windowManager.$element );
+
+							// Create a new process dialog window.
+							var myDialog = new MyDialog();
+
+							// Add the window to window manager using the addWindows() method.
+							windowManager.addWindows( [ myDialog ] );
+
+							// Open the window!   
+							windowManager.openWindow( myDialog, { url: '' } );
 						}
 					}
 				},
@@ -133,25 +322,55 @@ window.customizeToolbar = function() {
 			}
 		} );
 	}
-	var editFormSisyphus = $( "#editform" ).sisyphus( {
-		locationBased: true,
-		timeout: 0,
-		autoRelease: true,
-		onBeforeRestore:function(){
-		    $('#autoRestoreModal').modal({
-		        keyboard: false,
-				backdrop: 'static'
-		    });
-		    return false;
-		}
-	} );
-	$( "#autoRestoreModal .btn-default, #autoRestoreModal .close, #mw-editform-cancel, #editform > div.wikiEditor-ui > div.wikiEditor-ui-controls > div.wikiEditor-ui-buttons > button:nth-child(2)").click(function(){
-	    editFormSisyphus.manuallyReleaseData();
+	mw.loader.using("ext.wikieditor.huijiextra.sisyphus", function(){
+		var editFormSisyphus = $( "#editform" ).sisyphus( {
+			locationBased: true,
+			timeout: 0,
+			autoRelease: true,
+			onBeforeRestore:function(){
+				var that = this;
+			  //   $('#autoRestoreModal').modal({
+			  //       keyboard: false,
+					// backdrop: 'static'
+			  //   });
+			  //   return false;
+				// An example of a message dialog with three actions, displayed as rows because
+				// the labels do not fit within the window width.
+				var messageDialog = new OO.ui.MessageDialog();
+				var windowManager = new OO.ui.WindowManager();
+				$( 'body' ).append( windowManager.$element );
+				windowManager.addWindows( [ messageDialog ] );
+
+				// Configure the message dialog.
+				windowManager.openWindow( messageDialog, {
+				  title: '发现虫洞',
+				  message: '灰机发现您在该页面有未保存的更改，是否现在恢复？',
+				  actions: [
+				    { label: '不恢复', action: 'nevermind' },
+				    { label: '恢复', action: 'recover' }
+				  ],
+				} ).then( function ( opened ) {
+				  opened.then( function ( closing, data ) {
+				    if ( data && data.action == 'recover' ) {
+				    	that.restoreAllData();
+				        console.log( 'Feeling ' + data.action );
+				    } else {
+				    	that.manuallyReleaseData();
+				      	console.log( 'Nevermind' );
+				    }
+				  } );
+				} );
+			}
+		} );
 	});
-	$( "#autoRestoreModal .btn-primary").click(function(){
-	    editFormSisyphus.restoreAllData();
-	    $('#autoRestoreModal').modal('hide');
-	});
+
+	// $( "#autoRestoreModal .btn-default, #autoRestoreModal .close, #mw-editform-cancel, #editform > div.wikiEditor-ui > div.wikiEditor-ui-controls > div.wikiEditor-ui-buttons > button:nth-child(2)").click(function(){
+	//     editFormSisyphus.manuallyReleaseData();
+	// });
+	// $( "#autoRestoreModal .btn-primary").click(function(){
+	//     editFormSisyphus.restoreAllData();
+	//     $('#autoRestoreModal').modal('hide');
+	// });
 
 	var conf, editTools, $sections;
 

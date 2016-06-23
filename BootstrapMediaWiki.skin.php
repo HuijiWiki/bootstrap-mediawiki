@@ -22,8 +22,8 @@ if(file_exists('includes/SkinTemplate.php')){
  */
 class SkinBootstrapMediaWiki extends SkinTemplate {
     /** Using Bootstrap */
-    public $skinname = 'bootstrap-mediawiki';
-    public $stylename = 'bootstrap-mediawiki';
+    public $skinname = 'BootstrapMediawiki';
+    public $stylename = 'BootstrapMediawiki';
     public $template = 'BootstrapMediaWikiTemplate';
     public $useHeadElement = true;
     /**
@@ -189,9 +189,13 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         } else {?>
             
             <?php include 'View/Sidebar.php';
-            if ( $this->getSkin()->getTitle()->getNamespace()!=NS_USER &&  $this->getSkin()->getTitle()->isTalkPage()!=true &&  $wgRequest->getText( 'action' )=='' && ($this->getSkin()->getTitle()->getNamespace!=NS_TOPIC) ){
-            	$customClass = " class='huiji-css-hook'";
-            }
+            // if ( $this->getSkin()->getTitle()->getNamespace()!=NS_USER &&  $this->getSkin()->getTitle()->isTalkPage()!=true 
+            //     &&  ($wgRequest->getText( 'action' )=='' ||  $wgRequest->getText( 'action' )=='purge') 
+            //     && ($this->getSkin()->getTitle()->getNamespace!=NS_TOPIC) )
+            // {
+            // 	$customClass = " class='huiji-css-hook'";
+            // }
+                $customClass = " class='huiji-css-hook'";
             ?>
 
             <div id="wiki-outer-body"<?php echo $customClass;?>>
@@ -217,7 +221,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 $result2 = self::format_nice_number(SiteStats::edits());
                                 echo $result;
                                 //echo $site->getRating();
-                            ?></a>条目</span><span class="edit-count"><a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑</span><span class="follower-count"><a id="site-follower-count" data-toggle="modal" data-target=".follow-msg"><?php echo $stats['followers'] ?></a>关注</p></span></li>
+                            ?></a>条目</span><span class="edit-count"><a href="/wiki/Special:RecentChanges"><?php echo $result2; ?></a>编辑</span><span class="follower-count"><a id="site-follower-count"><?php echo $stats['followers'] ?></a>关注</p></span></li>
                             <span id="subnav-toggle"><i class="fa fa-ellipsis-h"></i></span>
                         </ul>
                     </div>
@@ -228,7 +232,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     <div class="ads-right">
                         <script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="511:6",jd_union_pid="COCprvjSKhDu5O3cAxoAIKSwucYBKgA=";var jd_width=160;var jd_height=600;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgyFF8tWBtMXUFkCWkySH17HQ5EW2NnRAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHVkVABUGXR1rFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script>
                     </div>
-                    <div class="hidden-md hidden-lg hidden-sm ads-fixed"><script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="508:6",jd_union_pid="CPnxgvnSKhDu5O3cAxoAIKGBtMYBKgA=";var jd_width=468;var jd_height=90;var jd_union_euid="";var p="BxIAVhpYFQsSNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgySFcrWDtFC0xlLRglUXhlZgpgRWh7cgtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHV4RARIDXR5rFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script></div>
+                    <div class="hidden-md hidden-lg hidden-sm ads-fixed"><script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="535:6",jd_union_pid="CNTE5erWKhDu5O3cAxoAIOeF+sYBKgA=";var jd_width=200;var jd_height=200;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgybmQUSFgPQ3pkEUcPd1dLWid5G0IGVAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQBQG1IQAREFUR1rFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script></div>
 
                     <div class="hidden-xs text-center ads-center"><script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="505:6",jd_union_pid="CMPLk/jSKhDu5O3cAxoAIPSlusYBKgA=";var jd_width=960;var jd_height=90;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgycQMoUwJCX2RnBXkFFVp5Ul1%2FKU5HVAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHVgSChsGURhrFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script>
                     </div>
@@ -238,6 +242,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     <main id="content">
                         <div class="row">
                             <aside class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"><div class="toc-ul-wrap"></div></aside>
+
                             <article class="col-md-12 wiki-body-section" role="main">
                                 <?php if ($NS != 2 && !($this->getSkin()->getTitle()->isMainPage()) ):?>
                                 <header id="firstHeading" class="page-header">
@@ -374,7 +379,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     </main>
                 </div><!-- container -->
 
-                <div class="bottom">
+                <div class="bottom footer">
                     <div class="container">
                         <?php self::includePage('Bootstrap:Footer'); ?>
                         <?php if( $this->data['sitenotice'] ) { ?>

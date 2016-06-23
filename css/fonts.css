@@ -28,7 +28,7 @@
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 47px;
+    //line-height: 47px;
  }
 /*#pt-notifications-alert .mw-echo-notifications-badge:before {*/
     /*content: "\f0a2";*/

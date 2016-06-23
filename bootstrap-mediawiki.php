@@ -56,7 +56,7 @@ $wgResourceModules['skins.bootstrapmediawiki.sitecolor' ] = array(
 );
 $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'styles' => array(
-		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
+		$skinDir . '/bootstrap-3.3.5/bootstrap-3.3.5/less/bootstrap.less'            => array( 'media' => 'all' ),
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 
@@ -206,18 +206,24 @@ $wgResourceModules['ext.wikieditor.huijiextra.top'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
 	'position' => 'top',
 );
-$wgResourceModules['ext.wikieditor.huijiextra.bottom'] = array(
+$wgResourceModules['ext.wikieditor.huijiextra.sisyphus'] = array(
 	'scripts' => array(
 		$skinDir . '/sisyphus/sisyphus.js',
+	), 
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
+	'position' => 'bottom',	
+);
+$wgResourceModules['ext.wikieditor.huijiextra.bottom'] = array(
+	'scripts' => array(
 		$skinDir . '/js/huiji.editor.js',
-		$skinDir . '/js/video.js',
-
 	), 
 	'messages' => array( 
 		'edittools'
 	),
 	'dependencies' => array(
 		'skins.bootstrapmediawiki.videohandler',
+		'oojs-ui'
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],	
@@ -266,6 +272,21 @@ $wgResourceModules['skins.bootstrapmediawiki.content'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'bottom',	
 );
+
+$wgResourceModuleSkinStyles['BootstrapMediawiki'] = array(
+	'mediawiki.ui' => $skinDir. '/less/mediawiki.ui/default.less',
+	'mediawiki.ui.checkbox' => $skinDir.'/less/mediawiki.ui/components/checkbox.less',
+	'mediawiki.ui.radio' => $skinDir.'/less/mediawiki.ui/components/radio.less',
+	'mediawiki.ui.anchor' => $skinDir.'/less/mediawiki.ui/components/anchors.less',
+	'mediawiki.ui.button' => $skinDir.'/less/mediawiki.ui/components/buttons.less',
+	'mediawiki.ui.input' => $skinDir.'/less/mediawiki.ui/components/inputs.less',
+	'mediawiki.ui.icon' => $skinDir.'/less/mediawiki.ui/components/icons.less',
+	'mediawiki.ui.text' => $skinDir.'/less/mediawiki.ui/components/text.less',
+	'oojs-ui.styles' => $skinDir.'/less/oojs-ui/oojs-ui-mediawiki-noimages.less',
+ 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+);
+
 if ( isset( $wgSiteJS ) ) {
 	$wgResourceModules['skins.bootstrapmediawiki']['scripts'][] = $skinDir . '/' . $wgSiteJS;
 }//end if
@@ -281,7 +302,7 @@ $wgHooks['EditPage::showEditForm:initial'][] = 'BootstrapMediawikiHooks::addEdit
 $wgHooks['GalleryGetModes'][] = 'BootstrapMediawikiHooks::onGalleryGetModes';
 $wgHooks['ParserFirstCallInit'][] = 'BootstrapMediawikiHooks::registerParserHook';
 $wgHooks['OutputPageMakeCategoryLinks'][] = 'BootstrapMediawikiHooks::onOutputPageMakeCategoryLinks';
-$wgHooks['LinkBegin'][] = 'BootstrapMediawikiHooks::UserLinkBegin';
+// $wgHooks['LinkBegin'][] = 'BootstrapMediawikiHooks::UserLinkBegin';
 $wgHooks['BeforePageDisplay'][] = 'BootstrapMediawikiHooks::onBeforePageDisplay';
 $wgHooks['ResourceLoaderGetLessVars'][] = 'BootstrapMediawikiHooks::onResourceLoaderGetLessVars';
 // new permission
@@ -293,4 +314,3 @@ $wgGroupPermissions['sysop']['quickdebug'] = true;
 //Register modules in VE
 $wgVisualEditorPluginModules[]='skins.bootstrapmediawiki.huiji.ve';
 //Less Path
-$wgResourceLoaderLESSImportPaths = array($skinDir.'/less/',"$IP/resources/src/mediawiki.less/", );

@@ -1,12 +1,12 @@
 //@import "HuijiColor.less";
 //@import "mixinscolor.less";
 //@import "SiteColor.less";
-@brand-default:         #ffffff;
-@brand-primary:         #337ab7;
-@brand-success:         #5cb85c;
-@brand-info:            #5bc0de;
-@brand-warning:         #f0ad4e;
-@brand-danger:          #d9534f;
+//@brand-default:         #ffffff;
+//@brand-primary:         #337ab7;
+//@brand-success:         #5cb85c;
+//@brand-info:            #5bc0de;
+//@brand-warning:         #f0ad4e;
+//@brand-danger:          #d9534f;
 
 @btn-default-color:              #333;
 @btn-default-bg:                 @brand-default;
@@ -47,18 +47,26 @@
   @main-lighter:lighten(@main-base, 0.75*(100 - lightness(@main-base)));
 }
 
-.mixin (@n) when (lightness(@n) >= 50%) {
+.mixin (@n) when (iscolor(@n)) {
+  & when (lightness(@n) >= 50%) {
   background-color: darken(@n, 10%);
 }
-.mixin (@n) when (lightness(@n) < 50%) {
-  background-color: lighten(@n, 10%);
+  & when (lightness(@n) < 50%) {
+    background-color: lighten(@n, 10%);
+  }
 }
 
-.mixin2 (@n) when (lightness(@n) >= 50%) {
-  background-color: difference(lighten(@n, 10%), #111);
+.mixin2 (@n) when (iscolor(@n)) {
+  & when (lightness(@n) >= 50%) {
+  background-color: difference(darken(@n, 10%), #111);
 }
-.mixin2 (@n) when (lightness(@n) < 50%) {
-  background-color: difference(lighten(@n, 10%), #111);
+  & when (lightness(@n) < 50%) {
+    background-color: difference(lighten(@n, 10%), #111);
+  }
+}
+
+.diff (@n) when (iscolor(@n)) {
+  background-color: difference(@n, #fff);
 }
 
 .bg(@n) when(iscolor(@n)){
@@ -75,19 +83,6 @@
 }
 .border-color(@n) when(iscolor(@n)){
   border-color:@n;
-}
-
-.check-btn-color(@color, @background, @border) when(iscolor(@color)){
-  .check-btn-color(#09c, @background, @border);
-}
-.check-btn-color(@color, @background, @border) when(iscolor(@background)){
-  .check-btn-color(@color, #09b, @border);
-}
-.check-btn-color(@color, @background, @border) when(iscolor(@border)){
-  .check-btn-color(@color, @background, #09a);
-}
-.check-btn-color(@color, @background, @border){
-
 }
 //.btn-default {
 //  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
@@ -169,20 +164,107 @@
 
 .a();
 
+input,textarea,select,option{
+  color: #333;
+}
+a {
+  color: @a;
+  &:hover{
+    color: darken(@a, 15%);
+  }
+  .link(@detail-a);
+}
+span,div,ul,li,blockquote,table{
+  border-color: @main-lighter;
+  .border-color(@detail-border);
+}
+.popover{
+  background-color: @bg-inner;
+  .bg(@detail-inner-bg);
+  color: @main-base;
+  .color(@detail-color);
+  &.left > .arrow:after{
+    border-left-color: @bg-inner;
+    border-left-color: @detail-inner-bg;
+  }
+  &.right > .arrow:after{
+    border-right-color: @bg-inner;
+    border-right-color: @detail-inner-bg;
+  }
+  &.top > .arrow:after{
+    border-top-color: @bg-inner;
+    border-top-color: @detail-inner-bg;
+  }
+  &.bottom > .arrow:after{
+    border-bottom-color: @bg-inner;
+    border-bottom-color: @detail-inner-bg;
+  }
+  .popover-title{
+    .mixin(@bg-inner);
+    .mixin(@detail-inner-bg);
+  }
+}
+.thumb{
+  .mixin(@bg-inner);
+  .mixin(@detail-inner-bg);
+}
+.cod-comment{
+  .mixin2(@a);
+  .mixin2(@detail-a);
+  a{
+    color: @main-base;
+    .color(@detail-color);
+  }
+}
+td.diff-context{
+  .mixin(@bg-inner);
+  .mixin(@detail-inner-bg);
+  border-color: @brand-primary;
+}
+td.diff-addedline .diffchange{
+  display: block;
+  .diff(@bg-inner);
+  .diff(@detail-inner-bg);
+  color: @main-base;
+  .color(@detail-color);
+}
+td.diff-addedline{
+  border-color: @brand-success;
+}
+td.diff-deletedline{
+  border-color: @brand-danger;
+}
+td.diff-marker{
+  border-color: @brand-info;
+}
+
+#rating_{
+  .color(@detail-vote-color);
+  .rating-score{
+    .bg(@detail-vote-score-bg);
+    .color(@detail-vote-score-color);
+  }
+  .vote-rating-star:before{
+    .color(@detail-vote-star);
+  }
+  .voted:before{
+    .color(@detail-vote-active-star);
+  }
+}
+#wiki-outer-body fieldset#mw-searchoptions{
+  .mixin(@bg-inner);
+  .mixin(@detail-inner-bg);
+}
+.oo-ui-window-frame{
+  background-color: @bg-inner;
+  .bg(@detail-bg);
+  color: @main-base;
+  .color(@detail-color);
+}
 .huiji-css-hook {
   background-color: @bg;
   .bg(@detail-bg);
-  input,textarea,select,option{
-    color: #333;
-  }
-  a {
-    color: @a;
-    &:hover{
-      color: darken(@a, 15%);
-    }
-    .link(@detail-a);
-  }
-
+}
   .toc-sidebar li {
     a {
       color: @main-light;
@@ -254,8 +336,17 @@
     .bg(@detail-inner-bg);
     color: @main-base;
     .color(@detail-color);
-  }
 
+    .bdsharebuttonbox a{
+      background-color: @a;
+      .bg(@detail-a);
+      color: #fff;
+    }
+  }
+  .base{
+    color:@main-base;
+    .color(@detail-color);
+  }
   .secondary{
     color: @main-lighter;
     .color(@detail-secondary);
@@ -282,10 +373,7 @@
     .color(@detail-h5);
   }
 
-  span,div,ul,li,blockquote,table{
-    border-color: @main-lighter;
-    .border-color(@detail-border);
-  }
+
 
   .border-darker{
     border-color: @main-light;
@@ -308,7 +396,7 @@
     }
   }
 
-  .bottom{
+  .bottom.footer{
     .mixin(@bg-inner);
     .bg(@detail-bottom-bg);
     color: @main-darker;
@@ -550,7 +638,6 @@
     border-spacing: 2px;
   }
 
-}
 body .mwe-popups{
   background-color: @bg-inner;
   .bg(@detail-inner-bg);
@@ -562,6 +649,14 @@ body .mwe-popups{
     color: @main-base;
     .color(@detail-color);
   }
+  &.mwe-popups-fade-in-down:after{
+    border-top-color: @bg-inner;
+    border-top-color: @detail-inner-bg;
+  }
+  &.mwe-popups-fade-in-up:after{
+    border-bottom-color: @bg-inner;
+    border-bottom-color: @detail-inner-bg;
+  }
 }
 .user-card{
   background-color: @bg-inner;
@@ -572,6 +667,7 @@ body .mwe-popups{
   .border-color(@detail-border);
   .user-card-top{
     background-color: @a;
+    .bg(@detail-a);
   }
   .user-card-info span,.user-card-info p,.user-card-info a{
     color: @bg-inner;
@@ -580,6 +676,8 @@ body .mwe-popups{
   .user-card-msg .user-card-follow,.user-card-msg .user-card-gift{
     background-color: @bg-inner;
     .bg(@detail-inner-bg);
+    color: @main-base;
+    .color(@detail-color);
   }
 }
 //.user-card

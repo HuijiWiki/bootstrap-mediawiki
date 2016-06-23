@@ -78,7 +78,7 @@ $(function(){
         '<li class="edit-field"><input type="text"></li>'+
         '</ul>'+
         '</div>'+
-        '<p class="edit-tutorial">可输入多个，在每个分类后轻敲回车。</p>'+
+        '<p class="edit-tutorial secondary">可输入多个，在每个分类后轻敲回车。</p>'+
         '<div class="edit-buttons">' +
         '<button class="btn btn-primary edit-submit"><i class="glyphicon glyphicon-ok"></i></button>&nbsp;' +
         '<button type="button" class="btn edit-cancel"><i class="glyphicon glyphicon-remove"></i></button>' +

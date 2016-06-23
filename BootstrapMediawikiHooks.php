@@ -455,7 +455,7 @@ Class BootstrapMediawikiHooks {
                         'width: 100%;' . "\n" . 
                         'height: 100%;' . "\n" . 
                         'z-index: 9999;' . "\n" . 
-                        'background: url(http://dl.huijiwiki.com/resources/assets/preloader.gif) center no-repeat #fff;' . "\n" . 
+                        'background: url(http://fs.huijiwiki.com/www/resources/assets/preloader.gif) center no-repeat #fff;' . "\n" . 
                     '}' . "\n" . 
                 '</style>');  
         $output->prependHTML('<div class="se-pre-con"></div>');
@@ -520,19 +520,19 @@ Class BootstrapMediawikiHooks {
     public static function onOutputPageMakeCategoryLinks( &$out, $categories, &$links ) { 
         $out->addModules('skins.bootstrapmediawiki.editcategory');
     }
-    public static function UserLinkBegin( $dummy, $target, &$html, &$customAttribs, &$query,
-        &$options, &$ret ) {
-        if ($target->getNamespace() == NS_USER){
-            $customAttribs['class'] = 'mw-userlink';
-            $customAttribs['rel'] = 'nofollow';
-        } elseif( $target->getNamespace()== NS_FILE || $target){
-            $path = pathinfo($target->getFullText());
-            if (array_key_exists('extension', $path) && pathinfo($target->getFullText())['extension'] == 'ass'){
-                $customAttribs['download'] = $target->getText();
-            };
-        }
-        return true;
-    }
+    // public static function UserLinkBegin( $dummy, $target, &$html, &$customAttribs, &$query,
+    //     &$options, &$ret ) {
+    //     if ($target->getNamespace() == NS_USER){
+    //         $customAttribs['class'] = 'mw-userlink';
+    //         $customAttribs['rel'] = 'nofollow';
+    //     } elseif( $target->getNamespace()== NS_FILE || $target){
+    //         $path = pathinfo($target->getFullText());
+    //         if (array_key_exists('extension', $path) && pathinfo($target->getFullText())['extension'] == 'ass'){
+    //             $customAttribs['download'] = $target->getText();
+    //         };
+    //     }
+    //     return true;
+    // }
     public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
         global $wgHuijiPrefix, $wgUser, $wgMobile, $wgHuijiSuffix;
         /* add norec and rec config vars */
@@ -576,6 +576,7 @@ Class BootstrapMediawikiHooks {
         // $lessVars['colorpath'] = "\"http://huiji-fs.oss-cn-qingdao-internal.aliyuncs.com/$wgHuijiPrefix/style/SiteColor.less\"";
         // $lessVars['main-base'] = "#000";
         // $lessVars['bg'] = "#000";
+        wfErrorLog(implode(',', $lessVars), '/var/log/mediawiki/SocialProfile.php');
         $cssCon_1 = CommonStyle::getCurrentCssStyle(1);
         $lessCon = array();
         if ( isset( $cssCon_1['cssContent'] ) && $cssCon_1['cssContent'] != null ) {

@@ -134,14 +134,17 @@ $(document).ready(function(){
             var follower = mw.config.get('wgUserName');
             var followee = $(this).siblings().find('a').text();
             var that = $(this);
-            $.post(
-                mw.util.wikiScript(), {
-                    action: 'ajax',
-                    rs: 'wfUserFollowsRecommend',
-                    rsargs: [follower, followee]
+            $.ajax({
+                url:'/api.php',
+                data:{
+                    action:'getuserfollowrecommend',
+                    follower:follower,
+                    followee:followee,
+                    format: 'json'
                 },
-                function(data){
-                    var res = $.parseJSON(data);
+                type:'post',
+                success:function(data){
+                    var res = data.getuserfollowrecommend;
                     if(res.result == null){
                         that.parents('.info-user-list').remove();
                         refreshFeed();
@@ -158,7 +161,33 @@ $(document).ready(function(){
                         refreshFeed( nowtime );
                     }
                 }
-            )
+            })
+            // $.post(
+            //     mw.util.wikiScript(), {
+            //         action: 'ajax',
+            //         rs: 'wfUserFollowsRecommend',
+            //         rsargs: [follower, followee]
+            //     },
+            //     function(data){
+            //         console.log(data);
+            //         var res = $.parseJSON(data);
+            //         if(res.result == null){
+            //             that.parents('.info-user-list').remove();
+            //             refreshFeed();
+            //         }else {
+            //             var parent = that.parents('.info-user-list ul');
+            //             var img = res.result.avatar;
+            //             var user = res.result.username;
+            //             var url = res.result.userurl;
+            //             var content;
+            //             content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
+            //             that.parents('.info-user-list li').remove();
+            //             parent.append(content);
+            //             var nowtime = Date.parse(new Date());
+            //             refreshFeed( nowtime );
+            //         }
+            //     }
+            // )
         });
         $('#following_sites').on('click','.info-user-list span ',function(){
             var username = mw.config.get('wgUserName');
