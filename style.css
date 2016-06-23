@@ -291,7 +291,9 @@ blockquote.quote:after{
 	margin-top: 2em;
 	padding: 1em 0;
 }
-
+*.center *{
+    margin: 0 auto;
+}
 #catlinks #mw-normal-catlinks>ul>li {
 	border-left: 1px solid;
 }
