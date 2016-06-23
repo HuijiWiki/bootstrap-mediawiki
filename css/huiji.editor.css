@@ -26,6 +26,10 @@
     border-top: none;
     padding: 1em 1em 1.5em 1em;
     margin-bottom: 2em;
+    color: #333;
+}
+.editOptions a {
+    color: #09c;
 }
 .client-js .mw-edittools-section input[type="button"] {
     font-size: 0.9em;
@@ -67,72 +71,74 @@ p.mw-edittools-section {
     z-index: 0px;
 }
  
-// .CodeMirror .cm-mw-pagename { text-decoration: underline; }
- 
-// .CodeMirror .cm-mw-matching {background-color: gold;}
- 
-// .CodeMirror .cm-mw-skipformatting {    background-color: #adf; }
-// .CodeMirror .cm-mw-list {color: #08f; font-weight: normal; background-color: #eee;}
-// .CodeMirror .cm-mw-signature,
-// .CodeMirror .cm-mw-hr { color: #08f; font-weight: normal; background-color: #eee; }
-// .CodeMirror .cm-mw-indenting {color: #08f; font-weight: normal; background-color: #ddd;}
-// .CodeMirror .cm-mw-mnemonic {color: #090;}
-// .CodeMirror .cm-mw-comment {color: #aaa; font-weight: normal;}
-// .CodeMirror .cm-mw-apostrophes-bold, .cm-mw-apostrophes-italic {color: #08f;}
- 
-// .CodeMirror pre.cm-mw-section-1 {font-size: 1.8em;}
-// .CodeMirror pre.cm-mw-section-3 {font-weight: normal;}
-// .CodeMirror pre.cm-mw-section-4 {font-weight: normal;}
-// .CodeMirror pre.cm-mw-section-5 {font-weight: normal;}
-// .CodeMirror pre.cm-mw-section-6 {font-weight: normal;}
-// .CodeMirror .cm-mw-section-header {color: #08f; font-weight: normal;}
- 
-// .CodeMirror .cm-mw-template {color: #a11; font-weight: normal;}
-// .CodeMirror .cm-mw-template-name {color: #a11; font-weight: normal;}
-// .CodeMirror .cm-mw-template-name-mnemonic {font-weight: normal;}
-// .CodeMirror .cm-mw-template-argument-name {color: #a11; font-weight: normal;}
-// .CodeMirror .cm-mw-template-delimiter {color: #a11; font-weight: normal;}
-// .CodeMirror .cm-mw-template-bracket {color: #a11; font-weight: normal;}
- 
-// .CodeMirror .cm-mw-templatevariable {color: #f50;  font-weight: normal;}
-// .CodeMirror .cm-mw-templatevariable-name {color: #f50; font-weight: normal;}
-// .CodeMirror .cm-mw-templatevariable-bracket {color: #f50;  font-weight: normal;}
-// .CodeMirror .cm-mw-templatevariable-delimiter {color: #f50; font-weight: normal;}
- 
-// .CodeMirror .cm-mw-parserfunction {font-weight: normal;}
-// .CodeMirror .cm-mw-parserfunction-name {color: #70a; font-weight: normal;}
-// .CodeMirror .cm-mw-parserfunction-bracket {color: #70a; font-weight: normal;}
-// .CodeMirror .cm-mw-parserfunction-delimiter {color: #70a; font-weight: normal;}
- 
-// .CodeMirror pre.cm-mw-exttag {background-image: url(img/ext2.png);}
-// .CodeMirror .cm-mw-exttag {background-image: url(img/ext4.png);}
-// .CodeMirror .cm-mw-exttag-name {color: #70a; font-weight: normal;}
-// .CodeMirror .cm-mw-exttag-bracket {color: #70a; font-weight: normal;}
-// .CodeMirror .cm-mw-exttag-attribute {color: #70a; font-weight: normal;}
- 
-// .CodeMirror .cm-mw-htmltag-name {color: #170; font-weight: normal;}
-// .CodeMirror .cm-mw-htmltag-bracket {color: #170; font-weight: normal;}
-// .CodeMirror .cm-mw-htmltag-attribute {color: #170; font-weight: normal;}
- 
-// .CodeMirror pre.cm-mw-tag-pre, .cm-mw-tag-pre {background-image: url(img/black4.png);}
-// .CodeMirror pre.cm-mw-tag-nowiki, .cm-mw-tag-nowiki {background-image: url(img/black4.png);}
- 
-// .CodeMirror .cm-mw-link-pagename {color: #219; font-weight: normal;}
-// .CodeMirror .cm-mw-link-tosection {color: #08f; font-weight: normal;}
-// .CodeMirror .cm-mw-link-bracket {color: #219; font-weight: normal;}
-// .CodeMirror .cm-mw-link-text {}
-// .CodeMirror .cm-mw-link-delimiter {color: #219; font-weight: normal;}
- 
-// .CodeMirror .cm-mw-extlink, .cm-mw-free-extlink {color: #219; font-weight: normal;}
-// .CodeMirror .cm-mw-extlink-protocol, .cm-mw-free-extlink-protocol {color: #219; font-weight: normal;}
-// .CodeMirror .cm-mw-extlink-text {}
-// .CodeMirror .cm-mw-extlink-bracket {color: #219; font-weight: normal;}
- 
-// .CodeMirror .cm-mw-table-bracket {color: #e0e; font-weight: normal;}
-// .CodeMirror .cm-mw-table-delimiter {color: #e0e; font-weight: normal;}
-// .CodeMirror .cm-mw-table-definition {color: #e0e; font-weight: normal;}
-// .CodeMirror .cm-mw-table-caption {font-weight: normal;}
-
+/*// .CodeMirror .cm-mw-pagename { text-decoration: underline; }*/
+ /**/
+/*// .CodeMirror .cm-mw-matching {background-color: gold;}*/
+ /**/
+/*// .CodeMirror .cm-mw-skipformatting {    background-color: #adf; }*/
+/*// .CodeMirror .cm-mw-list {color: #08f; font-weight: normal; background-color: #eee;}*/
+/*// .CodeMirror .cm-mw-signature,*/
+/*// .CodeMirror .cm-mw-hr { color: #08f; font-weight: normal; background-color: #eee; }*/
+/*// .CodeMirror .cm-mw-indenting {color: #08f; font-weight: normal; background-color: #ddd;}*/
+/*// .CodeMirror .cm-mw-mnemonic {color: #090;}*/
+/*// .CodeMirror .cm-mw-comment {color: #aaa; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-apostrophes-bold, .cm-mw-apostrophes-italic {color: #08f;}*/
+ /**/
+/*// .CodeMirror pre.cm-mw-section-1 {font-size: 1.8em;}*/
+/*// .CodeMirror pre.cm-mw-section-3 {font-weight: normal;}*/
+/*// .CodeMirror pre.cm-mw-section-4 {font-weight: normal;}*/
+/*// .CodeMirror pre.cm-mw-section-5 {font-weight: normal;}*/
+/*// .CodeMirror pre.cm-mw-section-6 {font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-section-header {color: #08f; font-weight: normal;}*/
+ /**/
+/*// .CodeMirror .cm-mw-template {color: #a11; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-template-name {color: #a11; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-template-name-mnemonic {font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-template-argument-name {color: #a11; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-template-delimiter {color: #a11; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-template-bracket {color: #a11; font-weight: normal;}*/
+ /**/
+/*// .CodeMirror .cm-mw-templatevariable {color: #f50;  font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-templatevariable-name {color: #f50; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-templatevariable-bracket {color: #f50;  font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-templatevariable-delimiter {color: #f50; font-weight: normal;}*/
+ /**/
+/*// .CodeMirror .cm-mw-parserfunction {font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-parserfunction-name {color: #70a; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-parserfunction-bracket {color: #70a; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-parserfunction-delimiter {color: #70a; font-weight: normal;}*/
+ /**/
+/*// .CodeMirror pre.cm-mw-exttag {background-image: url(img/ext2.png);}*/
+/*// .CodeMirror .cm-mw-exttag {background-image: url(img/ext4.png);}*/
+/*// .CodeMirror .cm-mw-exttag-name {color: #70a; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-exttag-bracket {color: #70a; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-exttag-attribute {color: #70a; font-weight: normal;}*/
+ /**/
+/*// .CodeMirror .cm-mw-htmltag-name {color: #170; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-htmltag-bracket {color: #170; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-htmltag-attribute {color: #170; font-weight: normal;}*/
+ /**/
+/*// .CodeMirror pre.cm-mw-tag-pre, .cm-mw-tag-pre {background-image: url(img/black4.png);}*/
+/*// .CodeMirror pre.cm-mw-tag-nowiki, .cm-mw-tag-nowiki {background-image: url(img/black4.png);}*/
+ /**/
+/*// .CodeMirror .cm-mw-link-pagename {color: #219; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-link-tosection {color: #08f; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-link-bracket {color: #219; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-link-text {}*/
+/*// .CodeMirror .cm-mw-link-delimiter {color: #219; font-weight: normal;}*/
+ /**/
+/*// .CodeMirror .cm-mw-extlink, .cm-mw-free-extlink {color: #219; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-extlink-protocol, .cm-mw-free-extlink-protocol {color: #219; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-extlink-text {}*/
+/*// .CodeMirror .cm-mw-extlink-bracket {color: #219; font-weight: normal;}*/
+ /**/
+/*// .CodeMirror .cm-mw-table-bracket {color: #e0e; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-table-delimiter {color: #e0e; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-table-definition {color: #e0e; font-weight: normal;}*/
+/*// .CodeMirror .cm-mw-table-caption {font-weight: normal;}*/
+.CodeMirror{
+    font-family: inherit!important;
+}
 #upload-div{
     background: #000!important;
 }

@@ -264,7 +264,6 @@ td.diff-marker{
 .huiji-css-hook {
   background-color: @bg;
   .bg(@detail-bg);
-}
   .toc-sidebar li {
     a {
       color: @main-light;
@@ -283,161 +282,157 @@ td.diff-marker{
       .border-color(@detail-toc-a-hover)
     }
   }
-  .subnav{
+  .subnav {
     background-color: @sub-bg;
     .bg(@detail-sub-bg);
-    .nav>li>a{
+    .nav > li > a {
       color: @sub-a;
       .color(@detail-sub-a);
-      &:hover,&:active,&:focus{
-        background-color: difference( @sub-bg , #111);
+      &:hover, &:active, &:focus {
+        background-color: difference(@sub-bg , #111);
         .bg(@detail-sub-a-hover-bg);
       }
     }
-    .nav .open>a{
-      background-color: difference( @sub-bg , #111);
+    .nav .open > a {
+      background-color: difference(@sub-bg , #111);
       .bg(@detail-sub-a-hover-bg);
     }
-    .site-count{
+    .site-count {
       color: @sub-a;
       .color(@detail-sub-a);
-      a{
-        color: difference( @sub-bg , #fff);
+      a {
+        color: difference(@sub-bg , #fff);
         .color(@detail-sub-site-count);
       }
     }
-//    .nav .dropdown{
-      .dropdown-menu{
-        background-color: difference( @sub-bg , #111);
-        .bg(@detail-sub-a-hover-bg);
-        a{
-          color: @sub-a;
-          .color(@detail-sub-a);
-          &:hover{
-            background-color: @sub-bg;
-            .bg(@detail-sub-bg);
-          }
+    //    .nav .dropdown{
+    .dropdown-menu {
+      background-color: difference(@sub-bg , #111);
+      .bg(@detail-sub-a-hover-bg);
+      a {
+        color: @sub-a;
+        .color(@detail-sub-a);
+        &:hover {
+          background-color: @sub-bg;
+          .bg(@detail-sub-bg);
         }
       }
-//    }
-    .nav .dropdown> a{
-      @media (max-width: 767px){
+    }
+    //    }
+    .nav .dropdown > a {
+      @media (max-width: 767px) {
         background-color: @sub-bg;
         .bg(@detail-sub-bg);
       }
     }
   }
 
-  .color-picker{
+  .color-picker {
     background-color: @bg-inner;
   }
-  #wiki-body{
+  #wiki-body {
     background-color: @bg-inner;
     .bg(@detail-inner-bg);
     color: @main-base;
     .color(@detail-color);
 
-    .bdsharebuttonbox a{
+    .bdsharebuttonbox a {
       background-color: @a;
       .bg(@detail-a);
       color: #fff;
     }
   }
-  .base{
-    color:@main-base;
+  .base {
+    color: @main-base;
     .color(@detail-color);
   }
-  .secondary{
+  .secondary {
     color: @main-lighter;
     .color(@detail-secondary);
   }
 
-  .new{
+  .new {
     color: #999;
     .color(@detail-new);
   }
 
-  h1{
+  h1 {
     .color(@detail-h1);
   }
-  h2{
+  h2 {
     .color(@detail-h2);
   }
-  h3{
+  h3 {
     .color(@detail-h3);
   }
-  h4{
+  h4 {
     .color(@detail-h4);
   }
-  h5{
+  h5 {
     .color(@detail-h5);
   }
 
-
-
-  .border-darker{
+  .border-darker {
     border-color: @main-light;
   }
 
-  #contentSub{
+  #contentSub {
     color: @main-middle;
     .color(@detail-contentsub);
   }
 
-  .caret{
+  .caret {
     border-left-color: transparent;
     border-right-color: transparent;
     border-top-color: initial;
   }
-  .carousel-control{
+  .carousel-control {
     color: #fff;
-    &:hover{
+    &:hover {
       color: #fff;
     }
   }
 
-  .bottom.footer{
+  .bottom.footer {
     .mixin(@bg-inner);
     .bg(@detail-bottom-bg);
     color: @main-darker;
     .color(@detail-bottom-color);
   }
 
-  blockquote{
+  blockquote {
     .mixin(@bg-inner);
     .bg(@detail-quote-bg);
     .color(@detail-quote-color);
     .border-color(@detail-quote-border);
-    a{
+    a {
       .link(@detail-quote-a);
     }
   }
 
-  .wikitable,{
+  .wikitable, {
     .mixin(@bg-inner);
     .bg(@detail-wikitable-bg);
     .color(@detail-wikitable-color);
-    a{
+    a {
       .link(@detail-wikitable-a);
     }
-    tr,td{
+    tr, td {
       border-color: @main-lighter;
       .border-color(@detail-wikitable-border)
     }
   }
 
-
-
-  .table-stripe{
-    tr:nth-child(odd){
+  .table-stripe {
+    tr:nth-child(odd) {
       .mixin2(@bg-inner)
     }
   }
-  .infobox{
+  .infobox {
     width: 300px;
     background-color: @modal;
     .bg(@detail-infobox-bg);
-    font-size: 13px;
+    font-size: 1.2rem;
     float: right;
     margin-left: 40px;
     margin-bottom: 30px;
@@ -445,26 +440,26 @@ td.diff-marker{
     border-style: solid;
     border-collapse: separate;
     border-spacing: 1px;
-    color:difference(@modal,#fff);
+    color: difference(@modal, #fff);
     .color(@detail-infobox-color);
-    a{
+    a {
       .color(@detail-infobox-a);
     }
-    th,td{
+    th, td {
       border-bottom-color: difference(@modal, #111);
       .border-color(@detail-infobox-border);
     }
-    .infobox-img{
+    .infobox-img {
       text-align: center;
       font-size: 1.25em;
       font-weight: bold;
       padding: 0;
     }
-    .infobox-title{
+    .infobox-title {
       padding: 5px 8px;
       .bg(@detail-infobox-title-bg);
       .color(@detail-infobox-title-color);
-      th{
+      th {
         font-size: 16px;
         text-align: center;
       }
@@ -481,14 +476,14 @@ td.diff-marker{
       //          }
       //        }
     }
-    .infobox-item-title th{
+    .infobox-item-title th {
       text-align: center;
       padding: 4px;
       background-color: difference(@modal, #111);
       .bg(@detail-infobox-item-title-bg);
       .color(@detail-infobox-item-title-color);
     }
-    .infobox-item-label{
+    .infobox-item-label {
       padding: 8px;
       width: 70px;
       border-bottom-width: 1px;
@@ -497,116 +492,117 @@ td.diff-marker{
       .color(@detail-infobox-item-label-color);
       .border-color(@detail-infobox-item-label-border);
       //        border-bottom-color:
-      &.no-border{
+      &.no-border {
         border-bottom-color: transparent;
       }
     }
-    .infobox-item-detail{
+    .infobox-item-detail {
       padding: 8px;
       border-bottom-width: 1px;
       border-bottom-style: solid;
       .bg(@detail-infobox-item-detail-bg);
       .color(@detail-infobox-item-detail-color);
-      a{
+      a {
         .color(@detail-infobox-item-detail-a);
       }
       .border-color(@detail-infobox-item-detail-border);
-      &.no-border{
+      &.no-border {
         border-bottom-color: transparent;
       }
     }
   }
 
-  .navbox{
-    background-color:@modal;
+  .navbox {
+    background-color: @modal;
     .bg(@detail-navbox-bg);
+    font-size: 1.2rem;
     border-collapse: separate;
-//    border-width: 1px;
-//    border-style: solid;
-//    width: 100%;
-//    margin: auto;
-//    clear: both;
-//    font-size: 0.88em;
-//    padding: 1px;
-//    margin-top: 10px;
+    //    border-width: 1px;
+    //    border-style: solid;
+    //    width: 100%;
+    //    margin: auto;
+    //    clear: both;
+    //    font-size: 0.88em;
+    //    padding: 1px;
+    //    margin-top: 10px;
     color: difference(@modal, #fff);
     .color(@detail-navbox-color);
-    a{
+    a {
       .link(@detail-navbox-a);
     }
-//    tr{
-//      border-bottom-width: 1px;
-//      border-bottom-style: solid;
-//      border-bottom-color:  difference(@modal, #111);
-//      .border-color(@detail-navbox-border);
-//    }
-//    td{
-//      padding: 0;
-//    }
-    .navbox-title{
-//      padding: 8px;
-//      font-size: 16px;
-//      text-align: center;
-      background-color:  difference(@modal, #111);
+    //    tr{
+    //      border-bottom-width: 1px;
+    //      border-bottom-style: solid;
+    //      border-bottom-color:  difference(@modal, #111);
+    //      .border-color(@detail-navbox-border);
+    //    }
+    //    td{
+    //      padding: 0;
+    //    }
+    .navbox-title {
+      //      padding: 8px;
+      //      font-size: 16px;
+      //      text-align: center;
+      background-color: difference(@modal, #111);
       .bg(@detail-navbox-title-bg);
       .color(@detail-navbox-title-color);
-      a{
-//        margin: 0 5px;
+      a {
+        //        margin: 0 5px;
         .link(@detail-navbox-title-a);
       }
     }
-//    .mw-collapsible-toggle{
-//      text-align: right;
-//      cursor: pointer;
-//      float: right;
-//    }
-    .navbox-group{
-//      width: 150px;
+    //    .mw-collapsible-toggle{
+    //      text-align: right;
+    //      cursor: pointer;
+    //      float: right;
+    //    }
+    .navbox-group {
+      //      width: 150px;
       background-color: lighten(@modal, 10%);
       .bg(@detail-navbox-group-bg);
       .color(@detail-navbox-group-color);
-//      white-space: nowrap;
-//      text-align: center;
-//      padding: 8px;
-      a{
+      //      white-space: nowrap;
+      //      text-align: center;
+      //      padding: 8px;
+      a {
         .link(@detail-navbox-group-a);
       }
     }
-    .navbox-list{
+    .navbox-list {
       .bg(@detail-navbox-list-bg);
       .color(@detail-navbox-list-color);
-      a:not(.new){
+      a:not(.new) {
         .link(@detail-navbox-list-a);
       }
-      .new{
+      .new {
         .link(@detail-navbox-list-new);
       }
-      &.navbox-even{
+      &.navbox-even {
         .bg(@detail-navbox-list-even-bg);
       }
-      &.navbox-odd{
+      &.navbox-odd {
         .bg(@detail-navbox-list-odd-bg);
       }
     }
-//    .navbox-list{
-//      padding: 8px;
-//      a{
-//        margin: 0 5px;
-//      }
-//    }
-    .navbox-abovebelow{
-//      padding: 8px;
-//      text-align: center;
-      background-color:  difference(@modal, #111);
+    //    .navbox-list{
+    //      padding: 8px;
+    //      a{
+    //        margin: 0 5px;
+    //      }
+    //    }
+    .navbox-abovebelow {
+      //      padding: 8px;
+      //      text-align: center;
+      background-color: difference(@modal, #111);
       .bg(@detail-navbox-abovebelow-bg);
       .color(@detail-navbox-abovebelow-color);
-      a{
-//        margin: 0 5px;
+      a {
+        //        margin: 0 5px;
         .link(@detail-navbox-abovebelow-a);
       }
     }
-    .navbox-border td{
-      background: rgba(0,0,0,.5);
+    .navbox-border td {
+      background: rgba(0, 0, 0, .5);
     }
   }
 
@@ -633,10 +629,11 @@ td.diff-marker{
     .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
   }
 
-  table.navbox-subgroup{
+  table.navbox-subgroup {
     border-collapse: separate;
     border-spacing: 2px;
   }
+}
 
 body .mwe-popups{
   background-color: @bg-inner;

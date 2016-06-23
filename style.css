@@ -610,14 +610,14 @@ img.thumbborder {
 	float: none !important; 
 	background: transparent !important;
 }
-// .oo-ui-window-isolated {
-//     font-family: inherit !important;
-//     font-size: 1.2em !important;
-// }
-// .oo-ui-processDialog-title {
-//     font-weight: bold;
-//     line-height: 1.3em !important;
-// }
+/*// .oo-ui-window-isolated {*/
+/*//     font-family: inherit !important;*/
+/*//     font-size: 1.2em !important;*/
+/*// }*/
+/*// .oo-ui-processDialog-title {*/
+/*//     font-weight: bold;*/
+/*//     line-height: 1.3em !important;*/
+/*// }*/
 
 body .mw-echo-overlay {
 	z-index: 1300;
@@ -1060,12 +1060,12 @@ sup.reference {
     text-overflow:ellipsis;
     white-space:nowrap;
 }
-// .oo-ui-popupToolGroup-handle {
-//     min-height: 3.1em;
-// }
-// .oo-ui-barToolGroup > .oo-ui-toolGroup-tools > .oo-ui-tool > .oo-ui-tool-link{
-//     padding:  0 0.625em!important;
-// }
+/*// .oo-ui-popupToolGroup-handle {*/
+/*//     min-height: 3.1em;*/
+/*// }*/
+/*// .oo-ui-barToolGroup > .oo-ui-toolGroup-tools > .oo-ui-tool > .oo-ui-tool-link{*/
+/*//     padding:  0 0.625em!important;*/
+/*// }*/
 .user-card>.fa-spinner{
     text-align: center;
     margin: 0 auto;
@@ -1247,24 +1247,24 @@ ol.carousel-indicators{
     float: right;
     display: inline-block;
 }
-// #pt-createaccount{
-//     font-size: 1.2rem;
-// }
+/*// #pt-createaccount{*/
+/*//     font-size: 1.2rem;*/
+/*// }*/
 /*hack notification*/
-#pt-notifications-alert, #pt-notifications-message{
-    font-size: 1.2rem;
-    position: relative;
-// }
-// #pt-notifications-alert .oo-ui-popupWidget-popup, #pt-notifications-message .oo-ui-popupWidget-popup{
-//     font-size: 14px;
-// }
-// #pt-notifications-alert .oo-ui-labelElement-label, #pt-notifications-message .oo-ui-labelElement-label{
-//     margin: 0;
-//     padding: 0;
-// }
-// #pt-notifications-alert .oo-ui-buttonGroupWidget, #pt-notifications-message .oo-ui-buttonGroupWidget {
-//     display: block;
-// }
+/*#pt-notifications-alert, #pt-notifications-message{*/
+    /*font-size: 1.2rem;*/
+    /*position: relative;*/
+/*// }*/
+/*// #pt-notifications-alert .oo-ui-popupWidget-popup, #pt-notifications-message .oo-ui-popupWidget-popup{*/
+/*//     font-size: 14px;*/
+/*// }*/
+/*// #pt-notifications-alert .oo-ui-labelElement-label, #pt-notifications-message .oo-ui-labelElement-label{*/
+/*//     margin: 0;*/
+/*//     padding: 0;*/
+/*// }*/
+/*// #pt-notifications-alert .oo-ui-buttonGroupWidget, #pt-notifications-message .oo-ui-buttonGroupWidget {*/
+/*//     display: block;*/
+/*// }*/
 #pt-notifications-alert .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon,
 #pt-notifications-message .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon,
 #pt-following .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon{
@@ -1277,12 +1277,12 @@ ol.carousel-indicators{
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    //line-height: 47px;
+    /*//line-height: 47px;*/
  }
-// .skin-bootstrap-mediawiki .mw-echo-ui-notificationBadgeButtonPopupWidget .oo-ui-popupWidget {
-//     font-size: 1.16666667em;
-//     left: 16px;
-// }
+/*// .skin-bootstrap-mediawiki .mw-echo-ui-notificationBadgeButtonPopupWidget .oo-ui-popupWidget {*/
+/*//     font-size: 1.16666667em;*/
+/*//     left: 16px;*/
+/*// }*/
 #pt-notifications-alert .mw-echo-notifications-badge:before {
     content: "\f0a2";
     position: absolute;
@@ -1372,14 +1372,14 @@ ol.carousel-indicators{
     #pt-user-icon {
         margin-right: 20px;
     }
-    // #pt-notifications-alert,  #pt-notifications-message{
-    //     line-height: 40px;
-    //     // color: #fff;
-    //     padding: 0 5px;
-    //     width: 30px;
-    //     height: 40px;
-    //     position: static;
-    // }
+    /*// #pt-notifications-alert,  #pt-notifications-message{*/
+    /*//     line-height: 40px;*/
+    /*//     // color: #fff;*/
+    /*//     padding: 0 5px;*/
+    /*//     width: 30px;*/
+    /*//     height: 40px;*/
+    /*//     position: static;*/
+    /*// }*/
     .header .navbar-collapse .navbar-user li > a.mw-echo-notifications-badge{
         line-height: 15px;
     }
