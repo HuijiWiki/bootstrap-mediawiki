@@ -324,6 +324,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
             } elseif( 'user' == $which ) {
                 switch( $link['title'] ) {
                 case '讨论': $icon = 'comment'; break;
+                case '称号': $icon = 'graduation-cap'; break;
                 case '设置': $icon = 'cog'; break;
                 case '监视列表': $icon = 'eye'; break;
                 case '贡献': $icon = 'list-alt'; break;
@@ -356,6 +357,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
             );
             switch( $link['title'] ) {
                 case '页面': $icon = 'file'; break;
+                case '信息': $icon = 'file'; break;
                 case '项目页面': $icon = 'file'; break;
                 case '讨论': $icon = 'comment'; break;
                 case '编辑': $icon = 'pencil'; break;
@@ -605,6 +607,14 @@ Class HuijiSkinTemplate extends BaseTemplate {
                             unset($personal_urls['notifications-alert']);
                             unset($personal_urls['notifications-message']);
                             unset($personal_urls['userpage']);
+                            unset($personal_urls['mytalk']);
+                            $personal_urls = array_slice($personal_urls, 0, 1, true) + 
+                            array('designation' => array(
+                                'text' => '称号',
+                                'href' => '/wiki/Special:designation',
+                                'active' => false,
+                            ))+
+                            array_slice($personal_urls, 1, count($personal_urls)-1, true);
                             $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon, 'user' );
                             $user_alert = $this->nav_notification($this->alertAdapter($this->data['personal_urls']));
                             $user_message = $this->nav_notification($this->messageAdapter($this->data['personal_urls']));

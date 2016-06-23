@@ -84,6 +84,24 @@
 .border-color(@n) when(iscolor(@n)){
   border-color:@n;
 }
+.primary{
+  background-color: @brand-primary;
+}
+.darken{
+  .mixin(@bg-inner);
+  .mixin(@detail-inner-bg);
+}
+.quite{
+  color: inherit;
+  background-color: inherit;
+  &:hover{
+    color: inherit;
+  }
+}
+.no-border{
+  border-color: transparent!important;
+  border: 0;
+}
 //.btn-default {
 //  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
 //}

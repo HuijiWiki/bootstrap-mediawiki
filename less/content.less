@@ -153,8 +153,11 @@ textarea {
 //  position:relative;
 //  left: 5px;
 //}
-.ns-0 #wiki-outer-body{
+.ns--1{
   font-size: 14px;
+}
+body:not(.ns--1) #wiki-outer-body{
+  font-size: 16px;
   .wiki-body-section  {
     a:not(.image) {
       &:hover {
@@ -174,7 +177,7 @@ textarea {
   }
 }
 .ns-0 #wiki-outer-body .familyTree, .ns-0 #wiki-outer-body .reflist, .ns-0 #wiki-outer-body .infobox{
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 #wiki-body{
   @media (min-width: 769px){

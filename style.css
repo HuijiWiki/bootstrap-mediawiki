@@ -305,6 +305,9 @@ blockquote.quote:after{
 	padding-bottom: 2em;
 	padding-top: 2em;
 }
+.wikiEditor-ui-top{
+    font-size: 14px;
+}
 
 .bottom .mw-editsection {
 	display: none;

@@ -3,24 +3,33 @@
 
     <ul class="sidebar-nav" id="sidebar-content">
         <li class="sidebar-header">
-            <a href="<?php echo $this->getSkin()->getTitle()->getFullUrl(array('action'=>'info')); ?>"><?php echo $this->getSkin()->getTitle()->getPrefixedText(); ?></a>
+            <a href="<?php echo $this->getSkin()->getTitle()->getFullUrl(); ?>"><?php echo $this->getSkin()->getTitle()->getPrefixedText(); ?></a>
             <?php
-                if ( isset( $this->data['content_actions']['watch'])){
-                    echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['watchlist']['id'].'">
-                    <a href="'.$this->data['content_actions']['watch']['href'].'">'.$this->data['content_actions']['watch']['text'].'</a></button>';
-                    unset( $this->data['content_actions']['watch']);
-                } else if ( isset( $this->data['content_actions']['unwatch'])){
-                    echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['unwatch']['id'].'">
-                    <a href="'.$this->data['content_actions']['unwatch']['href'].'">'.$this->data['content_actions']['unwatch']['text'].'</a></button>';
-                    unset ( $this->data['content_actions']['unwatch']);
+                if (!$this->getSkin()->getTitle()->isTalkPage()){
+                    unset($this->data['content_actions']['nstab-main']);
                 }
+                // if ( isset( $this->data['content_actions']['watch'])){
+                //     echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['watchlist']['id'].'">
+                //     <a href="'.$this->data['content_actions']['watch']['href'].'">'.$this->data['content_actions']['watch']['text'].'</a></button>';
+                //     unset( $this->data['content_actions']['watch']);
+                // } else if ( isset( $this->data['content_actions']['unwatch'])){
+                //     echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['unwatch']['id'].'">
+                //     <a href="'.$this->data['content_actions']['unwatch']['href'].'">'.$this->data['content_actions']['unwatch']['text'].'</a></button>';
+                //     unset ( $this->data['content_actions']['unwatch']);
+                // }
              ?>
-
         </li>
         <li class="sidebar-behavior">
             <ul>
             <?php         
-            
+            if ($this->data['isarticle']){
+                $this->data['content_actions']['info'] = array(
+                        "key" => "info",
+                        "href" => $this->getSkin()->getTitle()->getFullUrl(array('action'=>'info')),
+                        "class" => "info ",
+                        "text" => "信息",
+                    );                
+            }
             if ( $this->data['isarticle'] && $wgUser->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $this->skin->getTitle()->exists()){
                 $this->data['content_actions']['fork'] = array(
                         "key" => "fork",
