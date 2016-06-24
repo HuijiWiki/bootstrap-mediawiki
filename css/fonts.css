@@ -21,33 +21,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-#pt-notifications-alert, #pt-notifications-message {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    //line-height: 47px;
- }
 /*#pt-notifications-alert .mw-echo-notifications-badge:before {*/
     /*content: "\f0a2";*/
 /*}*/
 /*#pt-notifications-message:before {*/
     /*content: "\f003";*/
 /*}*/
-.icon-lv1,.icon-lv2,.icon-lv3,.icon-lv4,.icon-lv5,.icon-lv6{
-    color: #666;
-}
-.icon-lv7,.icon-lv8,.icon-lv9,.icon-lv10,.icon-lv11{
-    color: #0071bc;
-}
-.icon-lv12,.icon-lv13,.icon-lv14,.icon-lv15{
-    color: #9327bf;
-}
-.icon-lv16,.icon-lv17,.icon-lv18{
-    color: #fbb03b;
-}
 [class^="icon-lv1"], [class*=" icon-lv1"]{
 	padding-right: .5em;
 }

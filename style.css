@@ -170,14 +170,14 @@ option.unclickable {
 	color: #ccc;
 }
 
-#wiki-body h2 {
+.ns-0 #wiki-body h2 {
 	border-bottom: none;
 	padding-bottom: 0.5em;
 	padding-top: 50px;
     margin:0;
 }
 
-#wiki-body h3 {
+.ns-0 #wiki-body h3 {
 	border-bottom: none;
     padding-bottom: 0.5em;
     padding-top: 25px;
@@ -188,6 +188,10 @@ option.unclickable {
     margin-bottom: 10px;
     line-height: 1.8;
 
+}
+legend{
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
 
 #mw-content-text .center {
@@ -218,6 +222,8 @@ option.unclickable {
 }
 .page-header{
     margin: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
 .void.page-header {
     border-bottom: 0px;
@@ -291,9 +297,7 @@ blockquote.quote:after{
 	margin-top: 2em;
 	padding: 1em 0;
 }
-*.center *{
-    margin: 0 auto;
-}
+
 #catlinks #mw-normal-catlinks>ul>li {
 	border-left: 1px solid;
 }
@@ -307,9 +311,6 @@ blockquote.quote:after{
 	padding-bottom: 2em;
 	padding-top: 2em;
 }
-.wikiEditor-ui-top{
-    font-size: 14px;
-}
 
 .bottom .mw-editsection {
 	display: none;
@@ -321,6 +322,9 @@ blockquote.quote:after{
 
 .printfooter { display: none;}
 
+.comments-body{
+    margin-bottom: 20px;
+}
 /* thumb, copied from vector */
 .thumb {
 	margin-bottom: .5em;
@@ -752,7 +756,9 @@ body .mw-echo-overlay::before{
 .mw-notification-content p{
     margin: 0;
 }
-
+.flow-component.board-page .flow-board-header{
+    background-color: rgba(0,0,0,.05);
+}
 /*login modal*/
 .login-in{
     cursor: pointer;
@@ -809,13 +815,13 @@ input:-webkit-autofill {
 
 /*手机上图片不超过手机宽度*/
 @media screen and (min-width:320px ) and (max-width:414px ){
-    .ns-0 #mw-content-text>*{
+    #mw-content-text>*{
         max-width: 100%;
     }
     .infobox{
         width:100%!important;
     }
-    div.thumb,.thumbinner,.ns-0 #bodyContent img, .ns-0 .comments-body img {
+    div.thumb,.thumbinner,#bodyContent img, .comments-body img {
         max-width: 100%!important;
         height: auto;
     }
@@ -1375,8 +1381,9 @@ ol.carousel-indicators{
         width: 300px;
     }
     #pt-user-icon {
-        margin-right: 20px;
+        margin-right: 1.5em;
     }
+    
     /*// #pt-notifications-alert,  #pt-notifications-message{*/
     /*//     line-height: 40px;*/
     /*//     // color: #fff;*/
@@ -1434,7 +1441,7 @@ ol.carousel-indicators{
     #pt-notifications-alert .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor,
     #pt-notifications-message .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor,
     #pt-following .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor{
-        // right: 120px;
+        /*// right: 120px;*/
         display: none;
     }
 
@@ -1537,4 +1544,11 @@ ol.carousel-indicators{
 .ads-right{
   position: fixed;
   right: 0;
+}
+
+.flow-board-header-footer hr,.flow-ui-navigationWidget{
+    border: 0!important;
+}
+.flow-no-more, .flow-undo,.flow-ui-editorControlsWidget-termsLabel,.flow-post,.oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button > .oo-ui-labelElement-label,.mw-ui-anchor.mw-ui-progressive.mw-ui-quiet,.flow-post-meta{
+    color: inherit!important;
 }

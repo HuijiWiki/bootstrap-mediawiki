@@ -165,7 +165,7 @@
                 $sysop = $site->getUsersFromGroup($group);
                 $nums = ( count($sysop) > 5 )?5:count($sysop);
                 for ($j=0; $j < $nums; $j++) {
-                    echo Linker::linkKnown(User::newFromName($sysop[$j]['user_name'])->getUserPage(), $sysop[$j]['avatar']);
+                    echo Linker::linkKnown(User::newFromName($sysop[$j]['user_name'])->getUserPage(), $sysop[$j]['avatar'], [], [], ['known','no-designation']);
                     //echo '<a href="'.$sysop[$j]['url'].'"  title="'.$sysop[$j]['user_name'].'">'.$sysop[$j]['avatar'].'</a>';
                 }
                 if ( count($sysop) > 5 ) {

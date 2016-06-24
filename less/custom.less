@@ -102,6 +102,10 @@
   border-color: transparent!important;
   border: 0;
 }
+[class^="icon-lv"], [class*=" icon-lv"]{
+  color: @main-base;
+  .color(@detail-color);
+}
 //.btn-default {
 //  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
 //}
@@ -192,7 +196,7 @@ a {
   }
   .link(@detail-a);
 }
-span,div,ul,li,blockquote,table{
+span,div,ul,li,blockquote,table,legend,header{
   border-color: @main-lighter;
   .border-color(@detail-border);
 }
@@ -372,6 +376,9 @@ td.diff-marker{
   .new {
     color: #999;
     .color(@detail-new);
+    &:hover{
+      color: darken(#999, 10%);
+    }
   }
 
   h1 {

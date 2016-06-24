@@ -158,25 +158,25 @@ textarea {
 }
 body:not(.ns--1) #wiki-outer-body{
   font-size: 16px;
-  .wiki-body-section  {
-    a:not(.image) {
-      &:hover {
-        text-decoration: none;
-      }
-      &.new {
-        color: extract(@content-acolor, 2);
-        &:hover {
-          color: extract(@a-hover-color, 2);
-        }
-      }
-    }
-  }
+//  .wiki-body-section  {
+//    a:not(.image) {
+//      &:hover {
+//        text-decoration: none;
+//      }
+//      &.new {
+//        color: extract(@content-acolor, 2);
+//        &:hover {
+//          color: extract(@a-hover-color, 2);
+//        }
+//      }
+//    }
+//  }
   .caret,.arrow{
     border-left-color: @transparent;
     border-right-color: @transparent;
   }
 }
-.ns-0 #wiki-outer-body .familyTree, .ns-0 #wiki-outer-body .reflist, .ns-0 #wiki-outer-body .infobox{
+:not(.ns--1) #wiki-outer-body .familyTree, :not(.ns--1) #wiki-outer-body .reflist, :not(.ns--1) #wiki-outer-body .infobox{
   font-size: 1.4rem;
 }
 #wiki-body{
