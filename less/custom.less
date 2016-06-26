@@ -261,15 +261,20 @@ td.diff-marker{
 }
 
 #rating_{
+  color:@main-base;
   .color(@detail-vote-color);
   .rating-score{
+    backgroud-color:@brand-primary;
     .bg(@detail-vote-score-bg);
+    color:@bg-inner;
     .color(@detail-vote-score-color);
   }
   .vote-rating-star:before{
+    color:@brand-primary;
     .color(@detail-vote-star);
   }
   .voted:before{
+    color:@brand-primary;
     .color(@detail-vote-active-star);
   }
 }
