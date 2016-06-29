@@ -49,7 +49,14 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addMeta( 'keywords', '维基, 百科, wiki');
             $out->addHeadItem( 'canonical',
-                '<link rel="canonical" href="'.$wgCentralServer.'" />' . "\n");    
+                '<link rel="canonical" href="'.$wgCentralServer.'" />' . "\n"); 
+            $out->addHeadItem( 'alex', '<!-- Start Alexa Certify Javascript -->
+                <script type="text/javascript">
+                _atrk_opts = { atrk_acct:"zMVsn1QolK107i", domain:"huiji.wiki",dynamic: true};
+                (function() { var as = document.createElement("script"); as.type = "text/javascript"; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(as, s); })();
+                </script>
+                <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=zMVsn1QolK107i" style="display:none" height="1" width="1" alt="" /></noscript>
+                <!-- End Alexa Certify Javascript -->  ');   
             //$out->addHeadItem('meta','<meta property="qc:admins" content="6762163113460512167131" />'); 
             //$out->addHeadItem('meta','<meta property="wb:webmaster" content="913ad381cb9b4ad7" />');
 
@@ -420,14 +427,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             <?php
         }//end if
         ?>
-        <script>
-        (function(){
-            var bp = document.createElement('script');
-            bp.src = '//push.zhanzhang.baidu.com/push.js';
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-        })();
-        </script>
         <script>window._bd_share_config={
             common: {
                 bdSnsKey: {},
