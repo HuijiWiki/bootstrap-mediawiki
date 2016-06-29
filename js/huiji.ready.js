@@ -1040,21 +1040,33 @@ $(document).ready(function(){
     //add feedback button
     if (!window.is_mobile_device()){
         
-        var api = Feedback({
-            h2cPath:'http://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js',
-            //h2cPath:'http://experiments.hertzen.com/jsfeedback/libs/html2canvas.js',
-            url: '/api.php?action=feedback&format=json',
-            label: "反馈",
-            header: "问题描述",
-            nextLabel: "继续",
-            reviewLabel:"预览",
-            sendLabel: "发送",
-            closeLabel: "关闭",
-            messageSuccess: "反馈成功，我们会立即处理",
-            messageError: "反馈失败，目测您的网络连接有问题",
+        // var api = Feedback({
+        //     h2cPath:'http://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js',
+        //     //h2cPath:'http://experiments.hertzen.com/jsfeedback/libs/html2canvas.js',
+        //     url: '/api.php?action=feedback&format=json',
+        //     label: "反馈",
+        //     header: "问题描述",
+        //     nextLabel: "继续",
+        //     reviewLabel:"预览",
+        //     sendLabel: "发送",
+        //     closeLabel: "关闭",
+        //     messageSuccess: "反馈成功，我们会立即处理",
+        //     messageError: "反馈失败，目测您的网络连接有问题",
+
+        // });
+       $.feedback({
+            ajaxURL: '/api.php?action=feedback&format=json',
+            html2canvasURL: 'http://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js',
+            initButtonText:'反馈bug',
+            tpl:{
+                description:'<div id="feedback-welcome"><div class="feedback-logo">反馈bug</div><p>您的反馈是我们不断改进产品的推动力。</p><p>描述一下您遇到的问题:</p><textarea id="feedback-note-tmp"></textarea><p>下一步中我们将请您圈中页面的问题区域</p><button id="feedback-welcome-next" class="feedback-next-btn feedback-btn-gray">下一步</button><div id="feedback-welcome-error">请填写问题描述。</div><div class="feedback-wizard-close"></div></div>',
+                highlighter: '<div id="feedback-highlighter"><div class="feedback-logo">反馈bug</div><p>点击并拖动鼠标，圈选出现问题的区域。您还可以拖动这个对话窗口。</p><button class="feedback-sethighlight feedback-active"><div class="ico"></div><span>添加高亮区域</span></button><label>使用此工具来注明bug区域</label><button class="feedback-setblackout"><div class="ico"></div><span>添加涂黑区域</span></button><label class="lower">使用此工具遮蔽您的隐私信息。</label><div class="feedback-buttons"><button id="feedback-highlighter-next" class="feedback-next-btn feedback-btn-gray">下一步</button><button id="feedback-highlighter-back" class="feedback-back-btn feedback-btn-gray">上一步</button></div><div class="feedback-wizard-close"></div></div>',
+                overview: '<div id="feedback-overview"><div class="feedback-logo">反馈bug</div><div id="feedback-overview-description"><div id="feedback-overview-description-text"><h3>bug描述</h3><h3 class="feedback-additional">我们还将收集</h3><div id="feedback-additional-none"><span>无</span></div><div id="feedback-browser-info"><span>浏览器型号</span></div><div id="feedback-page-info"><span>Cookie</span></div><div id="feedback-page-structure"><span>页面结构</span></div></div></div><div id="feedback-overview-screenshot"><h3>截图</h3></div><div class="feedback-buttons"><button id="feedback-submit" class="feedback-submit-btn feedback-btn-blue">提交</button><button id="feedback-overview-back" class="feedback-back-btn feedback-btn-gray">上一步</button></div><div id="feedback-overview-error">请填写问题描述。</div><div class="feedback-wizard-close"></div></div>',
+                submitSuccess: '<div id="feedback-submit-success"><div class="feedback-logo">反馈bug</div><p>感谢您提交的反馈。</p><p>很遗憾我们无法逐一回复，但我们将通过您的反馈来不断改善用户体验。</p><button class="feedback-close-btn feedback-btn-blue">好的</button><div class="feedback-wizard-close"></div></div>',
+                submitError: '<div id="feedback-submit-error"><div class="feedback-logo">反馈bug</div><p>提交反馈时不幸出现了问题，请重试。</p><button class="feedback-close-btn feedback-btn-blue">好的</button><div class="feedback-wizard-close"></div></div>'
+            }
 
         });
-       
 
     }
 
