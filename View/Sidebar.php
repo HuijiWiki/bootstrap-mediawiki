@@ -204,5 +204,6 @@
         </li>
         <?php } ?>
     </ul>
+    <div class="sidebar-toggle"></div>
 </aside>
 <!-- /#sidebar-wrapper -->

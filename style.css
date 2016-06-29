@@ -650,34 +650,7 @@ body .mw-echo-overlay::before{
         max-width: 1200px;
     }
 }
-#wrapper.toggled{
-    padding-left: 240px;
-}
-.toggled #sidebar-wrapper{
-    left:0;
 
-}
-@media (max-width: 1365px) {
-    #wrapper.toggled{
-        padding-left: 0;
-    }
-    .toggled #sidebar-wrapper{
-        left:-240px;
-    }
-    .smtoggled #sidebar-wrapper{
-        left: 0;
-    }
-
-    /*#page-content-wrapper {*/
-        /*padding: 20px;*/
-        /*position: relative;*/
-    /*}*/
-
-    /*#wrapper.toggled #page-content-wrapper {*/
-        /*position: relative;*/
-        /*margin-right: 0;*/
-    /*}*/
-}
 #wiki-body h2 {
     border-bottom: none;
 }
@@ -1549,6 +1522,12 @@ ol.carousel-indicators{
 .flow-board-header-footer hr,.flow-ui-navigationWidget{
     border: 0!important;
 }
-.flow-no-more, .flow-undo,.flow-ui-editorControlsWidget-termsLabel,.flow-post,.oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button > .oo-ui-labelElement-label,.mw-ui-anchor.mw-ui-progressive.mw-ui-quiet,.flow-post-meta{
+.flow-no-more, .flow-undo,.flow-ui-editorControlsWidget-termsLabel,.flow-post,.mw-ui-anchor.mw-ui-progressive.mw-ui-quiet,.flow-post-meta{
     color: inherit!important;
+}
+#pagehistory li{
+    border: none;
+}
+.mw-plusminus-neg,.mw-plusminus-pos{
+    color: inherit;
 }

@@ -98,7 +98,7 @@ $(document).ready(function(){
 //    insertRecordIntoDB(url,navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId);
     insertIntoMongoDB('http://huijidata.com:8080/statisticQuery/webapi/view/insertOnePageViewRecord',navigatorInfo,fromSource,userId,userName,wikiSite,siteName,titleName,articleId,pageNamespace);
 
-    $('#menu-toggle').click(function(e) {
+    $('#menu-toggle,.sidebar-toggle').click(function(e) {
         e.preventDefault();
         $('#wrapper').toggleClass("toggled").toggleClass('smtoggled');
         $('#menu-toggle').toggleClass('menu-active').toggleClass('smenu-active');
@@ -1037,9 +1037,34 @@ $(document).ready(function(){
 
         });
     });
-    //change mobile notifications
-    if (window.is_mobile_device()){
+    //add feedback button
+    if (!window.is_mobile_device()){
+        
+        var api = Feedback({
+            h2cPath:'http://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js',
+            //h2cPath:'http://experiments.hertzen.com/jsfeedback/libs/html2canvas.js',
+            url: '/api.php?action=feedback&format=json',
+            label: "反馈",
+            header: "问题描述",
+            nextLabel: "继续",
+            reviewLabel:"预览",
+            sendLabel: "发送",
+            closeLabel: "关闭",
+            messageSuccess: "反馈成功，我们会立即处理",
+            messageError: "反馈失败，目测您的网络连接有问题",
+
+        });
+       
 
     }
+
+
+    
+    // instead, let's open it after 2 seconds
+    // window.setTimeout(function(){
+    //     api.open();
+    //     console.log('opening');
+    // }, 2000);
+
 //    function show()
 });

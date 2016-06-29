@@ -68,7 +68,7 @@ p.mw-edittools-section {
    font-size: small;
 }
 .skin-BootstrapMediawiki .CodeMirror pre {
-    z-index: 0px;
+    z-index: 0;
 }
  
 /*// .CodeMirror .cm-mw-pagename { text-decoration: underline; }*/

@@ -67,6 +67,7 @@
 
 .diff (@n) when (iscolor(@n)) {
   background-color: difference(@n, #fff);
+  color: @n;
 }
 
 .bg(@n) when(iscolor(@n)){
@@ -81,6 +82,23 @@
     color: darken(@n, 15%);
   }
 }
+.fill(@n) when (iscolor(@n)){
+  fill: @n;
+}
+.bgChangeTextColor(@n) when (iscolor(@n)) {
+  background-color: @n;
+  & when (lightness(@n) <= 50%) {
+    color: #fff;
+  }
+  & when (lightness(@n) > 50%) {
+    color: #333;
+  }
+}
+.secondary() {
+  color: @main-lighter;
+  .color(@detail-secondary);
+}
+
 .border-color(@n) when(iscolor(@n)){
   border-color:@n;
 }
@@ -106,28 +124,6 @@
   color: @main-base;
   .color(@detail-color);
 }
-//.btn-default {
-//  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
-//}
-//.btn-primary {
-//  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
-//}
-//// Success appears as green
-//.btn-success {
-//  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
-//}
-//// Info appears as blue-green
-//.btn-info {
-//  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
-//}
-//// Warning appears as orange
-//.btn-warning {
-//  .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
-//}
-//// Danger and error appear as red
-//.btn-danger {
-//  .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
-//}
 .button-variant(@color; @background; @border) {
   color: @color;
   background-color: @background;
@@ -200,6 +196,9 @@ span,div,ul,li,blockquote,table,legend,header{
   border-color: @main-lighter;
   .border-color(@detail-border);
 }
+legend,.secondary,.autocomment{
+  .secondary();
+}
 .popover{
   background-color: @bg-inner;
   .bg(@detail-inner-bg);
@@ -242,13 +241,12 @@ td.diff-context{
   .mixin(@bg-inner);
   .mixin(@detail-inner-bg);
   border-color: @brand-primary;
+  color: inherit;
 }
-td.diff-addedline .diffchange{
+td.diff-addedline .diffchange,td.diff-deletedline .diffchange{
   display: block;
   .diff(@bg-inner);
   .diff(@detail-inner-bg);
-  color: @main-base;
-  .color(@detail-color);
 }
 td.diff-addedline{
   border-color: @brand-success;
@@ -277,6 +275,10 @@ td.diff-marker{
     color:@brand-primary;
     .color(@detail-vote-active-star);
   }
+}
+.wday,.month{
+  fill:@main-base;
+  .fill(@detail-color);
 }
 #wiki-outer-body fieldset#mw-searchoptions{
   .mixin(@bg-inner);
@@ -373,10 +375,6 @@ td.diff-marker{
     color: @main-base;
     .color(@detail-color);
   }
-  .secondary {
-    color: @main-lighter;
-    .color(@detail-secondary);
-  }
 
   .new {
     color: #999;
@@ -440,7 +438,7 @@ td.diff-marker{
     }
   }
 
-  .wikitable, {
+  .wikitable, .mw-datatable{
     .mixin(@bg-inner);
     .bg(@detail-wikitable-bg);
     .color(@detail-wikitable-color);
@@ -713,4 +711,10 @@ body .mwe-popups{
     .color(@detail-border);
   }
 }
-//.user-card
+
+#pagehistory li.selected{
+  .bgChangeTextColor(@well)
+}
+.well-np,.well{
+  .bgChangeTextColor(@well)
+}

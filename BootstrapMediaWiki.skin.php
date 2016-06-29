@@ -84,6 +84,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addModules( array( 'skins.bootstrapmediawiki.content' ) );
         }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
+        $out->addModuleScripts('ext.HuijiMiddleware.feedback');
     }//end initPage
     /**
      * prepares the skin's CSS
@@ -95,7 +96,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addModuleStyles( 'skins.frontpage' );  
         }
 
-        $out->addModuleStyles( array('skins.bootstrapmediawiki.top', 'mediawiki.ui.button','skins.bootstrapmediawiki.sitecolor') );
+        $out->addModuleStyles( array('skins.bootstrapmediawiki.top', 'mediawiki.ui.button','skins.bootstrapmediawiki.sitecolor', 'ext.HuijiMiddleware.feedback') );
         // we need to include this here so the file pathing is right$out->addModules( array( 'skins.bootstrapmediawiki.color' ) );
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css' );
     }//end setupSkinUserCss
@@ -156,7 +157,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             ga('linker:autoLink', ['huiji.wiki','huijiwiki.com']);
             ga('send', 'pageview');
         </script>
-        <div id="wrapper" class="toggled">
+        <div id="wrapper">
         <script>
             var menutoggle;
             document.domain = getDomainName(window.location.host);
@@ -232,7 +233,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                     <div class="ads-right">
                         <script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="511:6",jd_union_pid="COCprvjSKhDu5O3cAxoAIKSwucYBKgA=";var jd_width=160;var jd_height=600;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgyFF8tWBtMXUFkCWkySH17HQ5EW2NnRAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHVkVABUGXR1rFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script>
                     </div>
-                    <div class="hidden-md hidden-lg hidden-sm ads-fixed"><script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="535:6",jd_union_pid="CNTE5erWKhDu5O3cAxoAIOeF+sYBKgA=";var jd_width=200;var jd_height=200;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgybmQUSFgPQ3pkEUcPd1dLWid5G0IGVAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQBQG1IQAREFUR1rFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script></div>
+                    <div class="hidden-md hidden-lg hidden-sm ads-fixed"><script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="508:6",jd_union_pid="CPnxgvnSKhDu5O3cAxoAIKGBtMYBKgA=";var jd_width=320;var jd_height=90;var jd_union_euid="";var p="BxIAVhpYFQsSNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgySFcrWDtFC0xlLRglUXhlZgpgRWh7cgtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHV4RARIDXR5rFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script></div>
 
                     <div class="hidden-xs text-center ads-center"><script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="505:6",jd_union_pid="CMPLk/jSKhDu5O3cAxoAIPSlusYBKgA=";var jd_width=960;var jd_height=90;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgycQMoUwJCX2RnBXkFFVp5Ul1%2FKU5HVAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHVgSChsGURhrFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script>
                     </div>
