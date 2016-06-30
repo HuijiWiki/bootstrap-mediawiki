@@ -1378,7 +1378,7 @@ ol.carousel-indicators{
         color: #fff;
     }
     .oo-ui-popupWidget-popup {
-
+        top:50px;
         postion:absolute !important;
         width: 100%!important;
         margin-left: 0!important;
