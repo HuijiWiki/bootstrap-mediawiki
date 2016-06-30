@@ -1033,6 +1033,7 @@ sup.reference {
     margin: 10px;
     text-decoration: none;
     color: #333;
+    cursor: pointer;
 }
 .user-card-bottom{
     padding: 10px 20px 0 20px;
@@ -1376,23 +1377,9 @@ ol.carousel-indicators{
     #pt-notifications-alert .mw-echo-notifications-badge:before ,#pt-notifications-message .mw-echo-notifications-badge:before{
         color: #fff;
     }
-
-    #pt-notifications-message .oo-ui-popupWidget-popup{
-      left: -178px !important;
-    }
-    #pt-notifications-alert .oo-ui-popupWidget-popup{
-      left: -140px !important;
-    }
-    #pt-following .oo-ui-popupWidget-popup{
-      top: 51px !important;
-      left: 10px !important;
-    }
-    #pt-notifications-message .oo-ui-popupWidget-popup,
-    #pt-notifications-alert .oo-ui-popupWidget-popup,
-    #pt-following .oo-ui-popupWidget-popup {
-      width: 300px!important;
-    }
     .oo-ui-popupWidget-popup {
+
+        postion:absolute !important;
         width: 100%!important;
         margin-left: 0!important;
     }
