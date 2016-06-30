@@ -467,6 +467,9 @@ $(document).ready(function(){
                 }else{
                     follow = '关注';
                 }
+                if (!res.result.status){
+                    res.result.status = "";
+                }
                 var msg = "<div class='user-card-top'>"+res.result.url+"<div class='user-card-info'><span><a href='/wiki/User:"+res.result.username+"'>"+res.result.designation+"</a></span><span>"+res.result.gender+"</span>" +
                     "<span>"+res.result.level+"</span><p>"+mw.html.escape(res.result.status)+"</p></div></div><div class='user-card-mid'><div class='user-card-msg'><ul><li>关注：<span>"+res.result.usercounts+"</span></li>" +
                     "<li class='cut'>被关注：<span>"+res.result.usercounted+"</span></li><li>编辑：<span>"+res.result.editcount+"</span></li></ul><a class='user-card-follow "+isfollow+" user-user-follow' data-username = '"+res.result.username+"'><i class='fa fa-plus-square-o'></i>"+follow+"</a>" +

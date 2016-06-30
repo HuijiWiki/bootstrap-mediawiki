@@ -298,9 +298,6 @@ blockquote.quote:after{
 	padding: 1em 0;
 }
 
-#catlinks #mw-normal-catlinks>ul>li {
-	border-left: 1px solid;
-}
 
 #catlinks #mw-normal-catlinks>ul>li:first-child {
 	border-left: none;
@@ -1517,4 +1514,57 @@ ol.carousel-indicators{
 }
 .mw-plusminus-neg,.mw-plusminus-pos{
     color: inherit;
+}
+.pagination > li > a, .pagination > li > span{
+    padding: 3px 12px;
+}
+table.wikitable > tr > th, table.wikitable > * > tr > th{
+    border-color: inherit;
+    background: inherit;
+}
+.left-donate a{
+    width: 173px!important;
+}
+.mw-special-Search #powerSearchText {
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 3px 0 0 3px;
+    max-width: 500px;
+    padding: 7px;
+    border: 1px solid #ccc;
+    box-shadow: none;
+}
+#wiki-body #mw-searchoptions{
+    border:none!important;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px!important;
+}
+#wiki-body #mw-searchoptions div.divider{
+    border-bottom: none;
+}
+.mainLegend{
+    border: 0;
+    padding-left: 10px;
+}
+.prefsection legend{
+    border: 0;
+    position: absolute;
+    top: 10px;
+}
+.mw-label{
+    text-align: center;
+}
+.htmlform-tip{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+.mw-htmlform-field-HTMLJsSelectToInputField .mw-ui-button{
+    padding: 0;
+    margin-left: 10px;
+}
+#mw-prefs-restoreprefs{
+    margin-left: 10px;
 }

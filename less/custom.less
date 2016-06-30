@@ -103,6 +103,36 @@
 .border-color(@n) when(iscolor(@n)){
   border-color:@n;
 }
+.hack-border(@m,@n){
+  border: 1px solid @m;
+  & when (iscolor(@n)){
+    border: 1px solid @n;
+  }
+}
+.hack-border-left(@m,@n){
+  border-left: 1px solid @m;
+  & when (iscolor(@n)){
+    border-left: 1px solid @n;
+  }
+}
+.hack-border-right(@m,@n){
+  border-right: 1px solid @m;
+  & when (iscolor(@n)){
+    border-right: 1px solid @n;
+  }
+}
+.hack-border-top(@m,@n){
+  border-top: 1px solid @m;
+  & when (iscolor(@n)){
+    border-top: 1px solid @n;
+  }
+}
+.hack-border-bottom(@m,@n){
+  border-bottom: 1px solid @m;
+  & when (iscolor(@n)){
+    border-bottom: 1px solid @n;
+  }
+}
 .primary{
   background-color: @brand-primary;
 }
@@ -442,6 +472,7 @@ td.diff-marker{
   .wikitable, .mw-datatable{
     .mixin(@bg-inner);
     .bg(@detail-wikitable-bg);
+    color: @main-base;
     .color(@detail-wikitable-color);
     a {
       .link(@detail-wikitable-a);
@@ -718,4 +749,21 @@ body .mwe-popups{
 }
 .well-np,.well{
   .bgChangeTextColor(@well)
+}
+
+.c-item,.user-board-message,.c-item-del{
+  .mixin(@bg-inner);
+  .mixin(@detail-inner-bg);
+}
+.prefsection fieldset{
+  .bgChangeTextColor(@well);
+  padding:10px;
+  margin-bottom: 10px;
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+//hack 内核里写死的border
+#catlinks #mw-normal-catlinks>ul>li{
+  .hack-border-left(@main-lighter,@detail-border);
 }

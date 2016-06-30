@@ -1,8 +1,8 @@
 /*edit style*/
 #add-category-btn{
     padding: 3px 5px;
-    border: 1px solid #aaaaaa;
-    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
     cursor: pointer;
 }
 #wiki-body .last .popover-title {
