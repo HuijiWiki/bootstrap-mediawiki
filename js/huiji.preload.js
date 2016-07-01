@@ -142,6 +142,14 @@ $(function() {
             $('.user-login').modal();
         }
     });
+    // convert text edit-section uf8
+    $(".mw-editsection a").each(function(){
+        $this = $(this);
+        if (($this).html().indexOf('&') > -1)
+        {        
+            $this.html($this.text());
+        }
+    });
 
     // // done for preload. Let's show the page.
     // $('#wiki-outer-body').show();

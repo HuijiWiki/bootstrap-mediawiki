@@ -11,12 +11,6 @@ a{
   display: block;
 }
 
-//header
-//#wiki-body{
-//  border: 1px solid;
-//  border-color: @test-color;
-//}
-
 body{
   background-color: extract(@background-color,1);
   color: extract(@font-color,1);
@@ -60,14 +54,7 @@ textarea {
 .modal-dialog{
   color: extract(@font-color,1);
 }
-#wiki-outer-body .popover {
-//  color: #333;
-}
 .subnav{
-  //@hover{
-  //  background-color: extract(@sub-hover-color,1);
-  //  color:extract(@sub-hover-color,2);
-  //}
   .box-shadow();
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   background-color: extract(@background-color,3);
@@ -132,45 +119,21 @@ textarea {
     padding-top: 15px;
     border-radius: 0;
     &:hover,&:focus,&:active{
-      //    @hover;
       background-color: extract(@sub-hover-color,1);
       color:extract(@sub-hover-color,2);
     }
     &.active{
-      //    @hover;
       background-color: extract(@sub-hover-color,1);
       color:extract(@sub-hover-color,2);
     }
   }
 }
 
-//.bell-animation{
-//  color: red;
-//  animation:bell 5s infinite linear;
-//  -webkit-animation:bell 5s infinite linear;s
-//  -moz-animation:bell 5s infinite linear;
-//  -o-animation:bell 5s infinite linear;
-//  position:relative;
-//  left: 5px;
-//}
 .ns--1{
   font-size: 14px;
 }
 body:not(.ns--1) #wiki-outer-body{
   font-size: 16px;
-//  .wiki-body-section  {
-//    a:not(.image) {
-//      &:hover {
-//        text-decoration: none;
-//      }
-//      &.new {
-//        color: extract(@content-acolor, 2);
-//        &:hover {
-//          color: extract(@a-hover-color, 2);
-//        }
-//      }
-//    }
-//  }
   .caret,.arrow{
     border-left-color: @transparent;
     border-right-color: @transparent;
@@ -200,10 +163,11 @@ body:not(.ns--1) #wiki-outer-body{
     }
   }
   .popover{
-//    background: #fff;
-    border:1px solid rgba(0,0,0,.2);
+    border-width:0;
+    border-style:solid;
     .edit-input{
-      border:1px solid rgba(0,0,0,.2);
+      border-width:1px;
+      border-style:solid;
     }
   }
 }
@@ -226,3 +190,4 @@ body:not(.ns--1) #wiki-outer-body{
   cursor: default;
 }
 @import "custom.less";
+@import "hackColor.less";

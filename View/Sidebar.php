@@ -204,6 +204,6 @@
         </li>
         <?php } ?>
     </ul>
-    <div class="sidebar-toggle"></div>
+    <div class="sidebar-toggle"><i class="fa fa-angle-right"></i></div>
 </aside>
 <!-- /#sidebar-wrapper -->

@@ -1,4 +1,4 @@
-/*#333 #ddd #eee #999 #fff #ccc #f9f9f9 #777 #000 #e0e0e0 #444 #0099cc #d7dee8 #32a7a2 #428bca #555 rgba(0,0,0,.1) rgba(0 ,0 ,0 ,0.2)rgba( 0, 0, 0, 0.3 )rgba(0 ,0 ,0 , 0.5)*/
+
 *{
     outline: none;
 }
@@ -597,9 +597,6 @@ img.thumbborder {
 	top:-103px;
 }
 
-.selected, #wiki-body .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-	background-color:#EEE;
-}
 #wiki-body .nav-tabs > li{
 	margin-bottom: -1px;
 }
@@ -641,10 +638,17 @@ body .mw-echo-overlay::before{
     margin-left: 40px;
     margin-bottom: 30px;
 }
+
 @media (min-width: 1366px) {
     .container {
         width: 90%;
         max-width: 1200px;
+    }
+}
+@media (min-width: 1600px) {
+    .container {
+        width: 90%;
+        max-width: 1400px;
     }
 }
 
@@ -1567,4 +1571,7 @@ table.wikitable > tr > th, table.wikitable > * > tr > th{
 }
 #mw-prefs-restoreprefs{
     margin-left: 10px;
+}
+#wiki-body{
+    padding-bottom: 25px;
 }

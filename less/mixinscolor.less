@@ -1,0 +1,158 @@
+.a() when (lightness(@main-base)>50%){
+  @main-darker:darken(@main-base, 0.135*lightness(@main-base));
+  @main-dark:darken(@main-base, 0.2*lightness(@main-base));
+  @main-middle:darken(@main-base, 0.335*lightness(@main-base));
+  @main-light:darken(@main-base, 0.467*lightness(@main-base));
+  @main-lighter:darken(@main-base, 0.75*lightness(@main-base));
+}
+.a() when (lightness(@main-base)=<50%){
+  @main-darker:lighten(@main-base, 0.135*(100 - lightness(@main-base)));
+  @main-dark:lighten(@main-base, 0.2*(100 - lightness(@main-base)));
+  @main-middle:lighten(@main-base, 0.335*(100 - lightness(@main-base)));
+  @main-light:lighten(@main-base, 0.467*(100 - lightness(@main-base)));
+  @main-lighter:lighten(@main-base, 0.75*(100 - lightness(@main-base)));
+}
+
+.mixin (@n) when (iscolor(@n)) {
+  & when (lightness(@n) >= 50%) {
+    background-color: darken(@n, 10%);
+  }
+  & when (lightness(@n) < 50%) {
+    background-color: lighten(@n, 10%);
+  }
+}
+
+.mixin2 (@n) when (iscolor(@n)) {
+  & when (lightness(@n) >= 50%) {
+    background-color: difference(darken(@n, 10%), #111);
+  }
+  & when (lightness(@n) < 50%) {
+    background-color: difference(lighten(@n, 10%), #111);
+  }
+}
+
+.diff (@n) when (iscolor(@n)) {
+  background-color: difference(@n, #fff);
+  color: @n;
+}
+
+.bg(@n) when(iscolor(@n)){
+  background-color: @n;
+}
+.color(@n) when(iscolor(@n)){
+  color: @n;
+}
+.link(@n) when(iscolor(@n)){
+  color: @n;
+  &:hover{
+    color: darken(@n, 15%);
+  }
+}
+.fill(@n) when (iscolor(@n)){
+  fill: @n;
+}
+.bgChangeTextColor(@n) when (iscolor(@n)) {
+  background-color: @n;
+  & when (lightness(@n) <= 50%) {
+    color: #fff;
+  }
+  & when (lightness(@n) > 50%) {
+    color: #333;
+  }
+}
+.secondary() {
+  color: @main-light;
+  .color(@detail-secondary);
+}
+
+.border-color(@n) when(iscolor(@n)){
+  border-color:@n;
+}
+
+.hack-border(@m,@n){
+  border: 1px solid @m;
+  & when (iscolor(@n)){
+    border: 1px solid @n;
+  }
+}
+.hack-border-left(@m,@n){
+  border-left: 1px solid @m;
+  & when (iscolor(@n)){
+    border-left: 1px solid @n;
+  }
+}
+.hack-border-right(@m,@n){
+  border-right: 1px solid @m;
+  & when (iscolor(@n)){
+    border-right: 1px solid @n;
+  }
+}
+.hack-border-top(@m,@n){
+  border-top: 1px solid @m;
+  & when (iscolor(@n)){
+    border-top: 1px solid @n;
+  }
+}
+.hack-border-bottom(@m,@n){
+  border-bottom: 1px solid @m;
+  & when (iscolor(@n)){
+    border-bottom: 1px solid @n;
+  }
+}
+.button-variant(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+
+  &:focus,
+  &.focus {
+    color: @color;
+    background-color: darken(@background, 10%);
+    border-color: darken(@border, 25%);
+  }
+  &:hover {
+    color: @color;
+    background-color: darken(@background, 10%);
+    border-color: darken(@border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: darken(@background, 10%);
+    border-color: darken(@border, 12%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @color;
+      background-color: darken(@background, 17%);
+      border-color: darken(@border, 25%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: @background;
+      border-color: @border;
+    }
+  }
+
+  .badge {
+    color: @background;
+    background-color: @color;
+  }
+}
+
+@import "secondary";

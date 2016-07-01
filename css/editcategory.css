@@ -13,7 +13,6 @@
     top: inherit!important;
 }
 .edit-input{
-    border: 1px solid #aaa;
     min-height: 30px;
     height: auto;
     padding:3px 5px;
@@ -49,9 +48,6 @@
     padding-top: 0;
     padding-bottom: 0;
 }
-.edit-span{
-    border: 1px solid #999!important;
-}
 .popover-content .edit:after {
     content: '';
     clear: both;
@@ -64,6 +60,5 @@
 .edit-tutorial {
 	display: inline-block;
     font-size: 12px;
-    color: #ccc;
     padding-top: 12px;
 }

@@ -1472,6 +1472,7 @@ a:hover,a:focus,a:active{
 }
 .user-home-item-description{
     display: inline-block;
+    word-break:break-all;
 }
 .user-home-item-body img{
     max-height: 100px;

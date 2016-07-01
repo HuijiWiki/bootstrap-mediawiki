@@ -7,7 +7,7 @@
 //@brand-info:            #5bc0de;
 //@brand-warning:         #f0ad4e;
 //@brand-danger:          #d9534f;
-@import "animation.less";
+@import "mixins.less";
 
 @btn-default-color:              #333;
 @btn-default-bg:                 @brand-default;
@@ -33,119 +33,13 @@
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              darken(@btn-danger-bg, 5%);
 
-.a() when (lightness(@main-base)>50%){
-  @main-darker:darken(@main-base, 0.135*lightness(@main-base));
-  @main-dark:darken(@main-base, 0.2*lightness(@main-base));
-  @main-middle:darken(@main-base, 0.335*lightness(@main-base));
-  @main-light:darken(@main-base, 0.467*lightness(@main-base));
-  @main-lighter:darken(@main-base, 0.75*lightness(@main-base));
-}
-.a() when (lightness(@main-base)=<50%){
-  @main-darker:lighten(@main-base, 0.135*(100 - lightness(@main-base)));
-  @main-dark:lighten(@main-base, 0.2*(100 - lightness(@main-base)));
-  @main-middle:lighten(@main-base, 0.335*(100 - lightness(@main-base)));
-  @main-light:lighten(@main-base, 0.467*(100 - lightness(@main-base)));
-  @main-lighter:lighten(@main-base, 0.75*(100 - lightness(@main-base)));
-}
 
-.mixin (@n) when (iscolor(@n)) {
-  & when (lightness(@n) >= 50%) {
-  background-color: darken(@n, 10%);
-}
-  & when (lightness(@n) < 50%) {
-    background-color: lighten(@n, 10%);
-  }
-}
-
-.mixin2 (@n) when (iscolor(@n)) {
-  & when (lightness(@n) >= 50%) {
-  background-color: difference(darken(@n, 10%), #111);
-}
-  & when (lightness(@n) < 50%) {
-    background-color: difference(lighten(@n, 10%), #111);
-  }
-}
-
-.diff (@n) when (iscolor(@n)) {
-  background-color: difference(@n, #fff);
-  color: @n;
-}
-
-.bg(@n) when(iscolor(@n)){
-   background-color: @n;
-}
-.color(@n) when(iscolor(@n)){
-  color: @n;
-}
-.link(@n) when(iscolor(@n)){
-  color: @n;
-  &:hover{
-    color: darken(@n, 15%);
-  }
-}
-.fill(@n) when (iscolor(@n)){
-  fill: @n;
-}
-.bgChangeTextColor(@n) when (iscolor(@n)) {
-  background-color: @n;
-  & when (lightness(@n) <= 50%) {
-    color: #fff;
-  }
-  & when (lightness(@n) > 50%) {
-    color: #333;
-  }
-}
-.secondary() {
-  color: @main-light;
-  .color(@detail-secondary);
-}
-
-.border-color(@n) when(iscolor(@n)){
-  border-color:@n;
-}
-.hack-border(@m,@n){
-  border: 1px solid @m;
-  & when (iscolor(@n)){
-    border: 1px solid @n;
-  }
-}
-.hack-border-left(@m,@n){
-  border-left: 1px solid @m;
-  & when (iscolor(@n)){
-    border-left: 1px solid @n;
-  }
-}
-.hack-border-right(@m,@n){
-  border-right: 1px solid @m;
-  & when (iscolor(@n)){
-    border-right: 1px solid @n;
-  }
-}
-.hack-border-top(@m,@n){
-  border-top: 1px solid @m;
-  & when (iscolor(@n)){
-    border-top: 1px solid @n;
-  }
-}
-.hack-border-bottom(@m,@n){
-  border-bottom: 1px solid @m;
-  & when (iscolor(@n)){
-    border-bottom: 1px solid @n;
-  }
-}
 .primary{
   background-color: @brand-primary;
 }
 .darken{
   .mixin(@bg-inner);
   .mixin(@detail-inner-bg);
-}
-.quite{
-  color: inherit;
-  background-color: inherit;
-  &:hover{
-    color: inherit;
-  }
 }
 .no-border{
   border-color: transparent!important;
@@ -154,61 +48,6 @@
 [class^="icon-lv"], [class*=" icon-lv"]{
   color: @main-base;
   .color(@detail-color);
-}
-.button-variant(@color; @background; @border) {
-  color: @color;
-  background-color: @background;
-  border-color: @border;
-
-  &:focus,
-  &.focus {
-    color: @color;
-    background-color: darken(@background, 10%);
-    border-color: darken(@border, 25%);
-  }
-  &:hover {
-    color: @color;
-    background-color: darken(@background, 10%);
-    border-color: darken(@border, 12%);
-  }
-  &:active,
-  &.active,
-  .open > .dropdown-toggle& {
-    color: @color;
-    background-color: darken(@background, 10%);
-    border-color: darken(@border, 12%);
-
-    &:hover,
-    &:focus,
-    &.focus {
-      color: @color;
-      background-color: darken(@background, 17%);
-      border-color: darken(@border, 25%);
-    }
-  }
-  &:active,
-  &.active,
-  .open > .dropdown-toggle& {
-    background-image: none;
-  }
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    &,
-    &:hover,
-    &:focus,
-    &.focus,
-    &:active,
-    &.active {
-      background-color: @background;
-      border-color: @border;
-    }
-  }
-
-  .badge {
-    color: @background;
-    background-color: @color;
-  }
 }
 
 .a();
@@ -256,65 +95,7 @@ legend,.secondary,.autocomment{
     .mixin(@detail-inner-bg);
   }
 }
-.thumb{
-  .mixin(@bg-inner);
-  .mixin(@detail-inner-bg);
-}
-.cod-comment{
-  .mixin2(@a);
-  .mixin2(@detail-a);
-  a{
-    color: @main-base;
-    .color(@detail-color);
-  }
-}
-td.diff-context{
-  .mixin(@bg-inner);
-  .mixin(@detail-inner-bg);
-  border-color: @brand-primary;
-  color: inherit;
-}
-td.diff-addedline .diffchange,td.diff-deletedline .diffchange{
-  display: block;
-  .diff(@bg-inner);
-  .diff(@detail-inner-bg);
-}
-td.diff-addedline{
-  border-color: @brand-success;
-}
-td.diff-deletedline{
-  border-color: @brand-danger;
-}
-td.diff-marker{
-  border-color: @brand-info;
-}
 
-#rating_{
-  color:@main-base;
-  .color(@detail-vote-color);
-  .rating-score{
-    backgroud-color:@brand-primary;
-    .bg(@detail-vote-score-bg);
-    color:@bg-inner;
-    .color(@detail-vote-score-color);
-  }
-  .vote-rating-star:before{
-    color:@brand-primary;
-    .color(@detail-vote-star);
-  }
-  .voted:before{
-    color:@brand-primary;
-    .color(@detail-vote-active-star);
-  }
-}
-.wday,.month{
-  fill:@main-base;
-  .fill(@detail-color);
-}
-#wiki-outer-body fieldset#mw-searchoptions{
-  .mixin(@bg-inner);
-  .mixin(@detail-inner-bg);
-}
 .oo-ui-window-frame{
   background-color: @bg-inner;
   .bg(@detail-bg);
@@ -577,45 +358,19 @@ td.diff-marker{
     .bg(@detail-navbox-bg);
     font-size: 1.2rem;
     border-collapse: separate;
-    //    border-width: 1px;
-    //    border-style: solid;
-    //    width: 100%;
-    //    margin: auto;
-    //    clear: both;
-    //    font-size: 0.88em;
-    //    padding: 1px;
-    //    margin-top: 10px;
     color: difference(@modal, #fff);
     .color(@detail-navbox-color);
     a {
       .link(@detail-navbox-a);
     }
-    //    tr{
-    //      border-bottom-width: 1px;
-    //      border-bottom-style: solid;
-    //      border-bottom-color:  difference(@modal, #111);
-    //      .border-color(@detail-navbox-border);
-    //    }
-    //    td{
-    //      padding: 0;
-    //    }
     .navbox-title {
-      //      padding: 8px;
-      //      font-size: 16px;
-      //      text-align: center;
       background-color: difference(@modal, #111);
       .bg(@detail-navbox-title-bg);
       .color(@detail-navbox-title-color);
       a {
-        //        margin: 0 5px;
         .link(@detail-navbox-title-a);
       }
     }
-    //    .mw-collapsible-toggle{
-    //      text-align: right;
-    //      cursor: pointer;
-    //      float: right;
-    //    }
     .navbox-group {
       //      width: 150px;
       background-color: lighten(@modal, 10%);
@@ -737,16 +492,8 @@ body .mwe-popups{
     .color(@detail-color);
   }
 }
-.gift-wrap{
-  a{
-    color:@a;
-    .color(@detail-border);
-  }
-}
 
-#pagehistory li.selected{
-  .bgChangeTextColor(@well)
-}
+
 .well-np,.well{
   .bgChangeTextColor(@well)
 }
@@ -755,15 +502,61 @@ body .mwe-popups{
   .mixin(@bg-inner);
   .mixin(@detail-inner-bg);
 }
-.prefsection fieldset{
-  .bgChangeTextColor(@well);
-  padding:10px;
-  margin-bottom: 10px;
-  position: relative;
-  padding-top: 40px;
-  padding-bottom: 40px;
+
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border-width: 1px;
+  border-style: solid;
+  border-left-width: 5px;
+  border-radius: 3px;
 }
-//hack 内核里写死的border
-#catlinks #mw-normal-catlinks>ul>li{
-  .hack-border-left(@main-lighter,@detail-border);
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code {
+  border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+  margin-top: -5px;
+}
+.bs-callout-default {
+  border-left-color: #777;
+}
+.bs-callout-default h4 {
+  color: #777;
+}
+.bs-callout-primary {
+  border-left-color: @brand-primary;
+}
+.bs-callout-primary h4 {
+  color: @brand-primary;
+}
+.bs-callout-success {
+  border-left-color: @brand-success;
+}
+.bs-callout-success h4 {
+  color: @brand-success;
+}
+.bs-callout-danger {
+  border-left-color: @brand-danger;
+}
+.bs-callout-danger h4 {
+  color: @brand-danger;
+}
+.bs-callout-warning {
+  border-left-color: @brand-warning;
+}
+.bs-callout-warning h4 {
+  color: @brand-warning;
+}
+.bs-callout-info {
+  border-left-color: @brand-info;
+}
+.bs-callout-info h4 {
+  color: @brand-info;
 }
