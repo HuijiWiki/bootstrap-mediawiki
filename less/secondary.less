@@ -1,0 +1,31 @@
+.a();
+
+.border-color-variable(@m,@n){
+  @huiji-border-color: @m;
+  & when (iscolor(@n)){
+    @huiji-border-color: @n;
+  }
+}
+.border-color-variable(@main-lighter, @detail-border);
+.bg-color-variable(@m,@n){
+  @huiji-bg: @m;
+  & when (iscolor(@n)){
+    @huiji-bg: @n;
+  }
+}
+.bg-color-variable(@bg-inner, @detail-inner-bg);
+.darken-bg-color-variable(@n) when (lightness(@n) >= 50%) {
+    @huiji-bg-darken: darken(@n, 10%);
+  }
+.darken-bg-color-variable(@n) when (lightness(@n) < 50%) {
+    @huiji-bg-darken: lighten(@n, 10%);
+  }
+
+.darken-bg-color-variable(@huiji-bg);
+.font-color-variable(@m,@n){
+  @huiji-color: @m;
+  & when (iscolor(@n)){
+    @huiji-color: @n;
+  }
+}
+.font-color-variable(@main-base, @detail-color);
