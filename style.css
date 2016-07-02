@@ -1485,7 +1485,7 @@ ol.carousel-indicators{
   font-family: 'icomoon';
 }
 /*ads*/
-@media screen and (max-width: 1520px){
+@media screen and (max-width: 1920px){
   .ads-left, .ads-right{
     display:none;
   }
