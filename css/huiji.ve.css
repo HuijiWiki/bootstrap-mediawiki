@@ -34,3 +34,6 @@
 .ve-activated #content-actions, .ve-activated #rating_{
 	display:none;
 }
+.skin-bootstrap-mediawiki .oo-ui-popupToolGroup-handle {
+    height: 3.1em;
+}

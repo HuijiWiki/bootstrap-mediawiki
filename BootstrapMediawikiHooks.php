@@ -576,8 +576,8 @@ Class BootstrapMediawikiHooks {
         // $lessVars['colorpath'] = "\"http://huiji-fs.oss-cn-qingdao-internal.aliyuncs.com/$wgHuijiPrefix/style/SiteColor.less\"";
         // $lessVars['main-base'] = "#000";
         // $lessVars['bg'] = "#000";
-        wfErrorLog(implode(',', $lessVars), '/var/log/mediawiki/SocialProfile.php');
-        $cssCon_1 = CommonStyle::getCurrentCssStyle(1);
+
+        $cssCon_1 = CommonStyle::getStyle();
         $lessCon = array();
         if ( isset( $cssCon_1['cssContent'] ) && $cssCon_1['cssContent'] != null ) {
             $lessCon = (array)json_decode( $cssCon_1['cssContent'] );

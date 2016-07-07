@@ -11,27 +11,11 @@ var recommend = {
         $('.comments-body').before('<div id="recommend" class="recommend owl-carousel"></div>');
     },
 
-    funGetPageRec: function(){
-//        var self = this;
-//        this.pageRec.forEach(function(item,i){
-//            if(i<4) {
-//                var content = '';
-//                var address = 'http://' + item.site + '.huiji.wiki/wiki/' + item.title;
-//                content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading">' +
-//                    '<div class="recommend-title"><a href="http://' + item.site + '.huiji.wiki/wiki/' + item.title + '" title="'+item.title+'" >' +
-//                    item.title + '</a><a href="http://' + item.site + '.huiji.wiki">' + item.siteName + '</a></div></div>';
-//                self.arr.push(item.title+item.siteName);
-//                self.funGetImg(item.title, i, item.site,address,false);
-//                $('.recommend').append(content);
-//            }
-//        });
-    },
-
     funGetCategory: function(){
         var self = this;
         if($('#mw-normal-catlinks').length!=0) {
             $('#mw-normal-catlinks li:not(.last)').each(function () {
-                self.category += $(this).text() + ' ';
+                self.category += $(this).text() + ' '; //获取推荐内容时需要的参数
             });
         }
     },
@@ -163,57 +147,6 @@ var recommend = {
                         });
                     }
                 }
-//                var content = '';
-//                var len = self.pageRec.length;
-//                console.log(data);
-//                self.netData = data;
-//                if (data.length == 0) return;
-//
-//                //除去指定推荐，剩下的进行遍历
-//                document.body.clientWidth>768?pcTraverse():mobilTraverse();
-//                $('.recommend').append(content);
-//
-//
-//                function pcTraverse(){
-//                    for (var i = len; i < 10; i++) {
-//                        var item = data[i - len];
-//                        var searchtitle = item.title;
-//                        var id = item.id;
-//
-//                        //排除本词条和重复词条
-////                    if (id != self.myId && self.arr.indexOf(searchtitle+item.siteName)<0) {
-//                        var sitePrefix = item.sitePrefix;
-//
-//                        //去em标签
-//                        searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
-//
-//                        content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading"><div class="recommend-title">' +
-//                            '<a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
-//                        self.funGetImg(searchtitle, i, sitePrefix, item.address, false);
-//                    }
-//                    self.item = i;
-//                }
-//                function mobilTraverse(){
-//                    for (var i = len; i < 4; i++) {
-//                        var item = data[i - len];
-//                        var searchtitle = item.title;
-//                        var id = item.id;
-//
-//                        //排除本词条和重复词条
-////                    if (id != self.myId && self.arr.indexOf(searchtitle+item.siteName)<0) {
-//                        var sitePrefix = item.sitePrefix;
-//
-//                        //去em标签
-//                        searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
-//
-//                        content += '<div id="' + i + '" class="re-opacity recommend-item lazy-loading"><div class="recommend-title">' +
-//                            '<a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
-//                        self.funGetImg(searchtitle, i, sitePrefix, item.address, false );
-//                    }
-//                    self.item = i;
-//                }
-////                }
-
             },
             type: 'post'
         });
@@ -315,7 +248,7 @@ var recommend = {
     init: function(){
         if(mw.config.get('wgRec')||$('body').hasClass('ns-0')&&!mw.config.get('wgNoRec')){
             this.funAddBox();
-            this.funGetPageRec();
+//            this.funGetPageRec();
             this.funGetCategory();
             this.funGetNetRec();
         }

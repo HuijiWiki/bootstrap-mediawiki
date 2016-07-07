@@ -5,18 +5,26 @@
         <li class="sidebar-header">
             <a href="<?php echo $this->getSkin()->getTitle()->getFullUrl(); ?>"><?php echo $this->getSkin()->getTitle()->getPrefixedText(); ?></a>
             <?php
-                if (!$this->getSkin()->getTitle()->isTalkPage()){
-                    unset($this->data['content_actions']['nstab-main']);
+                foreach ($this->data['content_actions'] as $key => $value) {
+                    if (substr($key, 0, 6) == "nstab-") {
+                        $tab = $key;                    
+                        break;
+                    }
                 }
-                // if ( isset( $this->data['content_actions']['watch'])){
-                //     echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['watchlist']['id'].'">
-                //     <a href="'.$this->data['content_actions']['watch']['href'].'">'.$this->data['content_actions']['watch']['text'].'</a></button>';
-                //     unset( $this->data['content_actions']['watch']);
-                // } else if ( isset( $this->data['content_actions']['unwatch'])){
-                //     echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['unwatch']['id'].'">
-                //     <a href="'.$this->data['content_actions']['unwatch']['href'].'">'.$this->data['content_actions']['unwatch']['text'].'</a></button>';
-                //     unset ( $this->data['content_actions']['unwatch']);
+                // if (!$this->getSkin()->getTitle()->isTalkPage()){
+                //     unset($this->data['content_actions']['nstab-main']);
                 // }
+                if ( !$this->getSkin()->getTitle()->isTalkPage() && !$this->getSkin()->getTitle()->isSpecialPage()){
+                    echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions']['talk']['id'].'">
+                    <a href="'.$this->data['content_actions']['talk']['href'].'">'.$this->data['content_actions']['talk']['text'].'</a></button>';
+                    unset( $this->data['content_actions']['talk']);
+                } else if ( !$this->getSkin()->getTitle()->isSpecialPage() ){
+                    echo '<button class="mw-ui-button mw-ui-progressive" id="'.$this->data['content_actions'][$tab]['id'].'">
+                    <a href="'.$this->data['content_actions'][$tab]['href'].'">'.$this->data['content_actions'][$tab]['text'].'</a></button>';
+                    
+                    unset( $this->data['content_actions']['talk']);
+                }
+                unset($this->data['content_actions'][$tab]);
              ?>
         </li>
         <li class="sidebar-behavior">
@@ -134,8 +142,11 @@
             </ul>
         </li>
         <li class="sidebar-brand left-donate">
+            <a href="#">
+                支持<?php echo $wgSitename ?>
+            </a>
             <div>
-              <a href="/wiki/Special:Donate" class="button mw-ui-button mw-ui-progressive">加油</a>
+              <a href="/wiki/Special:Donate" class="button mw-ui-button mw-ui-progressive"><i class="fa fa-jpy" aria-hidden="true"></i> 加油</a>
             </div>
         </li>
         <li class="sidebar-brand left-manager">

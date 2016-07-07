@@ -1477,7 +1477,7 @@ ol.carousel-indicators{
         padding: 0;
     }
 }
-.sidebar-brand.left-donate a{
+.sidebar-brand.left-donate > div > a{
   text-indent: 0px;
   font-size: 1.2em;
 }

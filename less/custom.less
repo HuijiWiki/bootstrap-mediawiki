@@ -260,7 +260,10 @@ legend,.secondary,.autocomment{
     }
     tr, td {
       border-color: @main-lighter;
-      .border-color(@detail-wikitable-border)
+      .border-color(@detail-wikitable-border);
+    }
+    th{
+      .bg(@detail-wikitable-th-bg);
     }
   }
 
