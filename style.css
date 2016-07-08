@@ -170,18 +170,18 @@ option.unclickable {
 	color: #ccc;
 }
 
-.ns-0 #wiki-body h2 {
+.ns-subject:not(.ns-2) #wiki-body h2 {
 	border-bottom: none;
 	padding-bottom: 0.5em;
 	padding-top: 50px;
-    margin:0;
+  margin:0;
 }
 
-.ns-0 #wiki-body h3 {
+.ns-subject:not(.ns-2) #wiki-body h3 {
 	border-bottom: none;
-    padding-bottom: 0.5em;
-    padding-top: 25px;
-    margin:0;
+  padding-bottom: 0.5em;
+  padding-top: 25px;
+  margin:0;
 }
 
 #wiki-body li {
@@ -1073,81 +1073,6 @@ sup.reference {
 .ns-special #firstHeading{
     text-align: center;
     border-bottom: none;
-}
-.mw-special-Search .global-search-notice{
-    text-align: center!important;
-}
-.mw-special-Search #mw-search-top-table{
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 0;
-}
-.mw-special-Search  #searchText{
-    display: inline-block;
-    width: 100%;
-    font-size: 14px;
-    border-radius: 3px 0 0 3px;
-    max-width: 500px;
-    padding: 7px;
-    border: 1px solid #ccc
-}
-.mw-special-Search  #searchText:focus{
-    box-shadow: none;
-}
-.mw-special-Search #mw-search-top-table .mw-ui-button{
-    font-size: 14px;
-    border-radius: 0 3px 3px 0;
-}
-.mw-special-Search #mw-search-top-table div.results-info{
-    float: none;
-    text-align: center;
-    font-size: 14px;
-}
-.mw-special-Search .mw-search-profile-tabs{
-    background: transparent;
-    border: none;
-}
-.mw-special-Search .mw-search-profile-tabs div.search-types{
-    float: none;
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto;
-}
-.mw-special-Search .mw-search-profile-tabs div.search-types ul{
-
-    border-bottom: 1px solid #999;
-
-}
-.mw-special-Search .mw-search-profile-tabs div.search-types ul li{
-    margin: 0;
-    float: none;
-    display: inline-block;
-    margin-bottom: 0!important;
-    padding: 2px 10px;
-    border-radius: 3px 3px 0 0;
-}
-.mw-special-Search .current{
-    border: 1px solid #999;
-    border-bottom: none;
-    position: relative;
-    top: 1px;
-    background: #fff;
-}
-.mw-special-Search .searchresults {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 5px 20px;
-}
-.mw-special-Search .mw-search-result-heading{
-    font-size: 18px;
-}
-.mw-search-results {
-    margin-left: 0;
-    float: left;
-    padding-left: 0;
-}
-.mw-special-Search .mw-search-results div.searchresult {
-	width: auto;
 }
 .mw-editsection{
     opacity: 0;

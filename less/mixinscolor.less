@@ -42,6 +42,9 @@
 .color(@n) when(iscolor(@n)){
   color: @n;
 }
+.lightencolor(@n) when (iscolor(@n)){
+  color: lighten(@n, 10%);
+}
 .link(@n) when(iscolor(@n)){
   color: @n;
   &:hover{

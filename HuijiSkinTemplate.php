@@ -128,7 +128,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                     $rel = "rel = \"".$subLink['rel']."\" ";
                 }
                 $hasId = $topItem['id']?' id="ca-'.$topItem['id'].'"':'';
-                $output .= '<li class="dropdown primary-nav"'.$hasId. '><a href="' . ( $topItem['link']  ) .'" '.$rel.'>' . $topItem['title'] . '</a></li>';
+                $output .= '<li class="primary-nav dropdown"'.$hasId. '><a href="' . ( $topItem['link']  ) .'" '.$rel.'>' . $topItem['title'] . '</a></li>';
             }//end else
         }//end foreach
         return $output;

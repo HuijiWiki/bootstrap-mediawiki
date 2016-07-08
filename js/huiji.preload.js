@@ -11,7 +11,7 @@ $(function() {
             $('#wrapper').removeClass('smtoggled');
         }
     },500);
-    $('.subnav .nav .dropdown:first').addClass('phone-active');
+    $('.subnav .nav .dropdown-menu:first').parents('.dropdown').addClass('phone-active');
     $('.subnav .nav .dropdown-menu:first').addClass('phone-active');
     // bell animation
     if($('#pt-notifications-alert .mw-echo-notifications-badge').text()!=0){
@@ -142,14 +142,7 @@ $(function() {
             $('.user-login').modal();
         }
     });
-    // convert text edit-section uf8
-    $(".mw-editsection a").each(function(){
-        $this = $(this);
-        if (($this).html().indexOf('&') > -1)
-        {        
-            $this.html($this.text());
-        }
-    });
+
 
     // // done for preload. Let's show the page.
     // $('#wiki-outer-body').show();

@@ -147,9 +147,9 @@ $(document).ready(function(){
             $('.subnav .nav').addClass('phone-open');
         }
         if(length<6){
-            $('.subnav .nav .dropdown-menu').css('max-height','192px');
+            $('.subnav .nav .dropdown-menu').css('height','192px');
         }else {
-            $('.subnav .nav .dropdown-menu').css('max-height', length * 32 + 'px');
+            $('.subnav .nav .dropdown-menu').css('height', length * 32 + 'px');
         }
     });
     $('.nav .dropdown>a').click(function(){
@@ -1070,7 +1070,16 @@ $(document).ready(function(){
             }
 
         });
-
+        window.setTimeout(function(){
+            // convert text edit-section uf8
+            $(".mw-editsection a").each(function(){
+                $this = $(this);
+                if (($this).html().indexOf('&') > -1)
+                {        
+                    $this.html($this.text());
+                }
+            });
+        }, 2000);
     }
 
 

@@ -273,6 +273,16 @@ $wgResourceModules['skins.bootstrapmediawiki.content'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'bottom',	
 );
+$wgResourceModules['skins.bootstrapmediawiki.search'] = array(
+	'scripts' => array(
+	),
+	'styles' => array(
+		$skinDir . '/css/huiji.search.css'         					 => array( 'media' => 'all' ),
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'top',	
+);
 
 $wgResourceModuleSkinStyles['BootstrapMediawiki'] = array(
 	'mediawiki.ui' => $skinDir. '/less/mediawiki.ui/default.less',
@@ -306,6 +316,7 @@ $wgHooks['OutputPageMakeCategoryLinks'][] = 'BootstrapMediawikiHooks::onOutputPa
 // $wgHooks['LinkBegin'][] = 'BootstrapMediawikiHooks::UserLinkBegin';
 $wgHooks['BeforePageDisplay'][] = 'BootstrapMediawikiHooks::onBeforePageDisplay';
 $wgHooks['ResourceLoaderGetLessVars'][] = 'BootstrapMediawikiHooks::onResourceLoaderGetLessVars';
+$wgHooks['SpecialSearchResultsPrepend'][] = 'BootstrapMediawikiHooks::onSpecialSearchResultsPrepend';
 // new permission
 $wgAvailableRights[] = 'quickpurge';
 $wgGroupPermissions['sysop']['quickpurge'] = true;

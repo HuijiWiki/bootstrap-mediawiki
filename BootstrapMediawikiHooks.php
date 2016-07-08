@@ -23,10 +23,27 @@ Class BootstrapMediawikiHooks {
         $parser->setHook( 'ihover.css', 'BootstrapMediawikiHooks::getIHoverCss');
         $parser->setHook( 'siteinfo', 'BootstrapMediawikiHooks::getSiteInfo');
         $parser->setHook( 'videoclip', 'BootstrapMediawikiHooks::getVideoClip');
+        $parser->setHook( 'steam', 'BootstrapMediawikiHooks::getSteam');
 
         // $parser->setHook( 'siteactivity', 'getSiteActivity' );
         // $parser->setHook( 'siteactivity', 'getSiteActivity' );
         return true;
+    }
+    /**
+     * Get Steam widget
+     *
+     */
+    public static function getSteam( $input, $args, $parser){
+        $templateParser = new TemplateParser(  __DIR__ . '/View' );
+        $output =  $templateParser->processTemplate(
+            'steam',
+            array(
+                'image' => $args['image'],
+                'mp4' => $args['mp4'],
+                'webm' => $args['webm'],
+            )
+        );
+        return $output;        
     }
     public static function getVideoClip( $input, $args, $parser ){
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
@@ -594,6 +611,10 @@ Class BootstrapMediawikiHooks {
         }
         $lessVars = array_merge($lessVars, $default, $result);
 
+    }
+    public static function onSpecialSearchResultsPrepend( $specialSearch, $output, $term ) { 
+        $output->addModules('skins.bootstrapmediawiki.search');
+        return true;
     }
     
 }

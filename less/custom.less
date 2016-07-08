@@ -134,6 +134,10 @@ legend,.secondary,.autocomment{
         .bg(@detail-sub-a-hover-bg);
       }
     }
+    #subnav-toggle{
+      color: @sub-a;
+      .color(@detail-sub-a);
+    }
     .nav .open > a {
       background-color: difference(@sub-bg , #111);
       .bg(@detail-sub-a-hover-bg);
@@ -160,10 +164,22 @@ legend,.secondary,.autocomment{
       }
     }
     //    }
-    .nav .dropdown > a {
-      @media (max-width: 767px) {
+
+
+    @media (max-width: 767px){
+      .nav .dropdown > a {
         background-color: @sub-bg;
         .bg(@detail-sub-bg);
+      }
+      .nav .dropdown{
+        background-color: @sub-bg;
+        .bg(@detail-sub-bg);
+        &.phone-active>a{
+          background-color: difference(@sub-bg , #111);
+          .bg(@detail-sub-a-hover-bg);
+          color: @sub-a;
+          .color(@detail-sub-a);
+        }
       }
     }
   }
@@ -248,6 +264,19 @@ legend,.secondary,.autocomment{
     a {
       .link(@detail-quote-a);
     }
+  }
+
+  pre {
+    border-left:5px solid;
+    overflow: auto;
+    .mixin(@bg-inner);
+    .bg(@detail-quote-bg);
+    .color(@detail-quote-color);
+    .border-color(@detail-quote-border);
+    a {
+      .link(@detail-quote-a);
+    }
+
   }
 
   .wikitable, .mw-datatable{
@@ -423,6 +452,21 @@ legend,.secondary,.autocomment{
       background: rgba(0, 0, 0, .5);
     }
   }
+
+  .poll-wrap{
+    .poll-choice-votes{
+      color: #fff;
+    }
+  }
+  .view-poll-row:hover,.view-poll-row-bottom:hover {
+    .mixin(@bg-inner);
+    .mixin(@detail-inner-bg);
+  }
+  .view-poll-user-name {
+    color: @a;
+    .link(@detail-a);
+  }
+
 
   .btn-default {
     .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);

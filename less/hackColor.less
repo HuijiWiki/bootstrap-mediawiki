@@ -63,11 +63,11 @@ td.diff-marker{
     color: inherit;
   }
 }
-#rating_{
+#wiki-body [id^="rating_"]{
   color:@main-base;
   .color(@detail-vote-color);
   .rating-score{
-    backgroud-color:@brand-primary;
+    background-color:@brand-primary;
     .bg(@detail-vote-score-bg);
     color:@bg-inner;
     .color(@detail-vote-score-color);
@@ -75,6 +75,10 @@ td.diff-marker{
   .vote-rating-star:before{
     color:@brand-primary;
     .color(@detail-vote-star);
+  }
+  .on:before{
+    color: lighten(@brand-primary, 10%);
+    .lightencolor(@detail-vote-active-star);
   }
   .voted:before{
     color:@brand-primary;
