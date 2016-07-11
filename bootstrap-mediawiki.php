@@ -46,12 +46,15 @@ $wgResourceModules['skins.bootstrapmediawiki.ihover'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
 );
-$wgResourceModules['skins.bootstrapmediawiki.sitecolor' ] = array(
+$wgResourceModules['skins.bootstrapmediawiki.prettify' ] = array(
     'styles' => array(
-		 '/style/SiteColor.less'                 =>array( 'media' => 'all' ),
+		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
 	),
-	'remoteBasePath' => '',
-	'localBasePath' => $IP,
+	'scripts' => array(
+		$skinDir . '/google-code-prettify/prettify.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
 );
 $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
@@ -63,12 +66,10 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/css/huiji.ext.css'                          => array( 'media' => 'all' ),
 		$skinDir . '/css/video.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.navbox.css'					     => array( 'media' => 'all' ),
-		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.js',		
 		$skinDir . '/js/huiji.preload.js',
-		$skinDir . '/google-code-prettify/prettify.js',
 	),
 	'dependencies' => array(
 	    'skins.bootstrapmediawiki.sitecolor'

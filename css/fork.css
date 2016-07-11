@@ -22,3 +22,12 @@
 .copy-modal .copy{
     cursor: pointer;
 }
+/* Templatedata */
+.mw-templatedata-doc-params td dt,
+.mw-templatedata-doc-params td dd{
+    margin:0 0.8em 0 0.2em;
+    display: inline;
+}
+table.mw-templatedata-doc-params{
+    width:100%
+}

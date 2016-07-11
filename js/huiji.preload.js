@@ -95,8 +95,11 @@ $(function() {
 	
 	    }//end if
     }
-
-    //prettyPrint();
+    if ($('pre:not([data-raw="true"])').length > 0){
+        mw.loader.using('skins.bootstrapmediawiki.prettify', function(){
+            prettyPrint();
+        });
+    }
 
     /* add missing icons caused by visual editor */
     // $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');

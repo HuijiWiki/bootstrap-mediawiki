@@ -1500,3 +1500,12 @@ table.wikitable > tr > th, table.wikitable > * > tr > th{
 #wiki-body{
     padding-bottom: 25px;
 }
+/* Templatedata */
+.mw-templatedata-doc-params td dt,
+.mw-templatedata-doc-params td dd{
+    margin:0 0.8em 0 0.2em;
+    display: inline;
+}
+table.mw-templatedata-doc-params{
+    width:100%
+}
