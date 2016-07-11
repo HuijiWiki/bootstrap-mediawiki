@@ -1079,15 +1079,6 @@ a:hover,a:focus,a:active{
     float: left;
     margin: 5px 10px 0 60px;
 }
-.home-info blockquote{
-    text-align: right;
-    font-family: -webkit-pictograph;
-    font-style: italic;
-    border-left: none;
-}
-.home-info blockquote .quote-author{
-    text-indent: 100px;
-}
 .info-intro{
     font-size: 16px;
 }

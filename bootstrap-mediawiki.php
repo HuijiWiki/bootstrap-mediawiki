@@ -59,15 +59,16 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/bootstrap-3.3.5/bootstrap-3.3.5/less/bootstrap.less'            => array( 'media' => 'all' ),
 		$skinDir . '/css/fonts.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
-
 		$skinDir . '/less/huiji.less'                                 => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.ext.css'                          => array( 'media' => 'all' ),
 		$skinDir . '/css/video.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.navbox.css'					     => array( 'media' => 'all' ),
+		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.js',		
 		$skinDir . '/js/huiji.preload.js',
+		$skinDir . '/google-code-prettify/prettify.js',
 	),
 	'dependencies' => array(
 	    'skins.bootstrapmediawiki.sitecolor'

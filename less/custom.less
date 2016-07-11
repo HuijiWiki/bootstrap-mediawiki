@@ -62,7 +62,7 @@ a {
   }
   .link(@detail-a);
 }
-span,div,ul,li,a,blockquote,table,legend,header{
+span,div,ul,li,a,table,legend,header{
   border-color: @main-lighter;
   .border-color(@detail-border);
 }
@@ -250,37 +250,25 @@ legend,.secondary,.autocomment{
   }
 
   .bottom.footer {
-    .mixin(@bg-inner);
+    background: @well;
     .bg(@detail-bottom-bg);
     color: @main-darker;
     .color(@detail-bottom-color);
   }
 
   blockquote {
-    .mixin(@bg-inner);
+    background: @well;
     .bg(@detail-quote-bg);
     .color(@detail-quote-color);
-    .border-color(@detail-quote-border);
+    .border-color( darken(@well, 7%));
+    .border-color( mixin(@detail-quote-bg) );
     a {
       .link(@detail-quote-a);
     }
-  }
-
-  pre {
-    border-left:5px solid;
-    overflow: auto;
-    .mixin(@bg-inner);
-    .bg(@detail-quote-bg);
-    .color(@detail-quote-color);
-    .border-color(@detail-quote-border);
-    a {
-      .link(@detail-quote-a);
-    }
-
   }
 
   .wikitable, .mw-datatable{
-    .mixin(@bg-inner);
+    background-color: @well;
     .bg(@detail-wikitable-bg);
     color: @main-base;
     .color(@detail-wikitable-color);
@@ -305,14 +293,14 @@ legend,.secondary,.autocomment{
     width: 300px;
     background-color: @modal;
     .bg(@detail-infobox-bg);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     float: right;
     margin-left: 40px;
     margin-bottom: 30px;
-    border-width: 1px;
-    border-style: solid;
-    border-collapse: separate;
-    border-spacing: 1px;
+    // border-width: 1px;
+    // border-style: solid;
+    // border-collapse: separate;
+    // border-spacing: 1px;
     color: difference(@modal, #fff);
     .color(@detail-infobox-color);
     a {
@@ -330,6 +318,7 @@ legend,.secondary,.autocomment{
     }
     .infobox-title {
       padding: 5px 8px;
+      background-color: @brand-primary;
       .bg(@detail-infobox-title-bg);
       .color(@detail-infobox-title-color);
       th {
@@ -349,14 +338,14 @@ legend,.secondary,.autocomment{
       //          }
       //        }
     }
-    .infobox-item-title th {
+    .infobox-item-title th, .infobox-header th {
       text-align: center;
-      padding: 4px;
-      background-color: difference(@modal, #111);
+      padding: 8px;
+      background-color: @brand-primary;
       .bg(@detail-infobox-item-title-bg);
       .color(@detail-infobox-item-title-color);
     }
-    .infobox-item-label {
+    .infobox-item-label, .infobox-label {
       padding: 8px;
       width: 70px;
       border-bottom-width: 1px;
@@ -369,7 +358,7 @@ legend,.secondary,.autocomment{
         border-bottom-color: transparent;
       }
     }
-    .infobox-item-detail {
+    .infobox-item-detail, .infobox-data {
       padding: 8px;
       border-bottom-width: 1px;
       border-bottom-style: solid;
@@ -388,7 +377,7 @@ legend,.secondary,.autocomment{
   .navbox {
     background-color: @modal;
     .bg(@detail-navbox-bg);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     border-collapse: separate;
     color: difference(@modal, #fff);
     .color(@detail-navbox-color);
@@ -396,15 +385,17 @@ legend,.secondary,.autocomment{
       .link(@detail-navbox-a);
     }
     .navbox-title {
-      background-color: difference(@modal, #111);
+      background-color: @brand-primary;
+      color: @bg-inner;
       .bg(@detail-navbox-title-bg);
       .color(@detail-navbox-title-color);
       a {
+        .link(@bg-inner);
         .link(@detail-navbox-title-a);
       }
     }
     .navbox-group {
-      //      width: 150px;
+      color: difference(@modal, #fff);
       background-color: lighten(@modal, 10%);
       .bg(@detail-navbox-group-bg);
       .color(@detail-navbox-group-color);
@@ -416,6 +407,7 @@ legend,.secondary,.autocomment{
       }
     }
     .navbox-list {
+      color: difference(@modal, #fff);
       .bg(@detail-navbox-list-bg);
       .color(@detail-navbox-list-color);
       a:not(.new) {
@@ -542,12 +534,17 @@ body .mwe-popups{
 
 
 .well-np,.well{
-  .bgChangeTextColor(@well)
+  .bgChangeTextColor(@well);
+  .well-np,.well{
+    .mixin(@well);
+    .well-np,.well{
+      .mixin(darken(@well, 7%));
+    }
+  }
 }
 
 .c-item,.user-board-message,.c-item-del{
-  .mixin(@bg-inner);
-  .mixin(@detail-inner-bg);
+  background: @well;
 }
 
 .bs-callout {
@@ -555,7 +552,7 @@ body .mwe-popups{
   margin: 20px 0;
   border-width: 1px;
   border-style: solid;
-  border-left-width: 5px;
+  border-left-width: 10px;
   border-radius: 3px;
 }
 .bs-callout h4 {
@@ -577,31 +574,31 @@ body .mwe-popups{
 .bs-callout-default h4 {
   color: #777;
 }
-.bs-callout-primary {
+.bs-callout-primary, .quote-primary {
   border-left-color: @brand-primary;
 }
 .bs-callout-primary h4 {
   color: @brand-primary;
 }
-.bs-callout-success {
+.bs-callout-success, .quote-success {
   border-left-color: @brand-success;
 }
 .bs-callout-success h4 {
   color: @brand-success;
 }
-.bs-callout-danger {
+.bs-callout-danger, .quote-danger {
   border-left-color: @brand-danger;
 }
 .bs-callout-danger h4 {
   color: @brand-danger;
 }
-.bs-callout-warning {
+.bs-callout-warning, .quote-warning {
   border-left-color: @brand-warning;
 }
-.bs-callout-warning h4 {
+.bs-callout-warning h4{
   color: @brand-warning;
 }
-.bs-callout-info {
+.bs-callout-info, .quote-info {
   border-left-color: @brand-info;
 }
 .bs-callout-info h4 {

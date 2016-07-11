@@ -293,7 +293,7 @@ blockquote.quote:after{
 }
 #catlinks {
 	border-top-width: 1px;
-    border-top-style: dashed;
+  border-top-style: dashed;
 	margin-top: 2em;
 	padding: 1em 0;
 }

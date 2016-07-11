@@ -38,7 +38,7 @@ $(function() {
             }//end if
         });
 
-    // $('pre:not([data-raw="true"])').addClass('prettyprint linenums');
+    $('pre:not([data-raw="true"])').addClass('prettyprint linenums');
     // $('.jumbotron pre').removeClass('prettyprint linenums');
 
     $('input[type=submit]:not(".keep"),input[type=button]:not(".keep"),input[type=reset]:not(".keep")').addClass('mw-ui-button');
@@ -96,7 +96,7 @@ $(function() {
 	    }//end if
     }
 
-    // prettyPrint();
+    //prettyPrint();
 
     /* add missing icons caused by visual editor */
     // $('#ca-edit.collapsible > a:nth-child(1)').prepend('<i class="fa fa-file-code-o"></i> ');
