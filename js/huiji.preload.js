@@ -38,7 +38,7 @@ $(function() {
             }//end if
         });
 
-    $('pre:not([data-raw="true"])').addClass('prettyprint linenums');
+    $('pre:not(.codeMirror-line)').addClass('prettyprint linenums');
     // $('.jumbotron pre').removeClass('prettyprint linenums');
 
     $('input[type=submit]:not(".keep"),input[type=button]:not(".keep"),input[type=reset]:not(".keep")').addClass('mw-ui-button');
