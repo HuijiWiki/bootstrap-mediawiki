@@ -99,7 +99,6 @@ var mention = {
         if (mw.config.get('wgUserName') == null){
             return false;
         }
-        // alert(222);
         $.ajax({
             url:'/api.php',
             data:{
@@ -117,22 +116,6 @@ var mention = {
                 }
             }
         })
-        // $.post(
-        //     mw.util.wikiScript(), {
-        //         action: 'ajax',
-        //         rs: 'wfGetUserFollowing',
-        //         rsargs: [mw.config.get('wgUserName')]
-        //     },
-        //     function( data ) {
-        //         console.log(data);
-        //         var res=JSON.parse(data);
-        //         if(res.result) {
-        //             res.result.forEach(function (item) {
-        //                 mention.follow.push(item.user_name);
-        //             });
-        //         }
-        //     }
-        // );
     },
 
     addModal: function(){
@@ -142,32 +125,6 @@ var mention = {
     trigger: function(e){
         e.preventDefault();
         var self = this;
-//        var getRangeIndex = function(selectionObject) {
-//            var textarea = self.area;
-//            console.log([textarea.selectionStart, textarea.selectionEnd]);
-//            if (window.getSelection)
-//                return [textarea.selectionStart, textarea.selectionEnd];
-//            else { // 较老版本Safari!
-//                var range               = document.selection.createRange();             //对选择的文字create Range
-//                // var selectText          = range.text;                                //选中的文字
-//                var selectTextLength    = range.text.length;                            //选中文字长度
-//                textarea.select();                                                      //textarea全选
-//                //StartToStart、StartToEnd、EndToStart、EndToEnd
-//                range.setEndPoint("StartToStart", document.selection.createRange());    //指针移动到选中文字开始
-//                var selectTextPosition  = range.text.length;                            //选中文字的结束位置
-//                range.collapse(false);                                                  //将插入点移动到当前范围的开始
-//                range.moveEnd("character", -selectTextLength);   //更改范围的结束位置，减去长度，字符开始位置，character不能改
-//                range.moveEnd("character", selectTextLength);   //再更改范围的结束位置，到字符结束位置
-//                range.select();                                                         //然后选中字符
-//
-//                //返回字符的开始和结束位置
-//                return [selectTextPosition - selectTextLength, selectTextPosition];
-//            }
-//        }
-//        var selection = window.getSelection();
-//        console.log(selection);
-//        var rangeIndex = getRangeIndex(selection);
-//        console.log(rangeIndex);
         var caret = $('.emoji-wysiwyg-editor').caret();
         var content = $('.emoji-wysiwyg-editor').text().substring(caret-1,caret);
         if (content == '@') {
@@ -192,9 +149,6 @@ var mention = {
 
     addPopover: function( follow ){
         var content = '';
-//        for(var i=0;i<follow.length;i++){
-//            content+='<li>'+follow[i]+'</li>'
-//        }
         content = '<div class="mention-popover">' +
             '<div class="mention-edit">'+
             '<input class="mention-input">'+
@@ -225,10 +179,10 @@ var mention = {
 
         //使用mousedown防止和blur冲突
         $('body').on('mousedown','.mention-list li',function(e){
-            // console.log($('.mention-area.emoji-wysiwyg-editor').val());
+
             var content = $('.mention-area.emoji-wysiwyg-editor').val().replace('<b>@</b>','@'+$(this).text()+' ');
-            // console.log(content)
             $('.mention-area.emoji-wysiwyg-editor').val(content).text(content);
+
         });
     },
 
@@ -294,7 +248,6 @@ var mention = {
         if(this.area){
             this.getFollow();
             this.addModal();
-//
             this.loadEmoji();
         }
     }

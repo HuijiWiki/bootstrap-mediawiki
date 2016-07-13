@@ -26,6 +26,9 @@ Class HuijiSkinTemplate extends BaseTemplate {
     protected function isPrimaryContent(){
         global $wgRequest;
         $title = $this->getSkin()->getTitle();
+        if ($title->getFullText() === 'Bootstrap:自定义主题'){
+            return true;
+        }
         return !($title->isMainPage()) && $this->getSkin()->getOutput()->isArticle() && !($title->isTalkPage()) && ($title->getNamespace()!=NS_USER) && $wgRequest->getText( 'action' )=='' && $title->exists();
     }
     /**
@@ -34,7 +37,12 @@ Class HuijiSkinTemplate extends BaseTemplate {
     protected function getSub($NS){
         $res = '';
         if ($this->isPrimaryContent() ){
-            $rev = Revision::newFromTitle($this->skin->getTitle());
+            $title = $this->skin->getTitle();
+            if ($title->getFullText() === 'Bootstrap:自定义主题'){
+                echo "这篇条目实际上储存于灰机的模板管理站，并不能真正的编辑。";
+                return;
+            }
+            $rev = Revision::newFromTitle($title);
             $revId = $rev->getId();
             $editorId = $rev->getUser();
             if ($editorId !== 0){

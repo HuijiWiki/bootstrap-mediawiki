@@ -1,13 +1,8 @@
-//@import "HuijiColor.less";
-//@import "mixinscolor.less";
-//@import "SiteColor.less";
-//@brand-default:         #ffffff;
-//@brand-primary:         #337ab7;
-//@brand-success:         #5cb85c;
-//@brand-info:            #5bc0de;
-//@brand-warning:         #f0ad4e;
-//@brand-danger:          #d9534f;
-@import "mixins.less";
+//此文件从content.less底部导入
+
+
+
+@import "mixins.less"; //用于主题颜色编辑器预览
 
 @btn-default-color:              #333;
 @btn-default-bg:                 @brand-default;
@@ -33,7 +28,10 @@
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              darken(@btn-danger-bg, 5%);
 
-
+/** 
+ * Self created helper method 
+ * these method should stay consistent as they may be frequently used by users
+ **/
 .primary{
   background-color: @brand-primary;
 }
@@ -41,10 +39,60 @@
   .mixin(@bg-inner);
   .mixin(@detail-inner-bg);
 }
+.lighten{
+  .mixin2(@bg-inner);
+  .mixin2(@detail-inner-bg);
+}
+.text-primary{
+  color: @brand-primary;
+}
+.text-success{
+  color: @brand-success;
+}
+.text-info{
+  color: @brand-info;
+}
+.text-danger{
+  color: @brand-danger;
+}
+.text-warning{
+  color: @brand-warning;
+}
+.bg-primary{
+  background-color: @brand-primary;
+}
+.bg-success{
+  background-color: @brand-success;
+}
+.bg-info{
+  background-color: @brand-info;
+}
+.bg-warning{
+  background-color: @brand-warning;
+}
+.bg-danger{
+  background-color: @brand-danger;
+}
+.border-primary{
+  border-color: @brand-primary;
+}
+.border-success{
+  border-color: @brand-success;
+}
+.border-info{
+  border-color: @brand-info;
+}
+.border-warning{
+  border-color: @brand-warning;
+}
+.border-danger{
+  border-color: @brand-danger;
+}
 .no-border{
   border-color: transparent!important;
   border: 0;
 }
+
 [class^="icon-lv"], [class*=" icon-lv"]{
   color: @main-base;
   .color(@detail-color);

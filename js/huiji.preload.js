@@ -38,7 +38,7 @@ $(function() {
             }//end if
         });
 
-    $('pre:not(.codeMirror-line)').addClass('prettyprint linenums');
+    $('pre:not(.CodeMirror-line)').addClass('prettyprint linenums');
     // $('.jumbotron pre').removeClass('prettyprint linenums');
 
     $('input[type=submit]:not(".keep"),input[type=button]:not(".keep"),input[type=reset]:not(".keep")').addClass('mw-ui-button');
@@ -95,7 +95,7 @@ $(function() {
 	
 	    }//end if
     }
-    if ($('pre:not([data-raw="true"])').length > 0){
+    if ($('pre:not(.CodeMirror-line)').length > 0){
         mw.loader.using('skins.bootstrapmediawiki.prettify', function(){
             prettyPrint();
         });

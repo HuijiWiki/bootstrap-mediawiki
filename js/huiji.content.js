@@ -273,7 +273,7 @@ var lazyLoad = {
         var l = 0, t = 0, w, h;
         w = p.offsetWidth;
         h = p.offsetHeight;
-        while(p.offsetParent){
+        while(p.offsetParent){x
             l += p.offsetLeft;
             t += p.offsetTop;
             p = p.offsetParent;

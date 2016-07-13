@@ -485,69 +485,7 @@ $(document).ready(function(){
                 getDirection();
                 
             }
-        })
-       /* $.post(
-            mw.util.wikiScript(),{
-                action:'ajax',
-                rs:'wfUserFollowsInfoResponse',
-                rsargs:[carduser]
-            },
-            function(data){
-                console.log(data);
-                var res = jQuery.parseJSON(data);
-                var sex;
-                if(!res.result) return;
-                if(res.result.gender == "female"){
-                    res.result.gender = "♀";
-                    sex = "她";
-                }else if(res.result.gender == "male"){
-                    res.result.gender = "♂";
-                    sex = "他";
-                }else{
-                    res.result.gender ='♂/♀';
-                    sex = "Ta";
-                }
-                if(res.success){
-                    var ps = '';
-                    var com = '';
-                    var follow = '';
-                    var isfollow = '';
-                    if(res.result.minefollowerhim.length == 0){
-                        ps = "暂无";
-                    }else{
-                        $.each(res.result.minefollowerhim,function(i,item){
-                            ps += "<a href='/wiki/User:"+item+"'>"+item+"</a><i>、</i>";
-                        })
-                    }
-                    if(res.result.commonfollow.length == 0){
-                        com = "暂无";
-                    }else{
-                        $.each(res.result.commonfollow,function(i,item){
-                            com += "<a href='/wiki/User:"+item+"'>"+item+"</a><i>、</i>";
-                        });
-                    }
-                    if(res.result.is_follow=='Y'){
-                        follow = '取关';
-                        isfollow = 'unfollow';
-                    }else{
-                        follow = '关注';
-                    }
-                    var msg = "<div class='user-card-top'>"+res.result.url+"<div class='user-card-info'><span><a href='/wiki/User:"+res.result.username+"'>"+res.result.username+"</a></span><span>"+res.result.gender+"</span>" +
-                        "<span>"+res.result.level+"</span><p>"+mw.html.escape(res.result.status)+"</p></div></div><div class='user-card-mid'><div class='user-card-msg'><ul><li>关注：<span>"+res.result.usercounts+"</span></li>" +
-                        "<li class='cut'>被关注：<span>"+res.result.usercounted+"</span></li><li>编辑：<span>"+res.result.editcount+"</span></li></ul><button class='user-card-follow "+isfollow+" user-user-follow' data-username = '"+res.result.username+"'>"+follow+"</button>" +
-                        "<a href='/index.php?title=%E7%89%B9%E6%AE%8A:GiveGift&amp;user="+res.result.username+"'  class='user-card-gift' title='特殊:GiveGift'><i class='fa fa-gift'></i>礼物</a></div></div>" +
-                        "<div class='user-card-bottom'><p class='follow-him'>我关注的人也关注了"+sex+"("+res.result.minefollowerhim.length+"):<span>"+ps+"</span></p><p class='common-follow'>共同关注("+res.result.commonfollow.length+"):<span>"+com+"</span></p></div>";
-                    $(".user-card").empty().append(msg);
-                    $('.follow-him i:last,.common-follow i:last').remove();
-                    if(username==null){
-                        $('.user-card-bottom').remove();
-                    }else if(username == res.result.username){
-                        $('.user-card-follow,.user-card-gift').hide();
-                    }
-                }
-                getDirection();
-            }
-        )*/
+        });
     }
     //获取元素相对于屏幕的位置
     function getPos(ele){

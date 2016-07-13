@@ -63,7 +63,7 @@
                     );
             }
             $subnav_links = $this->listAdapter( $this->data['content_actions']);
-            if( $NS !== NS_USER && $NS !== NS_USER_TALK){
+            if( $NS !== NS_USER && !$this->getSkin()->getTitle()->isSubpage()){
                 echo $this->nav( $subnav_links );
             }
             ?>
@@ -117,7 +117,7 @@
                         <li><a href="<?php echo $url_prefix; ?>Bootstrap:Footer" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-hand-o-down"></i> 修改站点页脚</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.css" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-css3"></i> 修改站点CSS</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.js" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-code"></i> 修改站点js</a></li>
-                        <li><a href="<?php echo $url_prefix; ?>Special:CommonStyle" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-paint-brush"></i> 自定义主题</a></li>
+                        <li><a href="<?php echo $url_prefix; ?>Bootstrap:自定义主题" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-paint-brush"></i> 自定义主题</a></li>
                     </ul>
                 </li>
                 <?php } ?>

@@ -1,3 +1,4 @@
+//根据主色调计算的几种颜色，乘以亮度防止比较适中的颜色淡化过浅/深
 .a() when (lightness(@main-base)>50%){
   @main-darker:darken(@main-base, 0.135*lightness(@main-base));
   @main-dark:darken(@main-base, 0.2*lightness(@main-base));
@@ -13,6 +14,7 @@
   @main-lighter:lighten(@main-base, 0.75*(100 - lightness(@main-base)));
 }
 
+//页面内容中设置较小颜色差异的块
 .mixin (@n) when (iscolor(@n)) {
   & when (lightness(@n) >= 50%) {
     background-color: darken(@n, 10%);
@@ -21,7 +23,7 @@
     background-color: lighten(@n, 10%);
   }
 }
-
+//块中再次设置颜色差异
 .mixin2 (@n) when (iscolor(@n)) {
   & when (lightness(@n) >= 50%) {
     background-color: difference(darken(@n, 10%), #111);
@@ -31,11 +33,13 @@
   }
 }
 
+//取反色
 .diff (@n) when (iscolor(@n)) {
   background-color: difference(@n, #fff);
   color: @n;
 }
 
+//高级设置颜色调用方法
 .bg(@n) when(iscolor(@n)){
   background-color: @n;
 }
@@ -54,6 +58,8 @@
 .fill(@n) when (iscolor(@n)){
   fill: @n;
 }
+
+//设置背景颜色时自动设置字体色
 .bgChangeTextColor(@n) when (iscolor(@n)) {
   background-color: @n;
   & when (lightness(@n) <= 50%) {
@@ -63,6 +69,7 @@
     color: #333;
   }
 }
+
 .secondary() {
   color: @main-light;
   .color(@detail-secondary);
@@ -75,6 +82,7 @@
   border-color:@n;
 }
 
+//一些没法修改css的插件，调用以下方法去hack
 .hack-border(@m,@n){
   border: 1px solid @m;
   & when (iscolor(@n)){
@@ -105,6 +113,8 @@
     border-bottom: 1px solid @n;
   }
 }
+
+//用于bootstrap按钮组预览
 .button-variant(@color; @background; @border) {
   color: @color;
   background-color: @background;
@@ -161,4 +171,4 @@
   }
 }
 
-@import "secondary";
+@import "secondary"; //用于设置bootstrap里的一些变量方法
