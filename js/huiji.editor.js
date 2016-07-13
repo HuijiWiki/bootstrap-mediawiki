@@ -237,7 +237,7 @@ window.customizeToolbar = function() {
 						type: 'callback',
 						execute: function(){
 							var content = $('#wpTextbox1').val();
-							var re = /\[\[(.*?)(\||\]\])/gi; 
+							var re = /(?:'{3}|\[\[)(.*?)(?:\||'{3}|\]\])/gi; 
 							var m = [],matches = [];
 							while( matches = re.exec(content)){
 								m.push(matches[1]);

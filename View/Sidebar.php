@@ -115,8 +115,12 @@
                         <li><a href="<?php echo $url_prefix; ?>特殊:AdminDashboard" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-tachometer"></i> 管理面板</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Bootstrap:Subnav" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-bars"></i> 修改站点导航</a></li>
                         <li><a href="<?php echo $url_prefix; ?>Bootstrap:Footer" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-hand-o-down"></i> 修改站点页脚</a></li>
+                        <?php if ($wgUser->getOption('showeditcss') == 1): ?>
                         <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.css" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-css3"></i> 修改站点CSS</a></li>
+                        <?php endif; ?>
+                        <?php if ($wgUser->getOption('showeditjs') == 1): ?>
                         <li><a href="<?php echo $url_prefix; ?>Mediawiki:Common.js" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-code"></i> 修改站点js</a></li>
+                        <?php endif; ?>
                         <li><a href="<?php echo $url_prefix; ?>Bootstrap:自定义主题" class="bootstrap-subnav" rel="nofollow"><i class="fa fa-paint-brush"></i> 自定义主题</a></li>
                     </ul>
                 </li>

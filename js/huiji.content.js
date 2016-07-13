@@ -20,8 +20,7 @@ var recommend = {
         }
     },
 
-    funGetNetRec: function(){
-        var obj = new Object();
+    funGetPageRec: function(){
         var self = this;
         this.pageRec.forEach(function(item,i){
             if(i<4) {
@@ -36,11 +35,16 @@ var recommend = {
             }
         });
         self.item = self.pageRec.length>=4?4:self.pageRec.length;
+    },
+
+    funGetNetRec: function(){
+        var obj = new Object();
+        var self = this;
         $.ajax({
             url:'http://121.42.179.100:8080/queryService/webapi/page/recommend/',
             data:{content:self.searchName,category:self.category,sitePrefix:mw.config.get('wgHuijiPrefix')},
             success: function (data) {
-                console.log(data);
+//                console.log(data);
                 var len = self.item;
                 self.netData = data;
                 if (data.length == 0) return;
@@ -60,95 +64,47 @@ var recommend = {
                         title += item + '|';
                     });
                     title = title.substring(0, title.length - 1);
-                    getImg(i);
-
-                    function getImg(i) {
-                        var address = 'http://' + i + '.huiji.wiki';
-                        $.ajax({
-                            url: 'http://' + i + '.huiji.wiki/api.php?action=query&prop=pageimages&pilimit=max&format=json&pithumbsize=250&maxage=2592000&smaxage=2592000&titles=' + title,
-                            type: 'get',
-                            success: function (data) {
-
-                                for (var x in data.query.pages) {
-                                    if (data.query.pages[x].thumbnail) {
-                                        var percent = data.query.pages[x].thumbnail.width / data.query.pages[x].thumbnail.height;
-                                        var content = '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="' + address + '/wiki/' + data.query.pages[x].title + '"><img data-src="' + data.query.pages[x].thumbnail.source + '"></a>' +
-                                            '<div class="recommend-title">' +
-                                            '<a href="http://' + i + '.huiji.wiki/wiki/' + data.query.pages[x].title + '" title="' + data.query.pages[x].title + '">' + data.query.pages[x].title + '</a>' +
-                                            '<a href="' + address + '">' + obj[i].value + '</a></div></div>';
-
-                                        $('.recommend').append(content);
-                                        self.funClipImg(percent, self.item);
-
-                                    } else {
-                                        var content = '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="' + address + '/wiki/' + data.query.pages[x].title + '"><img data-src="/skins/bootstrap-mediawiki/img/recommend.png"></a>' +
-                                            '<div class="recommend-title">' +
-                                            '<a href="http://' + i + '.huiji.wiki/wiki/' + data.query.pages[x].title + '" title="' + data.query.pages[x].title + '">' + data.query.pages[x].title + '</a>' +
-                                            '<a href="' + address + '">' + obj[i].value + '</a></div></div>';
-                                        $('.recommend').append(content);
-                                    }
-                                    self.item++;
-                                }
-                                setTimeout(function () {
-                                    lazyLoad.autocheck();
-                                }, 100);
-                                if (document.body.clientWidth > 768&&self.item==10)
-                                    doOwl();
-                                function doOwl() {
-                                    $("#recommend").owlCarousel({
-                                        items: 5,
-                                        beforeMove: function () {
-                                            var sp = $('.owl-wrapper').css('transform').split(',');
-                                            var len = self.pageRec.length;
-                                            var data = self.netData;
-                                            var n = self.item;
-                                            sp = Math.abs(parseInt(sp[4]));
-
-                                            if (n < 30) {
-                                                if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
-                                                    setTimeout(function () {
-                                                        var load = '<div class="recommend-load"></div>';
-                                                        self.funAddItem(load, n);
-                                                    }, 100);
-                                                    for (var i = n; i < n + 2; i++) {
-                                                        var item = data[i - len];
-                                                        var searchtitle = item.title;
-                                                        var id = item.id;
-                                                        //排除本词条和重复词条
-//                                        if (id != self.myId && self.arr.indexOf(searchtitle+item.siteName)<0) {
-                                                        var sitePrefix = item.sitePrefix;
-
-                                                        //去em标签
-                                                        searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
-
-                                                        self.funGetImg2(searchtitle, i, sitePrefix, address, item, n, true);
-//                                        }
-                                                        self.item++;
-                                                    }
-                                                }
-                                            } else {
-                                                if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
-                                                    setTimeout(function () {
-                                                        for (var i = n; i < n + 2; i++) {
-                                                            var img = '<div id="' + id + '" class="recommend-item"><a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72"><img class="" src="/skins/bootstrap-mediawiki/img/found.jpg"></a><div class="recommend-title">' +
-                                                                '<a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72" class="recommend-found-a">U FOUND ME</a><p class="recommend-found-p">cool cool cool!</p></div>';
-                                                            self.funAddItem(img, n);
-                                                            self.item++;
-                                                        }
-                                                    }, 100);
-
-
-                                                }
-                                            }
-                                        }
-                                    });
-                                }
-                            }
-                        });
-                    }
+                    self.funGetDefaultImg(obj,title,i);
                 }
             },
             type: 'post'
+        });
+    },
+
+    funGetDefaultImg: function(obj,title,i){
+        var address = 'http://' + i + '.huiji.wiki';
+        var self = this;
+        $.ajax({
+            url: 'http://' + i + '.huiji.wiki/api.php?action=query&prop=pageimages&pilimit=max&format=json&pithumbsize=250&maxage=2592000&smaxage=2592000&titles=' + title,
+            type: 'get',
+            success: function (data) {
+
+                for (var x in data.query.pages) {
+                    if (data.query.pages[x].thumbnail) {
+                        var percent = data.query.pages[x].thumbnail.width / data.query.pages[x].thumbnail.height;
+                        var content = '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="' + address + '/wiki/' + data.query.pages[x].title + '"><img data-src="' + data.query.pages[x].thumbnail.source + '"></a>' +
+                            '<div class="recommend-title">' +
+                            '<a href="http://' + i + '.huiji.wiki/wiki/' + data.query.pages[x].title + '" title="' + data.query.pages[x].title + '">' + data.query.pages[x].title + '</a>' +
+                            '<a href="' + address + '">' + obj[i].value + '</a></div></div>';
+
+                        $('.recommend').append(content);
+                        self.funClipImg(percent, self.item);
+
+                    } else {
+                        var content = '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="' + address + '/wiki/' + data.query.pages[x].title + '"><img data-src="/skins/bootstrap-mediawiki/img/recommend.png"></a>' +
+                            '<div class="recommend-title">' +
+                            '<a href="http://' + i + '.huiji.wiki/wiki/' + data.query.pages[x].title + '" title="' + data.query.pages[x].title + '">' + data.query.pages[x].title + '</a>' +
+                            '<a href="' + address + '">' + obj[i].value + '</a></div></div>';
+                        $('.recommend').append(content);
+                    }
+                    self.item++;
+                }
+                setTimeout(function () {
+                    lazyLoad.autocheck();
+                }, 100);
+                if (document.body.clientWidth > 768&&self.item==10)
+                    self.funDoOwl();
+            }
         });
     },
 
@@ -208,6 +164,57 @@ var recommend = {
         }
     },
 
+    funDoOwl: function(){
+        var self = this;
+        $("#recommend").owlCarousel({
+            items: 5,
+            beforeMove: function () {
+                var sp = $('.owl-wrapper').css('transform').split(',');
+                var len = self.pageRec.length;
+                var data = self.netData;
+                var n = self.item;
+                sp = Math.abs(parseInt(sp[4]));
+
+                if (n < 30) {
+                    if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
+                        setTimeout(function () {
+                            var load = '<div class="recommend-load"></div>';
+                            self.funAddItem(load, n);
+                        }, 100);
+                        for (var i = n; i < n + 2; i++) {
+                            var item = data[i - len];
+                            var searchtitle = item.title;
+                            var id = item.id;
+                            //排除本词条和重复词条
+//                                        if (id != self.myId && self.arr.indexOf(searchtitle+item.siteName)<0) {
+                            var sitePrefix = item.sitePrefix;
+
+                            //去em标签
+                            searchtitle = searchtitle.replace(/<em>/g, '').replace(/<\/em>/g, '');
+
+                            self.funGetImg2(searchtitle, i, sitePrefix, address, item, n, true);
+//                                        }
+                            self.item++;
+                        }
+                    }
+                } else {
+                    if (sp > ($('.owl-item').length - 5) * $('.owl-item').width()) {
+                        setTimeout(function () {
+                            for (var i = n; i < n + 2; i++) {
+                                var img = '<div id="' + id + '" class="recommend-item"><a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72"><img class="" src="/skins/bootstrap-mediawiki/img/found.jpg"></a><div class="recommend-title">' +
+                                    '<a href="http://www.huiji.wiki/wiki/Special:SendHiddenGift?award=72" class="recommend-found-a">U FOUND ME</a><p class="recommend-found-p">cool cool cool!</p></div>';
+                                self.funAddItem(img, n);
+                                self.item++;
+                            }
+                        }, 100);
+
+
+                    }
+                }
+            }
+        });
+    },
+
     funAddItem: function(img,n){
         $('#recommend').data('owlCarousel').addItem(img);
         $('#recommend').data('owlCarousel').jumpTo(n);
@@ -248,7 +255,7 @@ var recommend = {
     init: function(){
         if(mw.config.get('wgRec')||$('body').hasClass('ns-0')&&!mw.config.get('wgNoRec')){
             this.funAddBox();
-//            this.funGetPageRec();
+            this.funGetPageRec();
             this.funGetCategory();
             this.funGetNetRec();
         }
