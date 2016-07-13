@@ -30,7 +30,7 @@ var recommend = {
                     '<div class="recommend-title"><a href="http://' + item.site + '.huiji.wiki/wiki/' + item.title + '" title="'+item.title+'" >' +
                     item.title + '</a><a href="http://' + item.site + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                 self.arr.push(item.title+item.siteName);
-                self.funGetImg(item.title, 'page'+i, item.site,address,false);
+                self.funGetPageImg(item.title, 'page'+i, item.site,address,false);
                 $('.recommend').append(content);
             }
         });
@@ -44,21 +44,19 @@ var recommend = {
             url:'http://121.42.179.100:8080/queryService/webapi/page/recommend/',
             data:{content:self.searchName,category:self.category,sitePrefix:mw.config.get('wgHuijiPrefix')},
             success: function (data) {
-//                console.log(data);
                 var len = self.item;
                 self.netData = data;
                 if (data.length == 0) return;
+
+                //根据推荐词条的站点进行分组
                 for(var n=len;n<10;n++) {
                     if (obj[data[n].sitePrefix] == null) {
-
                         obj[data[n].sitePrefix] = new Array();
                         obj[data[n].sitePrefix].value = data[n].siteName;
-
                     }
                         obj[data[n].sitePrefix].push(data[n].title)
-
                 }
-                for(var i in obj) {
+                for(var i in obj) { //每个站点发一个合并请求
                     var title = '';
                     obj[i].forEach(function (item) {
                         title += item + '|';
@@ -108,7 +106,7 @@ var recommend = {
         });
     },
 
-    funGetImg: function(title,id,sitePrefix,address,ajax){
+    funGetPageImg: function(title,id,sitePrefix,address,ajax){
         var self = this;
         $.ajax({
             url:'http://'+sitePrefix+'.huiji.wiki/api.php?action=query&prop=pageimages&format=json&pithumbsize=250&maxage=2592000&smaxage=2592000&titles='+title,
@@ -158,6 +156,7 @@ var recommend = {
             wid2 = 1 / percent * 70 + 100;
             $('#' + id).find('img').css({'clip': 'rect(' + wid + 'px,140px,' + wid2 + 'px,0)', 'top': '-' + wid + 'px', 'width': '140px'});
         }
+        //比例适中缩放
         else {
             $('#' + id).find('img').css('height', '200px');
             $('#' + id).removeClass('re-opacity');
