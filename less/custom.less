@@ -88,27 +88,23 @@
 .border-danger{
   border-color: @brand-danger;
 }
+//.semantic(@style,@)
 .no-border{
   border-color: transparent!important;
   border: 0;
 }
 
-[class^="icon-lv"], [class*=" icon-lv"]{
-  color: @main-base;
-  .color(@detail-color);
+.huiji-css-hook{
+ [class^="icon-lv"],[class*=" icon-lv"]{
+    color: @main-base;
+    .color(@detail-color);
+  }
 }
 
 .a();
 
 input,textarea,select,option{
   color: #333;
-}
-a {
-  color: @a;
-  &:hover{
-    color: darken(@a, 15%);
-  }
-  .link(@detail-a);
 }
 span,div,ul,li,a,table,legend,header{
   border-color: @main-lighter;
@@ -143,16 +139,23 @@ legend,.secondary,.autocomment{
     .mixin(@detail-inner-bg);
   }
 }
-
+/*
 .oo-ui-window-frame{
   background-color: @bg-inner;
   .bg(@detail-bg);
   color: @main-base;
   .color(@detail-color);
-}
+}*/
 .huiji-css-hook {
   background-color: @bg;
   .bg(@detail-bg);
+    a {
+    color: @a;
+    &:hover{
+      color: darken(@a, 15%);
+    }
+    .link(@detail-a);
+  }
   .toc-sidebar li {
     a {
       color: @main-light;
@@ -373,6 +376,10 @@ legend,.secondary,.autocomment{
         font-size: 16px;
         text-align: center;
       }
+      a {
+        .link(@bg-inner);
+        .link(@detail-infobox-title-a);
+      }
       //        &.large-title th{
       //          text-align:center;
       //          b {
@@ -391,8 +398,13 @@ legend,.secondary,.autocomment{
       padding: 8px;
       background-color: @brand-primary;
       text-align: center;
+      a {
+        .link(@bg-inner);
+        .link(@detail-infobox-header-a);
+      }
       .bg(@detail-infobox-item-title-bg);
       .color(@detail-infobox-item-title-color);
+
     }
     .infobox-item-label, .infobox-label {
       padding: 8px;
@@ -592,7 +604,7 @@ body .mwe-popups{
   }
 }
 
-.c-item,.user-board-message,.c-item-del{
+.hj-media,.user-board-message,.c-item.hj-media-del{
   background: @well;
 }
 

@@ -13,23 +13,46 @@
   @main-light:lighten(@main-base, 0.467*(100 - lightness(@main-base)));
   @main-lighter:lighten(@main-base, 0.75*(100 - lightness(@main-base)));
 }
+//设置背景颜色时自动设置字体色
+.bgChangeTextColor(@n) when (iscolor(@n)) {
+  background-color: @n;
+  p {
+    a {
+      color: @a;
+    }
+  }
+  & when (lightness(@n) <= 50%) {
+    color: #fff;
+  }
+  & when (lightness(@n) > 50%) {
+    color: #333;
+  }
+  textarea, input{
+    background-color: #fff;
+    color: #333;
+  }
+}
 
 //页面内容中设置较小颜色差异的块
 .mixin (@n) when (iscolor(@n)) {
   & when (lightness(@n) >= 50%) {
     background-color: darken(@n, 10%);
+    border-color: darken(@n, 10%);
   }
   & when (lightness(@n) < 50%) {
     background-color: lighten(@n, 10%);
+    border-color: lighten(@n, 10%);
   }
 }
 //块中再次设置颜色差异
 .mixin2 (@n) when (iscolor(@n)) {
   & when (lightness(@n) >= 50%) {
     background-color: difference(darken(@n, 10%), #111);
+    border-color: difference(darken(@n, 10%), #111);
   }
   & when (lightness(@n) < 50%) {
     background-color: difference(lighten(@n, 10%), #111);
+    border-color: difference(lighten(@n, 10%), #111);
   }
 }
 
@@ -58,21 +81,26 @@
 .fill(@n) when (iscolor(@n)){
   fill: @n;
 }
-
-//设置背景颜色时自动设置字体色
-.bgChangeTextColor(@n) when (iscolor(@n)) {
+.disabled(@n) when (iscolor(@n)) {
   background-color: @n;
+
   & when (lightness(@n) <= 50%) {
     color: #fff;
+    border-color: darken(@n, 10%)
   }
   & when (lightness(@n) > 50%) {
     color: #333;
-  }
+    border-color: lighten(@n, 10%)
+  }  
 }
-
+ 
 .secondary() {
   color: @main-light;
   .color(@detail-secondary);
+}
+.secondary-lighter() {
+  color: @main-lighter;
+  .lightencolor(@detail-secondary);  
 }
 
 .border-color(@n) when(iscolor(@n)){

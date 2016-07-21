@@ -6,16 +6,19 @@
     margin: 0 auto;
     font-size: 0;
 }
-   #searchText{
+#searchText{
     display: inline-block;
-    width: 100%;
+    width: 85%;
     font-size: 14px;
     border-radius: 3px 0 0 3px;
     max-width: 500px;
     padding: 7px;
     border: 1px solid #ccc
 }
-   #searchText:focus{
+#mw-search-top-table > input.mw-ui-button.mw-ui-progressive{
+    width: 15%;
+}
+#searchText:focus{
     box-shadow: none;
 }
   #mw-search-top-table .mw-ui-button{
@@ -36,7 +39,7 @@
     max-width: 720px;
     margin: 0 auto;
 }
-  .mw-search-profile-tabs div.search-types ul{
+.mw-search-profile-tabs div.search-types ul{
 
     border-bottom: 1px solid #999;
 
@@ -78,6 +81,7 @@
         margin-left: auto;
         margin-right: auto;
         margin-top: 0.4em;
+        width: 100%;
     }
     .mw-search-results{
         float:none;

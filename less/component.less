@@ -1,6 +1,100 @@
 //此文件用于放huiji组件样式
 
+//头像组
 .avatar-group-wrap .headimg{
   width: 30px;
   margin-right: 5px;
+}
+
+//媒体对象
+
+.hj-media {
+  padding: .5em;
+  margin-bottom: 5px;
+  &:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+.hj-media-avatar {
+  position: absolute;
+  top: inherit;
+  padding: 5px;
+}
+.hj-media-body {
+  position: relative;
+  top: 0px;
+  margin: 0px 0px 0px 70px;
+  padding: 5px;
+}
+.hj-media-user {
+  font-weight: bold;
+  position: relative;
+  margin: 0px 0px 6px 0px;
+  a {
+    font-size: 14px;
+    text-decoration: none;
+  }
+}
+.hj-media-user-level {
+  color: #666;
+  font-size: 11px;
+  margin: 0px 5px 0px 5px;
+}
+.hj-media-actions {
+  float: right;
+  font-size: 10px;
+  margin: 0;
+  padding-bottom: .5em;
+}
+.hj-media-del{
+  font-size: 14px;
+  background-color: rgba(202, 202, 202, 0.33);
+  /* color: #0E1112; */
+  height: 50px;
+  text-align: center;
+  padding-top: 15px;
+  margin-bottom: 15px;
+}
+.hj-media-pager-wrapper{
+  text-align: center;
+}
+ul.hj-media-pager {
+  clear: both;
+  margin: 20px 0px 5px 0px;
+
+}
+.hj-media-pager-item span, .hj-media-pager-item a {
+  font-size: 14px;
+}
+li.hj-media-pager-item {
+  background-image: none;
+  display: inline-block;
+  font-size: 0;
+  list-style-type: none;
+  padding: 0.5em;
+}
+
+//user-info-group
+.hj-user-info-group{
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  line-height: 50px;
+  height: 50px;
+  padding: 0 10px;
+  .headimg{
+    width: 30px;
+  }
+  &>*{
+    margin-right: 10px;
+    display: inline-block;
+    outline: none;
+  }
+  .hj-user-info-name{
+    width: 120px;
+  }
+  .hj-user-info-level{
+    width: 40px;
+  }
 }

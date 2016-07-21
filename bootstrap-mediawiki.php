@@ -22,7 +22,13 @@ $wgAutoloadClasses['Preloads'] = __DIR__ . '/Preload.php';
 $wgAutoloadClasses['HuijiSkinTemplate'] = __DIR__ . '/HuijiSkinTemplate.php';
 $wgAutoloadClasses['FrontPage'] = __DIR__ . '/frontpage.php';
 $wgAutoloadClasses['CUtf8_PY'] = __DIR__ . '/CUtf8_PY.php';
+$wgAutoloadClasses['SpecialCommonStyle'] = __DIR__ . '/CommonStyle/SpecialCommonStyle.php';
+$wgAutoloadClasses['CommonStyle'] = __DIR__ . '/CommonStyle/CommonStyleClass.php';
+$wgAutoloadClasses['SpecialDynamicLess'] = __DIR__ . '/CommonStyle/SpecialDynamicLess.php';
+$wgAutoloadClasses['ApiCommonStyle'] = __DIR__ . '/CommonStyle/api/ApiCommonStyle.php';
+$wgSpecialPages['CommonStyle'] = 'SpecialCommonStyle';
 $wgMessagesDirs['bootstrapmediawiki'] = __DIR__ . '/i18n';
+$wgMessagesDirs['bootstrapmediawikiCommonStyle'] = __DIR__ . '/CommonStyle/i18n';
 $skinDirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );
 $skinDir = array_pop( $skinDirParts );
 $src = '/var/www/src';
@@ -283,6 +289,46 @@ $wgResourceModules['skins.bootstrapmediawiki.search'] = array(
 	'position' => 'top',	
 );
 
+//commonstyle
+$wgResourceModules['socialprofile.commonstyle.css'] = array(
+	'styles' => array('jcolor.min.css','CommonStyle.css'),
+    'dependencies' => array(
+                    'skins.bootstrapmediawiki.top',
+                    'oojs-ui'
+                    ),
+	'localBasePath' => __DIR__ .'/CommonStyle',
+	'remoteBasePath' => 'skins/bootstrap-mediawiki/CommonStyle',
+	'position' => 'top',
+);
+
+$wgResourceModules['ext.socialprofile.commonstyle.js'] = array(
+	'scripts' =>array(
+		'jcolor.min.js',
+		'CommonStyle.js',
+		'palette.js'
+	),
+	'templates' => array(
+		'page1.mustache' =>  '/pages/page1.mustache',
+		'page2.mustache' =>  '/pages/page2.mustache',
+		'page3.mustache' =>  '/pages/page3.mustache',
+		'page4.mustache' =>  '/pages/page4.mustache',
+		'page5.mustache' =>  '/pages/page5.mustache',
+		'page6.mustache' =>  '/pages/page6.mustache',
+		'dummypage.mustache' => '/pages/dummypage.mustache',
+		// 'page3.mustache' =>  '/pages/page3.mustache',
+		// 'page4.mustache' =>  '/pages/page4.mustache',
+		// 'page5.mustache' =>  '/pages/page5.mustache',
+		// 'page6.mustache' =>  '/pages/page6.mustache',
+	),
+	'dependencies' => array(
+		'mediawiki.notification',
+		'oojs-ui'
+	),
+	'localBasePath' => __DIR__.'/CommonStyle',
+	'remoteBasePath' => 'skins/bootstrap-mediawiki/CommonStyle',
+	'position' => 'bottom',
+);
+
 $wgResourceModuleSkinStyles['BootstrapMediawiki'] = array(
 	'mediawiki.ui' => $skinDir. '/less/mediawiki.ui/default.less',
 	'mediawiki.ui.checkbox' => $skinDir.'/less/mediawiki.ui/components/checkbox.less',
@@ -292,11 +338,14 @@ $wgResourceModuleSkinStyles['BootstrapMediawiki'] = array(
 	'mediawiki.ui.input' => $skinDir.'/less/mediawiki.ui/components/inputs.less',
 	'mediawiki.ui.icon' => $skinDir.'/less/mediawiki.ui/components/icons.less',
 	'mediawiki.ui.text' => $skinDir.'/less/mediawiki.ui/components/text.less',
-	'oojs-ui.styles' => $skinDir.'/less/oojs-ui/oojs-ui-mediawiki-noimages.less',
+	'oojs-ui-core' => $skinDir.'/less/oojs-ui/oojs-ui-core-mediawiki.less',
+	'oojs-ui-widgets' => $skinDir.'/less/oojs-ui/oojs-ui-widgets-mediawiki.less',
+	'oojs-ui-toolbars' => $skinDir.'/less/oojs-ui/oojs-ui-toolbars-mediawiki.less',
+	'oojs-ui-windows' => $skinDir.'/less/oojs-ui/oojs-ui-windows-mediawiki.less',
  	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 );
-
+require_once( "$IP/skins/bootstrap-mediawiki/CommonStyle/CommonStyle_AjaxFunctions.php" );
 if ( isset( $wgSiteJS ) ) {
 	$wgResourceModules['skins.bootstrapmediawiki']['scripts'][] = $skinDir . '/' . $wgSiteJS;
 }//end if
@@ -316,6 +365,16 @@ $wgHooks['OutputPageMakeCategoryLinks'][] = 'BootstrapMediawikiHooks::onOutputPa
 $wgHooks['BeforePageDisplay'][] = 'BootstrapMediawikiHooks::onBeforePageDisplay';
 $wgHooks['ResourceLoaderGetLessVars'][] = 'BootstrapMediawikiHooks::onResourceLoaderGetLessVars';
 $wgHooks['SpecialSearchResultsPrepend'][] = 'BootstrapMediawikiHooks::onSpecialSearchResultsPrepend';
+
+//API
+$wgAPIModules['commonstyle'] = "ApiCommonStyle";
+
+//Log Type
+$wgLogTypes[]                    = 'CommonStyle';
+$wgLogNames['CommonStyle']           = 'commonstylepage';
+$wgLogHeaders['CommonStyle']         = 'commonstylepagetext';
+$wgLogActions['CommonStyle/addDescription'] = 'commonstylelogentry';
+$wgLogActions['CommonStyle/setSiteProperty'] = 'commonstylelogentry';
 // new permission
 $wgAvailableRights[] = 'quickpurge';
 $wgGroupPermissions['sysop']['quickpurge'] = true;

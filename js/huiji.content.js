@@ -6,6 +6,7 @@ var recommend = {
     arr: [],
     item: 0,
     netData:'',
+    defaultEntryShowLength: 10,
 
     funAddBox: function(){
         $('.comments-body').before('<div id="recommend" class="recommend owl-carousel"></div>');
@@ -23,7 +24,7 @@ var recommend = {
     funGetPageRec: function(){
         var self = this;
         this.pageRec.forEach(function(item,i){
-            if(i<4) {
+            if(i<self.defaultEntryShowLength) {
                 var content = '';
                 var address = 'http://' + item.site + '.huiji.wiki/wiki/' + item.title;
                 content += '<div id="page' + i + '" class="re-opacity recommend-item lazy-loading">' +
@@ -34,7 +35,7 @@ var recommend = {
                 $('.recommend').append(content);
             }
         });
-        self.item = self.pageRec.length>=4?4:self.pageRec.length;
+        self.item = self.pageRec.length>=self.defaultEntryShowLength?self.defaultEntryShowLength:self.pageRec.length; //设置已有项目数，得到默认接口推荐的可显示数量
     },
 
     funGetNetRec: function(){
@@ -44,17 +45,28 @@ var recommend = {
             url:'http://121.42.179.100:8080/queryService/webapi/page/recommend/',
             data:{content:self.searchName,category:self.category,sitePrefix:mw.config.get('wgHuijiPrefix')},
             success: function (data) {
-                var len = self.item;
-                self.netData = data;
+                var len = self.item,dataLen = data.length,dataArr = new Array();
                 if (data.length == 0) return;
+
+                //获得要删除数组的下标
+                for(var m = 0; m<dataLen; m++){
+                    var num = self.funCheckReapet(data, m);
+                    if(num) dataArr.push(m-dataArr.length); //数组元素减去此时数组长度是为了在splice后，下一次splice不会删错
+                }
+                //得到新的data数组
+                for(var x = 0; x<dataArr.length; x++){
+                    data.splice(dataArr[x],1);
+                }
+                self.netData = data;
 
                 //根据推荐词条的站点进行分组
                 for(var n=len;n<10;n++) {
-                    if (obj[data[n].sitePrefix] == null) {
-                        obj[data[n].sitePrefix] = new Array();
-                        obj[data[n].sitePrefix].value = data[n].siteName;
+
+                    if (obj[data[n-len].sitePrefix] == null) {
+                        obj[data[n-len].sitePrefix] = new Array();
+                        obj[data[n-len].sitePrefix].value = data[n-len].siteName;
                     }
-                        obj[data[n].sitePrefix].push(data[n].title)
+                        obj[data[n-len].sitePrefix].push(data[n-len].title)
                 }
                 for(var i in obj) { //每个站点发一个合并请求
                     var title = '';
@@ -67,6 +79,19 @@ var recommend = {
             },
             type: 'post'
         });
+    },
+
+    funCheckReapet: function(data , n){
+
+        var siteName = data[n].siteName, title = data[n].title, self = this, num;
+        this.pageRec.forEach(function(item,index){
+            if(index<self.defaultEntryShowLength && item.siteName == siteName && item.title == title){
+                num = n;
+            }
+        });
+
+        return num;
+
     },
 
     funGetDefaultImg: function(obj,title,i){
@@ -101,7 +126,7 @@ var recommend = {
                     lazyLoad.autocheck();
                 }, 100);
                 if (document.body.clientWidth > 768&&self.item==10)
-                    self.funDoOwl();
+                    self.funDoOwl(address);
             }
         });
     },
@@ -163,13 +188,13 @@ var recommend = {
         }
     },
 
-    funDoOwl: function(){
+    funDoOwl: function(address){
         var self = this;
         $("#recommend").owlCarousel({
             items: 5,
             beforeMove: function () {
                 var sp = $('.owl-wrapper').css('transform').split(',');
-                var len = self.pageRec.length;
+                var len = self.pageRec.length>=self.defaultEntryShowLength?self.defaultEntryShowLength:self.pageRec.length;
                 var data = self.netData;
                 var n = self.item;
                 sp = Math.abs(parseInt(sp[4]));

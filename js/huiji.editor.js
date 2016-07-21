@@ -489,5 +489,6 @@ window.customizeToolbar = function() {
 	};
 
 	$(document).ready(editTools.setup);
+	$(".se-pre-con").fadeOut("slow");
 
 }(jQuery, mediaWiki));

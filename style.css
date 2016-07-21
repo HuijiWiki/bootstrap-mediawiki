@@ -313,8 +313,9 @@ blockquote.quote:after{
 	display: none;
 }
 
-.bottom footer {
+.bottom{
 	margin-top: 2em;
+  z-index: 1;
 }
 
 .printfooter { display: none;}
@@ -892,76 +893,6 @@ sup.reference {
     border-radius: 50%;
     box-shadow: 0 0 1px rgba(0,0,0,.2);
 }
-.top-fan-row{
-    padding: 5px;
-}
-.top-fan i{
-    float: right;
-    margin-top: 5px;
-    margin-right: 60px;
-    font-weight: 100;
-    border: 1px solid #fff;
-    max-width: 100px;
-}
-.relationship-wrapper{
-    margin: 20px auto;
-    width: 600px;
-    border: 1px solid #d7dee8;
-    background: #fff;
-    box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
-}
-.relationship-wrapper .relationship-item{
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #e0e0e0;
-    position: relative;
-    padding-bottom: 20px;
-}
-.relationship-count {
-    margin: 0;
-    padding: 10px 20px;
-    font-weight: bold;
-}
-.relationship-list{
-    border-top: 1px solid #e0e0e0;
-    padding: 20px;
-}
-.relationship-actions{
-    margin-left: 68px;
-}
-.relationship-actions div{
-    margin-bottom: 10px;
-}
-.relationship-name a{
-    display: inline-block;
-    margin-bottom: 10px;
-    margin-top: 5px;
-}
-.relationship-name i{
-    margin-bottom: 5px;
-    display: inline-block;
-    font-style: normal;
-    margin-right: 5px;
-}
-.relationship-list-btn{
-    position: absolute;
-    right: 0;
-    top: 10px;
-}
-.relationship-list-btn li{
-    display: inline-block;
-    padding: 3px 15px;
-    /*border: 1px solid #e0e0e0;*/
-    box-shadow: 0 0 2px rgba(0,0,0,.1);
-    margin-right: 10px;
-    cursor: pointer;
-}
-.relationship-list-btn li .fa-spinner{
-    padding: 0 11px 0 12px;
-}
-.relationship-list-btn li a{
-    color: #333;
-}
 .user-card{
     width: 400px;
     border-width: 1px;
@@ -1190,7 +1121,7 @@ ol.carousel-indicators{
     -moz-osx-font-smoothing: grayscale;
     /*//line-height: 47px;*/
  }
-/*// .skin-bootstrap-mediawiki .mw-echo-ui-notificationBadgeButtonPopupWidget .oo-ui-popupWidget {*/
+/*// .skin-BootstrapMediawiki .mw-echo-ui-notificationBadgeButtonPopupWidget .oo-ui-popupWidget {*/
 /*//     font-size: 1.16666667em;*/
 /*//     left: 16px;*/
 /*// }*/
@@ -1212,10 +1143,10 @@ ol.carousel-indicators{
 }
 #pt-notifications-alert,#pt-notifications-message,#pt-following {
     width: 40px;
-    height: 50px;
+    height: 40px;
 }
 #pt-notifications-message .oo-ui-popupWidget, #pt-notifications-alert .oo-ui-popupWidget, #pt-following .oo-ui-popupWidget{
-    top: 40px;
+    top: 30px;
 }
 .header .navbar-user > li > a.mw-echo-notifications-badge:hover {
     color: #fff;
@@ -1508,4 +1439,7 @@ table.wikitable > tr > th, table.wikitable > * > tr > th{
 }
 table.mw-templatedata-doc-params{
     width:100%
+}
+body.skin-BootstrapMediawiki > .oo-ui-windowManager {
+  font-size: inherit; !important; /* fuck mw */
 }

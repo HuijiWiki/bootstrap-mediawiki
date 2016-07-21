@@ -38,7 +38,7 @@ window.imgLoadCall = function( that ){
             that.parent('a').attr({href: '#', class: 'video-play-wrap'}).append(timespan+'</span><span class="video-circle glyphicon glyphicon-play-circle" style="top:' + (hig / 2 - 25) + 'px;left:' + (wid / 2 - 25) + 'px; font-size:50px"></span>');
         }
     }
-}
+};
 window.videoInitialize = function(){
     for(var i=0; i<$('.video-player-asyn').length; i++){
         var that = $('.video-player-asyn').get(i);
@@ -239,21 +239,6 @@ $(document).ready(function(){
     //         // }
     //     }
     // }
-
-    // config for popup.
-    mw.loader.using( [ 'ext.popups' ], function() { //wait for popups to be loaded
-
-        // Time to wait in ms before showing a popup on hover. Default is 500.
-        mw.popups.render.POPUP_DELAY = 500;
-
-        // Time to wait in ms before closing a popup on de-hover. Default is 300.
-        mw.popups.render.POPUP_CLOSE_DELAY = 300;
-
-        // Time to wait in ms before starting the API queries on hover, must be <= POPUP_DELAY. Default is 50.
-        // Don't change this unless you know what you're doing.
-        mw.popups.render.API_DELAY = 50;
-
-    });
 
     //alert-return
     var login ='';
@@ -524,7 +509,9 @@ $(document).ready(function(){
                 carduser = $(this).attr('data-name');
             } else {
                 carduser = $(this).attr('title');
-                carduser = carduser.replace('用户:','');
+                if (carduser){
+                   carduser = carduser.replace('用户:',''); 
+                }
             }
             enter = true;
             if (thisposX == posX && thisposY == posY) {

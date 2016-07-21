@@ -407,19 +407,10 @@ Class BootstrapMediawikiHooks {
 
         
     }
+    /**
+     * @see https://www.mediawiki.org/wiki/Manual:Hooks/MediaWikiPerformAction
+     */
     public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
-        global $wgMobile, $IP, $wgScriptPath, $wgLogo, $wgUploadPath, $wgUploadDirectory, $wgCdnScriptPath, $wgLoadScript, $wgStylePath, $wgExtensionAssetsPath,  $wgResourceBasePath;
-        if ($user->isAllowed('editinterface') && !$wgMobile){
-            $GLOBALS['wgCdnScriptPath'] = $wgScriptPath;
-            $GLOBALS['wgLoadScript'] = "{$wgCdnScriptPath}/load.php";
-            $GLOBALS['wgStylePath'] = "{$wgCdnScriptPath}/skins";
-            $GLOBALS['wgExtensionAssetsPath'] = "{$wgCdnScriptPath}/extensions";
-            $GLOBALS['wgResourceBasePath'] = $wgCdnScriptPath;     
-        } 
-        // if ($user->isAllowed('reupload')){
-        //     $wgUploadPath       = "{$wgScriptPath}/uploads";
-        //     #$wgUploadDirectory  = "{$IP}/uploads";            
-        // }
         return true;
     }
     public static function onGalleryGetModes( array &$modeArray ) {
@@ -437,30 +428,6 @@ Class BootstrapMediawikiHooks {
         $output->addModules( 'skins.bootstrapmediawiki.videohandler');
         $output->addModules( 'ext.wikieditor.huijiextra.top' );
         $output->addModules( 'ext.wikieditor.huijiextra.bottom' );
-        $output->addHeadItem('loader',
-                '<script language="JavaScript">' . "\n" . 
-                    'var showEditor = function() {' . "\n" . 
-                    '// Animate loader off screen' . "\n" . 
-                        '$(".se-pre-con").fadeOut("slow");' . "\n" . 
-                        'var editFormSisyphus = $( "#editform" ).sisyphus( {' . "\n" . 
-                            'locationBased: true, ' . "\n" . 
-                            'timeout: 0,' . "\n" . 
-                            'autoRelease: true,' . "\n" . 
-                            'onBeforeRestore:function(){' . "\n" . 
-                                '$("#autoRestoreModal").modal({' . "\n" . 
-                                    'keyboard: false,' . "\n" . 
-                                    'backdrop: "static"' . "\n" . 
-                                '}); ' . "\n" . 
-                                'return false;' . "\n" . 
-                            '}' . "\n" . 
-                        '} ); ' . "\n" . 
-                    '}' . "\n" .
-                    'if(window.addEventListener){' . "\n" . 
-                        'window.addEventListener("load", showEditor)' . "\n" . 
-                    '}else{' . "\n" . 
-                        'window.attachEvent("onload", showEditor)' . "\n" . 
-                    '}' . "\n" .  
-                '</script>');  
         $output->addHeadItem('loadercss',
                 '<style>' . "\n" . 
                     '.no-js #loader { display: none;  }' . "\n" . 
@@ -554,15 +521,15 @@ Class BootstrapMediawikiHooks {
         global $wgHuijiPrefix, $wgUser, $wgMobile, $wgHuijiSuffix;
         /* add norec and rec config vars */
         $titles = $out->getTitle();
-        $result = PageProps::getInstance()->getProperty($titles, 'norec');
+        $result = PageProps::getInstance()->getProperties($titles, 'norec');
         if (count($result) > 0){
             $out->addJsConfigVars('wgNoRec', true);
         } 
-        $result = PageProps::getInstance()->getProperty($titles, 'rec');
+        $result = PageProps::getInstance()->getProperties($titles, 'rec');
         if (count($result) > 0){
             $out->addJsConfigVars('wgRec', true);
         }
-        $result = PageProps::getInstance()->getProperty($titles, 'recbyuser');
+        $result = PageProps::getInstance()->getProperties($titles, 'recbyuser');
         if (count($result) > 0){
             foreach ($result as $key => $value) {
                 $out->addJsConfigVars('wgRecByUser', json_decode($value)); 

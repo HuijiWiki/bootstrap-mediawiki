@@ -63,7 +63,7 @@
                     );
             }
             $subnav_links = $this->listAdapter( $this->data['content_actions']);
-            if( $NS !== NS_USER && !$this->getSkin()->getTitle()->isSubpage()){
+            if( $NS !== NS_USER || !$this->getSkin()->getTitle()->isSubpage()){
                 echo $this->nav( $subnav_links );
             }
             ?>

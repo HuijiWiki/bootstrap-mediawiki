@@ -571,6 +571,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                             <li><a href="http://gundam.huiji.wiki">高达</a></li>
                                             <li><a href="http://saintseiya.huiji.wiki">圣斗士星矢</a></li>
                                             <li><a href="http://guohun.huiji.wiki">国魂</a></li>
+                                            <li><a href="http://tarsylia.huiji.wiki">塔希里亚</a></li>
                                         </ul>
                                         <ul class="hub-selection game-link">
                                             <li><a href="http://warcraft.huiji.wiki">魔兽世界</a></li>

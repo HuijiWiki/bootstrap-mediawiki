@@ -196,9 +196,12 @@ p.mw-edittools-section {
 #wikiEditor-section-advanced > div.group.group-insert > a:nth-child(3){
     background-position:0 -792px !important;
 }
-#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(4){
+#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(5){
     background-position:0 -836px !important;
 }
 #wikiEditor-section-advanced > div.group.group-search > a:nth-child(1){
     background-position:0 -924px !important;
+}
+.skin-bootstrap-mediawiki .tool-button {
+    background-position: 0px 0px;
 }

@@ -351,36 +351,35 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <?php endif; ?>
                                 <section id="bodyContent" class="body">                     
                                 <?php $this->html( 'bodytext' ) ?>
-                                </section>
-                                <?php if ( $this->data['catlinks'] ): ?>
-                                <section class="category-links">
-                                <!-- catlinks -->
-                                <?php $this->html( 'catlinks' ); ?>
-                                <!-- /catlinks -->
-                                </section>
-                                <?php endif; ?>
-                                <?php if( $this->isPrimaryContent() ): ?>
-                                    <div class="row">
-                                    <?php wfRunHooks( 'SkinRatingData', array(&$this) );?>
-                                    <div class="col-md-2 col-md-offset-6 bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
-                                    </div>
-                                <?php endif; ?>
-                                <?php 
-                                if ( $this->isPrimaryContent() )
-                                {
-                                    $commentHtml = '<div class="clearfix"></div>';
-                                    $wgParser->setTitle($this->getSkin()->getTitle());
-                                    $commentHtml .= CommentsHooks::displayComments( '', array(), $wgParser); 
-                                    echo $commentHtml;
-                                }?>
-                                <?php if ( $this->data['dataAfterContent'] ): ?>
-                                <section class="data-after-content">
-                                <!-- dataAfterContent -->
-                                <?php $this->html( 'dataAfterContent' ); ?>                    
-                                <!-- /dataAfterContent -->
-                                </section>
-                                <?php endif; ?>
-
+                                    <?php if ( $this->data['catlinks'] ): ?>
+                                    <section class="category-links">
+                                    <!-- catlinks -->
+                                    <?php $this->html( 'catlinks' ); ?>
+                                    <!-- /catlinks -->
+                                    </section>
+                                    <?php endif; ?>
+                                    <?php if( $this->isPrimaryContent() ): ?>
+                                        <div class="row">
+                                        <?php wfRunHooks( 'SkinRatingData', array(&$this) );?>
+                                        <div class="col-md-2 col-md-offset-6 bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php 
+                                    if ( $this->isPrimaryContent() )
+                                    {
+                                        $commentHtml = '<div class="clearfix"></div>';
+                                        $wgParser->setTitle($this->getSkin()->getTitle());
+                                        $commentHtml .= CommentsHooks::displayComments( '', array(), $wgParser); 
+                                        echo $commentHtml;
+                                    }?>
+                                    <?php if ( $this->data['dataAfterContent'] ): ?>
+                                    <section class="data-after-content">
+                                    <!-- dataAfterContent -->
+                                    <?php $this->html( 'dataAfterContent' ); ?>                    
+                                    <!-- /dataAfterContent -->
+                                    </section>
+                                    <?php endif; ?>
+                                </section><!-- /#bodyContent -->
                             </article>
                         </div>
       

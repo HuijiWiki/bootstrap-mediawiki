@@ -1,104 +1,109 @@
 //hack 内核里写死的border
-#catlinks #mw-normal-catlinks>ul>li{
-  .hack-border-left(@main-lighter,@detail-border);
-}
-.catlinks  .edit-span{
-  .hack-border(@main-lighter,@detail-border);
-  .hack-border-left(@main-lighter,@detail-border);
-}
+.skin-BootstrapMediawiki{
+  #catlinks #mw-normal-catlinks>ul>li{
+    .hack-border-left(@main-lighter,@detail-border);
+  }
+  .catlinks  .edit-span{
+    .hack-border(@main-lighter,@detail-border);
+    .hack-border-left(@main-lighter,@detail-border);
+  }
 
-.prefsection fieldset{
-  .bgChangeTextColor(@well);
-  padding:10px;
-  margin-bottom: 10px;
-  position: relative;
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-#pagehistory li.selected{
-  .bgChangeTextColor(@well)
-}
-.gift-wrap{
-  a{
-    color:@a;
-    .color(@detail-border);
+  .prefsection fieldset{
+    .bgChangeTextColor(@well);
+    padding:10px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
-}
-.thumbinner{
-  background-color: @well;
-  .mixin(@detail-inner-bg);
-}
-.cod-comment{
-  .mixin2(@a);
-  .mixin2(@detail-a);
-  a{
-    color: @main-base;
-    .color(@detail-color);
+  #pagehistory li.selected{
+    .bgChangeTextColor(@well)
   }
-}
-td.diff-context{
-  .mixin(@bg-inner);
-  .mixin(@detail-inner-bg);
-  border-color: @brand-primary;
-  color: inherit;
-}
-td.diff-addedline .diffchange,td.diff-deletedline .diffchange{
-  display: block;
-  .diff(@bg-inner);
-  .diff(@detail-inner-bg);
-}
-td.diff-addedline{
-  border-color: @brand-success;
-}
-td.diff-deletedline{
-  border-color: @brand-danger;
-}
-td.diff-marker{
-  border-color: @brand-info;
-}
-.quite{
-  color: inherit;
-  background-color: inherit;
-  &:hover{
+  .gift-wrap{
+    a{
+      color:@a;
+      .color(@detail-border);
+    }
+  }
+  .thumbinner, figure[typeof~='mw:Image/Thumb'], figure[typeof~='mw:Image/Frame'],figure[typeof*='mw:Image'] > figcaption{
+    background-color: @well ;
+    border-color: @well;
+  }
+  .cod-comment{
+    .mixin2(@a);
+    .mixin2(@detail-a);
+    a{
+      color: @main-base;
+      .color(@detail-color);
+    }
+  }
+  td.diff-context{
+    .mixin(@bg-inner);
+    .mixin(@detail-inner-bg);
+    border-color: @brand-primary;
     color: inherit;
   }
-}
-#wiki-body [id^="rating_"]{
-  color:@main-base;
-  .color(@detail-vote-color);
-  .rating-score{
-    background-color:@brand-primary;
-    .bg(@detail-vote-score-bg);
-    color:@bg-inner;
-    .color(@detail-vote-score-color);
+  td.diff-addedline .diffchange,td.diff-deletedline .diffchange{
+    display: block;
+    .diff(@bg-inner);
+    .diff(@detail-inner-bg);
   }
-  .vote-rating-star:before{
-    color:@brand-primary;
-    .color(@detail-vote-star);
+  td.diff-addedline{
+    border-color: @brand-success;
   }
-  .on:before{
-    color: lighten(@brand-primary, 10%);
-    .lightencolor(@detail-vote-active-star);
+  td.diff-deletedline{
+    border-color: @brand-danger;
   }
-  .voted:before{
-    color:@brand-primary;
-    .color(@detail-vote-active-star);
+  td.diff-marker{
+    border-color: @brand-info;
   }
-}
-.wday,.month{
-  fill:@main-base;
-  .fill(@detail-color);
-}
+  .quite{
+    color: inherit;
+    background-color: inherit;
+    &:hover{
+      color: inherit;
+    }
+  }
+  #wiki-body [id^="rating_"]{
+    color:@main-base;
+    .color(@detail-vote-color);
+    .rating-score{
+      background-color:@brand-primary;
+      .bg(@detail-vote-score-bg);
+      color:@bg-inner;
+      .color(@detail-vote-score-color);
+    }
+    .vote-rating-star:before{
+      color:@brand-primary;
+      .color(@detail-vote-star);
+    }
+    .on:before{
+      color: lighten(@brand-primary, 10%);
+      .lightencolor(@detail-vote-active-star);
+    }
+    .voted:before{
+      color:@brand-primary;
+      .color(@detail-vote-active-star);
+    }
+  }
+  .wday,.month{
+    fill:@main-base;
+    .fill(@detail-color);
+  }
 
-#wiki-outer-body fieldset#mw-searchoptions{
-  .mixin(@bg-inner);
-  .mixin(@detail-inner-bg);
-}
+  #wiki-outer-body fieldset#mw-searchoptions{
+    .mixin(@bg-inner);
+    .mixin(@detail-inner-bg);
+  }
 
-.profile-interactive .dropdown-menu{
-  .mixin(@well);
-  a {
-    color: @main-base;
-    .color(@detail-color);
+  .profile-interactive .dropdown-menu{
+    .mixin(@well);
+    a {
+      color: @main-base;
+      .color(@detail-color);
+    }
+  }
+  .ve-ui-mwSaveDialog-license {
+    .bgChangeTextColor(@bg-inner);
   }
 }

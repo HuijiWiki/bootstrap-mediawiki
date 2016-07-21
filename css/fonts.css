@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?-ziatzf');
-	src:url('../fonts/icomoon.eot?#iefix-ziatzf') format('embedded-opentype'),
-		url('../fonts/icomoon.ttf?-ziatzf') format('truetype'),
-		url('../fonts/icomoon.woff?-ziatzf') format('woff'),
-		url('../fonts/icomoon.svg?-ziatzf#icomoon') format('svg');
+	src:url('http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/fonts/icomoon.eot?-ziatzf');
+	src:url('http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/fonts/icomoon.eot?#iefix-ziatzf') format('embedded-opentype'),
+		url('http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/fonts/icomoon.ttf?-ziatzf') format('truetype'),
+		url('http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/fonts/icomoon.woff?-ziatzf') format('woff'),
+		url('http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/fonts/icomoon.svg?-ziatzf#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

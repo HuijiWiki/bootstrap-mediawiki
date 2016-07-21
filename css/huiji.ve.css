@@ -1,39 +1,12 @@
-.oo-ui-buttonElement-framed > .oo-ui-buttonElement-button{
-    padding: .1em!important;
+.recommend.owl-carousel{
+    display: none !important;
 }
-.oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
-    position: static!important;
+.skin-BootstrapMediawiki .ve-ui-toolbar-floating > .oo-ui-toolbar-bar{
+    z-index: 101;
 }
-.ve-init-mw-desktopArticleTarget-toolbar {
-    z-index: 100!important;
+.skin-BootstrapMediawiki .ve-ui-overlay-global{
+	z-index: 200;
 }
-.ve-active .bdsharebuttonbox{
-	display:none;
-}
-.ve-activated .comments-body,.ve-activated .recommend-header,.ve-activated .recommend {
-	display:none !important;
-}
-.ve-activated .wiki-body-section{
-	width: 100%;
-}
-.skin-bootstrap-mediawiki .ve-ui-toolbar-floating > .oo-ui-toolbar-bar {
-    position: fixed;
-    top: 60px;
-    z-index: 100;
-    border-top: medium none;
-}
-.skin-bootstrap-mediawiki .ve-init-mw-viewPageTarget-toolbar > .oo-ui-toolbar-bar {
-    z-index: 100;
-}
-
-.oo-ui-windowManager-modal  .oo-ui-dialog  .oo-ui-window-frame {
-    top: 170px!important;
-    bottom: auto!important;
-}
-
-.ve-activated #content-actions, .ve-activated #rating_{
-	display:none;
-}
-.skin-bootstrap-mediawiki .oo-ui-popupToolGroup-handle {
-    height: 3.1em;
+.skin-BootstrapMediawiki .ve-ui-mwSaveDialog-checkboxes {
+	color:#333;
 }
