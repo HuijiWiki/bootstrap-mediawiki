@@ -583,5 +583,22 @@ Class BootstrapMediawikiHooks {
         $output->addModules('skins.bootstrapmediawiki.search');
         return true;
     }
+    /**
+     * Creates SocialProfile's new database tables when the user runs
+     * /maintenance/update.php, the MediaWiki core updater script.
+     *
+     * @param $updater DatabaseUpdater
+     * @return Boolean
+     */
+    public static function onLoadExtensionSchemaUpdates( $updater ) {
+        $dir = dirname( __FILE__ );
+        $dbExt = '';
+
+        if ( $updater->getDB()->getType() == 'postgres' ) {
+            $dbExt = '.postgres';
+        }
+        $updater->addExtensionUpdate( array( 'addTable', 'common_css', "$dir/CommonStyle/common_css$dbExt.sql", true ) );
+        return true;
+    }
     
 }

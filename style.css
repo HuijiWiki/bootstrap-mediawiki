@@ -24,6 +24,7 @@ h6 .mw-headline { font-size: 17px; }
 ol.references {
     margin-top: 0;
 }
+
 #content-actions {
 	margin-top : 0;
 }
@@ -731,9 +732,7 @@ body .mw-echo-overlay::before{
 .mw-notification-content p{
     margin: 0;
 }
-.flow-component.board-page .flow-board-header{
-    background-color: rgba(0,0,0,.05);
-}
+
 /*login modal*/
 .login-in{
     cursor: pointer;
@@ -761,10 +760,8 @@ body .mw-echo-overlay::before{
 .huiji-login .huiji-login-btn{
     width: 100%;
     padding: .3em;
-    color: #fff!important;
     margin: 5px 0 20px 0;
     border-radius: 1px;
-    background: #32a7a2;
 }
 .huiji-login label{
     font-weight: 100;
@@ -1112,6 +1109,9 @@ ol.carousel-indicators{
 #pt-following .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon{
     top: 1.5em;
 }
+#pt-following .mw-echo-ui-notificationBadgeButtonPopupWidget > .oo-ui-popupWidget > .oo-ui-popupWidget-popup > .oo-ui-popupWidget-head > .oo-ui-labelElement-label{
+    font-size: 1em !important;
+}
 #pt-notifications-alert, #pt-notifications-message, #pt-following {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -1261,6 +1261,10 @@ ol.carousel-indicators{
         /*// right: 120px;*/
         display: none;
     }
+    #pt-notifications-alert .oo-ui-popupWidget,
+    #pt-notifications-message .oo-ui-popupWidget{
+      height:0px;
+    }
 
 }
 /*caption*/
@@ -1361,13 +1365,6 @@ ol.carousel-indicators{
 .ads-right{
   position: fixed;
   right: 0;
-}
-
-.flow-board-header-footer hr,.flow-ui-navigationWidget{
-    border: 0!important;
-}
-.flow-no-more, .flow-undo,.flow-ui-editorControlsWidget-termsLabel,.flow-post,.mw-ui-anchor.mw-ui-progressive.mw-ui-quiet,.flow-post-meta{
-    color: inherit!important;
 }
 #pagehistory li{
     border: none;

@@ -4,13 +4,16 @@
 .wikiEditor-ui{
     color: #333;
 }
+.wikiEditor-ui .mw-charinsert-buttons a{
+    color: #428bca;
+}
 .skin-bootstrap-mediawiki form#edit-form,.skin-bootstrap-mediawiki .wikiEditor-ui,.skin-bootstrap-mediawiki .editOptions{
     font-size: 14px;
 }
 .wikiEditor-ui-toolbar,.wikiEditor-ui-toolbar .sections .section{
     background: #eee!important;
 }
-#upload-drop{
+#msupload-dropzone{
     height: auto!important;
 }
 .wikiEditor-ui-toolbar .page-characters div span{
@@ -52,8 +55,11 @@ p.mw-edittools-section {
 }
 
 
-#upload-select {
+#msupload-select {
 	z-index: 0 !important;
+}
+#msupload-bottom{
+    height: auto !important;
 }
 .skin-bootstrap-mediawiki .CodeMirror {
     font-family: inherit;
@@ -139,7 +145,7 @@ p.mw-edittools-section {
 .CodeMirror{
     font-family: inherit!important;
 }
-#upload-div{
+#msupload-div{
     background: #000!important;
 }
 #wikiEditor-section-advanced > div.group> .label{
@@ -187,7 +193,7 @@ p.mw-edittools-section {
 #wikiEditor-section-advanced > div.group.group-size > a:nth-child(3){
     background-position:0 -660px !important;
 }
-#wikiEditor-section-advanced > div.group.group-size > a:nth-child(4){
+#wikiEditor-section-advanced > div.group.group-size > a:nth-child(5){
     background-position:0 -704px !important;
 }
 #wikiEditor-section-advanced > div.group.group-insert > a:nth-child(2){
@@ -196,12 +202,15 @@ p.mw-edittools-section {
 #wikiEditor-section-advanced > div.group.group-insert > a:nth-child(3){
     background-position:0 -792px !important;
 }
-#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(5){
+#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(6){
     background-position:0 -836px !important;
+}
+#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(4){
+    display: none !important;
 }
 #wikiEditor-section-advanced > div.group.group-search > a:nth-child(1){
     background-position:0 -924px !important;
 }
-.skin-bootstrap-mediawiki .tool-button {
-    background-position: 0px 0px;
+.skin-BootstrapMediawiki .tool-button {
+    background-position: 0px 0px !important;
 }

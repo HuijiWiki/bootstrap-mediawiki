@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"slx"
+		]
+	},
+	"commonstyle": "自定义主题",
+	"user-modify-sitestyle-log-entry": "用户:$1 对站点:$2 的主题进行了修改，内容为$3",
+	"commonstylepage": "主题日志",
+	"commonstylelogentry": "修改主题",
+	"commonstylepagetext" : "记录自定义主题的更迭，便于检查破坏。",
+	"dynamicless" : "动态LESS"
+}

@@ -1040,7 +1040,7 @@ a:hover,a:focus,a:active{
 @font-face
 {
     font-family: huiji;
-    src: url('../fonts/huiji029.TTF');
+    src: url('http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/fonts/huiji029.TTF');
 }
 .home-aside,.time-ago{
     font-family: huiji,"Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;

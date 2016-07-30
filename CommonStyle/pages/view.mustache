@@ -1,0 +1,356 @@
+<aside class="color-picker">
+    <ul class="picker-img">
+    <li>
+    <input type="file" class="file-btn" data-selector="body">
+    <div class="color-box"></div>
+    <div class="color-name">body背景</div>
+    </li>
+    <li>
+    <input type="file" class="file-btn" data-selector="#wiki-outer-body">
+    <div class="color-box"></div>
+    <div class="color-name">wiki-outer-body背景</div>
+    </li>
+    </ul>
+    <div class="color-picker-item">
+        <h5>主题配色方案</h5>
+        <ul class="picker-color custom">
+            <li>
+            <div class="color-box jcolor" data-variable="@main-base" value="{{mainBase}}" style="color:{{mainBase}}"></div>
+            <input type="text" class="input-color" value="{{mainBase}}">
+            <div class="color-name">主配色</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@bg" value="{{bg}}" style="color:{{bg}}"></div>
+                <input type="text" class="input-color" value="{{bg}}">
+            <div class="color-name">辅配色-外部背景</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@bg-inner" value="{{bgInner}}" style="color:{{bgInner}}"></div>
+                <input type="text" class="input-color" value="{{bgInner}}">
+            <div class="color-name">辅配色-内部背景</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@a" value="{{a}}" style="color:{{a}}"></div>
+                <input type="text" class="input-color" value="{{a}}">
+            <div class="color-name">链接颜色</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@sub-bg" value="{{subBg}}" style="color:{{subBg}}"></div>
+                <input type="text" class="input-color" value="{{subBg}}">
+            <div class="color-name">导航主色</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@sub-a" value="{{subA}}" style="color:{{subA}}"></div>
+                <input type="text" class="input-color" value="{{subA}}">
+            <div class="color-name">导航辅色</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@modal" value="{{modal}}" style="color:{{modal}}"></div>
+                <input type="text" class="input-color" value="{{modal}}">
+            <div class="color-name">模板色调</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@brand-default" value="{{default}}" style="color:{{default}}"></div>
+                <input type="text" class="input-color" value="{{default}}">
+            <div class="color-name">default</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@brand-primary" value="{{primary}}" style="color: {{primary}}"></div>
+                <input type="text" class="input-color" value="{{primary}}">
+            <div class="color-name">primary</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@brand-success" value="{{success}}" style="color:{{success}}"></div>
+                <input type="text" class="input-color" value="{{success}}">
+            <div class="color-name">success</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@brand-info" value="{{info}}" style="color:{{info}}"></div>
+                <input type="text" class="input-color" value="{{info}}">
+            <div class="color-name">info</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@brand-warning" value="{{warning}}" style="color: {{warning}}"></div>
+                <input type="text" class="input-color" value="{{warning}}">
+            <div class="color-name">warning</div>
+            </li>
+            <li>
+            <div class="color-box jcolor" data-variable="@brand-danger" value="{{danger}}" style="color: {{danger}}"></div>
+                <input type="text" class="input-color" value="{{danger}}">
+            <div class="color-name">danger</div>
+            </li>
+            <li>
+                <div class="color-box jcolor" data-variable="@well" value="{{well}}" style="color: {{well}}"></div>
+                <input type="text" class="input-color" value="{{well}}">
+                <div class="color-name">栅格</div>
+            </li>
+        </ul>
+    </div>
+    <div class="color-picker-item">
+        <h5 class="color-picker-item-toggle">高级设置</h5>
+        <span class="secondary">手动指定细节配色 覆盖主题配色方案</span>
+        <ul class="picker-color senior clear">
+            {{#styleArr}}
+                {{#ish}}
+                    <li>
+                        <span>{{label}}</span>
+                        <ul class="picker-label">
+                            {{#h}}
+                                <li class="label">{{name2}}</li>
+                            {{/h}}
+                        </ul>
+                        <ul class="picker-detail">
+                            {{#h}}
+                                <li>
+                                    <div class="color-box jcolor" data-variable="{{variable2}}" value="{{value2}}" style="color:{{value2}}"></div>
+                                    <input type="text" class="input-color" value="{{value2}}">
+                                    <div class="color-name">{{name2}}</div>
+                                </li>
+                            {{/h}}
+                        </ul>
+                    </li>
+                {{/ish}}
+                {{^ish}}
+                    <li>
+                        <div class="color-box jcolor" data-variable="{{variable}}" value="{{value}}" style="color:{{value}}"></div>
+                        <input type="text" class="input-color" value="{{value}}">
+                        <div class="color-name">{{name}}</div>
+                    </li>
+                {{/ish}}
+
+                
+            {{/styleArr}}
+
+        </ul>
+    </div>
+    <div class="color-picker-item">
+        <h5 class="color-picker-item-toggle">代码设置</h5>
+        <ul class="picker-color set">
+            <div>您还可以通过CSS和javascript编写来实现更高度的个性化。
+
+            在编写代码之前，请留意一些准则：<a href=http://www.huiji.wiki/wiki/help:自定义守则>自定义守则</a></div>
+
+            <div>如果违反，编辑代码权限将可能会被撤销。
+                由于缓存的存在，您的修改可能不会立即生效（约1小时后刷新）。请使用<b><i class="fa fa-plug"></i>调试</b>功能查看代码生效后的效果。如果您在编写中遇到问题，可以向我们<a href="http://www.huiji.wiki/wiki/%E5%B8%AE%E5%8A%A9%E8%AE%A8%E8%AE%BA:%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C">提问</a>。
+            </div>
+            <div>
+                <button class="btn btn-default btn-sm"><a href="/wiki/Mediawiki:Common.css">修改css</a></button>
+                <button class="btn btn-default btn-sm"><a href="/wiki/Mediawiki:Common.js">修改js</a></button>
+            </div>
+        </ul>
+    </div>
+    <div class="color-picker-bottom">
+        <input type="hidden" class="is-new" value="{{isNew}}">
+        <button class="btn btn-primary commonstyle-submit">保存</button>
+        <button class="btn btn-primary commonstyle-reset" style="display:'.$show.'">重置</button>
+    </div>
+</aside>
+
+<div class="preview">
+    <table class="infobox" cellspacing="3"><tr class="infobox-title"><th colspan="2">伊耿·坦格利安</th></tr><tr><td colspan="2" class="infobox-img"><a href="/wiki/%E6%96%87%E4%BB%B6:Aegon_the_Conqueror.jpg" class="image"><img alt="Aegon the Conqueror.jpg" src="http://cdn.huiji.wiki/shareduploads/uploads/thumb/b/bc/Aegon_the_Conqueror.jpg/300px-Aegon_the_Conqueror.jpg" width="300" height="343" srcset="http://cdn.huiji.wiki/shareduploads/uploads/thumb/b/bc/Aegon_the_Conqueror.jpg/450px-Aegon_the_Conqueror.jpg 1.5x, http://cdn.huiji.wiki/shareduploads/uploads/thumb/b/bc/Aegon_the_Conqueror.jpg/600px-Aegon_the_Conqueror.jpg 2x" data-file-width="744" data-file-height="850" /></a></td></tr><tr class="infobox-item-title"><th colspan="2">基本信息</th></tr><tr><th scope="row" class="infobox-item-label">别名</th><td class="infobox-item-detail">征服者伊耿</td></tr><tr><th scope="row" class="infobox-item-label">头衔</th><td class="infobox-item-detail"><a href="http://asoiaf.huiji.wiki/wiki/%E9%BE%99%E7%9F%B3%E5%B2%9B" class="extiw" title="asoiaf:龙石岛">龙石岛</a>之主</td></tr><tr><th scope="row" class="infobox-item-label">王室</th><td class="infobox-item-detail"><a href="http://asoiaf.huiji.wiki/wiki/%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E5%AE%B6%E6%97%8F" class="extiw" title="asoiaf:坦格利安家族">坦格利安家族</a><sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup></td></tr></table>
+    <p><b>伊耿·坦格利安一世</b>（Aegon I Targaryen），别名<b>征服者伊耿</b>或<b>龙王伊耿</b>，是<a href="http://asoiaf.huiji.wiki/wiki/%E4%B8%83%E5%A4%A7%E7%8E%8B%E5%9B%BD" class="extiw" title="asoiaf:七大王国">七大王国</a>的征服者，他领导<a href="http://asoiaf.huiji.wiki/wiki/%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E5%AE%B6%E6%97%8F" class="extiw" title="asoiaf:坦格利安家族">坦格利安家族</a>开创了<a href="http://asoiaf.huiji.wiki/wiki/%E7%BB%B4%E6%96%AF%E7%89%B9%E6%B4%9B" class="extiw" title="asoiaf:维斯特洛">维斯特洛</a>首个统一王朝。他骑乘维斯特洛史上最巨大的<a href="http://asoiaf.huiji.wiki/wiki/%E9%BE%99" class="extiw" title="asoiaf:龙">龙</a>，“黑死神”<a href="http://asoiaf.huiji.wiki/wiki/%E8%B4%9D%E5%8B%92%E9%87%8C%E6%81%A9" class="extiw" title="asoiaf:贝勒里恩">贝勒里恩</a>。
+    </p>
+    <blockquote class="quote blockquotequote" style="">“太阳落山时，<a href="http://asoiaf.huiji.wiki/wiki/%E8%B5%AB%E4%BC%A6%C2%B7%E9%9C%8D%E5%B0%94" class="extiw" title="asoiaf:赫伦·霍尔">你</a>必断子绝孙！” <p style="margin-bottom:0;text-align:right"> <small>伊耿对<a href="http://asoiaf.huiji.wiki/wiki/%E8%B5%AB%E4%BC%A6%C2%B7%E9%9C%8D%E5%B0%94" class="extiw" title="asoiaf:赫伦·霍尔">“黑心”赫伦</a></small></p></blockquote>
+    <button class="btn btn-default">default</button><button class="btn btn-primary">primary</button><button class="btn btn-success">success</button><button class="btn btn-info">info</button><button class="btn btn-warning">warning</button><button class="btn btn-danger">danger</button>
+    <h2><span class="mw-headline" id=".E6.80.A7.E6.A0.BC.E5.92.8C.E5.A4.96.E8.B2.8C">性格和外貌</span><span class="mw-editsection"><a href="/index.php?title=Theme_design&amp;veaction=edit&amp;vesection=1" title="编辑小节：性格和外貌" class="mw-editsection-visualeditor">&#xe05f</a><span class="mw-editsection-divider"> | </span><a href="/index.php?title=Theme_design&amp;action=edit&amp;section=1" title="编辑小节：性格和外貌">&#xe605</a></span></h2>
+    <h3><span class="mw-headline" id=".E6.97.A9.E5.B9.B4">早年</span><span class="mw-editsection"><a href="/index.php?title=Theme_design&amp;veaction=edit&amp;vesection=2" title="编辑小节：早年" class="mw-editsection-visualeditor">&#xe05f</a><span class="mw-editsection-divider"> | </span><a href="/index.php?title=Theme_design&amp;action=edit&amp;section=2" title="编辑小节：早年">&#xe605</a></span></h3>
+    <p>伊耿看起来就野心勃勃的。人们说他身材高大、肩膀宽阔，<a href="http://asoiaf.huiji.wiki/wiki/%E7%B4%AB%E7%9C%B8" class="extiw" title="asoiaf:紫眸">紫色</a>的眼睛和银金色的短发显示出他的威严。他是个富有魅力且威风凛凛的人。在征服大陆期间他往往身着黑鳞甲投入战斗，挥舞他那用<a href="/index.php?title=%E7%93%A6%E9%9B%B7%E5%88%A9%E4%BA%9A%E9%92%A2&amp;action=edit&amp;redlink=1" class="new" title="瓦雷利亚钢（页面不存在）">瓦雷利亚钢</a>制成的宝剑<a href="/index.php?title=%E9%BB%91%E7%81%AB&amp;action=edit&amp;redlink=1" class="new" title="黑火（页面不存在）">黑火</a>。他的<a href="http://asoiaf.huiji.wiki/wiki/%E5%86%A0%E5%86%95" class="extiw" title="asoiaf:冠冕">冠冕</a>是一顶简洁的瓦雷利亚钢圈，上面镶有大块的方形红宝石。<sup id="cite_ref-2" class="reference"><a href="#cite_note-2">[2]</a></sup>
+    </p>
+    <h3><span class="mw-headline" id=".E6.B8.B8.E5.8E.86">游历</span><span class="mw-editsection"><a href="/index.php?title=Theme_design&amp;veaction=edit&amp;vesection=3" title="编辑小节：游历" class="mw-editsection-visualeditor">&#xe05f</a><span class="mw-editsection-divider"> | </span><a href="/index.php?title=Theme_design&amp;action=edit&amp;section=3" title="编辑小节：游历">&#xe605</a></span></h3>
+    <div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/index.php?title=%E7%89%B9%E6%AE%8A:%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6&amp;wpDestFile=Aegon_And_His_Sisters_by_Amok." class="new" title="文件:Aegon And His Sisters by Amok.">文件:Aegon And His Sisters by Amok.</a>  <div class="thumbcaption">伊耿与他的姐妹</div></div></div>
+    <p>在他很年轻时曾经游历维斯特洛，与姐姐一起拜访过<a href="http://asoiaf.huiji.wiki/wiki/%E5%AD%A6%E5%9F%8E" class="extiw" title="asoiaf:学城">学城</a>，<a href="http://asoiaf.huiji.wiki/wiki/%E9%9D%92%E4%BA%AD%E5%B2%9B" class="extiw" title="asoiaf:青亭岛">青厅岛</a>和<a href="http://asoiaf.huiji.wiki/wiki/%E5%85%B0%E5%B0%BC%E6%96%AF%E6%B8%AF" class="extiw" title="asoiaf:兰尼斯港">兰尼斯港</a>。他没有按传统只娶他的姐姐维桑尼亚，而把他的两个姐妹都娶了。<sup id="cite_ref-world_3-0" class="reference"><a href="#cite_note-world-3">[3]</a></sup>
+    </p>
+    <h2><span class="mw-headline" id=".E6.88.98.E4.BA.89.E4.B9.8B.E5.89.8D">战争之前</span><span class="mw-editsection"><a href="/index.php?title=Theme_design&amp;veaction=edit&amp;vesection=4" title="编辑小节：战争之前" class="mw-editsection-visualeditor">&#xe05f</a><span class="mw-editsection-divider"> | </span><a href="/index.php?title=Theme_design&amp;action=edit&amp;section=4" title="编辑小节：战争之前">&#xe605</a></span></h2>
+    <p><a href="http://asoiaf.huiji.wiki/wiki/%E5%BE%81%E6%9C%8D%E6%88%98%E4%BA%89" class="extiw" title="asoiaf:征服战争">征服战争</a>前，<a href="/index.php?title=%E7%93%A6%E5%85%B0%E6%8F%90%E6%96%AF&amp;action=edit&amp;redlink=1" class="new" title="瓦兰提斯（页面不存在）">瓦兰提斯</a>曾经邀请他以及他的<a href="http://asoiaf.huiji.wiki/wiki/%E9%BE%99" class="extiw" title="asoiaf:龙">龙</a>加入他们，重建<a href="/index.php?title=%E7%93%A6%E9%9B%B7%E5%88%A9%E4%BA%9A%E8%87%AA%E7%94%B1%E5%A0%A1%E5%9E%92&amp;action=edit&amp;redlink=1" class="new" title="瓦雷利亚自由堡垒（页面不存在）">瓦雷利亚自由堡垒</a>。伊耿拒绝了他们，故此瓦兰提斯独力完成计划。
+    </p>
+    <h2><span class="mw-headline" id=".E5.BC.95.E7.94.A8.E4.B8.8E.E6.B3.A8.E9.87.8A">引用与注释</span><span class="mw-editsection"><a href="/index.php?title=Theme_design&amp;veaction=edit&amp;vesection=5" title="编辑小节：引用与注释" class="mw-editsection-visualeditor">&#xe05f</a><span class="mw-editsection-divider"> | </span><a href="/index.php?title=Theme_design&amp;action=edit&amp;section=5" title="编辑小节：引用与注释">&#xe605</a></span></h2>
+    <div style="font-size:14px;">
+        <div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
+            <ol class="references">
+                <li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">马丁如是说，<a rel="nofollow" target="_blank" class="external text" href="http://www.westeros.org/Citadel/SSM/Entry/Targaryen_Kings">坦格利安诸王</a>（2005年11月1日）。</span>
+                </li>
+                <li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text">马丁如是说，<a rel="nofollow" target="_blank" class="external text" href="http://www.westeros.org/Citadel/SSM/Entry/Targaryen_Kings">坦格利安诸王</a>（2005年11月1日）。</span>
+                </li>
+                <li id="cite_note-world-3"><span class="mw-cite-backlink"><a href="#cite_ref-world_3-0">↑</a></span> <span class="reference-text">乔治R.R.马丁官方网站，<a rel="nofollow" target="_blank" class="external text" href="http://www.georgerrmartin.com/world-of-ice-and-fire-sample/">世界集试读</a>。</span>
+                </li>
+            </ol></div></div>
+    <table class="navbox table"><tr><td><table class="nowraplinks mw-collapsible mw-autocollapse navbox-inner"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist tnavbar mini"><ul><li class="nv-view"><a href="/index.php?title=%E6%A8%A1%E6%9D%BF:Kings_of_Westeros&amp;action=edit&amp;redlink=1" class="new" title="模板:Kings of Westeros（页面不存在）"><abbr title="View this template" style=";;background:none transparent;border:none;">v</abbr></a></li><li class="nv-talk"><a href="/index.php?title=%E6%A8%A1%E6%9D%BF%E8%AE%A8%E8%AE%BA:Kings_of_Westeros&amp;action=edit&amp;redlink=1" class="new" title="模板讨论:Kings of Westeros（页面不存在）"><abbr title="Discuss this template" style=";;background:none transparent;border:none;">t</abbr></a></li><li class="nv-edit"><a rel="nofollow" target="_blank" class="external text" href="http://templatemanager.huiji.wiki/index.php?title=%E6%A8%A1%E6%9D%BF:Kings_of_Westeros&amp;action=edit"><abbr title="Edit this template" style=";;background:none transparent;border:none;">e</abbr></a></li></ul></div><div><b><a href="/index.php?title=%E7%BB%B4%E6%96%AF%E7%89%B9%E6%B4%9B&amp;action=edit&amp;redlink=1" class="new" title="维斯特洛（页面不存在）">维斯特洛</a>的王</b></div></th></tr><tr><th scope="row" class="navbox-group"><b><a href="http://asoiaf.huiji.wiki/wiki/%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E5%AE%B6%E6%97%8F" class="extiw" title="asoiaf:坦格利安家族">坦格利安王室</a></b></th><td class="navbox-list navbox-odd"><div></div><table class="nowraplinks navbox-subgroup"><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="http://asoiaf.huiji.wiki/wiki/%E9%93%81%E7%8E%8B%E5%BA%A7" class="extiw" title="asoiaf:铁王座">铁王座</a>上的王</div></th><td class="navbox-list navbox-swap Yy"><div><a href="http://asoiaf.huiji.wiki/wiki/%E4%BC%8A%E8%80%BF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%B8%80%E4%B8%96" class="extiw" title="asoiaf:伊耿·坦格利安一世">伊耿一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">1AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">37AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E4%BC%8A%E5%B0%BC%E6%96%AF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%B8%80%E4%B8%96" class="extiw" title="asoiaf:伊尼斯·坦格利安一世">伊尼斯一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">37AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">42AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E6%A2%85%E8%91%9B%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%B8%80%E4%B8%96" class="extiw" title="asoiaf:梅葛·坦格利安一世">梅葛一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">42AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">48AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E6%9D%B0%E8%B5%AB%E9%87%8C%E6%96%AF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%B8%80%E4%B8%96" class="extiw" title="asoiaf:杰赫里斯·坦格利安一世">杰赫里斯一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">48AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">103AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E9%9F%A6%E8%B5%9B%E9%87%8C%E6%96%AF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%B8%80%E4%B8%96" class="extiw" title="asoiaf:韦赛里斯·坦格利安一世">韦赛里斯一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">103AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">129AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E4%BC%8A%E8%80%BF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%BA%8C%E4%B8%96" class="extiw" title="asoiaf:伊耿·坦格利安二世">伊耿二世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">129AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">131AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E4%BC%8A%E8%80%BF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%B8%89%E4%B8%96" class="extiw" title="asoiaf:伊耿·坦格利安三世">伊耿三世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">131AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">157AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E6%88%B4%E4%BC%A6%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%B8%80%E4%B8%96" class="extiw" title="asoiaf:戴伦·坦格利安一世">戴伦一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">157AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">161AC</a>)  <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E8%B4%9D%E5%8B%92%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%B8%80%E4%B8%96" class="extiw" title="asoiaf:贝勒·坦格利安一世">贝勒一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">161AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">171AC</a>)  <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E9%9F%A6%E8%B5%9B%E9%87%8C%E6%96%AF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%BA%8C%E4%B8%96" class="extiw" title="asoiaf:韦赛里斯·坦格利安二世">韦赛里斯二世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">171AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">172AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E4%BC%8A%E8%80%BF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E5%9B%9B%E4%B8%96" class="extiw" title="asoiaf:伊耿·坦格利安四世">伊耿四世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">172AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">184AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E6%88%B4%E4%BC%A6%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%BA%8C%E4%B8%96" class="extiw" title="asoiaf:戴伦·坦格利安二世">戴伦二世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">184AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">209AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E4%BC%8A%E9%87%8C%E6%96%AF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%B8%80%E4%B8%96" class="extiw" title="asoiaf:伊里斯·坦格利安一世">伊里斯一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">209AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">221AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E6%A2%85%E5%8D%A1%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%B8%80%E4%B8%96" class="extiw" title="asoiaf:梅卡·坦格利安一世">梅卡一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">221AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">233AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E4%BC%8A%E8%80%BF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%BA%94%E4%B8%96" class="extiw" title="asoiaf:伊耿·坦格利安五世">伊耿五世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">233AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">259AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E6%9D%B0%E8%B5%AB%E9%87%8C%E6%96%AF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%BA%8C%E4%B8%96" class="extiw" title="asoiaf:杰赫里斯·坦格利安二世">杰赫里斯二世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">259AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">262AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E4%BC%8A%E9%87%8C%E6%96%AF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89%E4%BA%8C%E4%B8%96" class="extiw" title="asoiaf:伊里斯·坦格利安二世">伊里斯二世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">262AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">283AC</a>)</div></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;">敌对王及王位宣称者</div></th><td class="navbox-list navbox-swap Yy"><div><a href="http://asoiaf.huiji.wiki/wiki/%E9%9B%B7%E5%A6%AE%E6%8B%89%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89" class="extiw" title="asoiaf:雷妮拉·坦格利安">雷妮拉一世</a>(约<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">129AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">131AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E9%9F%A6%E8%B5%9B%E9%87%8C%E6%96%AF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89" class="extiw" title="asoiaf:韦赛里斯·坦格利安">韦赛里斯三世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">283AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">298AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E4%B8%B9%E5%A6%AE%E8%8E%89%E4%B8%9D%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89" class="extiw" title="asoiaf:丹妮莉丝·坦格利安">丹妮莉丝一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">298AC</a>至今) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E4%BC%8A%E8%80%BF%C2%B7%E5%9D%A6%E6%A0%BC%E5%88%A9%E5%AE%89" class="extiw" title="asoiaf:伊耿·坦格利安">伊耿六世</a> (<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">300AC</a>至今)</div></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="/index.php?title=%E9%BB%91%E7%81%AB%E8%A7%8A%E8%A7%8E%E8%80%85&amp;action=edit&amp;redlink=1" class="new" title="黑火觊觎者（页面不存在）">黑火觊觎者</a></div></th><td class="navbox-list navbox-swap Yy"><div><a href="http://asoiaf.huiji.wiki/wiki/%E6%88%B4%E8%92%99%C2%B7%E9%BB%91%E7%81%AB" class="extiw" title="asoiaf:戴蒙·黑火">戴蒙一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">195AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">196AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E6%88%B4%E8%92%99%C2%B7%E9%BB%91%E7%81%AB%E4%BA%8C%E4%B8%96" class="extiw" title="asoiaf:戴蒙·黑火二世">戴蒙二世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">196AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">212AC</a>以后) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E9%A9%AC%E9%87%8C%E6%96%AF%C2%B7%E9%BB%91%E7%81%AB" class="extiw" title="asoiaf:马里斯·黑火">马里斯</a> (未知-约<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">259AC</a>)</div></td></tr></table><div></div></td></tr><tr><th scope="row" class="navbox-group"><b><a href="http://asoiaf.huiji.wiki/wiki/%E5%90%9B%E4%B8%B4%E7%9A%84%E6%8B%9C%E6%8B%89%E5%B8%AD%E6%81%A9%E5%AE%B6%E6%97%8F" class="extiw" title="asoiaf:君临的拜拉席恩家族">拜拉席恩王室</a></b></th><td class="navbox-list navbox-even"><div></div><table class="nowraplinks navbox-subgroup"><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="/index.php?title=%E9%93%81%E7%8E%8B%E5%BA%A7&amp;action=edit&amp;redlink=1" class="new" title="铁王座（页面不存在）">铁王座</a>上的王</div></th><td class="navbox-list navbox-even"><div><a href="http://asoiaf.huiji.wiki/wiki/%E5%8A%B3%E5%8B%83%C2%B7%E6%8B%9C%E6%8B%89%E5%B8%AD%E6%81%A9" class="extiw" title="asoiaf:劳勃·拜拉席恩">劳勃一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">283AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">298AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E4%B9%94%E4%BD%9B%E9%87%8C%C2%B7%E6%8B%9C%E6%8B%89%E5%B8%AD%E6%81%A9" class="extiw" title="asoiaf:乔佛里·拜拉席恩">乔佛里一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">298AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">300AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E6%89%98%E6%9B%BC%C2%B7%E6%8B%9C%E6%8B%89%E5%B8%AD%E6%81%A9" class="extiw" title="asoiaf:托曼·拜拉席恩">托曼一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">300AC</a>至今)</div></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;">敌对王及王位宣称者</div></th><td class="navbox-list navbox-odd"><div><a href="http://asoiaf.huiji.wiki/wiki/%E5%8F%B2%E5%9D%A6%E5%B0%BC%E6%96%AF%C2%B7%E6%8B%9C%E6%8B%89%E5%B8%AD%E6%81%A9" class="extiw" title="asoiaf:史坦尼斯·拜拉席恩">史坦尼斯一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">298AC</a>至今) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E8%93%9D%E7%A4%BC%C2%B7%E6%8B%9C%E6%8B%89%E5%B8%AD%E6%81%A9" class="extiw" title="asoiaf:蓝礼·拜拉席恩">蓝礼一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">298AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">299AC</a>)</div></td></tr></table><div></div></td></tr><tr><th scope="row" class="navbox-group"><b><a href="http://asoiaf.huiji.wiki/wiki/%E4%B8%83%E5%A4%A7%E7%8E%8B%E5%9B%BD" class="extiw" title="asoiaf:七大王国">七国</a>中的独立运动</b></th><td class="navbox-list navbox-odd"><div></div><table class="nowraplinks navbox-subgroup"><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="http://asoiaf.huiji.wiki/wiki/%E8%91%9B%E9%9B%B7%E4%B9%94%E4%BC%8A%E5%AE%B6%E6%97%8F" class="extiw" title="asoiaf:葛雷乔伊家族">葛雷乔伊</a>，<a href="/index.php?title=%E9%93%81%E7%BE%A4%E5%B2%9B%E4%B9%8B%E7%8E%8B&amp;action=edit&amp;redlink=1" class="new" title="铁群岛之王（页面不存在）">铁群岛之王</a></div></th><td class="navbox-list navbox-even"><div><a href="http://asoiaf.huiji.wiki/wiki/%E5%B7%B4%E9%9A%86%C2%B7%E8%91%9B%E9%9B%B7%E4%B9%94%E4%BC%8A" class="extiw" title="asoiaf:巴隆·葛雷乔伊">巴隆九世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">289AC</a>，<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">298AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">299AC</a>) <b>·</b> <a href="http://asoiaf.huiji.wiki/wiki/%E6%94%B8%E4%BC%A6%C2%B7%E8%91%9B%E9%9B%B7%E4%B9%94%E4%BC%8A" class="extiw" title="asoiaf:攸伦·葛雷乔伊">攸伦三世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">300AC</a>至今)</div></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="http://asoiaf.huiji.wiki/wiki/%E5%8F%B2%E5%A1%94%E5%85%8B%E5%AE%B6%E6%97%8F" class="extiw" title="asoiaf:史塔克家族">史塔克</a>，<a href="/index.php?title=%E5%8C%97%E5%A2%83%E4%B9%8B%E7%8E%8B&amp;action=edit&amp;redlink=1" class="new" title="北境之王（页面不存在）">北境之王</a></div></th><td class="navbox-list navbox-odd"><div><a href="http://asoiaf.huiji.wiki/wiki/%E7%BD%97%E6%9F%8F%C2%B7%E5%8F%B2%E5%A1%94%E5%85%8B" class="extiw" title="asoiaf:罗柏·史塔克">罗柏一世</a>(<a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">298AC</a> - <a href="/index.php?title=%E4%BC%8A%E8%80%BF%E5%8E%86%E7%BA%AA%E4%BA%8B&amp;action=edit&amp;redlink=1" class="new" title="伊耿历纪事（页面不存在）">299AC</a>)</div></td></tr></table><div></div></td></tr></table></td></tr></table>
+    <br><div class="table-responsive"><table class="wikitable sortable jquery-tablesorter" style="margin:auto;" cellpadding="5" width="95%">
+
+        <thead><tr>
+            <th width="180" class="headerSort" tabindex="0" role="columnheader button" title="升序"> 上古语
+            </th>
+            <th width="400" class="headerSort" tabindex="0" role="columnheader button" title="升序"> 英译
+            </th>
+            <th width="400" class="headerSort" tabindex="0" role="columnheader button" title="升序"> 中译
+            </th></tr></thead><tbody>
+    <tr>
+        <td> a'baeth
+        </td>
+        <td> kiss
+        </td>
+        <td>吻
+        </td></tr>
+    <tr>
+        <td> a'taeghane
+        </td>
+        <td> today
+        </td>
+        <td>今天
+        </td></tr>
+    <tr>
+        <td> aard
+        </td>
+        <td> misspeling of "ard"
+        </td>
+        <td>可能是“ard”的错拼
+        </td></tr>
+    <tr>
+        <td> aark
+        </td>
+        <td> floe
+        </td>
+        <td>浮冰
+        </td></tr>
+    <tr>
+        <td> aark, aark
+        </td>
+        <td> phonetic presentation of the sound ravens/crows make
+        </td>
+        <td> 象声词：乌鸦的叫声
+        </td></tr>
+    <tr>
+        <td> abb
+        </td>
+        <td> river mouth
+        </td>
+        <td>河口
+        </td></tr>
+    <tr>
+        <td> addan, adan
+        </td>
+        <td> dance; dancer; dancing
+        </td>
+        <td>舞蹈、舞者、跳舞
+        </td></tr>
+    <tr>
+        <td> aé
+        </td>
+        <td> <i>first person singular subject personal pronoun</i> I (dryad dialect)
+        </td>
+        <td>第一人称单数主语人称代词（<a href="/index.php?title=%E6%A0%91%E7%B2%BE%E8%AF%AD&amp;action=edit&amp;redlink=1" class="new" title="树精语（页面不存在）">树精语</a>）
+        </td></tr>
+    <tr>
+        <td> aedd
+        </td>
+        <td> shard
+        </td>
+        <td>(玻璃、陶器、金属的)碎片
+        </td></tr>
+    <tr>
+        <td> aefder
+        </td>
+        <td> later, after
+        </td>
+        <td>后来、之后
+        </td></tr>
+    <tr>
+        <td> aen
+        </td>
+        <td> <i>indefinite pronoun</i> one, ones; of; for; from; to
+        </td>
+        <td>不定代词：一、一次、关于、为了、来自、去到
+        </td></tr>
+    <tr>
+        <td> aen'drean
+        </td>
+        <td> enter?
+        </td>
+        <td>进入（不确定）
+        </td></tr>
+    <tr>
+        <td> aenye
+        </td>
+        <td> fire, fiery
+        </td>
+        <td>火、火热的
+        </td></tr>
+    <tr>
+        <td> aep
+        </td>
+        <td> in; of; appears to be just general genitive, not marking solely hereditary ties
+        </td>
+        <td>在、关于，似乎只是一般的所有格，常见于人名中表示的血缘关系
+        </td></tr>
+    <tr>
+        <td> aép
+        </td>
+        <td> in, to
+        </td>
+        <td>在、去到
+        </td></tr>
+    <tr>
+        <td> aesledde
+        </td>
+        <td> ride on a sledge/sled
+        </td>
+        <td>滑雪橇
+        </td></tr>
+    <tr>
+        <td> aespar
+        </td>
+        <td> shoot (verb.)
+        </td>
+        <td>射击
+        </td></tr>
+    <tr>
+        <td> aëte
+        </td>
+        <td> summer
+        </td>
+        <td>夏天
+        </td></tr>
+    <tr>
+        <td> aevon
+        </td>
+        <td> river
+        </td>
+        <td>河
+        </td></tr>
+    <tr>
+        <td> aine
+        </td>
+        <td> light (possibly <i>enlightened</i>)
+        </td>
+        <td>光（也可能是指开明的）
+        </td></tr>
+    <tr>
+        <td> an
+        </td>
+        <td> small, minor, vague
+        </td>
+        <td>小、较小的、模糊的
+        </td></tr>
+    <tr>
+        <td> an'givare
+        </td>
+        <td> informer, spy
+        </td>
+        <td>告密者、间谍
+        </td></tr>
+    <tr>
+        <td> ard
+        </td>
+        <td> up; upper; high; top; mountain; mountainous
+        </td>
+        <td>上、上面的、高的、顶部、山、多山的
+        </td></tr>
+    <tr>
+        <td> arse
+        </td>
+        <td> arse (UK), ass (US), butt
+        </td>
+        <td>屁股
+        </td></tr></tbody><tfoot></tfoot></table></div>
+
+</div>

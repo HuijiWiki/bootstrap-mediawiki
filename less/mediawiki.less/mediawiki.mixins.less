@@ -7,7 +7,8 @@
 // The signatures of parametrized mixins should be kept as stable as possible.
 //
 // See <http://lesscss.org/#-mixins> for more information about how to write mixins.
-
+@import "./../variable.less";
+@import "./../mixins.less";
 .background-image( @url ) {
 	background-image: e( '/* @embed */' ) url( @url );
 }

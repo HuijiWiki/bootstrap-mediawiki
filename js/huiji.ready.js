@@ -1,11 +1,30 @@
-function updateQueryStringParameter(uri, key, value) {
-    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-    if (uri.match(re)) {
-        return uri.replace(re, '$1' + key + "=" + value + '$2');
+function updateQueryStringParameter(url, key, value) {
+    if (!url) url = window.location.href;
+    var re = new RegExp("([?&])" + key + "=.*?(&|#|$)(.*)", "gi"),
+        hash;
+
+    if (re.test(url)) {
+        if (typeof value !== 'undefined' && value !== null)
+            return url.replace(re, '$1' + key + "=" + value + '$2$3');
+        else {
+            hash = url.split('#');
+            url = hash[0].replace(re, '$1$3').replace(/(&|\?)$/, '');
+            if (typeof hash[1] !== 'undefined' && hash[1] !== null) 
+                url += '#' + hash[1];
+            return url;
+        }
     }
     else {
-        return uri + separator + key + "=" + value;
+        if (typeof value !== 'undefined' && value !== null) {
+            var separator = url.indexOf('?') !== -1 ? '&' : '?';
+            hash = url.split('#');
+            url = hash[0] + separator + key + '=' + value;
+            if (typeof hash[1] !== 'undefined' && hash[1] !== null) 
+                url += '#' + hash[1];
+            return url;
+        }
+        else
+            return url;
     }
 }
 window.imgLoadCall = function( that ){
@@ -263,25 +282,37 @@ $(document).ready(function(){
             type: 'info'
         }
         $.ajax({
-            url: '/api.php?action=login&lgname=' + login + '&lgpassword=' + pass + '&format=json',
+            url: '/api.php?action=query&meta=tokens&type=login&format=json',
             type: 'post',
             timeout: 10000,
             success: function(data){
-                if(data.login.result == 'NeedToken'){
+                if(data.query){
                     //fix cookie issue for huijiwiki.com
                     if ('.'+document.domain != mw.config.get('wgHuijiSuffix')){
                         mw.cookie.set('_session', data.login.sessionid, {domain:'.'+document.domain});
                     }
+                    var token = data.query.tokens.logintoken;
+                    var params = 
+                    {
+                        logintoken: token,
+                        username: login,
+                        password: pass,
+                        loginreturnurl: location.href
+                    };
+                    console.log(params);
                     $.ajax({
-                        url: '/api.php?action=login&lgname=' + login + '&lgpassword=' + pass +'&lgtoken=' + data.login.token + '&format=json',
-                        type: 'post',
+                        url: '/api.php?action=clientlogin&format=json&rememberMe=1',
+                        data: params,
+                        type: 'POST',
+                        dataType: 'json',
                         timeout: 10000,
                         success: function (data) {
+                            console.log(data);
                             $('#wpLoginAttempt,#frLoginAttempt').button('reset');
                             if(!data.error){
-                                if(data.login.result == "Success"){
+                                if(data.clientlogin.result != "FAIL"){
                                     mw.notification.notify('登录成功', options);
-                                    //document.location.reload();
+                                    // document.location.reload();
                                     if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
                                         location.href = updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
                                     }else {
@@ -292,30 +323,16 @@ $(document).ready(function(){
                                         tag: 'login',
                                         type: 'error'
                                     }
-                                    if(data.login.result=='NotExists'){
-                                        mw.notification.notify('用户名不存在', options);
-                                    }else if(data.login.result=='WrongPass') {
-                                        mw.notification.notify('密码错误', options);
-                                    }else if(data.login.result=='Throttled') {
-                                        mw.notification.notify('由于您多次输入密码错误，请先休息一会儿。', options);
-                                    }else if(data.login.result=='NoName') {
-                                        mw.notification.notify('您必须键入用户名。', options);
-                                    }else if(data.login.result=='Illegal') {
-                                        mw.notification.notify('您的用户名中含有非法字符', options);
-                                    }else if(data.login.result=='Blocked') {
-                                        mw.notification.notify('您暂时被封禁了', options);
-                                    }else if(data.login.result=='NeedToken') {
-                                        mw.notification.notify('无法获取token', options);
-                                    }else{
-                                        mw.notification.notify('登录错误：'+ data.login.result, options);
-                                    }
+                                    $('#wpLoginAttempt,#frLoginAttempt').button('reset');
+                                    mw.notification.notify(data.clientlogin.message, options);
                                 }
                             }else{
                                 options = {
                                     tag: 'login',
                                     type: 'error'
                                 }
-                                mw.notification.notify('登录错误，请正确填写用户名。（'+ data.login.result+'）', options);
+                                $('#wpLoginAttempt,#frLoginAttempt').button('reset');
+                                mw.notification.notify(data.error.info, options);
                             }
                         },
                         error:function(){
@@ -492,7 +509,7 @@ $(document).ready(function(){
     var own = false;
     var x, y,posX,posY,thisposX,thisposY;
     var card;
-    $('#wiki-body a[href*="/wiki/%E7%94%A8%E6%88%B7:"] .headimg,#wiki-body a[href*="/wiki/User:"] .headimg, #wiki-body .mw-userlink, #wiki-body .mw-userlink').hover(function(e){
+    $('#wiki-body a[href*="/wiki/%E7%94%A8%E6%88%B7:"] .headimg,#wiki-body a[href*="/wiki/User:"] .headimg, #wiki-body .mw-userlink').hover(function(e){
         if(document.body.clientWidth<=1024){
             e.preventDefault();
         }else {
@@ -511,6 +528,8 @@ $(document).ready(function(){
                 carduser = $(this).attr('title');
                 if (carduser){
                    carduser = carduser.replace('用户:',''); 
+                } else {
+                    return;
                 }
             }
             enter = true;
@@ -525,7 +544,7 @@ $(document).ready(function(){
         enter = false;
         removeCard();
     });
-    $('#home-feed-content').on('mouseenter mouseleave','.headimg,a[href~="/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"),a[href~="/wiki/User:"]:not(":has(img)")',function(e){
+    $('#home-feed-content').on('mouseenter mouseleave','.mw-user-link,.headimg,a[href~="/wiki/%E7%94%A8%E6%88%B7:"]:not(":has(img)"),a[href~="/wiki/User:"]:not(":has(img)")',function(e){
         if(e.type == "mouseenter"){
             if(document.body.clientWidth<=1024){
                 e.preventDefault();
@@ -560,7 +579,7 @@ $(document).ready(function(){
     function appendCard(carduser){
         if((enter&&!exist)||(enter&&!own)){
             $('.user-card').remove();
-            userCard(mw.config.get('wgUserName'),carduser);
+            userCard(mw.config.get('wgUserName'), carduser);
             $("body").append(card);
             exist = true;
             hoverCard();
@@ -1005,6 +1024,8 @@ $(document).ready(function(){
                 }
             });
         }, 2000);
+    } else {
+        //do mobile stuff.
     }
 
 

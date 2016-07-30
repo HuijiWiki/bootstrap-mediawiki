@@ -2,290 +2,290 @@
 
 
 window.customizeToolbar = function() {
+
 	/* Your code goes here */
 	//console.log('addToolbar'+$( '#wpTextbox1' ).length+'addToToolBar'+$( '#wpTextbox1' ).wikiEditor);
 
-    $( '#wpTextbox1' ).on( 'wikiEditor-toolbar-doneInitialSections', function () {
-    	//console.log('calling addToToolbar');
-    	$( '#wpTextbox1' ).wikiEditor( 'addToToolbar', {
-			'sections': {
-				'quick-insert': {
-					'type': 'booklet',
-					'label': '快速插入'
-				}
-			},
-			'section': 'advanced',
-			'group': 'insert',
-			'tools': {
-				'addVideo': {
-					label: '添加视频',
-					type: 'button',
-					icon: 'http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/addVideo.png',
-					action: {
-						type: 'callback',
-						execute: function(){
-	                        window.caret = $('#wpTextbox1').caret();
+	//console.log('calling addToToolbar');
+	$( '#wpTextbox1' ).wikiEditor( 'addToToolbar', {
+		'sections': {
+			'quick-insert': {
+				'type': 'booklet',
+				'label': '快速插入'
+			}
+		},
+		'section': 'advanced',
+		'group': 'insert',
+		'tools': {
+			'addVideo': {
+				label: '添加视频',
+				type: 'button',
+				icon: 'http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/addVideo.png',
+				action: {
+					type: 'callback',
+					execute: function(){
+                        window.caret = $('#wpTextbox1').caret();
 
-	                        // Example: Using getSetupProcess() to configure a window with data passed 
-							// at the time the window is opened. 
+                        // Example: Using getSetupProcess() to configure a window with data passed 
+						// at the time the window is opened. 
 
-								                        // Example: Using getSetupProcess() to configure a window with data passed 
-							// at the time the window is opened. 
+							                        // Example: Using getSetupProcess() to configure a window with data passed 
+						// at the time the window is opened. 
 
-	                        // Example: Using getSetupProcess() to configure a window with data passed 
-							// at the time the window is opened. 
+                        // Example: Using getSetupProcess() to configure a window with data passed 
+						// at the time the window is opened. 
 
-							// Make a subclass of ProcessDialog 
-							function MyDialog( config ) {
-							  MyDialog.super.call( this, config );
-							}
-							OO.inheritClass( MyDialog, OO.ui.ProcessDialog );
+						// Make a subclass of ProcessDialog 
+						function MyDialog( config ) {
+						  MyDialog.super.call( this, config );
+						}
+						OO.inheritClass( MyDialog, OO.ui.ProcessDialog );
 
-							// Specify the static configurations: title and action set
-							MyDialog.static.title = '添加媒体文件';
-							MyDialog.static.actions = [
-							  { flags: 'primary', label: '添加', action: 'save', modes:'init' },
-							  { flags: 'safe', label: '取消', modes:'init' },
-							  { flags: 'safe', label: '继续添加', modes:'done', action:'back'},
-							  { flags: 'primary', label: '好的', modes: 'done'},
-							];
+						// Specify the static configurations: title and action set
+						MyDialog.static.title = '添加媒体文件';
+						MyDialog.static.actions = [
+						  { flags: 'primary', label: '添加', action: 'save', modes:'init' },
+						  { flags: 'safe', label: '取消', modes:'init' },
+						  { flags: 'safe', label: '继续添加', modes:'done', action:'back'},
+						  { flags: 'primary', label: '好的', modes: 'done'},
+						];
 
-							// Customize the initialize() function to add content and layouts: 
-							MyDialog.prototype.initialize = function () {
-							  MyDialog.super.prototype.initialize.call( this );
-							  this.panel = new OO.ui.PanelLayout( { $: this.$, padded: true, expanded: false } );
-							  this.panel2 = new OO.ui.PanelLayout( { $: this.$, padded: true, expanded: false } );
+						// Customize the initialize() function to add content and layouts: 
+						MyDialog.prototype.initialize = function () {
+						  MyDialog.super.prototype.initialize.call( this );
+						  this.panel = new OO.ui.PanelLayout( { $: this.$, padded: true, expanded: false } );
+						  this.panel2 = new OO.ui.PanelLayout( { $: this.$, padded: true, expanded: false } );
 
-							  this.content = new OO.ui.FieldsetLayout( { $: this.$ } );
-							  this.content2 = new OO.ui.FieldsetLayout( { $: this.$ } );
-							  this.urlInput = new OO.ui.TextInputWidget( { $: this.$ , placeholder: '支持youku、bilibili、网易云音乐', indicator: 'required'} );
-							  this.label1 = new OO.ui.LabelWidget( {
-  								label: '媒体文件已录入，你可以复制文件链接，插入到条目中的适当位置。你还可以像处理图片一样为他添加属性和边框。'
-							  } );
-							  this.nameInput = new OO.ui.TextInputWidget( { $: this.$ } );
-							  this.finalInput = new OO.ui.TextInputWidget( { $: this.$ } );
+						  this.content = new OO.ui.FieldsetLayout( { $: this.$ } );
+						  this.content2 = new OO.ui.FieldsetLayout( { $: this.$ } );
+						  this.urlInput = new OO.ui.TextInputWidget( { $: this.$ , placeholder: '支持youku、bilibili、网易云音乐', indicator: 'required'} );
+						  this.label1 = new OO.ui.LabelWidget( {
+								label: '媒体文件已录入，你可以复制文件链接，插入到条目中的适当位置。你还可以像处理图片一样为他添加属性和边框。'
+						  } );
+						  this.nameInput = new OO.ui.TextInputWidget( { $: this.$ } );
+						  this.finalInput = new OO.ui.TextInputWidget( { $: this.$ } );
 
-							  this.field = new OO.ui.FieldLayout( this.urlInput, { $: this.$, label: '媒体文件连接', align: 'top' } );
-							  this.field2 = new OO.ui.FieldLayout( this.nameInput, { $: this.$, label: '媒体文件名称', align: 'top' } );
-							  this.field3 = new OO.ui.FieldLayout( this.finalInput, { $: this.$, label: '文件链接', align: 'top' } );
-							  this.button = new OO.ui.ButtonWidget( {
-  								label: '插入文章中',
-  								flags:'constructive'
-								});
+						  this.field = new OO.ui.FieldLayout( this.urlInput, { $: this.$, label: '媒体文件连接', align: 'top' } );
+						  this.field2 = new OO.ui.FieldLayout( this.nameInput, { $: this.$, label: '媒体文件名称', align: 'top' } );
+						  this.field3 = new OO.ui.FieldLayout( this.finalInput, { $: this.$, label: '文件链接', align: 'top' } );
+						  this.button = new OO.ui.ButtonWidget( {
+								label: '插入文章中',
+								flags:'constructive'
+							});
 
-							  this.content.addItems([ this.field, this.field2, this.field3 ]);
-							  this.content2.addItems( [this.field3, this.label1, this.button ] );
-							  this.panel.$element.append( this.content.$element );
-							  this.panel2.$element.append( this.content2.$element );
-							  this.stack = new OO.ui.StackLayout( {
-							  	items:[ this.panel, this.panel2 ]
-							  } );							  
-							  this.$body.append( this.stack.$element );
+						  this.content.addItems([ this.field, this.field2, this.field3 ]);
+						  this.content2.addItems( [this.field3, this.label1, this.button ] );
+						  this.panel.$element.append( this.content.$element );
+						  this.panel2.$element.append( this.content2.$element );
+						  this.stack = new OO.ui.StackLayout( {
+						  	items:[ this.panel, this.panel2 ]
+						  } );							  
+						  this.$body.append( this.stack.$element );
 
-							  this.urlInput.connect( this, { 'change': 'onUrlInputChange' } );
-							  this.button.connect( this, {'click': 'onButtonClick' });
-							};
-							MyDialog.prototype.onButtonClick = function (){
-								var options = {};
-								options.pre = this.finalInput.getValue();
-							    options.post = "";
-							    options.ownline = true;
-    							$( '#wpTextbox1' ).textSelection('encapsulateSelection', options);
-    							this.close();
-							}
+						  this.urlInput.connect( this, { 'change': 'onUrlInputChange' } );
+						  this.button.connect( this, {'click': 'onButtonClick' });
+						};
+						MyDialog.prototype.onButtonClick = function (){
+							var options = {};
+							options.pre = this.finalInput.getValue();
+						    options.post = "";
+						    options.ownline = true;
+							$( '#wpTextbox1' ).textSelection('encapsulateSelection', options);
+							this.close();
+						}
 
-							// Specify any additional functionality required by the window (disable opening an empty URL, in this case)
-							MyDialog.prototype.onUrlInputChange = function ( value ) {
-								var regex = /\.(\w+)\.com/;
-							    this.actions.setAbilities( {
-							    	save: !!value.match(regex)
-							  	} );
-							};
+						// Specify any additional functionality required by the window (disable opening an empty URL, in this case)
+						MyDialog.prototype.onUrlInputChange = function ( value ) {
+							var regex = /\.(\w+)\.com/;
+						    this.actions.setAbilities( {
+						    	save: !!value.match(regex)
+						  	} );
+						};
 
-							// Specify the dialog height (or don't to use the automatically generated height).
-							MyDialog.prototype.getBodyHeight = function () {
-							  return this.panel.$element.outerHeight( true );
-							};
+						// Specify the dialog height (or don't to use the automatically generated height).
+						MyDialog.prototype.getBodyHeight = function () {
+						  return this.panel.$element.outerHeight( true );
+						};
 
-							// Use getSetupProcess() to set up the window with data passed to it at the time 
-							// of opening (e.g., url: 'http://www.mediawiki.org', in this example). 
-							MyDialog.prototype.getSetupProcess = function ( data ) {
-							  data = data || {};
-							  return MyDialog.super.prototype.getSetupProcess.call( this, data )
-							  .next( function () {
-							    // Set up contents based on data
-							    this.urlInput.setValue( data.url );
-							    this.actions.setMode( 'init' );
-							    this.stack.setItem( this.panel );
-							  }, this );
-							};
+						// Use getSetupProcess() to set up the window with data passed to it at the time 
+						// of opening (e.g., url: 'http://www.mediawiki.org', in this example). 
+						MyDialog.prototype.getSetupProcess = function ( data ) {
+						  data = data || {};
+						  return MyDialog.super.prototype.getSetupProcess.call( this, data )
+						  .next( function () {
+						    // Set up contents based on data
+						    this.urlInput.setValue( data.url );
+						    this.actions.setMode( 'init' );
+						    this.stack.setItem( this.panel );
+						  }, this );
+						};
 
-							// Specify processes to handle the actions.
-							MyDialog.prototype.getActionProcess = function ( action ) {
-								console.log('debug1');
-								return MyDialog.super.prototype.getActionProcess.call(this, action)
-								.next(function(){
-									if ( action === 'back' ){
-										this.actions.setMode( 'init' );
-										this.stack.setItem( this.panel );
-									}
-									if ( action === 'save' ) {
-										console.log('debug2');
-									  	if (!this.urlInput.getValue()){
-									  		return new OO.ui.Error('URL不能为空');
-									  	}
-									  	var regex = /\.(\w+)\.com/;
-		        						var match = this.urlInput.getValue().match(regex);
-		        						if (!match){
-		        							return new OO.ui.Error('暂不支持该URL');
-		        						}
-		        						var dialog = this;
-		        						
-	        							console.log('debug4');
-	        							var url = dialog.urlInput.getValue();
-		        						var video_name = dialog.nameInput.getValue();
-		        						var dfd = $.Deferred();
-		        						var uploadSuccess = function(filename){
-		        							console.log('debug5');
-		        							dialog.actions.setMode('done');
-		        							var link;
-		        							if (filename.indexOf('.audio') > -1){
-		        								link = "[[File:" + filename;
-		        								link += "]]";
-		        							}else{
-		        								link = "[[File:" + filename + "|thumb|300px|]]";
-		        							}
+						// Specify processes to handle the actions.
+						MyDialog.prototype.getActionProcess = function ( action ) {
+							console.log('debug1');
+							return MyDialog.super.prototype.getActionProcess.call(this, action)
+							.next(function(){
+								if ( action === 'back' ){
+									this.actions.setMode( 'init' );
+									this.stack.setItem( this.panel );
+								}
+								if ( action === 'save' ) {
+									console.log('debug2');
+								  	if (!this.urlInput.getValue()){
+								  		return new OO.ui.Error('URL不能为空');
+								  	}
+								  	var regex = /\.(\w+)\.com/;
+	        						var match = this.urlInput.getValue().match(regex);
+	        						if (!match){
+	        							return new OO.ui.Error('暂不支持该URL');
+	        						}
+	        						var dialog = this;
+	        						
+        							console.log('debug4');
+        							var url = dialog.urlInput.getValue();
+	        						var video_name = dialog.nameInput.getValue();
+	        						var dfd = $.Deferred();
+	        						var uploadSuccess = function(filename){
+	        							console.log('debug5');
+	        							dialog.actions.setMode('done');
+	        							var link;
+	        							if (filename.indexOf('.audio') > -1){
+	        								link = "[[File:" + filename;
+	        								link += "]]";
+	        							}else{
+	        								link = "[[File:" + filename + "|thumb|300px|]]";
+	        							}
 
-		        							dialog.finalInput.setValue(link);
-		        							dialog.stack.setItem( dialog.panel2 );
-		        							dfd.resolve();
-		        						}
-		        						var error = function(){
-		        							console.log('debug6');
-		        							dfd.reject(new OO.ui.Error('添加媒体文件过程中出现了一个错误'));
-		        							//dialog.close();
-		        							//return new OO.ui.Error('暂不支持该URL');
-		        						}
-		        						switch(match[1]){
-								            case 'youku':
-								                mw.VideoHandler.queryYouku(url, video_name, uploadSuccess, error);
-								                break;
-								            case 'bilibili':
-								                mw.VideoHandler.queryBilibili(url, video_name, uploadSuccess, error);
-								                break;
-								            case '163':
-								                mw.VideoHandler.query163(url, video_name, uploadSuccess, error);
-								                break; 
-								            // case 'qq':
-								            // default:
-								        }
-								        return dfd.promise();
+	        							dialog.finalInput.setValue(link);
+	        							dialog.stack.setItem( dialog.panel2 );
+	        							dfd.resolve();
+	        						}
+	        						var error = function(){
+	        							console.log('debug6');
+	        							dfd.reject(new OO.ui.Error('添加媒体文件过程中出现了一个错误'));
+	        							//dialog.close();
+	        							//return new OO.ui.Error('暂不支持该URL');
+	        						}
+	        						switch(match[1]){
+							            case 'youku':
+							                mw.VideoHandler.queryYouku(url, video_name, uploadSuccess, error);
+							                break;
+							            case 'bilibili':
+							                mw.VideoHandler.queryBilibili(url, video_name, uploadSuccess, error);
+							                break;
+							            case '163':
+							                mw.VideoHandler.query163(url, video_name, uploadSuccess, error);
+							                break; 
+							            // case 'qq':
+							            // default:
+							        }
+							        return dfd.promise();
 
-									}
-								}, this)
-								.next(function(){
-									
-									//this.close();
-								}, this);
-				
+								}
+							}, this)
+							.next(function(){
 								
-							  	// Fallback to parent handler
-							  	return MyDialog.super.prototype.getActionProcess.call( this, action );
-							};
+								//this.close();
+							}, this);
+			
+							
+						  	// Fallback to parent handler
+						  	return MyDialog.super.prototype.getActionProcess.call( this, action );
+						};
 
-							// Use the getTeardownProcess() method to perform actions whenever the dialog is closed. 
-							// This method provides access to data passed into the window's close() method 
-							// or the window manager's closeWindow() method.
-							MyDialog.prototype.getTeardownProcess = function ( data ) {
-							  return MyDialog.super.prototype.getTeardownProcess.call( this, data )
-							  .first( function () {
-							  // Perform any cleanup as needed
-							  }, this );
-							};
+						// Use the getTeardownProcess() method to perform actions whenever the dialog is closed. 
+						// This method provides access to data passed into the window's close() method 
+						// or the window manager's closeWindow() method.
+						MyDialog.prototype.getTeardownProcess = function ( data ) {
+						  return MyDialog.super.prototype.getTeardownProcess.call( this, data )
+						  .first( function () {
+						  // Perform any cleanup as needed
+						  }, this );
+						};
 
-							// Create and append a window manager.
-							var windowManager = new OO.ui.WindowManager();
-							$( 'body' ).append( windowManager.$element );
+						// Create and append a window manager.
+						var windowManager = new OO.ui.WindowManager();
+						$( 'body' ).append( windowManager.$element );
 
-							// Create a new process dialog window.
-							var myDialog = new MyDialog();
+						// Create a new process dialog window.
+						var myDialog = new MyDialog();
 
-							// Add the window to window manager using the addWindows() method.
-							windowManager.addWindows( [ myDialog ] );
+						// Add the window to window manager using the addWindows() method.
+						windowManager.addWindows( [ myDialog ] );
 
-							// Open the window!   
-							windowManager.openWindow( myDialog, { url: '' } );
-						}
+						// Open the window!   
+						windowManager.openWindow( myDialog, { url: '' } );
 					}
-				},
-			}
-		} );
-		$( '#wpTextbox1' ).wikiEditor( 'addToToolbar', {
-			'section': 'advanced',
-			'groups': {
-				'translate': {
-					'label': '翻译',
 				}
 			},
-			'group':'translate',
-			'tools': {
-				'en-zh':{
-					label: '翻译链接',
-					type: 'button',
-					icon: 'http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/hanzi.png',
-					action: {
-						type: 'callback',
-						execute: function(){
-							var content = $('#wpTextbox1').val();
-							var re = /\[\[(.*?)(\||\]\])/gi; 
-							var m = [],matches = [];
-							while( matches = re.exec(content)){
-								m.push(matches[1]);
-							}
-							if (m == null){
-								alert('没有发现可替换的链接');
-							} else {
-								jQuery.post(
-						            mw.util.wikiScript(), {
-						                action: 'ajax',
-						                rs: 'wfGetEntry',
-						                rsargs: [m.join('|'), 'en', mw.config.get('wgHuijiPrefix'), 0, 1]
-						            },
-						            function(json){
-						            	var data = JSON.parse(json);
-						            	var tran = [];
-						            	for(i in data){
-						            		t = JSON.parse(data[i]);
-						            		if(t.status=='success' && t.result.hits>=1){
-						            			tran.push(t.result.objects[0].entry);
-						            		} else {
-						            			tran.push(null);
-						            		}
-						            	}
-						            	var i = 0;
-						            	var result = content.replace(re, function(match, p1, p2, offset, string){
-						            		if (tran[i++] == null){
-						            			return '[['+p1+p2;
-						            		}
-						            		return '[['+tran[i-1]+p2;
-						            	});
-						            	$('#wpTextbox1').val(result);
-						            }
-						        );		
-							}
-					
+		}
+	} );
+	$( '#wpTextbox1' ).wikiEditor( 'addToToolbar', {
+		'section': 'advanced',
+		'groups': {
+			'translate': {
+				'label': '翻译',
+			}
+		},
+		'group':'translate',
+		'tools': {
+			'en-zh':{
+				label: '翻译链接',
+				type: 'button',
+				icon: 'http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/hanzi.png',
+				action: {
+					type: 'callback',
+					execute: function(){
+						var content = $('#wpTextbox1').val();
+						var re = /\[\[(.*?)(\||\]\])/gi; 
+						var m = [],matches = [];
+						while( matches = re.exec(content)){
+							m.push(matches[1]);
 						}
+						if (m == null){
+							alert('没有发现可替换的链接');
+						} else {
+							jQuery.post(
+					            mw.util.wikiScript(), {
+					                action: 'ajax',
+					                rs: 'wfGetEntry',
+					                rsargs: [m.join('|'), 'en', mw.config.get('wgHuijiPrefix'), 0, 1]
+					            },
+					            function(json){
+					            	var data = JSON.parse(json);
+					            	var tran = [];
+					            	for(i in data){
+					            		t = JSON.parse(data[i]);
+					            		if(t.status=='success' && t.result.hits>=1){
+					            			tran.push(t.result.objects[0].entry);
+					            		} else {
+					            			tran.push(null);
+					            		}
+					            	}
+					            	var i = 0;
+					            	var result = content.replace(re, function(match, p1, p2, offset, string){
+					            		if (tran[i++] == null){
+					            			return '[['+p1+p2;
+					            		}
+					            		return '[['+tran[i-1]+p2;
+					            	});
+					            	$('#wpTextbox1').val(result);
+					            }
+					        );		
+						}
+				
 					}
 				}
 			}
+		}
 
-		});
-					
+	});
 				
-    	//console.log('appending quick-insert');
-        jQuery(".mw-editTools").detach().appendTo('#wikiEditor-section-quick-insert > div.pages');
-        jQuery("#wikiEditor-section-quick-insert > div.index").remove();
-    } );
+			
+	//console.log('appending quick-insert');
+    jQuery(".mw-editTools").detach().appendTo('#wikiEditor-section-quick-insert > div.pages');
+    jQuery("#wikiEditor-section-quick-insert > div.index").remove();
+
 };
 // function insertTags(pre,post,sample){
 // 	var options = {};
@@ -317,7 +317,7 @@ window.customizeToolbar = function() {
 			// This can be the string "0" if the user disabled the preference ([[phab:T54542#555387]])
 			if ( mw.user.options.get( 'usebetatoolbar' ) == 1 ) {
 				$.when(
-					mw.loader.using( 'ext.wikiEditor.toolbar' ), $.ready
+					mw.loader.using( 'ext.wikiEditor.toolbar' ), $.ready, $( '#wpTextbox1' ).on( 'wikiEditor-toolbar-doneInitialSections' )
 				).then( customizeToolbar );
 			}
 		} );
@@ -353,10 +353,8 @@ window.customizeToolbar = function() {
 				  opened.then( function ( closing, data ) {
 				    if ( data && data.action == 'recover' ) {
 				    	that.restoreAllData();
-				        console.log( 'Feeling ' + data.action );
 				    } else {
 				    	that.manuallyReleaseData();
-				      	console.log( 'Nevermind' );
 				    }
 				  } );
 				} );
@@ -421,6 +419,7 @@ window.customizeToolbar = function() {
 			$container.prepend($select);
 
 			editTools.chooseSection(initial);
+
 		},
 
 		/**

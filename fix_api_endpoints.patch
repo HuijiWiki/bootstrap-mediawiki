@@ -1,0 +1,43 @@
+From cc281da3eeec2f974615c0ea3b5f29843b5de762 Mon Sep 17 00:00:00 2001
+From: c86jeff <zhangjiexin0101@gmail.com>
+Date: Wed, 27 Jul 2016 18:21:27 +0800
+Subject: [PATCH] patched with huiji global api route
+
+---
+ includes/ForeignNotifications.php | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
+
+diff --git a/includes/ForeignNotifications.php b/includes/ForeignNotifications.php
+index 9aa8631..2ceba36 100644
+--- a/includes/ForeignNotifications.php
++++ b/includes/ForeignNotifications.php
+@@ -192,22 +192,15 @@ class EchoForeignNotifications {
+ 	 * @return array[] [(string) wiki => (array) data]
+ 	 */
+ 	public static function getApiEndpoints( array $wikis ) {
+-		global $wgConf;
+-		$wgConf->loadFullData();
+-
+ 		$data = array();
+ 		foreach ( $wikis as $wiki ) {
+-			$siteFromDB = $wgConf->siteFromDB( $wiki );
+-			list( $major, $minor ) = $siteFromDB;
+-			$server = $wgConf->get( 'wgServer', $wiki, $major, array( 'lang' => $minor, 'site' => $major ) );
+-			$scriptPath = $wgConf->get( 'wgScriptPath', $wiki, $major, array( 'lang' => $minor, 'site' => $major ) );
+-
++			$prefix = WikiSite::prefixFromDbId($wiki);
++			$site = WikiSite::newFromPrefix($prefix);
+ 			$data[$wiki] = array(
+-				'title' => static::getWikiTitle( $wiki, $siteFromDB ),
+-				'url' => $server . $scriptPath . '/api.php',
++				'title' => $site->getName(),
++				'url' => $site->getApi(),
+ 			);
+ 		}
+-
+ 		return $data;
+ 	}
+ 
+-- 
+1.9.1
+

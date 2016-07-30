@@ -7,9 +7,8 @@
     .hack-border(@main-lighter,@detail-border);
     .hack-border-left(@main-lighter,@detail-border);
   }
-
   .prefsection fieldset{
-    .bgChangeTextColor(@well);
+    .bg-compute-text(@well);
     padding:10px;
     margin-bottom: 10px;
     position: relative;
@@ -17,7 +16,7 @@
     padding-bottom: 40px;
   }
   #pagehistory li.selected{
-    .bgChangeTextColor(@well)
+    .bg-compute-text(@well)
   }
   .gift-wrap{
     a{
@@ -98,12 +97,38 @@
 
   .profile-interactive .dropdown-menu{
     .mixin(@well);
-    a {
-      color: @main-base;
-      .color(@detail-color);
-    }
+    .compute-text(@well);
   }
   .ve-ui-mwSaveDialog-license {
-    .bgChangeTextColor(@bg-inner);
+    .compute-text(@well);
+  }
+  rect{
+    &[data-depth="lowest"]{
+      fill:#eee;
+    }
+    &[data-depth="low"]{
+      fill:lighten(@brand-primary, 21%);
+    }
+    &[data-depth="normal"]{
+      fill:lighten(@brand-primary, 14%);
+    }
+    &[data-depth="high"]{
+      fill:lighten(@brand-primary, 7%);
+    }
+    &[data-depth="highest"]{
+      fill: @brand-primary;
+    }
+  }
+  div.mw-number-text{
+    color: @main-light; 
+  }
+  #bodyContent div.mw-number-text h3{
+    color: @main-darker; 
+  }
+  .mw-echo-ui-overlay{
+    z-index: 100;
+  }
+  .mw-echo-ui-notificationBadgeButtonPopupWidget > .oo-ui-popupWidget > .oo-ui-popupWidget-popup > .oo-ui-popupWidget-head{
+    height: 3.6em;
   }
 }

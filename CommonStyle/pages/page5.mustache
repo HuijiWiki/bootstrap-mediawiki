@@ -1,0 +1,37 @@
+        <h5 class="color-picker-item-toggle">模板细节配色</h5>
+        <p class="secondary">手动指定模板细节配色，覆盖主题配色方案。仅适用于灰机官方提供的模板。</p>
+        <div class="color-picker-item">
+        <ul class="picker-color">
+            {{#styleArr}}
+                {{#ish}}
+                    <li class="grouped">
+                        <span>{{label}}</span>
+                        <ul class="picker-label">
+                            {{#h}}
+                                <li class="label">{{name2}}</li>
+                            {{/h}}
+                        </ul>
+                        <ul class="picker-detail">
+                            {{#h}}
+                                <li>
+                                    <div class="color-box jcolor" data-variable="{{variable2}}" value="{{value2}}" style="color:{{value2}}"></div>
+                                    <input type="text" class="input-color" value="{{value2}}">
+                                    <div class="color-name">{{name2}}</div>
+                                </li>
+                            {{/h}}
+                        </ul>
+                    </li>
+                {{/ish}}
+                {{^ish}}
+                    <li class="separated">
+                        <div class="color-box jcolor" data-variable="{{variable}}" value="{{value}}" style="color:{{value}}"></div>
+                        <input type="text" class="input-color" value="{{value}}">
+                        <div class="color-name">{{name}}</div>
+                    </li>
+                {{/ish}}
+
+                
+            {{/styleArr}}
+
+        </ul>
+    </div>

@@ -1,0 +1,40 @@
+@import "./../variable.less";
+@import "./../mixins.less";
+.skin-BootstrapMediawiki{
+	.flow-board-header-footer hr,.flow-ui-navigationWidget{
+	    border: 0!important;
+	}
+	.flow-no-more, .flow-undo,.flow-ui-editorControlsWidget-termsLabel,.flow-post,.mw-ui-anchor.mw-ui-progressive.mw-ui-quiet,.flow-post-meta{
+	    color: inherit!important;
+	}
+	.flow-component.board-page .flow-board-header{
+    	background-color: rgba(0,0,0,.05);
+	}
+	.flow-ui-wikitextEditorWidget .oo-ui-textInputWidget {
+	    padding-bottom: 3.2em;
+	}
+	.flow-component .oo-ui-toolbar {
+	    margin-top: -3.1em;
+	    & .ve-ui-toolbar{
+	    	margin-top: 0;
+	    }
+	}
+	@media (min-width: 1165px){
+	    .flow-component.flow-board-page .flow-board-header{
+	      	.bg-compute-text(@well);
+	    }
+  	}
+  	.flow-topic-titlebar{
+  		.bg-compute-text(@well);
+  	}
+  	.new.mw-userlink {
+  		.link(@a);
+  		.link(@detail-a);
+  	}
+  	.flow-topic-meta{
+  		.secondary();
+  	}
+  	.ve-ui-surface-placeholder{
+  		color: #333;
+  	}
+}

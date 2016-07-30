@@ -94,13 +94,6 @@
   border: 0;
 }
 
-.huiji-css-hook{
- [class^="icon-lv"],[class*=" icon-lv"]{
-    color: @main-base;
-    .color(@detail-color);
-  }
-}
-
 .a();
 
 input,textarea,select,option{
@@ -112,6 +105,13 @@ span,div,ul,li,a,table,legend,header{
 }
 legend,.secondary,.autocomment{
   .secondary();
+}
+a {
+  color: @a;
+  &:hover{
+    color: darken(@a, 15%);
+  }
+  .link(@detail-a);
 }
 .popover{
   background-color: @bg-inner;
@@ -149,13 +149,6 @@ legend,.secondary,.autocomment{
 .huiji-css-hook {
   background-color: @bg;
   .bg(@detail-bg);
-    a {
-    color: @a;
-    &:hover{
-      color: darken(@a, 15%);
-    }
-    .link(@detail-a);
-  }
   .toc-sidebar li {
     a {
       color: @main-light;
@@ -215,7 +208,10 @@ legend,.secondary,.autocomment{
       }
     }
     //    }
-
+   [class^="icon-lv"],[class*=" icon-lv"]{
+      color: @main-base;
+      .color(@detail-color);
+    }
 
     @media (max-width: 767px){
       .nav .dropdown > a {
@@ -594,8 +590,9 @@ body .mwe-popups{
 }
 
 
-.well-np,.well{
-  .bgChangeTextColor(@well);
+.well-np,.well, .panel{
+  
+  .bg-compute-text(@well);
   .well-np,.well{
     .mixin(@well);
     .well-np,.well{

@@ -10,7 +10,6 @@ a{
   clear: both;
   display: block;
 }
-
 body{
   background-color: extract(@background-color,1);
   color: extract(@font-color,1);
@@ -47,7 +46,12 @@ a{
 }
 textarea {
   width: 95%;
+}
+textarea, input, [contenteditable]{
   color: extract(@font-color,1);
+  [contenteditable="true"]{
+    background-color: extract(@background-color, 1);
+  }   
 }
 .modal-dialog{
   color: extract(@font-color,1);

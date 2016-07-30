@@ -86,7 +86,6 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 		$skinDir . '/js/fastclick.js',
 		$skinDir . '/js/scroll.js',
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',
-		$skinDir . '/js/huiji.flow.js',
 		$skinDir . '/js/huiji.collectPageViewRecord.js',
 		$skinDir . '/js/huiji.ready.js',
 		$skinDir . '/js/mention.js',
@@ -342,8 +341,10 @@ $wgResourceModuleSkinStyles['BootstrapMediawiki'] = array(
 	'oojs-ui-widgets' => $skinDir.'/less/oojs-ui/oojs-ui-widgets-mediawiki.less',
 	'oojs-ui-toolbars' => $skinDir.'/less/oojs-ui/oojs-ui-toolbars-mediawiki.less',
 	'oojs-ui-windows' => $skinDir.'/less/oojs-ui/oojs-ui-windows-mediawiki.less',
+	'ext.flow.styles.base' => $skinDir.'/less/flow/huiji.flow.less',
  	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+
 );
 require_once( "$IP/skins/bootstrap-mediawiki/CommonStyle/CommonStyle_AjaxFunctions.php" );
 if ( isset( $wgSiteJS ) ) {
@@ -365,7 +366,7 @@ $wgHooks['OutputPageMakeCategoryLinks'][] = 'BootstrapMediawikiHooks::onOutputPa
 $wgHooks['BeforePageDisplay'][] = 'BootstrapMediawikiHooks::onBeforePageDisplay';
 $wgHooks['ResourceLoaderGetLessVars'][] = 'BootstrapMediawikiHooks::onResourceLoaderGetLessVars';
 $wgHooks['SpecialSearchResultsPrepend'][] = 'BootstrapMediawikiHooks::onSpecialSearchResultsPrepend';
-
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'BootstrapMediawikiHooks::onLoadExtensionSchemaUpdates';
 //API
 $wgAPIModules['commonstyle'] = "ApiCommonStyle";
 
