@@ -310,7 +310,7 @@ $(document).ready(function(){
                             console.log(data);
                             $('#wpLoginAttempt,#frLoginAttempt').button('reset');
                             if(!data.error){
-                                if(data.clientlogin.result != "FAIL"){
+                                if(data.clientlogin.status != "FAIL"){
                                     mw.notification.notify('登录成功', options);
                                     // document.location.reload();
                                     if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){

@@ -10,3 +10,6 @@
 .skin-BootstrapMediawiki .ve-ui-mwSaveDialog-checkboxes {
 	color:#333;
 }
+.skin-BootstrapMediawiki [contenteditable="true"]{
+	color: inherit;
+}
