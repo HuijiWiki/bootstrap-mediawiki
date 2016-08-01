@@ -5,7 +5,7 @@
 class SpecialCommonStyle extends UnlistedSpecialPage{
     
     function __construct(){
-        parent::__construct( 'CommonStyle' );
+        parent::__construct( 'CommonStyle', 'editinterface' );
     }
 
     public function execute( $params ) {
@@ -15,10 +15,6 @@ class SpecialCommonStyle extends UnlistedSpecialPage{
         $this->setHeaders();
         $out = $this->getOutput();
         $output = '';
-        if ( !$wgUser->isAllowed('editinterface')){
-            $out->permissionRequired( 'editinterface' );
-            return;
-        }
         // $output = "<div id='color-container' class='darken'></div>";
         if (class_exists('VoteStar')){
             $out->addModules( 'ext.VoteNY.styles' );
