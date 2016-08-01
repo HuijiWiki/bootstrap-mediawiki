@@ -693,7 +693,7 @@ body .mw-echo-overlay::before{
         width: 300px;
         margin: 30px -150px;
         position: absolute;
-        left: 50%!important;
+        left: 30%!important;
     }
     .user-login{
         margin-top: 200px;
