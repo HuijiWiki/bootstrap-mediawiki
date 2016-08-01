@@ -214,3 +214,7 @@ p.mw-edittools-section {
 .skin-BootstrapMediawiki .tool-button {
     background-position: 0px 0px !important;
 }
+.mw-editTools p {
+    display:inline;
+    line-height: 1;
+}

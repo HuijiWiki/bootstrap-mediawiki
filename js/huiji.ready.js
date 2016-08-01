@@ -1025,7 +1025,43 @@ $(document).ready(function(){
             });
         }, 2000);
     } else {
-        //do mobile stuff.
+        var collapseRow = {
+            heading: '',
+            init: function(options){
+                this.heading = options.heading;
+                var $headingElement = $('h2>span.mw-headline');
+                for( var i in $headingElement ){
+                    if ( $.inArray( $headingElement[i].textContent, this.heading )  >= 0  && $($headingElement[i])){
+                        $wraper = $($headingElement[i]).parent();
+                        $wraper.attr("id","collapseHead_"+i);
+                        $wraper.attr("data-toggle","collapse");
+                        // $wraper.attr("data-parent","#accordion");
+                        $wraper.attr("href","#collapse_"+i);
+                        $wraper.next().attr("id","collapse_"+i);
+                        $wraper.next().attr( "class","collapse");
+                        //console.log($headingElement[i]);
+                        $( $headingElement[i] ).after("<span class=\"glyphicon glyphicon-triangle-bottom collapse_arrow\"></span>");
+                        $('#collapse_'+i).on('show.bs.collapse', function () {
+                            $(".collapse_arrow").attr( "class","glyphicon glyphicon-triangle-top collapse_arrow");
+                            $wraper.removeClass('secondary');
+                        });
+                        $('#collapse_'+i).on('hide.bs.collapse', function () {
+                            $(".collapse_arrow").attr( "class","glyphicon glyphicon-triangle-bottom collapse_arrow");
+                            $wraper.addClass('secondary');
+                        });
+                    }
+                }
+                $(".collapse_arrow").css("padding","0 10px 0 10px");
+                $(".collapse_arrow").css("font-size","15px");
+                $(".collapse_arrow").css("vertical-align","middle");
+            }
+        }
+
+        var option = {
+            heading: ['引用与注释', '引用和注释', '引用', '注释', '出处', '来源', '参考资料'],
+        }
+        collapseRow.init(option);
+       
     }
 
 
@@ -1038,3 +1074,5 @@ $(document).ready(function(){
 
 //    function show()
 });
+
+
