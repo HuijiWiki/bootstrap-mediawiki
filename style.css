@@ -788,7 +788,9 @@ input:-webkit-autofill {
 /*手机上图片不超过手机宽度*/
 @media screen and (min-width:320px ) and (max-width:414px ){
     #mw-content-text>*{
-        max-width: 100%;
+      margin-left:15px;
+      margin-right: 15px;
+      width: auto;
     }
     .infobox{
         width:100%!important;
