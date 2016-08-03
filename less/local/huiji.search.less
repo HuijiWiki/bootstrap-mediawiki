@@ -76,14 +76,21 @@
 }
 
 @media screen and (max-width: 768px){
-    #mw-search-top-table .mw-ui-button{
+    #mw-search-top-table  .oo-ui-buttonElement{
         display: block !important;
         margin-left: auto !important;
         margin-right: auto !important;
         margin-top: 0.4em !important;
         width: 100% !important;
+        button {
+		display:block;
+		margin:auto;
+	}
     }
     .mw-search-results{
         float:none !important;
+    }
+    #searchText{
+	width: 100% !important;
     }
 }
