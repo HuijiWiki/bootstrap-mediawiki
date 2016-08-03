@@ -281,7 +281,7 @@ $wgResourceModules['skins.bootstrapmediawiki.search'] = array(
 	'scripts' => array(
 	),
 	'styles' => array(
-		$skinDir . '/css/huiji.search.css'         					 => array( 'media' => 'all' ),
+		$skinDir . '/less/local/huiji.search.less'         					 => array( 'media' => 'all' ),
 	),
 	'dependencies' => array(
 		'mediawiki.special.search',
