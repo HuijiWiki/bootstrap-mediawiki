@@ -285,7 +285,7 @@ $wgResourceModules['skins.bootstrapmediawiki.search'] = array(
 	),
 	'dependencies' => array(
 		'mediawiki.special.search',
-	)
+	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',	
