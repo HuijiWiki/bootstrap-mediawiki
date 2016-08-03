@@ -5,7 +5,6 @@
 #mw-search-top-table{
     max-width: 510px;
     margin: 0 auto;
-    font-size: 0;
 }
 #searchText{
     display: inline-block;
@@ -13,8 +12,6 @@
     font-size: 14px;
     border-radius: 3px 0 0 3px;
     max-width: 500px;
-    padding: 7px;
-    border: 1px solid #ccc
 }
 #mw-search-top-table > input.mw-ui-button.mw-ui-progressive{
     width: 15%;
@@ -76,16 +73,17 @@
 .mw-search-results div.searchresult {
 	width: auto;
 }
+}
+
 @media screen and (max-width: 768px){
     #mw-search-top-table .mw-ui-button{
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 0.4em;
-        width: 100%;
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 0.4em !important;
+        width: 100% !important;
     }
     .mw-search-results{
-        float:none;
+        float:none !important;
     }
-}
 }
