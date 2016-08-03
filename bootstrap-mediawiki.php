@@ -283,11 +283,14 @@ $wgResourceModules['skins.bootstrapmediawiki.search'] = array(
 	'styles' => array(
 		$skinDir . '/css/huiji.search.css'         					 => array( 'media' => 'all' ),
 	),
+	'dependencies' => array(
+		'mediawiki.special.search',
+	)
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',	
 );
-$wgResourceModules['mediawiki.special.search']['styles'] = [];
+//$wgResourceModules['mediawiki.special.search']['styles'] = [];
 
 //commonstyle
 $wgResourceModules['socialprofile.commonstyle.css'] = array(
