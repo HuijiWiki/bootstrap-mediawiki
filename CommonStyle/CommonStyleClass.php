@@ -137,7 +137,7 @@ class CommonStyle{
 		$key = wfMemcKey("commonStyle", "getStyle" );
 		$wgMemc->delete($key);		
 		//Force Rebuild Resourceloader module.
-		touch("../less/huiji.less");
+		touch( __DIR__ ."/../less/huiji.less");
 	}
 
 	/**
