@@ -371,6 +371,7 @@ $wgHooks['BeforePageDisplay'][] = 'BootstrapMediawikiHooks::onBeforePageDisplay'
 $wgHooks['ResourceLoaderGetLessVars'][] = 'BootstrapMediawikiHooks::onResourceLoaderGetLessVars';
 $wgHooks['SpecialSearchResultsPrepend'][] = 'BootstrapMediawikiHooks::onSpecialSearchResultsPrepend';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'BootstrapMediawikiHooks::onLoadExtensionSchemaUpdates';
+$wgHooks['ImportSources'][] = 'BootstrapMediawikiHooks::onImportSources';
 //API
 $wgAPIModules['commonstyle'] = "ApiCommonStyle";
 

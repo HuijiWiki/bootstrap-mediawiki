@@ -600,5 +600,8 @@ Class BootstrapMediawikiHooks {
         $updater->addExtensionUpdate( array( 'addTable', 'common_css', "$dir/CommonStyle/common_css$dbExt.sql", true ) );
         return true;
     }
+    public static function onImportSources( &$sources ){
+        $sources = Huiji::getInstance()->getSitePrefixes(true);
+    }
     
 }

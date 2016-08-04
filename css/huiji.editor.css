@@ -61,6 +61,9 @@ p.mw-edittools-section {
 #msupload-bottom{
     height: auto !important;
 }
+#msupload-container{
+    display:none;
+}
 .skin-bootstrap-mediawiki .CodeMirror {
     font-family: inherit;
 }
