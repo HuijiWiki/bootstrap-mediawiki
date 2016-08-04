@@ -132,12 +132,28 @@ class CommonStyle{
         return $cssContent;
 	}
 
-	public static function clearCache(){
-		global $wgMemc;
+	public static function clearCache( $context = null ){
+		global $wgMemc, $wgResourceModules;
 		$key = wfMemcKey("commonStyle", "getStyle" );
 		$wgMemc->delete($key);		
 		//Force Rebuild Resourceloader module.
-		touch( __DIR__ ."/../less/huiji.less");
+		//$fileName = __DIR__ ."/../less/huiji.less";
+
+		$styles = $wgResourceModules['skins.bootstrapmediawiki.top']['styles'];
+		foreach ($styles as $key => $value){
+			if ( pathinfo($key, PATHINFO_EXTENSION) === 'less' ){
+				$fileName = $wgResourceModules['skins.bootstrapmediawiki.top']['localBasePath'].'/'.$key;
+				$varsHash = hash( 'md4', serialize( [] ) );
+				$cache = ObjectCache::getLocalServerInstance( CACHE_ANYTHING );
+				$cacheKey = $cache->makeGlobalKey( 'LESS', $fileName, $varsHash );
+				$cachedCompile = $cache->delete( $cacheKey );	
+			}
+		}
+
+
+		//$compiler = $context->getResourceLoader()->getLessCompiler( [] );
+		// touch( __DIR__ ."/../less/huiji.less");
+		//array_map('unlink', glob("$wgFileCacheDirectory/*.lesscache"));
 	}
 
 	/**

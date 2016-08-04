@@ -18,7 +18,7 @@ class ApiCommonStyle extends ApiBase {
             $wp = new WikiPage($title);
             $status = $wp->doEditContent($content, 'bot edit');
             $result->addValue($this->getModuleName(), 'res', ResponseGenerator::getArr(ResponseGenerator::SUCCESS));
-            CommonStyle::clearCache();
+            CommonStyle::clearCache($this->getContext());
             return true;
         }
         if ($this->params['task'] == 'get'){
@@ -34,7 +34,7 @@ class ApiCommonStyle extends ApiBase {
             $wp = new WikiPage($title);
             $status = $wp->doEditContent( new WikitextContent('-'), 'bot edit');
             $result->addValue($this->getModuleName(), 'res', ResponseGenerator::getArr(ResponseGenerator::SUCCESS));
-            CommonStyle::clearCache();
+            CommonStyle::clearCache($this->getContext());
             return true;
 
         } 
