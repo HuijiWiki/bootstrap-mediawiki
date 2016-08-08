@@ -91,32 +91,8 @@ $(function() {
 	        $('body').scrollspy({target: '#toc .toc-ul-wrap', offset:230});
 	
 	    } else {
-	        // TODO do something to add a floating navigation bar.
-            // Mobile TOC
-            $("body").append("<button class=\"fa fa-bars\" id=\"menu-toggle-sm\"></button>");
-            $("#menu-toggle-sm").click(function(e) {
-                if ($('#toc').hasClass('open')) {
-                    $('#toc').removeClass('open');
-                    $('#content>div.row>article').removeClass('open');
-                    //$("#toc").hide(200);
-                }
-                else {
-                    //$("#toc").show(200);
-                    $('#toc').addClass('open');
-                    $('#content>div.row>article').addClass('open'); 
-                }
-            });
-            $(document).mouseup(function (e) {
-                var container = $('#toc');
-                if ((!container.is(e.target) && $("#toc>#toctitle").has(e.target).length === 0) 
-                    && 
-                    (!($('#menu-toggle-sm').is(e.target)) && $('#menu-toggle-sm').has(e.target).length === 0)) {
-                        $('#toc').removeClass("open");
-                        $('#content>div.row>article').removeClass('open');
-                        //$("#toc").hide(200);
-                }
-            });	
-	    }//end if
+            //TODO add mobile handlers
+        }
     }
     if ($('pre:not(.CodeMirror-line)').length > 0){
         mw.loader.using('skins.bootstrapmediawiki.prettify', function(){
