@@ -515,7 +515,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </a>
-                        <a class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <a class="navbar-toggle">
                             <i class="fa fa-chevron-down"></i>
                         </a>
                         <a class="visible-xs-inline-block search-toggle">
@@ -533,7 +533,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         </form>
                     </div>
 
-                    <nav class="collapse navbar-collapse">
+                    <nav class="navbar-collapse">
                         <ul id="icon-section" class="nav navbar-nav">
                                 <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>

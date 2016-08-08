@@ -1257,6 +1257,12 @@ ol.carousel-indicators{
         left: 0!important;
         width: 100%;
     }
+    .navbar-collapse{
+      display: none;
+    }
+    .navbar-collapse.xs-show{
+      display: block;
+    }
     #pt-notifications-alert .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor,
     #pt-notifications-message .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor,
     #pt-following .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor{

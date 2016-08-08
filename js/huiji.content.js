@@ -358,9 +358,44 @@ var lazyLoad = {
     }
 
 }
+var collapseMobileToc = {
+    init: function(){
+        // JavaScript Document
+        if($("#toc").length && window.innerWidth <= 414){
+            $("body").append("<button class=\"fa fa-bars\" id=\"menu-toggle-sm\" ></button>");
+            $("#toc>#toctitle>.toctoggle").remove();
+            $('#toc > ul').append('<li><a href="#firstHeading">回到顶部</a></li>');
+            $("#menu-toggle-sm").click(function(e) {
+                    $('#toc').addClass('open');
+                    $('#content>div.row>article').addClass('open'); 
+            });
+            $(document).mouseup(function (e) {
+                var container = $('#toc');
+                if ((!container.is(e.target) && $("#toc>#toctitle").has(e.target).length === 0) 
+                    && 
+                    (!($('#menu-toggle-sm').is(e.target)) && $('#menu-toggle-sm').has(e.target).length === 0)) {
+                        $('#toc').removeClass("open");
+                        $('#content>div.row>article').removeClass('open');
+                        //$("#toc").hide(200);
+                }
+            });
+            $(document).scroll(function(){
+                if($(document).scrollTop() < 50){
+                    $("#toc").css("padding-top","60px");
+                    $("#menu-toggle-sm").removeClass('scroll');;
+                }
+                else{
+                    $("#toc").css("padding-top","10px");
+                    $("#menu-toggle-sm").addClass('scroll');
+                };
+            });
+        }
+
+    }
+};
+
 $(function(){
-
     recommend.init();
-
     lazyLoad.init();
+    collapseMobileToc.init();
 });

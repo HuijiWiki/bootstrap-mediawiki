@@ -190,6 +190,10 @@ $(document).ready(function(){
             self.popover(options);
     });
 
+    $('.navbar-toggle').on('click', function(){
+        $('.navbar-collapse').toggleClass('xs-show');
+    });
+
 //    $('#wiki-outer-body').on('click','a[href^=#][role!=tab][role!=button]',function(e){
 //        if ($('html').hasClass('ve-active')){
 //            return;
@@ -986,21 +990,6 @@ $(document).ready(function(){
     });
     //add feedback button
     if (!window.is_mobile_device()){
-        
-        // var api = Feedback({
-        //     h2cPath:'http://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js',
-        //     //h2cPath:'http://experiments.hertzen.com/jsfeedback/libs/html2canvas.js',
-        //     url: '/api.php?action=feedback&format=json',
-        //     label: "反馈",
-        //     header: "问题描述",
-        //     nextLabel: "继续",
-        //     reviewLabel:"预览",
-        //     sendLabel: "发送",
-        //     closeLabel: "关闭",
-        //     messageSuccess: "反馈成功，我们会立即处理",
-        //     messageError: "反馈失败，目测您的网络连接有问题",
-
-        // });
        $.feedback({
             ajaxURL: '/api.php?action=feedback&format=json',
             html2canvasURL: 'http://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js',
@@ -1025,6 +1014,7 @@ $(document).ready(function(){
             });
         }, 2000);
     } else {
+        // Collapse certain rows in mobile browser
         var collapseRow = {
             heading: '',
             init: function(options){
@@ -1058,7 +1048,7 @@ $(document).ready(function(){
         }
 
         var option = {
-            heading: ['引用与注释', '引用和注释', '引用', '注释', '出处', '来源', '参考资料'],
+            heading: ['引用与注释', '引用和注释', '引用', '注释', '出处', '来源', '参考资料', 'References'],
         }
         collapseRow.init(option);
        
