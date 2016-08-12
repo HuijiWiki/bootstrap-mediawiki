@@ -1252,7 +1252,7 @@ ol.carousel-indicators{
         right: inherit;
         left: 10px;
     }
-    .oo-ui-popupWidget{
+    .nav .oo-ui-popupWidget{
         top: 100%;
         left: 0!important;
         width: 100%;

@@ -369,6 +369,9 @@ var collapseMobileToc = {
                     $('#toc').addClass('open');
                     $('#content>div.row>article').addClass('open'); 
             });
+            try{
+                FastClick.attach(document.body);
+            }catch(e){}
             $(document).mouseup(function (e) {
                 var container = $('#toc');
                 if ((!container.is(e.target) && $("#toc>#toctitle").has(e.target).length === 0) 
