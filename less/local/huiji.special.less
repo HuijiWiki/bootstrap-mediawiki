@@ -1,0 +1,129 @@
+@smw-wikitable-color-light:      #fff;
+@smw-wikitable-color-dark:       #333;
+@smw-wikitable-bg:               @detail-wikitable-bg;
+@smw-wikitable-color:            @detail-wikitable-color;
+@smw-wikitable-a:                @detail-wikitable-a;
+@smw-wikitable-border:           @detail-wikitable-border;
+@smw-wikitable-th-bg:            @detail-wikitable-th-bg;
+
+.bg(@n) when(iscolor(@n)){
+	background-color: @n;
+}
+.color(@n) when(iscolor(@n)) {
+	color: @n;
+}
+.colorswitch(@n) when(iscolor(@n)){
+	color: contrast(@n,@smw-wikitable-color-dark,@smw-wikitable-color-light);
+}
+.borderleft(@n) when(iscolor(@n)){
+	border-left: 8px solid @n;
+}
+.borderright(@n) when(iscolor(@n)){
+	border-right: 8px solid @n;
+}
+.link(@n) when(iscolor(@n)){
+	.colorswitch(@n);
+	& when (lightness(@n) >= 50%) {
+    	&:hover{
+    		color: darken(@smw-wikitable-color-dark, 15%);
+  		}
+  	}
+  	& when (lightness(@n) < 50%) {
+    	&:hover{
+    		color: darken(@smw-wikitable-color-light, 15%);
+  		}
+  	}
+}
+.bglighten(@n) when(iscolor(@n)){
+	background-color: lighten(@n,10%);
+}
+.bgdarken(@n) when(iscolor(@n)){
+	background-color: darken(@n,10%);
+}
+.setsize(@_){
+	width: auto;
+    height: 50px;
+    font-size: 15px;
+	line-height:42px;
+	margin: 0 3px;
+}
+
+.smwb-factbox a {
+		.link(@well);
+		.link(@smw-wikitable-bg);
+	}
+.smwb-factbox(@_) {
+    color: @main-base;
+    .color(@detail-wikitable-color);
+	
+	tbody tr.smwb-title,tbody tr.smwb-center {
+		background-color: @well;
+		.bg(@smw-wikitable-bg);
+	}
+	tbody tr.smwb-propvalue,tbody tr.smwb-ipropvalue {
+		th {
+			background-color: @well;
+			.bg(@smw-wikitable-th-bg);
+		}
+		td {
+			background-color: lighten(@well,10%);
+			.bglighten(@smw-wikitable-th-bg);
+		}
+	}
+	
+	
+ }
+ 
+#bodyContent table.smwb-factbox{
+	.smwb-factbox(smwb-factbox);
+	border-left: 8px solid @well;
+	.borderleft(@smw-wikitable-border);
+	border-right: 8px solid @well;
+	.borderright(@smw-wikitable-border);
+	}
+	
+#bodyContent table.smwb-ifactbox {
+	.smwb-factbox(smwb-ifactbox);
+	border-left: 8px solid @well;
+	.borderleft(@smw-wikitable-border);
+	border-right: 8px solid @well;
+	.borderright(@smw-wikitable-border);
+	
+ }
+.smw-ask-otheroptions{
+	color: @main-base;
+	.color(@smw-wikitable-color);
+	tr:nth-child(odd) {
+      .bglighten(@bg-inner)!important;
+    }
+	tr:nth-child(even) {
+      .bg(@bg-inner) !important;
+    }
+	td {
+		padding-left:5px;
+		padding-top:5px;
+	}
+	
+}
+#mw-content-text legend {
+	border: none;
+	padding-top:35px;
+	margin-bottom: 0;
+}
+#sorting_main>div{
+	padding-bottom:5px;
+}
+.smw-ask-actions a{
+	.setsize(a);
+}
+
+.smw-ask-actions{
+	input:first-of-type{
+		.setsize(p);
+	}
+}
+
+
+
+
+

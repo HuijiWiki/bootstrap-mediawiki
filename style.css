@@ -406,14 +406,6 @@ img.thumbborder {
 /*}*/
 
 
-
-@media (max-width: 979px) {
-	.mw-headline {
-		margin-top: -103px;
-		padding-top: 103px;
-	}
-}
-
 /* responsive */
 @media (max-width: 480px) {
 
@@ -693,7 +685,7 @@ body .mw-echo-overlay::before{
         width: 300px;
         margin: 30px -150px;
         position: absolute;
-        left: 30%!important;
+        left: 45%!important;
     }
     .user-login{
         margin-top: 200px;
@@ -803,6 +795,9 @@ input:-webkit-autofill {
         margin: 0 auto;
         float: none;
     }
+}
+.post-reading{
+  margin: 5px 0px 20px 0px;
 }
 
 .parallax-bg {
@@ -1045,7 +1040,7 @@ h3 .mw-editsection{
     bottom:2px;
 }
 #wiki-body .bdsharebuttonbox a{
-    float: none;
+    float: right;
     font-size: 18px;
     line-height:normal;
     height:auto;
@@ -1447,4 +1442,7 @@ table.mw-templatedata-doc-params{
 }
 body.skin-BootstrapMediawiki > .oo-ui-windowManager {
   font-size: inherit; !important; /* fuck mw */
+}
+.table-responsive{
+  display:inline;
 }

@@ -60,9 +60,9 @@ $(function() {
     //  $el.closest('label').addClass($el.attr('type'));
     // });
 
-    //Temperory fix
-    $('.mw-ui-vform-field div').removeClass('mw-ui-checkbox');
-    $('#wpRemember').css('margin-right','5px');
+    // //Temperory fix
+    // $('.mw-ui-vform-field div').removeClass('mw-ui-checkbox');
+    // $('#wpRemember').css('margin-right','5px');
     if ( 0 === $('#toc').length ) {
         $('.toc-sidebar').remove();
 

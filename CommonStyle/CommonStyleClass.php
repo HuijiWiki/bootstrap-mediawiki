@@ -133,12 +133,12 @@ class CommonStyle{
 	}
 
 	public static function clearCache( $context = null ){
-		global $wgMemc, $wgResourceModules;
+		global $wgMemc, $wgResourceModules, $wgFileCacheDirectory;
 		$key = wfMemcKey("commonStyle", "getStyle" );
 		$wgMemc->delete($key);		
 		//Force Rebuild Resourceloader module.
 		//$fileName = __DIR__ ."/../less/huiji.less";
-
+		array_map('unlink', glob($wgFileCacheDirectory."/*.lesscache"));
 		$styles = $wgResourceModules['skins.bootstrapmediawiki.top']['styles'];
 		foreach ($styles as $key => $value){
 			if ( pathinfo($key, PATHINFO_EXTENSION) === 'less' ){

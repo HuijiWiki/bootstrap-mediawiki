@@ -190,7 +190,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 }
             }
         </script>
-        <?php if (($wgHuijiPrefix === 'slx.test' ||$wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www') && ($this->getSkin()->getTitle()->isMainPage()) ){
+        <?php if ( $wgHuijiPrefix === 'www' && ($this->getSkin()->getTitle()->isMainPage()) ){
             include 'View/Sidebar.php';
             echo FrontPage::showPage();
             include 'View/Modal.php';
@@ -234,7 +234,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                         </ul>
                     </div>
                 </nav>
-                <?php if (!$wgUser->isLoggedIn() && $wgHuijiPrefix !== "lotr" && $this->isPrimaryContent()){ ?>
+                <?php if (!$wgUser->isLoggedIn() && $wgHuijiPrefix !== "lotr" && $wgHuijiPrefix !== "rimworld" && $this->isPrimaryContent()){ ?>
                     <div class="ads-left">
                         <script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="511:6",jd_union_pid="COCprvjSKhDu5O3cAxoAIKSwucYBKgA=";var jd_width=160;var jd_height=600;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgyFF8tWBtMXUFkCWkySH17HQ5EW2NnRAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHVkVABUGXR1rFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script></div>
                     <div class="ads-right">
@@ -359,7 +359,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     </section>
                                     <?php endif; ?>
                                     <?php if( $this->isPrimaryContent() ): ?>
-                                        <div class="row">
+                                        <div class="row post-reading">
                                         <?php wfRunHooks( 'SkinRatingData', array(&$this) );?>
                                         <div class="col-md-2 col-md-offset-6 bdsharebuttonbox pull-right" data-tag="share_1"><a href="#" class="icon-weixin-share hidden-xs hidden-sm" data-tag="share_1" data-cmd="weixin" title="分享到微信"></a><a href="#" class="icon-weibo-share" data-tag="share_1" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="icon-share-alt" data-tag="share_1" title="复制固定链接"></a></div>
                                         </div>

@@ -547,6 +547,9 @@ Class BootstrapMediawikiHooks {
         if ( $out->getUser()->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $out->getTitle()->exists()){
             $out->addModules( array('skins.bootstrapmediawiki.fork') );
         }
+        if ( $NS == NS_SPECIAL ){
+            $out->addModuleStyles( array('skins.bootstrapmediawiki.special.less') );
+        }
         /* bypass CDN for admins */
         if ($out->getUser()->isAllowed('reupload') && !$wgMobile){ 
             $out->mBodytext = str_replace('http://cdn.huijiwiki.com/', 'http://cdn'.$wgHuijiSuffix.'/', $out->mBodytext);

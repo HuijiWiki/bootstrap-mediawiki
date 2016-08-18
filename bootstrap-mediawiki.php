@@ -331,6 +331,14 @@ $wgResourceModules['ext.socialprofile.commonstyle.js'] = array(
 	'remoteBasePath' => 'skins/bootstrap-mediawiki/CommonStyle',
 	'position' => 'bottom',
 );
+$wgResourceModules['skins.bootstrapmediawiki.special.less'] = array(
+	'styles' => array(
+		$skinDir . '/less/local/huiji.special.less',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'top',		
+);
 
 $wgResourceModuleSkinStyles['BootstrapMediawiki'] = array(
 	'mediawiki.ui' => $skinDir. '/less/mediawiki.ui/default.less',

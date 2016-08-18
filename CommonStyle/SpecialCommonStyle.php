@@ -10,6 +10,8 @@ class SpecialCommonStyle extends UnlistedSpecialPage{
 
     public function execute( $params ) {
         global $wgHuijiPrefix, $wgUser;
+        $this->checkPermissions();
+        $this->checkReadonly(); 
         $templateParser = new TemplateParser(  __DIR__ . '/pages' );
         $cssPath = "/var/www/virtual/".$wgHuijiPrefix."skins/bootstrap-mediawik/css";
         $this->setHeaders();
