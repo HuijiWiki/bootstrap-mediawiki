@@ -379,6 +379,8 @@ Class BootstrapMediawikiHooks {
             'carousel',
             array(
                 'id' => $id,
+                'interval' => $interval,
+                'width' => $width,
                 'li' => $li,
             )
         );
