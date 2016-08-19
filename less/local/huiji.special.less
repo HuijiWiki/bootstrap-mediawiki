@@ -40,11 +40,30 @@
 .bgdarken(@n) when(iscolor(@n)){
 	background-color: darken(@n,10%);
 }
+.bgswitch(@n) when(iscolor(@n)){
+	& when (lightness(@n) >= 50%) {
+		tr:nth-child(odd) {
+			background-color: darken(@n, 15%);
+    	}
+		tr:nth-child(even) {
+      		.bg(@n);
+    	}
+  	}
+  	& when (lightness(@n) < 50%) {
+    	
+		tr:nth-child(odd) {
+			.bg(@n);
+    	}
+		tr:nth-child(even) {
+      		background-color: lighten(@n, 15%);
+    	}
+  	}
+}
 .setsize(@_){
 	width: auto;
-    height: 50px;
+    height: 35px;
     font-size: 15px;
-	line-height:42px;
+	line-height:27px;
 	margin: 0 3px;
 }
 
@@ -93,19 +112,14 @@
 .smw-ask-otheroptions{
 	color: @main-base;
 	.color(@smw-wikitable-color);
-	tr:nth-child(odd) {
-      .bglighten(@bg-inner)!important;
-    }
-	tr:nth-child(even) {
-      .bg(@bg-inner) !important;
-    }
+	.bgswitch(@bg-inner) !important;
 	td {
 		padding-left:5px;
 		padding-top:5px;
 	}
 	
 }
-#mw-content-text legend {
+.mw-special-Ask legend {
 	border: none;
 	padding-top:35px;
 	margin-bottom: 0;
@@ -121,6 +135,9 @@
 	input:first-of-type{
 		.setsize(p);
 	}
+}
+.mw-special-Ask .smw-ask-action-btn{
+	border-radius: 0;
 }
 
 
