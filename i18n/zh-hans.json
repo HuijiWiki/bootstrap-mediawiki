@@ -21,5 +21,6 @@
     "visualeditor-ca-ve-huiji-edit": "<span class='icon-pencil'></span> 编辑",
     "visualeditor-ca-ve-huiji-editsource": "<span class='icon-edit-code'></span> 代码编辑",
     "visualeditor-ca-ve-huiji-create": "<span class='icon-pencil'></span> 创建",
-    "visualeditor-ca-ve-huiji-createsource": "<span class='icon-edit-code'></span> 代码创建"
+    "visualeditor-ca-ve-huiji-createsource": "<span class='icon-edit-code'></span> 代码创建",
+    "smw-editpage-annotation-disabled":"由于名字空间限制，此页面在语义文内注释中不会启用。"
 }

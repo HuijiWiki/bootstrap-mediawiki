@@ -36,6 +36,9 @@ Class HuijiSkinTemplate extends BaseTemplate {
      */
     protected function getSub($NS){
         $res = '';
+        if (!Hooks::run( 'SkinGetSub', array($this->getSkin()->getTitle(), &$res) )){
+            return $res;
+        }
         if ($this->isPrimaryContent() ){
             $title = $this->skin->getTitle();
             if ($title->getFullText() === 'Bootstrap:自定义主题'){

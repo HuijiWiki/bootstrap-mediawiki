@@ -141,7 +141,7 @@ $(function() {
         if(!mw.config.get("wgUserName")){
             e.preventDefault();
             e.stopPropagation();
-            $('.user-login').modal();
+            window.location=$('.login').attr('href');
         }
     });
 

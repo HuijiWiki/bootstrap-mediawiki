@@ -224,3 +224,6 @@ p.mw-edittools-section {
 p.smw-editpage-help{
 	color: #333 !important;
 }
+a.smw-editpage-help a{
+    color: #0645ad !important;
+}
