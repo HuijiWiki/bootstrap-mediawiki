@@ -162,6 +162,7 @@ class Preloads extends HTMLFormField {
     $this->selected = $value;
     $this->html = $this->outputOption( wfMessage( 'nopreload' )->text(), '',
       (bool)$this->selected ? null : array( 'selected' => 'selected' ) );
+    Hooks::run( 'PreloadGetInput', array( &$this, &$this->html ) );
     $this->makeHtml( $this->getPreloads() );
     $attribs = array(
       'name' => $this->mName,

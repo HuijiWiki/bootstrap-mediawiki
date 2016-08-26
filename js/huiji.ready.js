@@ -93,6 +93,9 @@ $(document).ready(function(){
         }
     });
     $('#mw-input-preload').change(function(){
+        if ($("#mw-input-preload option:selected").attr('prefix') != ''){
+            $('.createbox input[name=prefix]').val($("#mw-input-preload option:selected").attr('prefix'));
+        }
         $('.createbox').submit();
     });
     // $( "#commentForm" ).sisyphus( { locationBased: true, timeout: 10 } );
@@ -1053,8 +1056,6 @@ $(document).ready(function(){
         collapseRow.init(option);
        
     }
-
-
     
     // instead, let's open it after 2 seconds
     // window.setTimeout(function(){
