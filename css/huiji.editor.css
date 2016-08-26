@@ -227,3 +227,6 @@ p.smw-editpage-help{
 a.smw-editpage-help a{
     color: #0645ad !important;
 }
+.wikiEditor-ui-toolbar .section-main{
+    height: 0 !important;
+}

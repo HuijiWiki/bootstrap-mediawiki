@@ -139,11 +139,52 @@
 .mw-special-Ask .smw-ask-action-btn{
 	border-radius: 0;
 }
-
-@media (max-width: 414px) {
-  .class {
-    background: #ccc;
-  }
+.mw-special-CreateAccount {
+	#mw-content-text > .mw-ui-container {
+		.htmlform-tip{
+			position: static;
+		}
+	}
+}
+#mw-input-qqlogin{
+	font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    // line-height: 1;
+    -webkit-font-smoothing: antialiased;
+	&:before{
+		content: "\e604";
+	}
+}
+#mw-input-weibologin{
+	font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    // line-height: 1;
+    -webkit-font-smoothing: antialiased;
+	&:before{
+		content: "\e601";
+	}
+}
+	
+@media (max-width: 480px) {
+	.mw-special-CreateAccount, .mw-special-Userlogin {
+		#mw-content-text > .mw-ui-container {
+			#userloginForm {
+				width: 100%;
+				#userlogin2, .mw-ui-vform {
+					width: 100%;
+				}
+			}
+		}
+	}
+  
 }
 
 
