@@ -199,17 +199,14 @@ p.mw-edittools-section {
 #wikiEditor-section-advanced > div.group.group-size > a:nth-child(4){
     background-position:0 -704px !important;
 }
-#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(2){
+#wikiEditor-section-advanced > div.group.group-insert > a[rel="link"]{
     background-position:0 -748px !important;
 }
-#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(3){
+#wikiEditor-section-advanced > div.group.group-insert > a[rel="file"]{
     background-position:0 -792px !important;
 }
-#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(6){
+#wikiEditor-section-advanced > div.group.group-insert > a[rel="reference"]{
     background-position:0 -836px !important;
-}
-#wikiEditor-section-advanced > div.group.group-insert > a:nth-child(4){
-    display: none !important;
 }
 #wikiEditor-section-advanced > div.group.group-search > a:nth-child(1){
     background-position:0 -924px !important;
