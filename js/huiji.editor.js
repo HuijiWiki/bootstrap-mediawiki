@@ -1,6 +1,20 @@
 
 
-
+function validateRegex(pattern) {
+    var parts = pattern.split('/'),
+        regex = pattern,
+        options = "";
+    if (parts.length > 1) {
+        regex = parts[1];
+        options = parts[2];
+    }
+    try {
+        return new RegExp(regex, options);
+    }
+    catch(e) {
+        return pattern;
+    }
+}
 window.customizeToolbar = function() {
 
 	/* Your code goes here */
@@ -269,10 +283,30 @@ window.customizeToolbar = function() {
 					            		}
 					            		return '[['+tran[i-1]+p2;
 					            	});
-					            	$('#wpTextbox1').val(result);
+					            	
+
+					            	var api = new mw.Api();
+									api.get({
+										action: 'query',
+										meta: 'allmessages',
+										ammessages: 'huiji-translation-pairs',
+										amlang: mw.config.get( 'wgUserLanguage' ),
+										formatversion: 2,
+										format: 'json'
+									}).done(function(data){
+										if (data.query.allmessages.missing == 'true'){
+											$('#wpTextbox1').val(result);
+										} else {
+											t = JSON.parse(data.query.allmessages[0].content);
+											for (var i in t){
+												result = result.replace(validateRegex(i), t[i]);
+											}
+											$('#wpTextbox1').val(result);
+										}
+									});
 					            }
 					        );		
-						}
+						}					
 				
 					}
 				}
