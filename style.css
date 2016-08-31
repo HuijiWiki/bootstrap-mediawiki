@@ -1136,7 +1136,7 @@ ol.carousel-indicators{
     position: absolute;
     left: -10px;
     top: 8px;
-    color: #000;
+    color: #333;
     font-size: 1.8rem;
     z-index: -1;
 }
