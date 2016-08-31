@@ -540,66 +540,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         <ul id="icon-section" class="nav navbar-nav">
                                 <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
-                                  <ul class="dropdown-menu hub-menu" role="menu">
-                                    <li>
-                                        <ul class="hub-list">
-                                            <li class="letter active" data-toggle="letter">文学</li>
-                                            <li class="movie" data-toggle="movie">影视</li>
-                                            <li class="anime" data-toggle="anime">动漫</li>
-                                            <li class="game" data-toggle="game">游戏</li>
-                                            <li class="star" data-toggle="star">明星</li>
-                                            <li class="more" data-toggle="more">更多</li>
-                                        </ul>
-                                    </li>
-                                    <li class="a">
-                                        <ul class="hub-selection letter-link active">
-                                            <li><a href="http://lotr.huiji.wiki">魔戒</a></li>
-                                            <li><a href="http://asoiaf.huiji.wiki">冰与火之歌</a></li>
-                                            <li><a href="http://lgqm.huiji.wiki">临高启明</a></li>
-                                            <li><a href="http://witcher.huiji.wiki">猎魔人</a></li>
-                                            <li><a href="http://coppermind.huiji.wiki/wiki">红铜智库</a></li>
-                                            <li><a href="http://jiuzhou.huiji.wiki">九州</a></li>
-                                        </ul>
-                                        <ul class="hub-selection movie-link">
-                                            <li><a href="http://spn.huiji.wiki">邪恶力量</a></li>
-                                            <li><a href="http://jinguang.huiji.wiki">金光布袋戏</a></li>
-                                            <li><a href="http://downtonabbey.huiji.wiki">唐顿庄园</a></li>
-                                            <li><a href="http://mcu.huiji.wiki">漫威电影宇宙</a></li>
-                                            <li><a href="http://htgawm.huiji.wiki">逍遥法外</a></li>
-                                            <li><a href="http://doctorwho.huiji.wiki/">神秘博士</a></li>
-                                        </ul>
-                                        <ul class="hub-selection anime-link">
-                                            <li><a href="http://cardcaptorsakura.huiji.wiki/">小樱的封印之书</a></li>
-                                            <li><a href="http://kaiji.huiji.wiki">逆境无赖</a></li>
-                                            <li><a href="http://gundam.huiji.wiki">高达</a></li>
-                                            <li><a href="http://saintseiya.huiji.wiki">圣斗士星矢</a></li>
-                                            <li><a href="http://guohun.huiji.wiki">国魂</a></li>
-                                            <li><a href="http://tarsylia.huiji.wiki">塔希里亚</a></li>
-                                        </ul>
-                                        <ul class="hub-selection game-link">
-                                            <li><a href="http://warcraft.huiji.wiki">魔兽世界</a></li>
-                                            <li><a href="http://hearthstone.huiji.wiki">炉石传说</a></li>
-                                            <li><a href="http://dota.huiji.wiki">dota</a></li>
-                                            <li><a href="http://gw2.huiji.wiki">激战2</a></li>
-                                            <li><a href="http://warframe.huiji.wiki">warframe</a></li>
-                                            <li><a href="http://isaac.huiji.wiki">以撒的结合</a></li>
-                                        </ul>
-                                        <ul class="hub-selection star-link">
-                                            <li><a href="http://tfboys.huiji.wiki">TFBOYS</a></li>
-                                            <li><a href="http://mfassbender.huiji.wiki">迈克尔·法斯宾德</a></li>
-                                        </ul>
-                                        <ul class="hub-selection more-link">
-                                            <li><a href="http://hsr.huiji.wiki/">高速铁路百科</a></li>
-                                            <li><a href="http://kaixinmahua.huiji.wiki">开心麻花</a></li>
-                                            <li><a href="http://bilibili.huiji.wiki">哔哩哔哩维基</a></li>
-                                            <li><a href="http://arsenal.huiji.wiki">阿森纳</a></li>
-                                            <li><a href="http://www.huiji.wiki/wiki/%E7%89%B9%E6%AE%8A:%E7%AB%99%E7%82%B9%E6%8E%92%E8%A1%8C">站点排行榜</a></li>
-                                            <a rel="nofollow" href="/wiki/Special:Randomwiki" class="wiki-random">
-                                                随机一下试试
-                                            </a>
-                                        </ul>
-                                    </li>
-                                  </ul>
+                                  '. file_get_contents(__DIR__."View/Recommand.html").'
                                 </li>
                                 <li class="hidden-xs">
                                     <a href="http://www.huiji.wiki/wiki/special:CreateWiki">创建wiki</a>
