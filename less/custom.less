@@ -322,8 +322,9 @@ a {
     a {
       .link(@detail-wikitable-a);
     }
-    tr, td {
-      border-color: @main-lighter;
+    tr, td, th {
+      border: 3px @bg-inner solid;
+      //border-color: @bg-inner;
       .border-color(@detail-wikitable-border);
     }
     th{
