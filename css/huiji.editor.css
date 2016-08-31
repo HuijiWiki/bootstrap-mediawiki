@@ -166,13 +166,13 @@ p.mw-edittools-section {
 #wikiEditor-section-main > div.group.group-format > a:nth-child(2){
     background-position:0 -44px !important;
 }
-#wikiEditor-section-main > div.group.group-insert > a:nth-child(2){
+#wikiEditor-section-main > div.group.group-insert > a[rel="link"]{
     background-position:0 -88px !important;
 }
-#wikiEditor-section-main > div.group.group-insert > a:nth-child(3){
+#wikiEditor-section-main > div.group.group-insert > a[rel="file"]{
     background-position:0 -132px !important;
 }
-#wikiEditor-section-main > div.group.group-insert > a:nth-child(4){
+#wikiEditor-section-main > div.group.group-insert > a[rel="reference"]{
     background-position:0 -176px !important;
 }
 #wikiEditor-section-advanced > div.group.group-format > a:nth-child(2){
@@ -199,13 +199,13 @@ p.mw-edittools-section {
 #wikiEditor-section-advanced > div.group.group-size > a:nth-child(4){
     background-position:0 -704px !important;
 }
-#wikiEditor-section-advanced > div.group.group-insert > a[rel="link"]{
+#wikiEditor-section-advanced > div.group.group-insert > a[rel="gallery"]{
     background-position:0 -748px !important;
 }
-#wikiEditor-section-advanced > div.group.group-insert > a[rel="file"]{
+#wikiEditor-section-advanced > div.group.group-insert > a[rel="redirect"]{
     background-position:0 -792px !important;
 }
-#wikiEditor-section-advanced > div.group.group-insert > a[rel="reference"]{
+#wikiEditor-section-advanced > div.group.group-insert > a[rel="table"]{
     background-position:0 -836px !important;
 }
 #wikiEditor-section-advanced > div.group.group-search > a:nth-child(1){

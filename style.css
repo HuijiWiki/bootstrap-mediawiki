@@ -1129,6 +1129,7 @@ ol.carousel-indicators{
     top: 8px;
     color: #333;
     font-size: 1.8rem;
+    z-index: -1;
 }
 #pt-notifications-message .mw-echo-notifications-badge:before {
     content: "\f003";
@@ -1137,6 +1138,7 @@ ol.carousel-indicators{
     top: 8px;
     color: #000;
     font-size: 1.8rem;
+    z-index: -1;
 }
 #pt-notifications-alert,#pt-notifications-message,#pt-following {
     width: 40px;
