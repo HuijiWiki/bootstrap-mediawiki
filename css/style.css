@@ -231,160 +231,158 @@ a:hover,a:focus,a:active{
 #qqConfirm:hover{
     color: #fff;
 }
-@media screen and (min-width: 1000px) and (max-width: 1400px) {
-    .wiki-top {
-        height: 405px;
-    }
-    .wiki-flog-wrap{
-        width:1000px;
-    }
-    .wiki-top-right img{
-        margin-top: 20px;
-    }
-    .wiki-top-right ul{
-        margin-top: 0;
-    }
-    .wiki-top-right p{
-        font-size: 24px;
-        margin-bottom: 0;
-    }
-    .wiki-top-right{
-        width: 300px;
-    }
-    .wiki-flog-asoiaf-intro {
-        width: 400px;
-        height: 160px;
-        margin-top: -80px;
-        margin-left: -360px;
-    }
-    .wiki-flog-lotr-intro {
-        width: 300px;
-        height: 300px;
-        margin-top: -150px;
-    }
-    .wiki-flog-spn-intro{
-        width: 400px;
-        height: 160px;
-        margin-top: -80px;
-        margin-left: -360px;
-    }
-    .wiki-flog-spn-intro:before {
-        left: -40px;
-        border-top: 80px solid transparent;
-        border-bottom: 80px solid transparent;
-        border-right: 40px solid rgba(0,0,0,.7);
-    }
-    .wiki-flog-spn-intro:after {
-        right: -40px;
-        border-top: 80px solid transparent;
-        border-bottom: 80px solid transparent;
-        border-left: 40px solid rgba(0,0,0,.7);
-    }
-    .wiki-content {
-        width: 1000px;
-    }
-    .wikis-wrap{
-        width: 750px;
-    }
-    .wiki-sidebar {
-        width: 250px;
-    }
-    .wiki-sidebar .top-fan a {
-        max-width: 60px;
-    }
-    .wiki-content-header,.wiki-content-header li {
-        height: 204px;
-    }
-    .thumbnail-intro {
-        left: 197px;
-    }
-    .thumbnail-intro h4{
-        font-size: 16px;
-    }
-    .thumbnail-intro h3{
-        font-size: 22px;
-    }
-    .thumbnail-intro p {
-        line-height: 1.2em;
-    }
-    .wiki-content-header li div {
-        width: 197px;
-        height: 201px;
-    }
-}
-@media screen and (max-width: 1200px) {
-    .content-wrapper{
-        display: none;
-    }
-    .first-view .wiki-wrapper{
-        -webkit-transition:none;
-        -moz-transition: none;
-        -ms-transition: none;
-        -o-transition: none;
-        transition: none;
-        -webkit-transform: none;
-        -moz-transform: none;
-        -ms-transform: none;
-        -o-transform: none;
-        transform: none;
-        opacity: 1;
-    }
-    .first-view .wiki-flog-asoiaf-intro{
-        opacity: 1;
-        -webkit-transition: none ;
-        -moz-transition: none ;
-        -ms-transition: none ;
-        -o-transition: none ;
-        transition: none ;
-        -webkit-transform: none;
-        -moz-transform: none;
-        -ms-transform: none;
-        -o-transform: none;
-        transform: none;
-    }
-    .first-view .wiki-top-right{
-        -webkit-transition: none;
-        -moz-transition: none;
-        -ms-transition: none;
-        -o-transition: none;
-        transition: none;
-        opacity: 1;
-    }
-    .wrapper{
-        position: static;
-    }
-    .wiki-wrapper{
-        position: static;
-    }
-}
-@media screen and (max-width: 999px) {
-    .wiki-top{
-        display: none;
-    }
-    .wiki-content-header{
-        display: none;
-    }
-    .wiki-sidebar{
-        display: none;
-    }
-    .wiki-content{
-        width: 100%;
-        padding:0 5px;
-    }
-    .wikis-wrap{
-        width: 100%;
-    }
-    .wikis{
-        -webkit-column-count:2;
-        -moz-column-count: 2;
-        column-count: 2;
-        -moz-column-gap:10px; /* Firefox */
-        -webkit-column-gap:10px; /* Safari 和 Chrome */
-        column-gap:10px;
-    }
-}
-
-
+// @media screen and (min-width: 1000px) and (max-width: 1400px) {
+//     .wiki-top {
+//         height: 405px;
+//     }
+//     .wiki-flog-wrap{
+//         width:1000px;
+//     }
+//     .wiki-top-right img{
+//         margin-top: 20px;
+//     }
+//     .wiki-top-right ul{
+//         margin-top: 0;
+//     }
+//     .wiki-top-right p{
+//         font-size: 24px;
+//         margin-bottom: 0;
+//     }
+//     .wiki-top-right{
+//         width: 300px;
+//     }
+//     .wiki-flog-asoiaf-intro {
+//         width: 400px;
+//         height: 160px;
+//         margin-top: -80px;
+//         margin-left: -360px;
+//     }
+//     .wiki-flog-lotr-intro {
+//         width: 300px;
+//         height: 300px;
+//         margin-top: -150px;
+//     }
+//     .wiki-flog-spn-intro{
+//         width: 400px;
+//         height: 160px;
+//         margin-top: -80px;
+//         margin-left: -360px;
+//     }
+//     .wiki-flog-spn-intro:before {
+//         left: -40px;
+//         border-top: 80px solid transparent;
+//         border-bottom: 80px solid transparent;
+//         border-right: 40px solid rgba(0,0,0,.7);
+//     }
+//     .wiki-flog-spn-intro:after {
+//         right: -40px;
+//         border-top: 80px solid transparent;
+//         border-bottom: 80px solid transparent;
+//         border-left: 40px solid rgba(0,0,0,.7);
+//     }
+//     .wiki-content {
+//         width: 1000px;
+//     }
+//     .wikis-wrap{
+//         width: 750px;
+//     }
+//     .wiki-sidebar {
+//         width: 250px;
+//     }
+//     .wiki-sidebar .top-fan a {
+//         max-width: 60px;
+//     }
+//     .wiki-content-header,.wiki-content-header li {
+//         height: 204px;
+//     }
+//     .thumbnail-intro {
+//         left: 197px;
+//     }
+//     .thumbnail-intro h4{
+//         font-size: 16px;
+//     }
+//     .thumbnail-intro h3{
+//         font-size: 22px;
+//     }
+//     .thumbnail-intro p {
+//         line-height: 1.2em;
+//     }
+//     .wiki-content-header li div {
+//         width: 197px;
+//         height: 201px;
+//     }
+// }
+// @media screen and (max-width: 1200px) {
+//     .content-wrapper{
+//         display: none;
+//     }
+//     .first-view .wiki-wrapper{
+//         -webkit-transition:none;
+//         -moz-transition: none;
+//         -ms-transition: none;
+//         -o-transition: none;
+//         transition: none;
+//         -webkit-transform: none;
+//         -moz-transform: none;
+//         -ms-transform: none;
+//         -o-transform: none;
+//         transform: none;
+//         opacity: 1;
+//     }
+//     .first-view .wiki-flog-asoiaf-intro{
+//         opacity: 1;
+//         -webkit-transition: none ;
+//         -moz-transition: none ;
+//         -ms-transition: none ;
+//         -o-transition: none ;
+//         transition: none ;
+//         -webkit-transform: none;
+//         -moz-transform: none;
+//         -ms-transform: none;
+//         -o-transform: none;
+//         transform: none;
+//     }
+//     .first-view .wiki-top-right{
+//         -webkit-transition: none;
+//         -moz-transition: none;
+//         -ms-transition: none;
+//         -o-transition: none;
+//         transition: none;
+//         opacity: 1;
+//     }
+//     .wrapper{
+//         position: static;
+//     }
+//     .wiki-wrapper{
+//         position: static;
+//     }
+// }
+// @media screen and (max-width: 999px) {
+//     .wiki-top{
+//         display: none;
+//     }
+//     .wiki-content-header{
+//         display: none;
+//     }
+//     .wiki-sidebar{
+//         display: none;
+//     }
+//     .wiki-content{
+//         width: 100%;
+//         padding:0 5px;
+//     }
+//     .wikis-wrap{
+//         width: 100%;
+//     }
+//     .wikis{
+//         -webkit-column-count:2;
+//         -moz-column-count: 2;
+//         column-count: 2;
+//         -moz-column-gap:10px; /* Firefox */
+//         -webkit-column-gap:10px; /* Safari 和 Chrome */
+//         column-gap:10px;
+//     }
+// }
 
 /*new home page*/
 @font-face
@@ -956,7 +954,7 @@ body>.tooltip.top .tooltip-arrow{
         float: none;
     }
     .info-tabs li{
-        width: 33%;
+        width: 25%;
         text-align: center;
     }
     .user-home-links-container h2{
