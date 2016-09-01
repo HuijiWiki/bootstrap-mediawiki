@@ -246,7 +246,7 @@ $(document).ready(function(){
             var option = {
                 count: 7,
                 mode: 'expanded',
-                exchars: '400'
+                exchars: '300'
             }
             mw.bloglist(option, function($html){
                 $('.blog-recommend').append($html);

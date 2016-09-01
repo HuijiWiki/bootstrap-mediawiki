@@ -1019,4 +1019,7 @@ body>.tooltip.top .tooltip-arrow{
     position: relative;
     top: 0.3em;
 }
+.bloglist {
+    margin-top: 20px;
+}
 
