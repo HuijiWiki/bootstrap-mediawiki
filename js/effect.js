@@ -130,7 +130,7 @@ $(document).ready(function(){
         }
         more();
         $('.user-activity-more').on('click',more);
-        $('#home-feed-tabs a[data-toggle="tab"]').on('shown.bs.tab',function(){
+        $('#following a[data-toggle="tab"], #following_sites a[data-toggle="tab"]').on('shown.bs.tab',function(){
             refreshFeed( null );
         });
         $('#following').on('click','.info-user-list span ',function(){
@@ -235,19 +235,39 @@ $(document).ready(function(){
                 console.log(data);
                 $.each(res.result,function(i,item){
                     content += '<li><p class="source"><a class="entry-name" href="'+item.wikiurl+'">'+item.title+'</a>来自<a class="entry-source" href="'+item.siteurl+'">'+item.wikiname+
-                        '</a></p><div class="recommend-info"><a href="'+item.wikiurl+'" class="image"><img alt="Wit by Botanica.jpg" src="'+item.backgroungimg+'"></a><div class="entry-description">'+item.desc+'</div></div></li>';
+                        '</a></p><div class="recommend-info"><a href="'+item.wikiurl+'" class="image"><img alt="huiji-image" src="'+item.backgroungimg+'"></a><div class="entry-description">'+item.desc+'</div></div></li>';
                 });
                 $('.page-recommend').append(content);
             }
         );
     }
+    function getBlog(){
+        mw.loader.using('ext.blogPage.bloglist').done(function(){
+            var option = {
+                count: 7,
+                mode: 'expanded',
+                exchars: '400'
+            }
+            mw.bloglist(option, function($html){
+                $('.blog-recommend').append($html);
+            });
+        });        
+    }
     if($('#all').hasClass('active')){
         getSite();
+    }
+    if($('#blog').hasClass('active')){
+        getBlog();
     }
     $('#all-tab').on('click',function(){
         $('.page-recommend').empty();
         getSite();
-    })
+    });
+    $('#blog-tab').on('click', function(){
+        $('.blog-recommend').empty();
+        getBlog();
+    });
+
 
 
 });

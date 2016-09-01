@@ -36,7 +36,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
      */
     protected function getSub($NS){
         $res = '';
-        if (!Hooks::run( 'SkinGetSub', array($this->getSkin()->getTitle(), &$res) )){
+        if (!Hooks::run( 'SkinGetSub', array($this->getSkin()->getTitle(), &$res, $this->getSkin()->getContext()) ) ){
             return $res;
         }
         if ($this->isPrimaryContent() ){
@@ -509,6 +509,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
             $searchFormId = 'searchInput';
         }
         // $output = '';
+        $rec = file_get_contents( __DIR__."/View/Recommand.html" );
         $output ='
             <header class="header navbar navbar-default navbar-fixed-top'.$wgNavBarClasses.'" role="navigation">
                 <div class="navbar-container">
@@ -540,7 +541,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         <ul id="icon-section" class="nav navbar-nav">
                                 <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
-                                  '. file_get_contents(__DIR__."View/Recommand.html").'
+                                  '. $rec .'
                                 </li>
                                 <li class="hidden-xs">
                                     <a href="http://www.huiji.wiki/wiki/special:CreateWiki">创建wiki</a>
