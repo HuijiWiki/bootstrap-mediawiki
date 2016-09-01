@@ -84,9 +84,9 @@ $(function(){
         '<button type="button" class="btn btn-default edit-cancel"><i class="glyphicon glyphicon-remove"></i></button>' +
         '</div>' +
         '</div>';
-    $('#mw-normal-catlinks>ul').append(addbtn);
+    $('#catlinks #mw-normal-catlinks>ul').append(addbtn);
     $('#add-category-btn').popover({title:'添加分类',content:content,html:true});
-    $('#mw-normal-catlinks').on('keyup','.edit-field input',function(event){
+    $('#catlinks #mw-normal-catlinks').on('keyup','.edit-field input',function(event){
        if(event.keyCode == 13){
            addSpan();
        }

@@ -292,15 +292,19 @@ blockquote.quote:after{
     z-index: 1;
     font-family: Arial;
 }
-#catlinks {
+.catlinks {
 	border-top-width: 1px;
   border-top-style: dashed;
 	margin-top: 2em;
 	padding: 1em 0;
+
+}
+.catlinks ul{
+    margin-left: 0px;
 }
 
 
-#catlinks #mw-normal-catlinks>ul>li:first-child {
+.catlinks #mw-normal-catlinks>ul>li:first-child {
 	border-left: none;
 }
 
