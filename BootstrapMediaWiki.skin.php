@@ -315,20 +315,20 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             <span>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('rel' => 'nofollow', 'class'=>'btn btn-default'),array('type' => 'signup') ).'
                                             </span>';
                                 ?>
-                                <!--<section class="alert alert-warning hidden-xs hidden-sm" role="alert">
+                                <section class="alert alert-warning hidden-xs hidden-sm" role="alert">
                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                     <span class="sr-only">Warning:</span>
                                     花1分钟创建用户后就能进行编辑&nbsp:)
                                     <?php echo $login; ?>
-                                    <span class="pull-right">
+                                    <!--<span class="pull-right">
                                         联合登陆&nbsp;&nbsp;
                                         <a href="https://api.weibo.com/oauth2/authorize?client_id=2445834038&amp;redirect_uri=http%3A%2F%2Fhuijiwiki.com%2Fwiki%2Fspecial%3Acallbackweibo&amp;response_type=code" class="icon-weibo-share" style="line-height: 2;"></a>&nbsp;&nbsp;
                                         <?php
                                             global $wgHuijiPrefix;
                                             echo '<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&amp;client_id=101264508&amp;state='.$wgHuijiPrefix.'&amp;redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq" class="icon-qq-share" style="line-height: 2;"></a>';
                                         ?>
-                                    </span>
-                                </section> -->
+                                    </span>-->
+                                </section> 
                                 <?php
                                     }
                                 ?>  

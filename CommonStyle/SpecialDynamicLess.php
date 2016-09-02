@@ -16,7 +16,7 @@ class SpecialDynamicLess extends UnlistedSpecialPage{
         foreach ($default as $key => $value) {
             $defaultRes['@'.$key] = $value;
         }
-        $cssContent = CommonStyle::getStyle();
+        $cssContent = CommonStyle::getThemedStyle();
         
         if ( $cssContent['cssContent'] == null ) {
             $lessCon = array();

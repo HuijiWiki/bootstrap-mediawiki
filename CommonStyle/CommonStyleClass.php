@@ -102,13 +102,13 @@ class CommonStyle{
 	}
 
 	/**
-	 * get current css
+	 * get current css from MediaWiki:CommonStyle
 	 * @param  [int] $cssId if null, get the current css
 	 * @return [type]        [description]
 	 */
-	public static function getStyle(){
+	public static function getThemedStyle(){
 		global $wgMemc;
-		$key = wfMemcKey("commonStyle", "getStyle" );
+		$key = wfMemcKey("commonStyle", "getThemedStyle" );
 
 		$cssContent = $wgMemc->get($key);
 		if ($cssContent != ''){
@@ -131,10 +131,32 @@ class CommonStyle{
         $wgMemc->set($key, $cssContent);
         return $cssContent;
 	}
+	/**
+	 * generate less vars 
+	 * @param $lessVars: array generated lessVars beforehand.
+	 */
+	public function getLessVars( $lessVars = [] ){
+        $cssCon_1 = CommonStyle::getThemedStyle();
+        $lessCon = array();
+        if ( isset( $cssCon_1['cssContent'] ) && $cssCon_1['cssContent'] != null ) {
+            $lessCon = (array)json_decode( $cssCon_1['cssContent'] );
+        }
+        $default = Huiji::getInstance()->getSiteDefaultColor();
+        if ( $lessCon != null ) {
+            $result = array();
+            foreach ($lessCon as $key => $value) {
+                $newKey = substr($key, 1);
+                $result[$newKey] = $value;
+            }
+        }else{
+            $result = array();
+        }
+        return array_merge($lessVars, $default, $result);
+	}
 
 	public static function clearCache( $context = null ){
 		global $wgMemc, $wgResourceModules, $wgFileCacheDirectory;
-		$key = wfMemcKey("commonStyle", "getStyle" );
+		$key = wfMemcKey("commonStyle", "getThemedStyle" );
 		$wgMemc->delete($key);		
 		//Force Rebuild Resourceloader module.
 		//$fileName = __DIR__ ."/../less/huiji.less";

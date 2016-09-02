@@ -336,6 +336,8 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 switch( $link['title'] ) {
                 case '讨论': $icon = 'comment'; break;
                 case '称号': $icon = 'graduation-cap'; break;
+                case '绑定账号' : $icon = 'link'; break;
+                case '解绑账号' : $icon = 'unlink'; break;
                 case '设置': $icon = 'cog'; break;
                 case '监视列表': $icon = 'eye'; break;
                 case '贡献': $icon = 'list-alt'; break;
@@ -567,7 +569,18 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 'text' => '称号',
                                 'href' => '/wiki/Special:designation',
                                 'active' => false,
-                            ))+
+                            ),
+                            'linkaccount' => array(
+                                'text' => '绑定账号',
+                                'href' => '/wiki/Special:linkAccounts',
+                                'active' => false,
+                            ),
+                            'unlinkaccount' => array(
+                                'text' => '解绑账号',
+                                'href' => '/wiki/Special:unlinkAccounts',
+                                'active' => false,
+                            ),
+                            )+
                             array_slice($personal_urls, 1, count($personal_urls)-1, true);
                             $user_nav = $this->dropdownAdapter( $personal_urls, $user_icon, 'user' );
                             $user_alert = $this->nav_notification($this->alertAdapter($this->data['personal_urls']));

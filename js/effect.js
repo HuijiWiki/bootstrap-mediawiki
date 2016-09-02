@@ -266,7 +266,122 @@ $(document).ready(function(){
         $('.blog-recommend').empty();
         getBlog();
     });
+    //alert-return
+    var login ='';
+    var pass = '';
+    function wiki_auth(login, pass, ref){
+        var options = {
+            tag: 'login',
+            type: 'info'
+        }
+        $.ajax({
+            url: '/api.php?action=query&meta=tokens&type=login&format=json',
+            type: 'post',
+            timeout: 10000,
+            success: function(data){
+                if(data.query){
+                    //fix cookie issue for huijiwiki.com
+                    if ('.'+document.domain != mw.config.get('wgHuijiSuffix')){
+                        mw.cookie.set('_session', data.login.sessionid, {domain:'.'+document.domain});
+                    }
+                    var token = data.query.tokens.logintoken;
+                    var params = 
+                    {
+                        logintoken: token,
+                        username: login,
+                        password: pass,
+                        loginreturnurl: location.href
+                    };
+                    console.log(params);
+                    $.ajax({
+                        url: '/api.php?action=clientlogin&format=json&rememberMe=1',
+                        data: params,
+                        type: 'POST',
+                        dataType: 'json',
+                        timeout: 10000,
+                        success: function (data) {
+                            console.log(data);
+                            $('#wpLoginAttempt,#frLoginAttempt').button('reset');
+                            if(!data.error){
+                                if(data.clientlogin.status == "PASS"){
+                                    mw.notification.notify('登录成功', options);
+                                    // document.location.reload();
+                                    if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
+                                        location.href = updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
+                                    }else {
+                                        location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
+                                    }
+                                }else{
+                                    options = {
+                                        tag: 'login',
+                                        type: 'error'
+                                    }
+                                    $('#wpLoginAttempt,#frLoginAttempt').button('reset');
+                                    mw.notification.notify(data.clientlogin.message, options);
+                                }
+                            }else{
+                                options = {
+                                    tag: 'login',
+                                    type: 'error'
+                                }
+                                $('#wpLoginAttempt,#frLoginAttempt').button('reset');
+                                mw.notification.notify(data.error.info, options);
+                            }
+                        },
+                        error:function(){
+                            $('#wpLoginAttempt,#frLoginAttempt').button('reset');
+                            mw.notification.notify('网络错误');
+                        }
+                    });
+                }else{
+                    options = {
+                        tag: 'login',
+                        type: 'error'
+                    }
+                    mw.notification.notify('登录错误：'+ data.error, options);
+                }
+                if(data.error){
+                    options = {
+                        tag: 'login',
+                        type: 'error'
+                    }
+                    mw.notification.notify('登录错误：'+ data.error, options);
+                }
+            },
+            error: function(){
+                $('#wpLoginAttempt,#frLoginAttempt').button('reset');
+                mw.notification.notify('网络错误');
+            }
+        });
 
+    }
+    $('body:not(.mw-special-Userlogin) #wpLoginAttempt').click(function(){
 
+        $("#login-user-name").each(function(){
+            login = $(this).val();
+        });
+        $("#login-user-password").each(function(){
+           pass = $(this).val();
+        });
+        $(this).button('loading');
+        wiki_auth(login,pass,'/');
+    })
+    $('.login-in').click(function(){
+       $(document).keyup(function(event){
+           if(event.keyCode == 13){
+               $('#wpLoginAttempt').trigger('click');
+           }
+       })
+    });
+    $('#frLoginAttempt').click(function(){
+        $("#fr-login-user-name").each(function(){
+            login = $(this).val();
+        });
+        $("#fr-login-user-password").each(function(){
+            pass = $(this).val();
+        });
+        $(this).button('loading');
+        wiki_auth(login,pass,'/');
+    });
 
 });

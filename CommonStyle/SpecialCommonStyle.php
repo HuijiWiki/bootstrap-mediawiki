@@ -25,7 +25,7 @@ class SpecialCommonStyle extends UnlistedSpecialPage{
         $out->addModules( 'ext.socialprofile.commonstyle.js' );
         // $out->addHtml($output);
         return true;
-        $cssCon_1 = CommonStyle::getStyle();
+        $cssCon_1 = CommonStyle::getThemedStyle();
         if ($cssCon_1 == false) {
             $isNew = 0;
         }else{

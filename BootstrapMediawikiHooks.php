@@ -566,22 +566,7 @@ Class BootstrapMediawikiHooks {
         // $lessVars['main-base'] = "#000";
         // $lessVars['bg'] = "#000";
 
-        $cssCon_1 = CommonStyle::getStyle();
-        $lessCon = array();
-        if ( isset( $cssCon_1['cssContent'] ) && $cssCon_1['cssContent'] != null ) {
-            $lessCon = (array)json_decode( $cssCon_1['cssContent'] );
-        }
-        $default = Huiji::getInstance()->getSiteDefaultColor();
-        if ( $lessCon != null ) {
-            $result = array();
-            foreach ($lessCon as $key => $value) {
-                $newKey = substr($key, 1);
-                $result[$newKey] = $value;
-            }
-        }else{
-            $result = array();
-        }
-        $lessVars = array_merge($lessVars, $default, $result);
+        $lessVars = CommonStyle::getLessVars( $lessVars );
 
     }
     public static function onSpecialSearchResultsPrepend( $specialSearch, $output, $term ) { 

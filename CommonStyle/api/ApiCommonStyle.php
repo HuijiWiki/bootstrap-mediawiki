@@ -22,7 +22,7 @@ class ApiCommonStyle extends ApiBase {
             return true;
         }
         if ($this->params['task'] == 'get'){
-            $result->addValue(null, $this->getModuleName(), CommonStyle::getStyle());
+            $result->addValue(null, $this->getModuleName(), CommonStyle::getThemedStyle());
             $title = self::getStyleTitle();
             $count = $title->estimateRevisionCount();
             $result->addValue(null, $this->getModuleName, $count );
