@@ -86,9 +86,8 @@ $(document).ready(function(){
         var removePlaceholder = function(){
             jQuery('.placeholder').remove();
         };
-        var response
+        var response;
         function more(){
-
             showPlaceholder();
             if(response) response.abort();
             response = jQuery.post(
@@ -130,7 +129,7 @@ $(document).ready(function(){
         }
         more();
         $('.user-activity-more').on('click',more);
-        $('#following a[data-toggle="tab"], #following_sites a[data-toggle="tab"]').on('shown.bs.tab',function(){
+        $('[href="#following"], [href="#following_sites"]').on('shown.bs.tab',function(){
             refreshFeed( null );
         });
         $('#following').on('click','.info-user-list span ',function(){
