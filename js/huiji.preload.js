@@ -22,9 +22,9 @@ $(function() {
     }
     $('.navbar-user').on('click','.mw-echo-notifications-badge',function(){
         if(window.innerWidth>=768){
-            $(this).css({'color':'#fff','background':'#fff'});
+            $(this).css({'color':'#fff !important','background':'#fff !important'});
         }else{
-            $(this).css({'color':'#333','background':'#333'});
+            $(this).css({'color':'#333 !important','background':'#333 !important'});
         }
     });
     $('table.article-table')

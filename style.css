@@ -1155,9 +1155,6 @@ ol.carousel-indicators{
 #pt-notifications-message .oo-ui-popupWidget, #pt-notifications-alert .oo-ui-popupWidget, #pt-following .oo-ui-popupWidget{
     top: 30px;
 }
-.header .navbar-user > li > a.mw-echo-notifications-badge:hover {
-    color: #fff;
-}
 .ca-help-text{
 	display:inline;
 	margin-left:1em;
@@ -1214,9 +1211,6 @@ ol.carousel-indicators{
 @media screen and (max-width: 767px) {
     .show-btn,.hide-btn{
         bottom: 40px;
-    }
-    .user-login .modal-dialog{
-        width: 300px;
     }
     #pt-user-icon {
         margin-right: 1.5em;
