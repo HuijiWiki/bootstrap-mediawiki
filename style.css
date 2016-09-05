@@ -1117,6 +1117,7 @@ ol.carousel-indicators{
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
+    font-weight: bold;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1126,6 +1127,11 @@ ol.carousel-indicators{
 /*//     font-size: 1.16666667em;*/
 /*//     left: 16px;*/
 /*// }*/
+@media screen and (max-width: 768){
+  #pt-notifications-alert .mw-echo-notifications-badge:before, #pt-notifications-message .mw-echo-notifications-badge:before {
+    z-index: -1;
+  }
+}
 #pt-notifications-alert .mw-echo-notifications-badge:before {
     content: "\f0a2";
     position: absolute;
@@ -1133,7 +1139,6 @@ ol.carousel-indicators{
     top: 8px;
     color: #333;
     font-size: 1.8rem;
-    z-index: -1;
 }
 #pt-notifications-message .mw-echo-notifications-badge:before {
     content: "\f003";
@@ -1142,7 +1147,6 @@ ol.carousel-indicators{
     top: 8px;
     color: #333;
     font-size: 1.8rem;
-    z-index: -1;
 }
 #pt-notifications-alert,#pt-notifications-message,#pt-following {
     width: 40px;

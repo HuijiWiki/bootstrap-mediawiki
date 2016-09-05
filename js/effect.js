@@ -307,9 +307,9 @@ $(document).ready(function(){
                                     mw.notification.notify('登录成功', options);
                                     // document.location.reload();
                                     if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
-                                        location.href = updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
+                                        window.location.href = updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
                                     }else {
-                                        location.href = updateQueryStringParameter(location.href, 'loggingIn', '1');
+                                        window.locations.href = updateQueryStringParameter(location.href, 'loggingIn', '1');s
                                     }
                                 }else{
                                     options = {
