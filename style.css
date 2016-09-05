@@ -1127,7 +1127,7 @@ ol.carousel-indicators{
 /*//     font-size: 1.16666667em;*/
 /*//     left: 16px;*/
 /*// }*/
-@media screen and (max-width: 768){
+@media screen and (min-width: 768){
   #pt-notifications-alert .mw-echo-notifications-badge:before, #pt-notifications-message .mw-echo-notifications-badge:before {
     z-index: -1;
   }
