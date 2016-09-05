@@ -1,4 +1,4 @@
-function updateQueryStringParameter(url, key, value) {
+window.updateQueryStringParameter = function(url, key, value) {
     if (!url) url = window.location.href;
     var re = new RegExp("([?&])" + key + "=.*?(&|#|$)(.*)", "gi"),
         hash;
@@ -275,12 +275,12 @@ $(document).ready(function(){
     $('#ca-purge').click(function(event){
         event.preventDefault();
         ga('send', 'event', 'sidebar', 'click', 'purge', 1);
-        window.location.assign(updateQueryStringParameter(location.href, 'action', 'purge'));
+        window.location.assign(window.updateQueryStringParameter(location.href, 'action', 'purge'));
     });
     $('#ca-debug').click(function(event){
         event.preventDefault();
         ga('send', 'event', 'sidebar', 'click', 'debug', 1);
-        window.location.assign(updateQueryStringParameter(location.href, 'debug', '1'));
+        window.location.assign(window.updateQueryStringParameter(location.href, 'debug', '1'));
     });
 
 
