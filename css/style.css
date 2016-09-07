@@ -421,12 +421,6 @@ a:hover,a:focus,a:active{
     min-height: 1000px;
     box-shadow:inset 100px -100px 100px #EDF3F5,inset 0px 120px 100px #E7EEF7,inset -50px 100px 100px #EBEDEF,inset 50px -100px 100px #C1D2D9,inset 0 -200px 100px #EEF6FA,0 0 2px 5px rgba(0,0,0,0.05);
 }
-.home-info .icon-huiji{
-    color: #09c;
-    font-size: 24px;
-    float: left;
-    margin: 5px 10px 0 60px;
-}
 .info-intro{
     font-size: 16px;
 }
