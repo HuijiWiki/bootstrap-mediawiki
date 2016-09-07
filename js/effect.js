@@ -309,7 +309,7 @@ $(document).ready(function(){
                                     if (mw.config.get('wgCanonicalSpecialPageName') === 'Userlogout'){
                                         window.location.href = window.updateQueryStringParameter($('#mw-returnto a').attr('href'), 'loggingIn', '1');
                                     }else {
-                                        window.locations.href = window.updateQueryStringParameter(location.href, 'loggingIn', '1');s
+                                        window.location.href = window.updateQueryStringParameter(location.href, 'loggingIn', '1');s
                                     }
                                 }else{
                                     options = {

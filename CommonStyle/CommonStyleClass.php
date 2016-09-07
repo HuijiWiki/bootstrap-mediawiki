@@ -135,7 +135,7 @@ class CommonStyle{
 	 * generate less vars 
 	 * @param $lessVars: array generated lessVars beforehand.
 	 */
-	public function getLessVars( $lessVars = [] ){
+	public static function getLessVars( $lessVars = [] ){
         $cssCon_1 = CommonStyle::getThemedStyle();
         $lessCon = array();
         if ( isset( $cssCon_1['cssContent'] ) && $cssCon_1['cssContent'] != null ) {

@@ -487,6 +487,8 @@ a:hover,a:focus,a:active{
     height: 80px;
     margin: auto;
     display: block;
+    animation: fadedin 5.5s;
+    -webkit-animation: fadein 5.5s;
 }
 .home-huiji{
     position: absolute;
@@ -494,6 +496,8 @@ a:hover,a:focus,a:active{
     top: 30px;
     z-index: -1;
     opacity: .75;
+    animation: logo 5s;
+    -webkit-animation: logo 5s;
 }
 .resource-logo{
     float: right;
@@ -523,6 +527,8 @@ a:hover,a:focus,a:active{
     position: absolute;
     right: 60px;
     top: 115px;
+    animation: fadedin 5.5s;
+    -webkit-animation: fadein 5.5s;
 }
 .home-statistics li {
     width: 33%;

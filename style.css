@@ -890,6 +890,7 @@ sup.reference {
 .headimg{
     border-radius: 50%;
     box-shadow: 0 0 1px rgba(0,0,0,.2);
+    margin: 0px 5px;
 }
 .user-card{
     width: 400px;
@@ -1446,4 +1447,29 @@ body.skin-BootstrapMediawiki > .oo-ui-windowManager {
 }
 .table-responsive{
   display:inline;
+}
+.user-group-icon{
+  font-size: 0.8em;
+  position: absolute;
+  left: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.user-group-icon-left{
+  font-size: 0.8em;
+  position: absolute;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.toc-sidebar, .wiki-body-section{
+  -webkit-transition:width 1s, right 1s;
+  transition: width 1s, right 1s;
+}
+.toc-ul-wrap{
+  animation: fadein 1s;
+  -webkit-animation: fadein 1s; 
+}
+.transition-start-ul{
+  display: none !important;
+}
+.transition-start-toc{
+  width: 0 !important;
 }

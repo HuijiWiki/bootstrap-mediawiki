@@ -152,7 +152,7 @@
       box-shadow: none;
     }
   }
-  .navbar-user{
+  .navbar-user, .navbar-login{
     //    border-left: 1px solid extract(@header-color,3);
     .set{
       padding-right: 20px;
@@ -180,7 +180,7 @@
     .collect-menu{
       right: -10px;
     }
-    &>li>a{
+    &>li#pt-user-icon>a, #pt-login, #pt-createaccount{
       color: extract(@header-color, 1);
       &:hover{
         color:extract(@header-color,1);
@@ -189,6 +189,14 @@
         color: extract(@header-color,1);
       }
     }
+    // #pt-notifications-alert a, #pt-notifications-message a {
+    //   &:hover{
+    //     color:extract(@header-color,1);
+    //   }
+    //   &:focus{
+    //     color: extract(@header-color,1);
+    //   }      
+    // }
     .dropdown-menu{
       li {
         padding: 0 2px;
@@ -214,6 +222,14 @@
       .fa{
         font-size: 18px;
         cursor: pointer;
+        color: extract(@header-color, 1);
+        &:hover{
+          color:extract(@header-color,1);
+        }
+        &:focus{
+          color: extract(@header-color,1);
+        }
+      
       }
     }
   }

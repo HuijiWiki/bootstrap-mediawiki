@@ -207,9 +207,9 @@ class FrontPage{
             if ( count($weekRank) >=8 ) {
                 $recommend = UserStats::getUserRank(10,'week');
             }elseif ( count($monthRank) >=8 ) {
-                $recommend = UserStats::getUserRank(20,'month');
+                $recommend = UserStats::getUserRank(10,'month');
             }else{
-                $recommend = UserStats::getUserRank(20,'total');
+                $recommend = UserStats::getUserRank(10,'total');
             }
             $recommendRes = array();
             $flres = array();

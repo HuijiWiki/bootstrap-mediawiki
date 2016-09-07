@@ -249,9 +249,9 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 <div id="wiki-body" class="container">
                     <main id="content">
                         <div class="row">
-                            <aside class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar" role="complementary navigation"><div class="toc-ul-wrap"></div></aside>
+                            <aside class="hidden-md hidden-sm hidden-xs hidden-print toc-sidebar transition-start-toc" role="complementary navigation" style=""><div class="toc-ul-wrap transition-start-ul"></div></aside>
 
-                            <article class="col-md-12 wiki-body-section" role="main">
+                            <article class="col-md-12 wiki-body-section" role="main" style="-webkit-transition: right 2s; transition: right 2s;">
                                 <?php if ($NS != 2 && !($this->getSkin()->getTitle()->isMainPage()) ):?>
                                 <header id="firstHeading" class="page-header">
                                     <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>

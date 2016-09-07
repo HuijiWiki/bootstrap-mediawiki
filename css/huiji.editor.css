@@ -227,3 +227,11 @@ a.smw-editpage-help a{
 .wikiEditor-ui-toolbar .section-main{
     height: 0 !important;
 }
+#mw-edittools-charinsert{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+#mw-edittools-charinsert a{
+    width: 10%;
+}

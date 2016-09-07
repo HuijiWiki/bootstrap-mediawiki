@@ -3,8 +3,13 @@
   vertical-align: middle;
 }
 a{
+  color: extract(@a-color,3);
   .transition(0.9s);
+  body &:hover{
+    text-decoration: none; //sorry bootstrap
+  }
 }
+
 .clear:after{
   content:'';
   clear: both;
@@ -40,9 +45,7 @@ body{
       }
     }
   }
-}
-a{
-  color: extract(@a-color,3);
+
 }
 textarea {
   width: 95%;

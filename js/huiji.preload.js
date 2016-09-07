@@ -15,10 +15,20 @@ $(function() {
     $('.subnav .nav .dropdown-menu:first').addClass('phone-active');
     // bell animation
     if($('#pt-notifications-alert .mw-echo-notifications-badge').text()!=0){
-        $('#pt-notifications-alert .mw-echo-notifications-badge').css({'color':'#fff','background':'rgba(248,172,5,1)'});
+        $('#pt-notifications-alert .mw-echo-notifications-badge').css({
+            'color':'#fff',
+            'background':'rgba(248,172,5,1)',
+            'animation':"buzz-out 2s infinite", 
+            '-webkit-animation':"buzz-out 2s infinite"
+        });
     }
     if($('#pt-notifications-message .mw-echo-notifications-badge').text()!=0){
-        $('#pt-notifications-message .mw-echo-notifications-badge').css({'color':'#fff','background':'rgba(220, 0, 0, 1)'});
+        $('#pt-notifications-message .mw-echo-notifications-badge').css({
+            'color':'#fff',
+            'background':'rgba(220, 0, 0, 1)',
+            'animation':"buzz-out 2s infinite", 
+            '-webkit-animation':"buzz-out 2s infinite"            
+        });
     }
     $('.navbar-user').on('click','.mw-echo-notifications-badge',function(){
         if(window.innerWidth>=768){
@@ -70,7 +80,8 @@ $(function() {
 	    if ( !window.is_mobile_device() ) {
 	
 	        $('.wiki-body-section').removeClass('col-md-12').addClass('col-md-10');
-	        $('.toc-sidebar').removeClass('hidden-md').addClass('col-md-2');
+	        $('.toc-sidebar').removeClass('hidden-md').removeClass('transition-start-toc').addClass('col-md-2');
+            $( '.toc-sidebar .toc-ul-wrap' ).removeClass('transition-start-ul')
 	        // $('.toc-sidebar').append('<h3>摘要</h3>');
 	        $('#toc').each(function() {
 	            $(this).find('ul:first').appendTo( '.toc-sidebar .toc-ul-wrap' );
