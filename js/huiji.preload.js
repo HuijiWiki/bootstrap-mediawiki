@@ -18,16 +18,16 @@ $(function() {
         $('#pt-notifications-alert .mw-echo-notifications-badge').css({
             'color':'#fff',
             'background':'rgba(248,172,5,1)',
-            'animation':"buzz-out 2s infinite", 
-            '-webkit-animation':"buzz-out 2s infinite"
+            // 'animation':"buzz-out 2s infinite", 
+            // '-webkit-animation':"buzz-out 2s infinite"
         });
     }
     if($('#pt-notifications-message .mw-echo-notifications-badge').text()!=0){
         $('#pt-notifications-message .mw-echo-notifications-badge').css({
             'color':'#fff',
             'background':'rgba(220, 0, 0, 1)',
-            'animation':"buzz-out 2s infinite", 
-            '-webkit-animation':"buzz-out 2s infinite"            
+            // 'animation':"buzz-out 2s infinite", 
+            // '-webkit-animation':"buzz-out 2s infinite"            
         });
     }
     $('.navbar-user').on('click','.mw-echo-notifications-badge',function(){

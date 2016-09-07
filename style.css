@@ -1121,7 +1121,9 @@ ol.carousel-indicators{
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
+
     /*//line-height: 47px;*/
  }
 /*// .skin-BootstrapMediawiki .mw-echo-ui-notificationBadgeButtonPopupWidget .oo-ui-popupWidget {*/
@@ -1211,7 +1213,7 @@ ol.carousel-indicators{
         bottom: 40px;
     }
     #pt-user-icon {
-        margin-right: 1.5em;
+        margin-right: 1.5em !important;
     }
     
     /*// #pt-notifications-alert,  #pt-notifications-message{*/
@@ -1231,7 +1233,7 @@ ol.carousel-indicators{
         right: 0!important;
     }
     #pt-notifications-alert .mw-echo-notifications-badge:before ,#pt-notifications-message .mw-echo-notifications-badge:before{
-        color: #fff;
+        color: #fff!important;
     }
     .oo-ui-popupWidget-popup {
         top:50px;
