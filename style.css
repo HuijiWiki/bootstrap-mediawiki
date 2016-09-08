@@ -30,15 +30,6 @@ ol.references {
 }
 
 /* begin toc style */
-.toc-sidebar {
-	margin-top: 30px;
-}
-
-.toc-sidebar.affix{
-	position:static;
-	transform: none;
-}
-
 @media (min-width:768px){
 	.toc-sidebar{
 		padding-left:20px
@@ -93,23 +84,17 @@ ol.references {
 
 @media (min-width:992px){
 	.toc-sidebar .nav>.active>ul{
-		display:block
+		display:block;
 	}
-
-	.toc-sidebar.affix,.toc-sidebar.affix-bottom{
-		width:213px
-	}
-
-	.toc-sidebar.affix{
+	.nav-list.affix, .nav-list.affix-top{
 		position:fixed;
-		top:20px
 	}
 
-	.toc-sidebar.affix-bottom{
-		position:absolute
+  .affix-bottom{
+		position:absolute !important;
 	}
 
-	.toc-sidebar.affix .nav-list,.toc-sidebar.affix-bottom .nav-list{
+  .nav-list{
 		margin-top:0;
 		margin-bottom:0
 	}
@@ -117,7 +102,7 @@ ol.references {
 }
 
 @media (min-width:1200px){
-	.toc-sidebar.affix,.toc-sidebar.affix-bottom{
+	.nav-list.affix,.nav-list.affix-bottom{
 		width:263px
 	}
 
@@ -1198,8 +1183,8 @@ ol.carousel-indicators{
 .toc-ul-wrap{
     width: 140px;
     overflow-x: hidden;
-    position: fixed;
     height: 1000px;
+    margin-top: 125px;
     overflow-y: hidden;
 }
 .toc-sidebar .toc-ul-wrap>ul{
