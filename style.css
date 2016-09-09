@@ -1221,10 +1221,9 @@ ol.carousel-indicators{
         color: #fff!important;
     }
     .oo-ui-popupWidget-popup {
-        top:50px;
-        postion:absolute !important;
-        width: 100%!important;
-        margin-left: 0!important;
+        position: fixed !important;
+        width: 100% !important;
+        right: 0!important;
     }
     .oo-ui-popupWidget-body {
         width: 100%!important;
