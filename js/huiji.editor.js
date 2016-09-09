@@ -1,6 +1,9 @@
 
 
 function validateRegex(pattern) {
+	if (pattern.substring(0,1) != '/'){
+		return pattern;
+	}
     var parts = pattern.split('/'),
         regex = pattern,
         options = "";
