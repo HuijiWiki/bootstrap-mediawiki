@@ -1,7 +1,8 @@
 
 
 function validateRegex(pattern) {
-	if (pattern.substring(0,1) != '/'){
+	var re = /\/.+\/[gmixsuXUA]*$/i; 
+	if (!re.test(pattern)){
 		return pattern;
 	}
     var parts = pattern.split('/'),
