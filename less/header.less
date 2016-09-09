@@ -12,12 +12,23 @@
   }
   .navbar-nav>li>a{
     color: extract(@header-color, 2);
-    // &:hover{
-    //   color:extract(@header-color,2);
-    // }
-    // &:focus{
-    //   color: extract(@header-color,2);
-    // }
+    &:hover{
+      color:extract(@header-color,2);
+    }
+    &:focus{
+      color: extract(@header-color,2);
+    }
+    &.mw-echo-notifications-badge{
+      @media (max-width: 767px){
+        color: extract(@header-color, 1);
+        &:hover{
+          color:extract(@header-color,1);
+        }
+        &:focus{
+          color: extract(@header-color,1);
+        }        
+      }
+    }
   }
   .navbar-header {
     background-color:extract(@header-color,1);
@@ -229,7 +240,14 @@
       }
       &>a{
         padding: 0;
-        line-height: 50px;
+        @media (min-width: 768px){
+          line-height: 50px;
+        }
+        @media (max-width: 767px){
+          line-height: 40px;
+        }
+        
+
       }
       .fa{
         font-size: 18px;
