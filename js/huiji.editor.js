@@ -360,45 +360,45 @@ window.customizeToolbar = function() {
 			}
 		} );
 	}
-	mw.loader.using("ext.wikieditor.huijiextra.sisyphus", function(){
-		var editFormSisyphus = $( "#editform" ).sisyphus( {
-			locationBased: true,
-			timeout: 0,
-			autoRelease: true,
-			onBeforeRestore:function(){
-				var that = this;
-			  //   $('#autoRestoreModal').modal({
-			  //       keyboard: false,
-					// backdrop: 'static'
-			  //   });
-			  //   return false;
-				// An example of a message dialog with three actions, displayed as rows because
-				// the labels do not fit within the window width.
-				var messageDialog = new OO.ui.MessageDialog();
-				var windowManager = new OO.ui.WindowManager();
-				$( 'body' ).append( windowManager.$element );
-				windowManager.addWindows( [ messageDialog ] );
+	// mw.loader.using("ext.wikieditor.huijiextra.sisyphus", function(){
+	// 	var editFormSisyphus = $( "#editform" ).sisyphus( {
+	// 		locationBased: true,
+	// 		timeout: 0,
+	// 		autoRelease: true,
+	// 		onBeforeRestore:function(){
+	// 			var that = this;
+	// 		  //   $('#autoRestoreModal').modal({
+	// 		  //       keyboard: false,
+	// 				// backdrop: 'static'
+	// 		  //   });
+	// 		  //   return false;
+	// 			// An example of a message dialog with three actions, displayed as rows because
+	// 			// the labels do not fit within the window width.
+	// 			var messageDialog = new OO.ui.MessageDialog();
+	// 			var windowManager = new OO.ui.WindowManager();
+	// 			$( 'body' ).append( windowManager.$element );
+	// 			windowManager.addWindows( [ messageDialog ] );
 
-				// Configure the message dialog.
-				windowManager.openWindow( messageDialog, {
-				  title: '发现虫洞',
-				  message: '灰机发现您在该页面有未保存的更改，是否现在恢复？',
-				  actions: [
-				    { label: '不恢复', action: 'nevermind' },
-				    { label: '恢复', action: 'recover' }
-				  ],
-				} ).then( function ( opened ) {
-				  opened.then( function ( closing, data ) {
-				    if ( data && data.action == 'recover' ) {
-				    	that.restoreAllData();
-				    } else {
-				    	that.manuallyReleaseData();
-				    }
-				  } );
-				} );
-			}
-		} );
-	});
+	// 			// Configure the message dialog.
+	// 			windowManager.openWindow( messageDialog, {
+	// 			  title: '发现虫洞',
+	// 			  message: '灰机发现您在该页面有未保存的更改，是否现在恢复？',
+	// 			  actions: [
+	// 			    { label: '不恢复', action: 'nevermind' },
+	// 			    { label: '恢复', action: 'recover' }
+	// 			  ],
+	// 			} ).then( function ( opened ) {
+	// 			  opened.then( function ( closing, data ) {
+	// 			    if ( data && data.action == 'recover' ) {
+	// 			    	that.restoreAllData();
+	// 			    } else {
+	// 			    	that.manuallyReleaseData();
+	// 			    }
+	// 			  } );
+	// 			} );
+	// 		}
+	// 	} );
+	// });
 
 	// $( "#autoRestoreModal .btn-default, #autoRestoreModal .close, #mw-editform-cancel, #editform > div.wikiEditor-ui > div.wikiEditor-ui-controls > div.wikiEditor-ui-buttons > button:nth-child(2)").click(function(){
 	//     editFormSisyphus.manuallyReleaseData();
