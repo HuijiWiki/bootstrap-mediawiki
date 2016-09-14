@@ -100,10 +100,11 @@
       & > li {
         float: none;
         width: 300px;
-        top: 30px;
-        &:nth-child(2) {
+        top: 90px;
+        &:nth-child(n+2) {
           top: auto;
           bottom: 30px;
+          color: white;
         }
         & > a {
           line-height: 30px;
@@ -181,6 +182,7 @@
       #icon-section{
         margin: 0;
         float: left;
+        top: 30px;
         .hub-menu{
           position: absolute;
           width: 100%;
@@ -191,6 +193,11 @@
           .caret{
             display: none;
           }
+          // &:nth-child(n+2){
+          //   //position: fixed;
+          //   //top: 90px;
+          //   width: 100%;
+          // }
         }
         &>.open>a, &>.open>a:hover, &>.open>a:focus {
           color: extract(@header-color,2);
@@ -201,6 +208,7 @@
         float: right;
         border-left: none;
         margin: 0;
+        top: 0px;
         li{
           float: left;
           padding: 0;

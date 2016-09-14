@@ -545,10 +545,13 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">推荐wiki <span class="caret"></span></a>
                                   '. $rec .'
                                 </li>
-                                <li class="hidden-xs">
+                                <li class="">
                                     <a href="http://www.huiji.wiki/wiki/special:CreateWiki">创建wiki</a>
                                 </li>
-                                <li class="hidden-xs hidden-sm">
+                                <li class="">
+                                    <a href="http://forum.huiji.wiki">灰机论坛</a>
+                                </li>
+                                <li class="">
                                     <a href="http://www.huiji.wiki/wiki/帮助:用户手册">帮助文档</a>
                                 </li>
                         </ul>';
