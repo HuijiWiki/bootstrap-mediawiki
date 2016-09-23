@@ -1447,12 +1447,12 @@ body.skin-BootstrapMediawiki > .oo-ui-windowManager {
   top: -30%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-@media screen and (min-width 768px){
-  .toc-sidebar, .wiki-body-section{
-    -webkit-transition:width 1s, right 1s;
-    transition: width 1s, right 1s;
-  }
+
+.toc-sidebar, .wiki-body-section{
+  -webkit-transition:width 1s, right 1s;
+  transition: width 1s, right 1s;
 }
+
 .toc-ul-wrap{
   animation: fadein 1s;
   -webkit-animation: fadein 1s; 

@@ -49,125 +49,6 @@
 	margin: 0 3px;
 }
 
-.smwb-factbox a {
-		.link(@well);
-		.link(@smw-wikitable-bg);
-	}
-.smwb-factbox(@_) {
-    color: @main-base;
-    .color(@detail-wikitable-color);
-	
-	tbody tr.smwb-title,tbody tr.smwb-center {
-		background-color: @well;
-		.bg(@smw-wikitable-bg);
-	}
-	tbody tr.smwb-propvalue,tbody tr.smwb-ipropvalue {
-		th {
-			background-color: @well;
-			.bg(@smw-wikitable-th-bg);
-		}
-		td {
-			background-color: lighten(@well,10%);
-			.bglighten(@smw-wikitable-th-bg);
-		}
-	}
-	
-	
- }
- 
-#bodyContent table.smwb-factbox{
-	.smwb-factbox(smwb-factbox);
-	border-left: 8px solid @well;
-	.borderleft(@smw-wikitable-border);
-	border-right: 8px solid @well;
-	.borderright(@smw-wikitable-border);
-	}
-	
-#bodyContent table.smwb-ifactbox {
-	.smwb-factbox(smwb-ifactbox);
-	border-left: 8px solid @well;
-	.borderleft(@smw-wikitable-border);
-	border-right: 8px solid @well;
-	.borderright(@smw-wikitable-border);
-	
- }
-.smw-ask-otheroptions{
-	color: @main-base;
-	.color(@smw-wikitable-color);
-	.bgswitch(@bg-inner) !important;
-	td {
-		padding-left:5px;
-		padding-top:5px;
-	}
-	
-}
-.mw-special-Ask legend {
-	border: none;
-	padding-top:35px;
-	margin-bottom: 0;
-}
-#sorting_main>div{
-	padding-bottom:5px;
-}
-.smw-ask-actions a{
-	.setsize(a);
-}
-
-.smw-ask-actions{
-	input:first-of-type{
-		.setsize(p);
-	}
-}
-.mw-special-Ask .smw-ask-action-btn{
-	border-radius: 0;
-}
-.mw-special-CreateAccount {
-	#mw-content-text > .mw-ui-container {
-		.htmlform-tip{
-			position: static;
-		}
-	}
-}
-button#mw-input-qqlogin{
-	font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    // line-height: 1;
-    -webkit-font-smoothing: antialiased;
-	&:before{
-		content: "\e604";
-	}
-}
-button#mw-input-weibologin{
-	font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    // line-height: 1;
-    -webkit-font-smoothing: antialiased;
-	&:before{
-		content: "\e601";
-	}
-}
-	
-@media (max-width: 480px) {
-	.mw-special-CreateAccount, .mw-special-Userlogin {
-		#mw-content-text > .mw-ui-container {
-			#userloginForm {
-				width: 100%;
-				#userlogin2, .mw-ui-vform {
-					width: 100%;
-				}
-			}
-		}
-	}
-  
-}
 .skin-BootstrapMediawiki{
 	.mw-echo-date-section{
 		.secondary();
@@ -182,6 +63,114 @@ button#mw-input-weibologin{
 	}
 	.mw-echo-state .mw-echo-content .mw-echo-notification-footer{
 		.secondary();
+	}
+	 
+	#bodyContent table.smwb-factbox, #bodyContent table.smwb-ifactbox{
+		// .link(@a);
+	 //    color: @main-base;
+	 //    .color(@detail-wikitable-color);
+		
+		// tbody tr.smwb-title,tbody tr.smwb-center {
+		// 	background-color: @well;
+		// 	.bg(@smw-wikitable-bg);
+		// }
+		// tbody tr.smwb-propvalue,tbody tr.smwb-ipropvalue {
+		// 	th {
+		// 		background-color: mixin(@well);
+		// 		.bg(@smw-wikitable-th-bg);
+		// 	}
+		// 	td {
+		// 		background-color: mixin2(@well);
+		// 		.bg(@smw-wikitable-bg);
+		// 	}
+		// }
+		border: 0px;
+		margin: 0px;
+		padding : 2px;
+	}
+		
+	.smw-ask-otheroptions{
+		color: @main-base;
+		.color(@smw-wikitable-color);
+		.bgswitch(@bg-inner) !important;
+		td {
+			padding-left:5px;
+			padding-top:5px;
+		}
+	}
+	tr.smwb-title, tr.smwb-propvalue, tr.smwb-propvalue th, tr.smwb-propvalue td, tr.smwb-center {
+		background-color: transparent;
+		.link(@a);
+	}
+	tr.smwb-center td{
+		padding: 5px;
+	}
+	.mw-special-Ask legend {
+		border: none;
+		padding-top:35px;
+		margin-bottom: 0;
+	}
+	#sorting_main>div{
+		padding-bottom:5px;
+	}
+	.smw-ask-actions a{
+		.setsize(a);
+	}
+
+	.smw-ask-actions{
+		input:first-of-type{
+			.setsize(p);
+		}
+	}
+	.mw-special-Ask .smw-ask-action-btn{
+		border-radius: 0;
+	}
+	.mw-special-CreateAccount {
+		#mw-content-text > .mw-ui-container {
+			.htmlform-tip{
+				position: static;
+			}
+		}
+	}
+	button#mw-input-qqlogin{
+		font-family: 'icomoon';
+	    speak: none;
+	    font-style: normal;
+	    font-weight: normal;
+	    font-variant: normal;
+	    text-transform: none;
+	    // line-height: 1;
+	    -webkit-font-smoothing: antialiased;
+		&:before{
+			content: "\e604";
+		}
+	}
+	button#mw-input-weibologin{
+		font-family: 'icomoon';
+	    speak: none;
+	    font-style: normal;
+	    font-weight: normal;
+	    font-variant: normal;
+	    text-transform: none;
+	    // line-height: 1;
+	    -webkit-font-smoothing: antialiased;
+		&:before{
+			content: "\e601";
+		}
+	}
+		
+	@media (max-width: 480px) {
+		.mw-special-CreateAccount, .mw-special-Userlogin {
+			#mw-content-text > .mw-ui-container {
+				#userloginForm {
+					width: 100%;
+					#userlogin2, .mw-ui-vform {
+						width: 100%;
+					}
+				}
+			}
+		}
+	  
 	}
 }
 
