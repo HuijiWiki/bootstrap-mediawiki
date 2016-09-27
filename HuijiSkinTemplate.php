@@ -377,6 +377,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                 case '编辑源代码': $icon = 'code';
                     $link['id'] = 'huiji-edit';
                     break;
+                case '采用表单编辑': $icon = 'table'; break;
                 case '历史': $icon = 'clock-o'; break;
                 case '删除': $icon = 'remove'; break;
                 case '移动': $icon = 'arrows'; break;

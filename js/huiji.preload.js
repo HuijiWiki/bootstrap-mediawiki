@@ -156,7 +156,7 @@ $(function() {
         }
     });
 
-
+    $('#wpRemember').attr('value', 1);
     // // done for preload. Let's show the page.
     // $('#wiki-outer-body').show();
 });

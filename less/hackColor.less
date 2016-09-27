@@ -151,4 +151,28 @@
     border: 1px solid @main-lighter;
     .color(@main-darker);
   }
+  .smwbrowse a, .smwsearch a{
+    .link(@a) !important; 
+    &, &:hover{
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      background: transparent !important;
+      background-size: 0px 0px !important; 
+      padding-right: 0px !important;
+      margin-right: 0px !important;
+    }
+  }
+  .smwbrowse a:before{
+    content: "\f06e";
+  }
+  .smwsearch a:before{
+    content: "\f002";
+  }
+  .property-page-results .value-row:hover{
+    .mixin(@bg-inner);
+    .mixin(@detail-inner-bg);
+  }
 }

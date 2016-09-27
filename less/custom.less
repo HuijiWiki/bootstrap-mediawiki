@@ -323,7 +323,7 @@ a {
     }
   }
 
-  .wikitable, .mw-datatable, .smwb-factbox, .smwb-ifactbox, .smwtable, .mw-json{
+  .wikitable, .mw-datatable, .smwb-factbox, .smwb-ifactbox, .smwb-ipropvalue, .smwtable, .mw-json, .property-page-results{
     background-color: @well;
     .bg(@detail-wikitable-bg);
     color: @main-base;
@@ -338,6 +338,14 @@ a {
     }
     th{
       .bg(@detail-wikitable-th-bg);
+    }
+  }
+  tr.smwb-ipropvalue{
+    .mixin(@bg-inner);
+    .mixin(@detail-wikitable-bg);
+    th{
+      .mixin(@bg-inner);
+      .mixin(@detail-wikitable-th-bg);
     }
   }
   .mw-json th{
