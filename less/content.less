@@ -194,5 +194,60 @@ body:not(.ns--1) #wiki-outer-body{
   -ms-user-select: none;
   cursor: default;
 }
+.mw-notification-type-progress {
+  animation: glow 1.5s infinite;
+  .mw-notification-content{
+    border: 1px solid @brand-primary;
+  }
+}
+#mw-notification-area{
+    right: 0;
+    left: 0;
+    padding: 0;
+    width: inherit;
+    line-height: inherit;
+    overflow: visible !important;
+    position: fixed;
+}
+#mw-notification-area .mw-notification{
+    margin-top: 200px;
+    opacity: 0.9;
+    padding: 0;
+    border: none;
+    background: none;
+}
+.mw-notification-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 0em;
+    padding-left: 1em;
+    animation: glow-text 1.5s infinite;
+    .compute-text(@sub-bg);
+    .compute-text(@detail-sub-bg);
+}
+.mw-notification{
+    margin: 10px;
+}
+.mw-notification-content{
+    padding: 20px 10px;
+    background-color: @sub-bg;
+    .bg-compute-text(@sub-bg);
+    .bg-compute-text(@detail-sub-bg);
+    text-align: center;
+    box-shadow: 5px 5px 150px rgba(0,0,0,.5);
+    border: 1px solid rgba(0,0,0,.2);
+    outline: 0;
+}
+.mw-notification-content p{
+    margin: 0;
+}
+@media (min-width: 769px){
+    #mw-notification-area .mw-notification {
+        width: 300px;
+        margin: 30px -150px;
+        position: absolute;
+        left: 50%!important;
+    }
+}
 @import "custom.less";
 @import "hackColor.less";

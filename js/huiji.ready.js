@@ -681,7 +681,7 @@ $(document).ready(function(){
     $('body').on('click','.icon-weibo-share',function(){
         var redirect_url = mw.config.get('wgHuijiPrefix');
         mw.cookie.set( 'redirect_url', redirect_url );
-        window.location.href='https://api.weibo.com/oauth2/authorize?client_id=2445834038&redirect_uri=http%3A%2F%2Fhuijiwiki.com%2Fwiki%2Fspecial%3Acallbackweibo&response_type=code';
+        window.location.href='https://api.weibo.com/oauth2/authorize?client_id=2445834038&redirect_uri=http%3A%2F%2Fhuiji.wiki%2Fwiki%2Fspecial%3Acallbackweibo&response_type=code';
     });
 
 //    aside topic
@@ -951,6 +951,44 @@ $(document).ready(function(){
     // }, 2000);
 
 //    function show()
+    var echoApi = new mw.echo.api.EchoApi();
+    var res = echoApi.fetchNotifications( 'alert', 'local');
+    res.done(function(data){
+        for (var i = 0; i < data.list.length; i++){
+            if (data.list[i].read == null){
+                if (data.list[i].category == 'system-gift-receive' ){
+                    var link = '<a href="'+url+'">'+ data.list[i]['*'].body +'</a>';
+                    mw.notification.notify($(link), {
+                        autoHide: false,
+                        type: 'progress',
+                        tag: "achievement",
+                        title: '新成就'
+                    });
+                } else if (data.list[i].category == 'advancement' ){
+                    var url = data.list[i]['*'].links.primary.url;
+                    var link = '<a href="'+url+'">'+ data.list[i]['*'].header +'</a>';
+                     mw.notification.notify($(link), {
+                        autoHide: false,
+                        type: 'progress',
+                        tag: "advancement",
+                        title: '升级'
+                    });                   
+                } else if (data.list[i].category == 'gift-receive' ){
+                    var url = data.list[i]['*'].links.primary.url;
+                    var link = '<a href="'+url+'">'+ data.list[i]['*'].body +'</a>';
+                    mw.notification.notify($(link), {
+                        autoHide: false,
+                        type: 'progress',
+                        tag: "gift",
+                        title: '新礼物'
+                    });                    
+                }
+            }
+        }
+        // var echoApi = new mw.echo.api.EchoApi();
+        echoApi.markAllRead( 'local', 'alert');
+                
+    });
 });
 
 
