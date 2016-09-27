@@ -593,5 +593,13 @@ Class BootstrapMediawikiHooks {
     public static function onImportSources( &$sources ){
         $sources = Huiji::getInstance()->getSitePrefixes(true);
     }
+
+    public static function onContentHandlerDefaultModelFor( Title $title, &$model ) {
+        if ( $title->getPrefixedText() == 'MediaWiki:App' || $title->getPrefixedText() == 'MediaWiki:CommonStyle' )  {
+            $model = CONTENT_MODEL_JSON;
+            return false;
+        }
+        return true;
+    }
     
 }
