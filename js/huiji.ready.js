@@ -957,8 +957,8 @@ $(document).ready(function(){
     res.done(function(data){
         for (var i = 0; i < data.list.length; i++){
             if (data.list[i].read == null){
-                console.log(data.list[i]);
                 if (data.list[i].category == 'system-gift-receive' ){
+                    var url = data.list[i]['*'].links.primary.url;
                     var link = '<a href="'+url+'">'+ data.list[i]['*'].body +'</a>';
                     mw.notification.notify($(link), {
                         autoHide: false,
@@ -966,7 +966,7 @@ $(document).ready(function(){
                         tag: "achievement",
                         title: '新成就'
                     });
-                    trash.push[data.list[i].id];
+                    trash.push(data.list[i].id);
                 } else if (data.list[i].category == 'advancement' ){
                     var url = data.list[i]['*'].links.primary.url;
                     var link = '<a href="'+url+'">'+ data.list[i]['*'].header +'</a>';
@@ -976,7 +976,7 @@ $(document).ready(function(){
                         tag: "advancement",
                         title: '升级'
                     }); 
-                    trash.push[data.list[i].id];                  
+                    trash.push(data.list[i].id);                  
                 } else if (data.list[i].category == 'gift-receive' ){
                     var url = data.list[i]['*'].links.primary.url;
                     var link = '<a href="'+url+'">'+ data.list[i]['*'].header +'</a>';
@@ -986,7 +986,7 @@ $(document).ready(function(){
                         tag: "gift",
                         title: '新礼物'
                     }); 
-                    trash.push[data.list[i].id];                   
+                    trash.push(data.list[i].id);                   
                 }
             }
         }
