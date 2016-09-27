@@ -975,7 +975,7 @@ $(document).ready(function(){
                     });                   
                 } else if (data.list[i].category == 'gift-receive' ){
                     var url = data.list[i]['*'].links.primary.url;
-                    var link = '<a href="'+url+'">'+ data.list[i]['*'].body +'</a>';
+                    var link = '<a href="'+url+'">'+ data.list[i]['*'].header +'</a>';
                     mw.notification.notify($(link), {
                         autoHide: false,
                         type: 'progress',

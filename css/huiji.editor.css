@@ -235,3 +235,6 @@ a.smw-editpage-help a{
 #mw-edittools-charinsert a{
     width: 10%;
 }
+.mw-scribunto-console-fieldset{
+    background:transparent;
+}
