@@ -340,7 +340,14 @@ a {
       .bg(@detail-wikitable-th-bg);
     }
   }
-
+  .mw-json th{
+    .bg(@brand-primary);
+    .bg(@detail-wikitable-th-bg)
+  }
+  .mw-json .value, .mw-json-single-value {
+    .bg(@brand-info);
+    .bg(@detail-wikitable-bg);
+  }
   .table-stripe {
     tr:nth-child(odd) {
       .mixin2(@bg-inner)
