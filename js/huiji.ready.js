@@ -953,9 +953,11 @@ $(document).ready(function(){
 //    function show()
     var echoApi = new mw.echo.api.EchoApi();
     var res = echoApi.fetchNotifications( 'alert', 'local');
+    var trash = [];
     res.done(function(data){
         for (var i = 0; i < data.list.length; i++){
             if (data.list[i].read == null){
+                console.log(data.list[i]);
                 if (data.list[i].category == 'system-gift-receive' ){
                     var link = '<a href="'+url+'">'+ data.list[i]['*'].body +'</a>';
                     mw.notification.notify($(link), {
@@ -964,6 +966,7 @@ $(document).ready(function(){
                         tag: "achievement",
                         title: '新成就'
                     });
+                    trash.push[data.list[i].id];
                 } else if (data.list[i].category == 'advancement' ){
                     var url = data.list[i]['*'].links.primary.url;
                     var link = '<a href="'+url+'">'+ data.list[i]['*'].header +'</a>';
@@ -972,7 +975,8 @@ $(document).ready(function(){
                         type: 'progress',
                         tag: "advancement",
                         title: '升级'
-                    });                   
+                    }); 
+                    trash.push[data.list[i].id];                  
                 } else if (data.list[i].category == 'gift-receive' ){
                     var url = data.list[i]['*'].links.primary.url;
                     var link = '<a href="'+url+'">'+ data.list[i]['*'].header +'</a>';
@@ -981,12 +985,13 @@ $(document).ready(function(){
                         type: 'progress',
                         tag: "gift",
                         title: '新礼物'
-                    });                    
+                    }); 
+                    trash.push[data.list[i].id];                   
                 }
             }
         }
         // var echoApi = new mw.echo.api.EchoApi();
-        echoApi.markAllRead( 'local', 'alert');
+        echoApi.markItemsRead( trash, 'local', true);
                 
     });
 });
