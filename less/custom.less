@@ -341,8 +341,10 @@ a {
     }
   }
   tr.smwb-ipropvalue{
-    .mixin(@bg-inner);
-    .mixin(@detail-wikitable-bg);
+    &, & td{
+      .mixin(@bg-inner);
+      .mixin(@detail-wikitable-bg);      
+    }
     th{
       .mixin(@bg-inner);
       .mixin(@detail-wikitable-th-bg);
