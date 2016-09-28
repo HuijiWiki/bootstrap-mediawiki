@@ -595,7 +595,7 @@ Class BootstrapMediawikiHooks {
     }
 
     public static function onContentHandlerDefaultModelFor( Title $title, &$model ) {
-        if ( $title->getPrefixedText() == 'MediaWiki:App' || $title->getPrefixedText() == 'MediaWiki:CommonStyle' )  {
+        if ( $title->getPrefixedText() == 'MediaWiki:App' || $title->getPrefixedText() == 'MediaWiki:CommonStyle' || $title->getPrefixedText() == 'MediaWiki:Huiji-translation-pairs'  )  {
             $model = CONTENT_MODEL_JSON;
             return false;
         }
