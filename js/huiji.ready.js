@@ -951,6 +951,7 @@ $(document).ready(function(){
     // }, 2000);
 
 //    function show()
+    if (mw.config.get('wgUsername') != null){
     var echoApi = new mw.echo.api.EchoApi();
     var res = echoApi.fetchNotifications( 'alert', 'local');
     var trash = [];
@@ -994,6 +995,7 @@ $(document).ready(function(){
         echoApi.markItemsRead( trash, 'local', true);
                 
     });
+    }
 });
 
 
