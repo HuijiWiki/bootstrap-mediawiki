@@ -254,64 +254,64 @@ window.customizeToolbar = function() {
 				action: {
 					type: 'callback',
 					execute: function(){
-						var content = $('#wpTextbox1').val();
-						var re = /\[\[(.*?)(\||\]\])/gi; 
-						var m = [],matches = [];
-						while( matches = re.exec(content)){
-							m.push(matches[1]);
-						}
-						if (m == null){
-							alert('没有发现可替换的链接');
-						} else {
-							jQuery.post(
-					            mw.util.wikiScript(), {
-					                action: 'ajax',
-					                rs: 'wfGetEntry',
-					                rsargs: [m.join('|'), 'en', mw.config.get('wgHuijiPrefix'), 0, 1]
-					            },
-					            function(json){
-					            	var data = JSON.parse(json);
-					            	var tran = [];
-					            	for(i in data){
-					            		t = JSON.parse(data[i]);
-					            		if(t.status=='success' && t.result.hits>=1){
-					            			tran.push(t.result.objects[0].entry);
-					            		} else {
-					            			tran.push(null);
-					            		}
-					            	}
-					            	var i = 0;
-					            	var result = content.replace(re, function(match, p1, p2, offset, string){
-					            		if (tran[i++] == null){
-					            			return '[['+p1+p2;
-					            		}
-					            		return '[['+tran[i-1]+p2;
-					            	});
-					            	
-
-					            	var api = new mw.Api();
-									api.get({
-										action: 'query',
-										meta: 'allmessages',
-										ammessages: 'huiji-translation-pairs',
-										amlang: mw.config.get( 'wgUserLanguage' ),
-										formatversion: 2,
-										format: 'json'
-									}).done(function(data){
-										if (data.query.allmessages.missing == 'true'){
-											$('#wpTextbox1').val(result);
-										} else {
-											t = JSON.parse(data.query.allmessages[0].content);
-											for (var i in t){
-												result = result.replace(validateRegex(i), t[i]);
-											}
-											$('#wpTextbox1').val(result);
-										}
-									});
-					            }
-					        );		
-						}					
-				
+						// Translate from huiji-translation-pairs
+						var api = new mw.Api();
+						api.get({
+							action: 'query',
+							meta: 'allmessages',
+							ammessages: 'huiji-translation-pairs',
+							amlang: mw.config.get( 'wgUserLanguage' ),
+							formatversion: 2,
+							format: 'json'
+						}).done(function(data){
+							var content = $('#wpTextbox1').val();
+							if (data.query.allmessages.missing != true && data.query.allmessages[0].content){
+								t = JSON.parse(data.query.allmessages[0].content);
+								for (var i in t){
+									content = content.replace(validateRegex(i), t[i]);
+								}
+							}	
+							
+							//Translate from lang links
+							var re = /\[\[(.*?)(\||\]\])/gi; 
+							var m = [],matches = [];
+							while( matches = re.exec(content)){
+								m.push(matches[1]);
+							}
+							if (m == null){
+								$('#wpTextbox1').val(content);
+							} else {
+								jQuery.post(
+						            mw.util.wikiScript(), {
+						                action: 'ajax',
+						                rs: 'wfGetEntry',
+						                rsargs: [m.join('|'), 'en', mw.config.get('wgHuijiPrefix'), 0, 1]
+						            },
+						            function(json){
+						            	var data = JSON.parse(json);
+						            	var tran = [];
+						            	for(i in data){
+						            		t = JSON.parse(data[i]);
+						            		if(t.status=='success' && t.result.hits>=1){
+						            			tran.push(t.result.objects[0].entry);
+						            		} else {
+						            			tran.push(null);
+						            		}
+						            	}
+						            	var i = 0;
+						            	var result = content.replace(re, function(match, p1, p2, offset, string){
+						            		if (tran[i++] == null){
+						            			return '[['+p1+p2;
+						            		}
+						            		return '[['+tran[i-1]+p2;
+						            	});
+						            	$('#wpTextbox1').val(result);
+						  
+						            }
+						        );		
+							}	
+							
+						});				
 					}
 				}
 			}

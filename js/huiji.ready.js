@@ -952,49 +952,49 @@ $(document).ready(function(){
 
 //    function show()
     if (mw.config.get('wgUsername') != null){
-    var echoApi = new mw.echo.api.EchoApi();
-    var res = echoApi.fetchNotifications( 'alert', 'local');
-    var trash = [];
-    res.done(function(data){
-        for (var i = 0; i < data.list.length; i++){
-            if (data.list[i].read == null){
-                if (data.list[i].category == 'system-gift-receive' ){
-                    var url = data.list[i]['*'].links.primary.url;
-                    var link = '<a href="'+url+'">'+ data.list[i]['*'].body +'</a>';
-                    mw.notification.notify($(link), {
-                        autoHide: false,
-                        type: 'progress',
-                        tag: "achievement",
-                        title: '新成就'
-                    });
-                    trash.push(data.list[i].id);
-                } else if (data.list[i].category == 'advancement' ){
-                    var url = data.list[i]['*'].links.primary.url;
-                    var link = '<a href="'+url+'">'+ data.list[i]['*'].header +'</a>';
-                     mw.notification.notify($(link), {
-                        autoHide: false,
-                        type: 'progress',
-                        tag: "advancement",
-                        title: '升级'
-                    }); 
-                    trash.push(data.list[i].id);                  
-                } else if (data.list[i].category == 'gift-receive' ){
-                    var url = data.list[i]['*'].links.primary.url;
-                    var link = '<a href="'+url+'">'+ data.list[i]['*'].header +'</a>';
-                    mw.notification.notify($(link), {
-                        autoHide: false,
-                        type: 'progress',
-                        tag: "gift",
-                        title: '新礼物'
-                    }); 
-                    trash.push(data.list[i].id);                   
+        var echoApi = new mw.echo.api.EchoApi();
+        var res = echoApi.fetchNotifications( 'alert', 'local');
+        var trash = [];
+        res.done(function(data){
+            for (var i = 0; i < data.list.length; i++){
+                if (data.list[i].read == null){
+                    if (data.list[i].category == 'system-gift-receive' ){
+                        var url = data.list[i]['*'].links.primary.url;
+                        var link = '<a href="'+url+'">'+ data.list[i]['*'].body +'</a>';
+                        mw.notification.notify($(link), {
+                            autoHide: false,
+                            type: 'progress',
+                            tag: "achievement",
+                            title: '新成就'
+                        });
+                        trash.push(data.list[i].id);
+                    } else if (data.list[i].category == 'advancement' ){
+                        var url = data.list[i]['*'].links.primary.url;
+                        var link = '<a href="'+url+'">'+ data.list[i]['*'].header +'</a>';
+                         mw.notification.notify($(link), {
+                            autoHide: false,
+                            type: 'progress',
+                            tag: "advancement",
+                            title: '升级'
+                        }); 
+                        trash.push(data.list[i].id);                  
+                    } else if (data.list[i].category == 'gift-receive' ){
+                        var url = data.list[i]['*'].links.primary.url;
+                        var link = '<a href="'+url+'">'+ data.list[i]['*'].header +'</a>';
+                        mw.notification.notify($(link), {
+                            autoHide: false,
+                            type: 'progress',
+                            tag: "gift",
+                            title: '新礼物'
+                        }); 
+                        trash.push(data.list[i].id);                   
+                    }
                 }
             }
-        }
-        // var echoApi = new mw.echo.api.EchoApi();
-        echoApi.markItemsRead( trash, 'local', true);
-                
-    });
+            // var echoApi = new mw.echo.api.EchoApi();
+            echoApi.markItemsRead( trash, 'local', true);
+                    
+        });
     }
 });
 
