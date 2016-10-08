@@ -59,7 +59,7 @@ class FrontPage{
                 $siteRank[$key]['totalEdits'] = $stats['edits'];
                 $siteRank[$key]['totalArticles'] = $stats['articles'];
                 $siteRank[$key]['totalPages'] = $stats['pages'];
-                $siteRank[$key]['totalUsers'] = $stats['users'];
+                $siteRank[$key]['totalUsers'] = $stats['followers'];
             }
             //userrank
             $weekRank = UserStats::getUserRank(10,'week');
