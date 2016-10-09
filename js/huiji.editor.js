@@ -285,7 +285,7 @@ window.customizeToolbar = function() {
 									}
 									for (var i in t.link){
 										content = content.replace(re, function(match, p1, p2, offset, string){
-											if (p1.match(new RegExp(i, 'i'))){
+											if (p1.match(new RegExp(escapeRegExp(i), 'i'))){
 												return '[['+t.link[i]+p2;
 											} else {
 												return '[['+p1+p2;
