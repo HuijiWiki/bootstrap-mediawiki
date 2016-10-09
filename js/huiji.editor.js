@@ -254,6 +254,8 @@ window.customizeToolbar = function() {
 				action: {
 					type: 'callback',
 					execute: function(){
+						var re = /\[\[(.*?)(\||\]\])/gi; 
+						var m = [],matches = [];
 						// Translate from huiji-translation-pairs
 						var api = new mw.Api();
 						api.get({
@@ -267,14 +269,34 @@ window.customizeToolbar = function() {
 							var content = $('#wpTextbox1').val();
 							if (data.query.allmessages.missing != true && data.query.allmessages[0].content){
 								t = JSON.parse(data.query.allmessages[0].content);
-								for (var i in t){
-									content = content.replace(validateRegex(i), t[i]);
+								if (!t.version || t.version == 1){
+									for (var i in t){
+										content = content.replace(validateRegex(i), t[i]);
+									}									
+								} else if(t.version == 2){
+									for (var i in t.plain){
+										console.log(t.plain[i]);
+										content = content.replace(new RegExp(i, 'ig'), t.plain[i]);
+									}
+									for (var i in t.regex){
+										console.log(t.regex[i]);
+										content = content.replace(validateRegex(i), t.regex[i]);
+									}
+									for (var i in t.link){
+										console.log(t.link[i]);
+										content = content.replace(re, function(match, p1, p2, offset, string){
+											if (p1.match(new RegExp(i, 'i'))){
+												return '[['+t.link[i]+p2;
+											} else {
+												return '[['+p1+p2;
+											}
+										});
+									}
 								}
+
 							}	
 							
 							//Translate from lang links
-							var re = /\[\[(.*?)(\||\]\])/gi; 
-							var m = [],matches = [];
 							while( matches = re.exec(content)){
 								m.push(matches[1]);
 							}
