@@ -307,15 +307,24 @@ window.customizeToolbar = function() {
 						            mw.util.wikiScript(), {
 						                action: 'ajax',
 						                rs: 'wfGetEntry',
-						                rsargs: [m.join('|'), 'en', mw.config.get('wgHuijiPrefix'), 0, 1]
+						                rsargs: [m.join('|'), 'en', mw.config.get('wgHuijiPrefix'), 0, 2]
 						            },
 						            function(json){
 						            	var data = JSON.parse(json);
 						            	var tran = [];
 						            	for(i in data){
 						            		t = JSON.parse(data[i]);
-						            		if(t.status=='success' && t.result.hits>=1){
-						            			tran.push(t.result.objects[0].entry);
+						            		if(t.status=='success'){
+						            			if (t.result.hits == 1){
+						            				tran.push(t.result.objects[0].entry);
+						            			} else if (t.result.hits >= 2) {
+						            				if ( t.result.objects[0].entry == m[i] ){
+						            					tran.push(t.result.objects[1].entry);
+						            				}
+						            				tran.push(t.result.objects[0].entry);
+						            			} else {
+						            				tran.push(null);
+						            			}
 						            		} else {
 						            			tran.push(null);
 						            		}
