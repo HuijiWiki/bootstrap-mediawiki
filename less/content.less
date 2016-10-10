@@ -50,14 +50,11 @@ body{
 textarea {
   width: 95%;
 }
-textarea, input, [contenteditable]{
+textarea, input, html:not(.ve-activated) [contenteditable]{
   color: extract(@font-color,1);
   [contenteditable="true"]{
     background-color: extract(@background-color, 1);
   }
-  .ve-activated [contenteditable] {
-    color: inherit;
-  }   
 }
 .modal-dialog{
   color: extract(@font-color,1);

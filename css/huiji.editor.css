@@ -218,12 +218,6 @@ p.mw-edittools-section {
     display:inline;
     line-height: 1;
 }
-p.smw-editpage-help{
-	color: #333 !important;
-}
-a.smw-editpage-help a{
-    color: #0645ad !important;
-}
 .wikiEditor-ui-toolbar .section-main{
     height: 0 !important;
 }

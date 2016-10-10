@@ -13,3 +13,11 @@
 .skin-BootstrapMediawiki [contenteditable="true"]{
 	color: inherit;
 }
+html:not(.ve-activated) #firstHeading {
+	margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.1;
+    font-size: 3.8em;
+    display: inline;
+}
