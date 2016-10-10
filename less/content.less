@@ -54,6 +54,9 @@ textarea, input, [contenteditable]{
   color: extract(@font-color,1);
   [contenteditable="true"]{
     background-color: extract(@background-color, 1);
+  }
+  .ve-activated [contenteditable] {
+    color: inherit;
   }   
 }
 .modal-dialog{

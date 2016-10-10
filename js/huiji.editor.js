@@ -269,32 +269,36 @@ window.customizeToolbar = function() {
 							formatversion: 2,
 							format: 'json'
 						}).done(function(data){
-							var content = $('#wpTextbox1').val();
-							if (data.query.allmessages.missing != true && data.query.allmessages[0].content){
-								t = JSON.parse(data.query.allmessages[0].content);
-								if (!t.version || t.version == 1){
-									for (var i in t){
-										content = content.replace(validateRegex(i), t[i]);
-									}									
-								} else if(t.version == 2){
-									for (var i in t.plain){
-										content = content.replace(new RegExp(escapeRegExp(i), 'ig'), t.plain[i]);
+							try{
+								var content = $('#wpTextbox1').val();
+								if (data.query.allmessages.missing != true && data.query.allmessages[0].content){
+									t = JSON.parse(data.query.allmessages[0].content);
+									if (!t.version || t.version == 1){
+										for (var i in t){
+											content = content.replace(validateRegex(i), t[i]);
+										}									
+									} else if(t.version == 2){
+										for (var i in t.plain){
+											content = content.replace(new RegExp(escapeRegExp(i), 'ig'), t.plain[i]);
+										}
+										for (var i in t.regex){
+											content = content.replace(validateRegex(i), t.regex[i]);
+										}
+										for (var i in t.link){
+											content = content.replace(re, function(match, p1, p2, offset, string){
+												if (p1.match(new RegExp('^'+escapeRegExp(i)+'$', 'i'))){
+													return '[['+t.link[i]+p2;
+												} else {
+													return '[['+p1+p2;
+												}
+											});
+										}
 									}
-									for (var i in t.regex){
-										content = content.replace(validateRegex(i), t.regex[i]);
-									}
-									for (var i in t.link){
-										content = content.replace(re, function(match, p1, p2, offset, string){
-											if (p1.match(new RegExp(escapeRegExp(i), 'i'))){
-												return '[['+t.link[i]+p2;
-											} else {
-												return '[['+p1+p2;
-											}
-										});
-									}
-								}
 
-							}	
+								}	
+							} catch(e){
+								alert("翻译失败，请检查Huiji-translation-pairs");
+							}
 							
 							//Translate from lang links
 							while( matches = re.exec(content)){
