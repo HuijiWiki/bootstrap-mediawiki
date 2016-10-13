@@ -22,12 +22,12 @@
       #mw-search-top-table .mw-ui-button{
         font-size: 14px;
     }
-      #mw-search-top-table div.results-info{
+    #mw-search-top-table div.results-info{
         float: none;
         text-align: center;
         font-size: 14px;
     }
-      .mw-search-profile-tabs{
+    .mw-search-profile-tabs{
         background: transparent;
         border: none;
     }
@@ -62,7 +62,7 @@
         margin: 0 auto;
         padding: 5px 20px;
     }
-    .mw-search-createlink{
+    .mw-search-createlink, .mw-search-exists, .mw-search-nonefound{
         text-align: center;
     }
     .mw-search-result-heading{
@@ -81,6 +81,26 @@
         font-size: 100%;
         text-align: center;
     }
+    .mw-search-result-data{
+        color: @brand-success;
+    }
+    div#mw-search-interwiki{
+        border: 0px;
+        .mw-search-interwiki-caption{
+            display: none;
+        }
+        .mw-search-iwresults{
+            display: none;
+        }
+        .mw-search-interwiki-project{
+            border-top: 0px;
+            padding: 8px;
+        }
+        .mw-search-interwiki-more a{
+            color: @brand-info;
+        }
+    }
+
 }
 
 @media screen and (max-width: 768px){
