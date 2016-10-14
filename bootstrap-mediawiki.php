@@ -251,7 +251,7 @@ $wgResourceModules['skins.bootstrapmediawiki.huiji.globalsearch.suggest'] = arra
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
-	'position' => 'top',	
+	'position' => 'bottom',	
 );
 $wgResourceModules['skins.bootstrapmediawiki.huiji.ve'] = array(
 	'scripts' => array(

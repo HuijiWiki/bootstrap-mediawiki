@@ -157,7 +157,7 @@ $(document).ready(function(){
        $('#icon-section').toggleClass('xs-show');
     });
     $('.search-toggle').click(function(){
-       $('#searchformphone').toggleClass('visible-xs-block');
+       $('#huiji-mobile-search-form').toggleClass('visible-xs-block');
     });
     $('.subnav #subnav-toggle').click(function(){
         var length;

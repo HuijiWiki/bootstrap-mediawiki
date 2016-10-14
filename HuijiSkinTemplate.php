@@ -532,7 +532,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         <a class="visible-sm-block wiki-toggle">
                             <i class="fa fa-chevron-down"></i>
                         </a>
-                        <form class="navbar-search navbar-form" action="/index.php" id="searchformphone" role="search">
+                        <form class="navbar-search navbar-form" action="/index.php" id="huiji-mobile-search-form" role="search">
                             <div>
                                 <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="搜索'.$wgSitename.' [ctrl-option-f]" accesskey="f" id="searchInputPhone" autocomplete="off">
                                 <input type="hidden" name="title" value="'.$specialPage.'">
@@ -611,7 +611,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                             </li>
                         </ul>';
                     }
-                    $output .= '<form class="navbar-search navbar-form table-cell hidden-xs" action="/index.php" id="searchform" role="search">
+                    $output .= '<form class="navbar-search navbar-form table-cell hidden-xs" action="/index.php" id="huiji-search-form" role="search">
                             <div>
                                 <span class="fa fa-search navbar-search"></span>
                                 <input class="form-control" type="search" name="'.$key.'" placeholder="在'.$wgSitename.'内搜索" title="搜索'.$wgSitename.' [ctrl-option-f]" accesskey="f" id="'.$searchFormId.'" autocomplete="off">
