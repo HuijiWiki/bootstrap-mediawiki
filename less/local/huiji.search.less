@@ -86,6 +86,7 @@
     }
     div#mw-search-interwiki{
         border: 0px;
+        width: auto;
         .mw-search-interwiki-caption{
             display: none;
         }
@@ -99,6 +100,25 @@
         .mw-search-interwiki-more a{
             color: @brand-info;
         }
+    }
+    .mw-special-Search #powerSearchText {
+        display: inline-block;
+        width: 100%;
+        font-size: 14px;
+        border-radius: 3px 0 0 3px;
+        max-width: 500px;
+        padding: 7px;
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+    #wiki-body #mw-searchoptions{
+        border:none!important;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 20px!important;
+    }
+    #wiki-body #mw-searchoptions div.divider{
+        border-bottom: none;
     }
 
 }

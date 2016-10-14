@@ -242,7 +242,7 @@ $wgResourceModules['skins.bootstrapmediawiki.huiji.getrecordsinterface.js'] = ar
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'bottom',	
 );
-$wgResourceModules['skins.bootstrapmediawiki.huiji.globalsearch'] = array(
+$wgResourceModules['skins.bootstrapmediawiki.huiji.globalsearch.suggest'] = array(
 	'scripts' => array(
 		$skinDir . '/js/huiji.globalsearch.js',
 	),

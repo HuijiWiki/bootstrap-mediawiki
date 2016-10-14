@@ -543,7 +543,7 @@ Class BootstrapMediawikiHooks {
         if ($wgHuijiPrefix !== 'www' && $wgHuijiPrefix !== 'test'){
             $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
         } else {
-            $out->addModules( 'skins.bootstrapmediawiki.huiji.globalsearch');
+            $out->addModules( 'skins.bootstrapmediawiki.huiji.globalsearch.suggest');
         }
         $NS = $out->getTitle()->getNamespace();
         if ( $out->getUser()->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $out->getTitle()->exists()){
