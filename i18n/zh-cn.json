@@ -12,5 +12,9 @@
     "visualeditor-ca-ve-huiji-editsource": "<span class='icon-edit-code'></span> 代码编辑",
     "visualeditor-ca-ve-huiji-create": "<span class='icon-pencil'></span> 创建",
     "visualeditor-ca-ve-huiji-createsource": "<span class='icon-edit-code'></span> 代码创建",
-    "smw-editpage-annotation-disabled":"由于名字空间限制，此页面在语义文内注释中不会启用。"
+    "smw-editpage-annotation-disabled":"由于名字空间限制，此页面在语义文内注释中不会启用。",
+    "<span class='icon-huiji'></span>search-rewritten":"以下为您显示$1的搜索结果。仍然搜索$2",
+    "search-interwiki-caption":"",
+    "searchmenu-new":"<span class='icon-huiji'></span>$1页面正等待您的创建！",
+    "searchmenu-exists":"<span class='icon-huiji'></span>{{SITENAME}}上已有$1页面。"
 }
