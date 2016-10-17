@@ -62,6 +62,14 @@
                         "text" => "调试",
                     );
             }
+            if ( $wgUser->isAllowed('smw-admin') ){
+                $this->data['content_actions']['browse'] = array(
+                        "key" => "browse",
+                        "href" => "/wiki/Special:Browse/".$this->getSkin()->getTitle()->getPrefixedText(),
+                        "class" => "browse ",
+                        "text" => "SMW属性",
+                    );                
+            }
             $subnav_links = $this->listAdapter( $this->data['content_actions']);
             if( $NS !== NS_USER || !$this->getSkin()->getTitle()->isSubpage()){
                 echo $this->nav( $subnav_links );
