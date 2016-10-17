@@ -358,9 +358,25 @@ a {
     .bg-compute-text(@brand-info);
     .bg-compute-text(@detail-wikitable-bg);
   }
-  .table-stripe {
+  .stripe-table .table-stripe {
     tr:nth-child(odd) {
       .mixin2(@bg-inner)
+    }
+  }
+  .alt-table, .darktable, .table-dark {
+    .alt-bg( @well ) ; 
+    .alt-bg( @detail-wikitable-bg );
+    .alt-color( @main-base );
+    .alt-color( @detail-wikitable-a ) ;
+    a {
+      .alt-color( @detail-wikitable-a );
+    }
+    tr, td, th {
+      .alt-border(@bg-inner);
+      .alt-border( #fff - @detail-wikitable-border );
+    }
+    th {
+      .alt-bg( @detail-wikitable-th-bg );
     }
   }
   .infobox {

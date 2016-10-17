@@ -60,6 +60,39 @@
   color: @n;
 }
 
+.alt-bg (@n) when ( iscolor(@n) ) {
+  & when (lightness(@n) >= 50%) {
+    background-color: darken(@n, 80%) !important;
+  }
+  & when (lightness(@n) < 50%) {
+    background-color: lighten(@n, 80%) !important;
+  }
+}
+
+.alt-color (@n) when ( iscolor(@n) ) {
+  & when (lightness(@n) >= 50%) {
+    color: darken(@n, 80%) !important;
+    & a:hover{
+      color: darken(@n, 65%) !important;
+    }
+  }
+  & when (lightness(@n) < 50%) {
+    color: lighten(@n, 80%) !important;
+    & a:hover{
+      color: lighten(@n, 65%) !important;
+    }
+  }
+}
+
+.alt-border (@n) when ( iscolor(@n) ) {
+  & when (lightness(@n) >= 50%) {
+    border: 1px darken(@n, 65%) solid !important;
+  }
+  & when (lightness(@n) < 50%) {
+    border: 1px lighten(@n, 65%) solid !important;
+  }
+}
+
 //高级设置颜色调用方法
 .bg(@n) when(iscolor(@n)){
   background-color: @n;
