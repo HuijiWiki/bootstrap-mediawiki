@@ -62,7 +62,10 @@
                         "text" => "调试",
                     );
             }
-            if ( $wgUser->isAllowed('smw-admin') ){
+            global $smwgNamespacesWithSemanticLinks;
+            if ( !empty( $smwgNamespacesWithSemanticLinks[$this->getSkin()->getTitle()->getNamespace()] ) 
+                && $wgUser->isAllowed('smw-admin') 
+            ){
                 $this->data['content_actions']['browse'] = array(
                         "key" => "browse",
                         "href" => "/wiki/Special:Browse/".$this->getSkin()->getTitle()->getPrefixedText(),
