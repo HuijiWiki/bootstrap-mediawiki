@@ -1,6 +1,4 @@
-//此文件从content.less底部导入
-
-@import "mixins.less"; //用于主题颜色编辑器预览
+@import "mixins.less";
 
 @btn-default-color:              #333;
 @btn-default-bg:                 @brand-default;
@@ -373,7 +371,7 @@ a {
     }
     tr, td, th {
       .alt-border(@bg-inner);
-      .alt-border( #fff - @detail-wikitable-border );
+      .alt-border( @detail-wikitable-border );
     }
     th {
       .alt-bg( @detail-wikitable-th-bg );

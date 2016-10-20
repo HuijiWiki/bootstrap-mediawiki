@@ -1,7 +1,6 @@
-//引入主色调生成的颜色到bootstrap
+
 .a();
 
-//引入边框色变量到bootstrap
 .border-color-variable(@m,@n){
   @huiji-border-color: @m;
   & when (iscolor(@n)){
@@ -10,7 +9,6 @@
 }
 .border-color-variable(@main-lighter, @detail-border);
 
-//引入背景色变量到bootstrap
 .bg-color-variable(@m,@n){
   @huiji-bg: @m;
   & when (iscolor(@n)){
@@ -19,7 +17,6 @@
 }
 .bg-color-variable(@bg-inner, @detail-inner-bg);
 
-//引入darken色变量到bootstrap
 .darken-bg-color-variable(@n) when (lightness(@n) >= 50%) {
     @huiji-bg-darken: darken(@n, 10%);
   }
@@ -29,7 +26,6 @@
 
 .darken-bg-color-variable(@huiji-bg);
 
-//引入字体色变量到bootstrap
 .font-color-variable(@m,@n){
   @huiji-color: @m;
   & when (iscolor(@n)){

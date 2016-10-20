@@ -513,6 +513,10 @@ a:hover,a:focus,a:active{
     vertical-align: top;
     height: 24px;
 }
+.sm-logo img{
+    vertical-align: top;
+    height: 24px;   
+}
 .two-code{
     width: 100px;
 }
