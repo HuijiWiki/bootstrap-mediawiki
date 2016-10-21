@@ -16,5 +16,7 @@
     "search-rewritten":"已显示$1的搜索结果。仍然搜索$2。",
     "search-interwiki-caption":"",
     "searchmenu-new":"<span class='icon-huiji'></span> [[$1]]页面正等待您的创建！",
-    "searchmenu-exists":"<span class='icon-huiji'></span> {{SITENAME}}上已有名为[[$1]]的页面。"
+    "searchmenu-exists":"<span class='icon-huiji'></span> {{SITENAME}}上已有名为[[$1]]的页面。",
+    "smw-editpage-annotation-disabled":"<span class=\"icon-huiji\"></span> 该命名空间下语义注释不会生效。",
+    "smw-editpage-annotation-enabled":"<span class=\"icon-huiji\"></span> 本维基已开启语义维基（Semantic Mediawiki）选项，可参阅[[h:帮助:Semantic Mediawiki|SMW帮助]]。"
 }

@@ -22,5 +22,6 @@
     "visualeditor-ca-ve-huiji-editsource": "<span class='icon-edit-code'></span> 代码编辑",
     "visualeditor-ca-ve-huiji-create": "<span class='icon-pencil'></span> 创建",
     "visualeditor-ca-ve-huiji-createsource": "<span class='icon-edit-code'></span> 代码创建",
-    "smw-editpage-annotation-disabled":"由于名字空间限制，此页面在语义文内注释中不会启用。"
+    "smw-editpage-annotation-disabled":"<span class=\"icon-huiji\"></span> 该命名空间下语义注释不会生效。",
+    "smw-editpage-annotation-enabled":"<span class=\"icon-huiji\"></span> 本维基已开启语义维基选项（Semantic Mediawiki），可参见[[h:帮助:Semantic Mediawiki]]"
 }

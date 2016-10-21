@@ -552,7 +552,7 @@ a:hover,a:focus,a:active{
 }
 .wiki-href{
     padding-bottom: 15px;
-    margin-top: 120px;
+    margin-top: 135px;
 }
 .wiki-href:after{
     content: '';
@@ -1024,4 +1024,24 @@ body>.tooltip.top .tooltip-arrow{
 .bloglist {
     margin-top: 20px;
 }
-
+#game-portal {
+    background-color: #fff;
+    border-radius: 9px;
+    width: 150px;
+    height: 60px;
+    position: relative;
+    right: -150px;
+    top: -85px;
+    margin-bottom: -70px;
+}
+.portal-logo {
+    width: 100px;
+    margin: 5px 25px;
+}
+.portal-text{
+    font-size: 8px;
+    text-align: center;
+    width: 150px;
+    color: black;
+    margin-top: -5px;
+}
