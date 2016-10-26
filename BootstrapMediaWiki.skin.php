@@ -383,11 +383,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             </div>
                         <?php } ?>
                         <footer>
-                            <?php if ($this->isPrimaryContent() && !$wgUser->isLoggedIn() && $wgHuijiPrefix != "lotr"){ ?>
-                                <div class="row hidden-sm hidden-xs text-center">
-                                <script type="text/javascript">var jd_union_unid="1000043118",jd_ad_ids="505:6",jd_union_pid="CMPLk/jSKhDu5O3cAxoAIPSlusYBKgA=";var jd_width=960;var jd_height=90;var jd_union_euid="";var p="BxICUxtcHQcbNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgycQMoUwJCX2RnBXkFFVp5Ul1%2FKU5HVAtZK14VBxQHVhNSFjISBlQaWhAAEgdcK2tKRk9aZVA1FDJNQwhGaxUHFQNXHVgSChsGURhrFA%3D%3D";</script><script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script>
-                                </div>
-                            <?php } ?>
                             <p class="text-center">
                                 <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> |
                                 <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> |
