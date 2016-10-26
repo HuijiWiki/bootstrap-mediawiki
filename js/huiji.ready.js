@@ -77,7 +77,7 @@ $(document).ready(function(){
     mw.notification.autoHideSeconds = 3;
 
     //table responsive
-    $('#mw-content-text table.wikitable, .mw-datatable, .smwb-factbox, .smwb-ifactbox, .smwb-ipropvalue, .smwtable, .mw-json, .property-page-results').each(function(){
+    $('#mw-content-text table.wikitable, .mw-datatable, .smwb-factbox, .smwtable, .mw-json, .property-page-results').each(function(){
        if (!$(this).parent('div.table-responsive').length){
            $(this).wrap('<div class="table-responsive"></div>');
        }
