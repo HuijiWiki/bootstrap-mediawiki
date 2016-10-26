@@ -135,24 +135,6 @@ a {
     .mixin(@detail-inner-bg);
   }
 }
-.empty-message{
-    padding: 5px;
-    margin: 40px;
-    text-align: center;
-    .secondary();
-    font-size: 1.8em;
-}
-.empty-message-small{
-  .empty-message();
-  font-size: 1em;
-}
-/*
-.oo-ui-window-frame{
-  background-color: @bg-inner;
-  .bg(@detail-bg);
-  color: @main-base;
-  .color(@detail-color);
-}*/
 .huiji-css-hook {
   background-color: @bg;
   .bg(@detail-bg);
@@ -237,7 +219,17 @@ a {
       }
     }
   }
-
+  .empty-message{
+      padding: 5px;
+      margin: 40px;
+      text-align: center;
+      .secondary();
+      font-size: 1.8em;
+  }
+  .empty-message-small{
+    .empty-message();
+    font-size: 1em;
+  }
   .color-picker {
     background-color: @bg-inner;
   }

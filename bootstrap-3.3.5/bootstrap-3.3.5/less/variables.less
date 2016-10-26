@@ -123,15 +123,20 @@
 @table-condensed-cell-padding:  5px;
 
 //** Default background color used for all tables.
-@table-bg:                      transparent;
+@table-bg:                      @well;
+@table-bg:                      @detail-wikitable-bg when(iscolor(@detail-wikitable-bg));
 //** Background color used for `.table-striped`.
-@table-bg-accent:               #f9f9f9;
+@table-bg-accent:               @bg-inner;
+// @table-bg-accent:               when(iscolor(@detail-wikitable-bg)) lighten(@detail-wikitable-bg, 10%) ;
 //** Background color used for `.table-hover`.
-@table-bg-hover:                #f5f5f5;
-@table-bg-active:               @table-bg-hover;
+@table-bg-hover:                darken(@well, 5%);
+@table-bg-hover:                @detail-wikitable-th-bg when(iscolor(@detail-wikitable-th-bg));
+@table-bg-active:               darken(@well, 10%);
+@table-bg-active:               @detail-wikitable-th-bg when(iscolor(@detail-wikitable-th-bg));
 
 //** Border color for table and cell borders.
 @table-border-color:            transparent;
+@table-border-color:            @detail-wikitable-border when(iscolor(@detail-wikitable-border));
 
 
 //== Buttons
