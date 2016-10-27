@@ -155,14 +155,14 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             </p>
         <![endif]-->
         <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-10190882-3', 'auto', {allowLinker: true});
-            ga('require', 'linker');
-            ga('linker:autoLink', ['huiji.wiki','huijiwiki.com']);
-            ga('send', 'pageview');
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-10190882-3', 'auto');
+          ga('send', 'pageview');
+
         </script>
         <div id="wrapper">
         <script>
@@ -417,7 +417,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 bdMiniList: false,
                 bdPic: "",
                 bdStyle: "2",
-                bdUrl:"http://<?php echo $wgHuijiPrefix.$wgCdnHuijiSuffix; ?>/index.php?curid=<?php echo $this->skin->getTitle()->getArticleId(); ?>",
+                bdUrl:"http://<?php echo $wgHuijiPrefix.$wgHuijiSuffix; ?>/index.php?curid=<?php echo $this->skin->getTitle()->getArticleId(); ?>",
             },
             share: [
                 {
