@@ -124,7 +124,6 @@
 
 //** Default background color used for all tables.
 @table-bg:                      @well;
-@table-bg:                      @detail-wikitable-bg when(iscolor(@detail-wikitable-bg));
 //** Background color used for `.table-striped`.
 @table-bg-accent:               @bg-inner;
 // @table-bg-accent:               when(iscolor(@detail-wikitable-bg)) lighten(@detail-wikitable-bg, 10%) ;
@@ -134,7 +133,6 @@
 
 //** Border color for table and cell borders.
 @table-border-color:            transparent;
-@table-border-color:            @detail-wikitable-border when(iscolor(@detail-wikitable-border));
 
 
 //== Buttons
