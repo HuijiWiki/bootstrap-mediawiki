@@ -5,6 +5,11 @@
   @main-middle:darken(@main-base, 0.335*lightness(@main-base));
   @main-light:darken(@main-base, 0.467*lightness(@main-base));
   @main-lighter:darken(@main-base, 0.75*lightness(@main-base));
+  @well-darker:lighten(@well, 0.135*(lightness(@well)));
+  @well-dark:lighten(@well, 0.2*(lightness(@well)));
+  @well-middle:lighten(@well, 0.335*(lightness(@well)));
+  @well-light:lighten(@well, 0.467*(lightness(@well)));
+  @well-lighter:lighten(@well, 0.75*(lightness(@well)));
 }
 .a() when (lightness(@main-base)=<50%){
   @main-darker:lighten(@main-base, 0.135*(100 - lightness(@main-base)));
@@ -12,6 +17,11 @@
   @main-middle:lighten(@main-base, 0.335*(100 - lightness(@main-base)));
   @main-light:lighten(@main-base, 0.467*(100 - lightness(@main-base)));
   @main-lighter:lighten(@main-base, 0.75*(100 - lightness(@main-base)));
+  @well-darker:lighten(@well, 0.135*(100 - lightness(@well)));
+  @well-dark:lighten(@well, 0.2*(100 - lightness(@well)));
+  @well-middle:lighten(@well, 0.335*(100 - lightness(@well)));
+  @well-light:lighten(@well, 0.467*(100 - lightness(@well)));
+  @well-lighter:lighten(@well, 0.75*(100 - lightness(@well)));
 }
 .compute-text(@n) when (iscolor(@n)) {
   p {

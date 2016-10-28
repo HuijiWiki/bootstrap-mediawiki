@@ -7,6 +7,7 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 @import "../../../less/mixins.less";
+.a();
 
 @gray-base:              #000;
 @gray-darker:            lighten(@gray-base, 13.5%); // #222
@@ -128,11 +129,11 @@
 @table-bg-accent:               @well;
 // @table-bg-accent:               when(iscolor(@detail-wikitable-bg)) lighten(@detail-wikitable-bg, 10%) ;
 //** Background color used for `.table-hover`.
-@table-bg-hover:                darken(@well, 5%);
-@table-bg-active:               darken(@well, 10%);
+@table-bg-hover:                @well-dark;
+@table-bg-active:               @well-darker;
 
 //** Border color for table and cell borders.
-@table-border-color:            lighten(@main-base, 5%);
+@table-border-color:            @main-light;
 
 
 //== Buttons
