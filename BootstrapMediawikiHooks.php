@@ -137,6 +137,7 @@ Class BootstrapMediawikiHooks {
         $title = isset( $args['title'] ) ? $args['title'] : $parser->recursiveTagParse('{{PAGENAME}}');
         $subtitle = isset( $args['subtitle'] ) ? $args['subtitle'] : $parser->recursiveTagParse('{{SITENAME}}');
         $fontcolor = isset( $args['fontcolor'] ) ? $args['fontcolor'] : '#FFF';
+        $wide = isset( $args['wide'] ) ? $args['wide'] : 'false';
         if (isset($input)) {
             $title = $input;
         }
@@ -148,6 +149,7 @@ Class BootstrapMediawikiHooks {
                 'title' => $title,
                 'subtitle' => $subtitle,
                 'fontcolor' => $fontcolor,
+                'wide' => $wide,
             )
         );
         // $parser->getOutput()->addModuleStyles('skins.bootstrapmediawiki.header');
