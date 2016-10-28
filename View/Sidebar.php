@@ -86,6 +86,7 @@
             </a>
             <ul>
                 <li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes" rel="nofollow"><i class="fa fa-edit"></i> 最近更改</a></li>
+                <li><a href="<?php echo $url_prefix; ?>Special:NewFiles" class="new-files" rel="nofollow"><i class="fa fa-image"></i> 新的文件</li>
                 <li><a href="<?php echo $url_prefix; ?>Special:Randompage" class="random-page" rel="nofollow"><i class="fa fa-random "></i> 随机页面</a></li>
                 <?php if ( $wgEnableUploads ) { ?>
                     <li><a href="<?php echo $url_prefix; ?>Special:文件上传" class="upload-a-file" rel="nofollow"><i class="fa fa-upload"></i> 上传文件</a></li>
@@ -94,17 +95,10 @@
                 <?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );?>
                 <li><a target="_blank" href="http://www.huiji.wiki/wiki/帮助讨论:用户手册" class="upload-a-file" rel="nofollow"><i class="fa fa-question-circle"></i> 求助提问</a></li>
                 <?php if ( $wgHuijiPrefix !== 'www' && $this->data['isarticle'] ) { ?>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-flask"></i> 特殊页面 <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="<?php echo $url_prefix.'Special:whatlinkshere/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="what-links-here" rel="nofollow"><i class="fa fa-link "></i> 链入页面</a></li>
-                        <li><a href="<?php echo $url_prefix.'Special:最近链出更改/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="related-changes" rel="nofollow"><i class="fa fa-paperclip "></i> 相关更改</a></li>
-                        <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages" rel="nofollow"><i class="fa fa-star-o"></i> 全部特殊页面</a></li>
-                    </ul>
-                </li>
+                <li><a href="<?php echo $url_prefix.'Special:whatlinkshere/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="what-links-here" rel="nofollow"><i class="fa fa-link "></i> 链入页面</a></li>
+                <li><a href="<?php echo $url_prefix.'Special:最近链出更改/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="related-changes" rel="nofollow"><i class="fa fa-paperclip "></i> 相关更改</a></li>
                 <?php } ?>
+                <li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages" rel="nofollow"><i class="fa fa-star-o"></i> 全部特殊页面</a></li>
                 <?php if ( $wgHuijiPrefix !== 'www' ) { ?>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
