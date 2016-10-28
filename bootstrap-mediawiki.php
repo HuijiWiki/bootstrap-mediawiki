@@ -81,6 +81,17 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
 );
+$wgResourceModules['skins.bootstrapmediawiki.header'] = array(
+	'styles' => array(
+		$skinDir . '/less/local/huiji.header.less'            => array( 'media' => 'all' ),
+	),
+	'scripts' => array(	
+		$skinDir . '/js/huiji.header.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
+	'position' => 'top',
+);
 $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'scripts' => array(
 		$skinDir . '/js/fastclick.js',

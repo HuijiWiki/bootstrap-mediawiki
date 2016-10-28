@@ -86,7 +86,7 @@ ol.references {
 	.toc-sidebar .nav>.active>ul{
 		display:block;
 	}
-	.nav-list.affix, .nav-list.affix-top{
+	.nav-list.affix{
 		position:fixed;
 	}
 
@@ -102,7 +102,7 @@ ol.references {
 }
 
 @media (min-width:1200px){
-	.nav-list.affix,.nav-list.affix-bottom{
+	.nav-list.affix-top,.nav-list.affix,.nav-list.affix-bottom{
 		width:263px
 	}
 

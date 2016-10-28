@@ -150,6 +150,8 @@ Class BootstrapMediawikiHooks {
                 'fontcolor' => $fontcolor,
             )
         );
+        // $parser->getOutput()->addModuleStyles('skins.bootstrapmediawiki.header');
+        $parser->getOutput()->addModules('skins.bootstrapmediawiki.header');
         return $output;
     }
     public static function getNavs( $input, $args, $parser ) {
