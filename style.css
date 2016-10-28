@@ -1249,28 +1249,7 @@ ol.carousel-indicators{
 .mw-editsection{
   font-family: 'icomoon';
 }
-/*ads*/
-@media screen and (max-width: 1920px){
-  .ads-left, .ads-right{
-    display:none;
-  }
-}
-@media screen and (min-width: 1920px){
-  .ads-center {
-    display:none;
-  }
-}
-.ads-fixed iframe {
-    width: 100%!important;
-}
-.ads-left{
-  position: fixed;
-  left: 0;
-}
-.ads-right{
-  position: fixed;
-  right: 0;
-}
+
 #pagehistory li{
     border: none;
 }
