@@ -685,7 +685,6 @@ body .mw-echo-overlay::before{
     #mw-content-text>*{
       margin-left:15px;
       margin-right: 15px;
-      width: auto;
     }
     .infobox{
         width:100%!important;
