@@ -77,9 +77,6 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/bootstrap/js/bootstrap.js',		
 		$skinDir . '/js/huiji.preload.js',
 	),	
-	'dependencies' => array(
-		'skins.bootstrapmediawiki.header',
-	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
