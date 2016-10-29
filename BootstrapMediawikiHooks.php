@@ -134,8 +134,8 @@ Class BootstrapMediawikiHooks {
         global $wgHuijiSuffix;
         $m = array();
         $bga = isset( $args['background'] ) ? $args['background'] : 'http://cdn'.$wgHuijiSuffix.'/shareduploads/uploads/d/d7/Huijibanner_default.png';
-        $title = isset( $args['title'] ) ? $args['title'] : $parser->recursiveTagParse('{{PAGENAME}}');
-        $subtitle = isset( $args['subtitle'] ) ? $args['subtitle'] : $parser->recursiveTagParse('{{SITENAME}}');
+        $title = $parser->recursiveTagParse(isset( $args['title'] ) ? $args['title'] : '{{PAGENAME}}');
+        $subtitle = $parser->recursiveTagParse(isset( $args['subtitle'] ) ? $args['subtitle'] : '{{SITENAME}}' );
         $fontcolor = isset( $args['fontcolor'] ) ? $args['fontcolor'] : '#FFF';
         $wide = isset( $args['wide'] ) ? $args['wide'] : 'false';
         if (isset($input)) {
