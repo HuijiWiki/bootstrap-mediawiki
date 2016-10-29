@@ -92,7 +92,7 @@ $(function() {
 	        $('aside.toc-sidebar .toc-ul-wrap> ul').affix({
 	          offset: {
 	            top: function(){
-                    return ((mw.loader.getState('skins.bootstrapmediawiki.header') == 'ready')?350:0);
+                    return (this.top = ($('.parallax-bg').length?$('.parallax-bg').outerHeight(true):0) );
                 },
 	            bottom: function () {
 	              return (this.bottom = $('.bottom').outerHeight(true));
