@@ -944,7 +944,7 @@ $(document).ready(function(){
        
     }
     //Make {{USERNAME}} work
-    $('.insertusername').html(mw.config.get('wgUserName')); 
+    $('.insertusername').html(mw.config.get('wgUserName')||'机友'); 
     if (mw.config.get('wgUserName') != null){
         var echoApi = new mw.echo.api.EchoApi();
         var res = echoApi.fetchNotifications( 'alert', 'local');
