@@ -943,14 +943,8 @@ $(document).ready(function(){
         collapseRow.init(option);
        
     }
-    
-    // instead, let's open it after 2 seconds
-    // window.setTimeout(function(){
-    //     api.open();
-    //     console.log('opening');
-    // }, 2000);
-
-//    function show()
+    //Make {{USERNAME}} work
+    $('.insertusername').text(mw.config.get('wgUsername')); 
     if (mw.config.get('wgUsername') != null){
         var echoApi = new mw.echo.api.EchoApi();
         var res = echoApi.fetchNotifications( 'alert', 'local');
