@@ -16,12 +16,12 @@ $(function() {
         var scrolled = $(window).scrollTop();
         $('.parallax-bg').css('height', (jumboHeight-scrolled+100) + 'px');
     }
-    if (!window.is_mobile_device()){
+   // if (!window.is_mobile_device()){
         $(window).scroll(function(e){
             parallax();
         });
-    } else {
-        $('.parallax-bg').css({'position': 'absolute','height':'300px','top':'-10px'});
-        $('.parallax-jumbotron').css('height', '300px');
-    }
+   // }// else {
+     //   $('.parallax-bg').css({'position': 'absolute','height':'300px','top':'-10px'});
+     //   $('.parallax-jumbotron').css('height', '300px');
+   // }
 });
