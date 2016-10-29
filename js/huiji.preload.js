@@ -101,7 +101,7 @@ $(function() {
 	        });
 	        $('aside.toc-sidebar ul').addClass('nav nav-list');
 	        $('.toc-sidebar').attr('id', 'toc');
-	        $('body').scrollspy({target: '#toc .toc-ul-wrap', offset:60});
+	        $('body').scrollspy({target: '#toc .toc-ul-wrap', offset:185});
 	
 	    } else {
             //TODO add mobile handlers
