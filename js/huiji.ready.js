@@ -944,8 +944,8 @@ $(document).ready(function(){
        
     }
     //Make {{USERNAME}} work
-    $('.insertusername').text(mw.config.get('wgUsername')); 
-    if (mw.config.get('wgUsername') != null){
+    $('.insertusername').html(mw.config.get('wgUserName')); 
+    if (mw.config.get('wgUserName') != null){
         var echoApi = new mw.echo.api.EchoApi();
         var res = echoApi.fetchNotifications( 'alert', 'local');
         var trash = [];
