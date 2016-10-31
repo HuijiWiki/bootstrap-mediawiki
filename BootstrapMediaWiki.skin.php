@@ -417,7 +417,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 bdMiniList: false,
                 bdPic: "",
                 bdStyle: "2",
-                bdUrl:"http://<?php echo $wgHuijiPrefix ?>.huiji.wiki/index.php?curid=<?php echo $this->skin->getTitle()->getArticleId(); ?>",
+                bdUrl:"http://<?php echo $wgHuijiPrefix ?>.huijiwiki.com/index.php?curid=<?php echo $this->skin->getTitle()->getArticleId(); ?>",
             },
             share: [
                 {
