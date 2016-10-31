@@ -529,7 +529,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                         <a class="visible-xs-inline-block search-toggle">
                             <span class="fa fa-search navbar-search"></span>
                         </a>
-                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand"><img alt="Logo" src="'.$wgLogo.'"> </a>
+                        <a title="灰机wiki" href="http://huiji.wiki" class="navbar-brand"><img id="huiji-logo-main" alt="Logo" src="'.$wgLogo.'"> </a>
                         <a class="visible-sm-block wiki-toggle">
                             <i class="fa fa-chevron-down"></i>
                         </a>
@@ -606,9 +606,9 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 //old login
                         $output .= '<ul class="nav navbar-nav navbar-right navbar-login">
                             <li>'.
-                                Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '登录', array('id' => 'pt-login', 'rel'=>'nofollow', 'class'=> 'login'), array('returnto' =>htmlspecialchars( $this->getSkin()->getTitle()->getFullText() ) ) )  
+                                Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '登录', array('id' => 'pt-login', 'rel'=>'nofollow', 'class'=> 'login'), array('returnto' =>htmlspecialchars( $this->getSkin()->getTitle()->getFullText() ) ),'http' )  
                             .'</li>
-                            <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount', 'rel' => 'nofollow'),array('type' => 'signup') ).'
+                            <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount', 'rel' => 'nofollow'),array('type' => 'signup'),'http' ).'
                             </li>
                         </ul>';
                     }
