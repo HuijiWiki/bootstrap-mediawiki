@@ -606,9 +606,9 @@ Class HuijiSkinTemplate extends BaseTemplate {
                                 //old login
                         $output .= '<ul class="nav navbar-nav navbar-right navbar-login">
                             <li>'.
-                                Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '登录', array('id' => 'pt-login', 'rel'=>'nofollow', 'class'=> 'login'), array('returnto' =>htmlspecialchars( $this->getSkin()->getTitle()->getFullText() ) ), 'http' )  
+                                Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '登录', array('id' => 'pt-login', 'rel'=>'nofollow', 'class'=> 'login'), array('returnto' =>htmlspecialchars( $this->getSkin()->getTitle()->getFullText() ) ) )  
                             .'</li>
-                            <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount', 'rel' => 'nofollow'),array('type' => 'signup'),'http' ).'
+                            <li>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('id' => 'pt-createaccount', 'rel' => 'nofollow'),array('type' => 'signup') ).'
                             </li>
                         </ul>';
                     }
