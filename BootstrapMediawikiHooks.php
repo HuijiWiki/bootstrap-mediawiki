@@ -557,10 +557,6 @@ Class BootstrapMediawikiHooks {
             $out->addModuleStyles( array('skins.bootstrapmediawiki.special.less') );
         }
         /* bypass CDN for admins */
-        if ($out->getUser()->isAllowed('reupload') && !$wgMobile){ 
-            $out->mBodytext = str_replace('http://cdn.huijiwiki.com/', 'http://cdn'.$wgHuijiSuffix.'/', $out->mBodytext);
-        }        
-
         return true;
 
     }
