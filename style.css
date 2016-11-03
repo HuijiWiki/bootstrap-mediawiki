@@ -1302,6 +1302,7 @@ body.skin-BootstrapMediawiki > .oo-ui-windowManager {
 }
 .table-responsive{
   display:inline;
+  border:0px !important;
 }
 .user-group-icon{
   font-size: 0.8em;
