@@ -93,7 +93,7 @@
                 <?php } ?>
                 <!-- <li><a href="<?php echo $url_prefix; ?>Special:CreatePoll" class="poll-page" rel="nofollow"><i class="icon-pie-chart "></i> 创建投票</a></li> -->
                 <?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );?>
-                <li><a target="_blank" href="http://www.huiji.wiki/wiki/帮助讨论:用户手册" class="upload-a-file" rel="nofollow"><i class="fa fa-question-circle"></i> 求助提问</a></li>
+                <!--<li><a target="_blank" href="http://www.huiji.wiki/wiki/帮助讨论:用户手册" class="upload-a-file" rel="nofollow"><i class="fa fa-question-circle"></i> 求助提问</a></li> -->
                 <?php if ( $wgHuijiPrefix !== 'www' && $this->data['isarticle'] ) { ?>
                 <li><a href="<?php echo $url_prefix.'Special:whatlinkshere/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="what-links-here" rel="nofollow"><i class="fa fa-link "></i> 链入页面</a></li>
                 <li><a href="<?php echo $url_prefix.'Special:最近链出更改/'.$this->getSkin()->getTitle()->getPrefixedText()?>" class="related-changes" rel="nofollow"><i class="fa fa-paperclip "></i> 相关更改</a></li>
