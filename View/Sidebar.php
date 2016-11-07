@@ -189,7 +189,7 @@
                     //echo '<a href="'.$sysop[$j]['url'].'"  title="'.$sysop[$j]['user_name'].'">'.$sysop[$j]['avatar'].'</a>';
                 }
                 if ( count($sysop) > 4 ) {
-                    echo Linker::linkKnown( $fanbox_link, '>>', array('class'=> 'more'), array( 'group' => $group,'limit' => 50 ) );
+                    echo Linker::linkKnown( $fanbox_link, '...', array('class'=> 'more'), array( 'group' => $group,'limit' => 50 ) );
                 }
                 ?>
             </div>

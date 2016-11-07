@@ -197,12 +197,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         } else {?>
             
             <?php include 'View/Sidebar.php';
-            // if ( $this->getSkin()->getTitle()->getNamespace()!=NS_USER &&  $this->getSkin()->getTitle()->isTalkPage()!=true 
-            //     &&  ($wgRequest->getText( 'action' )=='' ||  $wgRequest->getText( 'action' )=='purge') 
-            //     && ($this->getSkin()->getTitle()->getNamespace!=NS_TOPIC) )
-            // {
-            // 	$customClass = " class='huiji-css-hook'";
-            // }
                 $customClass = " class='huiji-css-hook'";
             ?>
 

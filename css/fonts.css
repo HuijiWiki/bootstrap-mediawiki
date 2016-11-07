@@ -27,9 +27,6 @@
 /*#pt-notifications-message:before {*/
     /*content: "\f003";*/
 /*}*/
-[class^="icon-lv1"], [class*=" icon-lv1"]{
-	padding-right: .5em;
-}
 .icon-lv1{
 	padding-right: 0;
 }
