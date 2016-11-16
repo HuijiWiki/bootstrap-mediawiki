@@ -678,12 +678,6 @@ $(document).ready(function(){
         $(this).css('cursor','default');
     });
 
-    $('body').on('click','.icon-weibo-share',function(){
-        var redirect_url = mw.config.get('wgHuijiPrefix');
-        mw.cookie.set( 'redirect_url', redirect_url );
-        window.location.href='https://api.weibo.com/oauth2/authorize?client_id=2445834038&redirect_uri=http%3A%2F%2Fhuiji.wiki%2Fwiki%2Fspecial%3Acallbackweibo&response_type=code';
-    });
-
 //    aside topic
     if($('.toc-sidebar .toc-ul-wrap>ul').length>0) {
         var maxheight = $(window).height() - $('.toc-sidebar').offset().top + 'px';
