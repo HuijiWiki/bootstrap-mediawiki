@@ -105,7 +105,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
 
         $out->addModuleStyles( array('skins.bootstrapmediawiki.top', 'mediawiki.ui.button', 'ext.HuijiMiddleware.feedback') );
         // we need to include this here so the file pathing is right$out->addModules( array( 'skins.bootstrapmediawiki.color' ) );
-        $out->addStyle( '//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css' );
+        $out->addStyle( '//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css' );
     }//end setupSkinUserCss
 }
 /**
@@ -403,6 +403,20 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             <?php
         }//end if
         ?>
+        <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+        </script>
         <script>window._bd_share_config={
             common: {
                 bdSnsKey: {},
@@ -411,7 +425,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 bdMiniList: false,
                 bdPic: "",
                 bdStyle: false,
-                bdSign: "off"
+                bdSign: "off",
                 bdUrl:"http://<?php echo $wgHuijiPrefix ?>.huiji.wiki/index.php?curid=<?php echo $this->skin->getTitle()->getArticleId(); ?>",
             },
             share: [
