@@ -410,19 +410,15 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 bdMini: "2",
                 bdMiniList: false,
                 bdPic: "",
-                bdStyle: "2",
+                bdStyle: false,
+                bdSign: "off"
                 bdUrl:"http://<?php echo $wgHuijiPrefix ?>.huiji.wiki/index.php?curid=<?php echo $this->skin->getTitle()->getArticleId(); ?>",
             },
             share: [
                 {
                     tag: "share_1",
                     bdSize: 16,
-                    bdCustomStyle:""
-                },
-                {
-                    tag: "share_2",
-                    bdSize: 16,
-                    bdCustomStyle:""
+                    bdCustomStyle:"http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/css/huiji.bdshare.css"
                 }
             ]
         };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>        

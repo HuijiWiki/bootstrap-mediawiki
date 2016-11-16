@@ -919,18 +919,6 @@ h3 .mw-editsection{
     position: relative;
     bottom:2px;
 }
-#wiki-body .bdsharebuttonbox a{
-    float: right;
-    font-size: 18px;
-    line-height:normal;
-    height:auto;
-    background-image: none;
-    cursor: pointer;
-    margin:0;
-    border-radius: 50%;
-    padding: 5px;
-    margin-right: 5px;
-}
 .page-nav-wrapper{
     text-align: center;
 }

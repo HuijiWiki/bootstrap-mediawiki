@@ -114,7 +114,7 @@ var recommend = {
                         self.funClipImg(percent, self.item);
 
                     } else {
-                        var content = '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="' + address + '/wiki/' + data.query.pages[x].title + '"><img data-src="/skins/bootstrap-mediawiki/img/recommend.png"></a>' +
+                        var content = '<div id="' + self.item + '" class="recommend-item lazy-loading"><a href="' + address + '/wiki/' + data.query.pages[x].title + '"><img data-src="http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/recommend.png"></a>' +
                             '<div class="recommend-title">' +
                             '<a href="http://' + i + '.huiji.wiki/wiki/' + data.query.pages[x].title + '" title="' + data.query.pages[x].title + '">' + data.query.pages[x].title + '</a>' +
                             '<a href="' + address + '">' + obj[i].value + '</a></div></div>';
@@ -150,7 +150,7 @@ var recommend = {
 
                     } else {
                         $('#' + id).removeClass('re-opacity');
-                        $('#' + id).prepend('<a href="'+address+'"><img data-src="/skins/bootstrap-mediawiki/img/recommend.png"></a>');
+                        $('#' + id).prepend('<a href="'+address+'"><img data-src="http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/recommend.png"></a>');
                     }
                 }
                 if(ajax == false) {
@@ -264,7 +264,7 @@ var recommend = {
                         self.funClipImg(percent,id);
 
                     } else {
-                        img = '<div id="' + id + '" class="recommend-item"><a href="'+address+'"><img src="/skins/bootstrap-mediawiki/img/recommend.png"></a><div class="recommend-title">' +
+                        img = '<div id="' + id + '" class="recommend-item"><a href="'+address+'"><img src="http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/img/recommend.png"></a><div class="recommend-title">' +
                             '<a href="' + item.address + '" title="'+item.title+'">' + item.title + '</a><a href="http://' + item.sitePrefix + '.huiji.wiki">' + item.siteName + '</a></div></div>';
                         if($('.recommend-load').length>0){
                             $('#recommend').data('owlCarousel').removeItem();

@@ -231,7 +231,7 @@ var mention = {
             // Initializes and creates emoji set from sprite sheet
             window.emojiPicker = new EmojiPicker({
                 emojiable_selector: '[data-emojiable=true]',
-                assetsPath:'/skins/bootstrap-mediawiki/emoji-picker/lib/img/',
+                assetsPath:'http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/emoji-picker/lib/img/',
                 popupButtonClasses: 'fa fa-smile-o'
             });
             // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
