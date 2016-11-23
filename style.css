@@ -278,6 +278,7 @@ blockquote.quote:after{
     display: block;
     z-index: 1;
     font-family: Arial;
+    opacity: 0.5;
 }
 .catlinks {
 	border-top-width: 1px;
@@ -636,6 +637,12 @@ body .mw-echo-overlay::before{
         max-width: 1400px;
     }
 }
+@media (max-width: 414px){
+  .container {
+    padding-left: 5px;
+    padding-right: 5px; 
+  }
+}
 
 #wiki-body h2 {
     border-bottom: none;
@@ -684,7 +691,7 @@ body .mw-echo-overlay::before{
 
 /*手机上图片不超过手机宽度*/
 @media screen and (min-width:320px ) and (max-width:414px ){
-    .infobox{
+    .infobox, .full-width-xs{
         width:100%!important;
     }
     div.thumb,.thumbinner,#bodyContent img, .comments-body img {
