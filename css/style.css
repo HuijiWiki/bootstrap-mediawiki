@@ -768,64 +768,96 @@ a:hover,a:focus,a:active{
     overflow: hidden;
     display: block;
 }
-.user-home-feed-content{
-    margin-top: 10px;
-}
-#home-feed-content .user-home-item-owner-avatar{
-    float: left;
-    width: auto;
-}
-#home-feed-content .user-home-item-body{
-    margin-left: 65px;
-    float: none;
-    margin-right: 120px;
-    width: auto;
-}
-.user-home-item-body>div{
-    margin-bottom: 5px;
-}
-.user-home-activity {
-    border-bottom: 1px solid #ddd;
-    padding: 15px 10px 25px 10px;
-    position: relative;
-}
-.user-home-activity .headimg{
-    width: 40px;
-}
+/* new feed */
+.user-home-activity{
+    padding-top:10px;
+    padding-bottom:10px
 
-.user-home-activity img {
-    vertical-align: middle;
-    margin: 0px 5px 0px 0px;
 }
-
-.user-home-activity a {
-    text-decoration: none;
-}
-
-.user-home-activity:after{
-    content: '';
-    display: block;
-    clear: both;
-}
-.user-home-item-timestamp p{
-    margin-bottom: 10px;
-    display: inline;
-}
-.user-home-item-timestamp{
-    position: absolute;
-    right: 20px;
-    top: 10px;
-}
-.user-home-item-description{
-    display: inline-block;
-    word-break:break-all;
-}
-.user-home-item-body img{
-    max-height: 100px;
-    margin-bottom: 10px;
-}
-.time-ago{
+.useractivity2 .hj-user{
     color: #999;
+}
+.useractivity2 .hj-user .reason{
+    margin-bottom:5px;
+}
+
+.useractivity2 .hj-user a, .useractivity2 .time-ago a{
+    color: #999
+}
+.useractivity2 .hj-user a:hover, .useractivity2 .time-ago a:hover{
+    color: #299cca
+}
+.useractivity2 .hj-media-title {
+    font-size: 18px;
+    font-weight: bold;
+    clear:both;
+
+}
+.useractivity2 .hj-media-comment{
+    font-size: 14px;
+    top: 0;
+    height: 195px;
+    overflow: hidden;
+    text-align: justify;
+    margin-top:2px;
+    margin-bottom:5px;
+}
+.useractivity2 .hj-media-comment p{
+    line-height: initial;
+}
+.useractivity2 .hj-media-comment .pull-left{
+    background-size:cover;
+    height: 120px;
+    width: 120px;
+    margin-right: 10px;
+}
+.useractivity2 .small-avatar{
+    width: 35px;
+    height: 35px;
+    display: block;
+    margin-right: 10px;
+    float: left;
+}
+.useractivity2 .small-avatar img{
+    width: 35px;
+    height: 35px;
+    display: block; 
+
+}
+.useractivity2 .reason, .useractivity2 .time-ago{
+    line-height: 17.5px;
+    font-size: 12px;
+    color: #999;
+    margin-top:5px;
+}
+.useractivity2 .reason{
+    margin-bottom: 8px;
+}
+@media screen and (max-width: 767px) {
+    .useractivity2 .hj-media-body{
+        margin:0px;
+    }
+    .useractivity2 .small-avatar{
+        display: block;
+    }
+    .useractivity2 .hj-media-avatar{
+        display: none;
+    }
+    .useractivity2 .reason{
+        height:30px;
+        overflow:hidden;
+    }
+    .useractivity2 .hj-media-title{
+        margin-top: 10px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .useractivity2 .small-avatar{
+        display: none;
+    }
+    .useractivity2 .hj-media-avatar{
+        display: block;
+    }
 }
 .entry-name {
     color: #09c;
