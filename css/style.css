@@ -773,8 +773,10 @@ a:hover,a:focus,a:active{
 /* new feed */
 .user-home-activity{
     padding-top:10px;
-    padding-bottom:10px
-
+    padding-bottom:10px;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 10px 25px 10px;
+    position: relative;
 }
 .useractivity2 .hj-user{
     color: #999;
