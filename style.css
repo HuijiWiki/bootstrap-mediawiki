@@ -691,7 +691,7 @@ body .mw-echo-overlay::before{
 
 /*手机上图片不超过手机宽度*/
 @media screen and (min-width:320px ) and (max-width:414px ){
-    .infobox, .full-width-xs{
+    .infobox, .full-width-xs, .navbox{
         width:100%!important;
     }
     div.thumb,.thumbinner,#bodyContent img, .comments-body img {
@@ -708,7 +708,7 @@ body .mw-echo-overlay::before{
 }
 
 @media screen and (max-width: 767px){
-    .infobox{
+    .infobox, .full-width-xs, .navbox{
         float: none!important;
         margin: 0 auto!important;
     }

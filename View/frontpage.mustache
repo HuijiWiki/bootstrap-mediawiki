@@ -10,7 +10,6 @@
                     <ul class="" role="tablist">
                     {{#login}}
                         <li role="presentation" class="active"><a href="#following" id="following-tab" role="tab" data-toggle="tab" aria-controls="following">用户动态</a></li>
-                        <li role="presentation"><a href="#following_sites" id="following_sites-tab" role="tab" data-toggle="tab" aria-controls="following_sites">站点动态</a></li>
                     {{/login}}
                         <li role="presentation" class="{{active}}"><a href="#blog" id="blog-tab" role="tab" data-toggle="tab" aria-controls="blog">灰机日常</a></li>
                         <li role="presentation" class=""><a  href="#all" id="all-tab" role="tab" data-toggle="tab" aria-controls="all">精彩推荐</a></li>
@@ -18,27 +17,6 @@
                 </nav>
                 <div id="home-feed-content" class="tab-content">
                     {{#login}}
-
-                    <div role="tabpanel" class="user-home-feed tab-pane fade" id="following_sites" aria-labelledby="following_sites-tab" data-filter="following_sites" data-limit="30" data-item_type="default">
-                        {{^siteHidden}}
-                        <div class="info-user-list">
-                            <h5>您关注的站点较少，也许您会对下面的内容感兴趣。</h5>
-                            <ul>
-                                {{#recommendSite}}
-                                <li>
-                                    {{&s_avatar}}
-                                    <div>
-                                        <b><a href="{{s_url}}" data-src="{{s_prefix}}">{{s_name}}</a></b>
-                                        <span>+关注</span>
-                                    </div>
-                                </li>
-                                {{/recommendSite}}
-                            </ul>
-                        </div>
-                        {{/siteHidden}}
-                        <div class="user-home-feed-content"></div>
-                        <div class="user-activity-more">加载更多<i class="icon-downward"></i></div>
-                    </div>
                     <div role="tabpanel" class="user-home-feed tab-pane fade  in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="30" data-item_type="default">
                         {{^userHidden}}
                         <div class="info-user-list">
