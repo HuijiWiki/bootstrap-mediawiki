@@ -158,6 +158,7 @@ p.mw-edittools-section {
     font-size: 12px;
 }
 .wikiEditor-toolbar-spritedButton{
+    /* @embed */
     background: url("http://fs.huijiwiki.com/www/resources/assets/editor-icon.png");
 }
 #wikiEditor-section-main > div.group.group-format > a:nth-child(1){

@@ -129,7 +129,7 @@ $(document).ready(function(){
         }
         more();
         $('.user-activity-more').on('click',more);
-        $('[href="#following"], [href="#following_sites"]').on('shown.bs.tab',function(){
+        $('[href="#following"]').on('shown.bs.tab',function(){
             refreshFeed( null );
         });
         $('#following').on('click','.info-user-list span ',function(){
@@ -191,36 +191,36 @@ $(document).ready(function(){
             //     }
             // )
         });
-        $('#following_sites').on('click','.info-user-list span ',function(){
-            var username = mw.config.get('wgUserName');
-            var severname = $(this).siblings().find('a').data('src');
-            var that = $(this);
-            $.post(
-                mw.util.wikiScript(), {
-                    action: 'ajax',
-                    rs: 'wfSiteFollowsRecommend',
-                    rsargs: [username, severname]
-                },
-                function(data){
-                    var res = $.parseJSON(data);
-                    if(res.result == null){
-                        that.parents('.info-user-list').remove();
-                        refreshFeed( null );
-                    }else {
-                        var parent = that.parents('.info-user-list ul');
-                        var img = res.result.s_avatar;
-                        var user = res.result.s_name;
-                        var url = res.result.s_url;
-                        var content;
-                        content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
-                        that.parents('.info-user-list li').remove();
-                        parent.append(content);
-                        var nowtime = Date.parse(new Date());
-                        refreshFeed( nowtime );
-                    }
-                }
-            )
-        })
+        // $('#following_sites').on('click','.info-user-list span ',function(){
+        //     var username = mw.config.get('wgUserName');
+        //     var severname = $(this).siblings().find('a').data('src');
+        //     var that = $(this);
+        //     $.post(
+        //         mw.util.wikiScript(), {
+        //             action: 'ajax',
+        //             rs: 'wfSiteFollowsRecommend',
+        //             rsargs: [username, severname]
+        //         },
+        //         function(data){
+        //             var res = $.parseJSON(data);
+        //             if(res.result == null){
+        //                 that.parents('.info-user-list').remove();
+        //                 refreshFeed( null );
+        //             }else {
+        //                 var parent = that.parents('.info-user-list ul');
+        //                 var img = res.result.s_avatar;
+        //                 var user = res.result.s_name;
+        //                 var url = res.result.s_url;
+        //                 var content;
+        //                 content = '<li>' + img + '<div><b><a href="' + url + '">' + user + '</a></b><span>+关注</span></div></li>';
+        //                 that.parents('.info-user-list li').remove();
+        //                 parent.append(content);
+        //                 var nowtime = Date.parse(new Date());
+        //                 refreshFeed( nowtime );
+        //             }
+        //         }
+        //     )
+        // })
     })();
     function getSite(){
         $.post(

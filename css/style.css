@@ -388,6 +388,7 @@ a:hover,a:focus,a:active{
 @font-face
 {
     font-family: huiji;
+    /* @embed */
     src: url('http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/fonts/huiji029.TTF');
 }
 .home-aside,.time-ago{
@@ -400,6 +401,7 @@ a:hover,a:focus,a:active{
 .home-bg{
     height: 580px;
     width: 100%;
+    /* @embed */
     background: url("http://fs.huijiwiki.com/www/resources/assets/bg.png") bottom;
     position: absolute;
     top: 50px;
@@ -993,7 +995,7 @@ body>.tooltip.top .tooltip-arrow{
         float: none;
     }
     .info-tabs li{
-        width: 25%;
+        width: 33.3%;
         text-align: center;
     }
     .user-home-links-container h2{
