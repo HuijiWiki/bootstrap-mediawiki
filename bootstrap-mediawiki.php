@@ -165,7 +165,7 @@ $wgResourceModules['skins.frontpage'] = array(
 		$skinDir . '/js/effect.js',
 	),
 	'dependencies' => array(
-		'skins.bootstrapmediawiki.top',
+		'skins.bootstrapmediawiki.bottom',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
