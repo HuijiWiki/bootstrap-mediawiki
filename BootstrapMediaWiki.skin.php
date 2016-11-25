@@ -64,16 +64,13 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $site = WikiSite::newFromPrefix($wgHuijiPrefix);
             if ($this->getSkin()->getTitle()->isMainPage()){
                 $out->addMeta( 'description', $site->getDescription());
-                $out->addMeta( 'keywords', $site->getName().', 维基, 百科, wiki');
-            } else {
-               $out->addMeta( 'keywords', $site->getName().', '.$this->getSkin()->getTitle()->getText().', 维基, 百科, wiki'); 
-            }
+            } 
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="' . htmlspecialchars( $out->getTitle()->getCanonicalURL()) . '" />' . "\n");            
         } 
          # add js and messages  
         
-        $out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
+        $out->addModuleScripts( array('skins.bootstrapmediawiki.top') );          
         if ($this->getSkin()->getTitle()->hasSourceText() &&  !($this->getSkin()->getTitle()->isMainPage())
             && $this->getSkin()->getTitle()->exists() && $this->getRequest()->getText('action') == ''
             && class_exists( 'EchoNotifier' ) && $this->getSkin()->getUser()->isLoggedIn() 
@@ -91,10 +88,10 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addModules( array( 'skins.bootstrapmediawiki.content' ) );
         }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
-        $out->addModuleScripts('ext.HuijiMiddleware.feedback');
     }//end initPage
     /**
      * prepares the skin's CSS
+     * this part comes before page rendering.
      */
     public function setupSkinUserCss( OutputPage $out ) {
         global $wgHuijiPrefix;
@@ -103,7 +100,7 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addModuleStyles( 'skins.frontpage' );  
         }
 
-        $out->addModuleStyles( array('skins.bootstrapmediawiki.top', 'mediawiki.ui.button', 'ext.HuijiMiddleware.feedback') );
+        $out->addModuleStyles( array('skins.bootstrapmediawiki.top', 'mediawiki.ui.button') );
         // we need to include this here so the file pathing is right$out->addModules( array( 'skins.bootstrapmediawiki.color' ) );
         $out->addStyle( '//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css' );
     }//end setupSkinUserCss

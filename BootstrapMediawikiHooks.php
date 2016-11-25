@@ -542,7 +542,7 @@ Class BootstrapMediawikiHooks {
             }
         }       
         $out->addModules( 
-            array('skins.bootstrapmediawiki.bottom')
+            array('skins.bootstrapmediawiki.bottom', 'ext.HuijiMiddleware.feedback' )
         );
         if ($wgHuijiPrefix !== 'www' && $wgHuijiPrefix !== 'test'){
             $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
@@ -554,7 +554,7 @@ Class BootstrapMediawikiHooks {
             $out->addModules( array('skins.bootstrapmediawiki.fork') );
         }
         if ( $NS == NS_SPECIAL ){
-            $out->addModuleStyles( array('skins.bootstrapmediawiki.special.less') );
+            $out->addModules( array('skins.bootstrapmediawiki.special.less') );
         }
         /* bypass CDN for admins */
         return true;

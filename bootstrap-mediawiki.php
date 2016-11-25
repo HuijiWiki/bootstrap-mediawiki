@@ -72,11 +72,8 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/css/huiji.ext.css'                          => array( 'media' => 'all' ),
 		$skinDir . '/css/video.css'                              => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.navbox.css'					     => array( 'media' => 'all' ),
+		$skinDir . '/css/mention.css'                                  => array( 'media' => 'all' ),
 	),
-	'scripts' => array(
-		$skinDir . '/bootstrap/js/bootstrap.js',		
-		$skinDir . '/js/huiji.preload.js',
-	),	
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
@@ -94,6 +91,8 @@ $wgResourceModules['skins.bootstrapmediawiki.header'] = array(
 );
 $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'scripts' => array(
+		$skinDir . '/bootstrap/js/bootstrap.js',		
+		$skinDir . '/js/huiji.preload.js',
 		$skinDir . '/js/fastclick.js',
 		$skinDir . '/js/scroll.js',
 		// $skinDir . '/js/jquery.ba-dotimeout.min.js',
@@ -103,8 +102,6 @@ $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	),
 	'styles' => array(
 		$skinDir . '/css/huiji.ready.css'                                  => array( 'media' => 'all' ),
-		$skinDir . '/css/mention.css'                                  => array( 'media' => 'all' ),
-		
 	),
 	'dependencies' => array(
 //	    'skins.editable',
