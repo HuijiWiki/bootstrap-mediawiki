@@ -542,7 +542,7 @@ Class BootstrapMediawikiHooks {
             }
         }       
         $out->addModules( 
-            array('skins.bootstrapmediawiki.bottom', 'ext.HuijiMiddleware.feedback' )
+            array('skins.bootstrapmediawiki.bottom' )
         );
         if ($wgHuijiPrefix !== 'www' && $wgHuijiPrefix !== 'test'){
             $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );

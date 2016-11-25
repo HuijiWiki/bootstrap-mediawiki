@@ -125,7 +125,7 @@ $wgResourceModules['skins.bootstrapmediawiki.fork'] = array(
 	),
 	'dependencies' => array(
 //	    'skins.editable',
-		'skins.bootstrapmediawiki.top',
+		'skins.bootstrapmediawiki.bottom',
 		'mediawiki.notification',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
@@ -140,7 +140,7 @@ $wgResourceModules['skins.bootstrapmediawiki.editcategory'] = array(
 		$skinDir . '/js/editcategory.js',
 	),
 	'dependencies' => array(
-		'skins.bootstrapmediawiki.top',
+		'skins.bootstrapmediawiki.bottom',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],

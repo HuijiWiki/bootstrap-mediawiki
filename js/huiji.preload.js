@@ -54,25 +54,6 @@ $(function() {
     $('input[type=submit]:not(".keep"),input[type=button]:not(".keep"),input[type=reset]:not(".keep")').addClass('mw-ui-button');
     $('input[type=submit]:not(".keep")').addClass('mw-ui-progressive');
 
-    // $('input[type=checkbox],input[type=radio]').each(function() {
-    //  var $el = $(this);
-
-    //  var id = $el.attr('id');
-    //  $( 'label[for=' + id + ']' ).each(function() {
-    //      var $label = $(this);
-    //      if( $.trim( $label.text() ) != '' ) {
-    //          $el.prependTo( $label );
-    //      }//end if
-
-    //      $label.wrap( '<div class="checkbox"/>' );
-    //  });
-
-    //  $el.closest('label').addClass($el.attr('type'));
-    // });
-
-    // //Temperory fix
-    // $('.mw-ui-vform-field div').removeClass('mw-ui-checkbox');
-    // $('#wpRemember').css('margin-right','5px');
     if ( 0 === $('#toc').length ) {
         $('.toc-sidebar').remove();
 
