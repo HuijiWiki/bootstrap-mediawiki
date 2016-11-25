@@ -1295,10 +1295,6 @@ table.mw-templatedata-doc-params{
 body.skin-BootstrapMediawiki > .oo-ui-windowManager {
   font-size: inherit; !important; /* fuck mw */
 }
-.table-responsive{
-  display:inline;
-  border:0px !important;
-}
 .user-group-icon{
   font-size: 0.8em;
   position: absolute;
