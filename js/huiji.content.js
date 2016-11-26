@@ -169,6 +169,9 @@ var recommend = {
 
     funClipImg: function(percent,id){
         var wid,wid2;
+        if ( window.is_mobile_device() ){
+	    return;
+	}
         //更宽裁剪两边
         if (percent > 0.7) {
             wid = percent * 100 - 70;

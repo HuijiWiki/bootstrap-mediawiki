@@ -527,7 +527,8 @@ $(document).ready(function(){
 
 
     $('#wiki-body .body a[title="Special:UserLogin"]').click();
-    $('.dropdown-toggle').dropdown();
+    if ($.fn.dropdown)
+    	$('.dropdown-toggle').dropdown();
     // Hide Header on on scroll down
     var didScroll;
     var lastScrollTop = 0;
