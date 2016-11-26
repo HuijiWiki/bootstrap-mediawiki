@@ -276,12 +276,15 @@ $wgResourceModules['skins.bootstrapmediawiki.huiji.ve'] = array(
 );
 $wgResourceModules['skins.bootstrapmediawiki.content'] = array(
 	'scripts' => array(
-		$skinDir . '/js/owl.carousel.min.js',
+	    $skinDir . '/js/owl.carousel.min.js',
 	    $skinDir . '/js/huiji.content.js',
 	),
 	'styles' => array(
 		$skinDir . '/css/owl.carousel.css'                               => array( 'media' => 'all' ),
 		$skinDir . '/css/huiji.content.css'         					 => array( 'media' => 'all' ),
+	),
+	'dependencies' => array(
+            'skins.bootstrapmediawiki.bottom',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],

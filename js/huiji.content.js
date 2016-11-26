@@ -169,9 +169,9 @@ var recommend = {
 
     funClipImg: function(percent,id){
         var wid,wid2;
-        if ( window.is_mobile_device() ){
+        /*if ( window.is_mobile_device() ){
 	    return;
-	}
+	}*/
         //更宽裁剪两边
         if (percent > 0.7) {
             wid = percent * 100 - 70;
@@ -189,6 +189,7 @@ var recommend = {
             $('#' + id).find('img').css('height', '200px');
             $('#' + id).removeClass('re-opacity');
         }
+        $('#' + id).find('img').attr('style', function(i,s) { return s + 'max-width: initial !important;' });
     },
 
     funDoOwl: function(address){
