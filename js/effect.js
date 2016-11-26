@@ -50,7 +50,8 @@ $(document).ready(function(){
             console.log('unable to download three.js');
         });
     }
-    $('svg .day').tooltip({title:"tooltip - title", container:"body"});
+    if ($.fn.tooltip)
+    	$('svg .day').tooltip({title:"tooltip - title", container:"body"});
     $('#user .nav-tab li').click(function(){
         $(this).addClass('active').siblings().removeClass('active');
         var index = $(this).index();
