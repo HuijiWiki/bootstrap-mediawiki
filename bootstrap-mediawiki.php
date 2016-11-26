@@ -74,6 +74,9 @@ $wgResourceModules['skins.bootstrapmediawiki.top'] = array(
 		$skinDir . '/css/huiji.navbox.css'					     => array( 'media' => 'all' ),
 		$skinDir . '/css/mention.css'                                  => array( 'media' => 'all' ),
 	),
+	'scripts' => array(
+		$skinDir . '/bootstrap/js/bootstrap.js',
+	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
@@ -91,7 +94,6 @@ $wgResourceModules['skins.bootstrapmediawiki.header'] = array(
 );
 $wgResourceModules['skins.bootstrapmediawiki.bottom'] = array(
 	'scripts' => array(
-		$skinDir . '/bootstrap/js/bootstrap.js',		
 		$skinDir . '/js/huiji.preload.js',
 		$skinDir . '/js/fastclick.js',
 		$skinDir . '/js/scroll.js',
@@ -125,7 +127,7 @@ $wgResourceModules['skins.bootstrapmediawiki.fork'] = array(
 	),
 	'dependencies' => array(
 //	    'skins.editable',
-		'skins.bootstrapmediawiki.bottom',
+		'skins.bootstrapmediawiki.top',
 		'mediawiki.notification',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
@@ -140,7 +142,7 @@ $wgResourceModules['skins.bootstrapmediawiki.editcategory'] = array(
 		$skinDir . '/js/editcategory.js',
 	),
 	'dependencies' => array(
-		'skins.bootstrapmediawiki.bottom',
+		'skins.bootstrapmediawiki.top',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
@@ -165,7 +167,7 @@ $wgResourceModules['skins.frontpage'] = array(
 		$skinDir . '/js/effect.js',
 	),
 	'dependencies' => array(
-		'skins.bootstrapmediawiki.bottom',
+		'skins.bootstrapmediawiki.top',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath'  => &$GLOBALS['wgStyleDirectory'],
