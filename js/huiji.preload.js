@@ -50,6 +50,7 @@ $(function() {
 
     $('pre:not(.CodeMirror-line)').addClass('prettyprint linenums');
     // $('.jumbotron pre').removeClass('prettyprint linenums');
+    $('table.formtable').removeClass('formtable').addClass('table');
 
     $('input[type=submit]:not(".keep"),input[type=button]:not(".keep"),input[type=reset]:not(".keep")').addClass('mw-ui-button');
     $('input[type=submit]:not(".keep")').addClass('mw-ui-progressive');
@@ -115,6 +116,8 @@ $(function() {
     });
 
     $('#wpRemember').attr('value', 1);
+    $('#mw-input-weibologin').attr('tabindex', '');
+    $('#mw-input-qqlogin').attr('tabindex', '');
     // // done for preload. Let's show the page.
     // $('#wiki-outer-body').show();
 });
