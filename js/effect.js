@@ -133,6 +133,9 @@ $(document).ready(function(){
         $('[href="#following"]').on('shown.bs.tab',function(){
             refreshFeed( null );
         });
+        $('[href="#all"]').on('shown.bs.tab',function(){
+            refreshFeed( null );
+        });
         $('#following').on('click','.info-user-list span ',function(){
             var follower = mw.config.get('wgUserName');
             var followee = $(this).siblings().find('a').text();
@@ -192,7 +195,7 @@ $(document).ready(function(){
             //     }
             // )
         });
-        // $('#following_sites').on('click','.info-user-list span ',function(){
+        // $('#all').on('click','.info-user-list span ',function(){
         //     var username = mw.config.get('wgUserName');
         //     var severname = $(this).siblings().find('a').data('src');
         //     var that = $(this);
@@ -253,16 +256,16 @@ $(document).ready(function(){
             });
         });        
     }
-    if($('#all').hasClass('active')){
-        getSite();
-    }
+    // if($('#all').hasClass('active')){
+    //     getSite();
+    // }
     if($('#blog').hasClass('active')){
         getBlog();
     }
-    $('#all-tab').on('click',function(){
-        $('.page-recommend').empty();
-        getSite();
-    });
+    // $('#all-tab').on('click',function(){
+    //     $('.page-recommend').empty();
+    //     getSite();
+    // });
     $('#blog-tab').on('click', function(){
         $('.blog-recommend').empty();
         getBlog();

@@ -25,8 +25,8 @@ class ApiCommonStyle extends ApiBase {
             $result->addValue(null, $this->getModuleName(), CommonStyle::getThemedStyle());
             $title = self::getStyleTitle();
             $count = $title->estimateRevisionCount();
-            $result->addValue(null, $this->getModuleName, $count );
-            $result->addValue(null, $this->getModuleName, $title->getFullUrl(['action'=>'history']) );
+            $result->addValue(null, $this->getModuleName(), $count );
+            $result->addValue(null, $this->getModuleName(), $title->getFullUrl(['action'=>'history']) );
             return true;
         }
         if ($this->params['task'] == 'reset'){

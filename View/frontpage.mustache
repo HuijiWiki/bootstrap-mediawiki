@@ -17,7 +17,7 @@
                 </nav>
                 <div id="home-feed-content" class="tab-content">
                     {{#login}}
-                    <div role="tabpanel" class="user-home-feed tab-pane fade  in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="30" data-item_type="default">
+                    <div role="tabpanel" class="user-home-feed tab-pane fade in active" id="following" aria-labelledby="following-tab" data-filter="following" data-limit="30" data-item_type="default">
                         {{^userHidden}}
                         <div class="info-user-list">
                             <h5>您关注的用户较少，也许您会对下面的内容感兴趣。</h5>
@@ -38,9 +38,9 @@
                         <div class="user-activity-more">加载更多<i class="icon-downward"></i></div>
                     </div>
                     {{/login}}
-                    <div role="tabpanel" class="tab-pane fade" id="all" aria-labelledby="all-tab">
-                        <ul class="page-recommend">
-                        </ul>
+                    <div role="tabpanel" class="tab-pane fade" id="all" aria-labelledby="all-tab" data-filter="all" data-limit="30" data-item_type="default">
+                        <div class="user-home-feed-content"></div>
+                        <div class="user-activity-more">加载更多<i class="icon-downward"></i></div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade {{inactive}}" id="blog" aria-labelledby="blog-tab">
                         <ul class="blog-recommend">

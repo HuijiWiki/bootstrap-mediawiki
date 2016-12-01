@@ -47,6 +47,7 @@ class CUtf8_PY {
      * @return string
      */
 	public static function encode($utf8Data, $sRetFormat='head'){
+		MediaWiki\suppressWarnings();
 		$sGBK = iconv('UTF-8', 'GBK', $utf8Data);
 		$aBuf = array();
 		for ($i=0, $iLoop=strlen($sGBK); $i<$iLoop; $i++) {
@@ -58,6 +59,7 @@ class CUtf8_PY {
 			else
 				$aBuf[] = self::zh2py($iChr);
 		}
+		MediaWiki\restoreWarnings();
 		if ('head' === $sRetFormat)
 			return implode('', $aBuf);
 		else
