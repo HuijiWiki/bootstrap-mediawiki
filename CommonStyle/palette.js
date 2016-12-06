@@ -56,6 +56,7 @@ var palette = {
 	} ,
 	promise: null,
 	cssContent: null,
+
 	render: function(data){
 
 		//console.log(data);
@@ -66,8 +67,8 @@ var palette = {
 		}
 
 		OO.inheritClass( palette.Page, OO.ui.PageLayout );
-		palette.Page.prototype.historyUrl = data.url;
-		palette.Page.prototype.historyCount = data.count;
+		palette.Page.prototype.historyUrl = data.commonstyle.url;
+		palette.Page.prototype.historyCount = data.commonstyle.count;
 		if (this.cssContent == null){
 			this.cssContent = [];
 		}		

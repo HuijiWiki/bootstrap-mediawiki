@@ -307,13 +307,14 @@ $wgResourceModules['skins.bootstrapmediawiki.search'] = array(
 
 //commonstyle
 $wgResourceModules['socialprofile.commonstyle.css'] = array(
-	'styles' => array('jcolor.min.css','CommonStyle.css'),
+	'styles' => array('/CommonStyle/jcolor.min.css',
+			'/CommonStyle/CommonStyle.css'),
     'dependencies' => array(
                     'skins.bootstrapmediawiki.top',
                     'oojs-ui'
                     ),
-	'localBasePath' => __DIR__ .'/CommonStyle',
-	'remoteBasePath' => 'skins/bootstrap-mediawiki/CommonStyle',
+	'localBasePath' => __DIR__,
+	'remoteBasePath' => &$GLOBALS['wgStyleDirectory'],
 	'position' => 'top',
 );
 

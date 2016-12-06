@@ -527,34 +527,37 @@ Class BootstrapMediawikiHooks {
         global $wgHuijiPrefix, $wgUser, $wgMobile, $wgHuijiSuffix;
         /* add norec and rec config vars */
         $titles = $out->getTitle();
-        $result = PageProps::getInstance()->getProperties($titles, 'norec');
-        if (count($result) > 0){
-            $out->addJsConfigVars('wgNoRec', true);
-        } 
-        $result = PageProps::getInstance()->getProperties($titles, 'rec');
-        if (count($result) > 0){
-            $out->addJsConfigVars('wgRec', true);
-        }
-        $result = PageProps::getInstance()->getProperties($titles, 'recbyuser');
-        if (count($result) > 0){
-            foreach ($result as $key => $value) {
-                $out->addJsConfigVars('wgRecByUser', json_decode($value)); 
+        if ($titles != null){ //Job queue complaints the missing title.
+            $result = PageProps::getInstance()->getProperties($titles, 'norec');
+            if (count($result) > 0){
+                $out->addJsConfigVars('wgNoRec', true);
+            } 
+            $result = PageProps::getInstance()->getProperties($titles, 'rec');
+            if (count($result) > 0){
+                $out->addJsConfigVars('wgRec', true);
             }
-        }       
-        $out->addModules( 
-            array('skins.bootstrapmediawiki.bottom', 'ext.HuijiMiddleware.feedback' )
-        );
-        if ($wgHuijiPrefix !== 'www' && $wgHuijiPrefix !== 'test'){
-            $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
-        } else {
-            $out->addModules( 'skins.bootstrapmediawiki.huiji.globalsearch.suggest');
-        }
-        $NS = $out->getTitle()->getNamespace();
-        if ( $out->getUser()->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $out->getTitle()->exists()){
-            $out->addModules( array('skins.bootstrapmediawiki.fork') );
-        }
-        if ( $NS == NS_SPECIAL ){
-            $out->addModules( array('skins.bootstrapmediawiki.special.less') );
+            $result = PageProps::getInstance()->getProperties($titles, 'recbyuser');
+            if (count($result) > 0){
+                foreach ($result as $key => $value) {
+                    $out->addJsConfigVars('wgRecByUser', json_decode($value)); 
+                }
+            }                  
+ 
+            $out->addModules( 
+                array('skins.bootstrapmediawiki.bottom', 'ext.HuijiMiddleware.feedback' )
+            );
+            if ($wgHuijiPrefix !== 'www' && $wgHuijiPrefix !== 'test'){
+                $out->setHTMLTitle( $out->getHTMLTitle() . ' - 灰机wiki' );
+            } else {
+                $out->addModules( 'skins.bootstrapmediawiki.huiji.globalsearch.suggest');
+            }
+            $NS = $out->getTitle()->getNamespace();
+            if ( $out->getUser()->isEmailConfirmed() && ($NS == NS_TEMPLATE || $NS == NS_MODULE ) && $out->getTitle()->exists()){
+                $out->addModules( array('skins.bootstrapmediawiki.fork') );
+            }
+            if ( $NS == NS_SPECIAL ){
+                $out->addModules( array('skins.bootstrapmediawiki.special.less') );
+            }
         }
         /* bypass CDN for admins */
         return true;
