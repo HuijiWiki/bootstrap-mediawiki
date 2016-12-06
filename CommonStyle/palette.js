@@ -66,8 +66,8 @@ var palette = {
 		}
 
 		OO.inheritClass( palette.Page, OO.ui.PageLayout );
-		palette.Page.prototype.historyUrl = data[1];
-		palette.Page.prototype.historyCount = data[0];
+		palette.Page.prototype.historyUrl = data.url;
+		palette.Page.prototype.historyCount = data.count;
 		if (this.cssContent == null){
 			this.cssContent = [];
 		}		
