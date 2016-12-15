@@ -249,6 +249,11 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         echo $ad->getWideHeader();
                                     ?>
                                     </div>
+                                    <div class="hidden-lg hidden-md">
+                                    <?php 
+                                        echo $ad->getDumbMobile();
+                                    ?>
+                                    </div>
                                     <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
                                     <h1><?php $this->html( 'title' ) ?></h1>
                                         <?php 

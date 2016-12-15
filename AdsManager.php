@@ -80,11 +80,31 @@ html;
 <script type="text/javascript"> 
      /*smartMobile*/ 
      var cpro_id = "u2846082";
+     if(document.body.clientWidth<768) {
+     	console.log('smartscreen');
+     	var fileref=document.createElement('script');
+        fileref.setAttribute("type","text/javascript");
+        fileref.setAttribute("src", "http://cpro.baidustatic.com/cpro/ui/cm.js");
+        document.getElementsByTagName('body')[0].appendChild(fileref);
+     }
 </script>
-<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>
 html;
 			return $tpl;
 		}	
+	}
+	public function getDumbMobile(){
+		if ($this->showAds){
+			$tpl = <<<html
+<div class="form-group">
+<script type="text/javascript">
+    /*dumbmobile*/
+    var cpro_id = "u2846276";
+</script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/cm.js"></script>
+</div>
+html;
+			return $tpl;
+		}			
 	}
 
 	
