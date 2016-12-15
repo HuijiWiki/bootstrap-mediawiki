@@ -26,6 +26,7 @@ $wgAutoloadClasses['SpecialCommonStyle'] = __DIR__ . '/CommonStyle/SpecialCommon
 $wgAutoloadClasses['CommonStyle'] = __DIR__ . '/CommonStyle/CommonStyleClass.php';
 $wgAutoloadClasses['SpecialDynamicLess'] = __DIR__ . '/CommonStyle/SpecialDynamicLess.php';
 $wgAutoloadClasses['ApiCommonStyle'] = __DIR__ . '/CommonStyle/api/ApiCommonStyle.php';
+$wgAutoloadClasses['AdsManager'] = __DIR__ . '/AdsManager.php';
 $wgSpecialPages['CommonStyle'] = 'SpecialCommonStyle';
 $wgMessagesDirs['bootstrapmediawiki'] = __DIR__ . '/i18n';
 $wgMessagesDirs['bootstrapmediawikiCommonStyle'] = __DIR__ . '/CommonStyle/i18n';

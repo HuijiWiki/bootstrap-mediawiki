@@ -50,13 +50,13 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addMeta( 'keywords', '维基, 百科, wiki');
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="'.$wgCentralServer.'" />' . "\n"); 
-            // $out->addHeadItem( 'alex', '<!-- Start Alexa Certify Javascript -->
-            //     <script type="text/javascript">
-            //     _atrk_opts = { atrk_acct:"zMVsn1QolK107i", domain:"huiji.wiki",dynamic: true};
-            //     (function() { var as = document.createElement("script"); as.type = "text/javascript"; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(as, s); })();
-            //     </script>
-            //     <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=zMVsn1QolK107i" style="display:none" height="1" width="1" alt="" /></noscript>
-            //     <!-- End Alexa Certify Javascript -->  ');   
+            $out->addHeadItem( 'alex', '<!-- Start Alexa Certify Javascript -->
+                <script type="text/javascript">
+                _atrk_opts = { atrk_acct:"zMVsn1QolK107i", domain:"huiji.wiki",dynamic: true};
+                (function() { var as = document.createElement("script"); as.type = "text/javascript"; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(as, s); })();
+                </script>
+                <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=zMVsn1QolK107i" style="display:none" height="1" width="1" alt="" /></noscript>
+                <!-- End Alexa Certify Javascript -->  ');   
             //$out->addHeadItem('meta','<meta property="qc:admins" content="6762163113460512167131" />'); 
             //$out->addHeadItem('meta','<meta property="wb:webmaster" content="913ad381cb9b4ad7" />');
 
@@ -64,13 +64,16 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $site = WikiSite::newFromPrefix($wgHuijiPrefix);
             if ($this->getSkin()->getTitle()->isMainPage()){
                 $out->addMeta( 'description', $site->getDescription());
-            } 
+                $out->addMeta( 'keywords', $site->getName().', 维基, 百科, wiki');
+            } else {
+               $out->addMeta( 'keywords', $site->getName().', '.$this->getSkin()->getTitle()->getText().', 维基, 百科, wiki'); 
+            }
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="' . htmlspecialchars( $out->getTitle()->getCanonicalURL()) . '" />' . "\n");            
         } 
          # add js and messages  
         
-        $out->addModuleScripts( array('skins.bootstrapmediawiki.top') );          
+        $out->addModuleScripts( 'skins.bootstrapmediawiki.top' );          
         if ($this->getSkin()->getTitle()->hasSourceText() &&  !($this->getSkin()->getTitle()->isMainPage())
             && $this->getSkin()->getTitle()->exists() && $this->getRequest()->getText('action') == ''
             && class_exists( 'EchoNotifier' ) && $this->getSkin()->getUser()->isLoggedIn() 
@@ -88,10 +91,10 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addModules( array( 'skins.bootstrapmediawiki.content' ) );
         }
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
+        $out->addModuleScripts('ext.HuijiMiddleware.feedback');
     }//end initPage
     /**
      * prepares the skin's CSS
-     * this part comes before page rendering.
      */
     public function setupSkinUserCss( OutputPage $out ) {
         global $wgHuijiPrefix;
@@ -100,9 +103,9 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
             $out->addModuleStyles( 'skins.frontpage' );  
         }
 
-        $out->addModuleStyles( array('skins.bootstrapmediawiki.top', 'mediawiki.ui.button') );
+        $out->addModuleStyles( array('skins.bootstrapmediawiki.top', 'mediawiki.ui.button', 'ext.HuijiMiddleware.feedback') );
         // we need to include this here so the file pathing is right$out->addModules( array( 'skins.bootstrapmediawiki.color' ) );
-        $out->addStyle( '//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css' );
+        $out->addStyle( '//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css' );
     }//end setupSkinUserCss
 }
 /**
@@ -152,14 +155,14 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             </p>
         <![endif]-->
         <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-          ga('create', 'UA-10190882-3', 'auto');
-          ga('send', 'pageview');
-
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-10190882-3', 'auto', {allowLinker: true});
+            ga('require', 'linker');
+            ga('linker:autoLink', ['huiji.wiki','huijiwiki.com']);
+            ga('send', 'pageview');
         </script>
         <div id="wrapper">
         <script>
@@ -194,11 +197,16 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         } else {?>
             
             <?php include 'View/Sidebar.php';
+            // if ( $this->getSkin()->getTitle()->getNamespace()!=NS_USER &&  $this->getSkin()->getTitle()->isTalkPage()!=true 
+            //     &&  ($wgRequest->getText( 'action' )=='' ||  $wgRequest->getText( 'action' )=='purge') 
+            //     && ($this->getSkin()->getTitle()->getNamespace!=NS_TOPIC) )
+            // {
+            // 	$customClass = " class='huiji-css-hook'";
+            // }
                 $customClass = " class='huiji-css-hook'";
             ?>
 
             <div id="wiki-outer-body"<?php echo $customClass;?>>
-
                 <nav id="content-actions" class="subnav subnav-fixed">
                     <div class="container-fluid">
                         <ul class="nav nav-pills">
@@ -232,6 +240,13 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 
                             <article class="col-md-12 wiki-body-section" role="main" style="-webkit-transition: right 2s; transition: right 2s;">
                                 <?php if ($NS != 2 && !($this->getSkin()->getTitle()->isMainPage()) ):?>
+                                    <div class="hidden-sm hidden-xs">
+                                    <?php $ad = new AdsManager($site);
+                                        echo $ad->getWideHeader();
+                                    ?>
+                                    </div>
+                                    <?php echo $ad->getSmartMobile();
+                                        echo $ad->getBlockScreen();?>
                                 <header id="firstHeading" class="page-header">
                                     <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
                                     <h1><?php $this->html( 'title' ) ?></h1>
@@ -374,6 +389,11 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             </div>
                         <?php } ?>
                         <footer>
+                            <div class="form-group hidden-sm hidden-xs">
+                            <?php $ad = new AdsManager($site);
+                                echo $ad->getFooter();
+                            ?>
+                            </div>
                             <p class="text-center">
                                 <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> |
                                 <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> |
@@ -400,20 +420,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
             <?php
         }//end if
         ?>
-        <script>
-        (function(){
-            var bp = document.createElement('script');
-            var curProtocol = window.location.protocol.split(':')[0];
-            if (curProtocol === 'https') {
-                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-            }
-            else {
-                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-            }
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-        })();
-        </script>
         <script>window._bd_share_config={
             common: {
                 bdSnsKey: {},
@@ -421,15 +427,19 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                 bdMini: "2",
                 bdMiniList: false,
                 bdPic: "",
-                bdStyle: false,
-                bdSign: "off",
-                bdUrl:"http://<?php echo $wgHuijiPrefix ?>.huiji.wiki/index.php?curid=<?php echo $this->skin->getTitle()->getArticleId(); ?>",
+                bdStyle: "2",
+                bdUrl:"http://<?php echo $wgHuijiPrefix.$wgCdnHuijiSuffix; ?>/index.php?curid=<?php echo $this->skin->getTitle()->getArticleId(); ?>",
             },
             share: [
                 {
                     tag: "share_1",
                     bdSize: 16,
-                    bdCustomStyle:"http://cdn.huijiwiki.com/www/skins/bootstrap-mediawiki/css/huiji.bdshare.css"
+                    bdCustomStyle:""
+                },
+                {
+                    tag: "share_2",
+                    bdSize: 16,
+                    bdCustomStyle:""
                 }
             ]
         };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>        
