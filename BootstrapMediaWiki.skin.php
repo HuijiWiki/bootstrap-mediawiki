@@ -244,7 +244,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         echo $ad->getSmartMobile();
                                         echo $ad->getBlockScreen();?>
                                 <header id="firstHeading" class="page-header">
-                                    <div class="hidden-sm hidden-xs form-group">
+                                    <div class="hidden-sm hidden-xs">
                                     <?php $ad = new AdsManager($site);
                                         echo $ad->getWideHeader();
                                     ?>

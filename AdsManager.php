@@ -21,11 +21,13 @@ class AdsManager{
 	public function getWideHeader(){
 		if ($this->showAds && !in_array($this->site->getPrefix, self::$headerWhiteList)){
 			$tpl = <<<html
+<div class="form-group">
 <script type="text/javascript">
     /*Header*/
     var cpro_id = "u2846048";
 </script>
 <script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+</div>
 html;
 			return $tpl;
 		}
