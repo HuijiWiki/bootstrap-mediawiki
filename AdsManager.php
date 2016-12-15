@@ -49,15 +49,13 @@ html;
 			$tpl = <<<html
 <script type="text/javascript"> 
      /*blockScreen*/ 
-     var cpro_id = "u2846093";
+     
      if(document.body.clientWidth>=768) {
+     	var cpro_id = "u2846093";
      	console.log('blockscreen');
-     	var fileref=document.createElement('script');
-        fileref.setAttribute("type","text/javascript");
-        fileref.setAttribute("src", "http://cpro.baidustatic.com/cpro/ui/c.js");
-        document.getElementsByTagName('body')[0].appendChild(fileref);
      }
 </script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
 html;
 			return $tpl;
 		}		
@@ -79,15 +77,11 @@ html;
 			$tpl = <<<html
 <script type="text/javascript"> 
      /*smartMobile*/ 
-     var cpro_id = "u2846082";
      if(document.body.clientWidth<768) {
-     	console.log('smartscreen');
-     	var fileref=document.createElement('script');
-        fileref.setAttribute("type","text/javascript");
-        fileref.setAttribute("src", "http://cpro.baidustatic.com/cpro/ui/cm.js");
-        document.getElementsByTagName('body')[0].appendChild(fileref);
+     	var cpro_id = "u2846082";
      }
 </script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/cm.js"></script>
 html;
 			return $tpl;
 		}	
