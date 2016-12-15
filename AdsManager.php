@@ -1,6 +1,7 @@
 <?php
 class AdsManager{
 	private static $whiteList = array('lotr');
+	private static $headerWhiteList = array('movie');
 	public function __construct($site){
 		global $wgUser, $wgIsProduction;
 		$this->site = $site;
@@ -18,7 +19,7 @@ class AdsManager{
 		}
 	}
 	public function getWideHeader(){
-		if ($this->showAds){
+		if ($this->showAds && !in_array($this->site->getPrefix, self::$headerWhiteList)){
 			$tpl = <<<html
 <script type="text/javascript">
     /*Header*/

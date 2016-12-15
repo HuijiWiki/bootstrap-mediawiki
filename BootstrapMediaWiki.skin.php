@@ -240,14 +240,15 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 
                             <article class="col-md-12 wiki-body-section" role="main" style="-webkit-transition: right 2s; transition: right 2s;">
                                 <?php if ($NS != 2 && !($this->getSkin()->getTitle()->isMainPage()) ):?>
+                                    <?php $ad = new AdsManager($site);
+                                        echo $ad->getSmartMobile();
+                                        echo $ad->getBlockScreen();?>
+                                <header id="firstHeading" class="page-header">
                                     <div class="hidden-sm hidden-xs">
                                     <?php $ad = new AdsManager($site);
                                         echo $ad->getWideHeader();
                                     ?>
                                     </div>
-                                    <?php echo $ad->getSmartMobile();
-                                        echo $ad->getBlockScreen();?>
-                                <header id="firstHeading" class="page-header">
                                     <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
                                     <h1><?php $this->html( 'title' ) ?></h1>
                                         <?php 
