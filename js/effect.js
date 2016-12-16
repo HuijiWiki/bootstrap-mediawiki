@@ -74,9 +74,9 @@ $(document).ready(function(){
             limit: jQuery('.user-home-feed.active').data('limit')
         }
         var username = mw.config.get('wgUserName');
-        if (username == null){
-            return false;
-        }
+        // if (username == null){
+        //     return false;
+        // }
         var filter = config.filter;
         var item_type = config.item_type;
         var limit = config.limit;
