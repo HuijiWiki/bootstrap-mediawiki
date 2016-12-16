@@ -20,7 +20,7 @@ class AdsManager{
 		}
 	}
 	public function getWideHeader(){
-		if ($this->showAds && !in_array($this->site->getPrefix, self::$headerWhiteList)){
+		if ($this->showAds && !in_array($this->site->getPrefix(), self::$headerWhiteList)){
 			$tpl = <<<html
 <div class="form-group">
 <script type="text/javascript">
