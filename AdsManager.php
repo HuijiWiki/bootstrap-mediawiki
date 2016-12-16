@@ -5,7 +5,8 @@ class AdsManager{
 	public function __construct($site){
 		global $wgUser, $wgIsProduction;
 		$this->site = $site;
-		if ($site->hasMetDonationGoal()){
+		$prevmonth = date('Y-m', strtotime("last month"));
+		if ($site->hasMetDonationGoal($prevmonth)){
 			$this->showAds = false;
 		} elseif($wgUser->isLoggedIn()) {
 			$this->showAds = false;
