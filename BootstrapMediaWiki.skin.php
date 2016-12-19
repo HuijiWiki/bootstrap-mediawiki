@@ -349,13 +349,17 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <section id="bodyContent" class="body">    
                                     <div class="hidden-sm hidden-xs">
                                     <?php
+                                    if (!$this->getSkin()->getTitle()->isMainPage()){
                                         echo $ad->getWideHeader();
+                                    }
                                     ?>
                                     </div>                 
                                 <?php $this->html( 'bodytext' ) ?>
-                                    <div class="form-group hidden-sm hidden-xs">
+                                    <div class="hidden-sm hidden-xs">
                                     <?php 
+                                    if (!$this->getSkin()->getTitle()->isMainPage()){
                                         echo $ad->getFooter();
+                                    }
                                     ?>
                                     </div>
                                     <?php if ( $this->data['catlinks'] ): ?>
