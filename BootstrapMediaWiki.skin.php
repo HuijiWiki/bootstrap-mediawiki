@@ -348,12 +348,13 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <section id="bodyContent" class="body">    
                                     <div class="hidden-sm hidden-xs">
                                     <?php
+                                        $ad = new AdsManager($site);
                                         echo $ad->getWideHeader();
                                     ?>
                                     </div>                 
                                 <?php $this->html( 'bodytext' ) ?>
                                     <div class="form-group hidden-sm hidden-xs">
-                                    <?php $ad = new AdsManager($site);
+                                    <?php 
                                         echo $ad->getFooter();
                                     ?>
                                     </div>
