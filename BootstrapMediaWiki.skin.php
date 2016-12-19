@@ -244,16 +244,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         echo $ad->getSmartMobile();
                                         echo $ad->getBlockScreen();?>
                                 <header id="firstHeading" class="page-header">
-                                    <div class="hidden-sm hidden-xs">
-                                    <?php
-                                        echo $ad->getWideHeader();
-                                    ?>
-                                    </div>
-                                    <div class="hidden-lg hidden-md">
-                                    <?php 
-                                        echo $ad->getDumbMobile();
-                                    ?>
-                                    </div>
+
                                     <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
                                     <h1><?php $this->html( 'title' ) ?></h1>
                                         <?php 
@@ -280,6 +271,16 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                         <?php
                                             echo $this->getSub($NS);
                                         ?>
+                                    </div>
+                                    <div class="hidden-sm hidden-xs">
+                                    <?php
+                                        echo $ad->getWideHeader();
+                                    ?>
+                                    </div>
+                                    <div class="hidden-lg hidden-md">
+                                    <?php 
+                                        echo $ad->getDumbMobile();
+                                    ?>
                                     </div>
                                         
                                 </header>
@@ -351,6 +352,11 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <?php endif; ?>
                                 <section id="bodyContent" class="body">                     
                                 <?php $this->html( 'bodytext' ) ?>
+                                    <div class="form-group hidden-sm hidden-xs">
+                                    <?php $ad = new AdsManager($site);
+                                        echo $ad->getFooter();
+                                    ?>
+                                    </div>
                                     <?php if ( $this->data['catlinks'] ): ?>
                                     <section class="category-links">
                                     <!-- catlinks -->
@@ -395,11 +401,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             </div>
                         <?php } ?>
                         <footer>
-                            <div class="form-group hidden-sm hidden-xs">
-                            <?php $ad = new AdsManager($site);
-                                echo $ad->getFooter();
-                            ?>
-                            </div>
                             <p class="text-center">
                                 <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%81%B0%E6%9C%BA%E5%81%9C%E6%9C%BA%E5%9D%AA">灰机停机坪</a> |
                                 <a class="mw-ui-anchor mw-ui-progressive mw-ui-quiet" href="http://www.huiji.wiki/wiki/%E7%BB%B4%E5%9F%BA%E5%AE%B6%E5%9B%AD%E8%AE%A1%E5%88%92">维基家园计划</a> |
