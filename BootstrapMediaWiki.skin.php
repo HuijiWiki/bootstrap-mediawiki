@@ -347,7 +347,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <!-- /newtalk -->
                                 <?php endif; ?>
                                 <section id="bodyContent" class="body">    
-                                    <div class="hidden-sm hidden-xs">
+                                    <div class="hidden-sm hidden-xs ads-center" style="text-align: center">
                                     <?php
                                     if (!$this->getSkin()->getTitle()->isMainPage()){
                                         echo $ad->getWideHeader();
@@ -355,7 +355,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     ?>
                                     </div>                 
                                 <?php $this->html( 'bodytext' ) ?>
-                                    <div class="hidden-sm hidden-xs">
+                                    <div class="hidden-sm hidden-xs ads-margin">
                                     <?php 
                                     if (!$this->getSkin()->getTitle()->isMainPage()){
                                         echo $ad->getFooter();

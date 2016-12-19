@@ -1328,3 +1328,9 @@ body.skin-BootstrapMediawiki > .oo-ui-windowManager {
 .transition-start-toc{
   width: 0 !important;
 }
+.ads-center{
+  text-align: center;
+}
+.ads-margin{
+  margin:10px, 0px;
+}
