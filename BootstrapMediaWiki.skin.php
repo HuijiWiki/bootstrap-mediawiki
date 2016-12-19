@@ -148,6 +148,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         }else{
             $followed = false;
         }
+        $ad = new AdsManager($site);
         ?>
         <!--[if lt IE 8]>
             <p class="alert alert-warning alert-dismissible browsehappy">
@@ -240,7 +241,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 
                             <article class="col-md-12 wiki-body-section" role="main" style="-webkit-transition: right 2s; transition: right 2s;">
                                 <?php if ($NS != 2 && !($this->getSkin()->getTitle()->isMainPage()) ):?>
-                                    <?php $ad = new AdsManager($site);
+                                    <?php 
                                         echo $ad->getSmartMobile();
                                         echo $ad->getBlockScreen();?>
                                 <header id="firstHeading" class="page-header">
@@ -348,7 +349,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <section id="bodyContent" class="body">    
                                     <div class="hidden-sm hidden-xs">
                                     <?php
-                                        $ad = new AdsManager($site);
                                         echo $ad->getWideHeader();
                                     ?>
                                     </div>                 
