@@ -272,11 +272,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             echo $this->getSub($NS);
                                         ?>
                                     </div>
-                                    <div class="hidden-sm hidden-xs">
-                                    <?php
-                                        echo $ad->getWideHeader();
-                                    ?>
-                                    </div>
                                     <div class="hidden-lg hidden-md">
                                     <?php 
                                         echo $ad->getDumbMobile();
@@ -350,7 +345,12 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <section class="usermessage"><?php $this->html( 'newtalk' )  ?></section>
                                 <!-- /newtalk -->
                                 <?php endif; ?>
-                                <section id="bodyContent" class="body">                     
+                                <section id="bodyContent" class="body">    
+                                    <div class="hidden-sm hidden-xs">
+                                    <?php
+                                        echo $ad->getWideHeader();
+                                    ?>
+                                    </div>                 
                                 <?php $this->html( 'bodytext' ) ?>
                                     <div class="form-group hidden-sm hidden-xs">
                                     <?php $ad = new AdsManager($site);
