@@ -139,7 +139,7 @@ Class BootstrapMediawikiHooks {
         $fontcolor = isset( $args['fontcolor'] ) ? $args['fontcolor'] : '#FFF';
         $wide = isset( $args['wide'] ) ? $args['wide'] : 'false';
         if (isset($input)) {
-            $title = $input;
+            $title = htmlspecialchars($input);
         }
         $templateParser = new TemplateParser(  __DIR__ . '/View' );
         $output =  $templateParser->processTemplate(

@@ -3,7 +3,7 @@ class AdsManager{
 	private static $whiteList = array('lotr');
 	private static $headerWhiteList = array('movie');
 	public function __construct($site){
-		global $wgUser, $wgIsProduction;
+		global $wgUser, $wgIsProduction, $wgEnableAds;
 		$this->site = $site;
 		$prevmonth = date('Y-m', strtotime("last month"));
 		if ($site->hasMetDonationGoal($prevmonth)){
@@ -17,6 +17,9 @@ class AdsManager{
 		}
 		if ($wgIsProduction==false){
 			$this->showAds = true;
+		}
+		if (empty($wgEnableAds)){
+			$this->showAds = false;
 		}
 	}
 	public function getWideHeader(){
