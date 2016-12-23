@@ -355,7 +355,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     ?>
                                     </div>                 
                                 <?php $this->html( 'bodytext' ) ?>
-                                    <div class="hidden-sm hidden-xs ads-margin">
+                                    <div class="hidden-sm hidden-xs ads-margin ads-center">
                                     <?php 
                                     if (!$this->getSkin()->getTitle()->isMainPage()){
                                         echo $ad->getFooter();
