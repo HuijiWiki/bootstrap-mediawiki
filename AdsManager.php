@@ -26,52 +26,60 @@ class AdsManager{
 		if ($this->showAds && !in_array($this->site->getPrefix(), self::$headerWhiteList)){
 			$tpl = <<<html
 <div class="form-group">
-<script type="text/javascript">
-    /*Header*/
-    var cpro_id = "u2846048";
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- WideHeader -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-1928320312730168"
+     data-ad-slot="8492895131"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
 </div>
 html;
 			return $tpl;
 		}
 	}
 	public function getFloatBanner(){
-		if ($this->showAds){
-			$tpl = <<<html
-<script type="text/javascript">
-    /*120*270 创建于 12/15/2016*/
-    var cpro_id = "u2846052";
-</script>
-<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/f.js"></script>
-html;
-			return $tpl;
-		}
+// 		if ($this->showAds){
+// 			$tpl = <<<html
+// <script type="text/javascript">
+//     /*120*270 创建于 12/15/2016*/
+//     var cpro_id = "u2846052";
+// </script>
+// <script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/f.js"></script>
+// html;
+// 			return $tpl;
+// 		}
 	}
 	public function getBlockScreen(){
-		if ($this->showAds){
-			$tpl = <<<html
-<script type="text/javascript"> 
-     /*blockScreen*/ 
+// 		if ($this->showAds){
+// 			$tpl = <<<html
+// <script type="text/javascript"> 
+//      /*blockScreen*/ 
      
-     if(document.body.clientWidth>=768) {
-     	var cpro_id = "u2846093";
-     	console.log('blockscreen');
-     }
-</script>
-<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
-html;
-			return $tpl;
-		}		
+//      if(document.body.clientWidth>=768) {
+//      	var cpro_id = "u2846093";
+//      	console.log('blockscreen');
+//      }
+// </script>
+// <script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+// html;
+// 			return $tpl;
+		// }		
 	}
 	public function getFooter(){
 		if ($this->showAds){
 			$tpl = <<<html
-<script type="text/javascript">
-    /*1024*125 创建于 12/15/2016*/
-    var cpro_id = "u2846113";
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Footer2 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-1928320312730168"
+     data-ad-slot="5260227138"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
 html;
 			return $tpl;
 		}		
@@ -79,13 +87,13 @@ html;
 	public function getSmartMobile(){
 		if ($this->showAds){
 			$tpl = <<<html
-<script type="text/javascript"> 
-     /*smartMobile*/ 
-     if(document.body.clientWidth<768) {
-     	var cpro_id = "u2846082";
-     }
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1928320312730168",
+    enable_page_level_ads: true
+  });
 </script>
-<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/cm.js"></script>
 html;
 			return $tpl;
 		}	
@@ -94,11 +102,15 @@ html;
 		if ($this->showAds){
 			$tpl = <<<html
 <div class="form-group">
-<script type="text/javascript">
-    /*dumbmobile*/
-    var cpro_id = "u2846276";
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- DumbMobile -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:320px;height:100px"
+     data-ad-client="ca-pub-1928320312730168"
+     data-ad-slot="3783493933"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/cm.js"></script>
 </div>
 html;
 			return $tpl;
