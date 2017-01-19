@@ -35,15 +35,15 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
 
         parent::initPage( $out );
-        // if (! $wgUser->isLoggedIn() && $wgHuijiPrefix != 'lotr'){
-        //     $out->addHeadItem( 'ads', '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        //     <script>
-        //       (adsbygoogle = window.adsbygoogle || []).push({
-        //         google_ad_client: "ca-pub-4790099329067811",
-        //         enable_page_level_ads: true
-        //       });
-        //     </script>');
-        // }
+        if (! $wgUser->isLoggedIn() && $wgHuijiPrefix != 'lotr'){
+             $out->addHeadItem( 'ads', '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+             <script>
+               (adsbygoogle = window.adsbygoogle || []).push({
+                 google_ad_client: "ca-pub-1928320312730168",
+                 enable_page_level_ads: true
+              });
+            </script>');
+        }
         if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleScripts( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
@@ -242,7 +242,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             <article class="col-md-12 wiki-body-section" role="main" style="-webkit-transition: right 2s; transition: right 2s;">
                                 <?php if ($NS != 2 && !($this->getSkin()->getTitle()->isMainPage()) ):?>
                                     <?php 
-                                        echo $ad->getSmartMobile();
                                         echo $ad->getBlockScreen();?>
                                 <header id="firstHeading" class="page-header">
 
