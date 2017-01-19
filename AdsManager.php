@@ -1,6 +1,6 @@
 <?php
 class AdsManager{
-	private static $whiteList = array('lotr');
+	private static $whiteList = array('lotr', 'dnfcn');
 	private static $headerWhiteList = array('movie');
 	public function __construct($site){
 		global $wgUser, $wgIsProduction, $wgEnableAds;
@@ -96,7 +96,9 @@ html;
 </script>
 html;
 			return $tpl;
-		}	
+		}	else {
+			return '';
+		}
 	}
 	public function getDumbMobile(){
 		if ($this->showAds){

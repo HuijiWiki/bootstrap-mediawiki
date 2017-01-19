@@ -33,35 +33,30 @@ class SkinBootstrapMediaWiki extends SkinTemplate {
         global $wgHuijiPrefix, $wgSiteNotice, $wgCentralServer, $wgUser, $wgThanksConfirmationRequired, $wgHasComments;
         // set site notice programatically.
         $wgSiteNotice = BootstrapMediaWikiTemplate::getPageRawText('huiji:MediaWiki:Sitenotice');
-
+   
         parent::initPage( $out );
-        if (! $wgUser->isLoggedIn() && $wgHuijiPrefix != 'lotr'){
-             $out->addHeadItem( 'ads', '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-             <script>
-               (adsbygoogle = window.adsbygoogle || []).push({
-                 google_ad_client: "ca-pub-1928320312730168",
-                 enable_page_level_ads: true
-              });
-            </script>');
-        }
-        if (($wgHuijiPrefix === 'slx.test' || $wgHuijiPrefix === 'test' || $wgHuijiPrefix === 'zs.test' || $wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
+
+      
+        if (($wgHuijiPrefix === 'www' ) && ($this->getSkin()->getTitle()->isMainPage()) ){
             $out->addModuleScripts( 'skins.frontpage');
             $out->addMeta( 'description', '灰机wiki是关注动漫游戏影视等领域的兴趣百科社区，追求深度、系统、合作，你也可以来创建和编写。在这里邂逅与你频率相同的“机”友，构建你的专属兴趣世界，不受束缚的热情创造。贴吧大神、微博达人、重度粉、分析狂人、考据党都在这里！');
             $out->addMeta( 'keywords', '维基, 百科, wiki');
             $out->addHeadItem( 'canonical',
                 '<link rel="canonical" href="'.$wgCentralServer.'" />' . "\n"); 
-            $out->addHeadItem( 'alex', '<!-- Start Alexa Certify Javascript -->
-                <script type="text/javascript">
-                _atrk_opts = { atrk_acct:"zMVsn1QolK107i", domain:"huiji.wiki",dynamic: true};
-                (function() { var as = document.createElement("script"); as.type = "text/javascript"; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(as, s); })();
-                </script>
-                <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=zMVsn1QolK107i" style="display:none" height="1" width="1" alt="" /></noscript>
-                <!-- End Alexa Certify Javascript -->  ');   
+            // $out->addHeadItem( 'alex', '<!-- Start Alexa Certify Javascript -->
+            //     <script type="text/javascript">
+            //     _atrk_opts = { atrk_acct:"zMVsn1QolK107i", domain:"huiji.wiki",dynamic: true};
+            //     (function() { var as = document.createElement("script"); as.type = "text/javascript"; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(as, s); })();
+            //     </script>
+            //     <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=zMVsn1QolK107i" style="display:none" height="1" width="1" alt="" /></noscript>
+            //     <!-- End Alexa Certify Javascript -->  ');   
             //$out->addHeadItem('meta','<meta property="qc:admins" content="6762163113460512167131" />'); 
             //$out->addHeadItem('meta','<meta property="wb:webmaster" content="913ad381cb9b4ad7" />');
 
         } else {
             $site = WikiSite::newFromPrefix($wgHuijiPrefix);
+            $ad = new AdsManager($site);
+            $out->addHeadItem( 'ads', $ad->getSmartMobile());
             if ($this->getSkin()->getTitle()->isMainPage()){
                 $out->addMeta( 'description', $site->getDescription());
                 $out->addMeta( 'keywords', $site->getName().', 维基, 百科, wiki');
