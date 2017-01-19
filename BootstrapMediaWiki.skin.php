@@ -253,16 +253,35 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                                 $isVisualEditorEnabled = $wgUser->getOption('visualeditor-enable','1');
                                                 $editHref = $this->data['content_actions']['edit']['href'];
                                                 $veHref = $this->data['content_actions']['ve-edit']['href'];
+                                                
                                                 if ($isVisualEditorEnabled == 1 && isset($this->data['content_actions']['ve-edit'])){ ?>
                                                     <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
 
                                                         <a id="ca-ve-edit" href="<?php echo $veHref; ?>" class="icon-pencil" data-toggle="tooltip" data-placement="top" title="使用可视化编辑器"></a>
                                                         <span class="mw-editsection-divider"></span>
                                                         <a id="ca-edit" href="<?php echo $editHref ?>" class="icon-edit-code " data-toggle="tooltip" data-placement="top" title="使用源代码编辑器"></a>
+                                                        <?php 
+                                                            if (isset($this->data['content_actions']['formedit'])){
+                                                                $formHref = $this->data['content_actions']['formedit']['href'];
+                                                                ?>
+                                                                    <span class="mw-editsection-divider"></span>
+                                                                    <a id="ca-form" href="<?php echo $formHerf ?>" class="fa fa-table" data-toggle="tooltip" data-placement="top" title="使用表单编辑"></a>
+                                                                <?php
+                                                            }
+                                                        ?>
                                                     </div>
                                                 <?php } else { ?>
                                                     <div id="huiji-h1-edit-button" class="huiji-h1-edit-button">
                                                         <a id="ca-edit" href="<?php echo $editHref ?>" class="icon-edit-code" title="<?php echo wfMessage('bootstrap-mediawiki-view-edit')->plain(); ?>"></a>
+                                                        <?php 
+                                                            if (isset($this->data['content_actions']['formedit'])){
+                                                                $formHref = $this->data['content_actions']['formedit']['href'];
+                                                                ?>
+                                                                    <span class="mw-editsection-divider"></span>
+                                                                    <a id="ca-form" href="<?php echo $formHerf ?>" class="fa fa-table" data-toggle="tooltip" data-placement="top" title="使用表单编辑"></a>
+                                                                <?php
+                                                            }
+                                                        ?>
                                                     </div>                                   
                                                 <?php }
                                             } ?>

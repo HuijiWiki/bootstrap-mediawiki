@@ -268,6 +268,8 @@ Class HuijiSkinTemplate extends BaseTemplate {
 
     /* notification adapter */
     protected function alertAdapter($array){
+        
+        
         $nav = array();
         $item = $array['notifications-alert'];
         $key = 'notifications-alert';
@@ -276,7 +278,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
             'attributes' => $item['attributes'],
             'link' => htmlspecialchars( $item['href'] ),
             'key' => $item['key'],
-            'class' => htmlspecialchars( $item['class'][0] ),
+            'class' => htmlspecialchars( implode(' ', $item['class']) ),
             'title' => htmlspecialchars( $item['text'] ),
             'icon' => '<i class="fa fa-bell-o"></i>',
         );
@@ -285,16 +287,16 @@ Class HuijiSkinTemplate extends BaseTemplate {
     }
     /* notification adapter */
     protected function messageAdapter($array){
-        if (!empty($array['notifications-message'])){
+        if (!empty($array['notifications-notice'])){
             $nav = array();
-            $item = $array['notifications-message'];
-            $key = 'notifications-message';
+            $item = $array['notifications-notice'];
+            $key = 'notifications-notice';
             $link = array(
                 'id' => Sanitizer::escapeId( $key ),
                 'attributes' => $item['attributes'],
                 'link' => htmlspecialchars( $item['href'] ),
                 'key' => $item['key'],
-                'class' => htmlspecialchars( $item['class'][0] ),
+                'class' => htmlspecialchars( implode(' ', $item['class']) ),
                 'title' => htmlspecialchars( $item['text'] ),
                 'icon' => '<i class="fa fa-envelope-o"></i>',
             );
@@ -405,7 +407,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
             $nav[] = $link;
         }//end foreach
         return $nav ;
-    }//end get_edit_links   
+    }//end get_edit_links  
     
     #    Output easy-to-read numbers
     #    by james at bandit.co.nz
@@ -566,7 +568,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
                             $personal_urls = $this->data['personal_urls'];
                             unset($personal_urls['uls']);
                             unset($personal_urls['notifications-alert']);
-                            unset($personal_urls['notifications-message']);
+                            unset($personal_urls['notifications-notice']);
                             unset($personal_urls['userpage']);
                             unset($personal_urls['mytalk']);
                             $personal_urls = array_slice($personal_urls, 0, 1, true) + 

@@ -966,29 +966,29 @@ ol.carousel-indicators{
 /*//     font-size: 1.2rem;*/
 /*// }*/
 /*hack notification*/
-/*#pt-notifications-alert, #pt-notifications-message{*/
+/*#pt-notifications-alert, #pt-notifications-notice{*/
     /*font-size: 1.2rem;*/
     /*position: relative;*/
 /*// }*/
-/*// #pt-notifications-alert .oo-ui-popupWidget-popup, #pt-notifications-message .oo-ui-popupWidget-popup{*/
+/*// #pt-notifications-alert .oo-ui-popupWidget-popup, #pt-notifications-notice .oo-ui-popupWidget-popup{*/
 /*//     font-size: 14px;*/
 /*// }*/
-/*// #pt-notifications-alert .oo-ui-labelElement-label, #pt-notifications-message .oo-ui-labelElement-label{*/
+/*// #pt-notifications-alert .oo-ui-labelElement-label, #pt-notifications-notice .oo-ui-labelElement-label{*/
 /*//     margin: 0;*/
 /*//     padding: 0;*/
 /*// }*/
-/*// #pt-notifications-alert .oo-ui-buttonGroupWidget, #pt-notifications-message .oo-ui-buttonGroupWidget {*/
+/*// #pt-notifications-alert .oo-ui-buttonGroupWidget, #pt-notifications-notice .oo-ui-buttonGroupWidget {*/
 /*//     display: block;*/
 /*// }*/
 #pt-notifications-alert .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon,
-#pt-notifications-message .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon,
+#pt-notifications-notice .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon,
 #pt-following .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon{
     top: 1.5em;
 }
 #pt-following .mw-echo-ui-notificationBadgeButtonPopupWidget > .oo-ui-popupWidget > .oo-ui-popupWidget-popup > .oo-ui-popupWidget-head > .oo-ui-labelElement-label{
     font-size: 1em !important;
 }
-#pt-notifications-alert, #pt-notifications-message, #pt-following {
+#pt-notifications-alert, #pt-notifications-notice, #pt-following {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
@@ -1013,7 +1013,7 @@ ol.carousel-indicators{
     font-size: 1.8rem;
     z-index: -1;
 }
-#pt-notifications-message .mw-echo-notifications-badge:before {
+#pt-notifications-notice .mw-echo-notifications-badge:before {
     content: "\f003";
     position: absolute;
     left: -10px;
@@ -1022,11 +1022,11 @@ ol.carousel-indicators{
     font-size: 1.8rem;
     z-index: -1;
 }
-#pt-notifications-alert,#pt-notifications-message,#pt-following {
+#pt-notifications-alert,#pt-notifications-notice,#pt-following {
     width: 40px;
     height: 40px;
 }
-#pt-notifications-message .oo-ui-popupWidget, #pt-notifications-alert .oo-ui-popupWidget, #pt-following .oo-ui-popupWidget{
+#pt-notifications-notice .oo-ui-popupWidget, #pt-notifications-alert .oo-ui-popupWidget, #pt-following .oo-ui-popupWidget{
     top: 30px;
 }
 .ca-help-text{
@@ -1090,7 +1090,7 @@ ol.carousel-indicators{
         margin-right: 1.5em !important;
     }
     
-    /*// #pt-notifications-alert,  #pt-notifications-message{*/
+    /*// #pt-notifications-alert,  #pt-notifications-notice{*/
     /*//     line-height: 40px;*/
     /*//     // color: #fff;*/
     /*//     padding: 0 5px;*/
@@ -1106,7 +1106,7 @@ ol.carousel-indicators{
         top: 5px!important;
         right: 0!important;
     }
-    #pt-notifications-alert .mw-echo-notifications-badge:before ,#pt-notifications-message .mw-echo-notifications-badge:before{
+    #pt-notifications-alert .mw-echo-notifications-badge:before ,#pt-notifications-notice .mw-echo-notifications-badge:before{
         color: #fff!important;
     }
     .oo-ui-popupWidget-popup {
@@ -1136,13 +1136,13 @@ ol.carousel-indicators{
       display: block;
     }
     #pt-notifications-alert .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor,
-    #pt-notifications-message .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor,
+    #pt-notifications-notice .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor,
     #pt-following .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor{
         /*// right: 120px;*/
         display: none;
     }
     #pt-notifications-alert .oo-ui-popupWidget,
-    #pt-notifications-message .oo-ui-popupWidget{
+    #pt-notifications-notice .oo-ui-popupWidget{
       height:0px;
     }
 
@@ -1333,4 +1333,8 @@ body.skin-BootstrapMediawiki > .oo-ui-windowManager {
 }
 .ads-margin{
   margin:10px, 0px;
+}
+.oo-ui-widget.oo-ui-optionWidget.oo-ui-buttonElement.oo-ui-buttonElement-framed.oo-ui-iconElement > a{
+  width: 4rem;
+  height: 3.7rem;
 }

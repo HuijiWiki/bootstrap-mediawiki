@@ -22,8 +22,8 @@ $(function() {
             // '-webkit-animation':"buzz-out 2s infinite"
         });
     }
-    if($('#pt-notifications-message .mw-echo-notifications-badge').text()!=0){
-        $('#pt-notifications-message .mw-echo-notifications-badge').css({
+    if($('#pt-notifications-notice .mw-echo-notifications-badge').text()!=0){
+        $('#pt-notifications-notice .mw-echo-notifications-badge').css({
             'color':'#fff',
             'background':'rgba(220, 0, 0, 1)',
             // 'animation':"buzz-out 2s infinite", 
