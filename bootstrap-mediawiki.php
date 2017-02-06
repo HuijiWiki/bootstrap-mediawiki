@@ -396,6 +396,7 @@ $wgHooks['SpecialSearchResultsPrepend'][] = 'BootstrapMediawikiHooks::onSpecialS
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'BootstrapMediawikiHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['ImportSources'][] = 'BootstrapMediawikiHooks::onImportSources';
 $wgHooks['ContentHandlerDefaultModelFor'][] = 'BootstrapMediawikiHooks::onContentHandlerDefaultModelFor';
+$wgHooks['ParserSectionCreate'][] = 'BootstrapMediawikiHooks::onParserSectionCreate';
 //API
 $wgAPIModules['commonstyle'] = "ApiCommonStyle";
 

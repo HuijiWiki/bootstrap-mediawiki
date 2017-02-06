@@ -135,7 +135,7 @@ $(document).ready(function(){
                 $('.phone-wrapper').remove();
             }
         }
-        document.domain = mw.config.get('wgHuijiSuffix').substring(1);
+        //document.domain = mw.config.get('wgHuijiSuffix').substring(1);
         if($('#wrapper').hasClass('toggled')){
             localStorage.setItem('menu-toggle','toggled');
         }else{

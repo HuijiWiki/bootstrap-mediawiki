@@ -253,8 +253,8 @@ class FrontPage{
         $qqUrl = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101264508&state=".$wgHuijiPrefix."&redirect_uri=http%3a%2f%2fwww.huiji.wiki%2fwiki%2fspecial%3acallbackqq";
         
         //site month donate
-        // $month = date('Y-m', time());
-        $siteArr = UserDonation::getAllSiteDonationRank();
+        $month = date('Y-m', time());
+        $siteArr = UserDonation::getAllSiteDonationRank('*');
         $firstFourSite = array_slice($siteArr, 0,11);
         $k=1;
         foreach ($firstFourSite as $key => $value) {

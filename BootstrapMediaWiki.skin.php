@@ -163,13 +163,13 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
         <div id="wrapper">
         <script>
             var menutoggle;
-            document.domain = getDomainName(window.location.host);
+            // document.domain = getDomainName(window.location.host);
             menutoggle = localStorage.getItem("menu-toggle");
             document.getElementById('wrapper').className = menutoggle;
-            function getDomainName(hostName)
-            {
-                return hostName.substring(hostName.lastIndexOf(".", hostName.lastIndexOf(".") - 1) + 1);
-            }
+            // function getDomainName(hostName)
+            // {
+            //     return hostName.substring(hostName.lastIndexOf(".", hostName.lastIndexOf(".") - 1) + 1);
+            // }
         </script>
         <?php echo $this->showHeader(); ?>
         <script>
@@ -211,13 +211,10 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                             </li>
                             <li><span id="user-site-follow" class="mw-ui-button <?php echo $followed?'':'mw-ui-progressive' ?><?php echo $followed?'unfollow':'' ?> "><?php echo $followed?'取消关注':'<span class="glyphicon glyphicon-plus"></span>关注' ?></span> </li>
                             <?php  
-                                $html = null;
-                                Hooks::run( 'SkinGetPageLink', array($this->getSkin()->getTitle(), &$html) );
-                                if ($html != null){
-                                    echo $html;
-                                }else{
-                                    echo  $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) );
-                                } 
+                                $html = $this->nav( $this->get_page_links( 'Bootstrap:Subnav' ) );
+                                Hooks::run( 'SkinGetPageLink', array($this->getSkin()->getTitle(), &$html) );     
+                                echo $html;
+                      
                             ?>
                             <li class="site-count"><p><span class="article-count"><a href="<?php echo $url_prefix; ?>Special:AllPages"><?php
                                 $result = self::format_nice_number(SiteStats::articles());
@@ -236,8 +233,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 
                             <article class="col-md-12 wiki-body-section" role="main" style="-webkit-transition: right 2s; transition: right 2s;">
                                 <?php if ($NS != 2 && !($this->getSkin()->getTitle()->isMainPage()) ):?>
-                                    <?php 
-                                        echo $ad->getBlockScreen();?>
                                 <header id="firstHeading" class="page-header">
 
                                     <div class="pull-right"><?php if ( $this->data['isarticle'] ) { echo $this->getIndicators();} ?> </div>
@@ -286,9 +281,11 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             echo $this->getSub($NS);
                                         ?>
                                     </div>
-                                    <div class="hidden-lg hidden-md">
+                                    <div class="hidden-lg hidden-md ads-header">
                                     <?php 
-                                        echo $ad->getDumbMobile();
+                                        if ($this->isPrimaryContent()){
+                                            echo $ad->getDumbMobile();
+                                        }
                                     ?>
                                     </div>
                                         
@@ -360,9 +357,9 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <!-- /newtalk -->
                                 <?php endif; ?>
                                 <section id="bodyContent" class="body">    
-                                    <div class="hidden-sm hidden-xs ads-center" style="text-align: center">
+                                    <div class="hidden-sm hidden-xs ads-center ads-header" style="text-align: center">
                                     <?php
-                                    if (!$this->getSkin()->getTitle()->isMainPage()){
+                                    if ($this->isPrimaryContent()){
                                         echo $ad->getWideHeader();
                                     }
                                     ?>
@@ -370,7 +367,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <?php $this->html( 'bodytext' ) ?>
                                     <div class="hidden-sm hidden-xs ads-margin ads-center">
                                     <?php 
-                                    if (!$this->getSkin()->getTitle()->isMainPage()){
+                                    if ($this->isPrimaryContent()){
                                         echo $ad->getFooter();
                                     }
                                     ?>

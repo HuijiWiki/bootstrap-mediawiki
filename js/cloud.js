@@ -80,7 +80,7 @@ function init() {
 //    }else{
 //        $('#wg-toggle').addClass('icon-close off');
 //    }
-    document.domain = mw.config.get('wgHuijiSuffix').substring(1);
+//    document.domain = mw.config.get('wgHuijiSuffix').substring(1);
 //    $('#wg-toggle').click(function(){
 //        if($(this).hasClass('off')){
 //            $(this).removeClass('off').addClass('on');

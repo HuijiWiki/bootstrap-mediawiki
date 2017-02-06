@@ -563,6 +563,14 @@ Class BootstrapMediawikiHooks {
         return true;
 
     }
+    public static function onParserSectionCreate( $parser, $section, &$sectionContent, $showEditLinks ) { 
+        global $wgHuijiPrefix;
+        if ($section % 4 == 3 && mb_strlen($sectionContent)> 200){
+            $site = WikiSite::newFromPrefix($wgHuijiPrefix);
+            $ad = new AdsManager($site);
+            $sectionContent = $ad->getBlockScreen().$sectionContent;
+        }
+    }
     public static function onResourceLoaderGetLessVars( &$lessVars ) {
         global $wgHuijiPrefix;
         // $lessVars['colorpath'] = "\"http://huiji-fs.oss-cn-qingdao-internal.aliyuncs.com/$wgHuijiPrefix/style/SiteColor.less\"";
@@ -570,6 +578,7 @@ Class BootstrapMediawikiHooks {
         // $lessVars['bg'] = "#000";
 
         $lessVars = CommonStyle::getLessVars( $lessVars );
+        // $lessVars['bg'] = "#000";
 
     }
     public static function onSpecialSearchResultsPrepend( $specialSearch, $output, $term ) { 

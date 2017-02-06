@@ -441,13 +441,14 @@ Class HuijiSkinTemplate extends BaseTemplate {
         }
     }
     static function getPageRawTextFromCache( $pageTitle ){
-        global $wgMemc;
+        global $wgMemc, $wgCachePrefix, $wgMainCacheType;
         $output = '';
         if ($pageTitle->isExternal()){
         	$key = wfForeignMemcKey( 'huiji', '', 'page', 'getPageRaw', 'shared', $pageTitle->getFullText() );
         	$output = $wgMemc->get( $key );
         } else {
         	$key = wfMemcKey( 'page', 'getPageRaw', 'all', $pageTitle->getFullText() );
+            // print_r(ObjectCache::getInstance(CACHE_MEMCACHED)); die();
         	$output = $wgMemc->get( $key );
         }
         return $output;
@@ -459,7 +460,7 @@ Class HuijiSkinTemplate extends BaseTemplate {
         	$content = $wgParser->interwikiTransclude( $pageTitle, 'raw');
         	$output = $wgParser->preprocess($content, $pageTitle, $wgParserOptions );
         	$key = wfForeignMemcKey( 'huiji','','page', 'getPageRaw', 'shared', $pageTitle->getFullText() );
-        	 $wgMemc->set( $key, $output );
+        	$wgMemc->set( $key, $output );
         } else {
 	        if(!$pageTitle->isKnown()) {
 	            return 'Create the page [[' . $pageTitle->getFullText() . ']]';

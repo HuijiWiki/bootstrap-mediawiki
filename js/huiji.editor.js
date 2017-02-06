@@ -79,7 +79,7 @@ window.customizeToolbar = function() {
 
 						  this.content = new OO.ui.FieldsetLayout( { $: this.$ } );
 						  this.content2 = new OO.ui.FieldsetLayout( { $: this.$ } );
-						  this.urlInput = new OO.ui.TextInputWidget( { $: this.$ , placeholder: '支持youku、bilibili、网易云音乐', indicator: 'required'} );
+						  this.urlInput = new OO.ui.TextInputWidget( { $: this.$ , placeholder: '支持腾讯、youku、bilibili、网易云音乐', indicator: 'required'} );
 						  this.label1 = new OO.ui.LabelWidget( {
 								label: '媒体文件已录入，你可以复制文件链接，插入到条目中的适当位置。你还可以像处理图片一样为他添加属性和边框。'
 						  } );
@@ -197,8 +197,13 @@ window.customizeToolbar = function() {
 							            case '163':
 							                mw.VideoHandler.query163(url, video_name, uploadSuccess, error);
 							                break; 
+							            case 'qq':
+                							mw.VideoHandler.queryQQ(url, video_name, uploadSuccess, error);
+                							break;
 							            // case 'qq':
-							            // default:
+							            default:
+							                mw.notification.notify('上传失败（URL不支持）'); 
+							                return dfd.promise();
 							        }
 							        return dfd.promise();
 

@@ -1331,6 +1331,17 @@ body.skin-BootstrapMediawiki > .oo-ui-windowManager {
 .ads-center{
   text-align: center;
 }
+@media screen and (min-width: 768px) {
+  .ads-screen{
+    float: right;
+    clear: right;
+  }
+}
+@media screen and (max-width: 767px) {
+  .ads-screen{
+    text-align: center;
+  }
+}
 .ads-margin{
   margin:10px, 0px;
 }

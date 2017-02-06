@@ -27,11 +27,12 @@ class AdsManager{
 			$tpl = <<<html
 <div class="form-group">
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- WideHeader -->
+<!-- HeaderReponsive -->
 <ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
+     style="display:block"
      data-ad-client="ca-pub-1928320312730168"
-     data-ad-slot="8492895131"></ins>
+     data-ad-slot="2661087135"
+     data-ad-format="auto"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
@@ -53,30 +54,35 @@ html;
 // 		}
 	}
 	public function getBlockScreen(){
-// 		if ($this->showAds){
-// 			$tpl = <<<html
-// <script type="text/javascript"> 
-//      /*blockScreen*/ 
-     
-//      if(document.body.clientWidth>=768) {
-//      	var cpro_id = "u2846093";
-//      	console.log('blockscreen');
-//      }
-// </script>
-// <script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
-// html;
-// 			return $tpl;
-		// }		
-	}
-	public function getFooter(){
 		if ($this->showAds){
 			$tpl = <<<html
+<div class="ads-screen float-right">
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Footer2 -->
+<!-- blockscreen -->
 <ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
+style="display:inline-block;width:300px;height:250px"
+data-ad-client="ca-pub-1928320312730168"
+data-ad-slot="8507314333"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+html;
+			return $tpl;
+		}else{
+			return '';
+		}
+	}
+	public function getFooter(){
+		if ($this->showAds ){
+			$tpl = <<<html
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- FooterResponsive -->
+<ins class="adsbygoogle"
+     style="display:block"
      data-ad-client="ca-pub-1928320312730168"
-     data-ad-slot="5260227138"></ins>
+     data-ad-slot="4137820330"
+     data-ad-format="auto"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>

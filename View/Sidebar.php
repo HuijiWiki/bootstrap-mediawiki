@@ -155,7 +155,7 @@
                 支持<?php echo $wgSitename ?>
             </a>
             <div>
-              <a href="/wiki/Special:Donate" class="button mw-ui-button mw-ui-progressive"><i class="fa fa-jpy" aria-hidden="true"></i> 加油</a>
+              <a href="/wiki/Special:Donate" class="button mw-ui-button mw-ui-progressive"> 加油 <?php echo $site->getDonationStub()?> ¥</a>
             </div>
         </li>
         <li class="sidebar-brand left-manager">

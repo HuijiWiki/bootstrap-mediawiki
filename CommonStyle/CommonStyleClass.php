@@ -110,11 +110,10 @@ class CommonStyle{
 		global $wgMemc;
 		$key = wfMemcKey("commonStyle", "getThemedStyle" );
 
-		$cssContent = $wgMemc->get($key);
+		$cssContent = $wgMemc->get($key);	//die();
 		if ($cssContent != ''){
 			return $cssContent;
 		}
-		if ($wgMemc)
 		$content = '';
 		$title = ApiCommonStyle::getStyleTitle();
         $wp = new WikiPage($title);
@@ -128,6 +127,7 @@ class CommonStyle{
         } else {
             $cssContent['cssContent'] = null;
         }
+        
         $wgMemc->set($key, $cssContent);
         return $cssContent;
 	}
@@ -155,19 +155,19 @@ class CommonStyle{
 	}
 
 	public static function clearCache( $context = null ){
-		global $wgMemc, $wgResourceModules, $wgFileCacheDirectory;
+		global $wgMemc, $wgResourceModules, $wgCacheDirectory, $wgHuijiPrefix;
 		$key = wfMemcKey("commonStyle", "getThemedStyle" );
 		$wgMemc->delete($key);		
 		//Force Rebuild Resourceloader module.
 		//$fileName = __DIR__ ."/../less/huiji.less";
-		array_map('unlink', glob($wgFileCacheDirectory."/*.lesscache"));
+		array_map('unlink', glob($wgCacheDirectory."/*.lesscache"));
 		$styles = $wgResourceModules['skins.bootstrapmediawiki.top']['styles'];
 		foreach ($styles as $key => $value){
 			if ( pathinfo($key, PATHINFO_EXTENSION) === 'less' ){
 				$fileName = $wgResourceModules['skins.bootstrapmediawiki.top']['localBasePath'].'/'.$key;
 				$varsHash = hash( 'md4', serialize( [] ) );
 				$cache = ObjectCache::getLocalServerInstance( CACHE_ANYTHING );
-				$cacheKey = $cache->makeGlobalKey( 'LESS', $fileName, $varsHash );
+				$cacheKey = $cache->makeGlobalKey( 'LESS', $fileName, $varsHash, $wgHuijiPrefix );
 				$cachedCompile = $cache->delete( $cacheKey );	
 			}
 		}

@@ -15,7 +15,7 @@ mw.VideoHandler = {
 	            token: token, 
 	            ignorewarnings: true,
 	            format: 'json',
-	            comment: '添加视频'
+	            comment: video_from+video_id
 	        },function(data){
 	            if (! data.upload){
 	                mw.notification.notify('上传失败（无法上传新版本）');
@@ -310,6 +310,56 @@ mw.VideoHandler = {
         );
         
 
-	}
+	},
+	queryQQ: function( url, video_names, success, error, is_new_revision ){
+		var success = success;
+		var error = error;
+		var video_name = video_names;
+		/**
+		 * [regex2 ]
+		 * http://music.163.com/#/album?id=3154175
+		 * album type:1
+		 * song type:2
+		 * playlist type:0
+		 */
+		var regex2 = /\/([\w]+?)\.html/;
+        var video_id, video_from, video_orig_title, video_full_name, video_name, video_player_url, video_tags, video_thum, video_duration,token;
+        var id = url.match(regex2);
+        if (id != null && id[1] != null){
+            video_id = id[1];
+        }else{
+            mw.notification.notify('上传失败（URL不支持）');
+            error();
+            return;
+        }
+       	$.getScript('http://imgcache.qq.com/tencentvideo_v1/tvp/js/tvp.player_v2_jq.js')
+			.done(function(script, textStatus){
+				var video = new tvp.VideoInfo();
+		       	video.setVid(video_id);
+		       	video_orig_title = video.getTitle() || video_id;
+		       	video_from = 'qq';
+	            if (video_name == ''){
+	                video_name = video_orig_title;
+	            }
+	            if (video_name.indexOf('.video') < 0){
+	                video_full_name = video_name + '.video';
+	            } else {
+	                video_full_name = video_name;
+	                video_name = video_full_name.substr(0, video_full_name.lastIndexOf('.'));
+	            }
+		       	var snapUrls = video.getVideoSnap();
+		       	video_thum = snapUrls[2];
+		       	video_duration = video.getDuration();
+		       	video_tags = '';
+		       	video_player_url = 'https://v.qq.com/iframe/player.html?vid='+video_id+'&tiny=0&auto=0'
+		       	token = mw.user.tokens.get('editToken');
+		       	mw.VideoHandler.doUpload( video_name,video_thum,token,video_from, video_id, video_player_url, video_tags, video_duration, '', success, error, is_new_revision  );
+			})
+			.fail(function(jqxhr, settings, exception){
+	            mw.notification.notify('上传失败（QQ无响应）');
+	            error();
+	            return;				
+		});
+    }
 
 }
