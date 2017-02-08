@@ -254,7 +254,7 @@ class FrontPage{
         
         //site month donate
         $month = date('Y-m', time());
-        $siteArr = UserDonation::getAllSiteDonationRank('*');
+        $siteArr = UserDonation::getAllSiteDonationRank(null);
         $firstFourSite = array_slice($siteArr, 0,11);
         $k=1;
         foreach ($firstFourSite as $key => $value) {
