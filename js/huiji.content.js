@@ -101,7 +101,9 @@ var recommend = {
             url: 'http://' + i + '.huiji.wiki/api.php?action=query&prop=pageimages&pilimit=max&format=json&pithumbsize=250&maxage=2592000&smaxage=2592000&titles=' + title,
             type: 'get',
             success: function (data) {
-
+                if (!data.query){
+                    return;
+                }
                 for (var x in data.query.pages) {
                     if (data.query.pages[x].thumbnail) {
                         var percent = data.query.pages[x].thumbnail.width / data.query.pages[x].thumbnail.height;

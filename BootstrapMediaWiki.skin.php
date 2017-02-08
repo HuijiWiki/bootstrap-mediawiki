@@ -281,13 +281,6 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                             echo $this->getSub($NS);
                                         ?>
                                     </div>
-                                    <div class="hidden-lg hidden-md ads-header">
-                                    <?php 
-                                        if ($this->isPrimaryContent()){
-                                            echo $ad->getDumbMobile();
-                                        }
-                                    ?>
-                                    </div>
                                         
                                 </header>
                                 <?php else:?>
@@ -357,7 +350,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                 <!-- /newtalk -->
                                 <?php endif; ?>
                                 <section id="bodyContent" class="body">    
-                                    <div class="hidden-sm hidden-xs ads-center ads-header" style="text-align: center">
+                                    <div class="ads-center ads-header" style="text-align: center">
                                     <?php
                                     if ($this->isPrimaryContent()){
                                         echo $ad->getWideHeader();
@@ -365,7 +358,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
                                     ?>
                                     </div>                 
                                 <?php $this->html( 'bodytext' ) ?>
-                                    <div class="hidden-sm hidden-xs ads-margin ads-center">
+                                    <div class="ads-margin ads-center">
                                     <?php 
                                     if ($this->isPrimaryContent()){
                                         echo $ad->getFooter();
