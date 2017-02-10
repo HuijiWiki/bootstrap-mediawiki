@@ -309,7 +309,7 @@ class BootstrapMediaWikiTemplate extends HuijiSkinTemplate {
 
                                     if ( !$wgUser->isLoggedIn() && $this->isPrimaryContent() ) {
                                         $login = '
-                                            <span data-toggle="modal" data-target=".user-login">
+                                            <span>
                                                 <a rel="nofollow" class="need-login btn btn-default">登录</a>
                                             </span>
                                             <span>'.Linker::linkKnown( SpecialPage::getTitleFor('Userlogin'), '注册', array('rel' => 'nofollow', 'class'=>'btn btn-default'),array('type' => 'signup') ).'

@@ -262,7 +262,7 @@ class FrontPage{
                 $donateSite = WikiSite::newFromPrefix($key);
                 $siteUrl = $donateSite->getUrl();
                 $siteName = $donateSite->getName();
-                $rankSiteAvatar = $donateSite->getAvatar()->getAvatarHtml();
+                //$rankSiteAvatar = $donateSite->getAvatar('l')->getAvatarHtml();
                 $allSiteDonateRank[] = array(
                                         'site_rank' => $k,
                                         'site_prefix' => $key,
